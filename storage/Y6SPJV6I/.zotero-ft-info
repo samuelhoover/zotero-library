@@ -1,0 +1,16 @@
+Title:          Predicting Polymers' Glass Transition Temperature by a Chemical Language Processing Model
+Subject:        We propose a chemical language processing model to predict polymers' glass transition temperature (Tg) through a polymer language (SMILES, Simplified Molecular Input Line Entry System) embedding and recurrent neural network. This model only receives the SMILES strings of a polymer's repeat units as inputs and considers the SMILES strings as sequential data at the character level. Using this method, there is no need to calculate any additional molecular descriptors or fingerprints of polymers, and thereby, being very computationally efficient. More importantly, it avoids the difficulties to generate molecular descriptors for repeat units containing polymerization point `*'. Results show that the trained model demonstrates reasonable prediction performance on unseen polymer's Tg. Besides, this model is further applied for high-throughput screening on an unlabeled polymer database to identify high-temperature polymers that are desired for applications in extreme environments. Our work demonstrates that the SMILES strings of polymer repeat units can be used as an effective feature representation to develop a chemical language processing model for predictions of polymer Tg. The framework of this model is general and can be used to construct structure­property relationships for other polymer properties.
+Keywords:       polymer informatics; machine learning; glass transition temperature; high-throughput screening; recurrent neural network
+Author:         Guang Chen, Lei Tao and Ying Li
+Creator:        LaTeX with hyperref
+Producer:       pdfTeX-1.40.21
+CreationDate:   Tue Jun  8 15:39:17 2021
+ModDate:        Tue Jun  8 09:43:52 2021
+Tagged:         no
+Form:           none
+Pages:          14
+Encrypted:      no
+Page size:      595.276 x 841.89 pts (A4) (rotated 0 degrees)
+File size:      1501164 bytes
+Optimized:      no
+PDF version:    1.7

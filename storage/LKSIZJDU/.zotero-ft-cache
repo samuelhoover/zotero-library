@@ -1,0 +1,640 @@
+This article was downloaded by: [Michigan State University] On: 22 February 2015, At: 05:53 Publisher: Taylor & Francis Informa Ltd Registered in England and Wales Registered Number: 1072954 Registered office: Mortimer House, 37-41 Mortimer Street, London W1T 3JH, UK
+Molecular Physics: An International Journal at the Interface Between Chemistry and Physics
+Publication details, including instructions for authors and subscription information: http://www.tandfonline.com/loi/tmph20
+Thermodynamic properties and phase equilibria of charged hard sphere chain model for polyelectrolyte solutions
+J. W. JIANG a , L. BLUM b , O. BERNARD c & J. M. PRAUSNITZ d a Department of Chemistry and Biochemistry , University of South Carolina , Columbia, SC, 29208, USA b Department of Physics , University of Puerto Rico , P.O. Box 23343, Rio Piedras, PR, 00931, USA c Laboratoire Liquides Ioniques et Interfaces Chargées, Boite postale 51, Université Pierre et Marie Curie , 4, Place Jussieu, 75252, Paris Cedex 05, France d Department of Chemical Engineering , University of California, Berkeley and Chemical Sciences Division, Lawrence Berkeley National Laboratory , Berkeley, CA, 94720, USA Published online: 16 Nov 2009.
+To cite this article: J. W. JIANG , L. BLUM , O. BERNARD & J. M. PRAUSNITZ (2001) Thermodynamic properties and phase equilibria of charged hard sphere chain model for polyelectrolyte solutions, Molecular Physics: An International Journal at the Interface Between Chemistry and Physics, 99:13, 1121-1128, DOI: 10.1080/00268970110043414
+To link to this article: http://dx.doi.org/10.1080/00268970110043414
+PLEASE SCROLL DOWN FOR ARTICLE
+Taylor & Francis makes every effort to ensure the accuracy of all the information (the “Content”) contained in the publications on our platform. However, Taylor & Francis, our agents, and our licensors make no representations or warranties whatsoever as to the accuracy, completeness, or suitability for any purpose of the Content. Any opinions and views expressed in this publication are the opinions and views of the authors, and are not the views of or endorsed by Taylor & Francis. The accuracy of the Content should not be relied upon and should be independently verified with primary sources of information. Taylor and Francis shall not be liable for any losses, actions, claims, proceedings, demands, costs, expenses, damages, and other liabilities whatsoever or howsoever caused arising directly or indirectly in connection with, in relation to or arising out of the use of the Content.
+This article may be used for research, teaching, and private study purposes. Any substantial or systematic reproduction, redistribution, reselling, loan, sub-licensing, systematic supply, or distribution in any form to anyone is expressly forbidden. Terms & Conditions of access and use can be found at http://www.tandfonline.com/page/termsand-conditions
+
+MOLECULAPRHYSICS20, 01, VOL.99, No. 13, 1121-1128
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+
+Thermodynamic properties and phase equilibria of charged hard sphere chain model for polyelectrolyte solutions
+J. W. JIANG’*, L. BLUM2, 0. BERNARD3 and J. M. PRAUSNITZ4
+’ Department of Chemistry and Biochemistry, University of South Carolina,
+Columbia, SC 29208, USA Department of Physics, P.O. Box 23343, University of Puerto Rico, Rio Piedras,
+PR 00931, USA Laboratoire Liquides Ioniques et Interfaces Chargbes, Boite postale 51, Universitk
+Pierre et Marie Curie, 4, Place Jussieu, 75252 Paris Cedex 05, France Department of Chemical Engineering, University of California, Berkeley and Chemical Sciences Division, Lawrence Berkeley National Laboratory, Berkeley,
+CA 94720, USA
+(Received 6 February 2001; accepted 8 February 2001)
+A recent thermodynamic perturbation theory for flexible polyelectrolyte solutions is extended to study thermodynamic properties and phase equilibria for polyelectrolyte solutions with different polyion chain lengths. Osmotic pressure, activity coefficient of an individual ion (polyion or counterion) and average activity coefficient are calculated. Except for the activity coefficient of the polyion, the chain length dependence of the properties is small. Also presented are vapour-liquid equilibrium coexisting curves, vapour pressures and critical points. As the polyion chain length approaches infinity the critical properties (temperature, pressure and density) become constants.
+
+1. Introduction A molecular thermodynamic model for flexible polyelectrolyte solutions has been developed recently by Jiang et al. [ l , 21. The polyelectrolyte is represented by a linear freely jointed tangent charged hard sphere chain with the corresponding counterions embedded in a continuum dielectric medium. The chain connectivity between r segments on the polyion is taken into account through the r-particle cavity correlation function (CCF), which is evaluated by a linear approximation of nearestneighbour two-particle CCFs [3]. On the basis of the mean-spherical approximation (MSA) for electrolyte solutions [ M I , analytical expressions for the thermodynamic properties can be obtained. Applying this model, we studied the density dependence of the osmotic pressure for different polyelectrolyte solutions. The effects of polyion chain length, counterion size, counterion charge and dielectric constant on the osmotic pressure were investigated extensively. We found that there are two scaling regimes through a crossover density for the osmotic pressure. Good agreement was found upon comparison with those from computer simulation [7],
+* Author for correspondence. e-mail: jiang@mail.chem.
+sc.edu
+
+a scaling approach [S] and experiment [9]. The results imply that a polyion chain would rather adopt an expanded random shape than a rodlike conformation. This may be attributed to the attraction between polyion monomers and counterions that potentially can overwhelm the repulsion between the monomers.
+The model was developed originally using Wertheim’s thermodynamic perturbation theory (TPT) [101. TPT provides a quick route to evaluate the thermodynamic properties and has been used widely to study the thermodynamic properties and phase equilibria of associating fluids. Alternatively, Wertheim’s OrnsteinZernike (WOZ) approach [lo] can be used to study both thermodynamic and structure properties of associating fluids, however, at the cost of solving integral equations. Based on the binding MSA (BIMSA) [ l l , 121, Blum and coworkers [13-1 71 gave the general analytical solution for flexible polyelectrolyte solutions. As in the ionic solution case, the thermodynamic and structural properties are functions of a unique scaling parameter. The polymer BIMSA (PBIMSA) satisfies the exact Debye-Huckel low-density limiting law for any flexible polymer chain. It has been shown also that all of the MSA-like theories can be derived from a variational principle for the Helmholtz free energy [18].
+
+Molecular Physics ISSN 0026-8976print/ISSN 1362-3028 online 02001 Taylor & Francis Ltd
+http://www. tandf.co.uk/journals DOI: 10.1080100268970110043414
+
+1122
+
+J. W. Jiang et al.
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+
+von Solms and Chiew [19, 201 also applied the WOZ approach to study polyelectrolyte solutions: both thermodynamic and structural properties were calculated. Their analytical solution is identical to that of [14].
+It is worthwhile to note that there are some other approaches to the study of polyelectrolyte solutions, such as counterion condensation theory [21], modified Poisson-Boltzmann formalism [22] and the polymerreference-interaction-sitemodel (PRISM) [23-251.
+For practical applications, it is of great interest to know the phase behaviour of polyelectrolyte solutions and polyelectrolytes with colloidal particles or biomolecules [26]. In this work, we extend the previous theory to study phase behaviour in polyelectrolyte solutions. The effects of polyion chain length on thermodynamic properties, phase equilibria and critical points are investigated.
+
+2. Theory The flexible polyion is represented by a linear freely jointed tangent charged hard sphere chain with chain length r, monomer number density p,, hard core diameter amand charge Z,e (e is elementry charge). The
+
+corresponding counterion has number density pc, diameter a, and charge Zce. Simultaneously, we define the molecule (chain) number density p: (obviously, for the polyion p; = p m / r ; for the counterion, p: = pc). All particles are embedded in a continuous dielectric
+
+medium with permittivity E (E = E ~ E E~~ , is permittivity of the vacuum and E, is the dielectric constant). The interaction between the non-bonded particles i-j is the electrostatic interaction
+
+: { R < aij,
+uij(R) = Z.Z.e2
+
+(1)
+
+4n&R R 2 f f i j ,
+
+where R is the centrexentre distance, with nu=
++ (ai aj)/2 the additive diameter.
+For this system, the Helmholtz energy density f , i.e. the Helmholtz energy per unit volume V , is attributed to four contributions from, respectively, ideal-gas mixing, hard sphere repulsion, electrostatic interaction and chain connectivity.
+
++TI“ f =f’d +fhS
+
++fPl.
+
+(2)
+
+The ideal-gas mixing term is
+
+The hard sphere contribution is calculated from the BMCSL equation given by Boublik, Mansoori and coworkers [27]:
+(4)
+en where = x k p k f l t and A = 1 - nc3/6.
+The contribution from electrostatic interaction is obtained by the MSA [MI,
+where tB= pe2/4n&is the Bjerrum length characterizing
+the dielectricproperty of the continuum. The key feature of the MSA is that it can be solved analytically with a
+unique scaling parameter r,which can be estimated by a
+simple iterative procedure using the following equations:
+
+For a system with equal size ions, P, = 0 due to electroneutrality. For infinite dilute solution, the scaling diameter 2 r , also called electrostatic inverse screening length, will reach the limit, i.e. Debye’s inverse screening length r;D = (4n:~Bc p k z : ) ’ / 2 .
+The contribution from chain connectivity between segments along a polyion is evaluated from the effective nearest-neighbour two-particle CCF yij(oij)of the nonassociating fluid,
+
+P ~ P ’= $ ( I -r)lnymm(om).
+
+(8)
+
+In previous work [l, 21, y y ( a i j ) is estimated from the hypernetted chain (HNC) approximation which has been proved reliable in the system, especially with electrostatic interaction:
+
+yij(ay)=
+
+exp
+
+MSA
+[go
+
+(
+
+a
+
+o)-
+
+1
+
+-
+
+ctM-J SA (a,j.>l1
+
+(9)
+
+where gySA(ou)and cySA(aij) are, respectively, the pair correlation function and direct correlation function at contact estimated from the MSA [ M I ,
+
+(3)
+
+k
+
+k
+
+where ,f3 = l/kBT(kBis the Boltzmann constant and T is
+temperature) and nk denotes the de Broglie wavelength
+
+of the kth molecule.
+
+with
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+
+Thermodynamic properties of charged hard sphere chains
+
+1123
+
+According to the definition of the CCF, however, y i j ( a i j ) may be estimated from
+It has been recognized that grSA(aij)given by the MSA is not very accurate for high coupling and low density; in some cases, negative values may appear, and these have no physical meaning. There are several methods to improve this deficiency, and a simple one is the EXP approximation [28-311 as follows:
+where $(aij) is the pair correlation function for hard sphere at contact, given by
+
+The EXP gives better structural properties than the MSA, and has been applied widely for the LennardJones (LJ) fluid [29, 32, 331, the Yukawa fluid [34, 351 and electrolyte solutions [29, 30, 361. One example in figure 1 shows gii(aij) calculated, respectively, from EXP, MSA and 'exact' Monte Carlo (MC) simulation of Card and Valleau [37] for a 1:l electrolyte solution. The upper part is for unlike ions. Large deviations between MSA and MC are found in the available concentration range. The MSA underestimates gii(aij);how-
+
+- EXP . . . . . MSA
+MC (Card and Valleau, 1970)
+
+"
+
+g+-(a)k-+(d
+w
+
+ulJ 2 ! ' .. . _"_. . . . . . .................................
+
+ever, the EXP gives good results with small overestimation in the intermediate range. For like ions as shown in the lower part, the MSA gives negative values without physical meaning at low concentrations (<0.3 moll-') but yields good values at high concentrations. By contrast, the EXP gives satisfactory results across the whole range by comparison with MC.
+With equation (14), equation (13) changes to
+M SA
+~ i j ( a i j=) gF(Vij)ex~[gij (aij)- $(aij)I ~ X P[puij(a;j)I.
+(16)
+On the other hand, combining equations (9) and (1 1) we can easily arrive at equation (16). This means that the EXP method can be viewed as the HNC/MSA. Throughout this work we use equation (9) to perform the calculations.
+It should be remarked that the BIMSA-EXP approximation work [12] uses the same form of the cavity correlation function. At any rate the BIMSA-EXP also yields the correct Debye limit and the dimer is a (+-) dimer because then one gets zero for the effective charge for the dimer case [12]. This is also the one that yields the best agreement with computation for the famous Coulomb equilibrium problem. Both the current approach and the BIMSA-EXP go to the same highdensity limit, which is that of free particles. Neither satisfies the exact limit, however, which is that of the high-density polyelectrolyte.
+
+2.1. Thermodynamic properties The osmotic pressure of the system can be written as
+
++ + + p = p'd p h S p e l e p p ' ,
+
+(17)
+
+with
+
+I
+
+0.0
+
+0.5
+
+1.o
+
+1.5
+
+2.0
+
+C (mol/l)
+Figure 1 . Pair correlation function at contact for a 1:1 electrolyte solution: T = 298 K, E, = 78.5, and 0 = 4.25 A; solid circles, MC data from [37] with 200 ions in the simulation box.
+
+The osmotic coefficient is defined by
+
+$.I = PIP'!
+
+(22)
+
+The activity coefficients of polyion (p) and counterion ( 4 are,
+
+1124
+
+J. W. Jiang et al.
+
++ lnyk = 1y.:
+
+lnyp +lny,fl
+
+(231
+
+{ rlnyk k = p,
+lnyk = hs In T,"~ k = c,
+
+(24)
+
+where rn denotes monomer of the polyion; In$ (k = m, c) is given by the BMCSL equation:
+
+r*)2 -) +- + 7C2a;<; 3
+
++ ( l n A - 1 - A - n2<:
+
+8A 2
+
+A 72A2
+
+(32)
+k
+where (T is the average diameter. Consequently, we may define reduced osmotic pressure as
+
+P*= PPa3T*.
+
+(33)
+
+The critical point is calculated based on
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+
+rlny? k = p1
+lnyk = In 7:"' k = c
+
+where l n y p (k = m, c) is derived from the MSA:
+
+rakzk/2n- tBz;
+Inyp =
+
+uk
+
++ - akP,(rak n2eBn;p,,/3~)
+
+44
+
+1
+
+(27)
+
+k = P,
+
+and the densities in two co-existing phases a and p at
+given temperature are calculated from,
+
+{ (P")"= (P*)@, pa = p@.
+
+(35)
+
+3. Results and discussion To investigate the thermodynamic properties, we set cm = a, = c = 0.857nm; 2, = - 1 and Zc = 1; the
+dielectric constant E, = 78.5, corresponding to aqueous solution at 298 K. These parameters give the Bjerrum
+length e, = 0 . 8 3 3 ~and the reduced temperature
+T" = 1.2. Figure 2 shows the density p m d dependence of the
+osmotic pressure pPa3for polyelectrolytesolutions with
+
+and the derivatives of ymm(gm)with respect to densities
+
+have been given analytically [ I , 21.
+
+The average activity coefficient is
+
+-1
+
+(29) Finally, the chemical potential of polyelectrolyte is calculated from
+2.2. Critical point and phase equilibrium For a polyelectrolyte with a given polyion chain length r , if cm = uc and Z, = -Zc, the thermodynamic properties and phase behaviour are determined by only two reduced variables, reduced temperature T* and reduced density p*, defined by
+
+%-
+9 a, -3
+-W m
+0
+
+-5
+
+0 r=16 MD: 0 = 3 2
+
+A =64
+
+-7 " . . .
+
+,,
+
+'
+
+",',
+
+-7
+
+-5
+
+-3
+
+-1
+
+h ( P m03)
+Figure 2. Density dependence of the osmotic pressure for polyelectrolyte solutions with various chain lengths: points, M D data from [7].
+
+Thermodynamicproperties of charged hard sphere chains
+
+1125
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+
+different chain lengths r = 1, 2, 4, 8, 16, 32, 64 and m
+
+4
+
+(infinity). For r = I , it reduces to the restricted primitive
+
+model (RPM). With increase in chain length the osmotic pressure decreases. Clearly this is for short chains; how-
+
+3
+
+1 2
+
+ever, for long chains the osmotic pressure remains
+
+unchanged. For r = 16, 32 and 64, the calculated results coincide well with those from MD simulation [7]. At the infinite dilution limit pm + 0, the osmotic pressure is
++ given by PP = pm(1 1/ r ) , implying the equivalence
+
+* 2
+- c 1
+
+16 32 64
+0
+
+of an ideal mixture. Through a crossover density
+
+I
+I
+
+log (pma3)M -1.1, two scaling regimes are observed
+
+with 6 = 1.1 at low density and 6 = 2.1 N 2.2 (2.1 for
+
+0
+
+short chains and 2.2 for long chains) at high density
+
+for the scaling relation PP N p i . This behaviour and
+
+the scaling indices coincide well with those from MD
+
+simulation [7], predicted by the scaling approach [8]
+
+-7
+
+-5
+
+-3
+
+-1
+
+and from experiment [9]. It also reveals that at high
+
+density the polyion chain is completely screened by
+
+counterions due to electrostatic interaction or so-called non-specific territorial binding, and behaves like a nearly neutral polymer. In contrast to the latter, how-
+
+Figure 4. Density dependence of the activity coefficient for counterion with various chain lengths.
+
+ever, its crossover density is independent of the chain
+
+length. This is because the osmotic pressure is determined mainly by counterion density that is independent of polyion chain length.
+Figure 3 shows the density pma3dependence of the polyion activity coefficient 7, for polyelectrolyte solutions with different chain lengths r = 1, 2, 4, 8, 16, 32, 64 and 00. At infinite low-density limit, 7, 41 as expected for ideal mixture. At low and intermediate
+densities, 7, < 1. This reveals that the attractive inter-
+action overwhelms the repulsive. Given a certain den-
+
+sity, yp decreases as the chain length increases, especially, for long chains. The density influence is much stronger for long chains. For each chain length there is a minimum point where attraction reaches a maximum. Beyond a crossover density ln(pma3)= 1.329, where lny, is equal to -0.847 and is independent of chain length, yp increases drastically due to strong hard sphere repulsion at high packing fractions, again especially for long chains.
+Figure 4 shows the density pma3dependence of the
+
+counterion activity coefficient T~ for polyelectrolyte sol-
+
+utions with different chain lengths r = 1, 2, 4, 8, 16, 32,
+
+64 and 00. At the infinite low-density limit, again the
+
+system is an ideal mixture, 7c4 1. At low and inter-
+mediate densities, yc < 1; however, at high densities,
+
+7c> 1. At a certain density, T~ decreases as the chain
+
+length increases; however, the effect of chain length is
+
+small, especially at low densities. When the chain length
+
+r = 1, i.e. for the RPM, yp = yc.
+
+Figure 5 shows the density pma3 dependence of the
+
+: average activity coefficient yJLfor polyelectrolyte sol-
+
+utions with different chain lengths r = 1, 2, 4, 8, 16,
+
+32, 64 and m. At a certain density, -y& decreases as the
+
+-*O
+
+chain length increases. At low densities y* < 1 and at
+
+high densities y+ > 1; the chain dependence for these
+
+--3300
+
+I two ranges is small. At intermediate densities y* < 1
+
+-7
+
+-5
+
+-3
+
+-1
+
+and reaches minimum, and the chain dependence in
+
+this range is large. For the RPM, yi = yp = yc.
+
+Figure 6 shows vapour-liquid binodal curves and
+
+Figure 3. Density dependence of the activity coefficient for polyion with various chain lengths.
+
+critical points for polyelectrolyte solutions with different chain lengths r = 1, 2, 4, 8, 16, 32, 64 and cc (from
+
+1126
+
+J. W. Jiang et al.
+
+2.Oe-4
+
+1.5e-4
+h
+1.Oe-4
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+
+5.0e-5
+
+'-1
+
+-7
+
+-5
+
+-3
+
+-1
+
+Figure 5. Density dependence of the average activity coefficient for various chain lengths.
+
+0.05
+
+0.10
+
+0.15
+
+0.20
+
+0.25
+
+T*
+Figure 7. Vapour pressures for polyelectrolytesolutions with various chain lengths. The inset shows the ClausiusClapeyron plot. Symbols as for figure 6.
+
+0.25
+
+0.20
+
+0.15
+
+0.10
+
+0.05
+
+0.0
+
+0.1
+
+0.2
+
+0.3
+
+P*
+Figure 6. Binodal curves and critical points for polyelectrolyte solutions with various chain lengths: open diamonds, critical points of this work; open circles, coexistingphases; and open triangle, critical point from [40].
+
+bottom to top). Inset is in logarithmic density scale. The density of the coexisting vapour phase is extremely low, especially at low temperature. The binodal curve becomes steep with increase in chain length, especially the liquid phase. The difference between the binodal curves for short chains is large; however, for long chains the difference is small. Eventually, the binodal curve remains unchanged for very large chains. For
+
+the RPM, many Monte Carlo (MC) simulation studies
+
+have been reported on vapour-liquid phase equilibrium
+
+and critical point [38-44]. The open circles (coexisting
+
+phases) and the triangle (critical point) are from [40].
+
+From the MSA, Tzp= 0.0786, pEp = 0.0144 and
+
+w . PEP= 9.65 x
+
+from MC [40], TzP= 0.0490,
+
+pzp = 0.070 and PEP= 8.2 x
+
+We can see that the
+
+MSA gives qualitative VLE coexistence curve upon
+
+comparison with MC simulation, but it overestimates
+
+the critical temperature and underestimates the critical
+
+density. Several revised models have been proposed
+
+towards a more accurate description [36, 45-49]. Based
+
+on the BIMSA-EXP [12], we found that T:p = 0.0627
+
+and pEp = 0.0471 [49], in close agreement with
+
+Kalyuzhnyi [48], which for the time being is one of the
+
+closest to the simulation.
+
+Figure 7 shows vapour pressure and critical points for
+
+polyelectrolyte solutions with different chain lengths
+
+r = 1 , 2, 4, 8, 16, 32, 64 and 00. Inset is the Clausius-
+
+Clapeyron plot. At a given temperature T*,the vapour
+
+pressure P' decreases with increase of chain length.
+
+Similar to coexistence curves, for short chains the differ-
+
+ence in vapour pressure is large; however, the difference
+
+is small for long chains. Eventually, it remains constant
+
+for very large chains. For the RPM, we show the MC
+
+data from [40]. Large deviations between the MSA and
+
+MC are found.
+
+Figure 8 shows the critical properties as a function of
+
+chain length r. As r increases, the critical temperature
+
+Tzp increases quickly for short chains and reaches a
+
+constant value of 0.245 when r is beyond lo2. Similar
+
+Thermodynamic properties of charged hard sphere chains
+
+1 I27
+
+0.25 0.20
+
+There is almost no change in the binodal curve when the chain length is longer than lo2.The critical temperature and pressure increase monotonically with increase in chain length; critical density, however, first decreases and then increases. Finally, when chain length is beyond lo2, they all approach a constant value.
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+
+0.15
+
+0.10
+
+0.05
+1
+
+10 100 1000 10000 co
+r
+
+Figure 8. Critical properties for solutions of polyelectrolytes with various chain lengths.
+
+results are found for the critical pressure Pzp but with a
+
+constant 1.467 x
+
+For the critical density dif-
+
+ferent complicated behaviour is found. With increase in
+
+chain length r, initially p:p decreases, reaching a
+
+minimum at r M 3, but then it increases until r = 10’.
+
+Finally, it reaches a constant value of 0.0126. Unlike T&
+
+and Pzp, the chain length dependence of pzp is weak.
+
+4. Conclusion On the basis of a thermodynamic perturbation theory for polyelectrolyte solutions, we have investigated the density dependence of the osmotic pressure, the activity coefficient of the polyion or counterion and the average activity coefficient for the polyelectrolyte, on polyion chain length. The influence of the chain length on the activity coefficient of a polyion is very large; in contrast, for the other three properties, the influence is small, especially for long chains. The most important observation is that there are two scaling relations between the osmotic pressure and the density in the two regimes, separated by a crossover density. The scaling indices and the crossover density are independent of the polyion chain length. The results imply that the polyion chain is fully screened by the oppositely charged counterions at high densities. We also investigated the vapour-liquid equilibria and critical points for polyelectrolytes with different polyion chain lengths. Increasing the chain length leads to a steep binodal curve, especially for the liquid branch.
+
+We thank Dr G. Orkoulas and Professor A. 2.
+Panagiotopoulos for providing their Monte Carlo
+simulation data in [40].L.B. was supported by DOE
+and NSF CHE-95-13558. J.M.P. was supported by the
+Director, Office of Science, Office of Basic Energy
+Sciences, Chemical Sciences Division of the US Depart-
+ment of Energy under Contract DE-AC03-76SF00098.
+Additional support was given by the Chinese National
+Natural Science Foundation (No. 20025618).
+References [l] JIANGJ,. W., LIU,H. L., Hu, Y., and PRAUSNIJT. ZM,.,
+1998, J. chem. Phys., 108, 780. [2] JIANG,J. W., LIU,H. L., and Hu, Y., 1999, J. chem.
+Phys., 110, 4952. [3] Hu, Y., LIU,H. L., and PRAUSNITJ.ZM, ., 1996, J. chem.
+Phys., 104, 396. [4] BLUM,L., 1975, Molec. Phys., 30, 1529. [5] BLUM,L., and HPIYEJ., S., 1977, J.phys. Chem., 81, 1311. [6] BLUM, L., 1980, Theoretical Chemistry: Advances and
+Perspectives, Vol. 5 , edited by H. Eyring and D. Henderson (New York: Academic Press). [7] STEVENMS,. J., and KREMERK,., 1995, J. chem. Phys., 103, 1669. [8] ODIJKT, H., 1979, Macromolecules, 12, 688. [9] WANG, L., and BLOOMFIELDV, . A., 1990, Macromolecules, 23, 194, 804. [lo] WERTHEIMM, . S., 1984, J. statist. Phys., 35, 19, 35; 1986, J. statist. Phys., 42, 459, 477. [l 11 BLUM,L., and BERNARDO, ., 1995, J. statist. Phys., 79, 569. [12] BERNARD,O., and BLUM,L., 1996, J. chem. Phys., 104, 4746. [13] BLUM,L., HOLOVKMO,. F., and PROTSYKEVYI.CAH., , 1996, J. statist. Phys., 84, 191. [14] BLUM, L., KALYUZHNY.I, V., BERNARDO, ., and HERRERA-PACHEJC. ON,., 1996, J. Phys. Condens. Matter, 8, A143. [15] PROTSYREVYTI.CAH.,,KALYUZHNYY.IV, ., HOLOVKO, M. F., and BLUML,., 1997, J. molec. Liquids, 73, 1. [16] KALYUZHNYYI., V., BLUM,L., HOLOVKMO,. F., and PROTSYKEVYIT.CAH., ,1997, Physica A, 236, 85. [17] BERNARDO, ., and BLUM,L., 2000, J. chem. Phys., 112, 7227. [18] BLUML,., and UBRIACOM,., 2000, Physica A, 279, 224. [19] VON SOLMSN,., and CHIEWY, . C., 1999, J. chem. Phys., 111,4839; 2000, J. statist. Phys., 100, 267. [20] VON SOLMNS,., and CHIEWY, . C . ,2000, J . chern. Phys., 113, 6316. [21] MANNINGG, . S., 1969, J. chem. Phys., 51,924,934,3249. [22] DAS,T., BRATKOD, ., BHUIYANL, . B., and OUTHWAITE, C. W., 1995, J. phys. Chem., 99, 410; 1997, J. chem. Phys., 107, 9197.
+
+1128
+
+Thermodynamic properties of charged hard sphere chains
+
+[23] SHEW,C.-Y., and YETHIRAJA,., 1997, J. chem. Phys., 106, 5706; 2000, J. chem. Phys., 113, 8841.
+[24] DYMITROWSKMA., and BELLONIL, ., 1998, J . chem. Phys., 109,4659; 1999, J. chem. Phys., 111, 6633.
+[25] HARNAUL,., and REINEKERP,., 2000, J. chem. Phys., 112, 437.
+[26] DUBINP, ., BOCK,J., DAVIS,R., SCHULZD, . N., and THIES, C., 1994, Macromolecular Complexes in Chemistry and Biology (New York: Springer-Verlag).
+[27] BOUBLIKT,., 1970, J. chem. Phys., 53, 471; MANSOORI, G. A., CARNAHANN,. F., STARLINGK, . E., and LELANDT,. W., 1971, J. chem. Phys., 54, 1523.
+[28] ANDERSENH,. C., and CHANDLERD,., 1972, J. chem. Phys., 57, 1918, 1930.
+[29] ANDERSENH,. C., CHANDLERD,., and WEEKSJ, . D., 1972, J. chem. Phys., 57, 2626.
+[30] HUDSONS,., and ANDERSEHN,. C., 1974, J. chem. Phys., 60, 2188.
+[31] ANDERSENH,. C., CHANDLERD,., and WEEKSJ, . D., 1976, Adv. chem. Phys., 34, 105.
+[32] STELL,G., and WEISS,J. J., 1980, Phys. Rev. A, 21, 645.
+[33] TANG,Y. P., and Lu, B. C.-Y., 1997, AIChE J., 43, 2215.
+[34] HENDERSOND,., WAISMANE, ., LEBOWITZL, ., and BLUML, ., 1978, Molec. Phys., 35, 241.
+[35] KONITORJ.,, and JEDRZEJEKC.,, 1985, Molec. Phys., 55, 187.
+
+[36] ZHOU,Y., YEH,S., and STELLG, ., 1995, J. chem. Phys., 102,5785; Z H O U , ~a.n,d STELLG, ., 1995, J. chem. Phys., 102, 5796.
+[371 CARDD, . N., and VALLEAUJ., P., 1970, J. chem. Phys., 52, 6232.
+[38] PANAGIOTOPOULAO.SZ, ., 1992, Fluid Phase Equilibria, 76, 97.
+[39] ORKOULASG, ., and PANAGIOTOPOULAO.SZ, ., 1994, J. chem. Phys., 101, 1452.
+[40] ORKOULASG,., and PANAGIOTOPOULAO.SZ, ., 1999, J. chem. Phys., 110, 1581.
+[41] CAILLOLJ., M., 1994, J. chem. Phys., 100,2161; CAILLOL, J. M., LEVESQUDE,., and WEIS,J. J., 1997, J. chem. Phys., 107, 1565.
+[42] YAN,Q., and DE PABLOJ,. J., 1999, J. chem. Phys., 111, 9509.
+[43] SHELLEYJ., C., and PATEYG, . N., 1995, J. chem. Phys., 103,8299; 1999, J . chem. Phys., 110, 1633.
+[44] KRISTOFT, ., BODAD, ., SZALAI.,, and HENDERSODN., 2000, J. chem. Phys., 113, 7488.
+[45] FISHERM, . E., and LEVINY, ., 1993, Phys. Rev. Lett., 71, 3826.
+[46] GUILLOTB,., and GUISSANYI, . , 1996, Mofec. Phys., 87, 37.
+[47] STELLG, ., 1995, J. statist. Phys., 78, 197; 1996, J. Phys. Condens. Matter, 8, 9329.
+[48] KALYUZHNYIu,. V., 1998, Molec. Phys., 94, 735. [49] JIANGJ,. W., BLUML, ., and BERNARDO,., unpublished.
+
+Downloaded by [Michigan State University] at 05:53 22 February 2015
+

@@ -1,0 +1,1164 @@
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+MSDE
+
+PAPER
+
+View Article Online
+View Journal
+
+Complex coacervation of statistical polyelectrolytes: role of monomer sequences and
+Cite this: DOI: 10.1039/d1me00076d
+formation of inhomogeneous coacervates†
+Boyuan Yu, a Artem M. Rumyantsev, a Nicholas E. Jackson, ab Heyi Liang, a Jeffrey M. Ting, a Siqi Meng,a Matthew V. Tirrell ab and Juan J. de Pablo *ab
+
+Received 17th June 2021, Accepted 14th July 2021
+DOI: 10.1039/d1me00076d
+rsc.li/molecular-engineering
+
+Advances in synthetic chemistry have led to greater control over the sequence of polymeric materials, and the ability to create patterns whose complexity is reminiscent of that of biological macromolecules. In random copolymers synthesized via statistical copolymerization, the sequence follows a first-order Markov chain process governed by the underlying reactivity ratios. In this work, theory and simulations are combined to study the role of sequence in the complex coacervation of oppositely charged random (co) polyelectrolytes, i.e. copolymers comprising cationic/anionic and neutral monomers. It is found that charged monomers enhance the proclivity towards complex coacervation, and enhance the coacervates' stability upon addition of salt. This result is general, and holds for both good and poor solvents, despite the different (“closed” and “open”) shapes of the respective coacervation binodals. For high charge blockiness, simulations reveal the formation of microphase separated coacervates consisting of domains rich in ionic or neutral monomers. The transition from homogeneous to locally segregated coacervates leads to a nonmonotonic dependence of the density on charge blockiness. Our results provide a comprehensive framework to understand and interpret the effects of sequence on complex coacervation, and for rational design of coacervate-based materials.
+
+Design, System, Application
+Polyelectrolyte complex coacervates are macroscopic polymer-rich phases that form in the solutions of oppositely charged polyelectrolytes as the result of their coulombic attractions. In addition to the practical applications such as emulsifiers, viscosity modifiers, and underwater adhesive, complex coacervates are also considered as a simple model of membraneless organelles existing within the living cells. Our work utilizes both theory and coarse-grained simulations to understand how liquid–liquid phase separation into polyelectrolyte complex coacervate and highly diluted supernatant can be controlled at the molecular level, through the primary sequence of ionic and neutral monomers in the polyelectrolytes. We consider the particular case of random polyelectrolytes that can be synthesized via statistical copolymerization of neutral and ionic (co)monomers and demonstrate how the synthesis conditions can be varied to tune the monomer sequences and, therefore, coacervate internal structure and stability. Our computational and theoretical results provide a comprehensive framework to guide the molecular design of coacervate-based materials with desired properties via engineering the primary sequence of polyelectrolytes.
+
+I Introduction
+Sequence plays a key role in determining the physical properties of synthetic or biological macromolecular materials.1,2 In folded proteins, the amino acid residue types (one out of 20) and their linear sequence serve to determine the conformation and functionality of a molecule. In
+a Pritzker School of Molecular Engineering, University of Chicago, Chicago, Illinois 60637, USA. E-mail: depablo@uchicago.edu b Center for Molecular Engineering, Argonne National Laboratory, Lemont, Illinois 60439, USA † Electronic supplementary information (ESI) available. See DOI: 10.1039/ d1me00076d
+
+intrinsically disordered proteins (IDPs), a subclass of proteins that lack the ability to form secondary and higher-ordered structures, it is also the sequence of charged monomers that determines the phase behavior in solution,3 and the formation and structure of membraneless organelles.4,5 Recent studies with synthetic materials have established that sequence can be utilized to tune the behavior of polymer systems, including single-chain heteropolymers and their microphase-separated melts, or solutions of oppositely charged polyelectrolytes or polyampholytes.2,6–11 The physical principles that encode a particular type of behavior into the sequence of a polyelectrolyte are not fully understood and, when fully unveiled, there should be opportunities to generalize their application for design of broader classes of materials.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+Paper
+In this work, we rely on theory and simulations to develop a general framework for design of sequence in oppositely charged polyelectrolytes (PEs). The sequence of charged and neutral monomers in PEs affects the magnitude of charge correlations and the resulting electrostatic attraction between polyanions and polycations. Therefore, the macroscopic phase separation into a polymer-poor supernatant and a polymer-rich PE complex coacervate depends on sequence. This system is analogous to solutions of IDPs (which are biopolyampholytes), where the driving force for the liquid–liquid separation are Coulombic interactions between oppositely charged monomers. For IDPs, phase separation is also referred to as self-coacervation, because oppositely charged monomers belong to the same chains that constitute the polymer-rich phase. In contrast, PE complex coacervates comprise two types of chains, polyanions and polycations. As discussed here and in the literature, given the similarity in the formation mechanism of complex and self-coacervates, the sequence specificity that is observed in the phase behavior of IDP solutions5 also arises in PE complex coacervation.7,12
+Recent theoretical and simulation studies have considered the similarities between sequence-dependent coacervation in PEs7,12 and IDPs.10,13–16 It is worth pointing out that even simple models of IDPs, which represent polyampholytes as chains of identical positively and negatively charged monomers,10,13–16 have been very successful in revealing the role of primary sequence on coacervation.17,18 One of the key findings of past work has been that, for a fixed total length and composition of a polyampholyte, increasing the length of the charged blocks of positively and negatively charged monomers leads to a greater propensity for coacervation – an effect that is universal for different types of sequences.10,13–16 Similar conclusions have been drawn in ref. 7 and 12 for complex coacervation between oppositely charged polypeptides consisting of alternating blocks of neutral and charged monomers. The longer the block length τ, the denser the resulting polyelectrolyte complex coacervate, and the higher its salt resistance.7 Ref. 7 and 12 are devoted to complex coacervation between sequence-monodisperse polyanions and polycations, and it is of interest to point out the extent to which their conclusions hold for ensembles of PEs having different sequence realizations governed by statistical laws, i.e. for sequence-polydisperse complex coacervation.
+In this work, we examine sequence-dependent complex coacervation in statistical PEs. We build on a theoretical framework proposed in our earlier work,19 and we use simulations to validate the general predictions of that framework. Statistical PEs, which are also referred to as random correlated (co)PEs, can be synthesized via chain copolymerization of (i) neutral and charged monomers20,21 or (ii) two neutral monomers followed by post-polymerization functionalization to provide ionization of one of them, e.g., using “click” chemistry approaches.17,22,23 Charged and neutral monomers are denoted by ± and 0, respectively. For low conversion, when compositional drift is negligible,24,25 the statistics of these PEs (e.g. polycations) follows a firstorder Markov process with a transition matrix given by
+
+View Article Online
+MSDE
+
+"
+
+#
+
+Pþ ¼
+
+pþþ p0þ
+
+pþ0 p00
+
+(1)
+
+The matrix elements pij = p(i| j) are the conditional probabilities that a monomer of type j is followed by that of type i. The conservation of probability requires that p++ + p0+ = 1 and p+0 + p00 = 1. Owing to the stationary type of the Markov process, the average fraction of ionic monomers in PEs can be expressed as
+
+f = p++f + (1 − f )p+0
+
+(2)
+
+The correlation parameter26–28
+
+λ = p++ + p00 − 1
+
+(3)
+
+describes the blockiness of charges and is the eigenvalue of
+
+the P+ matrix. It is convenient to adopt the following
+
+representation:29,30
+
+1 − ð1 − λÞð1 − f Þ f ð1 − λÞ !
+
+Pþ ¼ ð1 − λÞð1 − f Þ 1 − f ð1 − λÞ
+
+(4)
+
+The values of f and λ are defined by chemistry and by the
+
+conditions of the copolymerization:26,27
+
+f
+
+¼
+
+rþ
+
+f
+
+̃2
+
+rþ þ2
+
+f ̃2 þ
+
+f
+
+̃
+
+À 1
+
+−
+
+f f
+
+̃À1 − f ̃Á
+
+̃Á
+
+þ
+
+r0
+
+À 1
+
+−
+
+f ̃Á2
+
+(5)
+
+λ
+
+¼
+
+rþ
+
+f
+
+̃
+
+rþÀf ̃ þ 1−
+
+f
+
+̃Á
+
+þ
+
+À Àr0 1 r0 1 −
+
+f−̃Áfþ̃Á
+
+f̃
+
+−1
+
+(6)
+
+Here ˜f is the monomer feed ratio, i.e., the fraction of monomers of the first type in the feed mixture. The reactivity ratios of the monomers, r+ = k++/k0+ and r0 = k00/k+0, are the functions of the reaction rate constants kij corresponding to the binary chain growth reaction of monomer i joining a polymer with a j end monomer, … j + i → … ji.
+Eqn (5) and (6) are a reminder that the primary structure of random PEs can be controlled through the synthesis conditions. In what follows, we show how the sequence of monomers translates into the structure and physical properties of the resulting coacervates, thereby establishing a connection between the synthesis and the resulting material properties. As noted earlier, the theoretical framework developed in our earlier work19 is generalized to sequence- and chargeasymmetric (but homogeneous) coacervates, f+ ≠ f− and λ+ ≠ λ−, and validated through coarse-grained Gibbs ensemble simulations. In simulations, special attention is paid to the complexation of PEs with a high degree of charge blockiness, λ± ≈ 1, which may lead to the formation of inhomogeneous coacervates. This effect is also anticipated on the basis of past work that has reported microphase separated structures within the coacervates formed from sequence-monodisperse multiblock PEs with sufficiently long blocks.31–38
+This manuscript is organized as follows. The theoretical framework and details of our coarse-grained simulations are
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+MSDE
+
+View Article Online
+Paper
+
+described in sections II and III. Section VI discusses our results. The first part is focused on the sequence-dependent behavior of homogeneous coacervates, including the effect of the sequence asymmetry between polyanions and polycations (λ+ ≠ λ−) and the role of the solvent quality. We also outline how experiments could be designed to study the predicted effects. The second part, subsection IV.2, is devoted to the formation of inhomogeneous coacervates, and the analysis of their internal microphase separated structure. Section V provides a summary of our main findings.
+II Theoretical framework
+
+We consider a solution of long flexible oppositely charged
+
+PEs containing N+ = N− = N ≫ 1 statistical segments, each of length a. The fraction of charged monomers in the
+
+polyanions and polycations is denoted by f+ and f−, and their primary sequences are Markov processes with the nontrivial
+
+eigenvalues of the transition matrices P± equal to λ±.
+We start with a salt-free solution, and use a random phase approximation formalism (RPA)39–42 to find the free energy
+
+density of Coulomb correlation attractions between the PEs,
+
+Fcorr = Fcorra3/VkBT:
+
+Fcorr
+
+¼
+
+ð 1 2
+
+d3q ð2πÞ3
+
+ detðG−1ðqÞ þ UðqÞÞ
+
+ln
+
+detðG−1ðqÞÞ
+
+(7)
+
+−
+
+ð 1 2
+
+d3q ð2πÞ3
+
+TrðGðqÞU ðqÞÞ
+
+Here the components of the U(q) matrix are the Fourier-
+
+transforms of the Coulomb interaction potential between the zi and zj charges, Uij(q) = 4πuzizj/q2, with u = e2/∈akBT being the dimensionless Bjerrum length; i, j = ± and z± = ±1 because ionic monomers in PEs carry single charges (if expressed in e
+
+units). G(q) is the structure factor matrix of positively and
+
+negatively charged monomers, given by
+
+GðqÞ ¼
+
+ϕþgþq þ 0
+
+! 0
+
+ϕ
+
+−
+
+g
+
+−− q
+
+(8)
+
+The volume fractions of polycations and polyanions, ϕ+ and ϕ−, can be written as functions of the total polymer volume fraction ϕ, owing to the solution stoichiometry: ϕ± = f∓ϕ/( f+ +
+f−). The structure factors of positively and negatively charged monomers in polycations and polyanions, g+q+ and g−q−, can be
+found in ref. 19, 26, 27 and 43. In the limit of infinitely long chains, N → ∞, they are given by
+
+g
+
+þþ q
+
+¼
+
+12
+
+f
+
+2 þ
+
+q2
+
+þ
+
+À fþ 1−
+
+Á f þ Λþ;
+
+(9)
+
+g
+
+−− q
+
+¼
+
+12
+
+f
+
+2 −
+
+q2
+
+þ
+
+f − ð1 −
+
+f − ÞΛ− ;
+
+(10)
+
+with
+
+Λ±
+
+¼
+
+1 þ λ± 1 − λ±
+
+:
+
+(11)
+
+Omitting the self-energy terms linear in ϕ, which don't contribute to the osmotic pressure,19,44,45 one can arrive at a
+
+closed-form result for the Coulomb correlation free energy
+
+(eqn (7)) in the salt-free solution
+
+Fcorr
+
+¼
+
+1 12πrsm3
+
+ð1
+
+pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ − βÞ 2 þ β;
+
+(12)
+
+with a dimensionless parameter β = rsm2/rλ2. Here the screening radius by the PEs with the homogeneously smeared charge reads
+
+rsm = (48πuf+f−ϕ)−1/4,
+
+(13)
+
+and that due to charge inhomogeneities along the chain is
+
+equal to
+
+rλ
+
+¼
+
+ 4πu
+
+fþ f− fþ þ f−
+
+½ð1
+
+−
+
+f þÞΛþ
+
+þ
+
+ð1 −
+
+f
+
+−
+
+ÞΛ −
+
+−1=2 ϕ
+
+(14)
+
+The RPA calculations can be generalized to the salt-added
+
+case. If salt ions are considered as point-like charges with
+
+zero excluded volume, the free energy density of Coulomb
+
+interactions in the system reads
+
+Fcorr
+
+¼
+
+1 12πrsm3
+
+ð1
+
+−β
+
+pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ − sÞ 2 þ β þ s;
+
+(15)
+
+with the dimensionless ratio s = rsm2/rD2. The Debye screening radius is given by
+
+rD = (4πucs)−1/2,
+
+(16)
+
+and cs = cs+ + cs− is the total concentration of small anions and cations.
+
+For λ+ = λ− = −1 we have PEs with a homogeneous charge
+distribution, when each monomer carries a charge equal to ef.19 In this case, eqn (12) reproduces the classic results of
+
+Borue and Erukhimovich for the charge-symmetric case, f+ = f−,39 as well as those derived by Castelnovo and Joanny for charge-asymmetric systems, f+ ≠ f−.40
+
+For charge-symmetric and sequence-symmetric systems, f+
+
+= f– = f and λ− = λ+ = λ, we obtain eqn (12) with
+
+rﬃﬃﬃﬃﬃﬃﬃﬃ
+
+β ¼ ð1 − f ÞΛ πuϕ;
+
+(17)
+
+3
+
+and Λ = (1 + λ)/(1 – λ), in accordance with ref. 19. At f+ = f− and λ− ≠ λ+, this result can be still used if Λ is defined by
+
+Λ
+
+¼
+
+Λþ
+
+þ Λ− 2
+
+¼
+
+1 − λþλ− ð1 − λþÞð1 − λ− Þ
+
+(18)
+
+Eqn (18) shows that the phase behavior of sequenceasymmetric solutions with different λ+ and λ− are equivalent provided that value of Λ(λ+, λ−) is the same.
+Finally, for arbitrary cases of f+ ≠ f− and λ+ ≠ λ−, general results given by eqn (13)–(15) should be utilized. We note that
+our RPA considerations assume ideal-coil statistics of
+polyanions and polycation within the coacervate that takes place at f+/f− ratio being the order of unity.46 They are also
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+Paper
+
+View Article Online
+MSDE
+
+limited to homogeneous coacervates formed from weakly does not strongly bias the chain statistics28). The resulting
+
+charged PEs, f± ≪ 1. To calculate complex coacervation binodals, we write the
+free energy density of the solution as:
+
+ensemble-average values of the charged block length 〈Ncharged〉 and the squared charged block length 〈Ncharged2〉 agree with our
+theoretical predictions (see Fig. S1 in ESI†).
+
+Ftot ¼ Fcorr þ Fneut þ Fsalt
+
+The connectivity of copolymer chains is maintained by a (19) finitely extensible nonlinear elastic (FENE) potential and
+Weeks–Chandler–Anderson (WCA) potential between
+
+neighboring beads:
+
+UFENE þ UWCA
+
+¼
+
+8 >>>>< >>>>:
+
+−0:5KR20 ln −0:5KR20 ln
+
+1 −  r 2! þ
+
+1
+
+−
+
+R0 r
+
+2 !
+
+R0
+
+4ε
+
+σ12 − σ6! þ ε
+
+r
+
+r
+
+: for r ≤ 21=6σ for r > 21=6σ
+
+(22)
+
+The first term, Fcorr, is the energy of Coulomb interactions
+
+between all charged species. It was described above within
+
+the RPA. The second term, Fneut, is the free energy of the
+
+corresponding salt-free solution of neutral polymers, which
+
+can be written in the Flory–Huggins form
+
+
+
+Fneut
+
+¼
+
+ϕ N
+
+ln
+
+ϕ 2
+
+þ ð1 − ϕÞ lnð1 − ϕÞ − χϕ2
+
+(20)
+
+where K = 30kBT/σ2, R0 = 1.5σ, and ε = kBT.51 All non-bonded beads interact through a shifted and
+
+truncated Lennard-Jones (LJ) potential:
+
+8 ><4ε ULJ ¼>:
+
+σi12
+
+−
+
+σi6
+
+−
+
+ σi
+
+12
+
+þ
+
+ σi
+
+6
+
+!
+
+r
+
+r
+
+rc
+
+rc
+
+for
+
+r ≤ rc :
+
+(23)
+
+0
+
+for r > rc
+
+with a χ parameter defining the effective solvent quality for
+
+polymers.47,48 The last term, Fsalt, takes into account the
+
+ideal-gas translational entropy of point-like salt ions:
+
+Fsalt
+
+¼
+
+cs
+
+ ln
+
+cs
+
+
+
+2e
+
+(21)
+
+The composition of the coexisting coacervate and
+supernatant phases is defined by the equality of their
+osmotic pressures and the chemical potentials of the salt ions and polymers; they are given by Π = μscs + μpϕ – Ftot, μs = dFtot/dcs, and μp = dFtot/dϕ, respectively.
+We limit out theoretical calculations to u = 1 and low f
+values, f = 0.05 and f = 0.1, in order to remain within the rigorous limits of applicability of the RPA framework, uf1/2 ≪ 1.49,50 Considering higher f values, f ≈ 1, does not change the main theoretical findings.19
+
+III Computer simulations
+
+The traditional Kremer–Grest model51 is used to represent random coPEs in implicit solvent. Specifically, PE chains are represented by spherical interaction sites or beads connected by springs. Salt is modeled by individual charged beads. The solvent is included implicitly for computational efficiency. As a result, the solvent conditions are controlled by the non-bonded interactions between monomers. In our simulation, we examine two solvent conditions: good (athermal) solvent and poor solvent. The system contains an equal number of polyanions and polycations with chain length N = 100. Both polyanions and polycations consist of charged and neutral monomers, and the monomer sequence is assigned by a Markov process based on the Markov transition matrix P± for given λ± and f± values. To ensure the electroneutrality of the system, we generate the chains according to the Markov process and retain only those whose fraction of charged monomers is exactly equal to the predetermined f± (this restriction
+
+where ε describes the strength of interaction, rc is the cutoff radius, and σi is the bead diameter. Here i = + is positively charged, − is negatively charged, and n is neutral.
+To take into account that neutral beads lack hydration
+shells, the neutral beads in our simulation have a smaller radius than the charged beads.7 Specifically, σ+ = σ− = 4σn = σ, where the mixing rule for LJ potentials between neutral and charged beads is of the Lorentz–Berthelot form.7 For good
+solvent conditions, the LJ potential for non-bonded beads is truncated at the minimum rc = 21/6σi (i = +, −, n) with ε = kBT. Namely, all beads repel each other. For poor solvent conditions, monomer–salt and salt–salt interactions are also truncated at the minimum rc = 21/6σi (i = +, −) with ε = kBT, while non-bonded monomer–monomer interactions are given by a full LJ potential with rc = 2.5σi (i = +, −, n) and ε = 0.2kBT. Thus, polymer chains can collapse in the absence of
+Coulomb interactions.
+Coulomb interactions between charged beads are given by:
+
+Ucoul ¼ zizjlB
+
+(24)
+
+kBT
+
+r
+
+where zi is the valence of charge for species i (zi = ±1), and lB/σ = 1.68 approximately corresponds to a water solvent at room temperature.7 The long-range Coulomb interaction is calculated via the particle–particle particle-mesh (PPPM) method in LAMMPS.52,53 The targeted error in the long-range forces for the PPPM method is set to 10−4. The velocities and
+positions of particles are updated using the velocity-Verlet algorithm with a timestep of 0.01τLJ, where τLJ = (mσ/kBT)1/2 and m is the particle mass.
+The number density of polymer beads within the coacervate is denoted by ρ, and that of the salt ions (both
+anions and cations) is denoted by cs. To construct the binodal curves, we first simulate the salt-free coacervates
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+MSDE
+
+View Article Online
+Paper
+
+where the system is maintained at osmotic pressure p = 0 through a Berendsen barostat46,54 and constant temperature is maintained by coupling the system to a Langevin heat bath with damping parameter Γ = 1.0 m/τLJ. Small and large systems containing 50 and 1900 chains, respectively, are considered. The resulting coacervate densities for small and large systems are very close. Simulations of large systems are performed to calculate the structure factor of the coacervates, S(q), and extend the range of the available wave vectors to lower q values. Equilibrium is ascertained by monitoring the convergence of coacervate density and the decay of end-toend vector autocorrelation function as a function of simulation time.46,54 The results and uncertainties are measured after equilibrium by a block average analysis. Visualization of simulations is carried out with the OVITO visualisation package.55
+As salt ions are added, the equilibrium between supernatant and coacervate phases is established by using a hybrid MC/MD Gibbs ensemble simulation.56 To further simplify the simulation, we assume there is a negligible amount of polymer in the supernatant phase, which is strictly valid when the salt concentration is not too close to the critical salt concentration.57,58 To simulate two phases, we use two boxes where one box contains salt beads to represent the supernatant phase and another box that contains polymer and salt beads to represent the coacervate phase. The simulation of the two phases consists of randomly choosing one of three events: (i) an MD run with Langevin thermostat to relax the system; (ii) a volume exchange move between two boxes; (iii) a particle transfer move, where a pair of oppositely charged salt beads is transferred from one box to another. The acceptance criteria for (ii) and (iii) correspond to the traditional NVT Gibbs ensemble simulation method.59 A more detailed description of this method can be found in ref. 56. The combined volume of the two boxes in the simulation ranges from 54 000σ3 to 120 000σ3, thereby ensuring that each phase has enough volume. The total number of copolymer chains in the coacervate phase is set to 50. The initial polymer configuration is generated by a self-avoiding random walk.
+
+For the same initial average polymer and salt concentrations, two independent simulations are conducted with the same combined volume, total number of particles, and same monomer sequence, but different initial box volumes for the supernatant and coacervate phases. One run starts with an initial coacervate density larger than the equilibrium density, while another run starts with initial coacervate density smaller than the equilibrium density. The agreement between the results from these two runs serves to establish the selfconsistency of our Gibbs ensemble simulations.
+VI Results and discussion
+VI.1 Homogeneous coacervate
+We first consider the role of primary sequences of charged and neutral monomers on the solution phase behavior. We start with the simplest case, namely that of fully symmetric coacervates. Fig. 1 shows binodals for a solution of polyanions and polycations with equal average content of ionic monomers, f+ = f−, and identical charge statistics, λ+ = λ−. Theory and simulations demonstrate that the higher the λ value, the wider the region of complex coacervation. Increasing the patchiness of charges results in stronger Coulomb attractions, as seen from our theory, eqn (12) and (15). We attribute this to the stronger charge correlations, i.e., to the higher cooperativity of interactions between opposite charges. The latter causes higher densities of salt-free coacervates and higher salt resistance for increasing λ.
+In contrast to Fig. 1, which shows the characteristic solution phase behavior of oppositely charged hydrophilic PEs (i.e., under Θ and good solvent conditions), Fig. 2 represents coacervation binodals for their hydrophobic counterparts. In poor solvents, complex coacervation cannot be suppressed by the addition of salt because of the shortrange non-electrostatic (hydrophobic) attractions. This “open” shape of the coacervation binodals is anticipated by theory,47 and has been observed experimentally in solutions of synthetic polyelectrolytes with aliphatic backbones, namely poly(acrylic acid) and poly(allylamine hydrochloride).48 The addition of salt leads to decreasing
+
+Fig. 1 Binodal curves for sequence- and charge-density-symmetric PE complex coacervation, λ+ = λ− = λ and f+ = f− = f. a) Theoretical results for f+ = f− = 0.05, N = 103, u = 1, and χ = 0.5 (Θ solvent); b) results from Gibbs ensemble simulations for good solvent and f+ = f− = 0.5, N = 102, and
+lB/σ = 1.68.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+Paper
+
+View Article Online
+MSDE
+
+Fig. 2 Binodal curves for sequence- and charge-density-symmetric PE complex coacervation, λ+ = λ− = λ and f+ = f− = f, in poor solvent. The
+density of the polymer-rich phase in the solution of neutral polymers under the same solvent quality is denoted by ϕn and is shown with black dotted lines. a) Theoretical results for f = 0.05, u = 1, N = 103, and χ = 0.55 (poor solvent); b) results from Gibbs ensemble simulations for f+ = f− = 0.5, N = 102, and lB/σ = 1.68 (poor solvent).
+
+coacervate density, but not to complete dissolution. At high salt concentrations, when Coulomb interactions are strongly screened by salt, coacervate density ϕ approaches the density ϕn of the polymer-rich phase in the corresponding solution of neutral polymers. The values of ϕn found theoretically and in simulations are shown in Fig. 2 with dashed lines.
+In the context of the role of sequence, the coacervate branch of the binodals shifts to the right as λ increases. Note that the charge blockiness has a noticeable effect on the coacervate density even at high salt concentrations, despite ϕ tends to ϕn for any charge statistics as cs increases. This is another manifestation of the stronger charge correlations within the coacervate at high λ. Higher salt concentrations are required to fully screen Coulomb attractions between clusters of opposite charge, which exist at high λ and can be effectively viewed as multivalent ions, as compared to attractions between single charges (univalent ions) that are distributed in an almost equidistant manner along the polyelectrolytes at λ ≈ −1. For high λ values, ϕ approaches ϕn very slowly because the charge clusters are sufficiently large and their concentration is high as compared to the Θ solvent case due to hydrophobic interactions.
+
+The effects of the charge statistics observed for sequence
+
+symmetric coacervates, λ+ = λ− = λ, is evident because the
+
+charge clustering increases simultaneously in polyanions and
+
+polycations as λ increases. The more interesting case of
+
+sequence-asymmetric coacervates is shown in Fig. 3. Here the
+
+sum λ+ + λ− = p++ + p00 + p−− + p00 − 2 is fixed (to 0.6), and an increase in λ+ is accompanied by a concomitant decrease in λ−. Both theoretical and simulation binodals demonstrate
+
+that a high sequence asymmetry facilitates associative phase
+
+separation. This result is rationalized by eqn (18), which
+
+defines the effective measure of the charge blockiness Λ in
+
+sequence asymmetric (and charge symmetric, f+ = f−) coacervates with unequal λ+ and λ−. Eqn (18) suggests that
+
+the sequence-asymmetric coacervate remains stable in the
+
+same region as its sequence-symmetric counterpart with the
+
+effective λeff given by
+
+λeff
+
+¼
+
+λþ
+
+þ λ − − 2λþλ − 2 − λþ − λ −
+
+(25)
+
+At a fixed sum λ+ + λ−, the value of λ+ λ− is the highest, and hence λeff is the lowest for the sequence-symmetric system with λ+ = λ−; these binodals are shown with purple curves in Fig. 3. As the sequence asymmetry given by λ+ − λ− increases,
+
+Fig. 3 Effect of the sequence asymmetry, λ+ ≠ λ−, on the complex coacervation of charge-density-symmetric PEs, f+ = f− = f. Coacervation binodals correspond to different λ± but the fixed sum λ+ + λ− = 0.6. a) Theoretical results for f = 0.05, u = 1, N = 103 and χ = 0.5 (Θ solvent); b) results from Gibbs ensemble simulations for good solvent and f+ = f− = 0.5, N = 102, and lB/σ = 1.68.
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+MSDE
+
+View Article Online
+Paper
+
+the two-phase envelope shifts to higher cs values, and the coacervation region broadens.
+In experimental studies of complex coacervation for statistical PEs, the simultaneous change of λ+ and λ− can be challenging because it requires precise control of the polymerization process for both polyanions and polycations. From a practical standpoint, the simplest way could be to tune charge statistics in one of the PEs (e.g. polyanion) while keeping the other PE (polycation) unchanged. For instance, the latter can be a homopolycation, while the former can be obtained via statistical copolymerization of neutral and anionic monomers. It is known that the relative reactivity of comonomers can be slightly modified by adjusting the temperature60 or dielectric constant of the solvent.61 If copolymerization is conducted in an aqueous medium, the primary sequences of heteropolyanion can be controlled through changing the ionic strength (i.e., the salt concentration) during synthesis.61 In a salt-free solution, p−− can be expected to be low owing to the repulsion of the negatively charged end unit of the growing chain and the negatively charged monomer. If f− is close to 1/2, one can expect λ− values close to −1, and corresponding to almost alternating statistics of charges for copolymerization in saltfree conditions. However, statistical copolymerization in the presence of salt screening Coulomb repulsions between negatively charged monomers should yield statistics of charges that are much closer to ideally random, λ ≈ 0 (assuming neutral and charged monomers have similar chemistry except for the presence of ionic groups). To achieve even blockier systems, λ > 0, we hypothesize that further adjustments in solvent quality can be made by adding miscible, monomer-selective cosolvents. Recent experimental works62 have demonstrated the non-trivial effects that solvent mixtures and salt combinations can have on modulating salt resistance on oppositely charged PE assemblies, so it is reasonable to anticipate that analogous effects can be induced to affect the pairwise reactivity ratios of charged and neutral monomers. This, however, remains an open-ended question that needs to be explored with experimental kinetics
+
+and characterization of statistical PEs under different salinity and dielectric constant conditions.
+Fig. 4 shows the shift of the complex coacervation binodals for charge-asymmetric coacervation, f+ = 2f−, due to the increasing blockiness of the polyanion from λ− = −1 to λ− = 0 for fixed statistics of the polycations. These results correspond to the experimental system containing homopolycations with f+ = 1 and copolyanions with f− = 1/2 and controlled charge statistics. A noticeable shift of the coacervation binodals makes one consider the possibility of the experimental realization of this system, although the difference between the binodals in Fig. 4 is lower than that in Fig. 1 (blue and green curve, λ = −1 and λ = 0), when the blockiness of polyanions and polycations changes simultaneously.
+Our preliminary experimental studies indicate that an important challenge is to synthesize heteropolyanions that would not only differ in λ− values but also have very close compositions f− and lengths N−. Since the latter factors strongly affect the position of the binodals,23,48,58,63–65 precise control of f− and N− values is required to isolate and reveal the role of charge blockiness.
+VI.2 Inhomogeneous coacervate
+The theoretical analysis of Section II suggests that, for sequence- and charge-density-symmetric coacervates, their salt-free densities should increase monotonically with charge patchiness λ. However, the RPA based considerations a priori assume a homogeneous coacervate structure that can be violated at very high λ values, when blocks of charged and neutral monomers are sufficiently long. To overcome this theoretical limitation, we use simulations and consider the coacervate properties in the entire range of λ values, including λ very close to 1. The charge fractions are fixed at f+ = f− = 0.5.
+Fig. 5 shows that the coacervate density increases with increasing charge blockiness until λ* ≈ 0.7 and goes down above this threshold (dependencies of the coacervate density
+
+Fig. 4 Effect of the charge blockiness of polyanions on the complex coacervation of charge-density-asymmetric PEs. a) Theoretical binodals for polyanions of the different charge blockiness, λ− = −1 and λ− = 0. The values of u = 1, N = 103, χ = 0.5 (Θ solvent), f− = 0.05, f+ = 0.1, and λ+ = −1 are
+fixed; b) results from Gibbs ensemble simulations for polyanions of different charge blockiness, λ− = −1 and λ− = 0, under good solvent conditions. The values of f+ = 1.0, f− = 0.5, N = 102, and lB/σ = 1.68 are fixed.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+Paper
+
+View Article Online
+MSDE
+
+Fig. 5 Dependence of the salt-free coacervate number density on λ
+from computer simulations. The parameters are equal to f+ = f− = 0.5, N = 102, and lB/σ = 1.68; the solvent quality is good for polymer chains.
+
+on λ for other sizes of the neutral monomer can be found in ESI,† Fig. S3). Combining this simulation result with the theoretical prediction for the density of homogeneous coacervates, one can conclude that the formation of intracoacervate inhomogeneities is the reason for the nonmonotonous behavior of ϕ(λ). It can be seen in Fig. 6 that, as λ increases, local compositional fluctuations within the coacervate become stronger. Above a certain threshold, domains enriched with charged (blue and red) and neutral (white) monomers appear. The longer the neutral/charged blocks in the PEs, the larger the domains.
+Segregation of the coacervate interior into domains enriched with neutral monomers (index “n”) and ionic monomers (index “i”) is driven by their effective incompatibility. Interactions between neutral and neutral/ ionic monomers are purely repulsive, while those between ionic monomers have an additional attractive part due to charge correlations. Each positively charged monomer has more (not belonging to the same chain) neighbors of the opposite charge rather than even charge. Segregation between neutral and ionic monomers can be considered using the corresponding Flory–Huggins parameter
+
+χni
+
+∝
+
+Eni
+
+−
+
+Enn þ 2
+
+Eii
+
+(26)
+
+with E being the energy of the corresponding pairwise interactions. In dense systems of opposite charges, Coulomb interactions are screened at distances comparable to the monomer size and become effectively short-range. The above qualitative explanation in terms of χni therefore becomes applicable. Owing to the negative, correlation-induced attractive contribution to Eii, neutral and ionic monomers are effectively immiscible, χni > 0. As high Bjerrum lengths lB lead to stronger Coulomb attractions, χni is an increasing function of lB. We note that ionic domains are charge-balanced and electroneutral because there is no driving force for local segregation between anionic and cations monomers (in contrast to the microphase separation induced by the incompatibility of polyanions and polycations where neighboring domains carry opposite charge47,66–69). The growth of the domains is limited by the lengths of the neutral and charged blocks and their connectivity with each other.
+The effective FH parameter χni introduced above facilitates comparison of our system to a melt of random correlated AB copolymers where both A and B monomers are neutral. In the absence of solvent, our coacervate is similar to a melt of statistical copolymers composed of incompatible A and B monomers with fA = fB = 1/2. Mean-field theory predicts that, in the limit of long chains N → ∞, the spinodal of the homogeneous state of the melt is given by26,27,70
+
+4
+
+fA
+
+f
+
+B χAB
+
+1þλ 1−λ
+
+¼
+
+χABΛ
+
+¼
+
+2
+
+(27)
+
+and microphase separation is expected above the spinodal.26,27 Eqn (27) demonstrates that the instability of the homogeneous phase can be triggered by either the increasing incompatibility between A and B monomers or the increasing blockiness of like monomers. The latter is consistent with our observations of intra-coacervate (micro) segregation that happens as λ exceeds the threshold value λ* ≈ 0.7. However, the presence of a solvent that is nonuniformly distributed within the microstructured coacervate makes the behavior of our system more complicated as compared to that of a random AB-copolymer melt.
+
+Fig. 6 Simulation configurations of the coacervate phase for different λ values. Microphase separated, disordered microemulsion-like internal
+structures appear for large λ when ionic and neutral blocks are sufficiently long to segregate into different domains. The snapshots are generated using the OVITO visualisation package.55 Red, blue, and white beads represent positively and negatively charged and neutral monomers. Simulation parameters are equal to f+ = f− = 0.5, N = 102, lB/σ = 1.68, and solvent is good for polymer chains.
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+MSDE
+
+View Article Online
+Paper
+
+Fig. 7 Partial radial distribution functions g+−(r) of oppositely charged monomers in salt-free coacervates for different λ values from computer simulations. The simulation parameters are given by f+ = f− = 0.5, N = 102, lB/σ = 1.68, and solvent is good for polymer chains. The dashed line indicates g+−(r) = 1.
+One can also see that, for symmetric ideally random copolymers with λ = 0 and Λ = 1, the resulting critical value χAB = 2 coincides with that for the mixture of simple lowmolecular weight A and B liquids and is N-independent. In other words, much higher incompatibilities are required to induce microphase separation in random copolymers as compared to regular copolymers (e.g. diblock copolymers where χcArB ∝ 1/N) because any sequence disorder hinders spatial ordering.71,72
+The partial radial distribution function (RDF) for oppositely charged monomers g+−(r) shown in Fig. 7 provides a better understanding of the internal structure of the inhomogeneous coacervate. One can see that g+−(r) increases
+
+with increasing sequence correlations, both at λ < λ* when the coacervate is homogeneous and at λ > λ* when it becomes microphase separated. In the latter case, at λ = 0.85 and λ = 0.9, the long tail of the RDF, i.e., g+−(r) values substantially exceeding unity even at r/σ ≥ 3, is indicative of the increasing size of the ionic domains. This effect is also seen in the simulation configuration of Fig. 6. The values of g+−(r) and hence the density of the ionic domains keep growing even at λ > λ*, when the average coacervate density decreases. Therefore, microphase separation within the coacervate is accompanied by the simultaneous uptake of solvent from the supernatant and its nonuniform distribution between ionic and neutral domains with a preference for the latter.
+To reveal the internal structure of the inhomogeneous coacervate, we calculate the structure factors Stot(q) and Sm(q) corresponding to the total density of all monomers
+
+ϕtot(r) = ϕn(r) + ϕi(r)
+
+(28)
+
+and to the difference between the densities of neutral and ionic monomers
+
+m(r) = ϕn(r) − ϕi(r)
+
+(29)
+
+Note that m(r) is used to describe the segregation between the ionic and neutral monomers within the coacervate. It is analogous to the order parameter m(r) = ϕA(r) − ϕB(r) defining the local composition and associated with the microphase
+
+Fig. 8 Simulation structure factors and their inverse for salt-free coacervates with different λ values. Parameters equal f+ = f− = 0.5, N = 102, and
+lB/σ = 1.68; the solvent quality is good. a) Structure factor of all monomers, Stot(q) as a function of q in log–log scale; b) inverse of the structure factor, 1/Stot(q) as a function of q2; c) structure factor of the density difference between neutral and charged monomers, Sm(q) as a function of q in log–log scale; d) inverse of the structure factor, 1/Sm(q) as a function of q2. The insert shows a partially enlarged plot of panel d for the region inside the dash square (0 < 1/Sm(q) ≤ 0.1 and 0 < q2σ2 ≤ 0.4). The dashed lines in panels b and d are fitted by 1/S(q) = c1q2 + c2, where c1, c2 are
+fitting parameters.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+Paper
+
+View Article Online
+MSDE
+
+separation transition (MST) in the melt of random AB copolymers:27,30 m(r) is zero in the homogeneous melt and nonzero in the spatially structured state.
+Fig. 8a shows the dependence of the structure factor Stot(q) of all monomers on λ. At λ < λ* the structure factor is almost independent of the charge blockiness. Above the threshold λ* the values of the structure factor in the low q range increase, signalling the strengthening of the large-scale density fluctuations, i.e., the development of the density inhomogeneities as the result of the MST. This upturn suggests an increase in the osmotic compressibility of the coacervate proportional to Stot(q → 0), and is consistent with the formation of the swollen neutral and dense ionic domains seen in Fig. 6.
+All structure factors Stot(q) exhibit a peak at q ≈ 2π/σ due to the covalent connectivity of the monomers, while in the range of lower q, their monotonically decreasing behavior can be approximated by the Ornstein–Zernike (OZ) dependence
+
+Stot ðqÞ
+
+≈
+
+Stot 1þ
+
+ðÀqqξ¼tot0ÁÞ2
+
+(30)
+
+This approximation is physically based to the structural
+similarity between homogeneous coacervates and semidilute solutions of neutral polymers46,50,73,74 that are well-known to exhibit OZ-type structure factors.75–77 Thus, the fit S(q)−to1t ≈ c1q2 + c2pisﬃﬃﬃﬃﬃuﬃﬃsﬃﬃeﬃ d in order to estimate the correlation length ξtot ¼ c1=c2. One can see in Fig. 8a that this fit is reasonable not only below but also above the threshold λ*. At λ > λ* the deviation of Stot(q) from the OZ functional form given by eqn (30) is seen in the range of small q only, q2 < 0.2. This mismatch is caused
+by the MST accompanied by the emergence of the
+microdomain structure, i.e., large-scale density inhomogeneities. In this case, the resulting value of ξtot can be considered as the correlation length averaged over
+all the domains. One can expect that the local correlation
+
+Fig. 9 Correlation lengths ξtot (red curve) and ξm (blue curve) associated with the fluctuations of the total polymer density ϕtot(r) and the local composition m(r) of the salt-free coacervate, respectively.
+
+These results are obtained via fitting the structure factors Stot(q) and
+
+Sm(q) found in simulations and shown in Zernike function: S−1(q) = c1q2 + c2 and ξ
+
+Figp. ﬃ8ﬃﬃﬃﬃﬃwﬃﬃﬃﬃiﬃﬃth the Ornstein– ¼ c1=c2. ξtot and ξm are
+
+plotted in logarithmic scale for better visualization.
+
+length (mesh size) is slightly lower in dense ionic
+
+domains and slightly higher in swollen neutral domains.
+
+The red curve in Fig. 9 demonstrates that the resulting ξtot obtained from the OZ fit of Stot(q) is almost independent of λ. In the range of −1 < λ < λ*, this may be attributed to the
+
+compensation of the two simultaneous but opposite effects.
+
+The increasing coacervate density shown in Fig. 5 should lead
+
+to the decrease in its average mesh size, while the increasing
+
+fluctuations in ϕtot(r) seen in Fig. 6 result in the growth of ξ. At λ > λ*, when the average density decreases and density
+
+fluctuations continue growing, ξtot slightly increases. We
+
+emphasize that both the changes in the coacervate density and
+
+ξtot are moderate in the entire range of blockiness. In this respect, a comparison between the almost unchanged ξtot and the compositional correlation length ξm that strongly increases with λ is insightful, and it is performed in what follows.
+
+The structure factor Sm(q) shown in Fig. 8c characterizes
+
+compositional
+
+fluctuations
+
+and
+
+compositional
+
+inhomogeneities within the coacervate. As compared to
+
+Stot(q), Sm(q) grows much stronger in the range of low q at increasing λ, thereby confirming that the segregation between
+
+ionic and neutral monomers is the driving force for the MST
+
+while moderate undulations of the total polymer density
+
+ϕtot(r) is the secondary effect caused by the preferential
+
+partitioning of the solvent to the neutral domains. The
+
+compositional difference between neutral and ionic domains
+
+is much higher than their density difference.
+
+For (co)PEs with λ = −1, the Sm(q) behavior in the high-q range is special. The peapkﬃﬃﬃ due to monomer connectivity is shifted to approximately 2 lower values in comparison with
+
+that for more blocky counterparts because the even (ionic or
+
+neutral) monomers in alternating chains are separated from
+
+each opthﬃﬃeﬃ r by two, rather than one covalent bond, and the factor 2 (rather than 2) is due to the chain flexibility. Since
+
+alternating sequences entirely prohibit the segregation
+
+between ionic and neutral monomers at large lengths, r ≫
+
+2σ, Sm(q) tends to zero at low q more rapidly for λ = −1.
+
+Fig. 8c shows that the low-q values of Sm(q) increase at increasing λ, in accordance with the coacervate snapshots
+
+shown in Fig. 6 and demonstrating the increasing
+
+heterogeneity above the threshold value λ* that can be
+
+tentatively identified with the MST. One can speculate that,
+
+at λ = 0.9, Sm(q) exhibits a peak, albeit low and wide. The
+
+broad shape of the peak and the absence of higher-order
+
+reflections (other peaks) imply a lack of long-range order in
+
+the domain spacing within the inhomogeneous coacervate
+
+(cf. microphase separated, lamellar coacervates for regular
+
+copolymers with Sm(q) that demonstrate high and narrow main and satellite peaks, Fig. S5 in ESI†). Thus, on the
+
+basis of the Sm(q) shape, one can suggest that the
+coacervate has a microphase-separated disordered, microemulsion structure.78–82 Unfortunately, our simulation
+
+data for λ > λ* are noisy is the range of low q due to the
+
+limited size of the simulation box, and we are unable to see
+
+the peaks for other curves, λ = 0.8 and λ = 0.85, although
+
+they are expected for microemulsions.
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+MSDE
+
+View Article Online
+Paper
+
+These results are also consistent with those observed in simulations29,30 of microemulsion-like structures for melts of random AB copolymers. Using the Ginzburg criterion, it has been shown that the fluctuation-dominated region near the MST in these systems is wide29,30 and, in contrast to the case of regular copolymers, does not diminish at increasing chain length N. In this respect, random copolymers again resemble more low-molecular weight liquids rather than diblock copolymers, see eqn (27). We emphasize that the lack of the domain long-range order in coacervates is due to random, non-regular statistics of n and i monomers in PEs. For regular multiblock PEs composed of alternating charged and neutral blocks of (sufficiently high) average length comparable with Λ, both our simulations (Fig. S4 and S5 in ESI†) and SCFT calculations by Sing indicate the lamellar ordering of the domains.38 This resembles the formation of super-crystalline lattices in melts of regular multiblock copolymers,83 with AB diblock copolymer melts being the simplest example, and the lack of the translational order in melts of statistical copolymers,30 at least for equal incompatibilities χAB and the average block lengths.72
+An important difference between the coacervates considered here and AB random copolymer melts, however, is that coacervates contain some solvent that redistributes between the domains through the course of microphase separation. The solvent is preferentially absorbed by the domains rich in neutral monomers and can be considered as selective.84–86 We believe that the strong swelling of the neutral domains due to the good solvent quality for polymer chains is the main reason for the decreasing coacervate density at high λ.
+To quantitatively confirm the increase in the domain size of the inhomogeneous coacervate at increasing λ, Sm(q) structure factors were also fitted with the OZ function. Another option could have been to fit them with the microemulsion structure factor, S(q)−m1 ≈ c0q4 + c1q2 + c2 (see Fig. S8 and Table S1 in ESI†),79 but we neither observe the compositional structure factor decaying according to Porod's law Sm(q) ∝ q−4 at high q (see Fig. S9 in ESI†) nor do we have accurate data in the vicinity of the peak and for low q values (see Fig. 8c). The latter should be attributed to the finite size of the box and limited time scales accessible in our simulations.
+However, even the ξm obtained via a simple OZ fit, shown in Fig. 9 (blue line), is a monotonically increasing function that rapidly grows in the vicinity of λ*. For λ = −1, Sm(q) does not follow the OZ expression because of the reasons discussed above (see also Fig. S7 in ESI†), and the corresponding ξm value is not included. At λ > λ* the characteristic domain size ξm describing the segregation between neutral and ionic monomers is much larger than the coacervate mesh size ξtot. These results support the idea that the coacervate phase evolves from a homogeneous to inhomogeneous microemulsion state as the charge blockiness λ increases.
+Although the considerations presented here were devoted to the case of good solvent, the formation of inhomogeneous coacervates under Θ and poor solvent conditions is also
+
+anticipated. The decreasing solvent quality and resulting increasing density of the homogeneous coacervates is expected to lead to a lower threshold blockiness λ* provoking the MST. However, the density inhomogeneities within the coacervate should be lower because the domains rich in neutral monomers will swell less as than in a good solvent.
+V Conclusions
+By integrating computer simulations and a theoretical framework based on the random phase approximation (RPA), it has been possible to rationalize the effects of monomer sequence on the phase behavior of complex coacervates formed from random (co)polyelectrolytes. The monomer sequence of these chains is controlled by a first-order Markov process, and can be experimentally achieved by means of statistical copolymerization. Using molecular dynamics and Gibbs ensemble simulations, we have confirmed our theoretical predictions for the role of charge blockiness in polyelectrolyte complex coacervation. High charge clustering is shown to facilitate coacervation, i.e., to extend the twophase region of the phase diagram and to improve coacervate salt resistance. The radial distribution functions of oppositely charged monomers within the coacervate are obtained in simulations to demonstrate at the microscopic level that the increasing coacervate density at increasing λ should be attributed to the stronger charge correlations.
+While the theoretical framework is (rigorously) applicable to polyelectrolytes carrying small fraction of charged groups only, f ≪ 1, simulations demonstrate that the principal theoretical findings also hold for the highly charged systems with f ∼ 1 that are often studied in experiments. The role of the charge blockiness is shown to be similar for good and poor solvent conditions. The main difference between these cases is that, in a good solvent, coacervate binodals have a “closed” shape, while binodals in poor solvent conditions are “open”. These results are consistent with earlier experimental findings.
+We also considered the complex coacervation of PEs with equal linear charge densities, f+ = f−, but unequal charge clustering, λ+ ≠ λ−. For a fixed sum of the correlation parameters, λ+ + λ− = const, the increasing sequence asymmetry, i.e., the increasing difference between λ− and λ+, leads to a higher propensity for coacervation. Theory and simulations have been further generalized to charge-densityasymmetric coacervates, f+ ≠ f−, in order to demonstrate that varying λ for only one of the polyelectrolytes is sufficient to tune the coacervation envelope. This result suggests that the most straightforward experimental way to test our predictions would be to consider coacervation in fully charged homopolycations (f+ = 1) and partially charged (co)polyanions (e.g., f− = 1/2), with the charge blockiness λ− controlled through the conditions of the respective statistical copolymerization.
+Computer simulations were also aimed at characterizing the complex coacervation of highly blocky (co)polyelectrolytes with λ close to unity. The theoretical framework proposed here, which predicts a monotonous growth of the coacervate
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+Paper
+
+View Article Online
+MSDE
+
+density at increasing λ, can not be applied in this range of parameters because it assumes a homogeneous internal structure of the coacervate. Indeed, simulations reveal that, above a threshold value λ*, the density of the polymer-rich phase goes down with increasing blockiness. This is due to the formation of inhomogeneous, microphase-separated coacervates that consist of dense domains rich in ionic monomers and more swollen domains rich in neutral monomers. Analysis of the structure factors demonstrates the absence of long-range order within the locally segregated coacervate. Its disordered microemulsion-like structure resembles that of a melt of neutral random AB copolymers.
+The results presented here provide a comprehensive computational and theoretical framework to guide molecular design efforts and experiments aimed at tuning the structure and properties of coacervate-based materials through control of monomer sequences. A prospective way to test the effects of charge blockiness in statistical (co)polyelectrolytes and their complex coacervation has been proposed, along with suggestions to address the expected challenges associated with maintaining the precise lengths N and the average charge density f for a series of polyions with different sequence statistics λ. Given the vast experimental state space of multicomponent statistical (co)polyelectrolytes, the proposed theory- and simulation-driven predictive capabilities should be of use.
+Conflicts of interest
+There are no conflicts of interest to declare.
+Acknowledgements
+We thank Phillip Pickett for helpful discussions on aqueous copolymerization. J. T. was supported by a NIST-CHiMaD Postdoctoral Fellowship. This work was supported by the Department of Energy, Basic Energy Sciences, Division of Materials Science and Engineering.
+References
+1 J.-F. Lutz, J.-M. Lehn, E. Meijer and K. Matyjaszewski, From precision polymers to complex materials and systems, Nat. Rev. Mater., 2016, 1, 1–14.
+2 A. L. Patterson, S. P. Danielsen, B. Yu, E. C. Davidson, G. H. Fredrickson and R. A. Segalman, Sequence effects on block copolymer self-assembly through tuning chain conformation and segregation strength utilizing sequence-dened polypeptoids, Macromolecules, 2019, 52, 1277–1286.
+3 R. K. Das and R. V. Pappu, Conformations of intrinsically disordered proteins are influenced by linear sequence distributions of oppositely charged residues, Proc. Natl. Acad. Sci. U. S. A., 2013, 110, 13392–13397.
+4 J. R. Simon, N. J. Carroll, M. Rubinstein, A. Chilkoti and G. P. López, Programming molecular self-assembly of intrinsically disordered proteins containing sequences of low complexity, Nat. Chem., 2017, 9, 509.
+
+5 T. J. Nott, E. Petsalaki, P. Farber, D. Jervis, E. Fussner, A. Plochowietz, T. D. Craggs, D. P. Bazett-Jones, T. Pawson, J. D. Forman-Kay and A. J. Baldwin, Phase transition of a disordered nuage protein generates environmentally responsive membraneless organelles, Mol. Cell, 2015, 57, 936–947.
+6 S. L. Perry and C. E. Sing, 100th Anniversary of Macromolecular Science Viewpoint: Opportunities in the Physics of Sequence-Defined Polymers, ACS Macro Lett., 2020, 9, 216–225.
+7 L.-W. Chang, T. K. Lytle, M. Radhakrishna, J. J. Madinya, J. Vélez, C. E. Sing and S. L. Perry, Sequence and entropy-based control of complex coacervates, Nat. Commun., 2017, 8, 1–8.
+8 W. G. Levine, Y. Seo, J. R. Brown and L. M. Hall, Effect of sequence dispersity on morphology of tapered diblock copolymers from molecular dynamics simulations, J. Chem. Phys., 2016, 145, 234907.
+9 S. Mao, Q. MacPherson, J. Qin and A. J. Spakowitz, Fieldtheoretic simulations of random copolymers with structural rigidity, Soft Matter, 2017, 13, 2760–2772.
+10 S. P. Danielsen, J. McCarty, J.-E. Shea, K. T. Delaney and G. H. Fredrickson, Molecular design of self-coacervation phenomena in block polyampholytes, Proc. Natl. Acad. Sci. U. S. A., 2019, 116, 8224–8232.
+11 B. Panganiban, B. Qiao, T. Jiang, C. DelRe, M. M. Obadia, T. D. Nguyen, A. A. Smith, A. Hall, I. Sit and M. G. Crosby, et al., Random heteropolymers preserve protein function in foreign environments, Science, 2018, 359, 1239–1243.
+12 T. K. Lytle, L.-W. Chang, N. Markiewicz, S. L. Perry and C. E. Sing, Designing electrostatic interactions via polyelectrolyte monomer sequence, ACS Cent. Sci., 2019, 5, 709–718.
+13 Y.-H. Lin, J. D. Forman-Kay and H. S. Chan, Sequencespecific polyampholyte phase separation in membraneless organelles, Phys. Rev. Lett., 2016, 117, 178101.
+14 Y.-H. Lin, J. Song, J. D. Forman-Kay and H. S. Chan, Random-phase-approximation theory for sequencedependent, biologically functional liquid-liquid phase separation of intrinsically disordered proteins, J. Mol. Liq., 2017, 228, 176–193.
+15 J. McCarty, K. T. Delaney, S. P. Danielsen, G. H. Fredrickson and J.-E. Shea, Complete phase diagram for liquid-liquid phase separation of intrinsically disordered proteins, J. Phys. Chem. Lett., 2019, 10, 1644–1652.
+16 A. M. Rumyantsev, N. E. Jackson, A. Johner and J. J. de Pablo, Scaling Theory of Neutral Sequence-Specific Polyampholytes, Macromolecules, 2021, 54, 3232–3246.
+17 A. E. Neitzel, G. X. De Hoe and M. V. Tirrell, Expanding the structural diversity of polyelectrolyte complexes and polyzwitterions, Curr. Opin. Solid State Mater. Sci., 2021, 25, 100897.
+18 J. Dinic, A. B. Marciel and M. V. Tirrell, Polyampholyte physics: Liquid-liquid phase separation and biological condensates, Curr. Opin. Colloid Interface Sci., 2021, 54, 101457.
+19 A. M. Rumyantsev, N. E. Jackson, B. Yu, J. M. Ting, W. Chen, M. V. Tirrell and J. J. de Pablo, Controlling complex
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+MSDE
+
+View Article Online
+Paper
+
+coacervation via random polyelectrolyte sequences, ACS Macro Lett., 2019, 8, 1296–1302. 20 S. Brusseau, J. Belleney, S. Magnet, L. Couvreur and B. Charleux, Methacrylic acid with sodium 4-styrene sulfonate: Towards new water-soluble macroalkoxyamines for the synthesis of amphiphilic block copolymers and nanoparticles, Polym. Chem., 2010, 1, 720–729. 21 J. Wang, C. Waltmann, H. Umana-Kossio, M. Olvera de la Cruz and J. M. Torkelson, Heterogeneous charged complexes of random copolymers for the segregation of organic molecules, ACS Cent. Sci., 2021, 7, 882–891. 22 I. Dimitrov, K. Jankova and S. Hvilsted, Synthesis of polystyrene-based random copolymers with balanced number of basic or acidic functional groups: Polystyrenebased random copolymers, J. Polym. Sci., Part A: Polym. Chem., 2010, 48, 2044–2052. 23 A. E. Neitzel, Y. N. Fang, B. Yu, A. M. Rumyantsev, J. J. de Pablo and M. V. Tirrell, Polyelectrolyte complex coacervation across a broad range of charge densities, Macromolecules, 2021, DOI: 10.1021/acs.macromol.1c00703. 24 J. M. Ting, T. S. Navale, F. S. Bates and T. M. Reineke, Precise compositional control and systematic preparation of multimonomeric statistical copolymers, ACS Macro Lett., 2013, 2, 770–774. 25 A. A. Smith, A. Hall, V. Wu and T. Xu, Practical prediction of heteropolymer composition and drift, ACS Macro Lett., 2018, 8, 36–40. 26 G. H. Fredrickson and S. T. Milner, Thermodynamics of random copolymer melts, Phys. Rev. Lett., 1991, 67, 835. 27 G. H. Fredrickson, S. T. Milner and L. Leibler, Multicritical phenomena and microphase ordering in random block copolymers melts, Macromolecules, 1992, 25, 6341–6354. 28 A. Johner and J. Joanny, Translocation of polyampholytes and intrinsically disordered proteins, Eur. Phys. J. E: Soft Matter Biol. Phys., 2018, 41, 78. 29 J. Houdayer and M. Müller, Deviations from the mean-field predictions for the phase behaviour of random copolymers melts, EPL, 2002, 58, 660. 30 J. Houdayer and M. Müller, Phase diagram of random copolymer melts: a computer simulation study, Macromolecules, 2004, 37, 4283–4295. 31 M. Lemmers, E. Spruijt, L. Beun, R. Fokkink, F. Leermakers, G. Portale and M. A. C. Stuart, The inuence of charge ratio on transient networks of polyelectrolyte complex micelles, Soft Matter, 2012, 8, 104–117. 32 D. V. Krogstad, N. A. Lynd, S.-H. Choi, J. M. Spruell, C. J. Hawker, E. J. Kramer and M. V. Tirrell, Effects of polymer and salt concentration on the structure and properties of triblock copolymer coacervate hydrogels, Macromolecules, 2013, 46, 1512–1518. 33 D. J. Audus, J. D. Gopez, D. V. Krogstad, N. A. Lynd, E. J. Kramer, C. J. Hawker and G. H. Fredrickson, Phase behavior of electrostatically complexed polyelectrolyte gels using an embedded uctuation model, Soft Matter, 2015, 11, 1214–1225. 34 S. Srivastava, M. Andreev, A. E. Levi, D. J. Goldfeld, J. Mao, W. T. Heller, V. M. Prabhu, J. J. de Pablo and M. V. Tirrell,
+
+Gel phase formation in dilute triblock copolyelectrolyte complexes, Nat. Commun., 2017, 8, 14131. 35 C. M. Papadakis and C. Tsitsilianis, Responsive hydrogels from associative block copolymers: Physical gelling through polyion complexation, Gels, 2017, 3, 3. 36 A. Rahalkar, G. Wei, R. Nieuwendaal, V. M. Prabhu, S. Srivastava, A. E. Levi, J. J. de Pablo and M. V. Tirrell, Effect of temperature on the structure and dynamics of triblock polyelectrolyte gels, J. Chem. Phys., 2018, 149, 163310. 37 S. Srivastava, A. E. Levi, D. J. Goldfeld and M. V. Tirrell, Structure, morphology, and rheology of polyelectrolyte complex hydrogels formed by self-assembly of oppositely charged triblock polyelectrolytes, Macromolecules, 2020, 53, 5763–5774. 38 C. E. Sing, Micro- to macro-phase separation transition in sequence-defined coacervates, J. Chem. Phys., 2020, 152, 024902. 39 V. Y. Borue and I. Y. Erukhimovich, A statistical theory of globular polyelectrolyte complexes, Macromolecules, 1990, 23, 3625–3632. 40 M. Castelnovo and J.-F. Joanny, Formation of polyelectrolyte multilayers, Langmuir, 2000, 16, 7524–7532. 41 A. Kudlay and M. Olvera de la Cruz, Precipitation of oppositely charged polyelectrolytes in salt solutions, J. Chem. Phys., 2004, 120, 404–412. 42 J. Qin and J. J. de Pablo, Criticality and connectivity in macromolecular charge complexation, Macromolecules, 2016, 49, 8789–8800. 43 J. Wittmer, A. Johner and J. Joanny, Random and alternating polyampholytes, EPL, 1993, 24, 263. 44 A. M. Rumyantsev and I. I. Potemkin, Explicit description of complexation between oppositely charged polyelectrolytes as an advantage of the random phase approximation over the scaling approach, Phys. Chem. Chem. Phys., 2017, 19, 27580–27592. 45 K. Shen and Z.-G. Wang, Electrostatic correlations and the polyelectrolyte self energy, J. Chem. Phys., 2017, 146, 084901. 46 M. Rubinstein, Q. Liao and S. Panyukov, Structure of liquid coacervates formed by oppositely charged polyelectrolytes, Macromolecules, 2018, 51, 9572–9588. 47 A. M. Rumyantsev, E. Y. Kramarenko and O. V. Borisov, Microphase separation in complex coacervate due to incompatibility between polyanion and polycation, Macromolecules, 2018, 51, 6587–6601. 48 L. Li, A. M. Rumyantsev, S. Srivastava, S. Meng, J. J. de Pablo and M. V. Tirrell, Effect of solvent quality on the phase behavior of polyelectrolyte complexes, Macromolecules, 2021, 54, 105–114. 49 V. Y. Boryu and I. Y. Erukhimovich, A statistical theory of weakly charged polyelectrolytes: Fluctuations, equation of state and microphase Separation, Macromolecules, 1988, 21, 3240–3249. 50 A. M. Rumyantsev, E. B. Zhulina and O. V. Borisov, Complex coacervate of weakly charged polyelectrolytes: Diagram of states, Macromolecules, 2018, 51, 3788–3801.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+Paper
+
+View Article Online
+MSDE
+
+51 K. Kremer and G. S. Grest, Dynamics of entangled linear polymer melts: A moleculardynamics simulation, J. Chem. Phys., 1990, 92, 5057–5086.
+52 S. Plimpton and B. Hendrickson, Parallel Molecular Dynamics Algorithms for Simulation of Molecular Systems, ACS Publications, 1995.
+53 W. M. Brown, A. Kohlmeyer, S. J. Plimpton and A. N. Tharrington, Implementing molecular dynamics on hybrid high performance computers - particle-particle particlemesh, Comput. Phys. Commun., 2012, 183, 449–459.
+54 B. Yu, P. M. Rauscher, N. E. Jackson, A. M. Rumyantsev and J. J. de Pablo, Crossover from Rouse to Reptation Dynamics in Salt-Free Polyelectrolyte Complex Coacervates, ACS Macro Lett., 2020, 9, 1318–1324.
+55 A. Stukowski, Visualization and analysis of atomistic simulation data with OVITO–the Open Visualization Tool, Modell. Simul. Mater. Sci. Eng., 2009, 18, 015012.
+56 T. E. Gartner III, T. H. Epps III and A. Jayaraman, Leveraging Gibbs ensemble molecular dynamics and hybrid Monte Carlo/molecular dynamics for efficient Study of phase equilibria, J. Chem. Theory Comput., 2016, 12, 5501–5510.
+57 M. Radhakrishna, K. Basu, Y. Liu, R. Shamsi, S. L. Perry and C. E. Sing, Molecular connectivity and correlation eects on polymer coacervation, Macromolecules, 2017, 50, 3030–3037.
+58 E. Spruijt, A. H. Westphal, J. W. Borst, M. A. Cohen Stuart and J. van der Gucht, Binodal compositions of polyelectrolyte complexes, Macromolecules, 2010, 43, 6476–6484.
+59 A. Z. Panagiotopoulos, N. Quirke, M. Stapleton and D. Tildesley, Phase equilibria by simulation in the Gibbs ensemble: alternative derivation, generalization and application to mixture and membrane equilibria, Mol. Phys., 1988, 63, 527–545.
+60 F. M. Lewis, C. Walling, W. Cummings, E. R. Briggs and F. R. Mayo, Copolymerization. IV. Effects of temperature and solvents on monomer reactivity ratios, J. Am. Chem. Soc., 1948, 70, 1519–1523.
+61 G. Bonta, B. M. Gallo and S. Russo, Some kinetic aspects of radical copolymerization: Infuence of the reaction medium on the reactivity ratios, Polymer, 1975, 16, 429–432.
+62 S. Meng, Y. Liu, J. Yeo, J. M. Ting and M. V. Tirrell, Effect of mixed solvents on polyelectrolyte complexes with salt, Colloid Polym. Sci., 2020, 298, 887–894.
+63 L. Li, S. Srivastava, M. Andreev, A. B. Marciel, J. J. de Pablo and M. V. Tirrell, Phase behavior and salt partitioning in polyelectrolyte complex coacervates, Macromolecules, 2018, 51, 2988–2995.
+64 K. Shen and Z.-G. Wang, Polyelectrolyte chain structure and solution phase behavior, Macromolecules, 2018, 51, 1706–1717.
+65 J. Huang, F. J. Morin and J. E. Laaser, Charge-densitydominated phase behavior and viscoelasticity of polyelectrolyte complex coacervates, Macromolecules, 2019, 52, 4957–4967.
+66 A. M. Rumyantsev, A. A. Gavrilov and E. Y. Kramarenko, Electrostatically stabilized microphase separation in blends of oppositely charged polyelectrolytes, Macromolecules, 2019, 52, 7167–7174.
+
+67 A. M. Rumyantsev and J. J. de Pablo, Microphase separation
+
+in polyelectrolyte blends: Weak segregation theory and
+
+relation to nuclear “pasta”, Macromolecules, 2020, 53,
+
+1281–1292.
+
+68 A. V. Subbotin and A. N. Semenov, The structure of
+
+polyelectrolyte complex coacervates and multilayers,
+
+Macromolecules, 2021, 54, 1314–1328.
+
+69 D. J. Grzetic, K. T. Delaney and G. H. Fredrickson, Electrostatic
+
+manipulation of phase behavior in immiscible charged
+
+polymer blends, Macromolecules, 2021, 54, 2604–2616.
+
+70 H. Angerman, G. ten Brinke and I. Erukhimovich,
+
+Microphase separation in correlated random copolymers,
+
+Macromolecules, 1996, 29, 3255–3262.
+
+71 P.-G. de Gennes, Theory of long-range correlations in
+
+polymer melts, Faraday Discuss. Chem. Soc., 1979, 68, 96–103.
+
+72 A. A. Gavrilov, Y. V. Kudryavtsev, P. G. Khalatur and A. V.
+
+Chertovich, Microphase separation in regular and random
+
+copolymer melts by DPD simulations, Chem. Phys. Lett.,
+
+2011, 503, 277–282.
+
+73 H. M. Fares, Y. E. Ghoussoub, J. D. Delgado, J. Fu, V. S.
+
+Urban and J. B. Schlenoff, Scattering neutrons along the
+
+polyelectrolyte
+
+complex/coacervate
+
+continuum,
+
+Macromolecules, 2018, 51, 4945–4955.
+
+74 A. B. Marciel, S. Srivastava and M. V. Tirrell, Structure and
+
+rheology of polyelectrolyte complex coacervates, Soft Matter,
+
+2018, 14, 2454–2464.
+
+75 J. Cotton, M. Nierlich, F. Boue, M. Daoud, B. Farnoux, G.
+
+Jannink, R. Duplessix and C. Picot, Experimental
+
+determination of the temperature–concentration diagram of
+
+flexible polymer solutions by neutron scattering, J. Chem.
+
+Phys., 1976, 65, 1101–1108.
+
+76 P.-G. de Gennes, Scaling Concepts in Polymer Physics, Cornell
+
+University, Ithaca, NY, 1979.
+
+77 A. Y. Grosberg and A. R. Khokhlov, Statistical Physics of
+
+Macromolecules, AIP Press, NY, 1994.
+
+78 A. J. Ryan, C. W. Macosko and W. Bras, Order-disorder
+
+transition in a block copolyurethane, Macromolecules,
+
+1992, 25, 6277–6283.
+
+79 M. Teubner and R. Strey, Origin of the scattering peak in
+
+microemulsions, J. Chem. Phys., 1987, 87, 3195–3200.
+
+80 B. W. Swift and M. Olvera de la Cruz, Random copolymers in
+
+concentrated solutions, Europhys. Lett., 1996, 35, 487–492.
+
+81 F. S. Bates, W. W. Maurer, T. P. Lodge, M. F. Schulz, M. W.
+
+Matsen, K. Almdal and K. Mortensen, Isotropic Lifshitz
+
+behavior in block copolymer-homopolymer blends, Phys.
+
+Rev. Lett., 1995, 75, 4429–4432.
+
+82 F. S. Bates, W. W. Maurer, P. M. Lipic, M. A. Hillmyer, K.
+
+Almdal, K. Mortensen, G. H. Fredrickson and T. P. Lodge,
+
+Polymeric bicontinuous microemulsions, Phys. Rev. Lett.,
+
+1997, 79, 849–852.
+
+83 F. S. Bates, M. A. Hillmyer, T. P. Lodge, C. M. Bates, K. T.
+
+Delaney and G. H. Fredrickson, Multiblock polymers:
+
+Panacea or Pandora's box?, Science, 2012, 336, 434–440.
+
+84 T. M. Birshtein and E. B. Zhulina, Scaling theory of
+
+supermolecular structures in block copolymer-solvent systems:
+
+2. Supercrystalline structures, Polymer, 1990, 31, 1312–1320.
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+MSDE
+
+View Article Online
+Paper
+
+85 M. Banaszak and M. D. Whitmore, Self-consistent theory of block copolymer blends: Selective solvent, Macromolecules, 1992, 25, 3406–3412.
+
+86 C.-I. Huang and T. P. Lodge, Self-consistent calculations of block copolymer solution phase behavior, Macromolecules, 1998, 31, 3556–3565.
+
+Published on 28 July 2021. Downloaded by University of Cambridge on 9/1/2021 7:10:22 AM.
+
+This journal is © The Royal Society of Chemistry and IChemE 2021
+
+Mol. Syst. Des. Eng.
+

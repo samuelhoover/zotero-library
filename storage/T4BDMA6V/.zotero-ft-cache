@@ -1,0 +1,301 @@
+Macromolecules;
+Volume 29, Number 4 February 12, 1996
+0 Copyright 1996 by the American Chemical Society
+Reviews
+Unifying Weak- and Strong-Segregation Block Copolymer Theories
+M. W. Matsen* and F. S . Bates
+Department of Chemical Engineering and Materials Science, University of Minnesota, Minneapolis, Minnesota 55455
+Received August 3, 1995; Revised Manuscript Received November 8, 1995@
+ABSTRACT:A mean-field phase diagram for conformationally symmetric diblock melts using the standard
+Gaussian polymer model is presented. Our calculation, which traverses the weak- to strong,segregation regimes, is free of traditional approximations. Regions of stability are determined for disordered (DIS) melts and for ordered structures including lamellae (L),hexagonally packed cylinders (HI, bcdy-centered cubic spheres ( Q m j m ) , close-packed spheres (CPS), and the bicontinuous cubic network with Ia3d symmetry (QI&. The CPS phase exists in narrow regions along the order-disorder transition for ;cNL 17.67.
+Results suggest t h a t the Q I ph~ as~e is not stable above X N- 60. Along the L/QI& phase boundaries, a
+he5agonally perforated lamellar (HPL)phase is found to be nearly stable. Our results for the hicontinuous P n 3 m cubic (Qp,,gm) phase, known as the OBDD, indicate t h a t it is a n unstable structure in diblock melts. Earlier approximation schemes used to examine mean-field behavior are reviewed, and comliarisons are made with our more accurate calculation.
+1. Introduction
+AB block copolymer melts have received considerable attention because immiscibility between A and B blocks induces self-assembly into various ordered microstructures.1>2 In the high-temperature disordered (DIS) phase, A and B blocks mix homogeneously, but as the temperature is lowered (i.e., the Flory-Huggins 15 parameter is increased), they separate on a microscopic scale forming A- and B-rich domains separated by an extensive amount of internal interface. Various geometries of these domains occur depending, to a large degree, on the spontaneous mean curvature of the internal interface, which is produced by a mismatch in entropic stretching energy of the A and B b1ocks.l~~The classical structures are lamellae (L), hexagonally packed cylinders (HI, and a body-centered cubic (bcc) array of spheres (QI,,&. Although early results suggested both Q I and~close~-pac~kedsp~here~s (CPS),5the latter is no
+@ Abstract published in Advance ACS Abstracts, January 1, 1996.
+0024-929719612229-1091$12.00/0
+longer accepted as an equilibrium structure. (CPS refers to either face-centered cub c (fcc)or hexagonally close-packed (hcp).) The first nonclassical phase was observed in 19726and identified in 1986 by Thomas et a1.I as a bicontinuous cubic structure (Qpng,) with Pn3m symmetry, often referred to as the ordered bicontinuous double-diamond (OBDD) phase. Just two years ago, there emerged evidence for a sgcond bicontinuous structure (Qla&),this time with Ia3d symmetry, sometimes referred t o as the gyroid p ' i a ~ e . A~t, a~bout the same time, evidence was presented for a stable hexagonally perforated lamellar (HPL)phase, sometimescalled catenoid lamellar, where each of the thinner minoritycomponent lamellae is covered by a hexagonal arrangement of perforations.10-12Experiments also suggested a hexagonally modulated lamella (HML)phase where the perforations are not fully developed,1° but it is uncertain whether this is an equilibrium phase. The latest development has been a growing skepticism in regard to the Qpnsrn phase. Initially, it was realized that samples identified as Qpngrnby a characteristic "wagon
+0 1996 American Chemical Society
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on July 30, 2024 at 03:04:41 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+1092 Matsen and Bates Macromolecules, Vol. 29, No. 4, 1996
+puter technology, we demonstrate that most of the mean-field phase diagram can be calculated without resorting to these additional approximations. In order t o put the present calculation into the proper perspective, we briefly discuss the development of strategies for obtaining approximations to the phase diagram before presenting our more accurate diagram.
+In the original work by Helfand and co-workers, two additional approximations were devised: a narrowinterface approximation (NIA)16 and a unit-cell approximation (UCA).17 The NIA was implemented to solve the statistical mechanics of a block copolymer in the presence of a steplike potential (i.e., an internal interface). Although equations for the lamellar phase could then be solved, those for doubly- and triplyperiodic structures were still unmanageable. To cope with the more complicated microstructures, the SCFT was supplemented with circular and spherical approximations for the Wigner-Seitz cells of the H and Q I pha~ses,~respe~ctively. This produced inaccuracies by underestimating the free energies of these phases and also made the calculation insensitive t o the equilibrium packing arrangement of the cylindrical and spherical units. For example, it could not distinguish between the Qlmsmand CPS phases. Furthermore, the UCA could not straightforwardly be generalized to consider more complex phases. More significantly, the NIA restricted calculations to the strong-segregation
+regime (i.e.,xN >> 10). In 1980,LeiblerzOcomplimented
+this with a Landau expansion of the SCFT based on the random-phase approximation (RPA),providing results
+for the weak-segregation regime (i.e., XN- 10). This
+work also provided a free energy potential which could be mapped onto the Brazovskii H a m i l t ~ n i a na,ll~o~wing for the first calculation that went beyond mean field and considered fluctuation effects.21 In 1985, Semenovz2 introduced a strong-segregation theory (SST)for examining the zero-temperature (i.e., infinite ~ l vli,mit of the standard model. Notably, fluctuation effects become negligible in this limit, and thus mean field becomes exact. Still, Semenov implemented the UCA as well as a further approximation to deal with exclusion zones that occur in the H and Qlmsm phases, and so his calculation did not provide exact zero-temperature results. Shortly after, Ohta and Kawasakiz3presented a density-functionaltheory (DFT)based on the RPA that was significant because it could be applied to any degree of segregation. It is difficult to assess all the approximations in this DFT and others like it,24-2b6ut a comparisonz7to the exact SCFT result37for the lamellar phase indicated that while DFT gives qualitatively correctresults, it is quantitatively inaccurate. Likewise, comparing the infinite xlv results of the DFT to those
+of the SST supported this conclu~ion.R~e~cently, Vavasour and Whitmorez8demonstrated that the DFT was unnecessary. Using only the UCA, they evaluated the mean-field phase diagram from the weak- to the strongsegregation regime, bridging the RPA and SST. Because their calculation still implemented the UCA, it was restricted to the classical phases.
+The first calculation to examine a complex phase24 applied DFT to the QPnsm phase and found it t o be unstable at strong segregations. In addition to using the approximations involved in the Ohta-Kawasaki approach, this calculation did not minimize the free energy with respect to the shape of the internal interface, but rather assumed it was a constant meancurvature (CMC)surface. Later, complex phases were
+wheel” TEM image617J3J4could be in error because th.e QI& phase produces an analogous image.8i1131z This stressed that scattering methods were important in order to determine the symmetry of a bicontinuous phase, motivating the reexamination of such sample3. Indeed, closer examination of samples originally identified as Qpngm showed them to be As of yet, compelling evidence using advanced scattering techniques does not exist for the QPnsm phase.
+In general, the theoretical study of diblock copolymer melts has been basedupon a single, standard, Gaussian m ~ d e l . ~ JIn~t-hi~s ~model, each molecule of the melt is composed of N segments of which a fraction f forms the A block and the rest forms the B block. For convenience,A and B segments are usually defined i,o have equal volumes. In addition, the “coarse-grainetl” segments each represent a sufficient length of polymer such that they can be treated as Gaussian where internal conformational states of the segments produce a Hookian entropic penalty of stretching. The statisticid length, a,of a segment is its average RMS end-to-end length when no tension is applied and is related t o the effective spring constant. Most calculationsexamine the conformationally symmetric case where the A and B statistical segment lengths are equal. The model accounts for hard-core repulsive interactions by implementing an incompressibility constraint where the average segment concentration is forced t o be uniform. The remaining interactions are assumed to be local and are treated by the enthalpy term, kBTxpO.f$A(r)$B(rd) r, where &(r) and $B(r)are the volume fractions of A and B segments, respectively, at position r and po is the segment density. This simplified model for block CDpolymer melts retains the three most important ingredients: entropic chain stretching, incompressibility, and immiscibility between unlike segments. Of course, there are possible refinements which we discuss below.
+2. Approximations to Mean-FieldTheory
+The thermodynamics of even the simplified standard model cannot be determined exactly. Treating molecular correlations in the melt represents a formidable problem, and so most calculations resort t o the meanfield approximation. The self-consistent field theory (SCFT) for this was developed by Helfand and coworkers in a series of papers beginning in 1971.16-19Vile note that Scheutjens and Fleer57developed an analogous lattice-based SCFT;however, due to the geometric constraints associated with a lattice, it is not well suited for dealing with the nonlamellar structures exhibited by block copolymers. As we discuss later, the meanfield approximation works well for high molecuhr weight polymers. Equally important is that the fluctuation corrections t o it are well understood. Still, a t the time of its introduction, the full SCFT represented a computationally difficult problem and so numeroils additional approximations were implemented. Most of the theoretical approaches that followed used the standard model, mean-field theory, and differed only in regard to the approximations that were added to the SCFT. Some of the additional approximations simply introduced a degree of inaccuracy, while others restricted the validity of the calculation to, for example, weak or strong segregations. However, by combining results from the various approaches, the general klehavior of the standard model has been revealed. Now with the development of theoretical methods and coin
+
+
+Macromolecules, Vol. 29, No. 4, 1996
+examined at weak segregations using the RPA. Because the original calculation of Leibler implemented a firstharmonic approximation for the segment profiles, it was insensitive to the free energy differences between phases with the same set of principal scattering vectors. Consequently, harmonic corrections had to be added t o the Leibler theory in order to examine complex phases.59 Doing so, Olvera de la Cruz, Mayes, and Swiftz9suggested that a bicontinuous HPL phase would be stable a t weak segregations. A more recent calculation by Hamley and Bates30 showed this phase was, in fact, unstable as were numerous other complex phases. About the same time, it was demonstrated that the full SCFT could be solved for any periodic phase while considering a large number of harmonics (i.e., Fourier components) and making no assumptions regarding the shape of the internal i n t e r f a ~ e .A~lt~hough this calculation found the Qpngn and HPL phases to be unstable, it predicted the Qaad phase to be stable for weak to intermediate segregations. Because this calculationwas still limited in the number of Fourier components that could be used in representing the segment profiles, it could not be extended to the strong-segregation limit. Nevertheless, the calculation was able to provide suggestive results that the Qa& phase may extend to strong segregations in a narrow channel of nearly uniform width. According t o SST calculations, the HPL,3z Qpn3m,33934 and Q I ~ p&ha~se~s are all unstable in the
+infinite xiV limit. However, these SST calculations all
+ignore exclusion zones and make certain assumptions regarding the shape of the internal interfaces, and hence, they are not conclusive. Nevertheless, they strongly suggest that the Qaaregion calculated in ref 31 terminates a t finite xN, which would be consistent with recent experimental findings.1,60Earlier experir n e n t ~ , ~p~er~foJrm~eJd~with samples prepared by slow solvent casting, lead to the conclusion that channels of bicontinuous phase separate the H and L phases throughout the strong-segregation regime. Although this point remains controversial, we believe this reflects a metastable state. The rationale is that as a sample passes through the weak-segregation regime, the bicontinuous phase develops, the sample becomes kinetically trapped, and then it is unable t o transform t o the stable phase at strong segregations.
+3. Full Mean-Field Theory
+In this section, the standard model using the full SCFT is examined without any of the additional approximations discussed in the previous section. When possible, comparisons are made with those earlier calculations to show, for example, when the weak- and strong-segregation approximations are valid. We refer the reader to ref 31 for the details of how the full SCFT calculation is performed. The only difference between that calculation and the present one is that here far more Fourier terms are used to represent the segment profiles. This allows us to produce more accurate results and to extend the phase boundaries now unifying the weak- and strong-segregation block copolymer theories. The most significant prediction of the present calculation is that the Qza& regions pinch off as the strong-segregation regime is entered. Another notable result is that beyond the weak-segregation regime, the CPS phase is found to be stable in narrow regions along the order-disorder transition. The calculation also shows the HPL phase to be nearly stable, suggesting that it may actually become stable a t strong segregations. On the other hand, the Q P ,p~has~e ~is found to
+Unifying Block Copolymer Theories 1093
+L4
+3.881,y,.-,i--:/ 4.68
+3.84 4.64 0 50 100 150 200 number of basis furictions
+Figure 1. Convergence of the free energy of the QIa& phase
+per molecule in units of ~ B aTs the number of basis functions
+is increased. The left scale applies t 3 the lower curve for $V = 20 and f = 0.33, and the one on the right applies to the upper curve for XN = 30 and f = 0.33.
+be rather unstable, in agreement with recent suggestions that it is not an equilibrium phase in diblock melts. Before discussing the results c t the complete SCFT, we provide an intuitive explanatim of how this calculation improves on earlier ones. The key to examining complex periodic phases centers around a basis function expansion of all spatially deperdent quantities. For instance, the A-segment volume fraction is expanded as
+The self-consistent field equation:;are then transformed to Fourier space, and instead of solving the equations directly for +A(r) as in ref 28, the!set of coefficients + ~ , i is solved for. The basis functions are selected such that they possess the symmetry of the phase being considered. For the Qza& phase,61the first few are
+fib=) 1 (2)
+fi(r)= &E(cos(x) sin(Y) s i n ( 2 ~+)
+cos(Y)sin(2) sin(2X) + cos(2) sin(X) sin(2Y)) (3)
+f3(r)= d Z E ( c o s ( 2 ~ )c o s ( 2 ~ )+ C:OS(~Y)c o s ( 2 ~ )+ cos(2Z) COS(2X)) (4)
+f4(r)= d Z E ( s i n ( 2 ~ ) [ c o s ( 3s~i)n(z)
+sin(3Y) cos(Z)I + sin(2Y)[c:os(3Z)sin(X) 
+sin(3.Z)cos(X)] + sin(2Z)[cos(3X) sin(Y) sin(3X) cos(Y)I) ( 5 )
+f5(r)= d%%cos(4X)+ co!;(4Y) + cos(4Z)) ( 6 )
+where X = 2nxID is a dimensionless length, Y and Z
+are defined similarly, and D is the size of the cubic unit
+cell. The basis functions are odered according to the magnitudes of their wavevectcrs. This sequence of functions is infinite and must be truncated in order to perform a numerical calculation. The more basis functions retained, the more accurate the calculation. Figure 1shows Fzagd, the free energy of the QIaad phase per molecule measured in units of k:3T,as a function of the number of basis functions for X N = 20 and 30 at f = 0.33. This figure demonstrates the need for more basis functions as the segregation increases, causing the width of the internal interface to become narrow relative to D . Locating a phase boundary at a given value of
+xN to an accuracy in f of &lop3requires typically an
+
+
+1094 Matsen and Bates Macromolecules, Vol. 29, No. 4, 1996
+1
+0.8
+0.6
+?4
+0.4 o.2kL, pI , , J,]I ,, , ,I
+.\ *
+,.--e8
+0 o 0.2 0.4 0.6 0.8 1
+D
+Figure 2. A-segment profiles over one period of the lamellar
+phase of a symmetric Cf = 0.5) diblock melt for xlv = 11,12,
+15, 25, 50, and 100. Dashed lines denote first-harmonic
+approximationsfor the profiles at xN = 11,12, and 15.
+accuracy of in the free energies. We use a generous number of basis functions in order to be confident that we have attained convergence. For the Qla$d phase, 175, 325, and 450 functions are used for
+XN= 20, 30, and 40, respectively. For comparison, the
+first-harmonic approximation used in the RPA calculation of Leibler retains just the first two basis functions, i.e., fl(r)and f 2 ( r ) , for each phase. Furthermore, that calculation performs a power-series he., Landau) expansion of the free energy potential in &4,2 which i!; truncated after the fourth-order term. In the othe:!. extreme, the SST assumes &(r)is a step function with values of either 0 or 1. It further assumes that copolymers are strongly stretched following straight paths, whereas the SCFT calculates distributions ove!: all paths weighting them by the appropriate Boltzmanri factors.
+The product xiV is the quantity that controls the degree of segregation between A and B blocks. Typi
+cally, segregation is categorized into three regimes: weak, intermediate, and strong. Because there are no well-defined criteria for separating these regimes, they are usually discussed in vague terms. Here, we present some results to better indicate over what intervals of xiV these regions occur. As a representative example, we examine the lamellar phase of a symmetric (f= 0.5) diblock and plot the profile for the A-segment density +A(r) a t several degrees of segregation in Figure 2. The weak-segregation regime occurs when the profile is sinusoidal or, in general, when the profile is well approximated by its first Fourier component. The dashed lines in Figure 2 show the first-harmonic approximation for the weaker segregated cases. Based or1 that, the weak to intermediate crossover occurs a t xAT
+
+12, not much above the mean-field critical point ai;
+xN = 10.495. Consequently, the RPA is only accurate
+in a narrow xN range as was demonstrated earlier in
+ref 28. The strong-segregation regime occurs when the middle of each domain becomes essentially pure. It it; rather arbitrary as to what is meant by pure, bui; requiring @A(r) > 0.9999 in the middle of a n A-rich domain provides a crossover from intermediate to strong
+segregation at xlV - 50. The SST not only requires the
+A and B blocks to be strongly segregated, it also requires; them to be strongly stretched and the internal interfaces; to be narrow. As illustrated below, the SST does not become accurate for predicting domain spacings and
+10 40 100 400
+XN
+Figure 3. Period (a)and interfacial width (b)of the lamellar
+phase for a symmetric(f= 0.5) diblock melt plotted logarith
+mically as a function of xiV. Solid lines are obtained from
+SCFT, dashed lines denote the SST predictionsgiven by eqs 7
+and 8, and the dotted line in (b) represents w = 2 a / ( 6 ~ ) ~ ~ .
+interfacial widths until xiV - 100. In general, far larger
+degrees of segregation are required before the SST becomes reliable.35 Many interpret the segregation regimes on the basis of how the lamellar spacing, D, and the interfacial width, w,vary with N . Following a typical definition,
+we equate w to (d$A/dz>-levaluated at the interface. In
+Figure 3, these quantities are plotted logarithmically for both the SCFT and SST. In the DIS phase at f = 0.5, the characteristic length scale is 2dq* = 1 . 3 1 w 2 , where q* is the wavevector at which the structure function attains its maximum.20 This iVu2 scaling should be associated with the absence of ~egregation.~7 Often it is assumed that this scaling continues into the weak-segregation regime. This confusion has been amplified by misleading DFC calculation^,^^^^^ which predicted a Nu2 scaling for weakly ordered microstructures. This result has been attributed to neglecting the wavevector dependence in the high-order vertex functions of the RPA expansion.27 The more accurate SCFT c a l c ~ l a t i o nlsik~e~th~e~o~ne presented here show that the exponent jumps immediately as the weak-segregation regime is entered, which occurs upon crossing the critical point. We find that the exponentjumps to 0.994, consistent with the RPA calculation in ref 36 and intermediate to the exponents quoted in refs 37 and 38. When fluctuations are taken into account, segregation begins in the DIS phase causing the exponent t o increase prior to the order-disorder transition39@ consistent with e ~ p e r i m e n t . F~i~tting the weak t o intermediate regimes, experiment^^^,^^ measure an exponent of m4/5. At the strong segregations, D begins to scale with an exponent of 2/3 consistent with experiment13v65and with the SST r e s ~ l t ~ ~ l ~ ~
+(7)
+shown with a dashed line in Figure 3. We note that
+
+
+Macromolecules, Vol. 29, No. 4, 1996
+120
+100
+80
+XN 60
+Unifying Block Copolymer Theories 1095
+Table 1. Coordinates along the Blmndaries of the Qrae Phase"
+DIS
+0 0.2 0.4 0.6 0.8 1
+0 '"I''~I.'l'*ll'l''
+f
+Figure 4. Mean-field phase diagram for conformationally
+symmetric diblock melts. Phase are labeled-L (lamellar),H
+(hexagonal cylinders),QrQ& (bicontinuousZu3d cubic), QI,~,
+(bcc spheres), CPS (close-packed spheres), and DIS (disor
+dered). Dashed lines denote extrapolated phase boundaries,
+and the dot denotes the mean-fieldcritical point.
+. _0.1 0.2 0.3 0.4 0.5
+f
+Figure 5. Expanded view of the phase diagram in Figure 4,
+showing the weak-segregation regime. The DIS + CPS +
+Qrmsm and H + Q~,,gd+ L triple points are denoted with dots.
+while DFT calculations also obtain this 'V3 scaling, they inaccurately predict the proportionality At strong segregations, the interfacial width becomes independent of N and approaches w = 2a/(6xIu2. Be
+cause this approximation never becomes accurate for reasonable segregation^,^^ Semenov40was stimulated to derive an improved SST-based expression
+which provides an accurate estimation of w by xN - 100.
+We note that refs 40 and 41 illustrated that fluctuations have a significant effect on w and that they need to be
+accounted for when comparing theory to experiment. Figure 4 presents the SCFT phase diagram for xN up to 120. In agreement with a prediction by S e m e n o ~ , ~ ~ there are narrow regions of stability along the orderdisorder transition for the CPS phase, extending toward
+the strong-segregation limit from DIS + CPS + &Imam
+triple points at xN = 17.67 and f = 1- f = 0.235 (see
+Figure 5). We note that while the regions of stability for the classical ordered phases L, H, and Qmsm grow
+with increasing xN,the region of stability for the
+bicontinuous Qza& phase decreases monotonically be
+yond xN - 18 where its width is Af = 0.037. Initially,
+it narrows gradually, but this becomes more rapid as
+xN increases. Table 1 lists coordinates for the Qzaa phase boundaries, which originate from triple points at
+lcN fWQ
+40 0.318 35 0.318 30 0.320 26 0.324 24 0.327 22 0.332 20 0.338 18 0.346 16 0.359 14 0.380 12 0.419
+4*Hlq *Q
+1.028 1.026 1.023 1.021 1.020 1.018 1.016 1.015 1.013 1.011
+fQ5
+0.337 0.343 0.349 0.356 0.361 0.367 0.375 0.384 0.396 0.411 0.434
+q*Qfq*L
+1.033 1.030 1.025 1.022 1.018 1.015 1.009 1.001 0.995 0.990
+Af
+0.019 0.025 0.029 0.032 0.034 0.036 0.037 0.037 0.036 0.031 0.015
+0.0388 0.0345 0.0299 0.0272 0.0245 0.0213 0.0179 0.0141 0.0097 0.0060
+~HPL
+0.0084 0.0076 0.0069 0.0065 0.0059 0.0050 0.0040 0.0030 0.0019 0.0007
+a Also listed are the ratios of q*, the magnitude of the principal
+scattering vector, for the two equilibrium phases along each transition. (The subscript Q denotes &,ad.) The last two columns
+list the excess free energy per molecule in units of ~ B foTr the
+Qpnsm and HPL phases along the WQrajd and QIasda transitions, respectively.
+xN = 11.14 and f = 1- f = 0.452 (see Figure 5 ) . The
+fourth column demonstrates the narrowing of the Qla$jd
+channel, suggestive of an impending H + Qza& + L
+triple point beyond which the Qa&phase would be unstable. At X N = 40, where the width is only Af = 0.019,450 basis functions are used to evaluate the free energy of the QIaSd phase. Although the large number of basis functions becomes prohibitive, we are prevented from extending these transitions further due to convergence problems in solving the selkonsistent field equations. We attribute this problem. to the Fourier series representation of the segment profiles, because small displacements in a sharp interface can produce drastic changes in large wavevector Fourier components. This seems to be particularly problematic for the Qza&phase. Still, the width of the Qla$d regicln must vary continuously and thus become even narrower beyond xN = 40, almost certainly pinching off. If this was not t o happen, it would require the trends that have slowly and monotonically developed to make an unprecedented and unphysical reversal. Although we cannot absolutely say the Qza& phase pinches off, it seems highly likely that it does, and the SST calculation3:lsupports this conclusion. We note that, at weak segregations, both the CPS and the QIagd phase pinch off prior to the mean-field critical point as illustrated in Figure 5, because their principal scattering vectors do not form an octahedron.20fj6
+For the classical phases, calculations can be extended into the strong-segregation regime. In Figure 4, extrapolations are made for the Qlaaphase boundaries,
+which have them terminating ax xN - 60. Then, the
+remaining transitions are calculated up to X N = 120. Coordinates along the transiticins between classical phases are listed in Table 2. As xN diverges, the DIS/ CPS and CPS/QI,~, transitions will continue to approach f = 0 and 1. The infinite X Nlimit of the Qmgm/H and H/L transitions can in principle be determined with the SST. Implementing the unit-cell approximation and ignoring the effect of exclusion zones, SST predicts the limits to be f = 1- f = 0.117 and 0.299, r e ~ p e c t i v e l y . ~ ~ ~ ~ ~ Proper treatments of the exclusion zones44demonstrate that they can be safely i g n o r ~ ! d ,a~n~d , t~he~ error associated with the unit-cell approximation has been estimated for the L/H transition. F r e d r i ~ k s o nfo~u~nd that the UCA causes a -4% shift, suggesting the correct
+LJH limit is at; 0.287, while Liklitman and S e m e n ~ v ~ ~
+predicted it a t 0.293. However, SCFT results extrapolated to xN = 00 provide compelling evidence that the
+
+
+1096 Matsen and Bates Macromolecules, Vol. 29, No. 4, 1996
+Table 3. Scattering Amplitudes for the Phase at Various Coordinates, k N , flu
+Table 2. Coordinates along the Boundaries between the Classical Phases"
+q * d 4*d 4*d 4*$
+XN fDlC 4*C fClQ 4"Q f a / H 4*H fwL 9*L
+120 0.047 0.049 0.971 0.123 1.086 0.317 1.08!5 100 0.055 0.057 0.971 0.126 1.084 0.318 1.083 80 0.066 1.549 0.068 0.971 0.131 1.078 0.320 1.0811 60 0.083 1.387 0.086 0.971 0.142 1.068 0.324 1.076 50 0.097 1.315 0.101 0.971 0.151 1.060 0.326 1.079 40 0.116 1.238 0.121 0.971 0.166 1.049 0.331 1.0613 30 0.148 1.163 0.153 0.970 0.192 1.033 0.340 1.0513 20 0.210 1.095 0.212 0.968 0.243 1.012 0.363 1.03!5
+" A l s o provided are the ratios of q*, the magnitudes of the principal scattering vectors. (The subscripts D, C, and Q denote DIS, CPS, and Qmsmre,spectively.)
+true L/H limit is 0.310,46implying a significant and, as of yet, unidentified error in the SST. We note that DFrr calculations are rather inaccurate, predicting 0.215 and 0.355 in ref 23 and 0.195 and 0.345 in ref 25 for the
+two infinite XNlimits.
+In addition to those phases found to be stable, we have examined the bicontinuous cubic phase with Pn3nt symmetry and the hexagonally perforated lamellar phase up to xN = 35. Notably, both are predicted to be stable a t certain compositions in diblockhomopolymer blends.47 Here, we find that the Qpngm phase is rather unstable but that the HPL phase is nearly stable. Thte Qpnsm phase is least unstable along the WQza&transjtion. In the seventh column of Table 1,its excess free energy A8'pngm per molecule in units of kBT is given for various values of X Nalong this transition. This energy increases monotonically with xN, and considering the two SST calculation^,^^^^^ the Qpngm phase likely remains unstable as xN diverges. Along the I.&za$d transition., we find the excess free energy of the HPL phase, AFHPI., to be quite small. Column eight in Table 1shows that
+its excess free energy increases slowly with xN,SUE
+gesting that the HPL remains unstable into the strongsegregation limit in agreement with the SST calculation in ref 32. However, the possible stability of this phase
+should not be dismissed even in the infinite XNlimit.
+The SST calculation assumed the perforations were aligned between adjacent minority-component layers. Both theoretical3I and e ~ p e r i m e n t a l l ~re~slullt~s~s~uggest that it is more favorable t o have the perforations staggered, and so the SST calculation probably overes timated its free energy. We note that preliminary work has indicated that introduction of conformational a s p . metry may be sufficient to bring about the stability of the HPL phase at degrees of segregation accessible t o our calculation. Because structures considered in the SCFT calculation have to be specified a priori, it is conceivable that other phases unknown to us could be stable. If this is so, we will likely learn of them through future experiments.
+Neither the HPL or the CPS phase has a uniquelg defined morphology. For the HPL phase, we examined the two geometries where the perforated minority
+component layers are staggered in abab... and abcabc...
+sequences, and for the CPS phase, we examined both hcp and fcc structures. Not surprisingly, we find that both HPL structures provide the same spacings between lamellae and between perforations within the layerr;. Likewise, both CPS structures produce spacings between nearest-neighbor spheres that are indistinguishable. At strong segregations, we find the different packing arrangements in each case t o be essential1,y degenerate in free energy. Because the basis function
+peak (15,0.33) (20,0.33) (30,0.33) (20,0.30) (20,0.36)
+1.0000 0.0919 0.0004 0.0020 0.0081 0.0058 0.0021 0.0011 0.0010 0.0006
+1.0000 0.1150 0.0003 0.0003 0.0057 0.0034 0.0022 0.0017 0.0019 0.0012
+1.0000 0.1274 0.0010 0.0002 0.0052 0.0032 0.0029 0.0026 0.0024 0.0019
+1.0000 0.1024 0.0002 0.0026 0.0145 0.0113 0.0046 0.0029 0.0022 0.0013
+1.0000 0.1286 0.0015 0.0002 0.0009 0.0002 0.0006 0.0007 0.0014 0.0009
+a Peaks are identified with the standard spectroscopic ( h k l ) notation,6l and amplitudes are normalized to the principal (211) peak.
+expansion converges more rapidly for the abcabc...
+stacking of perforated lamellae and for the fcc arrangement of spheres, those are the structures we use for most of our calculations involving the HPL and CPS phases, respectively. At weaker segregations, however, noticeable differences do exist, with the HPL phase
+slightly favoring the abab...sequence and the CPS phase
+favoring the hcp arrangement. Consequently, the hcp lattice must be used in order to accurately obtain the
+DIS + CPS + Qzmsm triple points. Nevertheless, we
+expect that, in real melts, the slight differences in energies will be irrelevant in comparison to nonequilibrium effects and that the arrangement of either perforated lamellae or close-packed spheres will be random. This paper has focused on equilibrium phase behavior, and to do so, all that was required was the free energy of each structure. The SCFT also predicts numerous other quantities, many of which can be tested against experiment. For example, the Fourier series representation of the segment profile, @A(r), straightforwardly yields scattering amplitude^.^ For the Q z d d
+phase at xN = 20 and f = 0.33, the Fourier coefficients
+@ ~ , jfor i = 1,2,3, ... are 0.3300,0.3164, -0.1074,0.0050,
+-0.0057, .... The scattering amplitudes in Table 3 are obtained by squaring these coefficients. Notably, the theory predicts the (220) peak to be -10% of the principal (211) peak in agreement with experiment.*J5 Furthermore, the amplitudes for (321) and (400), the third and fourth reflections, respectively, are often abnormally small, consistent with measurements in refs 8, 11, and 15. Also provided by the theory are the magnitudes of the principal scattering vectors q*.68 Tables 1 and 2 provide the ratio of these magnitudes for the two equilibrium phases along each transition. For the DIS phase, q* is taken to be the wavevector for which the structure function attains its maximum. For the CPS phase, we evaluate q* using the fcc lattice; using the hcp lattice with the same spacing between spheres would reduce it by a factor of 81t213. At strong segregations, q* can exhibit discontinuities of several percent across order-order phase boundaries and much larger discontinuities across the order-disorder transition. At weak segregations, the discontinuities in q* tend to become vanishingly small. Notably, the epitaxial growth of the phasesJ1 and of the QImijm phase6sfrom the H phase both imply small discontinuities in q* consistent with the SCFT predictions. Additional information provided by the SCFT includes all the segment distribution f ~ n c t i o n s .F~or~instance, the distribution of the ends or the junctions of the diblocks can be determined. From the A-segment profile, the width of the interfaces can be calculated as can the
+
+
+Macromolecules, Vol. 29,No. 4,1996
+detailed shape of the interface. Furthermore, the energy contributions due to the entropic stretching of the A and B blocks and due to the tension of the internal interface can be evaluated. We are currently pursuing such calculations, with the hope they will yield an explanation for what stabilizes the Q I p~hase~.
+4. Discussion
+Theory has now reached the stage where the meanfield phase diagram of the standard model is well-known for what is considered the most fundamental block copolymer system, the conformationally symmetric diblock melt. Several challenges remain, such as providing more conclusive evidence that the (&&region closes off and accurately determining the resulting triple point. As we have discussed, pushing the present calculation to sufficient segregation will be rather difficult. Conceivably, it is possible to improve on the SST calculations making fewer assumptions regarding the shape of the internal interfaces and adding finitesegregation corrections. Although this may provide more convincing evidence that the Q I is ~uns~table at strong segregations, it is unlikely to accurately locate
+the triple point if it is indeed close to XN- 60. Of
+course, one issue this type of theory can never resolve is whether all the stable structures have been considered. This is where theory and experiment should be used in conjunction with each other. Experiments may detect stable or metastable states and provide clues t o their structure. With that it may be possible to narrow the field of candidates and determine a new stable phase.
+In the study of the standard model, perhaps the last task in regard to bulk phase behavior is to include fluctuation effects into the full SCFT. The extent to which fluctuations affect phase behavior increases as the invariant polymerization index, N Npia', is decreased. Weakly segregated microstructures are most susceptible to fluctuations, which can destroy long-range order transforming them into the disordered state. To date, fluctuation correctionshave been incorporated into both the RPA21,39,4a8nd the DFT.49 The RPA-based calculations examine the vicinity of the mean-field critical point (see Figures 4 and 5) where fluctuations are greatest. They illustrate that fluctuations prevent the critical point from occurring and shift the orderdisorder transiti_on (ODT) to larger X N by an amount proportional t o Np1l3. They also open up windows of first-order transitions between the DIS phase and the various ordered structures. In the infinite molecular weight limit, fluctuations are completelysuppressed and the mean-field behavior is recovered. The DFT calculation shows that fluctuation effects diminish rapidly as the ordered structures become segregated. Calculations have yet to determine whether fluctuations alter the delicate free energy balance in the complex phase region. Experiments suggest that at weak to intermediate segregations, they can produce significant changes to the order-order phase transiti0ns.l Although the present theoretical result agrees with experiment in that the Q I ~ Q phase exists as a bubble,lJ1J2 there are some discrepancies in regard to the complex phases. Experiments indicate that, as molecular weight increases, the phase becomes unstable and the only complex phase that appears stable is the HPL 0ne.l This discrepancy cannot be attributed t o thg mean-field approximation, because these are large N results for which fluctuation effects
+Unifying Block Copolymer Theories 1097
+are diminished. Although these discrepancies could be a result of nonequilibrium effects in the experiments, it couldjust as well be due to limitations in the standard model. While this model has proven itself to be rather successful in most regards, the isiwe of stability among complex phases is a subtle one that may require a more refined approach. Theoretical research has been 'lased on the underlying assumption that block copolyiner phase behavior is reasonably universal and that all AB diblock systems have phase-diagrams that are to~~ologicalleyquivalent to that of the standard model. Considering the close competition of the complexphases in the region between the L and H phases, this is unlikely. Presumably, refinements to the model will alter the subtle balance of energies between the complex phases. Although consideration of conformationalasymmetry between the A and B b l o ~ k hsas~n~ot~ye~t p~roduced qualitatively different b e h a ~ i o r ,s~ome of our calculations have indicated that high asymmetries may cause the HPL phase to become stable. It is possible that polydispersity could alter the phase diagram. Even though this has been incorporated into the RPA,eit2here is little information regarding its effect on the phase boundaries. However, SCFT calculations illustrate that binary blends of closely matched diblocks behave like a monodisperse diblock melt with com~~ositionallayveraged parameter^,^^ strongly suggesting that a moderate polydispersity will have little effect on phase behavior. Another issue worthy of consideration is the relaxation of the incompressibility constraint. Several w o r k ~ l ~ , ~ ~ have illustrated how compressibi1:ityeffects can be dealt with, and recently it was demonstrated that such equation-of-state effects can produce a temperature
+dependence of x that results in a lower critical point.55
+Nevertheless, our preliminary results suggest that compressibilityeffects have little influence on the phase diagram when plotted in the XN- fplane. It may be important to more accurately t:reat the interactions between A and B segments. For polymer blends, the enthalpy of mixing A and B homopolymers is assumed to be X@A@B. The fact that the actual enthalpy does not
+fit this simple form results in ii x parameter which
+depends on @A. In block copolymer melts where @A is not a simple scalar but rather E . spatially dependent quantity such a treatment is unsatisfactory. The solution is to examine more genera:. interaction terms.lg Another issue is the effect of interactions with a finite range. Helfand et aZ.ls have illustrated how this can be incorporated into the theory. Still, another concern is the effect of finite persistence lengths. The wormlike mode170offers a way in which thils can be included into the present c a l c ~ l a t i o n .W~ i~th the study of refinements like those discussed here, our understanding of what favors the occurrence of complex phases will no doubt become more complete.
+Acknowledgment. We are gmteful t o D. A. Hajduk and M. A. Hillmyer for a critical reading of the manuscript. This work has been suppo:*tedby the University of Minnesota Supercomputer 1:nstitute and by the National Science Foundation (DMR 94-05101).
+References and Notes
+(1) Bates, F. S.; Schulz, M. F.; Khaidpur, A. K.; Forster, S.;
+Rosedale, J. H.; Almdal, K.; Mortensen, K. Faraday Discuss. 1994, 98, 7.
+(2) Bates, F. S.;Fredrickson, G. H.Aitnu. Rev. Chent. 1990,41, 525.
+
+
+1098 Matsen and Bates Macromolecules, Vol. 29, No. 4, 1996
+(42) Semenov, A. N. Macromolecules 1989, 22, 2849. (43) Semenov, A. N. Macromolecules 1993, 26, 2273. (44) Ball, R. C.; Marko, J. F.; Milner, S. T.; Witten, T. A.
+Macromolecules 1991, 24, 693. Li, H.; Witten, T. A. Macromolecules 1994,27, 449. (45) Fredrickson, G. H. Macromolecules 1993,26, 4351. (46) Matsen, M. W.; Whitmore, M. D. Macromolecules, submit
+(47) Matsen, M. W. Phys. Rev, Lett. 1995, 74, 4225; Macromol
+(48) Dobrynin, A. V.; Erukhimovich, I. Ya. J . Phys. 11Fr. 1991,
+(49) Muthukumar, M. Macromolecules 1993,26, 5259. (50) Vavasour, J. D.; Whitmore, M. D. Macromolecules 1993,26,
+(51) Matsen, M. W.; Schick, M. Macromolecules 1994,27, 6761. (52) Leibler, L.; Benoit, H. Polymer 1983,22, 195. Hong, K. M.;
+Noolandi, K. M. Polymer Commun. 1984,25, 265. Benoit, H.: Hadziioannou. G. Macromolecules 1988. 21. 1449.
+ted.
+ecules 1995,28, 5765.
+1, 1387.
+7070.
+(3) Matsen, M. W.; Schick, M. Macromolecules 1994,27, 4014. (4) Bates, F. S.; Berney, C. V.; Cohen, R. E. Macromolecules
+(5) Richards, R. W.; Thomason, J. L. Macromolecules 1983,16!,
+(6) Aggarwal, S. L. Polymer 1972, 17, 938. (7) Thomas, E. L.; Alward, D. B.; Kinning, D. J.;Martin, D. C.;
+Handlin, D. L.; Fetters, L. J.Macromolecules 1986,19,2197'.
+(8) Hajduk, D. A,; Harper, P. E.; Gruner, S. M.; Honeker, C!.
+C.; Kim, G.; Thomas, E. L. Macromolecules l994,27,406S. (9) Schulz, M. F.; Bates, F. S.;Almdal, K.; Mortensen, K. Phys. Rev. Lett. 1994, 73, 86.
+(10) Hamley, I. W.; Koppi, K. A.; Rosedale, J. H.; Bates, F. S.; Almdal, K.; Mortensen, K. Macromolecules 1993,26, 5959.
+(11) Forster, S.;Khandpur, A. K.; Zhao, J.; Bates, F. S.;Hamley,
+I. W.; Ryan, A. J.;Bras, W. Macromolecules 1994,27,6922.
+(12) Khandpur, A. K.; Forster, S.; Bates, F. S.; Hamley, I. W.;
+Ryan, A. J.; Bras, W.; Almdal, K.; Mortensen, K. Macromolecules 1995,28, 8796.
+(13) Hasegawa, H.; Tanaka, H.; Yamasaki, K.; Hashimoto, 'I'. Macromolecules 1987,20, 1651. (14) Spontak, R. J.; Smith, S. D.; Ashraf, A. Macromolecules
+1993, 26, 956.
+(15) Hajduk, D. A.; Harper, P. E.; Gruner, S. M.; Honeker, C:.
+C.; Kim, G.; Thomas, E. L.; Fetters, L. J. Macromolecules
+1995,28, 2570. (16) Helfand, E.; Wasserman, Z. R. Macromolecules 1976,9,87!1.
+(17) Helfand, E.; Wasserman, Z. R. Macromolecules 1978, 11', 960; 1980, 13, 994.
+(18) Helfand, E.; Tagami, Y. Polym. Lett. 1971,9, 741; J . Chem.
+Phvs. 1971. 56. 3592: J . Chem. Phvs. 1972, 57, 1812.
+1982, 15, 584.
+982.
+Hilfand, E.; Sapse, A.'M. J . Chem. Phys. 1976, 62, 1327. (19) Helfand, E. J . Chem. Phys. 1975,62, 999. (20) Leibler. L. Macromolecules 1980. 13. 1602.
+(21) Fredrickson, G. H.; Helfand, E. 2. Chem. Phys. 1987, 8:7,
+(22) Semenov, A. N. Sou. Phys. J E T P 1985, 61, 733.
+(23) Ohta, T.; Kawasaki, K. Macromolecules 1986, 19, 2621.
+(24) Anderson, D. M.; Thomas, E. L. Macromolecules 1988, 2.1,
+(25) Lescanec, R. L.; Muthukumar, M. Macromolecules 1993,2ti,
+(26) Melenkevitz, J.; Muthukumar, M. Macromolecules 1991,221,
+(27) McMullen, W. E. Macromolecules 1993,26, 1027.
+(28) Vavasour, J. D.; Whitmore, M. D. Macromolecules 1992,25,
+(29) Olvera de la Cruz, M.; Mayes, A. M.; Swift, B. W.; Macro
+(30) Hamley, I. W.; Bates, F. S. J . Chem. Phys. 1994,100,681:3. (31) Matsen, M. W.; Schick, M. Phys. Rev. Lett. 1994, 72, 2660. (32) Fredrickson, G. H. Macromolecules 1991,24, 3456. (33) Olmsted, P. D.; Milner, S. T. Phys. Rev. Lett. 1994, 72,9313;
+1995, 74, 829. Milner, S. T. J . Polymer Sci. B 1994, 32, 2743.
+(34) Likhtman, A. E.; Semenov, A. N. Macromolecules 1994,27, 3103.
+(35) Matsen, M. W.; Bates, F. S.Macromolecules 1995,28,888i. (36) Mayes, A. M.; Olvera de la Cruz, M. Macromolecules 1991, 24, 3975. (37) Shull, K. R. Macromolecules 1992,25, 2122. (38) Sones, R. A.; Terentjev, E. M.; Petschek, R. G. Macromolecules 1993,26, 3344.
+(39) Barrat, J.-L.; Fredrickson, G. H. J . Chem. Phys. 1991, 95,
+1281. Mayes, A. M.; Olvera de la Cruz, M. J . Chem. Phys. 1991, 95, 4670. (40) Semenov, A. N. Macromolecules 1993,26,6617; see ref 5!1
+within.
+(41) Shull, K. R.; Mayes, A. M.; Russell, T. P. Macromoleculzs 1993,26, 3929.
+697.
+3221.
+3908.
+4199.
+5477.
+molecules 1992,25, 944.
+Burger, C.; Ruland, W.; Semenov, A. N. Macromolecules 1990,23,3339. (53) Matsen, M. W.; Bates, F. S. Macromolecules 1995,28, 7298.
+Schulz, M. F.; Khandpur, A. K.; Matsen, M. W.; Bates, F.
+S.; Almdal, K.; Mortensen, K.; Hajduk, D. A.; Gruner, S. M., in preparation.
+1229.
+Lett. 1994, 72, 1834.
+(54) Hong, K. M.; Noolandi, K. M. Macromolecules 1981, 14,
+(55) Yeung, C.; Desai, R. C.; Shi, A X . ; Noolandi, J. Phys. Rev.
+(56) Whitmore, M. D.; Vavasour, J. D. Acta Polym., 1995, 46, 341. (57) Scheutens, J. M. H. M.; Fleer, G. J. J . Phys. Chem. 1979, 83, 1619; Macromolecules 1985, 18, 1882. (58) Brazovskii, S. A. Sou. Phys. JETP 1975, 41, 85. (59) Marques, C. M.; Cates, M. E. Europhys. Lett. 1990,13,267. (60) Hajduk, D. A.; Gruner, S. M.; Rangarajan, P.; Register, R.
+A.; Fetters, L. J.; Honeker, C. C.; Albalak, R. J.; Thomas,
+E. L. Macromolecules 1994,27, 490. (61) Unnormalized basis functions can be found in: International Tables for X-Ray Crystallography; Henry, N. F. M., Londs
+dale, K., Eds.; Kynoch: Birmingham, U.K., 1969. Those of the QI&d phase appear on pp 524-5. (62) Fried, H.; Binder, K. J ; Chem. Phys. 1991, 94, 8349; Europhys. Lett. 1991, 16, 237. (63) Almdal, K.; Rosedale, J. H.; Bates, F. S.; Wignall, G. D.; Fredrickson, G. H. Phys. Rev. Lett. 1990,65, 1112. Foster, M. D.; Sikka, M.; Singh, N.; Bates, F. S.; Satija, S. K.;
+Makrzak, C. F. J . Chem. Phys. 1992, 96, 8605. (64) Hadziioannou, G.; Skoulios, A. Macromolecules 1982, 15, 258. (65) Hashimoto, T.; Shibayama, M.; Kawai, H. Macromolecules 1980, 13, 1237. (66) Alexander, S.; McTague, J. Phys. Rev. Lett. 1978, 41, 708. (67) Disko, M. M.; Liang, K. S.;Behal, S. K.; Roe, R. J.; Jeon, K.
+J. Macromolecules 1993, 26, 2983. (68) For the L phase, the lamellar spacing is 2n/q*, for the QIasd phase, the size of the unit cell is 2 ~ 6 ~ / ~ /foqr*t,he H phase, the spacing between the cylinders is 4 ~ / 3 ~ / ~aqn"d ,for both the bcc and fcc lattices, the spacing between the spheres is
+7rG1Wl" .
+(69) Koppi, K. A,;Tirrell, M.;Bates, F. S.;Almdal, K.; Mortensen,
+K. J . Rheol. 1994, 38, 999. (70) Morse, D. C.; Fredrickson, G. H. Phys. Rev. Lett. 1994, 73, 3235. Schmid, F.; Muller, M. Macromolecules 1995, 28,
+8639.
+MA9511381
+(71) Matsen, M. W. J. Chem. Phys., submitted.

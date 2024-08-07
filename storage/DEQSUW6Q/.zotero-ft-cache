@@ -1,0 +1,2493 @@
+arXiv:2311.02187v3 [q-bio.QM] 28 May 2024
+
+An algorithmic framework for synthetic cost-aware decision making in molecular
+design
+Jenna C. Fromer† and Connor W. Coley∗,†,‡
+†Department of Chemical Engineering, MIT, Cambridge, MA 02139 ‡Department of Electrical Engineering and Computer Science, MIT, Cambridge, MA 02139
+E-mail: ccoley@mit.edu
+Abstract Small molecules exhibiting desirable property profiles are often discovered through an iterative process of designing, synthesizing, and testing sets of molecules. The selection of molecules to synthesize from all possible candidates is a complex decisionmaking process that typically relies on expert chemist intuition. We propose a quantitative decision-making framework, SPARROW, that prioritizes molecules for evaluation by balancing expected information gain and synthetic cost. SPARROW integrates molecular design, property prediction, and retrosynthetic planning to balance the utility of testing a molecule with the cost of batch synthesis. We demonstrate through three case studies that the developed algorithm captures the non-additive costs inherent to batch synthesis, leverages common reaction steps and intermediates, and scales to hundreds of molecules. SPARROW is open source and can be found at github.com/coleygroup/sparrow.
+1
+
+Introduction
+Small molecules exhibiting desirable property profiles are often optimized through an iterative process of designing, synthesizing, and testing sets of molecules to elucidate the relationship between structure and function. The key challenge in each design iteration is to downselect and prioritize, among all possible molecules that could be made and tested, which candidates are worth pursuing. This challenge exists across molecular design applications, including in the discovery of therapeutic candidates, organic catalysts, battery materials, and sustainable solvents.
+A myriad of computational workflows can aid in the prioritization of molecules, but they each make simplifying assumptions about the cost and utility associated with testing a given molecule. Generative models, for example, often propose molecules that are impractical to synthesize1,2 and therefore exceptionally costly to evaluate. Synthetic complexity or accessibility score filters3–6 may mitigate the burden of manually inspecting molecules for synthesizability.7 However, they fail to capture the non-additive costs of synthesizing a batch of molecules. Specifically, filters that assess compounds individually cannot incorporate the cost savings associated with common intermediates and starting materials in batch synthesis. The same limitation applies to retrosynthetic software filters8–11 and reaction-based generative models.12,13 The consideration of synthetic cost may be better described as an art than a science at present, explaining the lack of quantitative decision-making frameworks that we feel are suitable for automatically selecting molecules, for example, in a lead optimization campaign. 14
+The framework of Bayesian optimization15–18 partially captures the balance of cost and experimental value that is inherent to iterative design cycles. However, even cost-aware Bayesian optimization approaches19–22 presume a specific numerical cost for each experiment and cannot capture the non-additivity of synthetic costs for a batch of multiple molecules. The use of common intermediates and starting materials, parallel library chemistry, and laboratory automation can significantly influence the cost of molecular synthesis. Existing
+2
+
+algorithms for the downselection of compounds and synthetic routes fail to grasp these effects. Methods that appropriately accommodate the value and cost of a hypothetical set of experiments could both accelerate molecular design campaigns and expand the adoption of computer-aided molecular design tools.
+In this work, we propose Synthesis Planning And Rewards-based Route Optimization Workflow (SPARROW): an algorithmic decision-making framework for driving design cycles (Figure 1). This work builds upon prior problem formulations for the simultaneous selection of synthetic routes to multiple molecules23–25 and the integration of product and process systems design.26–29 Unlike alternative methods for downselection, SPARROW prioritizes molecules and their hypothetical synthetic routes from a pool of candidates using a multi-objective optimization criterion that balances cost and utility. The novelty of our contribution lies in the mathematical formulation of SPARROW’s graph-based optimization; this allows SPARROW to accurately capture the expert intuition typically required for simultaneous molecule and synthetic route selection. SPARROW’s impact will be further strengthened by advances in generative modeling for design ideation, computer-aided synthesis planning, and structure-property relationship modeling and uncertainty quantification. An open source implementation of SPARROW written in Python is made available at github.com/coleygroup/sparrow.
+We demonstrate SPARROW’s ability to orchestrate molecular design cycles through three case studies. These applications illustrate how SPARROW (1) successfully balances information gain and synthetic cost, (2) captures the non-additivity of synthetic costs for a batch of molecules, and (3) scales to candidate libraries of hundreds of molecules. Importantly, SPARROW provides a unified framework for simultaneously evaluating molecule suggestions from virtual libraries, de novo design algorithms, and human experts as well as synthetic route suggestions from retrosynthesis software and human experts.
+3
+
+Virtual libraries
+
+O O O OH
+
+OH O
+N H
+
+De novo design
+
+MeHN
+
+O
+
+N
+
+NN N H
+
+Expert ideation
+
+O
+
+H
+
+HO
+
+N
+
+N H
+
+NN
+
+O
+
+N
+
+Candidate set
+
+O
+
+H
+
+1
+
+N
+
+N
+
+NN
+
+Me O
+
+N
+
+O
+
+H
+
+2
+
+HO
+
+N H
+
+N NN
+
+O
+
+N
+
+O
+
+N
+
+3
+
+MeHN
+
+NN N
+
+H
+
+Property prediction
+1
+2
+3
+Retrosynthetic planning
+12 3
+
+SPARROW
+
+Cost
+
+Reward
+
+Optimized candidates and synthetic routes
+12 3
+
+Figure 1: Overview of SPARROW and its role within the molecular design cycle. Each molecule in a candidate set, comprising molecular ideas from any combination of algorithmic or expert sources, is annotated with its anticipated properties and potential synthetic routes. These annotations can make use of quantitative structure-property relationship models with or without uncertainty quantification as well as computer-aided synthesis planning tools or human experts. SPARROW then weighs the utility of every candidate against their synthetic costs, not one-by-one but as a batch, and selects an optimal subset of candidates for synthesis and testing.
+Results
+SPARROW generates a reaction network comprised of candidate target molecules and synthetic routes, discussed in detail in the Methods section. A graph-based optimization problem is solved to downselect a set of molecules and synthetic routes that optimally balance the cumulative synthetic cost and utility, as shown in Figure 1. In this context, utility measures the value of evaluating the properties of a molecule. An appropriate measure of utility will vary across applications and at different stages of design. It may incorporate molecular property predictions, uncertainty in those predictions, or the potential for a new datapoint to improve a structure-property relationship. A candidate library must be provided to SPARROW with corresponding rewards that indicate the utility associated with each candidate molecule.
+The reward achieved by selecting a molecule also depends on the success of the reaction steps selected to synthesize it. No information can be gained if a reaction step in the
+4
+
+Figure 2: SPARROW’s problem formulation. A nonlinear objective function is defined that maximizes the expected reward per unit cost of selected candidates and routes. We currently simplify this into a tractable objective function that balances utility and cost through a weighted sum. Three constraints are included to ensure that selected compounds have reactions to produce them, selected reactions have reactants to run them, and cycles are forbidden.
+5
+
+route to a candidate fails. We formalize this by aiming to maximize the expected reward of selecting a candidate molecule, which can be represented by its reward multiplied by the probability that it is successfully synthesized (Figure 2). Balancing cost and utility, the objective of SPARROW may be formalized as the expected reward for all selected targets (i.e. candidates) divided by the cost of synthesizing all selected targets using selected routes. As described in the Methods section, we transform the expected reward per cost to a scalarized objective function that simultaneously maximizes cumulative utility and minimizes synthetic cost and risk of reaction failure. Three terms are optimized: (1) the cumulative rewards of selected candidates, (2) the cost of bought starting materials, and (3) the number of reactions and their likelihood of success, respectively. The linear optimization problem solved within SPARROW is defined mathematically in Figure 2. Positive weighting factors (λ = [λ1, λ2, λ3]) assign relative importance to each objective and can be tuned to arrive at solutions that distinctly balance cost and utility. Higher values of λ1 generally lead to solutions with more selected candidates and higher cumulative reward values. Higher values of λ2 and λ3 impose greater penalties for selecting costly starting materials and for selecting many reactions or ones with lower perceived likelihood of experimental success, respectively.
+SPARROW was tested with three cases studies to showcase its ability to identify costefficient routes, balance information gain and cost, and unify library-based and de novo design. Our demonstrations illustrate that SPARROW can scale to the low hundreds of molecules.
+In all cases, we used ASKCOS9,30 with an expansion time of 60 seconds to generate retrosynthetic graphs and estimate the likelihood of reaction success. Compound buyability and cost, if applicable, were assigned with the ChemSpace API using availability and pricing as of October 2023.31 For baseline solutions, compound prices were sourced from the ChemSpace API in March 2024. A comparison of compound prices between October 2023 and March 2024, shown in Figure S1, demonstrates that cost discrepancies are minor and do not artificially boost SPARROW’s performance relative to baselines.
+6
+
+Balancing cost and utility
+Our first demonstration of SPARROW is on a candidate library of 14 molecules tested as inhibitors of the Alanine-Serine-Cysteine Transporter 2 (ASCT2) by Garibsingh et al. 32. They selected molecules using molecular docking and binding free energy simulations prior to synthesis and testing. Although the molecules in this study were synthesized over multiple design cycles, the set of structures with binding free energy predictions serves as a representative case study for SPARROW. For candidate reward values, binding free energies for the full candidate set were scaled linearly between 0 and 1, with the most negative binding energy mapping to 1 and the most positive mapping to 0.
+7
+
+Cumulative Reward Cumulative Reward Number of Reactions
+
+A)
+
+B)
+
+6
+
+6
+
+34
+
+60
+
+32 31 29
+
+28
+
+4
+
+4
+
+40
+
+2
+
+2
+
+20
+
+0
+
+0
+
+20
+
+40
+
+60
+
+Number of Reactions
+
+0
+
+0
+
+0
+
+100
+
+200
+
+300
+
+0.6 0.7 0.8 0.9
+
+Starting Material Cost
+
+Average Reaction Score
+
+SPARROW
+
+Reward Only
+
+SA Score Only
+
+Combined Score
+
+C)
+Weights: [8, 1, 1] 3 of 14 targets Reward: 2.24 5 starting materials 8 reactions
+
+Weights: [20, 1, 1] 8 of 14 targets Reward: 4.7 14 starting materials 29 reactions
+
+Weights: [12.5, 1, 1] 5 of 14 targets Reward: 3.3 8 starting materials 16 reactions
+
+Weights: [20, 1, 0] 13 of 14 targets Reward: 6.2 19 starting materials 72 reactions
+
+CO2H
+PhO $0.6/g
+
+CO2Me
+
+HO
+
+N O Ph
+
+O $0.8/g
+
+Ph
+
+Ph
+
+CO2H
+
+$0.5/g
+
+CO2H
+Ph $0.6/g
+
+CO2H
+
+HO
+
+NBoc
+
+$1.3/g
+
+PhO PhO PhO
+
+0.96
+
+PPh3, DEAD THF
+
+O
+
+CO2Me
+
+O
+
+N O Ph
+
+O MeOH 0.99 Pd, H2
+
+O
+
+CO2Me
+
+O
+
+NH
+
+0.80 NaOH
+
+O
+
+CO2H
+
+O
+
+NH
+
+R: 0.64
+
+0.89
+
+PPh3, DEAD THF
+
+CO2Me
+
+Ph
+
+O Ph
+O
+
+O N
+O
+
+Ph
+
+MeOH 0.99 Pd, H2
+
+CO2Me
+
+O
+
+Ph
+
+NH
+
+O
+
+Ph
+
+0.79 HCl
+O Ph
+O Ph R: 1.00
+
+CO2H NH
+
+0.88
+
+PPh3, DEAD THF
+
+Ph O
+
+CO2H
+
+O
+
+NBoc
+
+0.99 TFA
+Ph O
+
+CO2H
+
+O
+
+NH
+
+R: 0.60
+
+Figure 3: Demonstration of SPARROW’s ability to balance cost and reward on a 14-member candidate library of putative ASCT2 inhibitors. (A, B) Weighting factors were varied to arrive at Pareto fronts that depict the trade-offs between cumulative reward, starting material cost, number of reactions, and reaction scores (Table S1). SPARROW identifies solutions with cheaper starting materials and higher reaction scores when compared to baselines (Table S2). Some points are labeled with the corresponding number of reactions. (C) Specific solutions for different weighting factors λ are summarized, with the complete set of selected routes for λ = [8, 1, 1] drawn. Molecules in blue are starting materials, and those in pink are targets. Reaction conditions and scores were obtained using ASKCOS.9,33,34 Compound costs were sourced from the ChemSpace API.31 Note that the reported starting material cost is the sum of the price per gram of selected starting materials without consideration of the amount needed.
+
+8
+
+SPARROW identifies various synthetic plans that distinctly balance information gain and cost (Figure 3). The cumulative utility, number of reaction steps, and total starting material cost of the synthetic routes proposed by SPARROW are strongly dependent on the scalarization weights λ (Figure 3). This allows a user’s relative preferences for cost and information gain to directly impact SPARROW’s solution. The sample routes shown in Figure 3C reveal that SPARROW prioritizes molecules that both have high rewards and can be synthesized in few steps from cheap starting materials. When possible, SPARROW utilizes common starting materials and overlapping reaction steps to reduce the overall cost of synthesizing a batch of molecules.
+We compare SPARROW’s performance with alternative downselection strategies that do not consider the non-additivity of batch synthetic costs: selection based on reward only, synthetic accessibility score3 only, and a combined score. For each strategy, a variety of solutions may be obtained by varying the number of selected compounds. In this case, SPARROW and baseline solutions require a comparable number of reaction steps (Figure 3A). However, the routes selected by SPARROW require cheaper starting materials and use reactions with higher scores when compared to baselines, indicating higher model confidence in the likelihood of successful synthesis (Figure 3B).
+Unifying library-based and de novo design
+A second case study exemplifies SPARROW’s ability to leverage common intermediates and unify library-based and de novo design. Koscher et al. 35 developed an autonomous molecular discovery platform to design molecules that simultaneously optimize absorption wavelength, lipophilicity, and photo-oxidative stability. A graph completion model—a type of generative model for molecular design—was used to generate a set of candidate molecules. Candidates for which ASKCOS was able to find a route were prioritized based on a set of expert-curated rules.35 Koscher et al. 35 provided us with a set of 121 candidate molecules from one design cycle that passed the retrosynthesis filter. Each candidate was scored according to property
+9
+
+prediction models and ranked from 1 to 14 with non-dominated sorting. Non-dominated ranks were converted to rewards between 0 and 1 according to U = (14 − rank)/13.
+SPARROW discovers distinct sets of batch-efficient routes depending on the values of λ1 (Figure 4A-D). When compared to all baseline approaches, SPARROW selects routes that are comprised of fewer reactions, reactions with greater model confidence scores, and cheaper starting materials (Figure 4A, B). In Figure 4E, we depict one of SPARROW’s solutions as a downselection from the retrosynthetic graph of all candidate compound and reaction nodes. This candidate set contains buyable compounds, and in some cases, SPARROW proposes directly buying them (Figure 5). This exemplifies the algorithm’s ability to weigh the value of buying candidates and synthesizing others. Although all candidate molecules in this case were proposed by a generative model, the proposed routes demonstrate SPARROW’s ability to consolidate molecules proposed by library-based and de novo design. The synthetic routes shown in Figure 5 contain multiple candidate molecules as intermediates. In this way, SPARROW formalizes the common medicinal chemistry mantra of “test your intermediates”.36–38
+10
+
+Number of Reactions
+
+Cumulative Reward
+
+Cumulative Reward
+
+A)
+
+B)
+
+80
+
+80
+
+150
+
+60
+
+60
+
+100
+
+40
+
+40
+
+20
+
+20
+
+50
+
+0 0 50 100 150 200
+Number of Reactions
+
+0 0
+
+0
+
+500
+
+1000 1500 0 0.25 0.50 0.75 1.00
+
+Starting Material Cost
+
+Average Reaction Score
+
+Number of Reactions
+
+Starting Material Cost
+
+C)
+150 100
+50 0 0
+E)
+
+SPARROW
+
+Reward Only
+
+100
+
+80
+
+60
+
+40
+
+Cost
+
+20
+
+Reward 0
+
+20 40 60 80 100
+λ1
+
+Cumulative Reward Average Reaction Score
+
+SA Score Only
+D)
+1.0 0.9 0.8 0.7 0.6
+0
+
+Combined Score
+150
+100
+50 Score Reactions 0 20 40 60 80 100
+λ1
+
+Unselected node
+
+Selected candidate
+
+Selected intermediate
+
+Selected reaction
+
+Selected dummy node (produces starting material)
+
+Figure 4: Results of SPARROW applied to an autonomous molecular design cycle by Koscher et al. 35. (A, B) SPARROW identifies solutions with higher rewards and lower costs when compared to baselines (Tables S3, S4). (C) Increasing the reward weight λ1 increases both the cumulative reward and the cost of starting materials. (D) Larger λ1 values reduce the relative penalty associated with reaction costs, leading to solutions with more reactions and reactions with lower confidence scores. (E) SPARROW’s downselection can be visualized as a network of selected and unselected nodes (λ1 = 5). All examples use λ2 = λ3 = 1. Note that the reported starting material cost is the sum of the price per gram of selected starting materials without consideration of the amount needed.
+
+11
+
+F
+
+O
+
+O
+
+Br
+
+CO2Et
+
+-O N+
+
+Br
+
+CO2H
+
+F
+
+Br Me
+
+N H
+
+CO2Et
+
+N
+
+Me
+
+CO2Me
+
+N
+
+R: 0.92 $1.6/g
+
+R: 0.62 $1.7/g
+
+R: 0.54 $0.7/g
+
+R: 0.46 $0.8/g
+
+R: 0.46 $0.6/g
+
+BocHN CO2H $0.5/g
+
+0.99 CDI THF
+
+N N NH2 N $0.6/g
+
+BocMeN CO2H R: 0.38 $0.9/g
+0.99 DCC, DMAP DMF
+
+BocHN
+
+O
+
+N
+
+NN N H
+
+R: 0.62
+
+0.99 TFA DCM
+
+O
+
+O
+
+N
+
+Me
+
+O
+
+COCl H2N
+
+$1.2/g
+
+NN N H
+
+Me O O
+
+0.96 MeONa MeOH
+
+O
+
+H
+
+N
+
+N H
+
+NN
+
+O
+
+N
+
+R: 0.76
+
+0.99 TEA DCM
+
+O
+
+H
+
+HO
+
+N
+
+N H
+
+NN
+
+O
+
+N
+
+R: 0.77
+
+BocMeN
+
+O
+
+N
+
+NN N H
+
+R: 0.62
+
+0.99 TFA DCM
+
+MeHN
+
+O
+
+N
+
+NN N H
+
+R: 0.38
+
+0.94
+LAH THF
+
+MeHN
+
+N NN N H R: 0.46
+
+O OH
+
+DIPEA 0.99 HATU
+DMF
+
+$3.2/g
+
+O
+N Me
+
+H N
+NN
+
+O
+
+N
+
+R: 1.00
+
+HATU 0.88 TEA
+DMF
+
+O
+N Me
+
+H N
+NN N
+
+R: 0.92
+
+Br
+OEt $0.5/g
+OH B OH $0.8/g
+
+0.99
+EtOH K2CO3
+
+OEt R: 0.92
+
+Inputs Reward weighting factor (λ1): 3 Starting material cost weighting factor (λ2): 1 Reaction weighting factor (λ3): 1
+Summary of results 15 of 121 targets 12 starting materials 10 reaction steps Average reaction score: 0.98
+
+Figure 5: SPARROW’s proposed routes for Case 2 with λ = [3, 1, 1]. SPARROW selects routes with overlapping reaction steps and intermediates that provide utility themselves. The balance of cost and rewards inherently enables SPARROW to simultaneously propose synthesizing some candidates and buying others that are commercially available. Molecules in blue are starting materials, and those in pink are targets. Reaction conditions and scores were obtained using ASKCOS.9,33,34 Compound costs were sourced from the ChemSpace API.31
+
+12
+
+Optimizing over large candidate sets
+The third case highlights SPARROW’s ability to optimize routes for candidate sets with hundreds of molecules. This candidate set was defined as 300 alectinib analogs proposed by a reaction rule-based generative model from Button et al. 39. Candidates were ranked from 1 to 17 based on their similarity to alectinib, and rewards were set according to U = (17 − rank)/16. A candidate set generated by a reaction-based model is predisposed to be highly synthesizable, so we expected ASKCOS to identify routes to most. ASKCOS identified at least one route to 215 of the 300 candidates with an expansion time of 60s; differences in reaction template and starting material definitions account for the difference of 85.
+One set of synthetic routes proposed by SPARROW is depicted in Figure 6. Consistent with the results of previous case studies, SPARROW identifies overlapping reactions steps and starting materials. The two longest of the proposed synthetic routes, presumed to be the most expensive to perform, produce molecules with high rewards.
+For this example of planning a design cycle from a starting pool of 300 candidate molecules, the total runtime of the SPARROW workflow was approximately 13 hours. Approximately 5 hours of retrosynthesis planning, 4 hours of searching for buyability and cost, and 4 hours of condition recommendation and scoring contributed to this computation cost. The optimization problem itself can generally be solved within seconds using PuLP40 with the open source coin-or branch and cut solver.41 Exceptions to the speed of PuLP include some edge cases where weighting factor sets span varying orders of magnitude (e.g., λ = [20, 0.1, 0.1]) and require minutes or hours. This observation aligns with prior findings for a route selection task23 and may be caused by numerical instability stemming from arithmetic operations on numbers of different orders of magnitude.42,43 Such cases may benefit from decomposition schemes.44
+Steps preceding the linear optimization—retrosynthetic planning, buyability search, condition recommendation, and reaction scoring—currently contribute most to the time demand of SPARROW. Applying SPARROW to larger candidate sets of thousands or more
+13
+
+compounds will be supported by faster retrosynthetic tree search algorithms and faster evaluation of proposed reactions. Improvements in the speed of these steps will facilitate future investigation into the scaling of SPARROW’s linear optimization problem to larger candidate sets.
+14
+
+O
+
+N
+
+NH2
+
+$0.5/g
+
+OMe
+O $0.5/g
+
+0.96 NaBH4
+
+O N
+
+MeO H N
+
+R: 0.22
+
+N
+
+CO2Et
+
+MeS N Me $6.6/g
+
+NH $1.1/g
+
+0.87 DCM N
+NN
+
+CO2Et Me
+
+R: 0.48
+
+O O
+N OO
+O Br $2.2/g
+
+NBoc H2N
+$0.8/g
+
+0.99
+
+TEA DCM
+
+O
+
+NBoc
+
+ON H
+
+Br
+
+0.94
+
+K2CO3 DMF
+
+NBoc
+
+N
+OO R: 0.48
+
+NH
+Cl3C OtBu $0.9/g
+
+CO2H
+Me $2.4/g
+
+HO NBoc
+$0.8/g
+
+0.96
+
+BF3OEt2 DCM
+O
+
+OtBu
+
+Me
+
+0.99
+
+CCl4 AIBN, NBS
+
+O
+
+OtBu
+
+Br
+
+HO
+
+O N O Ph $1.0/g
+
+0.99
+
+NaH THF
+
+O
+
+OtBu O
+
+NBoc
+
+0.84
+
+HCl MeOH
+
+O
+
+OtBu O
+
+N H
+
+Cl
+
+N
+
+N
+
+N
+
+N H
+
+$0.6/g
+
+0.99
+
+NaH DMF
+
+O
+
+OtBu O
+
+N O Ph
+
+0.99
+
+H2 MeOH
+
+O
+
+O
+
+OtBu O
+
+NH
+
+O
+
+0.99
+
+TEA tBuOH
+
+OtBu
+
+NN
+
+O
+
+N
+
+NH
+
+N
+
+R: 0.87
+
+0.99
+
+TEA IPA
+
+O O
+
+NN
+
+N
+
+NH
+
+N
+
+OtBu R: 0.87
+
+MeO N N
+HO O
+R: 0.30 $4.6/g
+
+Cl
+
+O
+
+Cl
+
+N
+
+OH
+
+N Me $2.6/g
+
+$1.1/g
+
+0.99
+
+N 0.99
+
+OH
+
+TEA DMF
+
+N
+
+NMP
+
+HN
+
+O
+
+N
+
+OH
+
+N R: 0.30
+
+Me
+
+$0.6/g
+
+0.98
+
+OH
+
+R: 0.39
+
+N
+
+N
+
+HO
+
+OH Cl
+$1.5/g
+
+N R: 0.30
+
+Figure 6: Example set of synthetic routes selected by SPARROW for Case 3 using λ = [30, 1, 5]. Synthetic routes are grouped by shared starting materials. SPARROW illustrates that we we may tolerate longer synthetic routes to candidates with higher rewards, demonstrating its ability to balance cost and reward. Common starting materials and commercially available candidates are used where possible. Molecules in blue are starting materials, and those in pink are targets. Reaction conditions and scores were obtained using ASKCOS.9,33,34 Compound costs were sourced from the ChemSpace API. 31
+15
+
+Discussion
+The prioritization of molecules for synthesis and testing is fundamentally a balance of cost and utility. Existing methods for molecular design and prioritization are limited in their ability to accurately and simultaneously capture utility and synthetic cost. We have developed SPARROW, an algorithm that prioritizes molecules for synthesis in molecular design cycles. The formulated optimization problem aims to maximize expected information gain while minimizing the cost of synthesis. SPARROW is open source and can accommodate both model-based and chemist-defined synthetic routes. SPARROW is a centralized framework for comparing molecules from various sources and can expand the adoption of existing molecular design tools that inadequately capture synthetic cost.
+The functionality of SPARROW is demonstrated through three case studies. By balancing information gain and cost, SPARROW grasps the impact of batch effects on synthetic cost (i.e., through shared and/or tested intermediates), integrates library-based and de novo design, and deprioritizes structures that are costly or impractical to synthesize. Adjustable weighting factors enable SPARROW to provide a variety of potential batches of molecules and synthetic routes that distinctly balance synthetic cost and utility.
+Future development of SPARROW will relax the assumptions made currently related to synthetic cost and the probability of successful synthesis with a nonlinear objective function (Figure 2). SPARROW’s current formulation assumes that molecular utilities are independent, but this is insufficient when optimizing for the diversity of selected candidates or prioritizing matched molecular pairs to uncover subtle structure-activity trends. Additionally, our method currently assumes that reaction costs are constant and independent of other selected reactions. This helps prioritize the use of common intermediates shared by multiple targets but neglects other complexities.45,46 Incorporating the cost of reagents and encouraging selection of reactions that are compatible with parallel, high-throughput, and/or automated synthesis will allow SPARROW to more accurately minimize synthetic cost. Treating synthetic cost as a constrained value instead of a minimized objective may better represent
+16
+
+specific projects with well-defined budgets and/or alleviate the challenge of tuning multiple weighting factors. Future work investigating the scaling of SPARROW’s linear optimization problem to larger candidate sets will further support its adoption in practical molecular discovery settings. SPARROW’s development and expansion to large candidate libraries will also benefit from improvements in enumerative molecular design,47 retrosynthetic modeling and prediction of reaction success,48,49 and molecular property prediction and uncertainty quantification.
+Methods
+Definition of candidate design space
+SPARROW optimizes over a retrosynthetic graph that contains information about candidate molecules and reactions that produce them. The retrosynthetic graph is a directed bipartite graph composed of a set of reaction nodes and a set of compound nodes.50,51 The parents of a reaction node are its reactants, and children are reaction products. Parents of a compound node are the reactions that produce that compound as a product, and children of a compound node are reactions that consume it. We store these graphs in json files containing candidate reactions that can be compiled manually with chemist-curated routes or automatically with retrosynthesis models. Candidate reactions do not need to be organized into synthetic routes, as the selection of valid pathways is handled within SPARROW’s optimization constraints.
+The balance of cumulative reward, synthetic cost, and the likelihood of reaction success requires additional information: (1) compound buyability and cost, (2) a measure of the likelihood of reaction success, and (3) reaction conditions. We determine the buyability of each compound and its cost, if applicable, using the ChemSpace API.31 “Dummy” parent reaction nodes producing each buyable compound are added to the graph, as implemented by Gao et al. 23. SPARROW calls the ASKCOS context recommender33 to propose reaction conditions and the ASKCOS forward predictor model to estimate the probability of
+17
+
+reaction success for each reaction.34 Reaction conditions are not required by the SPARROW algorithm and are used in our examples only to improve, in principle, the accuracy of the forward prediction model. SPARROW is designed to flexibly accommodate any retrosynthesis, condition recommendation, or reaction scoring model.
+Definition of decision variables and constraints
+SPARROW optimizes over two sets of binary decision variables that indicate whether each compound node and each reaction node are included in any of the selected synthetic routes (Figure 2). Three constraints, defined mathematically in Figure 2, ensure that optimized decision variables correspond to valid routes that begin with appropriate starting materials, e.g., commercially available compounds. The first ensures that all parent nodes of a selected reaction node are also selected, as all reactants are required to perform a reaction. The second ensures that if a compound is selected, at least one reaction that produces it must also be selected. For buyable materials deemed worth buying by SPARROW, the corresponding dummy parent node is selected, fulfilling this constraint. This allows the algorithm to choose between buying a molecule and synthesizing it from cheaper starting materials when both options exist. The third constraint forbids the selection of synthetic cycles in the retrosynthetic graph that do not originate from buyable compounds.
+Definition of linear objective function
+An ideal problem formulation would perfectly capture the expected information gain per unit cost (Figure 2). However, this objective function is nonlinear with respect to the decision variables. Nonlinear optimization problems provide no guarantee of convergence to a global optimum and require more extensive computational resources to solve. We therefore define a scalarized linear objective function that maximizes cumulative rewards while minimizing synthetic cost and risk of reaction failure (Figure 2). Both objective functions benefit from solutions that have candidates with high rewards, reactions with high scores, few starting
+18
+
+materials, and cheap starting materials. However, because the linear objective is not mathematically equivalent to the nonlinear one, we would not expect the solutions from the two objective functions to be identical in all cases. Weighting factors assign relative importance to each objective. We opt for a scalarized objective function over Pareto optimization in this case because only one solution proposed by SPARROW will ultimately be used. To understand the tradeoff between these competing objectives, SPARROW can be run multiple times with different weighting factors to approximate a Pareto front.
+The first objective maximizes the sum of the rewards of selected candidate molecules. This formulation assumes independent rewards; SPARROW currently does not consider marginal information gain related to molecular diversity and matched molecular pairs.
+The second objective minimizes the sum of all starting materials that must be bought to perform the selected reactions. Costs related to solvents, reagents, and catalysts are not incorporated into SPARROW at this time. Because we account for the commercial availability of starting materials through dummy reaction nodes, this cost is formalized as a cost-weighted sum of decision variables corresponding to the selection of those reactions.
+The final objective minimizes penalties associated with selected reactions that are inversely proportional to the calculated probabilities of reaction success. This implicitly minimizes both the total number of selected reaction steps and the risk of reaction failures. Importantly, this objective function assumes that reaction costs are constant and independent of other selected reactions.
+Optimization solver
+SPARROW defines a linear optimization problem based on the decision variables, constraints, and objective function defined above. The linear problem is solved using PuLP40 with the open source coin-or branch and cut (CBC) solver.41 The results in this work were obtained using a relative tolerance of 10−7 and an absolute tolerance of 10−9.
+19
+
+Baselines
+We compare performance of SPARROW with three selection strategies that do not consider the non-additivity of batch synthetic costs. For all baselines, we performed retrosynthetic searches for each candidate with ASKCOS. Output routes are ranked according to a plausibility score, and we selected the route with the highest plausibility score for which all starting materials were identified as buyable by ChemSpace31 as of March 2024. Selection was performed according to three metrics: (1) reward, (2) synthetic accessibility (SA) score,3 and (3) a combined score equal to the difference between reward and SA score. We arrived at a set of potential solutions using each strategy by varying the number of selected candidates. The results are compared with SPARROW’s solutions in Figures 3 and 4. The discrepancy in compound costs between October 2023, when the costs for SPARROW runs were obtained, and March 2024 are shown in Figure S1 and Tables S5 and S6. These discrepancies are not significant enough to artificially bolster SPARROW’s performance relative to baselines.
+The total time cost of formulating and solving these baselines as their own optimization problems was approximately 60% lower than SPARROW. The time cost of retrosynthesis was identical for baselines and SPARROW, but compound price assignment, condition recommendation, and reaction scoring were limited to a smaller set of potential paths, accounting for the difference in overall time cost.
+Data availability
+SMILES and rewards used for all case studies can be found at github.com/coleygroup/ sparrow/tree/main/examples. All results can be reproduced using included configuration files in the same repository.
+20
+
+Code availability and usage
+All code and retrosynthetic routes from ASKCOS used to generate the described results can be found at github.com/coleygroup/sparrow/tree/main/examples. Full candidate sets with configuration files are included in this repository both for reproducibility and as examples for use of SPARROW. SPARROW is written in Python to facilitate its broad adoption and continued development.
+Detailed instructions to run SPARROW are included in the Github repository. In summary, SPARROW requires as input a list of candidate SMILES strings and corresponding rewards in a csv format. The software outputs a json file containing the SMILES strings of selected candidates and the retrosynthetic route to each in the form of reaction SMILES strings. Because SPARROW defines compound and reaction nodes based on SMILES strings, the limitations of SMILES string notation also apply to SPARROW. Candidate retrosynthetic routes can be compiled into a json file and provided to SPARROW. Alternatively, SPARROW performs retrosynthetic tree searches,9 reaction condition recommendation,33 and reaction scoring30 if provided the IP address of a deployed ASKCOS instance. Once the retrosynthetic tree is constructed by SPARROW, it can be reused for subsequent runs without access to ASKCOS. Because the cost of running SPARROW is dominated by retrosynthetic graph construction, weighting factors may subsequently be tuned rapidly to arrive at many solutions. Weighting factors must be positive real numbers but are not otherwise constrained. To achieve solutions with more selected candidates, we recommend increasing λ1 (the reward weighting factor). Future development of SPARROW will include automatically outputting a set of solutions to alleviate this burden of manual tuning. For more guidelines for implementing SPARROW, please refer to our Github repository at github.com/coleygroup/sparrow.
+21
+
+Acknowledgement
+This work was supported by the DARPA Accelerated Molecular Discovery program under contract number HR00111920025 and the Office of Naval Research under grant number N00014-21-1-2195. J.C.F. received additional support from the National Science Foundation Graduate Research Fellowship under Grant No. 2141064. We are grateful to Marco Stenta, Marta Pasquini, Daniel Jimenez, and Tobias Ziegler for participating in valuable discussions that guided the development of SPARROW. We also are grateful to Matthew A. McDonald, Brent Koscher, Richard Canty, and the remaining authors of ref. 35 for providing the candidate set for Case 2. Finally, we thank Babak Mahjour and Anji Zhang for providing insight into the validity of reactions and conditions proposed by retrosynthetic software.
+Ethics declarations
+The authors declare no competing interests.
+22
+
+References
+(1) Gao, W.; Coley, C. W. The Synthesizability of Molecules Proposed by Generative Models. Journal of Chemical Information and Modeling 2020, 60, 5714–5723.
+(2) Méndez-Lucio, O.; Baillif, B.; Clevert, D.-A.; Rouquié, D.; Wichard, J. De Novo Generation of Hit-Like Molecules from Gene Expression Signatures Using Artificial Intelligence. Nature Communications 2020, 11, 10.
+(3) Ertl, P.; Schuffenhauer, A. Estimation of Synthetic Accessibility Score of Drug-Like Molecules Based on Molecular Complexity and Fragment Contributions. Journal of Cheminformatics 2009, 1, 8.
+(4) Coley, C. W.; Rogers, L.; Green, W. H.; Jensen, K. F. SCScore: Synthetic Complexity Learned from a Reaction Corpus. Journal of Chemical Information and Modeling 2018, 58, 252–261.
+(5) Thakkar, A.; Chadimová, V.; Bjerrum, E. J.; Engkvist, O.; Reymond, J.-L. Retrosynthetic Accessibility Score (RAscore) – Rapid Machine Learned Synthesizability Classification from AI Driven Retrosynthetic Planning. Chemical Science 2021, 12, 3339–3349.
+(6) Liu, C.-H.; Korablyov, M.; Jastrzębski, S.; Włodarczyk-Pruszyński, P.; Bengio, Y.; Segler, M. RetroGNN: Fast Estimation of Synthesizability for Virtual Screening and De Novo Design by Learning from Slow Retrosynthesis Software. Journal of Chemical Information and Modeling 2022, 62, 2293–2300.
+(7) Andersson, S.; Armstrong, A.; Björe, A.; Bowker, S.; Chapman, S.; Davies, R.; Donald, C.; Egner, B.; Elebring, T.; Holmqvist, S.; Inghardt, T.; Johannesson, P.; Johansson, M.; Johnstone, C.; Kemmitt, P.; Kihlberg, J.; Korsgren, P.; Lemurell, M.; Moore, J.; Pettersson, J. A.; Pointon, H.; Pontén, F.; Schofield, P.; Selmi, N.; Whittamore, P. Making Medicinal Chemistry More Effective—Application of Lean Sigma to Improve Processes, Speed and Quality. Drug Discovery Today 2009, 14, 598–604.
+23
+
+(8) Segler, M. H. S.; Preuss, M.; Waller, M. P. Planning Chemical Syntheses with Deep Neural Networks and Symbolic AI. Nature 2018, 555, 604–610.
+(9) Coley, C. W.; Thomas, D. A.; Lummiss, J. A. M.; Jaworski, J. N.; Breen, C. P.; Schultz, V.; Hart, T.; Fishman, J. S.; Rogers, L.; Gao, H.; Hicklin, R. W.; Plehiers, P. P.; Byington, J.; Piotti, J. S.; Green, W. H.; Hart, A. J.; Jamison, T. F.; Jensen, K. F. A Robotic Platform for Flow Synthesis of Organic Compounds Informed by AI Planning. Science 2019, 365, eaax1566.
+(10) Genheden, S.; Thakkar, A.; Chadimová, V.; Reymond, J.-L.; Engkvist, O.; Bjerrum, E. AiZynthFinder: A Fast, Robust and Flexible Open-Source Software for Retrosynthetic Planning. Journal of Cheminformatics 2020, 12, 70.
+(11) Badowski, T.; Molga, K.; A. Grzybowski, B. Selection of Cost-Effective yet Chemically Diverse Pathways from the Networks of Computer-Generated Retrosynthetic Plans. Chemical Science 2019, 10, 4640–4651.
+(12) Gao, W.; Mercado, R.; Coley, C. W. Amortized Tree Generation for Bottom-up Synthesis Planning and Synthesizable Molecular Design. 2022.
+(13) Zhang, Q.; Liu, C.; Wu, S.; Hayashi, Y.; Yoshida, R. A Bayesian Method for Concurrently Designing Molecules and Synthetic Reaction Networks. Science and Technology of Advanced Materials: Methods 2023, 3, 2204994.
+(14) Breznik, M.; Ge, Y.; Bluck, J. P.; Briem, H.; Hahn, D. F.; Christ, C. D.; Mortier, J.; Mobley, D. L.; Meier, K. Prioritizing Small Sets of Molecules for Synthesis through in-silico Tools: A Comparison of Common Ranking Methods. ChemMedChem 2023, 18, e202200425.
+(15) Frazier, P. I. A Tutorial on Bayesian Optimization. arXiv 2018, 1807.02811.
+24
+
+(16) Shahriari, B.; Swersky, K.; Wang, Z.; Adams, R. P.; de Freitas, N. Taking the Human Out of the Loop: A Review of Bayesian Optimization. Proceedings of the IEEE 2016, 104, 148–175.
+(17) Korovina, K.; Xu, S.; Kandasamy, K.; Neiswanger, W.; Poczos, B.; Schneider, J.; Xing, E. ChemBO: Bayesian Optimization of Small Organic Molecules with Synthesizable Recommendations. Proceedings of the Twenty Third International Conference on Artificial Intelligence and Statistics 2020, 3393–3403.
+(18) Pyzer-Knapp, E. O. Bayesian optimization for accelerated drug discovery. IBM Journal of Research and Development 2018, 62, 2:1–2:7.
+(19) Sasena, M. J. Flexibility and Efficiency Enhancements for Constrained Global Design Optimization with Kriging Approximations. Ph.D. Thesis, University of Michigan, United States, 2002.
+(20) Huang, D.; Allen, T. T.; Notz, W. I.; Miller, R. A. Sequential Kriging Optimization Using Multiple-Fidelity Evaluations. Structural and Multidisciplinary Optimization 2006, 32, 369–382.
+(21) Palizhati, A.; Torrisi, S. B.; Aykol, M.; Suram, S. K.; Hummelshøj, J. S.; Montoya, J. H. Agents for Sequential Learning Using Multiple-Fidelity Data. Scientific Reports 2022, 12, 4694.
+(22) Zanjani Foumani, Z.; Shishehbor, M.; Yousefpour, A.; Bostanabad, R. Multi-Fidelity Cost-Aware Bayesian Optimization. Computer Methods in Applied Mechanics and Engineering 2023, 407, 115937.
+(23) Gao, H.; Pauphilet, J.; Struble, T. J.; Coley, C. W.; Jensen, K. F. Direct Optimization across Computer-Generated Reaction Networks Balances Materials Use and Feasibility of Synthesis Plans for Molecule Libraries. Journal of Chemical Information and Modeling 2021, 61, 493–504.
+25
+
+(24) Gao, H.; Coley, C. W.; Struble, T. J.; Li, L.; Qian, Y.; Green, W. H.; Jensen, K. F. Combining Retrosynthesis and Mixed-Integer Optimization for Minimizing the Chemical Inventory Needed to Realize a Who Essential Medicines List. Reaction Chemistry & Engineering 2020, 5, 367–376.
+(25) Molga, K.; Dittwald, P.; Grzybowski, B. A. Computational Design of Syntheses Leading to Compound Libraries or Isotopically Labelled Targets. Chemical Science 2019, 10, 9219–9232.
+(26) Marvin, W. A.; Rangarajan, S.; Daoutidis, P. Automated Generation and Optimal Selection of Biofuel-Gasoline Blends and Their Synthesis Routes. Energy & Fuels 2013, 27, 3585–3594.
+(27) Dahmen, M.; Marquardt, W. Model-Based Formulation of Biofuel Blends by Simultaneous Product and Pathway Design. Energy & Fuels 2017, 31, 4096–4121.
+(28) König, A.; Neidhardt, L.; Viell, J.; Mitsos, A.; Dahmen, M. Integrated design of processes and products: Optimal renewable fuels. Computers & Chemical Engineering 2020, 134, 106712.
+(29) Adjiman, C. S.; Sahinidis, N. V.; Vlachos, D. G.; Bakshi, B.; Maravelias, C. T.; Georgakis, C. Process Systems Engineering Perspective on the Design of Materials and Molecules. Industrial & Engineering Chemistry Research 2021, 60, 5194–5206.
+(30) Coley, C. W.; Barzilay, R.; Jaakkola, T. S.; Green, W. H.; Jensen, K. F. Prediction of Organic Reaction Outcomes Using Machine Learning. ACS Central Science 2017, 3, 434–443.
+(31) Chemspace Services: Compound Sourcing and Procurement, Hit Discovery, Molecular Docking, Custom Synt. https://chem-space.com/services, Accessed October 2023.
+26
+
+(32) Garibsingh, R.-A. A.; Ndaru, E.; Garaeva, A. A.; Shi, Y.; Zielewicz, L.; Zakrepine, P.; Bonomi, M.; Slotboom, D. J.; Paulino, C.; Grewer, C.; Schlessinger, A. Rational Design of ASCT2 Inhibitors Using an Integrated Experimental-Computational Approach. Proceedings of the National Academy of Sciences 2021, 118, e2104093118.
+(33) Gao, H.; Struble, T. J.; Coley, C. W.; Wang, Y.; Green, W. H.; Jensen, K. F. Using Machine Learning To Predict Suitable Conditions for Organic Reactions. ACS Central Science 2018, 4, 1465–1476.
+(34) Coley, C.; Jin, W.; Rogers, L.; Jamison, T.; Jaakkola, T.; H. Green, W.; Barzilay, R.; F. Jensen, K. A Graph-Convolutional Neural Network Model for the Prediction of Chemical Reactivity. Chemical Science 2019, 10, 370–377.
+(35) Koscher, B. A.; Canty, R. B.; McDonald, M. A.; Greenman, K. P.; McGill, C. J.; Bilodeau, C. L.; Jin, W.; Wu, H.; Vermeire, F. H.; Jin, B.; Hart, T.; Kulesza, T.; Li, S.C.; Jaakkola, T. S.; Barzilay, R.; Gómez-Bombarelli, R.; Green, W. H.; Jensen, K. F. Autonomous, Multiproperty-Driven Molecular Discovery: From Predictions to Measurements and Back. Science 2023, 382, eadi1407.
+(36) Barry, C. E. Lessons from Seven Decades of Antituberculosis Drug Discovery. Current topics in medicinal chemistry 2011, 11, 1216–1225.
+(37) Wesolowski, S. S.; Brown, D. G. Lead Generation; John Wiley & Sons, Ltd, 2016; pp 487–512.
+(38) Brown, D. G.; Boström, J. Analysis of Past and Present Synthetic Methodologies on Medicinal Chemistry: Where Have All the New Reactions Gone? Journal of Medicinal Chemistry 2016, 59, 4443–4458.
+(39) Button, A.; Merk, D.; Hiss, J. A.; Schneider, G. Automated De Novo Molecular Design by Hybrid Machine Intelligence and Rule-Driven Chemical Synthesis. Nature Machine Intelligence 2019, 1, 307–315.
+27
+
+(40) Dunning, I.; Mitchell, S.; O’Sullivan, M. PuLP: A Linear Programming Toolkit for Python. Department of Engineering Science, The University of Auckland 2011, Department of Engineering Science.
+(41) Forrest, J.; Ralphs, T.; Vigerske, S.; Gambini Santos, H.; Hafer, L.; Kristjansson, B.; Fasano, J.; Straver, E.; Lubin, M.; Jan-Willem,; Lougee-Heimer, R.; jpgoncal1,; Brito, S.; Gassmann, H.; Cristina,; Saltzman, M.; Pitrus, B.; Matsushima, F. coinor/Cbc: Release releases/2.10.11. 2023; https://zenodo.org/doi/10.5281/zenodo. 2720283, Accessed October 2023.
+(42) Klotz, E.; Newman, A. M. Practical Guidelines for Solving Difficult Linear Programs. Surveys in Operations Research and Management Science 2013, 18, 1–17.
+(43) Klotz, E. Bridging Data and Decisions; INFORMS TutORials in Operations Research; INFORMS, 2014; pp 54–108.
+(44) Benders, J. F. Partitioning Procedures for Solving Mixed-Variables Programming Problems. Numerische Mathematik 1962, 4, 238–252.
+(45) Grzybowski, B. A.; Badowski, T.; Molga, K.; Szymkuć, S. Network Search Algorithms and Scoring Functions for Advanced-Level Computerized Synthesis Planning. WIREs Computational Molecular Science 2023, 13, e1630.
+(46) Wen, M.; Spotte-Smith, E. W. C.; Blau, S. M.; McDermott, M. J.; Krishnapriyan, A. S.; Persson, K. A. Chemical Reaction Networks and Opportunities for Machine Learning. Nature Computational Science 2023, 3, 12–24.
+(47) Levin, I.; Fortunato, M. E.; Tan, K. L.; Coley, C. W. Computer-Aided Evaluation and Exploration of Chemical Spaces Constrained by Reaction Pathways. AIChE Journal 2023, 69, e18234.
+28
+
+(48) Götz, J.; K. Jackl, M.; Jindakun, C.; N. Marziale, A.; André, J.; J. Gosling, D.; Springer, C.; Palmieri, M.; Reck, M.; Luneau, A.; E. Brocklehurst, C.; W. Bode, J. High-Throughput Synthesis Provides Data for Predicting Molecular Properties and Reaction Success. Science Advances 2023, 9, eadj2314.
+(49) Casetti, N.; Alfonso-Ramos, J. E.; Coley, C. W.; Stuyver, T. Combining Molecular Quantum Mechanical Modeling and Machine Learning for Accelerated Reaction Screening and Discovery. Chemistry – A European Journal 2023, 29, e202301957.
+(50) Pasquini, M.; Stenta, M. LinChemIn: Syngraph—A Data Model and a Toolkit to Analyze and Compare Synthetic Routes. Journal of Cheminformatics 2023, 15 .
+(51) Pasquini, M.; Stenta, M. LinChemIn: Route Arithmetic-Operations on Digital Synthetic Routes. Journal of Chemical Information and Modeling 2024, 64, 1765–1771.
+29
+
+arXiv:2311.02187v3 [q-bio.QM] 28 May 2024
+
+Supporting Information: An algorithmic framework for synthetic cost-aware decision making in molecular design
+Jenna C. Fromer† and Connor W. Coley∗,†,‡
+†Department of Chemical Engineering, MIT, Cambridge, MA 02139 ‡Department of Electrical Engineering and Computer Science, MIT, Cambridge, MA 02139
+* Corresponding Author E-mail: ccoley@mit.edu
+S0
+
+S1 Figures
+
+Cost in March 2024 ($/g) Cost in March 2024 ($/g)
+
+A)
+100
+80
+60
+
+B)
+300
+200
+
+40 100
+20
+
+0
+
+0
+
+25 50 75 100
+
+Cost in October 2023 ($/g)
+
+0
+
+0
+
+100
+
+200
+
+300
+
+Cost in October 2023 ($/g)
+
+Figure S1: Comparison of compound prices in October 2023 and March 2024. Compound costs used by SPARROW were obtained from the ChemSpace APIS1 in October 2023, while baseline calculations were performed with costs obtained in March 2024. We visualize the discrepancy between compound costs between these time periods to confirm that cost discrepancies do not account for SPARROW’s performance relative to baselines. (A) Prices for compounds used by both baseline and SPARROW strategies in the first case study. (B) Prices for compounds used by both baseline and SPARROW strategies in the second case study. Cost values are listed in Tables S5 and S6.
+
+S1
+
+S2 Tables
+
+Table S1: Summary of SPARROW results when varying λ1, λ2, and λ3 for the first case study.S2 λ1 is the weighting factor associated with candidate rewards, and λ2 and λ3 correspond to objectives related to starting material costs and reactions, respectively. As shown,
+weighting factors determine the set of routes proposed by SPARROW.
+
+λ1 λ2 λ3 Cumulative Cost of starting Number of Average reaction
+
+reward
+
+materials reaction steps
+
+score
+
+2.00 1.00 1.00
+
+0.0
+
+0.0
+
+0
+
+–
+
+5.00 1.00 1.00
+
+1.0
+
+1.3
+
+3
+
+0.89
+
+8.00 1.00 1.00
+
+2.2
+
+3.8
+
+8
+
+0.91
+
+12.50 1.00 1.00
+
+3.3
+
+9.3
+
+16
+
+0.96
+
+15.00 1.00 1.00
+
+4.3
+
+12.7
+
+24
+
+0.95
+
+20.00 1.00 1.00
+
+4.7
+
+13.9
+
+29
+
+0.93
+
+30.00 1.00 1.00
+
+5.0
+
+19.1
+
+31
+
+0.93
+
+50.00 1.00 1.00
+
+5.6
+
+21.4
+
+39
+
+0.87
+
+60.00 1.00 1.00
+
+6.2
+
+23.5
+
+45
+
+0.85
+
+70.00 1.00 1.00
+
+6.2
+
+24.3
+
+47
+
+0.84
+
+80.00 1.00 1.00
+
+6.2
+
+24.3
+
+47
+
+0.84
+
+20.00 0.00 1.00
+
+5.6
+
+14660.7
+
+34
+
+0.96
+
+20.00 0.01 1.00
+
+5.2
+
+303.4
+
+28
+
+0.97
+
+20.00 0.02 1.00
+
+5.2
+
+109.0
+
+29
+
+0.93
+
+20.00 0.05 1.00
+
+5.2
+
+72.7
+
+31
+
+0.96
+
+20.00 0.10 1.00
+
+5.2
+
+52.7
+
+32
+
+0.96
+
+20.00 0.20 1.00
+
+5.2
+
+22.9
+
+34
+
+0.94
+
+20.00 0.35 1.00
+
+5.0
+
+19.1
+
+31
+
+0.93
+
+20.00 0.70 1.00
+
+4.7
+
+13.9
+
+29
+
+0.93
+
+20.00 1.30 1.00
+
+4.3
+
+12.7
+
+24
+
+0.95
+
+20.00 2.00 1.00
+
+4.3
+
+12.7
+
+24
+
+0.95
+
+20.00 1.00 0.00
+
+6.2
+
+15.0
+
+72
+
+0.72
+
+20.00 1.00 0.10
+
+6.2
+
+18.7
+
+48
+
+0.79
+
+20.00 1.00 0.25
+
+6.2
+
+21.3
+
+48
+
+0.85
+
+20.00 1.00 0.35
+
+5.6
+
+19.2
+
+42
+
+0.86
+
+20.00 1.00 0.50
+
+4.9
+
+14.4
+
+33
+
+0.92
+
+20.00 1.00 1.00
+
+4.7
+
+13.9
+
+29
+
+0.93
+
+20.00 1.00 1.50
+
+4.3
+
+12.7
+
+24
+
+0.95
+
+20.00 1.00 1.70
+
+4.3
+
+12.7
+
+24
+
+0.95
+
+20.00 1.00 2.00
+
+3.3
+
+9.3
+
+16
+
+0.96
+
+20.00 1.00 3.00
+
+2.2
+
+3.8
+
+8
+
+0.91
+
+20.00 1.00 4.00
+
+1.6
+
+3.2
+
+5
+
+0.91
+
+20.00 1.00 5.00
+
+1.0
+
+1.3
+
+3
+
+0.89
+
+S2
+
+Table S2: Summary of baseline results for the first case study. SPARROW was compared
+with downselection strategies that utilize reward values only, synthetic accessibility (SA) scoresS3 only, and a combined score equal to the difference between reward and SA score.
+
+Strategy
+
+Number of Cumulative Cost of starting Number of Average reaction
+
+compounds reward
+
+materials
+
+reaction steps
+
+score
+
+Reward Only
+
+1
+
+1.0
+
+9.7
+
+5
+
+0.71
+
+Reward Only
+
+2
+
+1.7
+
+17.2
+
+10
+
+0.84
+
+Reward Only
+
+3
+
+2.3
+
+117.6
+
+12
+
+0.86
+
+Reward Only
+
+4
+
+2.9
+
+119.4
+
+15
+
+0.88
+
+Reward Only
+
+5
+
+3.5
+
+143.0
+
+18
+
+0.89
+
+Reward Only
+
+6
+
+4.0
+
+143.6
+
+20
+
+0.87
+
+Reward Only
+
+7
+
+4.5
+
+174.6
+
+25
+
+0.89
+
+Reward Only
+
+8
+
+4.9
+
+201.8
+
+29
+
+0.85
+
+Reward Only
+
+9
+
+5.3
+
+203.2
+
+34
+
+0.78
+
+Reward Only
+
+10
+
+5.7
+
+276.9
+
+39
+
+0.75
+
+Reward Only
+
+11
+
+6.0
+
+281.3
+
+41
+
+0.75
+
+Reward Only
+
+12
+
+6.2
+
+322.6
+
+44
+
+0.76
+
+Reward Only
+
+13
+
+6.2
+
+323.8
+
+46
+
+0.76
+
+Reward Only
+
+14
+
+6.2
+
+331.3
+
+50
+
+0.73
+
+SA Score Only
+
+1
+
+0.1
+
+1.8
+
+2
+
+0.64
+
+SA Score Only
+
+2
+
+0.6
+
+25.4
+
+4
+
+0.64
+
+SA Score Only
+
+3
+
+0.6
+
+32.9
+
+8
+
+0.54
+
+SA Score Only
+
+4
+
+1.2
+
+33.7
+
+11
+
+0.65
+
+SA Score Only
+
+5
+
+1.6
+
+64.1
+
+15
+
+0.64
+
+SA Score Only
+
+6
+
+2.3
+
+170.5
+
+18
+
+0.70
+
+SA Score Only
+
+7
+
+2.7
+
+204.2
+
+23
+
+0.76
+
+SA Score Only
+
+8
+
+3.0
+
+208.6
+
+25
+
+0.76
+
+SA Score Only
+
+9
+
+3.6
+
+210.4
+
+28
+
+0.78
+
+SA Score Only
+
+10
+
+4.3
+
+214.4
+
+33
+
+0.81
+
+SA Score Only
+
+11
+
+4.5
+
+255.7
+
+36
+
+0.82
+
+SA Score Only
+
+12
+
+4.9
+
+329.4
+
+41
+
+0.78
+
+SA Score Only
+
+13
+
+5.9
+
+329.9
+
+45
+
+0.77
+
+SA Score Only
+
+14
+
+6.2
+
+331.3
+
+50
+
+0.73
+
+Combined Score
+
+1
+
+0.6
+
+24.2
+
+2
+
+0.63
+
+Combined Score
+
+2
+
+1.6
+
+33.9
+
+7
+
+0.69
+
+Combined Score
+
+3
+
+1.6
+
+35.1
+
+9
+
+0.68
+
+Combined Score
+
+4
+
+2.3
+
+135.5
+
+11
+
+0.73
+
+Combined Score
+
+5
+
+2.8
+
+136.3
+
+14
+
+0.78
+
+Combined Score
+
+6
+
+3.5
+
+143.0
+
+19
+
+0.83
+
+Combined Score
+
+7
+
+4.1
+
+144.8
+
+22
+
+0.84
+
+Combined Score
+
+8
+
+4.6
+
+175.8
+
+27
+
+0.87
+
+Combined Score
+
+9
+
+5.0
+
+203.0
+
+31
+
+0.84
+
+Combined Score
+
+10
+
+5.0
+
+210.5
+
+35
+
+0.79
+
+Combined Score
+
+11
+
+5.3
+
+214.9
+
+37
+
+0.79
+
+Combined Score
+
+12
+
+5.7
+
+288.6
+
+42
+
+0.76
+
+Combined Score
+
+13
+
+6.1
+
+290.0
+
+47
+
+0.72
+
+Combined Score
+
+14
+
+6.2
+
+331.3
+
+50
+
+0.73
+
+S3
+
+Table S3: Summary of SPARROW results when varying λ1 in the second case study.S4 λ1 is the weighting factor associated with candidate rewards, and λ2 and λ3 correspond to objectives related to starting material costs and reactions, respectively. As shown, weighting
+factors determine the set of routes proposed by SPARROW.
+
+λ1 λ2 λ3 Cumulative Cost of starting Number of Average reaction
+
+reward
+
+materials reaction steps
+
+score
+
+1.00 1.00 1.00
+
+0.0
+
+0.0
+
+0
+
+–
+
+3.00 1.00 1.00
+
+9.8
+
+13.1
+
+10
+
+0.98
+
+5.00 1.00 1.00
+
+24.0
+
+43.6
+
+30
+
+0.95
+
+10.00 1.00 1.00
+
+39.5
+
+97.4
+
+68
+
+0.89
+
+20.00 1.00 1.00
+
+52.8
+
+147.2
+
+99
+
+0.80
+
+30.00 1.00 1.00
+
+71.8
+
+164.5
+
+151
+
+0.71
+
+40.00 1.00 1.00
+
+76.0
+
+170.3
+
+167
+
+0.69
+
+50.00 1.00 1.00
+
+76.9
+
+171.5
+
+170
+
+0.68
+
+75.00 1.00 1.00
+
+76.9
+
+171.5
+
+170
+
+0.68
+
+100.00 1.00 1.00
+
+76.9
+
+171.5
+
+170
+
+0.68
+
+S4
+
+Table S4: Summary of baseline results for the second case study. SPARROW was compared
+with downselection strategies that utilize reward values only, synthetic accessibility (SA) scoresS3 only, and a combined score equal to the difference between reward and SA score.
+
+Strategy
+
+Number of Cumulative Cost of starting Number of Average reaction
+
+compounds reward
+
+materials
+
+reaction steps
+
+score
+
+Reward Only
+
+1
+
+1.0
+
+3.0
+
+4
+
+0.69
+
+Reward Only
+
+11
+
+11.0
+
+531.5
+
+40
+
+0.81
+
+Reward Only
+
+21
+
+21.0
+
+575.8
+
+65
+
+0.76
+
+Reward Only
+
+31
+
+30.5
+
+883.6
+
+97
+
+0.68
+
+Reward Only
+
+41
+
+39.7
+
+1046.1
+
+130
+
+0.70
+
+Reward Only
+
+51
+
+48.8
+
+1140.9
+
+158
+
+0.65
+
+Reward Only
+
+61
+
+57.2
+
+1164.4
+
+178
+
+0.65
+
+Reward Only
+
+71
+
+64.5
+
+1375.5
+
+195
+
+0.62
+
+Reward Only
+
+81
+
+70.4
+
+1404.9
+
+205
+
+0.62
+
+Reward Only
+
+91
+
+74.8
+
+1435.9
+
+213
+
+0.62
+
+Reward Only
+
+101
+
+77.8
+
+1461.5
+
+225
+
+0.62
+
+SA Score Only
+
+1
+
+0.2
+
+77.3
+
+1
+
+0.00
+
+SA Score Only
+
+11
+
+4.8
+
+121.5
+
+13
+
+0.55
+
+SA Score Only
+
+21
+
+11.0
+
+151.0
+
+28
+
+0.59
+
+SA Score Only
+
+31
+
+17.7
+
+274.3
+
+45
+
+0.62
+
+SA Score Only
+
+41
+
+25.6
+
+381.7
+
+69
+
+0.58
+
+SA Score Only
+
+51
+
+31.8
+
+541.6
+
+83
+
+0.60
+
+SA Score Only
+
+61
+
+40.1
+
+601.0
+
+105
+
+0.58
+
+SA Score Only
+
+71
+
+48.8
+
+809.7
+
+134
+
+0.59
+
+SA Score Only
+
+81
+
+57.7
+
+973.9
+
+158
+
+0.62
+
+SA Score Only
+
+91
+
+65.7
+
+990.4
+
+185
+
+0.60
+
+SA Score Only
+
+101
+
+74.7
+
+1470.1
+
+221
+
+0.62
+
+Combined Score
+
+1
+
+0.9
+
+4.5
+
+1
+
+1.00
+
+Combined Score
+
+11
+
+8.7
+
+130.9
+
+19
+
+0.57
+
+Combined Score
+
+21
+
+14.6
+
+197.8
+
+34
+
+0.59
+
+Combined Score
+
+31
+
+22.5
+
+244.1
+
+55
+
+0.58
+
+Combined Score
+
+41
+
+28.9
+
+325.6
+
+74
+
+0.57
+
+Combined Score
+
+51
+
+36.9
+
+696.2
+
+101
+
+0.61
+
+Combined Score
+
+61
+
+45.8
+
+844.0
+
+127
+
+0.61
+
+Combined Score
+
+71
+
+54.5
+
+900.7
+
+154
+
+0.62
+
+Combined Score
+
+81
+
+59.8
+
+960.0
+
+167
+
+0.63
+
+Combined Score
+
+91
+
+68.1
+
+1232.2
+
+193
+
+0.63
+
+Combined Score
+
+101
+
+75.9
+
+1469.5
+
+222
+
+0.62
+
+S5
+
+Table S5: Starting material prices from the ChemSpace APIS1 in October 2023 and April 2024 used in the first case study, plotted in Figure S1A.
+
+SMILES
+O=C(Cl)c1ccc(Br)cc1 OCc1ccccc1 O=C(O)c1ccc(NC(=O)c2ccccc2)cc1 O=C(O)c1ccccc1 O=C(O)c1ccc(-c2ccc(C(F)(F)F)cc2)cc1 O=C(O)c1ccc(C(=O)c2ccccc2)cc1 O=C(OCc1ccccc1)ON1C(=O)CCC1=O O=Cc1ccc(C(=O)O)cc1 Cc1ccccc1B(O)O OB(O)c1ccccc1 CC(C)(C)OC(=O)N1C[C@@H](O)C[C@H]1C(=O)O O=C(O)[C@@H]1C[C@H](O)CN1 CC(C)(C)O O=C(O)c1ccc(-c2ccc(F)cc2)cc1 O=C(Cl)c1ccc(Oc2ccccc2)cc1 O=C(O)[C@@H]1C[C@@H](O)CN1C(=O)OCc1ccccc1 N[C@H](CO)C(=O)O C=CCBr CC(C)(C)OC(=O)OC(=O)OC(C)(C)C O=C(Cl)c1ccc(C(F)(F)F)cc1 O=C(Cl)OCc1ccccc1 COC(=O)[C@@H]1C[C@H](O)CN1C(=O)OC(C)(C)C O=C(Cl)c1ccc(OCc2ccccc2)cc1 CC(C)(C)OC(=O)N[C@H](CO)C(=O)O O=C(O)c1ccccc1-c1ccccc1 COC(=O)[C@@H]1C[C@H](O)CN1C(=O)OCc1ccccc1 O=C(O)C(c1ccccc1)c1ccccc1
+
+Cost in October 2023
+3.3 2.7 23.6 1.0 34.4 4.5 1.2 0.6 0.7 0.8 1.3 3.6 2.7 31.0 100.4 1.0 0.7 3.2 2.7 1.0 5.0 1.3 22.0 0.8 0.6 10.6 0.5
+
+Cost in April 2024
+3.3 2.7 23.6 1.2 40.4 3.5 1.2 0.6 0.7 0.8 0.8 1.0 2.7 31.0 100.4 0.9 0.8 3.2 2.7 2.6 5.0 0.6 27.2 0.6 0.6 0.9 0.5
+
+S6
+
+Table S6: Starting material prices from the ChemSpace APIS1 in October 2023 and April 2024 used in the second case study, plotted in Figure S1B.
+
+SMILES
+O=C1CCC(=O)N1O O=C(CBr)OCc1ccccc1 COC(=O)c1cc(Br)ccn1 CN(CC(=O)O)C(=O)OC(C)(C)C CC(C)(C)[Si](C)(C)OCC(=O)O COC(=O)c1ccc(Br)c(C)c1 Cc1cc(C(=O)O)ccc1[N+](=O)[O-] CN(CC(=O)O)S(C)(=O)=O CCOC(=O)c1cc(Br)ccn1 Cc1cc(C(=O)O)ccc1N CNOC NC(=O)CCl NCCO CNCC(N)=O O=C(O)CO Cc1ccc(S(=O)(=O)Cl)cc1 CC(C)(C)OC(=O)NS(C)(=O)=O Brc1cncc(I)c1 CS(=O)(=O)OS(C)(=O)=O CCOC(=O)CNC CC(C)(C)OC(=O)ON=C(C#N)c1ccccc1 CC(C)[C@H](N)CO O=C(O)c1cnc(C(=O)O)cn1 O=C(O)C(F)(F)F CCOc1ccc(B(O)O)cc1 CC(C)(C)OCC(=O)O Clc1nc(Cl)c2nc[nH]c2n1 O=C(Cl)COCc1ccccc1 CCOC(=O)CNC(C)=O Brc1ccccc1 O=C(O)COCc1ccccc1 C1=COCCC1 CC(C)N Cn1cc(C(=O)O)cn1 CC(=O)N(C)CC(=O)O CC(C)(C)OC(=O)OC(=O)OC(C)(C)C C#C[Si](C)(C)C CCOC(=O)c1cnc(Cl)cn1 Brc1c[nH]cn1 OB(O)c1ccccc1 O=C(O)CNC(=O)OCc1ccccc1 O=C(Cl)C1CCCCC1 CNCCO CCI O=C(O)c1cncc(Br)c1 COc1ccc(C(=O)Cl)cc1 CC(O)CN CC(C)(C)[Si](C)(C)Cl Cc1cc(C(=O)O)ccc1Br Cc1cccc(C(=O)O)c1 O=C(OC(=O)C(F)(F)F)C(F)(F)F Nc1cc(Cl)ncn1 NCC(=O)O Cn1cc(C(=O)Cl)cn1 COc1ccc(C(=O)[O-])cc1 CCOC(=O)CN CNCC(=O)O COc1ccc(C(=O)O)cc1 CC(=O)O CC(=O)Cl Nn1cnnc1 O=C(Cl)CBr O=S(=O)(Cl)c1ccccc1 COc1ccc(C(=O)O)cc1Br Oc1ccc(-c2ccccc2)cc1 COC(=O)CN CC(C)(C)OC(=O)NCC(=O)O CC(C)(C)OC(=O)CBr CS(N)(=O)=O O=c1ccnc[nH]1 Ic1cccnc1 O=C(Cl)Oc1ccc([N+](=O)[O-])cc1 CN(N=O)C(N)=O O=C(O)c1cccnc1 Nc1nc(Cl)nc2[nH]cnc12 CC(C)OB(OC(C)C)OC(C)C ClCc1ccccc1 CC(C)(C)O CS(=O)(=O)NCC(=O)O OCc1cc(F)cc(F)c1 Clc1cc(Cl)ncn1 O=C(O)CCl C[C@H](O)C(=O)O CNc1cc(Cl)ncn1 CC(=O)OCC(=O)Cl Nc1cnc(Cl)nc1
+
+Cost in October 2023
+0.5 0.7 2.6 0.9 318.2 1.3 3.2 48.4 6.0 0.7 38.6 3.2 3.2 180.0 3.2 3.2 16.7 4.7 0.6 132.0 1.5 1.0 2.5 2.7 1.2 6.1 1.2 3.4 1.7 3.2 0.8 3.2 2.7 1.6 69.5 2.7 0.8 47.4 1.7 0.8 0.5 2.7 3.2 2.8 0.6 2.2 3.2 2.3 1.0 1.2 2.7 0.6 0.6 136.6 3.0 38.5 1.2 3.0 3.0 2.7 0.6 2.0 3.2 1.6 1.2 18.7 0.5 3.2 1.0 1.9 0.9 1.0 18.5 0.5 3.2 3.2 132.0 2.7 58.8 1.4 1.0 2.7 3.2 4.1 1.2 8.8
+
+Cost in April 2024
+0.5 0.6 1.7 0.9 144.8 1.4 3.2 40.4 6.4 0.6 0.9 2.5 2.4 2.4 2.2 3.2 17.1 4.1 0.6 2.4 3.2 1.0 1.5 0.5 1.3 3.0 1.2 3.9 1.4 3.2 0.8 3.2 1.1 1.7 59.8 2.7 1.0 27.2 1.9 0.8 0.5 2.7 3.2 3.2 0.5 2.2 1.9 3.7 0.8 1.2 2.7 0.6 0.6 137.1 3.2 0.7 1.0 3.2 0.5 2.7 0.6 2.8 2.2 1.7 1.2 0.8 0.5 3.2 1.0 1.9 0.7 1.0 18.5 0.5 2.7 3.2 132.0 2.7 49.1 1.5 0.5 2.4 0.9 2.1 1.4 9.5
+
+S7
+
+References
+(S1) Chemspace Services: Compound Sourcing and Procurement, Hit Discovery, Molecular Docking, Custom Synt. https://chem-space.com/services, Accessed October 2023.
+(S2) Garibsingh, R.-A. A.; Ndaru, E.; Garaeva, A. A.; Shi, Y.; Zielewicz, L.; Zakrepine, P.; Bonomi, M.; Slotboom, D. J.; Paulino, C.; Grewer, C.; Schlessinger, A. Rational Design of ASCT2 Inhibitors Using an Integrated Experimental-Computational Approach. Proceedings of the National Academy of Sciences 2021, 118, e2104093118.
+(S3) Ertl, P.; Schuffenhauer, A. Estimation of Synthetic Accessibility Score of Drug-Like Molecules Based on Molecular Complexity and Fragment Contributions. Journal of Cheminformatics 2009, 1, 8.
+(S4) Koscher, B. A.; Canty, R. B.; McDonald, M. A.; Greenman, K. P.; McGill, C. J.; Bilodeau, C. L.; Jin, W.; Wu, H.; Vermeire, F. H.; Jin, B.; Hart, T.; Kulesza, T.; Li, S.C.; Jaakkola, T. S.; Barzilay, R.; G´omez-Bombarelli, R.; Green, W. H.; Jensen, K. F. Autonomous, Multiproperty-Driven Molecular Discovery: From Predictions to Measurements and Back. Science 2023, 382, eadi1407.
+S8
+

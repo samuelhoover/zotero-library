@@ -1,0 +1,283 @@
+Multiphase Complex Coacervate Droplets
+Tiemei Lu and Evan Spruijt*
+Cite This: J. Am. Chem. Soc. 2020, 142, 2905−2914 Read Online
+ACCESS Metrics & More Article Recommendations s*ı Supporting Information
+ABSTRACT: Liquid−liquid phase separation plays an important role in cellular organization. Many subcellular condensed bodies are hierarchically organized into multiple coexisting domains or layers. However, our molecular understanding of the assembly and internal organization of these multicomponent droplets is still incomplete, and rules for the coexistence of condensed phases are lacking. Here, we show that the formation of hierarchically organized multiphase droplets with up to three coexisting layers is a generic phenomenon in mixtures of complex coacervates, which serve as models of chargedriven liquid−liquid phase separated systems. We present simple theoretical guidelines to explain both the hierarchical arrangement and the demixing transition in multiphase droplets using the interfacial tensions and critical salt concentration as inputs. Multiple coacervates can coexist if they differ sufficiently in macromolecular density, and we show that the associated differences in critical salt concentration can be used to predict multiphase droplet formation. We also show that the coexisting coacervates present distinct chemical environments that can concentrate guest molecules to different extents. Our findings suggest that condensate immiscibility may be a very general feature in biological systems, which could be exploited to design self-organized synthetic compartments to control biomolecular processes.
+■
+INTRODUCTION
+Liquid−liquid phase separation has emerged as an important mechanism for the organization of the intracellular environ
+ment.1−3 Membraneless organelles are condensed, often liquidlike bodies formed by phase separation of specific proteins and sometimes also RNA by weak multivalent associative
+interactions.3−5 They facilitate a wide range of cellular functions, acting as processing bodies, storage granules, or organizational
+hubs.1,6 Various membraneless organelles have hierarchical structures with multiple liquid-like or solid-like inner phases.
+Examples include nucleoli7 and stress granules,8−10 para
+speckles,11 and nuclear speckles.12 The coexistence of multiple condensed phases in a single membraneless organelle has been suggested to reflect the organelles’ complex functions, in which different biomolecular processes take place in physically
+separated regions.13,14 However, liquid−liquid phase separation in general, and the emergence of multiphase droplets in cells in particular could also be an inevitable consequence of the
+underlying molecular interactions.15 The in vitro reconstituted nucleoli from purified proteins suggest that multiphase droplets
+could indeed be a generic phenomenon.7 However, insights into the physical principles and the role of chemical interactions that underlie the emergence and behavior of multiphase liquid
+droplets are scarce.16 To understand the physical and chemical requirements for liquid−liquid multiphase separation and coexistence, we need to investigate the phase behavior of well-defined model systems
+comprising multiple phase separating components, and systematically vary the interactions and composition. A recent simulation study with self-attracting particles showed that multiphase droplets can be formed when the interactions
+between separate components are sufficiently different.17 However, nearly all components of condensed liquid phases in biological systems are polymeric, such as disordered proteins and RNA, which interact via a limited number of interaction
+motifs,3−5 and it remains unclear how likely it is for these systems to form multiphase droplets. Using an experimental model system of elastin-like polypeptides (ELPs), López and coworkers showed that ELPs with different lower critical solution temperatures could phase separate into multilayered droplets, provided they have dissimilar amino acid content and are
+sufficiently long.18 They rationalized their results with a meanfield Flory−Huggins theory for poorly water-soluble polymers, and suggested that subtle changes in amino acid composition might be sufficient to warrant condensate immiscibility and the emergence of multiphase structures. Many biological condensate components differ from ELPs in that they contain a
+Received: October 24, 2019 Published: January 20, 2020
+pubs.acs.org/JACS Article
+© 2020 American Chemical Society 2905
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+This is an open access article published under a Creative Commons Non-Commercial No Derivative Works (CC-BY-NC-ND) Attribution License, which permits copying and redistribution of the article, and creation of adaptations, all for non-commercial purposes.
+Downloaded via 24.91.28.223 on August 3, 2024 at 19:46:10 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+significant fraction of charged residues (e.g., nucleotides, lysine,
+arginine, and phosphorylated amino acids),19 and there is considerable evidence that charge-driven assembly plays an important role in the formation of various membraneless
+organelles.4,5,20−23 We therefore asked if multiple condensates of partially charged macromolecules, such as RNA, could still coexist and what would be their most favorable structural organization. Here, we show that the formation of multiphase droplets is a generic phenomenon in mixtures of charge-driven liquid−liquid phase separated systems with different critical salt concentrations. We use complex coacervates as model systems for condensed liquid droplets formed by associative phase separation in biological systems. Complex coacervates are liquid droplets (which ultimately coarsen to macroscopically separated phases) that form by associative liquid−liquid phase separation
+in mixtures of multivalent, oppositely charged molecules.24,25 These droplets are enriched in macromolecules, and have been used to model various aspects of membraneless organelles,
+including their viscoelastic characteristics,26,27 controlled
+formation and dissolution by enzymes such as kinases,28,29 and
+salt sensitivity.20 The basic phase behavior of most complex coacervates can be described satisfactorily by a mean-field
+Flory−Huggins theory,25,30,31 similar to the liquid−liquid phase separation of many components derived from membraneless
+organelles.4,20 We show that complex coacervates coexist in multiphase droplets if they have different critical salt concentrations, which is used as an indicator for differences in macromolecular density and water content of the coacervates.
+■
+EXPERIMENTAL SECTION
+Materials. All polymers used in this study are commercially available or synthesized according to previously reported methods. A list of all polymers and their characteristics can be found in the Supporting Information (extended methods and Table S1). Salts, including sodium chloride (NaCl), magnesium chloride (MgCl2· 6H2O), and 4-(2-hydroxyethyl)-1-piperazineethanesulfonic acid (HEPES) were purchased from Sigma. All solutions were prepared in Milli-Q water (MQ) and the pH of buffer solutions was adjusted using sodium hydroxide (NaOH, Baker) and hydrochloric acid (HCl 37%,VWR). mPEG-trimethoxysilane (5 kDa) was purchased from Jenkem Technology. Dye molecules for partitioning experiments were dissolved in Milli-Q (pH 7) or dimethyl sulfoxide (DMSO, Sigma) before use at the following concentrations. Rhodamine B (RhoB, 1.5 mM in MQ), Thioflavin T (ThT, 1.0 mM in MQ), 6-Aminofluorescein (6-AF, 20 mM in MQ), 5(6)-carboxyfluorescein (5(6)-CF, 8.5 mM in DMSO), 4,4′,4′′,4′′′-(porphine-5,10,15,20-tetrayl)-tetrakis(benzoic acid) (TCPP or tetrakis-carboxyphenylporphyrin, 2.0 mM in MQ), Methyl blue (MB, 3.1 mM in MQ) and Nile red (NR, 31 mM in DMSO) were purchased from Sigma. Polyethylene glycol difluorescein (PEG-difluorescein, 8 kDa, 150 mg/mL) was purchased from Chemicell and diluted 30× before use. SYBR gold nucleic acid stain (SG, 10 000× concentrate in DMSO) was purchased from Thermo Fisher and diluted 100× before use. eGFP (84.7 μM) was produced and
+purified using a custom-made IVTT protocol as described elsewhere.32 Complex Coacervate Formation. Stock solutions of all polymers, salts and buffers were prepared at the indicated concentrations in MilliQ water. Typically, polymer stock solutions were prepared at 50 mg/ mL, pH 7 without added salt. Single-phase coacervates (Table S2) were prepared by first mixing NaCl (3.0 M stock), HEPES (0.50 M stock) and Milli-Q water in a microcentrifuge tube (0.5 mL, Eppendorf). To the mixture, 1:1 chargestoichiometric quantities of the positively and negatively charged polymers or molecules were added to a total volume of 20 μL. The final NaCl concentration in the mixture varied from 6 mM to 1.0 M (Table S3). Mixing was done by gentle pipetting (3×) before each
+measurement. To the coacervates containing adenosine triphosphate (ATP) and single-stranded DNA (ssDNA), 5 mM MgCl2 was added. For preparation of multiphase coacervates (Table S4), we used two methods. For the first method, we mixed all the like-charged polymers together and added those at a 1:1 stoichiometric ratio to the premixed buffer and salt solutions (Figure S1). For the second method, two different types of coacervates were prepared separately, as described above, diluted to the same salt concentration, and then mixed together in a separate tube (Figure S2). Both methods yielded the same multiphase droplets. For the three-phase coacervates, three samples were prepared, (1) poly(3-sulfopropyl methacrylate) (PSPMA)/poly(diallyl dimethylammonium chloride) (PDDA) + ATP/poly(allylamine hydrochloride) (PAH) + poly(acrylic acid) (PAA)/PDDA, (2) PSPMA/PAH/ PDDA/glycidyl trimethylammonium chloride functionalized dextran (Q-Dex) and (3) PSPMA/PAH/PDDA/diethylaminoethyl-functionalized dextran (DEAE-Dex). All samples were prepared according to the same two methods described above, with a final salt concentration of 0.3 M for sample 1, 0.2 M for sample 2 and 0.4 M for sample 3. Mixing was done by gentle pipetting (3×) before each measurement. Wide-Field and Confocal Microscopy. Images were obtained using a CSU X-1 Yokogawa spinning disc confocal unit connected to an Olympus IX81 inverted microscope, using a 100× oil immersion objective (NA 1.5) and recorded on an Andor iXon EM-CCD camera. For imaging, a 10−30 μL aliquot of a coacervate mixture was added to a custom-made mPEG-trimethoxysilane passivated PDMS observation chamber on a cover glass slide (No. 1.5H, with an average thickness of 170 ± 5 μm). PDMS chambers were prepared by curing a slab of PDMS (Sylgard 184 elastomer kit, 10:1 PDMS:cross-linker) for 90 min at 65 °C, cutting out 5 × 5 mm square wells, and bonding them to a cover glass using plasma activation. The PDMS and glass surfaces were PEGylated after plasma activation by immersing them in a 30 mg/mL solution of mPEG-trimethoxysilane (5 kDa) in ethanol for 2 h at 60 °C. Critical Salt Concentrations. The critical salt concentration of single-phase coacervates was measured on a microplate reader (Tecan
+Spark), equipped with a microinjector, as described elsewhere.29 Briefly, turbidity of a coacervate solution with a total starting volume of 50 μL above the critical salt concentration was monitored as a function of the concentration of NaCl at a wavelength of 600 nm and a temperature of 26 ± 1 °C in 96-well plates (Greiner Bio-one, clear flatbottom wells) by dilution with MQ in 5 μL steps. Samples were shaken for 0.3 s before every readout. The critical point was determined by extrapolating the first-order derivative at the inflection point to zero turbidity. Note that this critical salt concentration does not take into account ions from other sources than the added NaCl, and the actual critical ionic strength may be slightly higher. Selective Dissolution. For selective dissolution and condensation of multiphase droplets, we selected PSPMA/PDDA/PAH and prepared the sample according to method 2. For selective dissolution, we started at a NaCl concentration of 0.50 M and added 20 μL of the mixture into a large-volume mPEG-silane modified PDMS sample chamber on a cover glass slide. We then added increasing amounts of NaCl from a 4.0 M stock to reach the indicated salt concentrations, mixed the sample by gentle pipetting (3×), and recorded images. For the reverse experiment of selective condensation, we prepared the mixture at a NaCl concentration of 3.0 M and added 20 μL of the mixture into a large-volume mPEG-silane modified PDMS sample chamber on a cover glass slide. We then added increasing amounts of Milli-Q to decrease the NaCl concentration to the indicated values, mixed the sample by gentle pipetting (3×), and recorded images. Partitioning. For partitioning experiments, 20 μL aliquots of a selected multiphase coacervate system (PSPMA/PDDA/PAH or PSPMA/PDDA/Q-Dex) were added to neighboring mPEG-silane modified PDMS sample chambers on a cover glass slide. Small quantities of the stock solutions of the dye molecules were added to the multiphase coacervate droplets, mixed by gentle pipetting, and visualized by excitation at the indicated wavelengths. TCPP (0.3 μL) and ThT (2 μL) were excited at 405 nm. 6-AF (0.2 μL), 5(6)-CF (0.2 μL), PEG-difluorescein (0.2 μL), SG (1 μL) and eGFP (2 μL) were all excited at 488 nm. RhoB (1 μL) and NR (0.2 μL) were excited at 561
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2906
+
+
+nm. Finally, MB (0.4 μL) was excited at 640 nm. The partition coefficient (K) was determined from average fluorescence intensities as K1 = (Ic,out − Ib)/(Id − Ib) and K2 = (Ic,in − Ib)/(Ic,out − Ib), where Ib, Id, Ic,out and Ic,in are the intensity of a blank solution, the dilute phase surrounding the multiphase droplets, the outer coacervate layer, and the inner core coacervate of the multiphase droplets, respectively.
+■
+RESULTS AND DISCUSSION
+Multiphase Droplet Formation. Many oppositely charged
+polymers, including oligopeptides and nucleotides,28,33,34
+derivatized polysaccharides,35 and synthetic polyelectrolytes,36 can form spherical coacervate droplets by associative phase
+Figure 1. Multiphase complex coacervate droplets formed by mixing different polymeric coacervates (structures are shown in Table S1, and fluorescently labeled polymers are underlined). (a,b) ssDNA/PLys(Me)3 core coacervates in a ssDNA/GFP-K72 outer coacervate phase, viewed in (a)
+bright-field and (b) confocal fluorescence microscopy with fluorescence from Alexa-647 labeled ssDNA (red channel) and GFP (green channel). (c) ATP/PAH cores ATP/PDDA outer phases, with fluorescence from rhodamine-labeled PAH. (d) PGlu/PAH cores in PGlu/PDDA outer coacervate phases, shown as overlay of bright-field and fluorescence microscope image with fluorescence from rhodamine-labeled PAH. (e) PAA/PLys(Me)3
+cores in PAA/GFP-K72 outer coacervate phases, with fluorescence from GFP. (f) PSPMA/PAH cores in PSPMA/DEAE-Dex outer coacervate phases,
+with fluorescence from rhodamine-labeled PAH. (g) Dextran sulfate (S-Dex)/PLys(Me)3 cores in S-Dex/GFP-K72 outer coacervate phases, with
+fluorescence from GFP. (h) PSPMA/PAH cores in PSPMA/PDDA outer coacervate phases, with fluorescence from rhodamine-labeled PAH. (i) PSPMA/PDDA cores in PSPMA/Q-Dex outer coacervate phases, with fluorescence from fluorescein-labeled PSPMA. (j) ATP/PAH cores in PSPMA/PDDA outer coacervate phases, with fluorescence from fluorescein-labeled PSPMA (green channel) and rhodamine-labeled PAH (yellow channel).
+Figure 2. Interfacial tension-governed arrangement and fusion in multiphase coacervate droplets. (a) Fusion of core PAA/PLys(Me)3 coacervates inside a PAA/GFP-K72 outer phase (cf. Figure 1e). (b) Fusion of PGlu/PDDA coacervates followed by fusion of their internal PGlu/PAH cores (cf.
+Figure 1d). (c) Engulfing of an ATP/PAH coacervate by a PSPMA/PDDA coacervate (cf. Figure 1j). (d) Schematic illustration of four scenarios of two coexisting liquid droplets. (e) Dual multiphase arrangement (1/2 and 2/1) in PSPMA/PLys/PLys(Me)3.
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2907
+
+
+separation upon mixing with a preferential 1:1 charge ratio. Over time these droplets coarsen and fuse, ultimately resulting in a bulk liquid coacervate phase. This type of liquid−liquid phase separation (LLPS) of oppositely charged macromolecules is
+driven by ion pairing and the release of counterions.24 On first thought, one would expect combinations of two such complex coacervates to mix and form a single merged coacervate, owing to their common electrostatic interactions. To investigate what happens to mixtures of complex coacervates, we combined populations of two different complex coacervates (Table S4). As an example, we mixed complex coacervates of ssDNA and trimethylated poly-L-lysine (PLys(Me)3) with coacervates of ssDNA and a lysine-rich ELP, which
+was fused to GFP (GFP-K72).18,34 Both combinations form spherical complex coacervate droplets separately (Figure S3) with similar high internal water contents of 70% (w/w) or more at the same salt concentration. Surprisingly, when added together we observed the formation of multiphase coacervate droplets with single or multiple domains of PLys(Me)3/ssDNA inside GFP-K72/ssDNA droplets (Figure 1a,b). The PLys(Me)3/ssDNA domains are separated from the GFP-K72/ ssDNA droplet by a sharp and smooth interface, typical of coexisting liquid phases. ssDNA is the common polyanion of both complex coacervates and is present in both phases, but not in equal concentrations (Figure S3d). We observed similar multiphase droplets for the large majority of coacervate mixtures we tested (Figure 1c−j, Table S4). These structures are reminiscent of multicompartment membraneless organelles with distinct core domains, such as
+nucleoli7 and stress granules,8−10 and comprise three coexisting liquid phases: the core coacervate, the outer coacervate, and the
+surrounding dilute phase.18 Both the outer droplets and the inner domains are liquids, as demonstrated by their coalescence and ability to engulf other droplets (Figure 2a−c, Movies S1−S4). Coalescence of core droplets is slow and relatively infrequent as expected based on the high local viscosity inside the corona droplet. The typical time scale of diffusion-limited collision between core droplets is
+given by J = η
+t k Tc
+3 4
+s
+B0
+, where ηs is the viscosity of the surrounding
+coacervate and c0 is the initial number density of core droplets.
+For a typical outer coacervate viscosity of 100 mPa·s,26 the average collision time between two core coacervates in a 10 μm outer droplet is of the order of 1 h. It does not depend on the core coacervate size, but confinement by the outer droplet may lead to faster collision. Interestingly, the very low predicted collision rates may also explain why fusion of certain core
+domains inside membraneless organelles7 or condensates in the
+crowded nucleoplasm20 is not readily observed, as coarsening
+occurs over typical time scales of minutes to hours.37 When two core coacervate droplets do collide, they are driven to fuse by a reduction of the total interfacial area, highlighting the fact that they are true liquids in a surrounding liquid (Figure 2a,b, Movies S1−S3). The fusion time scale of droplets can be
+estimated from M = η
+γ
+t cR
+12
+, which only depends on the viscosity
+(ηc) and size (R) of the core droplets, and the interfacial tension
+between both coacervates.38 Because the core coacervate is typically the densest phase with the highest critical salt concentration (see below), the viscosity of the core coacervate is significantly higher, and fusion of core droplets is much slower than fusion of outer coacervates, in agreement with our observations.
+To prove that the multiphase droplets we observed are equilibrium liquid−liquid phase separated systems (apart from coarsening), and not kinetic intermediates en route to forming homogeneously mixed coacervates, we prepared the same multiphase droplets by mixing all like-charged components together first without forming separate coacervate populations. We found the same multiphase coacervate droplets with the same core and outer phases (Figures S1−S2), indicating that the two coexisting complex coacervates are inherently immiscible and that the multiphase arrangement of phases is energetically favored. In order to understand the physical and chemical requirements for liquid−liquid multiphase separation and coexistence, we first analyze the chemical characteristics of the immiscible coacervates. As shown in Figure 1 and Table S4, multiphase droplet formation is not limited to a single type of polycation or polyanion. We can form multiphase droplets with sulfates, phosphates, and carboxylates, and with primary, tertiary, and quaternary amines. We can use two complex coacervates with a common polyanion (Figure 1), a common polycation (Figure S4), or two polycations and polyanions (Figure 1j). Finally, even two complex coacervates with a common polyanion and a polycation with the same type of charged group (e.g., primary amine) can form multiphase droplets when mixed (Figure 1i and S5). However, not all combinations of complex coacervates yielded multiphase droplets. For some combinations with very similar critical salt concentrations, we observed single-phase, mixed coacervate droplets (Table S5 and Figure S6). In brief, complex coacervates with widely varying chemical characteristics can all undergo liquid−liquid phase separation into multiphase droplets, implying that a generic explanation underlies this process.
+Interfacial Energy of Multiphase Droplets. Why do most mixtures of complex coacervates separate into multiphase droplets? To address this question, we consider the following two aspects of multiphase droplet formation. We first discuss why the droplets have a typical hierarchical arrangement with a core droplet embedded in an outer coacervate, as opposed to isolated complex coacervate droplets. Second, we discuss why the coacervate phases are demixed inside the multiphase droplets. The first aspect involves the interfacial energy requirements for the formation of multiphase droplets. Figure 2d shows four possible scenarios for the organization of two droplets of
+immiscible liquids 1 and 2:39,40 a multiphase droplet of 1-in-2, a multiphase droplet of 2-in-1, a set of attached lenses in partial wetting (1−2), and complete nonwetting, in which the two droplets remain separate (left of arrow). The latter is a limit of the partial wetting scenario with θ → 180°. In experiments, we always observed the complete wetting of one type of coacervate droplets by the other coacervate (1-in-2 or 2-in-1), meaning that the core coacervate droplets are spontaneously engulfed by the outer coacervates. We could directly observe the process of engulfing in bright-field (Figure 2c, Movie S4) and fluorescence microscopy (Figure S7). It is completely analogous to the wetting-induced formation of double emulsions in micro
+fluidics.39 A coacervate droplet 1 will be engulfed by another coacervate droplet 2 if the total interfacial energy of the resulting multiphase droplet (Figure 2d, case 1 in 2) is lower than the combined
+interfacial energies of the individual droplets:39 4πR12γ1d +
+4πR22γ2d > 4πR12γ12 + 4π(R13 + R23)2/3 γ2d, which yields
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2908
+
+
+γ >αγ +γ
+1d 2 2d 12 (1)
+where i
+k
+jjjj
+y
+{
+zzzz
+α= + −
+() ()
+1R
+R
+R R
+2
+3 2/3 2 2
+1
+2
+1
+.
+The ratio α2 is a measure of the relative droplet size and ranges
+from 0 (R1 ≪ R2) to 1 (R1 ≫ R2). On the basis of this balance,
+the spreading coefficient S2 is defined as S2 = γ1d − (α2γ12 + γ2d), and full engulfment of coacervate 1 by 2 requires a positive spreading coefficient (S2 > 0). Likewise, droplet 2 will be engulfed by droplet 1 (Figure 2d, case 2 in 1) if:
+γ >αγ +γ
+2d 1 1d 12 (2)
+where α = + α − ( )
+1 ( 1) R
+R
+12
+2 1
+2
+.
+The analysis above predicts that the coacervate with the highest interfacial tension (γ1d or γ2d) is the most likely to be engulfed. In the case of complex coacervates, this is typically the densest coacervate with the highest critical salt concentra
+tion.41−43 It is interesting to note that engulfing depends on the size ratio of the coacervate droplets. Small droplets are always more likely to be engulfed by larger ones. Therefore, both eqs 1 and 2 can be true at the same time in a single system, and 1-in-2 and 2-in-1 droplets may be found together if γ1d and γ2d are nearly identical. We indeed found examples of dual multiphase arrangements in mixtures of poly-L-lysine (PLys) and PLys(Me)3 with PSPMA as common polyanion (Figure 2e), with the smaller PLys/PSPMA coacervates engulfed by large PLys(Me)3/PSPMA coacervates (bright regions in darker droplets) and small PLys(Me)3/PSPMA coacervates engulfed by large PLys/PSPMA coacervates (dark regions in brighter droplets). As the droplets coarsen through coalescence, this arrangement eventually breaks up into one of the two arrangements, depending on the ultimate ratio α1. Finally, partial wetting (Figure 2d, case 1-2) is expected for any droplet size ratio (α1 → 0 or α2 → 0) if:
+γ > γ and γ > γ
+12 1d 12 2d (3)
+and the angle θ between contacting droplets is given by44
+i
+k
+jjjjj
+y
+{
+zzzzz
+θ γγγ
+γγ
+= +−
+−
+cos 2
+1 1d 2d 12
+1d 2d
+2 22
+(4)
+For very large interfacial tensions between the two coacervates (γ12 ≥ γ1d + γ2d), the angle θ is equal to π (180°) and the droplets become completely nonwetting (i.e., they do not touch and remain isolated). We have not observed any nonwetting or partial wetting for the multiphase coacervate droplets we prepared. This means that the interfacial tension between coacervate phases (γ12) must typically be smaller than the interfacial tensions of the corresponding individual coacervates (γ1d and γ2d). For these complex coacervate model systems, in which the surrounding liquid is a dilute solution, it is expected that γ12 is smaller than both γ1d and γ2d, because the
+difference in density between two coacervates is typically smaller than the difference in density between either coacervate and the
+dilute phase.25,30 For condensates in biological systems the situation may be different, since the surrounding cytoplasm and nucleoplasm are highly crowded with other macromolecules (i.e., γ12 ≈ γ1d ≈ γ2d or γ12 > γ1d). Nonwetting or partial wetting of
+membraneless organelles could therefore be more common,1 and partly explain why many membraneless organelles remain separate in the cell.
+Density Differences between Coexisting Coacervates. The second requirement for the formation of multiphase droplets is immiscibility of the two coacervate phases once they are present in the same droplet. Immiscibility is relatively common for solutions of long water-soluble polymers, such as
+PEG, polyacrylamide and dextran,45 and the phase behavior of the resulting aqueous multiphase systems can usually be rationalized using a mean-field Flory−Huggins theoretical
+framework.18,46 The Flory interaction parameter χ provides a measure of the strength of interaction between different components in a mixture, relative to their self-interaction (high positive values reflect more unfavorable interactions). Beyond a critical χc, a mixture of two components phase separates. This critical value depends strongly on the length of the coexisting components, as translational entropy becomes negligible for long polymers. In the case of demixing polymer solutions, the critical value χc could be written as follows, under the assumption that both phases are equally hydrated:
+i
+k
+jjjjj
+y
+{
+zzzzz
+−φ χ = +
+NN
+(1 ) 1
+2
+11
+wc 12
+2
+(5)
+where N1 and N2 are the chain lengths of the two species, and φw is the volume fraction of water (together with all other common components) in both phases. For two long polymers, phase separation already occurs near χc = 0, that is, even for weakly
+unfavorable interactions.45 If the phases are hydrated differently, a proper analysis requires a full multicomponent Flory−Huggins theory, which is beyond the scope of the current work. An analogous Flory−Huggins formalism can be used to describe the phase separation of oppositely charged macromolecules at 1:1 charge ratio, by using an effective Flory interaction parameter between the complexed polymers and the solvent, which depends on the ionic strength (Supporting
+Information).4,20,25,30,47 Although this approach is only an approximation to the full interaction energy, it can capture the basic features of complex coacervation, and we use it here to predict the miscibility of multiple complex coacervates. To that end, we express the effective interaction parameter χ12, quantifying the interaction strength between the polymers in
+the two demixed coacervates,18 in terms of the interactions between the respective coacervates and their coexisting dilute solution, χ1d and χ2d: χ ≈ (χ − χ )
+12 d d
+1
+21 2
+2.48
+For the interaction between coacervates χ12 to exceed the
+critical value χc, the two coacervates should have sufficiently
+different effective interaction parameters (χ1d, χ2d). We can
+estimate the interaction parameters χ1d and χ2d from the critical salt concentrations of the complex coacervates. The interaction parameter is linked to the polymer density of the coacervate phase. A high polymer density is a direct indication of a large χ characterizing the interactions that underlie phase separation. For complex coacervates, this interaction strength and the
+coacervate density is tuned by the salt concentration.25,30 Above a critical salt concentration, the coacervates are completely soluble (i.e., χ < χc) and lower salt concentrations correspond to
+stronger demixing.30,31 When two different complex coacervates are added together at the same salt concentration, the coacervate with the highest critical salt concentration will have the highest density (Figure 3), and interfacial tension. This implies that two coacervates with significantly different critical salt concentrations, expressed by different χ parameters, will have different
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2909
+
+
+densities, and their mutual interaction parameter χ12 is expected
+to be sufficiently large to warrant immiscibility:
+i
+k
+jjjjjjj
+y
+{
+zzzzzzz
+χ∼ −
+∗∗
+cc
+11
+12 12
+2
+(6)
+where c1* and c2* are the critical salt concentrations of the two coacervates (Supporting Information). We tested this theory by measuring the critical salt concentrations of all complex coacervates we used (Table S5), and found that the critical salt concentrations of all combinations that was indeed significantly different (>10%). By contrast, when we mixed coacervates with very similar critical salt concentrations, we found single-phase, mixed coacervates (Figure S6), in agreement with our predictions. The molecular origin of complex coacervate immiscibility, and by extension, of differences in critical salt concentration is the interaction strength between the oppositely charged polymers in the coacervates, which depends on charge density, ion type, polymer backbone flexibility, and accessibility of the charged groups. Phase separation of complex coacervates is driven by these associative interactions, and stronger inter
+actions translate into higher critical salt concentrations (reflected by a higher effective χ) and denser coacervates (Figure 3). Our theory also explains why generally complex coacervates of primary and quaternized amines with the same polyanion yield multiphase droplets. Most primary polyamines have significantly higher critical salt concentrations than the corresponding tertiary or quaternized amines (Table S5), owing to their
+stronger ion pairing with most negatively charged groups.49 The primary polyamine coacervates therefore have higher densities and higher interfacial tensions than most quaternized amine coacervates, and they usually end up in the core of a multiphase droplet. An exception is the combination of the primary amine containing GFP-K72 and quaternized amines, such as PLys(Me)3, with a common polyanion, such as PAA or dextran sulfate (Figure 1e,g). GFP-K72 is consistently found to be the outer coacervate phase, because it has a much lower charge density than PLys(Me)3 and therefore a lower effective
+interaction parameter and density. In addition, more flexible polymers are also expected to form complexes more effectively without requiring bending energy, and therefore have higher
+critical salt concentrations.50 In the context of biological systems, our theory suggests that most condensate components will not mix, since these are typically long molecules for which small variations in amino acid composition can already result in sufficiently different condensate densities, in agreement with
+previous findings.17,18
+Selective Dissolution of Multiphase Droplets. We can take advantage of the fact that the coexisting phases in all multiphase droplets have different critical salt concentrations by selectively dissolving or condensing the outermost coacervate phase. Figure 4 shows that multiphase coacervates with a PAH/ PSPMA core and a PDDA/PSPMA corona phase can be dissolved in a stepwise fashion. Upon increasing the salt concentration from 0.5 to 1.5 M, the corona phase is dissolved at around 1.1−1.2 M, while the core coacervates remain intact up to 1.5 M and are dissolved completely at 3.0 M. These steps can be reversed again to form the same multiphase droplets as in Figure 1h in a sequential manner (Figure S8). Differential Partitioning. Complex coacervates are known for their ability to sequester a wide range of guest molecules,
+depending on their chemical characteristics.51,52 As the coexisting coacervates in multiphase droplets differ in density and corresponding water content, they are expected to take up
+Figure 3. Schematic phase diagram of complex coacervation at charge neutrality showing binodal curves for coacervates with increasing interaction strength.
+Figure 4. Step-wise dissolution of PSPMA/PAH/PDDA multiphase droplets, shown by (a) confocal fluorescence and (b) bright-field microscopy.
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2910
+
+
+guest molecules to different extents. We investigated the partitioning of a range of small guest molecules with different charge and hydrophobicity in multiphase droplets of PSPMA/ PAH/PDDA (Figure 1h). As shown in Figure 5, all guest molecules were concentrated in the multiphase droplets (K1 > 1, see Experimental Section) with
+partition coefficients ranging from 1.1 to 1.2 for neutral polar molecules such as eGFP to 5.3−15 for relatively hydrophobic dyes such as ThT (Figure S9). Inside the multiphase droplets most guests concentrated in the PAH/PSPMA core droplets (K2 > 1). Hydrophobic and zwitterionic molecules (ThT, 6aminofluorescein, rhodamine B, Nile red) showed the strongest fluorescence in core coacervates relative to the outer coacervate phase, while neutral and negatively charged molecules (eGFP, TCPP, carboxyfluorescein) showed the weakest increase in fluorescence in the core coacervates. These results can be explained by a combination of a lower water content (69% w/w for PAH/PSPMA and 71% w/w for PDDA/PSPMA at 0.50 M salt) and higher charge density in the core coacervates, favoring accumulation of hydrophobic dyes and leading to a more effective intercalation of zwitterionic dyes. In addition, the fluorescence quantum yield of certain dyes may be increased in the core coacervates, due to enhanced dimer or H-aggregate
+dissociation (e.g., rhodamine B and Nile red)53 or reduced
+rotational freedom (e.g., ThT).54 Finally, fluorescein-labeled PEG was concentrated in the core of PDDA/Q-Dex/PSPMA multiphase droplets, which is depleted of dextran, as expected
+based on the ability of PEG and dextran to phase separate.45 Interestingly, some relatively hydrophobic guest molecules with a high net charge strongly adsorbed to the interface between the two coacervate phases. Both SYBR Gold and methyl blue showed strong fluorescence localized in a ring around each of the core droplets (Figure 5i,j). We attribute this adsorption to the amphiphilic nature of these guest molecules: their hydrophobic core nature favors concentration in the dense and water-poor PAH/PSPMA core coacervates, while their hydrophilic, charged moieties favor accumulation in the more hydrophilic PDDA/PSPMA shell. A similar accumulation at the
+coacervate interface has been observed before for molecules with an amphiphilic nature.55,56 It would be interesting to see if a similar mechanism could result in accumulation of specific biomolecules at the interface between domains in the nucleolus, for example.7 Three-Phase Droplets. Our theory is not limited to multiphase droplets of two coexisting coacervates. Like in the case of aqueous multiphase systems, many water-based complex coacervates can in principle coexist.45 As complex coacervates can have widely different critical salt concentrations (Table S5), we expect that multiphase droplets with three or more coacervates could also be formed, either as hierarchical core− shell−shell droplets, or as multiple loose cores in a common outer coacervate phase. The relative magnitudes of the different coacervate-coacervate interfacial tensions will determine which scenario corresponds to the lowest surface energy (Figure S10). Examples of hierarchical arrangement have been found in the case of nucleoli in living cells,7 and in ELP droplets in vitro.18 To demonstrate that mixtures of complex coacervates can also form multiphase coacervates, we prepared three combinations of three different coacervates, one with five components in total (two polycations and three polyanions) and two with a common polyanion in all coacervates. When we mixed the individually prepared coacervates together (method 2), all combinations yielded hierarchical three-phase droplets (Figure 6), in which all coacervates are completely wetted by the shell phase surrounding them. Fusion between domains can be observed at all levels, illustrating the liquid nature of all coexisting phases (Movie S5). Similar three-phase coacervates could also be formed by first mixing like-charged species together, followed by combination with the oppositely charged polymers at the right salt concentration (method 1, see Figure S11). This illustrates that these three-phase droplets represent a (local) equilibrium arrangement of the coacervate phases, which ultimately coarsen to macroscopically separated phases.
+Figure 5. Partitioning of guest molecules in PSPMA/PAH/PDDA (a−g,i,j) and PSPMA/Q-Dex/PDDA (h) multiphase droplets visualized by confocal fluorescence microscopy. Panels show partitioning of different fluorescent guest molecules: (a) porphyrin derivative tetrakiscarboxyphenylporphyrin (TCPP), (b) 5(6)-carboxyfluorescein, (c) eGFP, (d) Rhodamine B, (e) Thioflavin T (ThT), (f) Nile red, (g) 6aminofluorescein, (h) PEG-difluorescein in PSPMA/Q-Dex/PDDA multiphase droplets, (i) SYBR Gold, and (j) Methyl blue. No fluorescently labeled polymers were used to form the coacervates.
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2911
+
+
+■ CONCLUSIONS
+We have shown that a wide range of complex coacervates are immiscible and give rise to the formation of multiphase droplets in which multiple condensed liquid phases coexist. A multilayer arrangement is favored if the coacervate−coacervate interfacial tension is lower than the interfacial tension of one of the coacervates with the surrounding dilute phase. Inside a multiphase droplet, coacervates are likely to remain demixed if they have dissimilar densities, which can be inferred from differences in critical salt concentration. The coacervate with the highest critical salt concentration typically has the highest (charge) density and lowest water content, and is usually found at the core of the multiphase droplets. Guest molecules can distribute over all coexisting phases and become concentrated in one of the coacervates. Our findings show that condensate immiscibility may be a very general feature in biological systems, as even condensates formed by the same attractive interactions between opposite charges do not mix when the components are sufficiently long. Our systematic analysis using model systems, supported by simple theoretical arguments, offers guidelines for understanding the physical and chemical requirements for liquid− liquid multiphase separation and coexistence. Moreover, our ability to predict and control these hierarchical multiphase complex coacervate droplets opens new ways to design smart self-organized compartments for controlled storage, catalytic conversion, and release of bioactive molecules.
+■
+ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/jacs.9b11468.
+Materials and extended methods, supplementary tables, figures, and mean-field theory of complex coacervates (PDF) Movies S1−S5 (ZIP)
+■
+AUTHOR INFORMATION
+Corresponding Author
+Evan Spruijt − Institute for Molecules and Materials, Radboud University 6525 AJ Nijmegen, The Netherlands; orcid.org/ 0000-0003-4793-9923; Email: e.spruijt@science.ru.nl
+Author
+Tiemei Lu − Institute for Molecules and Materials, Radboud University 6525 AJ Nijmegen, The Netherlands; orcid.org/ 0000-0002-7765-4761
+Complete contact information is available at: https://pubs.acs.org/10.1021/jacs.9b11468
+Notes
+The authors declare no competing financial interest.
+■
+ACKNOWLEDGMENTS
+The authors acknowledge Karina K. Nakashima, Alain A. M. André, Wojciech P. Lipiński, Merlijn H. I. van Haren, and Haibin Qian (Radboud University Nijmegen) for providing materials and advice, and Prof. Martien A. Cohen Stuart for fruitful discussions. This work was supported financially by The Netherlands Organization for Scientific Research (NWO) and a
+Scholarship from the China Scholarship Council (CSC).
+■
+REFERENCES
+(1) Shin, Y.; Brangwynne, C. P. Liquid Phase Condensation in Cell Physiology and Disease. Science 2017, 357 (6357), No. eaaf4382. (2) Boeynaems, S.; Alberti, S.; Fawzi, N. L.; Mittag, T.; Polymenidou, M.; Rousseau, F.; Schymkowitz, J.; Shorter, J.; Wolozin, B.; Van Den Bosch, L.; Tompa, P.; Fuxreiter, M. Protein Phase Separation: A New Phase in Cell Biology. Trends Cell Biol. 2018, 28 (6), 420−435. (3) Banani, S. F.; Lee, H. O.; Hyman, A. A.; Rosen, M. K. Biomolecular Condensates: Organizers of Cellular Biochemistry. Nat. Rev. Mol. Cell Biol. 2017, 18 (5), 285−298. (4) Brangwynne, C. P.; Tompa, P.; Pappu, R. V. Polymer Physics of Intracellular Phase Transitions. Nat. Phys. 2015, 11 (11), 899−904. (5) Gomes, E.; Shorter, J. The Molecular Language of Membraneless Organelles. J. Biol. Chem. 2019, 294 (18), 7115−7127. (6) Alberti, S.; Gladfelter, A.; Mittag, T. Considerations and Challenges in Studying Liquid-Liquid Phase Separation and Biomolecular Condensates. Cell 2019, 176 (3), 419−434. (7) Feric, M.; Vaidya, N.; Harmon, T. S.; Mitrea, D. M.; Zhu, L.; Richardson, T. M.; Kriwacki, R. W.; Pappu, R. V.; Brangwynne, C. P. Coexisting Liquid Phases Underlie Nucleolar Subcompartments. Cell 2016, 165 (7), 1686−1697. (8) Jain, S.; Wheeler, J. R.; Walters, R. W.; Agrawal, A.; Barsic, A.; Parker, R. ATPase-Modulated Stress Granules Contain a Diverse Proteome and Substructure. Cell 2016, 164 (3), 487−498. (9) Protter, D. S. W.; Parker, R. Principles and Properties of Stress Granules. Trends Cell Biol. 2016, 26 (9), 668−679. (10) Cirillo, L.; Cieren, A.; Gotta, M. Molecularly Distinct Cores Coexist inside Stress Granules. bioRxiv 2019, 663955. (11) West, J. A.; Mito, M.; Kurosaka, S.; Takumi, T.; Tanegashima, C.; Chujo, T.; Yanaka, K.; Kingston, R. E.; Hirose, T.; Bond, C.; Fox, A.;
+Figure 6. Multiphase complex coacervate droplets with three coexisting condensed phases. (a,b) An ATP/PAH inner core, surrounded by a PSPMA/PDDA shell in a PAA/PDDA outer coacervate phase, visualized in bright-field (a) and confocal fluorescence microscopy (b) with fluorescence from fluorescein-labeled PSPMA. Note that (a) and (b) do not show the same position. (c,d) PSPMA/PAH inner core, surrounded by a PSPMA/PDDA shell in a PSPMA/DEAE-Dex coacervate phase, visualized at the same position in bright-field (c) and confocal fluorescence microscopy (d) with fluorescence from fluorescein-labeled PSPMA.
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2912
+
+
+Nakagawa, S. Structural, Super-Resolution Microscopy Analysis of Paraspeckle Nuclear Body Organization. J. Cell Biol. 2016, 214 (7), 817−830. (12) Hall, L. L.; Smith, K. P.; Byron, M.; Lawrence, J. B. Molecular Anatomy of a Speckle. Anat. Rec., Part A 2006, 288A (7), 664−675. (13) Holehouse, A. S.; Pappu, R. V. Functional Implications of Intracellular Phase Transitions. Biochemistry 2018, 57 (17), 2415− 2423. (14) Sawyer, I. A.; Sturgill, D.; Dundr, M. Membraneless Nuclear Organelles and the Search for Phases within Phases. Wiley Interdiscip. Rev. RNA 2019, 10 (2), No. e1514. (15) Walter, H.; Brooks, D. E. Phase Separation in Cytoplasm, Due to Macromolecular Crowding, Is the Basis for Microcompartmentation. FEBS Lett. 1995, 361 (2), 135−139.
+(16) Mountain, G. A.; Keating, C. D. Formation of Multiphase Complex Coacervates and Partitioning of Biomolecules within Them. Biomacromolecules 2019, DOI: 10.1021/acs.biomac.9b01354. (17) Jacobs, W. M.; Frenkel, D. Phase Transitions in Biological Systems with Many Components. Biophys. J. 2017, 112 (4), 683−691. (18) Simon, J. R.; Carroll, N. J.; Rubinstein, M.; Chilkoti, A.; López, G. P. Programming Molecular Self-Assembly of Intrinsically Disordered Proteins Containing Sequences of Low Complexity. Nat. Chem. 2017, 9 (6), 509−515. (19) Uversky, V. N. Intrinsically Disordered Proteins and Their “Mysterious” (Meta)Physics. Front. Phys. 2019, 7, 10. (20) Nott, T. J.; Petsalaki, E.; Farber, P.; Jervis, D.; Fussner, E.; Plochowietz, A.; Craggs, T. D.; Bazett-Jones, D. P.; Pawson, T.; Forman-Kay, J. D.; Baldwin, A. J. Phase Transition of a Disordered Nuage Protein Generates Environmentally Responsive Membraneless Organelles. Mol. Cell 2015, 57 (5), 936−947. (21) Wang, J.; Choi, J.-M.; Holehouse, A. S.; Lee, H. O.; Zhang, X.; Jahnel, M.; Maharana, S.; Lemaitre, R.; Pozniakovsky, A.; Drechsel, D.; Poser, I.; Pappu, R. V.; Alberti, S.; Hyman, A. A. A Molecular Grammar Governing the Driving Forces for Phase Separation of Prion-like RNA Binding Proteins. Cell 2018, 174 (3), 688. (22) Garcia-Jove Navarro, M.; Kashida, S.; Chouaib, R.; Souquere, S.; Pierron, G.; Weil, D.; Gueroui, Z. RNA Is a Critical Element for the Sizing and the Composition of Phase-Separated RNA−Protein Condensates. Nat. Commun. 2019, 10, 3230. (23) Boyko, S.; Qi, X.; Chen, T.-H.; Surewicz, K.; Surewicz, W. K. Liquid−Liquid Phase Separation of Tau Protein: The Crucial Role of Electrostatic Interactions. J. Biol. Chem. 2019, 294 (29), 11054−11059. (24) van der Gucht, J.; Spruijt, E.; Lemmers, M.; Cohen Stuart, M. A. Polyelectrolyte Complexes: Bulk Phases and Colloidal Systems. J. Colloid Interface Sci. 2011, 361 (2), 407−422.
+(25) Chang, L.-W.; Lytle, T. K.; Radhakrishna, M.; Madinya, J. J.; Vélez, J.; Sing, C. E.; Perry, S. L. Sequence and Entropy-Based Control of Complex Coacervates. Nat. Commun. 2017, 8, 1273. (26) Spruijt, E.; Cohen Stuart, M. A.; van der Gucht, J. Linear Viscoelasticity of Polyelectrolyte Complex Coacervates. Macromolecules 2013, 46 (4), 1633−1641. (27) Elbaum-Garfinkle, S.; Kim, Y.; Szczepaniak, K.; Chen, C. C.-H.; Eckmann, C. R.; Myong, S.; Brangwynne, C. P. The Disordered P Granule Protein LAF-1 Drives Phase Separation into Droplets with Tunable Viscosity and Dynamics. Proc. Natl. Acad. Sci. U. S. A. 2015, 112 (23), 7189−7194. (28) Aumiller, W. M.; Keating, C. D. Phosphorylation-Mediated RNA/Peptide Complex Coacervation as a Model for Intracellular Liquid Organelles. Nat. Chem. 2016, 8 (2), 129−137. (29) Nakashima, K. K.; Baaij, J. F.; Spruijt, E. Reversible Generation of Coacervate Droplets in an Enzymatic Network. Soft Matter 2018, 14 (3), 361−367. (30) Spruijt, E.; Westphal, A. H.; Borst, J. W.; Cohen Stuart, M. A.; van der Gucht, J. Binodal Compositions of Polyelectrolyte Complexes. Macromolecules 2010, 43 (15), 6476−6484.
+(31) Delaney, K. T.; Fredrickson, G. H. Theory of Polyelectrolyte ComplexationComplex Coacervates Are Self-Coacervates. J. Chem. Phys. 2017, 146 (22), 224902.
+(32) Yelleswarapu, M.; van der Linden, A. J.; van Sluijs, B.; Pieters, P. A.; Dubuc, E.; de Greef, T. F. A.; Huck, W. T. S. Sigma Factor-Mediated Tuning of Bacterial Cell-Free Synthetic Genetic Oscillators. ACS Synth. Biol. 2018, 7 (12), 2879−2887. (33) Aumiller, W. M.; Pir Cakmak, F.; Davis, B. W.; Keating, C. D. RNA-Based Coacervates as a Model for Membraneless Organelles: Formation, Properties, and Interfacial Liposome Assembly. Langmuir 2016, 32 (39), 10042−10053. (34) Te Brinke, E.; Groen, J.; Herrmann, A.; Heus, H. A.; Rivas, G.; Spruijt, E.; Huck, W. T. S. Dissipative Adaptation in Driven SelfAssembly Leading to Self-Dividing Fibrils. Nat. Nanotechnol. 2018, 13 (9), 849−855. (35) Drobot, B.; Iglesias-Artola, J. M.; Le Vay, K.; Mayr, V.; Kar, M.; Kreysing, M.; Mutschler, H.; Tang, T.-Y. D. Compartmentalised RNA Catalysis in Membrane-Free Coacervate Protocells. Nat. Commun. 2018, 9, 3643. (36) Tian, L.; Martin, N.; Bassindale, P. G.; Patil, A. J.; Li, M.; Barnes, A.; Drinkwater, B. W.; Mann, S. Spontaneous Assembly of Chemically Encoded Two-Dimensional Coacervate Droplet Arrays by Acoustic Wave Patterning. Nat. Commun. 2016, 7, 13068. (37) Brangwynne, C. P. Phase Transitions and Size Scaling of Membrane-Less Organelles. J. Cell Biol. 2013, 203 (6), 875−881. (38) Paulsen, J. D.; Carmigniani, R.; Kannan, A.; Burton, J. C.; Nagel, S. R. Coalescence of Bubbles and Drops in an Outer Fluid. Nat. Commun. 2014, 5, 3182.
+(39) Deng, N.-N.; Wang, W.; Ju, X.-J.; Xie, R.; Weitz, D. A.; Chu, L.-Y. Wetting-Induced Formation of Controllable Monodisperse Multiple Emulsions in Microfluidics. Lab Chip 2013, 13 (20), 4047−4052. (40) Pannacci, N.; Bruus, H.; Bartolo, D.; Etchart, I.; Lockhart, T.; Hennequin, Y.; Willaime, H.; Tabeling, P. Equilibrium and Nonequilibrium States in Microfluidic Double Emulsions. Phys. Rev. Lett. 2008, 101 (16), 164502. (41) Spruijt, E.; Sprakel, J.; Stuart, M. A. C.; van der Gucht, J. Interfacial Tension between a Complex Coacervate Phase and Its Coexisting Aqueous Phase. Soft Matter 2010, 6 (1), 172−178. (42) Qin, J.; Priftis, D.; Farina, R.; Perry, S. L.; Leon, L.; Whitmer, J.; Hoffmann, K.; Tirrell, M.; de Pablo, J. J. Interfacial Tension of Polyelectrolyte Complex Coacervate Phases. ACS Macro Lett. 2014, 3 (6), 565−568. (43) Priftis, D.; Farina, R.; Tirrell, M. Interfacial Energy of Polypeptide Complex Coacervates Measured via Capillary Adhesion. Langmuir 2012, 28 (23), 8721−8729. (44) Wong, C. Y. H.; Adda-Bedia, M.; Vella, D. Non-Wetting Drops at Liquid Interfaces: From Liquid Marbles to Leidenfrost Drops. Soft Matter 2017, 13 (31), 5250−5260. (45) Mace, C. R.; Akbulut, O.; Kumar, A. A.; Shapiro, N. D.; Derda, R.; Patton, M. R.; Whitesides, G. M. Aqueous Multiphase Systems of Polymers and Surfactants Provide Self-Assembling Step-Gradients in Density. J. Am. Chem. Soc. 2012, 134 (22), 9094−9097. (46) Johansson, H.-O.; Karlström, G.; Tjerneld, F.; Haynes, C. A. Driving Forces for Phase Separation and Partitioning in Aqueous TwoPhase Systems. J. Chromatogr., Biomed. Appl. 1998, 711 (1), 3−17.
+(47) Overbeek, J. T. G.; Voorn, M. J. Phase Separation in Polyelectrolyte Solutions. Theory of Complex Coacervation. J. Cell. Comp. Physiol. 1957, 49 (S1), 7−26.
+(48) Du, Q.; Chen, W.; Munk, P. Inverse Gas Chromatography. 8. Apparent Probe Dependence of Χ23‘ for a Poly(Vinyl Chloride)− Poly(Tetramethylene Glycol) Blend. Macromolecules 1999, 32 (5), 1514−1518. (49) Fu, J.; Fares, H. M.; Schlenoff, J. B. Ion-Pairing Strength in Polyelectrolyte Complexes. Macromolecules 2017, 50 (3), 1066−1074. (50) André, A. A. M.; Spruijt, E. Rigidity Rules in DNA Droplets: Nucleic Acid Flexibility Affects Model Membraneless Organelles. Biophys. J. 2018, 115 (10), 1837−1839. (51) Nott, T. J.; Craggs, T. D.; Baldwin, A. J. Membraneless Organelles Can Melt Nucleic Acid Duplexes and Act as Biomolecular Filters. Nat. Chem. 2016, 8 (6), 569−575.
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2913
+
+
+(52) Nakashima, K. K.; Vibhute, M. A.; Spruijt, E. Biomolecular Chemistry in Liquid Phase Separated Compartments. Front. Mol. Biosci. 2019, 6, 21.
+(53) Lopez Arbeloa, F.; Rodriguez Liebana, Y.; Cordero Fernandez, E.; Lopez Arbeloa, I. Self-Association of the Molecular Forms of Rhodamine 19. Solvent Effect. Spectrochim. Acta 1989, 45A (12), 1201−1206. (54) Sulatskaya, A. I.; Maskevich, A. A.; Kuznetsova, I. M.; Uversky, V. N.; Turoverov, K. K. Fluorescence Quantum Yield of Thioflavin T in Rigid Isotropic Solution and Incorporated into the Amyloid Fibrils. PLoS One 2010, 5 (10), No. e15385. (55) Tang, T.-Y. D.; Antognozzi, M.; Vicary, J. A.; Perriman, A. W.; Mann, S. Small-Molecule Uptake in Membrane-Free Peptide/ Nucleotide Protocells. Soft Matter 2013, 9 (31), 7647. (56) Martin, N.; Li, M.; Mann, S. Selective Uptake and Refolding of Globular Proteins in Coacervate Microdroplets. Langmuir 2016, 32 (23), 5881−5889.
+Journal of the American Chemical Society pubs.acs.org/JACS Article
+https://dx.doi.org/10.1021/jacs.9b11468 J. Am. Chem. Soc. 2020, 142, 2905−2914
+2914

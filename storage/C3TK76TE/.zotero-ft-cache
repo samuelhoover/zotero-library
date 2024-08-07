@@ -1,0 +1,883 @@
+Article
+
+Sequence-to-Conformation Relationships of Disordered Regions Tethered to Folded Domains of Proteins
+
+Anuradha Mittal, Alex S. Holehouse, Megan C. Cohan and Rohit V. Pappu
+Department of Biomedical Engineering and Center for Biological Systems Engineering, Washington University in St. Louis, One Brookings Drive, Campus Box 1097, St. Louis, MO 63130, USA
+Correspondence to Rohit V. Pappu: pappu@wustl.edu https://doi.org/10.1016/j.jmb.2018.05.012 Edited by Richard W. Kriwacki
+Abstract
+Intrinsically disordered proteins and regions (IDPs/IDRs) are characterized by well-defined sequence-toconformation relationships (SCRs). These relationships refer to the sequence-specific preferences for average sizes, shapes, residue-specific secondary structure propensities, and amplitudes of multiscale conformational fluctuations. SCRs are discerned from the sequence-specific conformational ensembles of IDPs. A vast majority of IDPs are actually tethered to folded domains (FDs). This raises the question of whether or not SCRs inferred for IDPs are applicable to IDRs tethered to FDs. Here, we use atomistic simulations based on a well-established forcefield paradigm and an enhanced sampling method to obtain comparative assessments of SCRs for 13 archetypal IDRs modeled as autonomous units, as C-terminal tails connected to FDs, and as linkers between pairs of FDs. Our studies uncover a set of general observations regarding context-independent versus context-dependent SCRs of IDRs. SCRs are minimally perturbed upon tethering to FDs if the IDRs are deficient in charged residues and for polyampholytic IDRs where the oppositely charged residues within the sequence of the IDR are separated into distinct blocks. In contrast, the interplay between IDRs and tethered FDs has a significant modulatory effect on SCRs if the IDRs have intermediate fractions of charged residues or if they have sequence-intrinsic conformational preferences for canonical random coils. Our findings suggest that IDRs with context-independent SCRs might be independent evolutionary modules, whereas IDRs with context-dependent SCRs might co-evolve with the FDs to which they are tethered.
+© 2018 The Author(s). Published by Elsevier Ltd. This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Introduction
+Intrinsically disordered proteins (IDPs) feature prominently in eukaryotic proteomes [1–5]. The amino acid sequences of IDPs are characterized by distinct biases in amino acid composition and these include a deficiency of hydrophobic residues and an enrichment of either polar or charged residues [1,6]. IDPs are associated with a range of biological functions. These include transcriptional regulation, RNA metabolism, signal transduction, scaffolding, and facilitating phase transitions that lead to the formation of micron-scale cellular bodies [7–10].
+Systematic studies have yielded a quantitative understanding of the sequence-to-conformationalensemble relationships known as SCRs [6,11–23].
+
+These studies provide quantitative insights into the sequence-specific overall sizes, shapes, magnitudes of local conformational biases, and amplitudes of conformational fluctuations. The main determinants of SCRs are as follows: (a) the fraction of charged residues (FCR) within an IDP [14,20,21,23], (b) the net charge per residue (NCPR) of an IDP [20,21,23], (c) the linear segregation/mixing of oppositely charged residues [15,17,18,24], (d) the proline content within an IDP [23,25,26], (e) the linear sequence patterning of proline and charged residues versus others [22], and (f) the overall hydrophobicity of the sequence [14]. These parameters impact IDP-specific SCRs because they contribute to the interplay between intra-IDP and IDP-solvent interactions [12].
+
+0022-2836/© 2018 The Author(s). Published by Elsevier Ltd. This is an open access article under the CC BY-NC-ND license
+
+(http://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+J Mol Biol (2018) 430, 2403–2421
+
+2404
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+A majority of naturally occurring IDPs are actually intrinsically disordered regions (IDRs) that are tethered to folded domains (FDs) [1,27]. These include IDRs tethered to FDs at one end, giving rise to disordered tails, or on both ends, where the IDRs serve as flexible linkers. Disordered linkers mediate allosteric communication between distinct functional FDs, although the extent to which communication between domains depends on the SCRs of IDRs remains unclear [28–31]. IDRs as linkers and tails also feature prominently in multivalent systems that undergo reversible phase transitions to form micronsized cellular bodies [9,32,33]. Finally, multidomain proteins are also the targets of protein design strategies that aim to engineer protein-based circuits for synthetic biology applications and scaffolds for higher-level cellular functions [34–36]. Here, we assess how the quantitative SCRs for IDPs are altered in the context of being tethered as IDRs to FDs.
+We performed atomistic simulations using the ABSINTH implicit solvation model and forcefield paradigm to assess how being tethered as Cterminal tails of FDs or as linkers between pairs of FDs influences the SCRs of IDPs. The ABSINTH model, aided by sampling and analysis methodologies built into the CAMPARI modeling suite, has served as a useful platform for quantitative characterization of SCRs for IDPs [15,16,21,22,24,37–43]. The architectures of IDRs tethered to FDs resemble those of “cold” objects, the FDs, tethered to “hot” tails or linkers, the IDR. These architectures encode asymmetries in the amplitudes of conformational fluctuations, thereby creating challenges for methods that enhance conformational sampling via a single control parameter such as temperature. To overcome these challenges, we developed a method known as Hamiltonian Switch Metropolis Monte Carlo (HS-MMC) for enhancing the sampling of IDRs tethered to FDs [44]. This method was inspired by the work of Gelb [45] for coupling multi-Hamiltonian simulations. Transitions out of energetic traps are enabled by the introduction of an auxiliary Markov chain. This auxiliary process samples conformations from a different potential function. In our implementation, the auxiliary process draws conformations from ensembles governed purely by steric repulsions within the IDR and between the IDR and rigid FDs. The HS-MMC method preserves microscopic reversibility, thus ensuring that conformations of IDRs are drawn from an equilibrium ensemble that incorporates the effects of being tethered to an FD.
+Here, we report results from HS-MMC simulations of 13 archetypal IDR sequences, each modeled in three distinct states: as autonomous units, as singly tethered C-terminal tails to a single FD, and as tethered linkers between two FDs. In what follows, we first lay out the rationale for choosing the IDR sequences. This is followed by a detailed analysis of
+
+simulation results for the IDRs as autonomous units. These are then used as a reference to quantify how tethering of IDRs as C-terminal tails of FDs or as linkers between pairs of FDs modulates sequenceintrinsic conformational properties.
+Results
+Choice of IDRs
+The conceivable sequence space covering all combinations of IDRs and FDs is astronomically large [27]. To keep the investigations tractable whilst enabling the extraction of general principles, we used a composition-based diagram-of-states to identify and design a total of 13 archetypal IDRs for our investigations (Fig. 1) [16]. The sequences we selected are drawn from regions designated as R1, R2, and R3 on the two-parameter (f+, f−) diagram-ofstates (Fig. 1a). Here, f+ and f−, respectively, refer to the fraction of positive and negative charges within the linear sequence. We limit our studies to sequences from regions R1, R2, and R3 based on statistics that emerged from our analysis of charge-based compositional biases for sequences of disordered tails and linkers in version 27.0 of the SwissPfam database [46]. The results, summarized in Fig. 1b, show that ~ 95% of the 6435 tail sequences and 3296 linker sequences are drawn from regions R1–R3. Strong polyelectrolytes are under-represented in the population of tail and linker sequences.
+We consider IDRs that are tethered to FDs in two modes (Fig. 2a). They can be tethered as tails, which means that either the N- or C-terminal end of the IDR is free, whereas the other end is covalently attached to a specific anchoring residue on the FD. Alternatively, IDRs can be tethered as linkers, which would imply that the N- and C-terminal ends of the IDR are tethered to distinct FDs.
+Figure 2b summarizes the compositional parameters of the 13 IDRs chosen for our study. They span a range of hydrophobicity values from 2.8 to 5.4, as calculated using the Kyte–Doolittle scale [48]. Values for the fraction of charge residues (FCR) range from 0.12 to 0.47 and the predicted disorder scores, as calculated using the MetaPrDos server, ranges from 0.4 to 1.0 [47]. We use the following convention to identify each IDR sequence. Every sequence SX.Y is given a numeric identifier X and a diagram-of-states identifier Y. Accordingly, sequence S1.1 is sequence 1 from region R1 on the diagram-ofstates, whereas S4.3 is sequence 4 from region R3. Column 1 in Fig. 2b shows the SX.Y sequence identifier for each of the 13 IDR sequences. Where appropriate, column 2 shows the DISPROT identifier for each IDR. Not all of the 13 sequences are in the DISPROT database. Some of the sequences drawn
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2405
+
+(a)
+1
+
+0.8
+R4 FCR > 0.35,
+0.6 NCPR > 0.35
+
+f
+
+0.4
+
+R3
+
+FCR > 0.35,
+
+S1.1 S2.1 S3.1 S1.2 S2.2 S3.2 S4.2 S1.3, S2.3, S3.3 S4.3, S5.3, S6.3
+
+0.2
+
+R1
+
+R2
+
+0
+
+0
+
+0.2
+
+FCR < 0.25, |NCPR| < 0.25
+(b)
+
+0.5
+
+0.4
+
+R5 FCR > 0.35, NCPR > 0.35
+0.4 0.6 0.8 1 f+
+Tails Linkers
+
+Fraction of sequences
+
+0.3
+
+0.2
+
+0.1
+
+0 R1 R2 R3 R4 & R5
+Fig. 1. Diagram-of-states analysis of IDRs tethered to FDs. Panel a shows the diagram-of-states locations and sequence identifiers of the 13 IDRs chosen for this study. Panel b shows the regional statistics, as it relates to the diagram-of-states, for naturally occurring IDRs that are tails versus linkers. The figure summarizes compositional statistics for 6435 tails (red bars) and 3296 linker sequences (green bars). These statistics were derived from analysis of tails and linkers tethered to FDs as annotated in the SwissPfam database (version 27.0). This database was scanned to identify disordered linkers between pairs of protein–protein interaction domains and disordered tails that are tethered to protein–protein interaction domains. SwissPfam contains proteins listed in SwissProt, wherein every SwissProt entry is represented as a sequence of Pfam domains. Version 27.0 has 20,553,235 entries and covers ~ 80% the sequences in the UniProt database. We selected IDRs meeting the following criteria: their lengths had to be longer than 30 residues; the fraction of proline residues had to be below 0.1; they had to be within the disordered region of the so-called Uversky plots. In order to be bona fide IDR, all residues within the region of interest had to have high disorder scores (N 0.3) as predicted by the MetaPrDOS server [47].
+
+from R3, specifically S2.3, S3.3, S5.3, and S6.3 are charge permutants of naturally occurring IDRs. Charge permutants have an identical composition to their naturally occurring “parent” IDRs, but their linear sequences have been shuffled to alter the patterning of oppositely charged residues as quantified by a charge patterning parameter κ [16]. Accordingly, the FCR, NCPR, and mean hydropathy of S2.3 and S3.3 are identical to S1.3, which is the parent IDR, but the sequences have been shuffled such that the κ values have changed. Similar considerations apply to S5.3 and S6.3 as compared to their parent IDR, S4.3.
+Choice of FDs
+The universe of protein–protein interaction domains comprises ~ 103-folds [51]. To extract a conceptual assessment of the interplay between sequenceintrinsic conformational preferences of IDRs modeled as autonomous units and the impact of FDs on IDRs, we focused our studies on IDRs tethered to two distinct protein–protein interaction modules viz., the Src homology domain (SH3) from the multidomain cytoplasmic non-catalytic region of the tyrosine kinase adaptor protein (NCK1) and the WW domain from peptidyl-prolyl cis–trans isomerase NIMA-interacting 1 (PIN1), as shown in Fig. 2c.
+Our choice of the SH3 domain was motivated in part due to its importance in mediating multivalent interactions in synthetic and naturally occurring multi-domain proteins [35,52–55]. In addition, the size of this domain (~ 60 residues) makes our HSMMC simulations computationally tractable. The surface of the SH3 domain is two-faced with a large acidic surface encompassing one half and a neutral/mildly basic surface over the other half. Given the overall acidic nature of the SH3 domain, we searched for an FD with a basic surface that is also a versatile protein– protein interaction module. We analyzed the Pfam database in conjunction with a list of independently folding modular domains identified by the Pawson group (Supplementary Table S1) to identify FDs connected to disordered tails or by disordered linkers (Supplementary Fig. S7) [56]. From this analysis, we identified the smaller WW domain as a suitable candidate. This domain is uniformly basic over its entire surface and it has approximately the same number of residues as the SH3 domain. The two FDs chosen allow us to quantify the interplay among charge contents and patterning within IDRs and the charged surfaces of FDs.
+Overall, we report results from simulations for 69 distinct systems. These include 13 simulations of IDRs modeled as autonomous units, 26 simulations of the 13 IDRs tethered N-terminally to the C-terminal ends of WW domains or SH3 domains, 26 simulations with the 13 IDRs tethered as linkers between WW or SH3 domains, and four simulations of IDRs tethered as linkers between SH3 and WW domains. Domain
+
+2406
+(a)
+Tails
+
+SCRs of IDRs Tethered to FDs of Proteins Linkers
+
+(b)
+
+ID
+S1.1 S2.1 S3.1 S1.2 S2.2 S3.2 S4.2 S1.3 S2.3* S3.3* S4.3 S5.3* S6.3*
+(c)
+
+DisProt ID
+
+L
+
+DP00573 42
+
+DP00088 51
+
+DP00348 59
+
+DP00458 36
+
+DP00600 59
+
+DP00505 45
+
+DP00111 49
+
+DP00624 53
+
+-
+
+53
+
+-
+
+53
+
+DP00470 51
+
+-
+
+51
+
+-
+
+51
+
+Sequence
+
+f
+
++
+
+GIFPVACSDGYGGLVTTDPKTADPVYGKVFNPPRNQLPGRFT
+
+0.10
+
+MFGKLSLDAVPFHEPIVMVTIAGIILGGLALVGLITYFGKWTYLWKEWLTS
+
+0.06
+
+PNRSISPSALQDLLRTLKSPSSPQQQQQVLNILKSNPQLMAAFIKQRTAKYVANQPGMQ 0.12
+
+GDSSQQEVPESSVTPETNSETPKESTVLGNPEEPSE
+
+0.03
+
+AQKTRAEVTGSGKKPWRQKGTGRARSGSIKSPIWRSGGVTFAARPQDHSQKVNKKMYRG 0.25
+
+GHETGRLSGAADTQALLRNDQVYQPLRDRDDAQYSHLGGNWARNK
+
+0.13
+
+MKAAVDLKPTLTIIKTEKVDLELFPSPDMECADVPLLTPSSKEMMSQAL
+
+0.10
+
+GKQRMKEKEQENERKVAQLAEENERLKQEIERLTREVEATRRALIDRMVNLHQ
+
+0.25
+
+LVEKQMVELRAAELRRDEQERTELTIRLKNEQEQRVNKKEAQREGMENIARHK
+
+0.25
+
+AAEKGLNEERLRRRMRADKRLTKLKILQREEARNEKQHEIEVQTMVVEQQENE
+
+0.25
+
+ATSSSSRDPSPSDEDMDGEVEILGFKMPTEERVRKRKESNRESARRSRYRK
+
+0.25
+
+DYIKRKRGRAPRRMPRKVMRRKRSVDSGSSESEEEELTSAFPDDSEENTSS
+
+0.25
+
+MGFYTVRRRRRKKKRKRPRSSSGSRVEASSSALMDEDTEEEDDPESESPIN
+
+0.25
+
+WW (PDB ID: 1PIN)
+
+f-
+
+NCPR FCR
+
+max
+
+<H>
+
+Disorder Score
+
+0.07
+
+0.02 0.17 0.21 0.09 4.2
+
+0.4
+
+0.06
+
+0.00 0.12 0.23 0.06 5.4
+
+0.1
+
+0.02
+
+0.10 0.14 0.25 0.08 3.8
+
+0.4
+
+0.25 -0.22 0.28 0.13 0.15 3.1
+
+1.0
+
+0.03
+
+0.22 0.29 0.17 0.18 3.2
+
+0.7
+
+0.13
+
+0.00 0.27 0.11 0.21 3.2
+
+0.7
+
+0.16 -0.06 0.27 0.16 0.20 4.5
+
+0.6
+
+0.23
+
+0.02 0.47 0.09 0.44 3.0
+
+0.6
+
+0.23
+
+0.02 0.47 0.06 0.44 3.0
+
+0.7
+
+0.23
+
+0.02 0.47 0.19 0.44 3.0
+
+0.6
+
+0.22
+
+0.04 0.47 0.30 0.44 2.8
+
+0.8
+
+0.22
+
+0.04 0.47 0.60 0.44 2.8
+
+0.9
+
+0.22
+
+0.04 0.47 0.80 0.44 2.8
+
+0.9
+
+SH3 (PDB ID: 2JS0)
+
+-2 0 2 (kT/e)
+Fig. 2. Domain architectures of IDRs and FDs used in this study. (a) Schematic showing the tethered architectures that were used in our simulation studies. The blue squares and red circles denote WW and SH3 domains, respectively. IDRs can be tethered as tails or as linkers between identical or different FDs. (b) Sequence details of the 13 IDRs used in this work. Column 1 shows the identifier for each sequence. Where relevant, column 2 shows the appropriate DisProt identifier. Column 3 shows the sequence length, and column 4 shows the actual sequence, with acidic residues in red, basic residues in blue, polar residues in green and hydrophobic residues in black. Columns 5 and 6 show the fraction of positively charged and negatively charged residues, respectively, as calculated based on the intrinsic pKa values and charge states expected at neutral pH. Column 7 shows NCPR calculated as (f+ − f−) and column 8 shows the FCR calculated as (f+ + f−). Column 9 shows the value of the charge patterning parameter κ calculated using the localCIDER program [17]; column 10 shows the value of δmax, which refers to the maximal deviation of blob-specific NCPR values from the overall NCPR; column 11 shows average hydrophobicity calculated using the Kyte–Doolittle scale; and column 12 shows predictions of disorder tendencies, calculated over the IDR stretch using the MetaPrDos server [17,47]. (c) Surface representations of the two FDs that we used in our simulations, the WW domain (PDB 1PIN) and SH3 domain (PDB 2JS0). The FDs are depicted using a surface electrostatic representation that was generated using the APBS tool that is built into the UCSF Chimera package [49,50]. The calculated isopotential contour surfaces are plotted at ± 2kT/e, where kT denotes thermal energy calculated using the Boltzmann constant k at temperature T, and e is electronic unit of charge. In the figure, red denotes a negative potential while blue denotes a positive potential.
+
+architectures for the tail and linker simulations are
+shown in Fig. 2a. The tail simulations have an FD-IDR
+architecture where the FD is either an SH3 or WW
+domain. For simulations of IDRs as linkers, the architecture takes the form FDN–IDR–FDC, where FDN and FDC are FDs viz., WW or SH3. In a majority of our simulations, the FDs FDN and FDC are identical to one another. We also present results from four
+additional simulations where FDN and FDC are the WW and SH3 domains, respectively, and the IDRs
+are from region R2 of the diagram-of-states (Figs. 1
+and 2).
+
+Internal scaling profiles quantify sequence-specific patterns of intra-IDR distances as autonomous units and when tethered to FDs
+The spatial separations for all pairs of IDR residues that are | j–i | apart in the linear sequence are calculated for each of the conformations in the relevant ensemble. The patterns of intra-IDR distances can be summarized in terms of so-called internal scaling profiles. The ensemble-averaged spatial distance for each sequence separation, denoted as 〈〈R〉〉|j–i| is plotted against | j–i |. These plots can be calibrated against
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2407
+
+profiles calculated for reference ensembles denoted as SARC for self-avoiding random coil, FRC for Flory random coil, and LJG for Lennard–Jones globule. In the SARC limit, the IDRs are modeled as atomistic SARCs, where the distances are extracted from ensembles obtained using potential functions that only include intra-chain steric repulsions. This limit mimics the behavior of IDRs in an athermal or perfect solvent [12]. In the FRC limit, conformations for individual residues are drawn from rotamer libraries obtained for blocked amino acids. All interactions beyond the nearest neighbor effects are explicitly ignored. The profiles for this model are concordant with ensembles where the intra-chain and chain-solvent interactions are perfectly counterbalanced. Our approach is a numerical implementation of Flory's rotational isomeric state approximation [57]. In the LJG limit, sequences are modeled as sticky globules, whereby non-specific collapse originates from the dispersion interactions giving rise to dense globules. Details regarding the generation of reference ensembles have been presented in previous work [58]. Comparison of the actual internal scaling profiles to the three reference profiles provides a quantitative way to classify the sequence-dependent conformational properties of an IDR.
+Intrinsic preferences for collapsed globules remain unchanged upon tethering IDRs to FDs for sequences drawn from R1
+As autonomous units, the three sequences S1.1, S2.1, and S3.1 prefer compact states (Fig. 3). The overall dimensions of the three IDRs that undergo compaction change minimally upon being tethered in either the tail or linker modes (Fig. S1). The preference for compact states persists when the sequences S1.1, S2.1, and S3.1 are tethered as C-terminal tails of WW or SH3 domains (Fig. 3). This is true irrespective
+
+whether the FD is a basic WW domain or a two-faced SH3 domain. This result can be rationalized by the combination of low charge contents and relatively high hydrophobicity associated with these three sequences (Fig. 2b).
+Figure 4 summarizes the results for IDRs modeled as autonomous units when compared to their behavior as linkers between pairs of WW and SH3 domains. Tethering the sequences S1.1, S2.1, and S3.1 on both ends does not alter the intrinsic bias for forming compact conformations, irrespective of whether the tethered FDs are WW or SH3 domains. The interactions that drive IDR compaction are considerably stronger than IDR:FD interactions. Sequences that undergo compaction have inherently low-amplitude conformational fluctuations, where the spatial extents of fluctuations will be commensurate with the average radius of gyration of the globules. These low-amplitude spontaneous fluctuations diminish the likelihood of overlaps between the IDR and the FD.
+Conformational preferences for IDRs drawn from R2 undergo sequence- and context-specific changes when tethered to FDs
+The FCR values for sequences S1.2, S2.2, S3.2, and S4.2 sequences are between 0.25 and 0.35. The higher FCR values typically weaken the driving forces for compaction as evidenced by the sequenceintrinsic internal scaling profiles (Fig. 5). As an example, the sequence-intrinsic internal scaling profile for S1.2 approximates that of a SARC reference, while S2.2 is analogous to its FRC reference. For S1.2 and S2.2, the expansion is achieved through a combination of factors, including a polyelectrolyte effect and uniform distribution of the charged residues through the sequence. S2.2 is likely more compact than S1.2 due to a greater number of hydrophobic residues. Upon tethering the N-terminal ends of S1.2
+
+<<R>> (Å) <<R>> (Å) <<R>> (Å)
+
+(a)
+60 40 20
+0
+0
+
+(b)
+
+(c)
+
+60 60
+
+40 40
+
+20
+
+20
+
+20
+
+40
+
+00
+
+20
+
+40
+
+LJG
+
+00
+
+20
+
+40
+
+60
+
+Fig. 3. Comparative assessments of internal scaling profiles for sequences S1.1–S3.1 as autonomous units versus being N-terminally tethered as tails of WW and SH3 domains. In each panel, results for the sequences as autonomous units (AU) are included as are reference profiles for generic SARCs shown as dashed curves, FRCs shown as dash–dot curves, and LJGs shown as dotted curves.
+
+2408
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+<<R>> (Å) <<R>> (Å)
+<<R>> (Å)
+
+(a)
+60
+40
+20 0
+0
+
+(b)
+60
+
+40
+
+20
+
+LJG
+
+0
+
+20
+
+40
+
+0
+
+20
+
+40
+
+(c)
+
+60 40 20
+
+00
+
+20
+
+40
+
+60
+
+Fig. 4. Comparative assessments of internal scaling profiles for sequences S1.1–S3.1 as autonomous units versus being linkers between pairs of WW or SH3 domains. In each panel, results for the sequences as autonomous units (AU) are included as are reference profiles for generic SARCs shown as dashed curves, FRCs shown as dash–dot curves, and for LJGs shown as dotted curves.
+
+and S2.2 to the WW domain, there is a modest expansion that derives from the IDR trading intra-IDR contacts for contacts with the positively charged surface of the WW domain. The opposite effect also leads to expansion, when the IDR is tethered as a C-terminal tail to the SH3 domain whereby repulsive interactions with the surface of the FD engender a mild expansion of the IDR tethered as a tail.
+In contrast to S1.2 and S2.2, the IDRs S3.2 and S4.2 show a sequence-intrinsic preference for com-
+
+pact states that is engendered by intra-IDR contacts. This feature is concordant with the low NCPR values for these sequences [21]. This sequence-intrinsic preference for compact states is preserved upon tethering the IDRs as C-terminal tails of WW and SH3 domains. As tails, the sequence-intrinsic preferences are not compensated by sequence-extrinsic interactions with the FDs for these sequences.
+All four sequences undergo pronounced sequenceand context-specific shifts in their conformational properties when tethered as linkers between pairs of
+
+<<R>> (Å) <<R>> (Å)
+
+(a)
+60 40 20
+0 0
+
+(b)
+60
+
+40
+
+20
+
+0
+
+20
+
+40
+
+60
+
+0
+
+20
+
+40
+
+Fig. 5. Comparative assessments of internal scaling profiles for sequences S1.2–S4.2 as autonomous units versus being N-terminally tethered as tails of WW and SH3 domains. In each panel, results for the sequences as autonomous units (AU) are included as are reference profiles for generic SARCs shown as dashed curves, FRCs shown as dash–dot curves, and LJGs shown as dotted curves.
+
+<<R>> (Å) <<R>> (Å)
+
+SCRs of IDRs Tethered to FDs of Proteins
+(a)
+60
+
+40
+
+20
+
+0
+
+0
+
+20
+
+40
+
+(b)
+60
+
+40
+
+20
+
+0
+
+60
+
+0
+
+20
+
+40
+
+2409
+
+Fig. 6. Comparative assessments of internal scaling profiles for sequences S1.2–S4.2 as autonomous units versus being linkers between pairs of WW or SH3 domains. In each panel, results for the sequences as autonomous units (AU) are included as are reference profiles for generic SARCs shown as dashed curves, FRCs shown as dash–dot curves, and LJGs shown as dotted curves.
+
+WW or SH3 domains. The results are shown in Fig. 6. The internal scaling profile of the acidic S1.2 extracted from the SH3–(S1.2)–SH3 system shows the largest deviation from the sequence-intrinsic profile for this IDR. This is the result of chain expansion that originates from the drive to minimize IDR–SH3 and SH3–SH3 electrostatic repulsions. The deviations from the sequence-intrinsic internal scaling profile are smaller for the profile extracted from simulations of the IDR in the WW–(S1.2)–WW construct because the inter-domain repulsions, mediated by conformational fluctuations of the IDR, have to compete with the IDR–FD attractions. The robustness of this interpretation is highlighted in results for S2.2, which has an NCPR of + 0.22. Accordingly, when S2.2 is a linker between the two positively charged WW domains (i.e., WW–(S2.2)–WW) there is expansion vis-à-vis the autonomous sequence behavior due to electrostatic repulsion. However, we observe a negative deviation leading to smaller intra-IDR distances for S2.2 in the SH3–(S2.2)–SH3 construct.
+Pronounced context dependence is also observed for sequences S3.2 and S4.2. Unlike S1.2 and S2.2, which are polyelectrolytes, the sequences S3.2 and S4.2 are polyampholytes. The FCR values are similar to those of S1.2 and S2.2, but their NCPR values are zero or near zero, highlighting the polyampholytic nature of these sequences. For S3.2 and S4.2, the presence of FDs leads to expansion of the IDR. This effect has two independent origins. First, with two FDs, the high local concentration of FD interaction surface can now compete more effectively with IDR–
+
+IDR interactions. Second, FD–FD repulsion—through excluded volume and electrostatic effects—drives the ends of the IDR apart from one another. The differences in the degrees of expansion between S3.2 and S4.2 reflect the effects of sequence-specific interactions of IDRs with FDs.
+To further explore the IDR–FD and inter-FD interactions, we extracted internal scaling profiles from simulations of the IDRs tethered N-terminally to WW domains and C-terminally to SH3 domains. The results are shown in Fig. 7 for sequences S1.2–S4.2. Of particular interest are the results for S3.2 and S4.2. In the constructs WW–(S3.2)–SH3 and WW–(S4.2)– SH3, there is an interplay among three types of interactions viz., sequence-intrinsic intra-IDR interactions, IDR interactions with FDs, and inter-FD attractions mediated by tethering the domains together. The profiles in Fig. 7c and d show a positive deviation with respect to the sequence-intrinsic profiles, reflecting the contributions from IDR–FD interactions as discussed above. However, when compared to the profiles in Fig. 6b (SH3–(linker)–SH3 or WW–(linker)–WW), there is a negative deviation, reflecting the fact that the FDs in Fig. 7 are attractive for one another, whereas those in Fig. 6b are repulsive.
+Conformational preferences for sequences drawn from R3 are mainly determined by the patterning of oppositely charged residues within the IDRs
+Region R3 encompasses sequences designated as strong polyampholytes because the FCR values
+
+2410
+
+(a)
+40
+
+(Å)
+
+20
+0 0
+(c)
+60
+
+LJG
+
+10
+
+20
+
+30
+
+40
+
+(Å)
+
+20
+
+(b)
+60
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+(Å)
+
+40
+
+20
+
+0 0
+(d)
+60
+
+20
+
+40
+
+60
+
+(Å)
+
+40
+
+20
+
+0
+
+0
+
+0
+
+20
+
+40
+
+0
+
+20
+
+40
+
+Fig. 7. Impact of tethering IDRs between WW and SH3 domains. Panels a–d show results for sequences S1.2–S4.2 as autonomous units, as linkers between WW and SH3 domains, and using the three reference models, SARC, FRC, and LJG. In each panel, the sequence-intrinsic profiles are shown in blue and the profiles extracted from the ensembles for the IDRs tethered as linkers are shown in green. These profiles are to be compared to those shown in Fig. 6.
+
+are ≥ 0.35, while the | NCPR | ≤ 0.35. We consider two naturally occurring IDRs, S1.3 and S4.3, of similar lengths (53 and 52 residues, respectively). The FCR values for S1.3 and S4.3 are identical to one another (0.47). S1.3 is a well-mixed sequence, whereas the oppositely charged residues are more segregated within the linear sequence of S4.3. The sequence-intrinsic internal scaling profiles for S1.3 overlaps with that of a FRC reference profile implying that the favorable solvation of charged residues counterbalances the desolvation of the backbone and uncharged residues. Similarly, the well-mixed patterning of oppositely charged residues leads to a screening of electrostatic repulsions by attractions. There is a systematic, albeit mild compaction upon tethering S1.3 as a C-terminal tail. This is the result of an excluded volume effect whereby the certain conformations accessible to the IDR as an autonomous unit are proscribed by the steric bulk of the FDs.
+The synthetic variants based on S1.3, namely, S2.3 and S3.3, have internal scaling profiles that deviate from that of the parent sequence. The sequence-
+
+intrinsic profile of S2.3 deviates positively from that of S1.3 (Fig. S2A). This is the result of a well-mixed sequence with a lowered κ when compared to the parent IDR. N-terminal tethering of S2.3 to either the WW or SH3 domain leads to a further expansion of the IDR, due to the excluded volume effect of the FDs. In direct contrast, increasing the linear charge segregation as in the synthetic sequence S3.3 that has a higher κ value leads to a modest compaction of the chain vis-à-vis the parent sequence (Fig. S3B). The impact of N-terminal tethering of the IDR to the Cterminal end of the FD leads to a negligible (WW) or modest expansion (SH3), mainly due to the excluded volume effects of the FDs.
+S4.3 has an FCR value of 0.47 (like S1.3) but a κ value is 0.3. This is consistent with the blockiness of the sequence whereby the acidic residues are sequestered toward the central third, while the basic residues are in the C-terminal half. With this sequence architecture, it is difficult to adopt compact hairpin-like architectures, so the compaction we observe is rather modest as shown for the sequence-intrinsic profile in
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2411
+
+Fig. 8. The synthetic variants are two sequences with higher κ values. Both sequences have internal scaling profiles that are consistent with disordered hairpin-like topologies. This topology is stabilized by a network of electrostatic attractions among blocks of oppositely charged residues within the IDR. These hairpin-like topologies are preserved, with an excluded volume correction, when the variants are tethered to FDs (Fig. S2C and D). Clearly, strong polyampholytes that are encoded as linkers between FDs largely preserve their sequence-intrinsic conformational preferences (Figs. 9 and S3).
+There is a systematic, albeit modest expansion observed for the linker constructs associated with the strong polyampholytes. This is attributable to the additional excluded volume contribution from the second FD, when compared to the tail-only constructs in Fig. 8. The clear exceptions to this are the significant changes we observe for S1.3. The sequence-intrinsic profile overlaps with that of the FRC reference, suggestive of large conformational fluctuations and maximal conformational heterogeneity (see below). However, when constrained as a linker, the presence of FDs prevents the large-scale conformational fluctuations observed for S1.3 as an autonomous unit, and leads to an increase in the chain dimensions. The volume occupied by the FD will fundamentally dictate the degree of chain expansion. For example,
+
+<<R>> (Å)
+
+80
+
+60
+
+40
+
+20
+
+0
+
+0
+
+20
+
+40
+
+Fig. 9. Comparative assessments of internal scaling profiles for the sequences S1.3 and S4.3 as autonomous units versus being linkers between pairs of WW or SH3 domains. In each panel, results for the sequences as autonomous units (AU) are included as are reference profiles for generic SARCs shown as dashed curves, FRCs shown as dash–dot curves, and LJGs shown as dotted curves.
+
+<<R>> (Å)
+
+60
+
+40
+
+20
+
+0
+
+0
+
+20
+
+40
+
+Fig. 8. Comparative assessments of internal scaling profiles for sequences S1.3 and S4.3 as autonomous units versus being N-terminally tethered as tails of WW and SH3 domains. In each panel, results for the sequences as autonomous units (AU) are included as are reference profiles for generic SARCs shown as dashed curves, FRCs shown as dash–dot curves, and LJGs shown as dotted curves.
+
+as shown in Fig. 9, the larger SH3 domains have a more pronounced effect on chain expansion than the smaller WW domains. Similarly, electrostatic repulsions or attractions will increase or decrease the effective volume of FDs, respectively. The impact of FDs is minimal if the IDR is already expanded beyond the FRC reference (see data for S2.3 in Fig. S2), or if the IDR adopts hairpin-like topologies due to intra-IDR attractions (see data for S4.3 in Fig. 9 and S6.3 in Fig. S3). In the former case, the chain is already highly expanded, while in the latter, sequence-intrinsic intramolecular interactions remain stronger than competitive interactions with FDs. There may also be cases in which FD-IDR interactions are preferred via specific binding motifs [59]. This leads to the expectation of co-evolution of FDs and IDRs depending on the functional relevance of interactions between the two.
+Our results suggest that strong polyampholytic IDRs with sequence-intrinsic conformational preferences akin to FRC references will be significantly influenced by the emergent interactions between tethered FDs when positioned as linkers. In this sense, FRC-like IDRs are similar to IDRs drawn from R2, where weaker sequence-intrinsic interactions give rise to effective competition from interactions between IDRs and FDs, as well as IDR-mediated interactions between FDs.
+
+2412
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+Summarizing the impact of FDs on the distributions of shapes and sizes of tethered IDRs
+The preceding narrative goes through a system-bysystem explanation of the inferences drawn from analysis of 69 different internal scaling profiles. To summarize all of these findings, we calculated a Kullback–Leibler divergence [60] or relative entropy to quantify the extent to which tethering alters the distribution of sizes and shapes for each IDR. Spontaneous conformational fluctuations give rise to a sequence-specific distribution of sizes and shapes. The size of a specific conformation is quantified in terms of Rg and the shape is quantified in terms of an asphericity parameter δ⁎ such that (0 ≤ δ⁎ ≤ 1); δ⁎ ≈ 0, 0.5, and 1 for a perfect sphere, ellipsoid, and rod, respectively [12]. For each IDR, a probability density function p(Rg, δ⁎) quantifies the distribution of sizes and shapes. We used the Kullback–Leibler divergence (DKL) to quantify the extent to which the
+
+distribution pTR(δ⁎,Rg) for an IDR modeled as tethered region deviates from the distribution pAU(δ⁎,Rg) for the same IDR modeled as an autonomous unit. Panel a in Fig. 10 shows the distribution pAU(δ⁎,Rg) for the sequence S1.3. Distributions pAU(δ⁎,Rg) and pTR(δ⁎,Rg) for a subset of the IDRs as autonomous units and tethered IDRs are shown in Fig. S4 of the supplemental material. The (δ⁎,Rg) space is tiled into a set of uniformly sized bins, nshape bins along δ⁎ and nsize bins along Rg. The probability densities in these bins are used to calculate the Kullback–Leibler
+divergence using:
+
+DKLðpTR; pAUÞ
+
+¼
+
+X X nsize nshape
+i¼1 j¼1
+
+pTRði ;
+
+jÞ
+
+
+
+log
+
+pTRði ; pAUði ;
+
+
+
+jÞ jÞ
+
+;
+
+ð1Þ
+
+If DKL is ≈ 0, then tethering does not alter the distribution of global sizes and shapes of the IDR.
+Panels B and C summarize the values obtained for DKL for each of the IDRs tethered as C-terminal tails
+
+Fig. 10. Summary comparison of the impact of tethering IDRs on their distributions of shapes and sizes. (a) Typical twoparameter distribution of shapes and sizes shown here as pAU(δ⁎,Rg) for sequence S1.3. The color bar on the right provides numerical annotation for the distribution function. The two-parameter space is tiled into nine uniform intervals and
+the densities calculated within each of these intervals are used to evaluate the values of DKL. (b) Values of DKL for each of the IDRs tethered N-terminally to either SH3 domains (red bars) or WW domains (blue bars). The horizontal dashed line
+intersects the ordinate at a divergence value of 0.003. We choose this as a demarcating value that quantifies statistically
+significant changes in the size and shape distributions. (c) Values of DKL for each of the IDRs tethered as linkers between pairs of SH3 domains (red bars) and WW domains (blue bars). In panels B and C, the distributions obtained from each of
+the three independent simulations were used to calculate the mean and standard deviations of DKL values.
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2413
+
+to SH3 and WW domains (panel B of Fig. 10) or as linkers between SH3 and WW domains (panel C of Fig. 10). Sequences from region R2 of the diagram of states viz., S1.2–S1.4, and sequences from R3 that form FRC-like ensemble as autonomous units viz., S1.3 and S2.3 have the largest values of DKL. Tethering of these sequences as tails or linkers causes the largest shift to the sequence-intrinsic distribution of sizes and shapes—a finding that is in accord with inferences drawn from analysis of the internal scaling profiles. In contrast, the remaining seven sequences drawn from regions R1 and R3 of the diagram-of-states undergo minimal changes to the distributions of sizes and shapes upon being tethered as tails or linkers to FDs.
+Distinguishing between apparent versus thermodynamic lengths of linkers
+A key objective in designing linear multivalent proteins is to select linkers between FDs that will give rise to a preferred distribution for the inter-domain distance [34]. A simple approach would be to invoke the statistics of worm-like chain (WLC) models [61] to achieve the design objectives. The persistence length and chain length are the two free parameters that guide designs of linkers based on the WLC model. For sequences that are deficient in proline residues, the persistence length is not expected to vary considerably, being no more than 4–7 Å. This leaves the linker length, specifically the number of linker residues as the only free design parameter in the WLC model. This model ignores the impact of amino acid composition and sequence patterning to the overall dimensions of linkers. One way of rationalizing the choice of a WLC model as a tool for designing linker sequences is to argue that sequence-specific conformational preferences are likely to be weak for disordered regions. Here, we test this hypothesis by comparing the distributions of inter-domain distances obtained for eight of the 13 IDRs tethered as linkers between a pair of WW domains. The sequences chosen for this study were S2.1, S4.2, S1.3, S3.3, S4.3, S5.3, and S6.3. The lengths of these sequences range from 49 to 53 residues. This should yield a rather narrow range of inter-domain distances if one were to assume the validity of the WLC model. This is also true for the SARC model, which incorporates sequence-specific effects, albeit only at the level of steric repulsions. In these reference simulations, we apply constraints to maintain the native structures of the FDs (Fig. S11).
+Figure 11 summarizes the differences in the interdomain distance distributions across the six sequences of similar lengths but different compositions and/or sequence patterning. The interdomain distances range from 40 to 70 Å. This range of inter-domain distances would be impossible to achieve if disordered linkers were truly WLCs. Therefore, we propose that the length, in terms of the number of residues, is an
+
+(a)
+
+R DD
+
+(b) 1
+
+F(RDD)
+
+0.8
+
+S2.1
+
+0.6
+
+S4.2
+
+S1.3
+
+0.4
+
+S2.3
+
+S3.3
+
+0.2
+
+S4.3
+
+S5.3
+
+S6.3
+
+00
+
+50
+
+100
+
+RDD (Å)
+
+Fig. 11. Thermodynamic lengths of linkers are sequencespecific. (a) Schematic showing the definition of the interdomain distance RDD, which is calculated as the distance between the centers-of-mass of domains (shown in red) connected by a disordered linker (shown in green). (b) Cumulative distribution functions quantifying the probability of observed specific values of RDD for each of the eight linkers. The apparent lengths (see text) range from 49 to 53 residues. The mean values for RDD span the range from ~40 to ~70 Å.
+
+apparent length, whereas the relevant length is designated as the thermodynamic length. This refers to the mean inter-domain distance achievable for a given sequence and its value is determined by (i) the apparent length, (ii) the amino acid composition of the linker, (iii) the patterning of oppositely charged residues within the linker, (iv) proline contents within linkers, (v) the patterning of proline and charged residues within linkers, (vi) the hydrophobicity of the linker, (vii) interactions of linkers with FDs, and (viii) IDRmediated interactions between FDs that will be influenced by the steric bulk and surface features of the FDs.
+Linker composition and patterning can influence linker-domain interactions
+We also quantified the interaction patterns of distinct linkers and tails with FDs. We performed simulations of IDRs as autonomous units, as tails, and as linkers using atomistic models for the IDRs and FDs and a potential function where restraints are imposed on the FD to maintain a stable folded state
+
+2414
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+and the intra-IDR as well as IDR–FD interactions are purely steric repulsions. Conformations from the simulations based on excluded volume potentials are used as a reference ensemble to generate suitable priors for calibrating the distances extracted from simulations with the full potentials. This allows us to assess if inter-residue distances between IDRs and their tethered FDs are closer or further away than would be expected in the absence of any attractive interactions. The normalized distance maps are referred to as scaling maps and have been used in previous work to identify conformational preferences in IDRs [22]. The full complement of scaling maps for all combinations of tethered IDRs and FDs is shown in the supplementary material (Figs. S5–S8).
+There are several examples of sequence-specific interactions with the FDs, even for linkers that undergo modest changes to their overall dimensions upon being tethered to FDs. Different linkers showed different extents and modes of interaction with SH3 versus WW domains. To illustrate this point, we focus our discussions on scaling maps for linker
+
+S3.2 (Fig. 12). As an autonomous unit, this sequence encodes an intrinsic preference for compact states. This feature persists when it is tethered N-terminally, as a tail to either a WW or an SH3 domain. In addition, there are different patterns of IDR-to-FD interactions depending on whether the FD is a WW or SH3 domain. Although domainspecific differences are small, there is a clear increase in IDR–FD interactions involving the free C-terminal end of the IDR. When tethered as a linker, we see the emergence of pronounced domainspecific differences in IDR–FD interactions. As a linker, there are significantly fewer interactions between the S3.2 IDR and the SH3 domain when compared to the number of favorable interactions between the S3.2 IDR and the WW domain. This leads to S3.2 being significantly more expanded as a linker between two SH3 domains than it is as an autonomous unit, and the SH3 domains are further apart than would be expected even if S3.2 were simply a SARC (Fig. S7). In contrast, the S3.2:WW interaction draws the WW domains close to one another. Additional examples of sequence-specific
+
+Fig. 12. Scaling maps for S3.2 as an autonomous unit, a tail tethered N-terminally to an FD, and a linker between pairs of FDs. Intra-IDR interactions are identified by a red triangle. Cooler colors reflect inter-residue compaction compared to the behavior of an excluded volume model, while warmer colors reflect expansion. S3.2 shows similar behavior as an autonomous unit and as a tethered tail but demonstrates domain-specific differences as a linker. These differences appear to arise through a greater degree of linker-domain interaction in the case of the WW domain when compared to the SH3 domain (purple rectangles). This in turn leads to the WW domains coming close together than the SH3 domains (green rectangle).
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2415
+
+interactions between IDRs and FDs are manifest in the scaling maps shown in Figs. S5–S8. There are specific examples of linkers that drive FDs apart or linkers that enable interactions between FDs by making specific patterns of contacts with the FDs (Fig. S8). Therefore, while the general trends suggest that IDRs taken from R2 and strong polyampholytes with FRC-like conformational preferences are most susceptible to context-dependent changes, this does not mean that other IDRs do not make sequence- and FD-specific contacts with the domains to which they are tethered.
+Discussion
+We quantified SCRs for a range of IDRs as Cterminal tails of specific FDs and linkers between pairs of FDs. The results were compared to the sequenceintrinsic properties of IDRs modeled as autonomous units. We focused on IDRs drawn from three distinct regions of the charge composition based diagram-ofstates. We find that the sequence-intrinsic conformational properties of IDRs are only weakly influenced by being tethered to FDs for the sequences that were drawn from region R1 of the diagram-of-states that form compact structures (Fig. 1). A similar insensitivity was observed for strong polyampholytes from region R3 of the diagram-of-states, provided that the sequences are characterized by increased linear segregation of oppositely charged residues. In contrast, sequences with intermediate compositional biases, that is, those drawn from region R2 of the diagram-of-states (Fig. 1), or strong polyampholytes that have sequence-intrinsic ensembles that are reminiscent of Flory-random coils, undergo different degrees of context-dependent modulation of their conformational properties. The extent to which the presence of tethered FDs will modulate the SCRs of these context-sensitive IDRs will be governed by the interplay among three-sets of solvent-mediated interactions, namely, intra-IDR interactions that give rise to the intrinsic conformational preferences associated with the region, interactions between IDRs and FDs, and IDR-mediated interactions between pairs of FDs (in linker modes). Our results highlight the importance of amino acid sequence in dictating the solution behavior of disordered regions, even when they are tethered to FDs.
+How robust are our findings regarding SCRs for tethered IDRs?
+Our simulations use the ABSINTH implicit solvation model and forcefield paradigm and the extraction of context dependent SCRs relies on the use of recent advances in the sampling of IDR conformational distributions [37,44]. Prior experience by way of direct comparisons between simulation results and experi-
+
+mental readouts suggests that our insights are likely to be qualitatively robust and even quantitatively accurate [15,21,22,24,39,62–65]. At this juncture, our results provide a quantitative set of testable hypotheses regarding the influence of tethering contexts on the SCRs of IDRs vis-à-vis their sequence-intrinsic properties. Clearly, a systematic set of experiments geared toward investigating SCRs of tethered IDRs and comparing them to sequence-intrinsic features will be essential.
+Other architectures involving tethered IDRs
+Oligomerization of FDs with C- or N-terminal tails can generate multimers resembling a branched polymeric architecture, where the branches are the tails of individual subunits. A relevant example of such a system is the bacterial single-stranded (ss) DNA binding protein (SSB) comprising of DNA-binding domain that forms a homotetramer [62,66–68]. Each subunit includes a C-terminal disordered tail that ends in a conserved 9- to 12-residue acidic C-terminal tip that encompasses a conserved short linear motif (SLiM) [62,66]. The SLiM mediates a network of protein–protein interactions. The SSB tail may be thought of as a linker that connects the folded oligomerization domains to the acidic C-terminal tip. Sequences of the core are highly conserved, as are sequences of the acidic tip. However, the tail/linker is hyper-variable with distinct compositional biases in bacteria versus parasites [65]. Recent studies have shown that the tail/linker is a key determinant of the cooperative binding of ssDNA to SSBs. Sequences drawn from R1 enable cooperative binding, whereas parasitic tail/linker sequences drawn from region R2/R3 disrupt cooperative binding of SSBs to ssDNA [62]. Another example of a system that undergoes multimerization is the pentamer-forming nucleolar protein, nucleophosmin 1 (NPM1) [69]. This protein includes an N-terminal oligomerization domain that is connected to an RNA binding domain via a disordered linker that encompasses two distinct acidic tracts. Pentamer formation by NPM1 increases the valency of tails and the numbers of C-terminal RNA binding domains [70,71]. This drives phase separation in the presence of RNA and the accumulation of an NPM1-rich shell region in the nucleolus. Interestingly, pentameric, as opposed to monomeric NPM1 also drives phase separation in the presence of Arg-rich peptides drawn from the tumor suppressor protein ARF [72]. The normal function of NPM1 requires the presence of its disordered linker, as well as and the multivalency of linkers emerges as a function of oligomeric state. FDs with C- or N-terminal tails can also undergo linear polymerization, as is the case with FtsZ, a bacterial homolog of tubulin and tubulin itself, which has C-terminal acid-rich tails that are the targets of post-translational modifications [73,74].
+
+2416
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+Dissecting the functional relevance and evolutionary determinants of tethered IDRs
+Eukaryotic proteomes are replete with numerous examples of functionally relevant disordered regions [3,71,75–80]. There are also growing accounts of the relevance of IDRs in prokaryotic systems [62,81,82]. In many cases, IDRs are tethered to FDs where they can serve many functions, including scaffolds for displaying SLiMs, binding and recognition interfaces, and modulators of emergent phase behavior through sequence encoded preferences [33,83–85]. De novo sequence-based design strategies suggest that IDRs are crucial mediators of molecular functions and cellular phenotypes [15,24,43,55,86,87]. High-throughput analysis of compositional biases and sequence patterning also suggests that IDRs are far from being random insertions [17]. Accordingly, we propose that there might be co-evolutionary relationships between FDs and adjacent IDRs, although the weak sequence conservation makes it difficult to identify these couplings from sequence analysis alone [11,17,88]. Specifically, while the exact amino acid sequence in question may not be well conserved, we anticipate that functionally critical protein sequence features that are important to that function may be broadly conserved. Our results set the stage for future analysis to identify examples in which the sequence features of linkers are conserved in a manner that depends on both the surface properties of the FD and the functional behavior associated with the protein in question. In this context, it is worth noting that over a third of the linkers in proteomes are derived from the R2 region (Fig. 1b). Our simulation results suggest that even small changes to either the intrinsic behavior of the linker or the associated FDs could have significant impacts on the SCRs for sequences drawn from region R2. A similar observation applies to IDRs with sequence-intrinsic conformational preferences for FRC-like ensembles. It is tempting to propose that IDRs with context-dependent SCRs might be under co-evolutionary selection with the surfaces of FDs between which they form linkers. In contrast, IDRs whose SCRs are essentially independent of their tethering context might evolve as independent modules. Our conjectures regarding the independent versus co-evolution of IDR sequences with FDs to which they are tethered require high-throughput sequence analysis combined with simulations that drive functional investigations. A prototype of these types of high-throughput investigations was recently reported for the transcriptional activation domain of the yeast transcription factor Gcn4 [43].
+Questions regarding functional conservation also arise when considering how N-terminal versus Cterminal tails may behave. We used designed chimeric sequences, for which there cannot be any evolutionary coupling between the IDR and FD
+
+because these two regions have not undergone any co-evolution. This was a deliberate choice and provides us with an effective null model to query the intrinsic influence of FDs without the confounding input of specific functional interactions that may have emerged in natural proteins.
+Insights from our work suggest that certain categories of IDRs might be reusable as independent functional modules or as modules that regulate functions of FDs. These include certain sequences drawn from R1 or even R3 of the diagram-of-states shown in Fig. 1. However, sequences with intermediate compositional biases or those with sequenceintrinsic preferences for FRC-like ensembles are likely to have SCRs that can be modulated by the FDs or SLiMs to which they are tethered. As mentioned above, such sequences might be under co-evolutionary selection with their tethered partners, and methods such as statistical coupling analysis [89] and/or direct coupling analysis [90] could be generalized to account for co-variations between the surfaces of FDs and sequence features of tethered IDRs. Our results also suggest that an IDR might switch from context sensitive to being context insensitive, or vice versa, through posttranslational modifications such as multi-site phosphorylation or dephosphorylation that are directed at IDRs [22,25,26].
+As our understanding of the functional importance of IDRs grows, it will become essential to elucidate the molecular basis for how the sequence context of an IDR influences the emergent biological functions. Consequently, a holistic picture will not emerge by studying the IDRs or the FDs in isolation. Toward this end, the tools we have developed here, combined with recent approaches that aid in the design of the extent and nature of the disorder, can be used to dissect the molecular synergies between IDRs and FDs as determinants of molecular functions and phenotypes [16,91,92].
+Methods
+Simulation engine and forcefield parameters
+All simulations were performed using the CAMPARI simulation engine (http://campari.sourceforge.net). The source code available online was modified to incorporate the HS-MMC methodology and enable analysis of specific regions of interest, such as the IDRs tethered to FDs [44]. We used the ABSINTH implicit solvation model and parameters based on the OPLS-AA/L forcefield as implemented in the abs_3.2_opls.prm parameter set [37]. We included neutralizing ions and excess ion pairs to mimic salt concentrations of 15 mM NaCl. The parameters for the solution ions are those of Mao and Pappu.
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2417
+
+Simulation setup
+IDRs simulated as autonomous units were Nacetylated at the N-terminus and N-methylamidated at the C-terminus. IDRs tethered N-terminally to the C-terminal ends of FDs were N′-methylamidated at their C-termini. In these simulations, the N-terminal ends of the FDs were N-acetylated. IDRs tethered as linkers between FDs had their N-termini attached to the C-termini of FDN and C-termini attached to the Nterminal end of FDC. The N-terminal ends of FDN were N-acetylated and the C-terminal ends of FDC were N′-methylamidated. All simulations were performed using spherical droplets. The droplet radii were chosen to guard against confinement artifacts with enough room for free diffusion of the protein of interest as well as the solution ions. As with previous work, we employed a dual-cutoff strategy to handle long-range interactions. We used a cutoff of 10 Å with tapering for Lennard–Jones interactions and a cutoff of 14 Å with tapering for electrostatic interactions between sites with partial charges that belong to otherwise neutral groups. As in all previous work, no cutoffs were used for handling electrostatic interactions involving pairs of solution ions, solution ions and atomic sites belonging to charge groups with a net charge, and interactions involving sites derived from charge groups with a net charge.
+Details of Monte Carlo simulations for IDRs modeled as autonomous units
+We used standard Metropolis Monte Carlo (s-MMC) simulations enhanced by thermal replica exchange to generate conformational distributions for IDRs modeled as autonomous units. For each IDR, we performed three independent replica-exchangeenhanced simulations, each seeded by a starting conformation that was drawn at random from a pool of atomistic self-avoiding random walks. The droplet radius was set to be half the contour length of each IDR. The schedule for replica exchange included the following temperatures: [280 285 289 294 298 310 320 330 340 355 370 385 400]. Swaps between neighboring replicas were proposed once every 50,000 steps. The average acceptance probability for swaps between neighboring thermal replicas was always greater than 0.4. Overall, a distinct simulation run enhanced by replica exchange involved 5 × 107 s-MMC steps and proposed swaps. The first 106 steps of each run were discarded in our analysis of the simulation results.
+Details of HS-MMC simulations for extractions SCRs for IDRs tethered to FDs
+The initial coordinates for the WW and SH3 domain were based on the models in PDB files 1PIN and 2JS0, respectively. In order to make the geometries of
+
+each of the FDs be compatible with the forcefield parameters, the starting coordinates from each PDB file were subjected to 103 steps of s-MMC sampling at 260 K using harmonic restraints imposed on the backbone and side-chain torsion angles of the FDs. The force constants for each of the harmonic restraints were set to be 0.2 kcal/mol-rad2 and the reference values for the backbone and side-chain torsion angles were set to be those of the PDB models. The bond lengths and bond angles are compatible with the standard Engh and Huber values that are part of the CAMPARI package. Following the initial 103 steps of restrained s-MMC simulations, the restraints were released and the conformational ensembles for the FDs were allowed to relax and equilibrate using an additional 103 steps of unrestrained s-MMC simulations performed at a simulation temperature of 298 K. The end points of these simulations yielded the refined starting structures for the FDs. To generate the FD-IDR or FD-IDR–FD systems, we attached a conformation, drawn at random for the IDR of interest, from a prior distribution of atomistic self-avoiding random walks. This starting configuration was refined using s-MMC simulations to alleviate any steric clashes using 103 steps of s-MMC simulations at 298 K in the presence of torsional restraints on the FD or domains. The end point of this relaxation simulation was then thermalized using 5 × 106 s-MMC steps of sampling following the inclusion of suitable numbers of Na+ and Cl− ion pairs to mimic salt concentrations of 15 mM within the simulation droplets.
+Mittal et al. [44] recently published the details of the HS-MMC methodology. The setup of a HS-MMC simulation involves the prior calibration and specification of two specific parameters viz., the probability of switching to sampling via an auxiliary Markov chain, denoted as pEV and the number of simulation steps per auxiliary Markov chain, denoted as nEV. For simulations of IDRs as tails tethered N-terminally to the C-terminal ends of FDs, the pEV varies between 10–3 and 5 × 10– 3, whereas nEV varies between 30 and 75. These choices are system-specific and are governed by the extent to which the conformations sampled via the auxiliary Markov chain are accepted. We target an acceptance ratio of at least 0.05. The radius of the simulation droplet was set to be 110 Å for all simulations of IDRs as tails tethered N-terminally to FDs. Following an equilibration run via 106 steps of s-MMC, each HS-MMC simulation involved 7 × 107 steps.
+For simulations of IDRs as linkers between pairs of FDs, we used an initialization and refinement protocol that was similar to the setup for the simulations of IDRs as tails. The simulation droplets have radii of 150 Å, and following an equilibration run involving 106 steps of s-MMC, each HS-MMC simulation involved 7 × 107 steps of total simulation. The values for pEV and nEV were similar to those for the simulations of the FD-IDR
+
+2418
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+systems. For each IDR tethered to an FD as a Cterminal tail or for IDRs as linkers between pairs of FDs, we performed three sets of independent HS-MC simulations. In the HS-MMC simulations, the FDs were unrestrained and move sets were directed at the FDs as well. However, the extent of deformation of the FDs is rather minimal.
+Analysis of conformational distributions
+All of our analyses were based on ensembles corresponding to simulation temperatures of 298 K. In each case, we have results from three independent simulations, be they replica exchange enhanced s-MMC simulations for IDRs as autonomous units or HS-MMC simulations for tethered IDRs. For each system, we pooled all of the data from the independent simulations and randomly selected 25 sets of data, each comprising of 2 × 103, using a bootstrap sampling with replacement strategy. The error bars for all of the parameters shown were computed as standard errors on the estimates of the means that were calculated using the bootstrap samples. Ensembles were analyzed using a combination of analysis routines built into CAMPARI, locally written analysis code, and using MDTraj and CTraj (http://pappulab. wustl.edu/CTraj.html) [93]. Atomistic conformations were rendered using VMD [94].
+Supplementary data to this article can be found online at https://doi.org/10.1016/j.jmb.2018.05.012.
+Acknowledgments
+This work was supported by grants MCB1121867 and MCB1614766 from the National Science Foundation. Resources from the Center for High Performance Computing at Washington University in St. Louis were used for many of our simulations.
+Received 21 January 2018; Received in revised form 16 April 2018;
+Accepted 7 May 2018 Available online 12 May 2018
+Keywords: intrinsically disordered proteins; intrinsically disordered regions;
+folded domains; sequence-to-conformation relationships
+Abbreviations used: IDP, intrinsically disordered protein; IDR, intrinsically disordered region; FD, folded domain; SCRs, sequenceto-conformation relationships; NCPR, net charge per residue; FCR, fraction of charged residues; SARC, selfavoiding random coil; FRC, Flory random coil; LJG,
+
+Lennard–Jones globule; SSB, single-stranded DNA binding protein; SLiM, short linear motif; NPM1,
+nucleophosmin 1; s-MMC, standard Metropolis Monte Carlo; HS-MMC, Hamiltonian Switch Metropolis Monte Carlo.
+References
+[1] R. van der Lee, M. Buljan, B. Lang, R.J. Weatheritt, G.W. Daughdrill, A.K. Dunker, et al., Classification of intrinsically disordered regions and proteins, Chem. Rev. 114 (2014) 6589–6631.
+[2] P.E. Wright, H.J. Dyson, Intrinsically unstructured proteins: re-assessing the protein structure-function paradigm, J. Mol. Biol. 293 (1999) 321–331.
+[3] H.J. Dyson, P.E. Wright, Intrinsically unstructured proteins and their functions, Nat. Rev. Mol. Cell Biol. 6 (2005) 197–208.
+[4] R. Pancsa, P. Tompa, Structural disorder in eukaryotes, PLoS One 7 (2012), e34687.
+[5] A.K. Dunker, J.D. Lawson, C.J. Brown, R.M. Williams, P. Romero, J.S. Oh, et al., Intrinsically disordered protein, J. Mol. Graph. Model. 19 (2001) 26–59.
+[6] V.N. Uversky, Natively unfolded proteins: a point where biology waits for physics, Protein Sci. 11 (2002) 739–756.
+[7] P.E. Wright, H.J. Dyson, Intrinsically disordered proteins in cellular signalling and regulation, Nat. Rev. Mol. Cell Biol. 16 (2014) 18–29.
+[8] Y. Shin, C.P. Brangwynne, Liquid phase condensation in cell physiology and disease, Science 357 (2017), eaaf4382.
+[9] S.F. Banani, H.O. Lee, A.A. Hyman, M.K. Rosen, Biomolecular condensates: organizers of cellular biochemistry, Nat. Rev. Mol. Cell Biol. 18 (2017) 285–298.
+[10] Y. Minezaki, K. Homma, A.R. Kinjo, K. Nishikawa, Human transcription factors contain a high fraction of intrinsically disordered regions essential for transcriptional regulation, J. Mol. Biol. 359 (2006) 1137–1149.
+[11] R.K. Das, K.M. Ruff, R.V. Pappu, Relating sequence encoded information to form and function of intrinsically disordered proteins, Curr. Opin. Struct. Biol. 32 (2015) 102–112.
+[12] A.H. Mao, N. Lyle, R.V. Pappu, Describing sequenceensemble relationships for intrinsically disordered proteins, Biochem. J. 449 (2013) 307–318.
+[13] G.H. Zerze, R.B. Best, J. Mittal, Sequence- and temperaturedependent properties of unfolded and disordered proteins from atomistic simulations, J. Phys. Chem. B 119 (2015) 14622–14630.
+[14] J.A. Riback, C.D. Katanski, J.L. Kear-Scott, E.V. Pilipenko, A.E. Rojek, T.R. Sosnick, et al., Stress-triggered phase separation is an adaptive, evolutionarily tuned response, Cell 168 (2017) 1028–1040 (e19).
+[15] R.K. Das, Y. Huang, A.H. Phillips, R.W. Kriwacki, R.V. Pappu, Cryptic sequence features within the disordered protein p27Kip1 regulate cell cycle signaling, Proc. Natl. Acad. Sci. U. S. A. 113 (2016) 5616–5621.
+[16] R.K. Das, R.V. Pappu, Conformations of intrinsically disordered proteins are influenced by linear sequence distributions of oppositely charged residues, Proc. Natl. Acad. Sci. U. S. A. 110 (2013) 13392–13397.
+[17] A.S. Holehouse, R.K. Das, J.N. Ahad, M.O. Richardson, R.V. Pappu, CIDER: resources to analyze sequence-ensemble relationships of intrinsically disordered proteins, Biophys. J. 112 (2017) 16–21.
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2419
+
+[18] L. Sawle, K. Ghosh, A theoretical method to compute sequence dependent configurational properties in charged polymers and proteins, J. Chem. Phys. 143 (2015), 085101.
+[19] J.D. Forman-Kay, T. Mittag, From sequence and forces to structure, function, and evolution of intrinsically disordered proteins, Structure 21 (2013) 1492–1499.
+[20] S. Müller-Späth, A. Soranno, V. Hirschfeld, H. Hofmann, S. Rüegger, L. Reymond, et al., Charge interactions can dominate the dimensions of intrinsically disordered proteins, Proc. Natl. Acad. Sci. U. S. A. 107 (2010) 14609–14614.
+[21] A.H. Mao, S.L. Crick, A. Vitalis, C.L. Chicoine, R.V. Pappu, Net charge per residue modulates conformational ensembles of intrinsically disordered proteins, Proc. Natl. Acad. Sci. U. S. A. 107 (2010) 8183–8188.
+[22] E.W. Martin, A.S. Holehouse, C.R. Grace, A. Hughes, R.V. Pappu, T. Mittag, Sequence determinants of the conformational properties of an intrinsically disordered protein prior to and upon multisite phosphorylation, J. Am. Chem. Soc. 138 (2016) 15323–15335.
+[23] J.A. Marsh, J.D. Forman-Kay, Sequence determinants of compaction in intrinsically disordered proteins, Biophys. J. 98 (2010) 2383–2390.
+[24] K.P. Sherry, R.K. Das, R.V. Pappu, D. Barrick, Control of transcriptional activity by design of charge patterning in the intrinsically disordered RAM region of the Notch receptor, Proc. Natl. Acad. Sci. 114 (2017) E9243–E9252.
+[25] E.B. Gibbs, F. Lu, B. Portz, M.J. Fisher, B.P. Medellin, T.N. Laremore, et al., Phosphorylation induces sequence-specific conformational switches in the RNA polymerase II C-terminal domain, Nat. Commun. 8 (2017), 15233.
+[26] B. Portz, F. Lu, E.B. Gibbs, J.E. Mayfield, M. Rachel Mehaffey, Y.J. Zhang, et al., Structural heterogeneity in the intrinsically disordered RNA polymerase II C-terminal domain, Nat. Commun. 8 (2017), 15231.
+[27] M.M. Babu, R.W. Kriwacki, R.V. Pappu, Structural biology. Versatility from protein disorder, Science 337 (2012) 1460–1461.
+[28] B. Ma, C.-J. Tsai, T. Haliloğlu, R. Nussinov, Dynamic allostery: linkers are not merely flexible, Structure 19 (2011) 907–917.
+[29] H.N. Motlagh, J.O. Wrabl, J. Li, V.J. Hilser, The ensemble nature of allostery, Nature 508 (2014) 331–339.
+[30] J.F. Swain, G. Dinler, R. Sivendran, D.L. Montgomery, M. Stotz, L.M. Gierasch, Hsp70 chaperone ligands control domain association via an allosteric mechanism mediated by the interdomain linker, Mol. Cell 26 (2007) 27–39.
+[31] J. Okrut, S. Prakash, Q. Wu, M.J. Kelly, J. Taunton, Allosteric N-WASP activation by an inter-SH3 domain linker in Nck, Proc. Natl. Acad. Sci. 112 (2015) E6436-E45.
+[32] S.F. Banani, A.M. Rice, W.B. Peeples, Y. Lin, S. Jain, R. Parker, et al., Compositional control of phase-separated cellular bodies, Cell 166 (2016) 651–663.
+[33] T.S. Harmon, A.S. Holehouse, M.K. Rosen, R.V. Pappu, Intrinsically disordered linkers determine the interplay between phase separation and gelation in multivalent proteins, elife 6 (2017).
+[34] W.A. Lim, Designing customized cell signalling circuits, Nat. Rev. Mol. Cell Biol. 11 (2010) 393–403.
+[35] P. Li, S. Banjade, H.-C. Cheng, S. Kim, B. Chen, L. Guo, et al., Phase transitions in the assembly of multivalent signalling proteins, Nature 483 (2012) 336–340.
+[36] X. Su, J.A. Ditlev, E. Hui, W. Xing, S. Banjade, J. Okrut, et al., Phase separation of signaling molecules promotes T cell receptor signal transduction, Science 352 (2016) 595–599.
+
+[37] A. Vitalis, R.V. Pappu, ABSINTH: a new continuum solvation model for simulations of polypeptides in aqueous solutions, J. Comput. Chem. 30 (2009) 673–699.
+[38] A. Vitalis, R.V. Pappu, Chapter 3 Methods for Monte Carlo Simulations of Biomacromolecules, in: R.A. Wheeler (Ed.), Annual Reports in Computational Chemistry, Elsevier 2009, pp. 49–76.
+[39] L.A. Metskas, E. Rhoades, Conformation and dynamics of the troponin I C-terminal domain: combining single-molecule and computational approaches for a disordered protein region, J. Am. Chem. Soc. 137 (2015) 11962–11969.
+[40] R. Wuttke, H. Hofmann, D. Nettels, M.B. Borgia, J. Mittal, R.B. Best, et al., Temperature-dependent solvation modulates the dimensions of disordered proteins, Proc. Natl. Acad. Sci. U. S. A. 111 (2014) 5213–5218.
+[41] M.T. Wei, S. Elbaum-Garfinkle, A.S. Holehouse, C.C. Chen, M. Feric, C.B. Arnold, et al., Phase behaviour of disordered proteins underlying low density and high permeability of liquid organelles, Nat. Chem. 9 (2017) 1118–1125.
+[42] G. Fuertes, N. Banterle, K.M. Ruff, A. Chowdhury, D. Mercadante, C. Koehler, et al., Decoupling of size and shape fluctuations in heteropolymeric sequences reconciles discrepancies in SAXS vs. FRET measurements, Proc. Natl. Acad. Sci. U. S. A. 114 (2017) E6342–E6351.
+[43] M.V. Staller, A.S. Holehouse, D. Swain-Lenz, R.K. Das, R.V. Pappu, B.A. Cohen, A deep mutational scan of an acidic activation domain, Cell Syst. 6 (2018) 444.e6–455.e6.
+[44] A. Mittal, N. Lyle, T.S. Harmon, R.V. Pappu, Hamiltonian switch metropolis Monte Carlo simulations for improved conformational sampling of intrinsically disordered regions tethered to ordered domains of proteins, J. Chem. Theory Comput. 10 (2014) 3550–3562.
+[45] L.D. Gelb, Monte Carlo simulations using sampling from an approximate potential, J. Chem. Phys. 118 (2003) 7747–7750.
+[46] R.D. Finn, P. Coggill, R.Y. Eberhardt, S.R. Eddy, J. Mistry, A.L. Mitchell, et al., The Pfam protein families database: towards a more sustainable future, Nucleic Acids Res. 44 (2016) D279–85.
+[47] T. Ishida, K. Kinoshita, Prediction of disordered regions in proteins based on the meta approach, Bioinformatics 24 (2008) 1344–1348.
+[48] J. Kyte, R.F. Doolittle, A simple method for displaying the hydropathic character of a protein, J. Mol. Biol. 157 (1982) 105–132.
+[49] C.C. Huang, G.S. Couch, E.F. Pettersen, T.E. Ferrin, Chimera: an extensible molecular modeling application constructed using standard components, Pac Symp Biocomput, World Scientific 1996, p. 724.
+[50] E. Jurrus, D. Engel, K. Star, K. Monson, J. Brandi, L.E. Felberg, et al., Improvements to the APBS biomolecular solvation software suite, Protein Sci. 27 (2018) 112–128.
+[51] C. Chothia, J. Gough, C. Vogel, S.A. Teichmann, Evolution of the protein repertoire, Science 300 (2003) 1701–1703.
+[52] N. Jones, I.M. Blasutig, V. Eremina, J.M. Ruston, F. Bladt, H. Li, et al., Nck adaptor proteins link nephrin to the actin cytoskeleton of kidney podocytes, Nature 440 (2006) 818–823.
+[53] I.M. Blasutig, L.A. New, A. Thanabalasuriar, T.K. Dayarathna, M. Goudreault, S.E. Quaggin, et al., Phosphorylated YDXV motifs and Nck SH2/SH3 adaptors act cooperatively to induce actin reorganization, Mol. Cell. Biol. 28 (2008) 2035–2046.
+[54] Y. Lin, S.L. Currie, M.K. Rosen, Intrinsically disordered sequences enable modulation of protein phase separation
+
+2420
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+through distributed tyrosine motifs, J. Biol. Chem. 292 (2017) 19110–19120. [55] S. Banjade, Q. Wu, A. Mittal, W.B. Peeples, R.V. Pappu, M.K. Rosen, Conserved interdomain linker promotes phase separation of the multivalent adaptor protein Nck, Proc. Natl. Acad. Sci. U. S. A. 112 (2015) E6426–E6435. [56] R.D. Finn, A. Bateman, J. Clements, P. Coggill, R.Y. Eberhardt, S.R. Eddy, et al., Pfam: the protein families database, Nucleic Acids Res. 42 (2014) D222–30. [57] P.J. Flory, Foundations of rotational isomeric state theory and general methods for generating configurational averages, Macromolecules 7 (1974) 381–392. [58] A.S. Holehouse, K. Garai, N. Lyle, A. Vitalis, R.V. Pappu, Quantitative assessments of the distinct contributions of polypeptide backbone amides versus side chain groups to chain expansion via chemical denaturation, J. Am. Chem. Soc. 137 (2015) 2984–2995. [59] S. Banjade, Q. Wu, A. Mittal, W.B. Peeples, R.V. Pappu, M.K. Rosen, Conserved interdomain linker promotes phase separation of the multivalent adaptor protein Nck, Proc. Natl. Acad. Sci. U. S. A. 112 (2015) E6426–35. [60] S. Kullback, R.A. Leibler, On Information and Sufficiency, Ann. Math. Stat. 22 (1951) 79–86. [61] M. Rubinstein, R.H. Colby, Polymer Physics, Oxford University Press, Oxford and New York, 2003. [62] A.G. Kozlov, E. Weiland, A. Mittal, V. Waldman, E. Antony, N. Fazio, et al., Intrinsically disordered C-terminal tails of E. coli single-stranded DNA binding protein regulate cooperative binding to single-stranded DNA, J. Mol. Biol. 427 (2015) 763–774. [63] I.V.J.B. Warner, K.M. Ruff, P.S. Tan, E.A. Lemke, R.V. Pappu, H.A. Lashuel, Monomeric huntingtin exon 1 has similar overall structural features for wild-type and pathological polyglutamine lengths, J. Am. Chem. Soc. 139 (2017) 14456–14469. [64] R.K. Das, S.L. Crick, R.V. Pappu, N-terminal segments modulate the α-helical propensities of the intrinsically disordered basic regions of bZIP proteins, J. Mol. Biol. 416 (2012) 287–299. [65] S. Rauscher, V. Gapsys, M.J. Gajda, M. Zweckstetter, B.L. de Groot, H. Grubmuller, Structural ensembles of intrinsically disordered proteins depend strongly on force field: a comparison to experiment, J. Chem. Theory Comput. 11 (2015) 5513–5524. [66] A.G. Kozlov, M.K. Shinn, E.A. Weiland, T.M. Lohman, Glutamate promotes SSB protein–protein interactions via intrinsically disordered regions, J. Mol. Biol. 429 (2017) 2790–2801. [67] T.M. Lohman, L.B. Overman, M.E. Ferrari, A.G. Kozlov, A highly salt-dependent enthalpy change for Escherichia coli SSB protein–nucleic acid binding due to ion–protein interactions, Biochemistry 35 (1996) 5272–5279. [68] S. Raghunathan, A.G. Kozlov, T.M. Lohman, G. Waksman, Structure of the DNA binding domain of E. coli SSB bound to ssDNA, Nat. Struct. Mol. Biol. 7 (2000) 648. [69] M. Okuwaki, The structure and functions of NPM1/ Nucleophsmin/B23, a multifunctional nucleolar acidic protein, J. Biochem. 143 (2007) 441–448. [70] D.M. Mitrea, J.A. Cika, C.S. Guy, D. Ban, P.R. Banerjee, C.B. Stanley, et al., Nucleophosmin integrates within the nucleolus via multi-modal interactions with proteins displaying Rrich linear motifs and rRNA, elife 5 (2016). [71] M. Feric, N. Vaidya, T.S. Harmon, D.M. Mitrea, L. Zhu, T.M. Richardson, et al., Coexisting liquid phases underlie nucleolar subcompartments, Cell 165 (2016) 1686–1697.
+
+[72] D.M. Mitrea, C.R. Grace, M. Buljan, M.-K. Yun, N.J. Pytel, J. Satumba, et al., Structural polymorphism in the N-terminal oligomerization domain of NPM1, Proc. Natl. Acad. Sci. 111 (2014) 4466–4471.
+[73] P.J. Buske, P.A. Levin, A flexible C-terminal linker is required for proper FtsZ assembly in vitro and cytokinetic ring formation in vivo, Mol. Microbiol. 89 (2013) 249–263.
+[74] P.J. Buske, A. Mittal, R.V. Pappu, P.A. Levin, An intrinsically disordered linker plays a critical role in bacterial cell division, Semin. Cell Dev. Biol. 37 (2015) 3–10.
+[75] P.E. Wright, H.J. Dyson, Intrinsically disordered proteins in cellular signalling and regulation, Nat. Rev. Mol. Cell Biol. 16 (2015) 18–29.
+[76] A.K. Dunker, C.J. Brown, J.D. Lawson, L.M. Iakoucheva, Z. Obradović, Intrinsic disorder and protein function, Biochemistry 41 (2002) 6573–6582.
+[77] A.K. Dunker, Z. Obradovic, The protein trinity—linking function and disorder, Nat. Biotechnol. 19 (2001) 805–806.
+[78] P. Tompa, P. Csermely, The role of structural disorder in the function of RNA and protein chaperones, FASEB J. 18 (11) (2004) 1169–1175.
+[79] T.C. Boothby, H. Tapia, A.H. Brozena, S. Piszkiewicz, A.E. Smith, I. Giovannini, et al., Tardigrades use intrinsically disordered proteins to survive desiccation, Mol. Cell 65 (2017) 975–984 (e5).
+[80] S. Milles, D. Mercadante, I.V. Aramburu, M.R. Jensen, N. Banterle, C. Koehler, et al., Plasticity of an ultrafast interaction between nucleoporins and nuclear transport receptors, Cell 163 (2015) 734–745.
+[81] B. Xue, A.K. Dunker, V.N. Uversky, Orderly order in protein intrinsic disorder distribution: disorder in 3500 proteomes from viruses and the three domains of life, J. Biomol. Struct. Dyn. 30 (2012) 137–149.
+[82] X. Chen, W.C. Solomon, Y. Kang, F. Cerda-Maira, K.H. Darwin, K.J. Walters, Prokaryotic ubiquitin-like protein pup is intrinsically disordered, J. Mol. Biol. 392 (2009) 208–217.
+[83] B. Di Fiore, C. Wurzenberger, N.E. Davey, J. Pines, The mitotic checkpoint complex requires an evolutionary conserved cassette to bind and inhibit active APC/C, Mol. Cell 64 (2016) 1144–1153.
+[84] R.B. Berlow, H.J. Dyson, P.E. Wright, Hypersensitive termination of the hypoxic response by a disordered protein switch, Nature 543 (2017) 447.
+[85] T.S. Harmon, A.S. Holehouse, R.V. Pappu, Differential solvation of intrinsically disordered linkers drives the formation of spatially organized droplets in ternary systems of linear multivalent proteins, New J. Phys. 543 (2018) 045002.
+[86] C.W. Pak, M. Kosno, A.S. Holehouse, S.B. Padrick, A. Mittal, R. Ali, et al., Sequence determinants of intracellular phase separation by complex coacervation of a disordered protein, Mol. Cell 63 (2016) 72–85.
+[87] T.J. Nott, E. Petsalaki, P. Farber, D. Jervis, E. Fussner, A. Plochowietz, et al., Phase transition of a disordered nuage protein generates environmentally responsive membraneless organelles, Mol. Cell 57 (2015) 936–947.
+[88] T. Zarin, C.N. Tsai, A.N. Nguyen Ba, A.M. Moses, Selection maintains signaling function of a highly diverged intrinsically disordered region, Proc. Natl. Acad. Sci. U. S. A. 114 (2017) E1450–E1459.
+[89] O. Rivoire, K.A. Reynolds, R. Ranganathan, Evolution-based functional decomposition of proteins, PLoS Comput. Biol. 12 (2016), e1004817.
+
+SCRs of IDRs Tethered to FDs of Proteins
+
+2421
+
+[90] F. Morcos, A. Pagnani, B. Lunt, A. Bertolino, D.S. Marks, C. Sander, et al., Direct-coupling analysis of residue coevolution captures native contacts across many protein families, Proc. Natl. Acad. Sci. U. S. A. 108 (2011) E1293–301.
+[91] N. Lyle, R.K. Das, R.V. Pappu, A quantitative measure for protein conformational heterogeneity, J. Chem. Phys. 139 (2013), 121907.
+[92] T.S. Harmon, M.D. Crabtree, S.L. Shammas, A.E. Posey, J. Clarke, R.V. Pappu, GADIS: algorithm for designing sequences to achieve target secondary structure profiles of
+
+intrinsically disordered proteins, Protein Eng. Des. Sel. 29 (2016) 339–346. [93] R.T. McGibbon, K.A. Beauchamp, M.P. Harrigan, C. Klein, J.M. Swails, C.X. Hernández, et al., MDTraj: a modern, open library for the analysis of molecular dynamics trajectories, Biophys. J. 109 (2015) 1528–1532. [94] W. Humphrey, A. Dalke, K. Schulten, VMD: visual molecular dynamics, J. Mol. Graph. Model. 14 (1996) 33–38 (27-8).
+

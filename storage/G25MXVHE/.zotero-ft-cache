@@ -1,0 +1,393 @@
+Guided Multi-objective Generative AI to Enhance
+Structure-based Drug Design
+Amit Kadan1*†, Kevin Ryczko1*†, Adrian Roitberg2 and Takeshi Yamazaki1*
+1SandboxAQ, Palo Alto, CA, United States. 2Department of Chemistry, University of Florida, PO Box 117200, Gainesville, 2611-7200, Florida, United States.
+*Corresponding author(s). E-mail(s): amit.kadan@sandboxaq.com; kevin.ryczko@sandboxaq.com; takeshi.yamazaki@sandboxaq.com; Contributing authors: roitberg@ufl.edu; †These authors contributed equally to this work.
+Abstract
+Generative AI has the potential to revolutionize drug discovery. Yet, despite recent advances in machine learning, existing models cannot generate molecules that satisfy all desired physicochemical properties. Herein, we describe IDOLpro, a novel generative chemistry AI combining deep diffusion with multi-objective optimization for structure-based drug design. The latent variables of the diffusion model are guided by differentiable scoring functions to explore uncharted chemical space and generate novel ligands in silico, optimizing a plurality of target physicochemical properties. We demonstrate its effectiveness by generating ligands with optimized binding affinity and synthetic accessibility on two benchmark sets. IDOLpro produces ligands with binding affinities over 10% higher than the next best state-of-the-art on each test set. On a test set of experimental complexes, IDOLpro is the first to surpass the performance of experimentally observed ligands. IDOLpro can accommodate other scoring functions (e.g. ADME-Tox) to accelerate hit-finding, hit-to-lead, and lead optimization for drug discovery.
+The central goal of structure-based drug design (SBDD) is to design ligands with high binding affinities given a 3-dimensional protein pocket [1]. SBDD is inherently an inverse design problem, where the desired properties (high binding affinity to a target protein, synthesizability etc.) are known, but the design of a molecule with the desired properties is non-trivial. Inverse design problems are prevalent in the materials [2–4], chemical [5–7], and life sciences [8–10]. They have two fundamental steps: The sampling of a chemical space, and the scoring (or evaluation) of compounds’ ability to satisfy the set of desired
+properties. The sampling of chemical space can be done in various ways. For drug discovery, the typical way to achieve this is by evaluating each entry of a large database of drug-like molecules such as ZINC [11], Enamine [12], or GDB [13], collect the results and rank them accordingly to yield a shortlist of compounds to be screened in a laboratory. Although these databases can contain hundreds of billions of molecules [13], this is just a fraction of drug-like chemical space which is estimated to number anywhere between 1020 − 1060 molecules [14].
+1
+arXiv:2405.11785v1 [physics.chem-ph] 20 May 2024
+
+
+Initialize
+Pocket coordinates zT
+zt0hz
+Latent vector
+R
+Generate
+r Ligand Coordinates
+Optimize
+zt2h0z 0
+Latent Space, z
+zt0hz
+Score
+r
+zt0hz Synthesizability
+y
+Ligand Score
+zt1hz zt2hz
+y
+∂y ∂zt0hz
+∂y ∂zt1hz
+...
+zt0hz
+A
+B
+C
+D
+Z
+R
+Optimization Iteration
+Binding Affinity
+Reverse Diffusion 0
+T thz
+Reverse Diffusion 0
+T thz
+Z
+Atomic numbers
+Horizon
+Fig. 1: Visual overview. A: Random latent vectors are defined (this is skipped when seeded with a known ligand) and the reverse diffusion is run for T → thz. B: The rest of the reverse diffusion process is completed and a ligand is generated (with coordinates and atomic numbers). C: The ligand is scored by evaluating the binding affinity, synthesizability, or both. D: The ligand score is differentiated with respect to the latent vector zt0, and zt1 is defined by taking a single optimization step.
+In the recent literature, a flurry of generative machine learning (ML) models have been proposed to replace database iteration [15–20]. In Ref. [16], an equivariant probabilistic model called Pocket2Mol was trained to sequentially generate new atoms in a protein given the current atomic context. In Ref. [18], an equivariant diffusion model called TargetDiff was introduced to generate ligands from scratch. They also showed that their model can be used as an unsupervised extractor of binding affinity. In Ref. [19], two other equivariant diffusion models were introduced to generate a ligand from scratch. These models are also able to perform scaffold-hopping and fragment merging/growing, both of which are facilitated by an inpainting-inspired [21] molecular generation scheme. In all three references, the ligands produced by the models attained lower average Vina scores [22] than docked molecules in the test set. Sampling ligands by using these models is not only more efficient than searching through a database, but they are also capable
+of producing new molecules that don’t currently exist in molecular databases [20], expanding the chemical space available during the drug-discovery process. However, in some cases they have been shown to produce ligands that do not exhibit desired physicochemical properties such as chemical and physical feasibility [23, 24], or synthesizability [25]. To work in an inverse design pipeline, these models must be paired with an evaluation scheme to filter and rank molecules based on required attributes. Additionally, a feedback loop from the evaluation scheme to the generator can be introduced, allowing one to condition generation on measured physicochemical indicators, and improving the sampling of chemical space to yield molecules with better target properties. This feedback loop is essential to accelerate the design process given the size of chemical space [6, 8, 26]. Conditional generation is becoming a common practice in the drug-discovery literature. Ref. [20] pair a policy network with a Monte Carlo Tree Search algorithm to design ligands with optimized
+2
+
+
+Vina scores. They apply their methodology to the inhibitor design for the main protease of SARSCoV-2, producing novel ligands with high binding affinity. Similarly, Ref. [19] pair a diffusion model with an evolutionary algorithm to optimize the properties of the generated ligands given an initial ligand. Ref. [27] use property predictors to guide a generative model composed of an equivariant autoencoder and transformer decoder in generating molecules with high target properties. A disadvantage of these works is that they do no make use of gradient information with respect to the objectives in their optimization schemes, making them scale worse with the degrees of freedom of the problem [28]. In this work, we present IDOLpro (Inverse Design of Optimal Ligands for Protein pockets) that can produce an optimized set of chemically feasible ligands given a protein pocket. IDOLpro guides state-of-the-art diffusion models to produce optimized ligands for a given protein pocket. More specifically, we modify the latent variables of the generative model to optimize one or more particular objectives of interest simultaneously. The objectives considered evaluate particular properties of the generated ligands and in this report, we include binding affinity and synthetic accessibility (as well as the combination). Although we only explore a single diffusion model for generation, and these two metrics for scoring in this report, our framework is highly modular, and can easily incorporate alternative generators and additional scores. To estimate binding affinity, we have integrated several objectives, including a torch-based version of Vina [22] that we call torchvina, DiffDock score [29], and the ANI2x model [30]. To estimate synthetic accessibility, we train an equivariant neural network model to predict the SA score reported from RDKit [31]. All metrics are written purely in Pytorch [32] and are fully differentiable and are connected to the latent variables within the diffusion model, allowing for the use of gradient-based optimization strategies to design optimal ligands. In two recent works, gradients from property predictors were used to guide a diffusion model in generating molecules with optimized properties [8, 10]. These works require a property predictor capable of making predictions on noisy, intermediate representations of molecules to guide diffusion at each step. An advantage of these related works
+is that once this auxiliary property predictor is produced, reverse diffusion only has to be run once for each generated molecule. IDOLpro requires re-running reverse diffusion multiple times, resulting in additional computational cost. However, a major advantage of our platform is that it can incorporate any differentiable score capable of making predictions on molecular structures, allowing for the integration of novel metrics without needing to develop models from scratch.
+Results
+Workflow
+IDOLpro is available on QEMIST Cloud (https://www.sandboxaq.com/solutions/ quantum-simulation), a cloud-based simulation package that includes several methods to compute different properties of molecules and materials. IDOLpro takes the protein pocket information as input and iteratively modifies the predictions of a generator which generates molecules directly into the pocket to produce optimal ligands according to a set of differentiable scores defining target properties. IDOLpro accomplishes this task by modifying the latent vectors of the generative model. Once a set of optimal ligands are produced, their binding poses are further refined by performing structural optimization within the pocket. The structural optimization algorithm interfaces with the same differentiable scores used for latent optimization and iteratively modifies the ligands’ coordinates. A visual overview of IDOLpro is pictured in Fig. 1. In this report, our method uses DiffSBDD [19] as the baseline generative method for predicting ligands within a protein pocket. In particular, we use a specific variant of the model, DiffSBDDCond, which we found was able to consistently generate ligands within the protein pocket without clashes. We assess the ability of our framework to discover novel ligands with improved binding affinity and synthetic accessibility. To evaluate and be able to gather gradient information for binding affinity, we have developed a torch-based implementation of the Vina score [22], which we refer to as torchvina. To evaluate synthetic accessibility, we have trained an equivariant neural network model to predict the synthetic accessibility (SA)
+3
+
+
+Method Vina [kcal/mol] Vina10% [kcal/mol] Vinasynth [kcal/mol] SA SA10%
+DiffSBDD-cond -4.56 -7.62 -4.50 (94/100) 4.96 3.26 ours (Vina) -7.26 -10.13 -5.79 (76/100) 5.75 4.01 ours (Vina + SA) -7.08 -9.85 -6.15 (89/100) 5.09 3.29
+Table 1: Performance of IDOLpro when used to optimize torchvina, and the combination of torchvina and torchSA relative to the baseline model, DiffSBDD-cond. For the average Vina score of synthesizable molecules, we include the number of targets that were included in the calculation.
+score first proposed in Ref. [33], which we refer to as torchSA. We assess the performance of IDOLpro on two separate tests sets – a subset of CrossDocked [34], and a subset of the Binding MOAD (Mother of all Databases) [35]. Both databases contain protein pocket-ligand pairs. The protein-ligand pairs in CrossDocked were derived via re-docking ligands to non-cognate receptors with smina [36]. The Binding MOAD contains high resolution (<2.5  ̊A) protein-ligand pairs derived through experiment. The test set from CrossDocked is also used to validate the performance of tools in several other papers [15, 16], including DiffSBDD [19], and consists of 100 protein targets. The test set from the Binding MOAD is also used to assess the performance of DiffSBDD, and contains 130 protein targets. As was done in Ref [19], for each protein pocket in each test set, we generate 100 optimized ligands using IDOLpro. We assess the ability of our framework to discover novel ligands with improved binding affinity and synthetic accessibility. In particular, we perform univariate optimization with torchvina and multivariate optimization with torchvina and torchSA scores.
+Validation of Latent Vector Optimization
+To assess the ability of IDOLpro to augment the performance of the baseline model via the optimization of latent vectors, we run IDOLpro to optimize torchvina, and the summation of torchvina and torchSA, and analyze its capability to improve Vina and SA scores relative to DiffSBDDCond. For each of the protein pockets in the CrossDocked test set, we calculate the Vina and SA scores of the ligand before and after latent vector optimization with IDOLpro. We report the average Vina and SA scores, and the top-10% Vina and SA scores for each method. We also report the
+average Vina score of synthesizable ligands across all pockets. In this work, we define a ligand as synthesizable if it achieves an SA score of less than 3.5. Although the inventors of SA score suggest 6 as the cutoff for synthesizability, a number of papers have found SA scores between 3.5 and 6 to be ambiguous [25, 37]. A cutoff of 3.5 was also used to determine synthesizability in Ref. [38].
+The results are shown in Table 1. We find that IDOLpro generates ligands with significantly better Vina scores than DiffSBDD-cond, yielding molecules with a ≈ 59% lower Vina score when performing univariate optimization, and ≈ 55% improvement when optimizing the combined torchvina and torchSA score. IDOLpro also generated ligands with a drastically improved top-10% Vina score relative to DiffSBDD-cond, yielding molecules with ≈ 33% and 29% lower top-10% Vina score when used with torchvina and torchvina + torchSA respectively. It should be noted that the top-10% Vina score achieved using IDOLpro to optimize latent vectors with torchvina and no structural refinement is already better than the best method reported in Ref. [19], which applies docking to generated molecules. Although IDOLpro yields molecules with improved binding affinity when used with just torchvina, this comes at the cost of synthetic accessibility. The average SA score and top-10% SA score of molecules generated by IDOLprotorchvina are 5.75 and 4.01 respectively, compared to 4.96 and 3.26 for DiffSBDD-Cond. Multivariate optimization with the objective torchvina+torchSA elicits molecules with better synthetic accessibility, 5.09 for average SA score, and 3.29 top-10% SA score, both slightly worse than the baseline DiffSBDD-Cond model. However, the binding affinity of synthesizable ligands is improved relative to both DiffSBDD-cond and when optimizing torchvina alone.
+4
+
+
+GraphBP
+3D-SBDD
+Test-set†
+DiffSBDD-cond∗
+Pocket2Mol
+TargetDiff
+DiffSBDD-inpaint
+IDOLpro(Vina+SA)
+IDOLpro(Vina)
+−8
+−7
+−6
+−5
+−4
+−3
+−2
+−1
+0
+Vina [kcal/mol]
+GraphBP
+DiffSBDD-cond∗
+DiffSBDD-inpaint
+IDOLpro(Vina+SA)
+Test-set†
+IDOLpro(Vina)
+−8
+−7
+−6
+−5
+−4
+−3
+−2
+−1
+0
+Vina [kcal/mol]
+Fig. 2: Model performance on benchmark test sets. Average Vina scores of various ML tools for CrossDocked (left), and Binding MOAD (right) are shown. † Vina scores of reference ligands in the test set, redocked with QVina. * Baseline method for IDOLpro.
+Method Vina [kcal/mol] Vina10% [kcal/mol] SA QED Diversity Time [s/ligand]
+CrossDocked
+Test Set −6.87 ± 2.32 - 3.45 ± 1.26 0.48 ± 0.20 - 
+3D-SBDD [15] −5.89 ± 1.91 −7.29 ± 2.34 3.93 ± 1.26 0.50 ± 0.17 0.74 ± 0.09 328.13 ± 245.43 Pocket2Mol [16] −7.06 ± 2.80 −8.71 ± 3.18 3.23 ± 1.08 0.57 ± 0.16 0.74 ± 0.15 41.79 ± 36.84 GraphBP [17] −4.72 ± 4.03 −7.17 ± 1.40 7.24 ± 0.81 0.50 ± 0.12 0.84 ± 0.01 0.17 ± 0.02 TargetDiff [18] −7.32 ± 2.47 −9.67 ± 2.55 4.74 ± 1.17 0.48 ± 0.20 0.72 ± 0.09 ∼ 57.22 DiffSBDD-cond [19] −6.95 ± 2.06 −9.12 ± 2.16 4.80 ± 1.17 0.47 ± 0.21 0.73 ± 0.07 2.27 ± 0.86 DiffSBDD-inpaint [19] −7.33 ± 2.56 −9.93 ± 2.59 5.01 ± 1.08 0.47 ± 0.18 0.76 ± 0.05 2.67 ± 1.22 IDOLpro (vina) −8.06 ± 2.18 −10.87 ± 2.76 5.75 ± 0.35 0.39 ± 0.08 0.65 ± 0.08 34.26 ± 16.69 IDOLpro (vina + SA) −7.87 ± 2.22 −10.57 ± 2.75 5.09 ± 0.53 0.39 ± 0.09 0.67 ± 0.09 43.74 ± 15.97
+MOAD
+Test Set −8.41 ± 2.03 - 3.77 ± 1.08 0.52 ± 0.17 - 
+GraphBP [17] −4.84 ± 2.24 −6.63 ± 0.95 7.21 ± 0.81 0.51 ± 0.11 0.83 ± 0.01 0.23 ± 0.03 DiffSBDD-cond [19] −7.17 ± 1.89 −9.18 ± 2.23 4.89 ± 1.08 0.44 ± 0.20 0.71 ± 0.08 5.61 ± 1.42 DiffSBDD-inpaint [19] −7.31 ± 4.03 −9.84 ± 2.18 4.47 ± 1.08 0.54 ± 0.21 0.74 ± 0.05 6.17 ± 2.08 IDOLpro (Vina) −8.48 ± 2.54 −11.30 ± 3.02 5.86 ± 0.47 0.32 ± 0.04 0.62 ± 0.13 69.89 ± 64.78 IDOLpro (Vina + SA) −8.40 ± 2.29 −11.16 ± 2.96 5.31 ± 0.59 0.32 ± 0.07 0.64 ± 0.12 85.57 ± 61.70
+Table 2: Results of ML tools compared on targets from the CrossDocked and Binding MOAD datasets. The average, along with the standard deviation across the protein pockets in each dataset are reported for each metric. The top performing model is bolded in each column. Numbers for other models are taken from Ref. [19]. Time is based on running DiffSBDD-cond on our hardware, and adjusting the times reported in Ref. [19] accordingly
+Benchmarking Results
+We compare our full pipeline including both latent vector optimization and structural refinement, to other tools in the literature on the CrossDocked and Binding MOAD test sets. Aside from reporting the Vina score, top-10% Vina score, and SA score, we report several other metrics widely reported in the literature. We evaluate the
+QED (quantitative estimate of drug-likeness) [41], a metric combining severable desirable molecular properties for screening drug-like molecules. We report diversity – the average pairwise dissimilarity between all generated molecules for a given protein pocket. Dissimilarity is measured as 1 − Tanimoto similarity. Lastly, we report the average time taken to generate a single
+5
+
+
+Fig. 3: Molecules produced by IDOLpro when optimizing torchvina and torchSA. Two examples from the CrossDocked test set are shown – protein 3nfb, and protein 1dxo. Left column: reference molecules from the test sets. Middle column: initial ligand produced by DiffSBDD prior to latent vector optimization. Right column: molecule produced by IDOLpro after optimizing torchvina and torchSA. For each example, the molecule produced by DiffSBDD has worse Vina and SA scores than the reference molecule. After optimization with IDOLpro, both the Vina and SA scores of the generated molecule are better than the reference. Visualizations were created with PyMol [39], and interactions were visualized with the protein-ligand interaction profiler (PLIP) [40].
+ligand with each framework. These results are compared to six other tools in the literature: 3D-SBDD [15], Pocket2Mol [16], GraphBP [17], TargetDiff [18], DiffSBDD-Cond, and DiffSBDDinpaint [19]. Results for other tools are taken from Ref. [19]. Full results are shown in Table 2 and Fig. 2. Examples of molecules produced by IDOLpro are shown in Fig. 3. IDOLpro is run to completion from start to finish, first optimizing latent vectors, followed by structural refinement. Other tools have their ligands docked with QuickVina2 [42] after generation as was done in Ref. [19]. For CrossDocked, IDOLpro achieves significantly improved average and top-10% Vina scores over other tools, with a 0.69 kcal/mol improvement and 0.94 kcal/mol improvement respectively compared to the next best tool in the literature, DiffSBDD-inpaint when used with just torchvina. This comes at the expense of other metrics, as IDOLpro-torchvina achieves lower QED and Diversity than other tools in the literature. When IDOLpro is run with both torchvina torchSA, the SA score of generated ligands is improved, achieving similar average SA to DiffSBDD-inpaint.
+Despite needing to run an entire optimization procedure for each ligand, IDOLpro is still computationally tractable, achieving run times competitive with two other tools – TargetDiff and Pocket2Mol, and even being faster than 3D-SBDD. These timings can be seen in Table 2. IDOLpro-torchvina finds a ligand that has better binding affinity than the reference ligand for 99/100 targets, while IDOLprotorchvina+torchSA does so for 98/100 targets. IDOLpro is very often able to find ligands that improve upon both the Vina score and SA score compared to the reference ligand when run with both torchvina and torchSA, finding such a ligand for 71/100 targets in the CrossDocked test set. For the Binding MOAD, the advantage of IDOLpro for generating molecules with high binding affinity is even more pronounced, with a 1.17 kcal/mol improvement in average Vina score, and 1.46 kcal/mol improvement in top-10% Vina score compared to the next best method, DiffSBDDinpaint when used with just torchvina. In particular, IDOLpro-torchvina is the first model to surpass the average Vina score of reference
+6
+
+
+molecules in the Binding MOAD. This is noteworthy, because unlike molecules in CrossDocked, molecules in the Binding MOAD were derived through experiment. When used with both torchvina and torchSA, IDOLpro achieves slightly worse average Vina and top-10% Vina scores, while improving the SA relative to IDOLpro-torchvina. However, the average SA score is still worse than for both DiffSBDD-cond and DiffSBDD-inpaint. The time to generate a single ligand for a protein pocket in the Binding MOAD test set is approximately twice as slow as for the CrossDocked dataset, and reflects DiffSBDD’s slowdown in proposing novel molecules for targets in this set. IDOL-torchvina finds a molecule with a lower Vina score than the reference for 128/130 cases, while IDOLpro-torchvina+torchSA does so for 125/130 cases. IDOLpro-torchvina+torchSA finds a molecule with a better Vina score and SA score for 123/130 targets. The SA scores in the Binding MOAD dataset are larger than the ones from CrossDocked, contributing to the model’s success. Overall IDOLpro can generate ligands with state-of-the-art binding affinity, and good synthetic accessibility. Improving other metrics with IDOLpro is straightforward, simply requiring a differentiable score for evaluating the desired metric. Part of our future work will be to focus on other differentiable scoring functions for other desirable properties such as solubility, toxicity, etc.
+Improving Reference molecules
+In addition to de novo generation, IDOLpro can also be used to optimize a known ligand in the protein pocket. This functionality is useful for a common task in drug discovery pipelines known as lead optimization, where a molecule is progressed from an initial promising candidate towards having optimal properties [43]. Although this is generally accomplished by fixing a large part of the molecule, i.e., the scaffold, while optimizing the rest of the molecule [44], a constraint which can be incorporated into generation with DiffSBDD [19], as a simple demonstration, we perform optimization without holding any of the molecule fixed. However, as seen in Fig. 4 our optimization also produces ligands with a similar scaffold. To accomplish the task of reference optimization, we seed the generation task with a latent
+vector derived from the input ligand. We take the given ligand, and noise it for thz timesteps, creating latent vector zthz . From this point, the optimization proceeds as it does when generating molecules from scratch. To test this capability of our frameowrk, we use the protein-pockets from the CrossDocked test set and generate the same number of molecules when generating ligands from scratch. We use IDOLpro with torchvina and torchSA to optimize reference molecules from the dataset, and compare the results of this procedure to generation from scratch. We only test IDOLpro’s ability to improve reference molecules with latent vector optimization. Results are reported in Table 3. We find that the average Vina scores of the optimized ligands are significantly better than the seed molecules (1.12 kcal/mol), although the average SA is higher. Starting from scratch results in a slightly better average Vina score (0.42 kcal/mol), and a significantly better top-10% Vina score (2.23 kcal/mol) than seeding with the references from the test set. However, when comparing the performance of IDOLpro for finding molecules that have both a better binding affinity and SA score than the reference, starting from a given molecule has a significant advantage – we find such a target ∼ 95% of the time, compared to only ∼ 72% of the time when starting from scratch. Furthermore, the top-10% SA score is better than the average SA found in the reference molecules. Starting from a reference molecule can be used to fine-tune a given ligand producing other ligands with better binding affinity and synthesizability scores. However, if one is interested in producing the lowest binding affinity scores possible, starting from scratch is the better choice.
+Discussion
+We have presented a framework that is designed to produce optimal ligands with desired properties for a given protein pocket. We accomplish this by constructing a computational graph that begins with latent variables of a diffusion model and ends with important metrics in drug discovery. The latent variables can then be modified via standard optimization routines to optimize the metrics of interest. More specifically, we perform uni-variate optimization using a torch-based version of Vina and multivariate optimization by optimizing both
+7
+
+
+Fig. 4: Molecules produced by IDOLpro during reference optimization. Example shown is on the ligand ngo docked into protein 1h0i. IDOLpro is used to optimize torchvina and torchSA. IDOLpro yields multiple ligands with improved SA and Vina relative to the reference molecule.
+Method Vina [kcal/mol] Vina10% [kcal/mol] SA SA10% Improved [%]
+Test Set -5.49 - 3.45 - IDOLpro (Vina + SA) (scratch) -7.06 -9.82 5.08 3.28 72 IDOLpro (Vina + SA) (reference) -6.58 -7.60 4.05 3.04 95
+Table 3: Comparison between optimizing ligands from scratch versus optimizing ligands when starting with a reference ligand. The final column (Improved) is the percentage of ligands where the final Vina and SA scores are less than the reference.
+Vina and SA scores simultaneously. In both cases, we can achieve the lowest Vina scores compared to previous, state-of-the-art methods. More specifically, when considering CrossDocked and Binding MOAD, we see a 10% (0.73 kcal/mol) and 16% (1.17 kcal/mol) improvement to the next best tool. When performing multivariate optimization with Vina and SA scores, still observe a 7% (0.54 kcal/mol) and 15% (1.09 kcal/mol) improvement to the Vina score compared to the next best tool. For Binding MOAD, our framework is the first to produce molecules with a lower average Vina score than reference molecules in the test set, which were derived through experiment. In addition, our tool can also perform lead optimization by starting with a reference molecule. When doing this, we’re able to find other ligands with lower Vina scores 100% of the time, while also lowering the SA score for ≈ 95% of cases. Our framework proposes optimal drugs given particular properties, unlocking the ability to virtually screen optimized molecules from a vast chemical space without the
+need of searching through a vast database, or generating molecules randomly until one with desired properties is found, therefore accelerating the drug discovery process. Our future work will include other important metrics such as toxicity and solubility within the objective to ensure the generation of feasible ligands, along with the consideration of other binding affinity metrics such as free energy perturbation (FEP) based affinity [45].
+Methods
+Generator Module
+When optimizing latent vectors, we utilize a stateof-the-art denoising diffusion probabilistic model (DDPM) [46], DiffSBDD [19], for generating novel ligands with high binding affinity. DDPMs generate samples from a target distribution by learning the reverse of a noising process. Gaussian random noise is iteratively injected into samples from the target distribution until no information from the
+8
+
+
+original sample remains. During generation the model reverses this process, transforming random noise into samples from the target distribution. In particular, a diffusion model generates samples by denoising a random initial latent vector for T steps. The initial latent vector is drawn from a normal distribution,
+zT ∼ N (0, I).
+Afterwards, the model generates consecutive latent vectors by predicting the noise at time t, εθ(zt, t), where θ are the model weights. The noise is removed from zt in order to generate zt−1. z0 is the final prediction of the model. DiffSBDD is an SE(3)-equivariant [47] 3Dconditional DDPM which respects translation, rotation, and permutation symmetries. DiffSBDD was trained to create ligands with high binding affinity given a target protein pocket. In DiffSBDD, data samples consist of protein pocket and ligand point clouds (atomic numbers and coordinates), i.e., z = [r, h] where r ∈ RN×3 is a tensor of atomic coordinates, and h ∈ RN×10 is a tensor of atomic probabilities over the atom types which the model can generate. Within the model, each zt is converted to a graph, and processed by an EGNN [48] to produce a prediction of εθ(zt, t). DiffSBDD contains two different models for 3D pocket conditioning – a conditional DDPM that receives a fixed pocket representation as the context in each denoising step, and a model that is trained to approximate the joint distribution of ligand-protein pocket pairs and is combined with a modified sampling procedure, inpainting [21, 49], at inference time to yield conditional samples of ligands given a fixed protein pocket. In this work, we focus only on the conditional DDPM for ligand generation. Our framework requires that generated ligands do not overlap with the target protein pocket, as the ligands are later docked using structural optimization. We found that the conditional DDPM model is the only model consistently capable of generating ligands satisfying this constraint. DiffSBDD was trained on a subset of the CrossDocked [34], and the Binding MOAD [35] datasets. For training, Ref. [19] used the same train/test splits as in Ref. [15] and Ref. [16], resulting in 100,000 complexes for training, and 100 protein pockets for testing. Ref. [19] filtered the
+database to contain only molecules with atom types compatible with their model, and removed corrupted entries, resulting in 40,344 complexes for training, and 130 protein pockets for testing. DiffSBDD was shown to achieve state-of-theart performance on both test sets. In particular, DiffSBDD achieved the best average, and best top-10% Vina score when compared with other state-of-the-art models in the literature – 3DSBDD [15], Pocket2Mol[16], GraphBP [17], and TargetDiff [18]. We note, that although DiffSBDD is used as our baseline model in this report, our framework is not limited to the use of this specific model – any other generative model which makes use of latent vectors as intermediate representations during generation can take its place.
+Ligand Validity Checks
+When generating ligands using DiffSBDD, we perform several chemical and structural checks to ensure that the generated ligand is valid. A number of these checks are done using RDKit [31]. These include verifying that hydrogens can be added to the ligand and assigned a Cartesian coordinate (using the addCoords option in Chem.AddHs), that the ligand is not fragmented, and that the ligand can be sanitized. All of these except for the valency check can also be done within DiffSBDD [50]. In addition, we have four more checks to ensure the structural validity of the ligand. These four checks are necessary to be able to run structural refinement with IDOLpro, which makes use of the ANI2x model [30]. Structural refinement is described in the Structural Refinement Section. We first make sure that the ligand contains only atoms compatible with ANI2x. DiffSBDD can generate ligands with four atom types that are incompatible with ANI2x – B, P, Br, and I. We also make sure that the bond lengths in the ligand are correct by referring to covalent radii, and that the ligand does not overlap with the protein pocket. This is done via ASE’s [51] (Atomic Simulation Environment) NeighborList class. Lastly, We make sure that the atoms do not have significant overlap within the ligand itself. This is done via pymatgen’s [52] Molecule class.
+9
+
+
+Scoring Module
+After generating a set of ligands, we pass them to a scoring module. In this work, we include a custom torch-based Vina score [22] which we refer to as torchvina, an ensemble of neural networks trained to predict the synthetic accessibility [33] which we refer to as torchSA, the scoring module from DiffDock [29], and the ANI2x model [30]. These objectives are all written in Pytorch [32] with differentiable operations and hence can be differentiated automatically using autograd.
+torchvina We re-implement the Vina force field [22] using Pytorch to allow for automatic differentiation with respect to the latent parameters of the generator. Our work is not the first to produce a Pytorch-based version of Vina to facilitate automatic differentiation, a similar implementation was presented by Ref. [53]. Our motivation for implementing a differentiable Vina score is that docking with Vina was shown to outperform stateof-the-art ML models such as DiffDock [29] when stricter chemical and physical validity checks were enforced on docked molecules, or when these procedures were evaluated on a dataset composed of examples distinct from the ML models’ training data [23]. The Vina force field is composed of a weighted sum of atomic interactions. Steric, hydrophobic, and hydrogen bonding interactions are calculated and weighted according to a nonlinear fit to structural data [22]. The final score is reweighted by the number of rotatable bonds to account for entropic penalties [54]. The Vina score is composed of a sum of intramolecular and intermolecular terms. We implement only the intermolecular interaction term between the ligand and protein pocket, which allows us to have a measure of binding affinity. When doing structural refinement on the final ligand poses, we use ANI in order to account for each ligand’s internal energy.
+torchSA To have an evaluator model capable of estimating synthesizability, we train an ensemble of neural networks to predict the synthetic accessibility (SA) score. SA score was first proposed by Ref. [33], ranges from 1 (easy to make) and 10 (very difficult to make), and shown to be effective for biasing generative pipelines towards
+synthesizable molecules [25, 55]. Moreover, it was used directly in DiffSBDD to measure the performance of the pipeline [19]. To be able to guide latent parameters in DiffSBDD towards generating ligands with high synthesizability required designing a model that can handle the outputs of DiffSBDD in a differentiable manner. In particular, we constructed a machine learning model that can take in atomic point clouds, z = [r, h]. We accomplish this by constructing a dataset of atomic point clouds of ligands labelled with SA score. To allow for predictions on probability distributions of atom types, we encode atom types as one-hot vectors. For more details, we refer the reader to Section S.1 in the SI.
+ANI2x ANI2x is a neural network ensemble model that is part of the ANI suite of models [56]. The ANI models are trained on quantum chemistry calculations (at the density functional theory level) and they predict the total energy of a target system. The ANI models are trained on millions of organic molecules and are accurate across different domains [30, 57–59]. In addition, they have been shown to outperform many common force fields in terms of accuracy [60]. The ANI models make use of atomic environment descriptors, which probe their local environment, as input vectors. An individual ANI model contains multiple neural networks, each specialized for a specific atom type, predicting the energy contributed by atoms of that type in the molecular system. The total energy of the system is obtained by performing a summation over the atomic contributions [57]. The ANI2x model is an ensemble model consisting of 8 individual ANI models. Each sub-model is trained on a different fold of the ANI2x dataset, composed of gas-phase molecules containing seven different atom types – H, C, N, O, F, Cl, and S [30]. These seven atom types cover ≈ 90% of drug-like molecules, making ANI2x a suitable ML model for usage in our framework.
+Latent Vector Optimization
+The main optimization in IDOLpro occurs via the modification of latent vectors used by the generator to generate novel ligands. We do this by repeatedly evaluating generated ligands with an objective composed of a set of differentiable scores, calculating the gradient of the objective
+10
+
+
+with respect to the latent vectors (facilitated by automatic differentiation with Pytorch [32]), and modifying the latent vectors via a gradient-based optimizer. When optimizing latent vectors in DiffSBDD, we do not modify the initial latent vectors used by the model. Instead, we define an optimization horizon, thz. First latent vectors are generated up to the optimization horizon zT , . . . , zthz . This latent vector is saved, and the remaining latent vectors, zthz−1, . . . , z0, are generated. The gradient of the objective with respect to zthz is evaluated, and zthz is modified using the Adam optimizer [61]. When re-generating ligands, rather than starting from zT , only latent vectors proceeding the optimization horizon are generated, i.e., zthz−1, . . . , z0.
+In this work, we focus on using two combinations of evaluators: torchvina on its own, and torchvina in combination with torchSA. We use the Adam optimizer with β1 = 0.5 and β2 = 0.999 to modify latent vectors. We perform hyperparameter optimization to choose both the learning rate of Adam, and the optimization horizon, described in Section S.2 in the SI.
+Structural Refinement
+Structural refinement, in the form of local coordinate optimization, proceeds similarly to latent vector optimization. The scoring module is used to repeatedly evaluate ligands, and the derivatives concerning the ligand’s coordinates are used to modify the ligand’s coordinates with a gradientbased optimizer. We use the L-BFGS optimizer in Pytorch [32] to perform coordinate optimization. Our optimization algorithm is implemented with Pytorch and is parallelizable on a GPU. In this work, we only use one combination of evaluators to perform coordinate optimization: torchvina and ANI2x. We discuss the selection of the learning rate for the L-BFGS optimizer, as well as different weighting schemes between torchvina and ANI2x in Section S.2.3 in the SI.
+Acknowledgements. The authors thank Andrea Bortolato, Andrew Wildman, Arman Zaribafiyan, Benjamin Shields, and Jordan Crivelli-Decker for their feedback on the manuscript.
+Author Contributions. AK, KR, and TY conceived the study, designed IDOLpro, and planned the experiments. AK and KR implemented IDOLpro, ran experiments, and wrote the manuscript. AR and TY advised and reviewed the manuscript.
+References
+[1] Anderson, A.C.: The process of structurebased drug design. Chemistry & biology 10(9), 787–797 (2003)
+[2] Zunger, A.: Inverse design in search of materials with target functionalities. Nature Reviews Chemistry 2(4), 0121 (2018)
+[3] Ryczko, K., Darancet, P., Tamblyn, I.: Inverse design of a graphene-based quantum transducer via neuroevolution. The Journal of Physical Chemistry C 124(48), 2611726123 (2020)
+[4] Cornet, F.R.J., Benediktsson, B., Hastrup, B.A., Bhowmik, A., Schmidt, M.N.: Inversedesign of organometallic catalysts with guided equivariant diffusion. In: 37th Conference on Neural Information Processing Systems (2023)
+[5] Sanchez-Lengeling, B., Outeiral, C., Guimaraes, G.L., Aspuru-Guzik, A.: Optimizing distributions over molecular space. an objective-reinforced generative adversarial network for inverse-design chemistry (organic). ChemRxiv (2017) https: //doi.org/10.26434/chemrxiv.5309668.v3
+[6] Gebauer, N.W., Gastegger, M., Hessmann, S.S., Mu ̈ller, K.-R., Schu ̈tt, K.T.: Inverse design of 3d molecular structures with conditional generative neural networks. Nature communications 13(1), 973 (2022)
+[7] Sridharan, B., Goel, M., Priyakumar, U.D.: Modern machine learning for tackling inverse problems in chemistry: molecular design to realization. Chemical Communications 58(35), 5316–5331 (2022)
+[8] Lee, S., Jo, J., Hwang, S.J.: Exploring chemical space with score-based out-of-distribution
+11
+
+
+generation. In: Proceedings of the 40th International Conference on Machine Learning, pp. 18872–18892 (2023). PMLR
+[9] Zaman, S., Akhiyarov, D., Araya-Polo, M., Chiu, K.: Stride: Structure-guided generation for inverse design of molecules. arXiv preprint arXiv:2311.06297 (2023) https://doi.org/10. 48550/arXiv.2311.06297
+[10] Weiss, T., Mayo Yanes, E., Chakraborty, S., Cosmo, L., Bronstein, A.M., GershoniPoranne, R.: Guided diffusion for inverse molecular design. Nature Computational Science 3(10), 873–882 (2023)
+[11] Irwin, J.J., Shoichet, B.K.: Zinc- a free database of commercially available compounds for virtual screening. Journal of Chemical Information and Modeling 45(1), 177–182 (2005)
+[12] Shivanyuk, A., Ryabukhin, S., Tolmachev, A., Bogolyubsky, A., Mykytenko, D., Chupryna, A., Heilman, W., Kostyuk, A.: Enamine real database: Making chemical diversity real. Chemistry today 25(6), 58–59 (2007)
+[13] Ruddigkeit, L., Van Deursen, R., Blum, L.C., Reymond, J.-L.: Enumeration of 166 billion organic small molecules in the chemical universe database gdb-17. Journal of Chemical Information and Modeling 52(11), 2864–2875 (2012)
+[14] Polishchuk, P.G., Madzhidov, T.I., Varnek, A.: Estimation of the size of drug-like chemical space based on gdb-17 data. Journal of computer-aided molecular design 27, 675–679 (2013)
+[15] Luo, S., Guan, J., Ma, J., Peng, J.: A 3d generative model for structure-based drug design. Advances in Neural Information Processing Systems 34, 6229–6239 (2021)
+[16] Peng, X., Luo, S., Guan, J., Xie, Q., Peng, J., Ma, J.: Pocket2mol: Efficient molecular sampling based on 3d protein pockets. In: Proceedings of the 39th International Conference on Machine Learning,, pp. 17644–17655
+(2022). PMLR
+[17] Liu, M., Luo, Y., Uchino, K., Maruhashi, K., Ji, S.: Generating 3D molecules for target protein binding. In: Proceedings of the 39th International Conference on Machine Learning, pp. 13912–13924 (2022). PMLR
+[18] Guan, J., Qian, W.W., Peng, X., Su, Y., Peng, J., Ma, J.: 3d equivariant diffusion for target-aware molecule generation and affinity prediction. In: International Conference on Learning Representations (2023). https: //openreview.net/pdf ?id=kJqXEPXMsE0
+[19] Schneuing, A., Du, Y., Harris, C., Jamasb, A., Igashov, I., Du, W., Blundell, T., Li ́o, P., Gomes, C., Welling, M., et al.: Structurebased drug design with equivariant diffusion models. In: International Conference on Learning Representations (2023). https: //openreview.net/pdf ?id=uKmuzIuVl8z
+[20] Li, Y., Pei, J., Lai, L.: Structure-based de novo drug design using 3d deep generative models. Chemical science 12(41), 1366413675 (2021)
+[21] Lugmayr, A., Danelljan, M., Romero, A., Yu, F., Timofte, R., Van Gool, L.: Repaint: Inpainting using denoising diffusion probabilistic models. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 11461–11471 (2022)
+[22] Trott, O., Olson, A.J.: Autodock vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading. Journal of computational chemistry 31(2), 455–461 (2010)
+[23] Buttenschoen, M., Morris, G.M., Deane, C.M.: Posebusters: Ai-based docking methods fail to generate physically valid poses or generalise to novel sequences. Chemical Science 15, 3130–3139 (2024)
+[24] Yu, Y., Lu, S., Gao, Z., Zheng, H., Ke, G.: Do deep learning models really outperform
+12
+
+
+traditional approaches in molecular docking? arXiv preprint arXiv:2302.07134 (2023) https://doi.org/10.48550/arXiv.2302.07134
+[25] Gao, W., Coley, C.W.: The synthesizability of molecules proposed by generative models. Journal of chemical information and modeling 60(12), 5714–5723 (2020)
+[26] G ́omez-Bombarelli, R., Wei, J.N., Duvenaud, D., Hern ́andez-Lobato, J.M., S ́anchez-Lengeling, B., Sheberla, D., Aguilera-Iparraguirre, J., Hirzel, T.D., Adams, R.P., Aspuru-Guzik, A.: Automatic chemical design using a data-driven continuous representation of molecules. ACS central science 4(2), 268–276 (2018)
+[27] Dollar, O., Joshi, N., Pfaendtner, J., Beck, D.A.: Efficient 3d molecular design with an e (3) invariant transformer vae. The Journal of Physical Chemistry A 127(37), 7844–7852 (2023)
+[28] Duchi, J.C., Jordan, M.I., Wainwright, M.J., Wibisono, A.: Optimal rates for zero-order convex optimization: The power of two function evaluations. IEEE Transactions on Information Theory 61(5), 2788–2806 (2015)
+[29] Corso, G., St ̈ark, H., Jing, B., Barzilay, R., Jaakkola, T.: Diffdock: Diffusion steps, twists, and turns for molecular docking. In: International Conference on Learning Representations (2023). https://openreview.net/ pdf?id=kKF8 K-mBbS
+[30] Devereux, C., Smith, J.S., Huddleston, K.K., Barros, K., Zubatyuk, R., Isayev, O., Roitberg, A.E.: Extending the applicability of the ani deep learning molecular potential to sulfur and halogens. Journal of Chemical Theory and Computation 16(7), 4192–4202 (2020)
+[31] RDKit: Open-source cheminformatics. https://www.rdkit.org. https: //doi.org/10.5281/zenodo.591637
+[32] Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z., Gimelshein, N., Antiga, L., et al.: Pytorch: An imperative style, high-performance deep
+learning library. Advances in neural information processing systems 32 (2019)
+[33] Ertl, P., Schuffenhauer, A.: Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment contributions. Journal of cheminformatics 1, 1–11 (2009)
+[34] Francoeur, P.G., Masuda, T., Sunseri, J., Jia, A., Iovanisci, R.B., Snyder, I., Koes, D.R.: Three-dimensional convolutional neural networks and a cross-docked data set for structure-based drug design. Journal of chemical information and modeling 60(9), 4200–4215 (2020)
+[35] Hu, L., Benson, M.L., Smith, R.D., Lerner, M.G., Carlson, H.A.: Binding moad (mother of all databases). Proteins: Structure, Function, and Bioinformatics 60(3), 333–340 (2005)
+[36] Koes, D.R., Baumgartner, M.P., Camacho, C.J.: Lessons learned in empirical scoring with smina from the csar 2011 benchmarking exercise. Journal of chemical information and modeling 53(8), 1893–1904 (2013)
+[37] Thakkar, A., Chadimova ́, V., Bjerrum, E.J., Engkvist, O., Reymond, J.-L.: Retrosynthetic accessibility score (rascore)–rapid machine learned synthesizability classification from ai driven retrosynthetic planning. Chemical Science 12(9), 3339–3349 (2021)
+[38] Yu, J., Wang, J., Zhao, H., Gao, J., Kang, Y., Cao, D., Wang, Z., Hou, T.: Organic compound synthetic accessibility prediction based on the graph attention mechanism. Journal of chemical information and modeling 62(12), 2973–2986 (2022)
+[39] Schr ̈odinger, LLC: The PyMOL Molecular Graphics System, Version 1.8 (2015)
+[40] Adasme, M.F., Linnemann, K.L., Bolz, S.N., Kaiser, F., Salentin, S., Haupt, V.J., Schroeder, M.: Plip 2021: Expanding the scope of the protein–ligand interaction profiler to dna and rna. Nucleic acids research 49(W1), 530–534 (2021)
+13
+
+
+[41] Bickerton, G.R., Paolini, G.V., Besnard, J., Muresan, S., Hopkins, A.L.: Quantifying the chemical beauty of drugs. Nature chemistry 4(2), 90–98 (2012)
+[42] Alhossary, A., Handoko, S.D., Mu, Y., Kwoh, C.-K.: Fast, accurate, and reliable molecular docking with quickvina 2. Bioinformatics 31(13), 2214–2216 (2015)
+[43] Hughes, J.P., Rees, S., Kalindjian, S.B., Philpott, K.L.: Principles of early drug discovery. British journal of pharmacology 162(6), 1239–1249 (2011)
+[44] B ̈ohm, H.-J., Flohr, A., Stahl, M.: Scaffold hopping. Drug discovery today: Technologies 1(3), 217–224 (2004)
+[45] Crivelli-Decker, J.E., Beckwith, Z., Tom, G., Le, L., Khuttan, S., Salomon-Ferrer, R., Beall, J., G ́omez-Bombarelli, R., Bortolato, A.: Machine learning guided aqfep: A fast & efficient absolute free energy perturbation solution for virtual screening. ChemRxiv (2023) https://doi.org/10.26434/ chemrxiv-2023-z3t3b
+[46] Ho, J., Jain, A., Abbeel, P.: Denoising diffusion probabilistic models. Advances in neural information processing systems 33, 68406851 (2020)
+[47] Fuchs, F., Worrall, D., Fischer, V., Welling, M.: Se (3)-transformers: 3d roto-translation equivariant attention networks. Advances in neural information processing systems 33, 1970–1981 (2020)
+[48] Satorras, V.G., Hoogeboom, E., Welling, M.: E (n) equivariant graph neural networks. In: Proceedings of the 38th International Conference on Machine Learning Conference on Machine Learning, pp. 9323–9332 (2021). PMLR
+[49] Song, Y., Sohl-Dickstein, J., Kingma, D.P., Kumar, A., Ermon, S., Poole, B.: Score-based generative modeling through stochastic differential equations. In: International Conference on Learning Representations (2021). https:
+//openreview.net/pdf ?id=PxTIG12RRHS
+[50] Schneuing, A.: DiffSBDD. GitHub (2023). https://github.com/arneschneuing/ DiffSBDD
+[51] Larsen, A.H., Mortensen, J.J., Blomqvist, J., Castelli, I.E., Christensen, R., Dulak, M., Friis, J., Groves, M.N., Hammer, B., Hargus, C., et al.: The atomic simulation environment—a python library for working with atoms. Journal of Physics: Condensed Matter 29(27), 273002 (2017)
+[52] Ong, S.P., Richards, W.D., Jain, A., Hautier, G., Kocher, M., Cholia, S., Gunter, D., Chevrier, V.L., Persson, K.A., Ceder, G.: Python materials genomics (pymatgen): A robust, open-source python library for materials analysis. Computational Materials Science 68, 314–319 (2013)
+[53] Wang, Z., Zheng, L., Wang, S., Lin, M., Wang, Z., Kong, A.W.-K., Mu, Y., Wei, Y., Li, W.: A fully differentiable ligand pose optimization framework guided by deep learning and a traditional scoring function. Briefings in Bioinformatics 24(1), 520 (2023)
+[54] McNutt, A.T., Francoeur, P., Aggarwal, R., Masuda, T., Meli, R., Ragoza, M., Sunseri, J., Koes, D.R.: Gnina 1.0: molecular docking with deep learning. Journal of cheminformatics 13(1), 1–20 (2021)
+[55] Skoraczyn ́ski, G., Kitlas, M., Miasojedow, B., Gambin, A.: Critical assessment of synthetic accessibility scores in computer-assisted synthesis planning. Journal of Cheminformatics 15(1), 6 (2023)
+[56] Gao, X., Ramezanghorbani, F., Isayev, O., Smith, J.S., Roitberg, A.E.: Torchani: A free and open source pytorch-based deep learning implementation of the ani neural network potentials. Journal of chemical information and modeling 60(7), 3408–3415 (2020)
+[57] Smith, J.S., Isayev, O., Roitberg, A.E.: Ani1: an extensible neural network potential with dft accuracy at force field computational cost. Chemical science 8(4), 3192–3203 (2017)
+14
+
+
+[58] Smith, J.S., Nebgen, B., Lubbers, N., Isayev, O., Roitberg, A.E.: Less is more: Sampling chemical space with active learning. The Journal of chemical physics 148(24) (2018)
+[59] Smith, J.S., Nebgen, B.T., Zubatyuk, R., Lubbers, N., Devereux, C., Barros, K., Tretiak, S., Isayev, O., Roitberg, A.E.: Approaching coupled cluster accuracy with a general-purpose neural network potential through transfer learning. Nature communications 10(1), 2903 (2019)
+[60] Folmsbee, D., Hutchison, G.: Assessing conformer energies using electronic structure and machine learning methods. International Journal of Quantum Chemistry 121(1), 26381 (2021)
+[61] Kingma, D.P., Ba, J.: Adam: A method for stochastic optimization. In: International Conference on Learning Representations (2015). https://doi.org/10.48550/arXiv. 1412.6980
+15
+
+
+S Supplementary Information
+S.1 More details of the SA model
+0 20 40 60 80 100 Epoch
+10−3
+10−2
+10−1
+100
+101
+102
+MSE
+Train Loss Valid Loss DiffSBDD Valid Loss CrossDocked
+Fig. S1: Training and validation curve for training PaiNN to predict SA score. The MSE at each epoch is plotted for the training set, the DiffSBDD validation set, and the CrossDocked validation set. The MSE at each epoch is averaged across the 5 runs, and the standard deviation is plotted as a transparent region.
+To train the SA model, we prepare a dataset consisting of all ligands from the training set of DiffSBDD, which is a subset of CrossDocked2020 [34] containing 183,468 ligand binding poses [19]. Although the SA score is fully determined by the chemical graph of a ligand and does not depend on its conformation, we include multiple poses of the same ligand so that the model learns the redundancy of pose in determining the SA score. To have a good performance on ligands produced by DiffSBDD, we generate nearly 100,000 (98,398) ligands with DiffSBDD which are included in the training data. We generate several ligands for each of the protein pockets in the DiffSBDD training set and then filter them using the same validity checks described in the Methods section. We train the polarizable atomic interaction neural network [62] (PaiNN) from Open Catalyst Project [63, 64] to predict the SA score given the atomic coordinates and atom types. We first optimize the hyperparameters of the model using Ray Tune [65]. The hyperparameters chosen were
+num rbf = 64 num layers = 4, max neighbor = 30, cutoff = 8.0, hidden channels = 512. We split each training set into 5 folds, and train 5 neural networks each on 4/5 folds such that overall the model sees every data point in the training set. The remaining folds are used as validation sets for each model. Each model is trained for 100 epochs to minimize the MSE loss with the AdamW optimizer [66] with an initial learning rate of 1 × 10−4. The learning rate is halved if the training loss does not decrease for 10 consecutive epochs. Training and validation curves are plotted in Fig. S1. From the validation curves produced for each dataset, it can be seen that the model achieves significantly better results predicting SA score on ligands extracted from CrossDocked than on ligands generated by DiffSBDD.
+S.2 Hyperparameter Tuning
+We perform several hyperparameter tuning experiments to fine-tune the performance of our pipeline. To avoid overfitting on our two benchmark sets, we perform all experiments using a non-overlapping validation set. This validation set is composed of 10 targets taken from the test set of LiGAN [67], which was used to validate the performance of several other works in the literature [17, 68]. For each of these ten targets, a single pocket is randomly selected to be included in the validation set. The set of receptor-ligand combinations used in these experiments is included in Table S1. Each hyperparameter experiment is run for 200 optimization steps with a batch size of 25 on an NVIDIA A10G GPU with 24 GB of GPU memory.
+S.2.1 Optimizing Latent Vectors with Torchvina
+We tune the performance of our platform to optimize the Vina score of generated ligands. We perform hyperparameter tuning to determine the optimization horizon, hz, and the learning rate of the optimizer, lr. For hz, we consider values in the set {2, 10, 20, 50, 100, 200}, and for lr we consider values in the set {0.001, 0.01, 0.1}. For each experiment, we make a note of the average Vina score, the average Vina score of the top 10% of structures, the Tanimoto similarity between the initial ligand in the trajectory, and the best ligand in the trajectory, the pocket diversity, and the time
+16
+
+
+PDB ID Ligand ID 2ah9 cto 5lvq p2l 5g3n u8d 1u0f g6p 4bnw fxe 4i91 cpz 2ati ihu 2hw1 lj9 1bvr geq 1zyu k2q
+Table S1: Validation set used to choose hyper-parameters in IDOLpro. All proteins from the test set of LiGAN [67] were used, and a single protein pocket for each protein was selected at random.
+taken to optimize a single ligand. Full results are provided in Table S2. We find that the combination of hz =50, and lr =0.1 give the best results in terms of average Vina score and top 10% Vina score with values of -7.38, and -10.70 respectively. In general, we find that setting the lr =0.1 gives the best results. A violin plot of the distribution of average Vina scores across the 10 targets when using lr =0.1 with different optimization horizons is pictured in Fig. S2.
+hz=2 hz=10 hz=20 hz=50 hz=100 hz=200
+−12
+−10
+−8
+−6
+−4
+−2
+0
+2
+Vina
+Fig. S2: Distribution of average Vina scores on targets in the validation set when used with lr=0.1.
+S.2.2 Optimizing Latent Vectors with TorchSA
+We tune the performance of our platform to optimize the SA score of generated ligands. We perform hyperparameter tuning for the learning
+rate of the Adam optimizer. We consider values in the set {0.001, 0.005, 0.01, 0.05, 0.1}. For each experiment, we compute the average SA score, the average SA score of the top 10% of ligands, and the percent of synthesizable ligands produced when using a hyperparameter setting. Results are included in Table S3. A ligand is considered synthesizable if it has an SA score lower than 3.5. This was found to be a good cutoff for synthesizability in previous works [25, 37, 38]. We find that an lr =0.05 gives the best results across the board – highest overall SA score, highest top 10% SA score, and highest percent of synthesizable ligands. When running IDOLpro with both torchvina and torchSA as the objective, we use lr =0.1 with a weight of 0.5 on torchSA in the loss to achieve the optimal learning rate for each objective.
+S.2.3 Structural Refinement with Torchvina and ANI2x
+Here we discuss how we tune the performance of our docking procedure. We tune the learning rate of the optimizer and the weighting scheme for balancing torchvina with ANI2x energy. We use the following parameters in the L-BFGS optimization algorithm: max iter =100, tolerance change=0, tolerance grad =10−2, and line search fn=“strong wolfe”. For learning rate, we consider values in {0.01, 0.02, 0.03, 0.04, 0.05, 0.25}. For weight on ANI energy, we consider values in {0.1, 1, 10, 100, 627.5}. For each experiment, we keep track of the average Vina score, the top%10 Vina score, the average time taken to optimize each ligand, and the percent of valid structures
+17
+
+
+horizon 2 10 20 50 100 200
+lr
+0.001 -5.67 -5.02 -6.28 -5.77 -5.50 -6.52
+0.01 -6.26 -6.65 -6.81 -6.17 -6.13 -6.74
+0.1 -6.13 -6.91 -6.85 -7.38 -7.16 -6.96
+(a) Vina
+horizon 2 10 20 50 100 200
+lr
+0.001 -9.26 -9.36 -9.67 -9.41 -9.92 -10.19
+0.01 -9.68 -10.46 -10.50 -9.68 -9.99 -10.23
+0.1 -9.35 -10.46 -10.65 -10.70 -10.59 -10.39
+(b) Vina10%
+horizon 2 10 20 50 100 200
+lr
+0.001 0.77 0.74 0.69 0.49 0.43 0.40
+0.01 0.68 0.61 0.57 0.47 0.41 0.41
+0.1 0.69 0.53 0.49 0.42 0.41 0.40
+(c) Tanimoto
+horizon 2 10 20 50 100 200
+lr
+0.001 57.32 137.03 202.85 317.32 319.31 439.85
+0.01 32.26 81.09 136.69 282.47 356.74 395.51
+0.1 33.32 40.69 79.49 160.94 248.97 373.90
+(d) Time (seconds per ligand generated).
+horizon 2 10 20 50 100 200
+lr
+0.001 0.66 0.65 0.65 0.64 0.63 0.62
+0.01 0.67 0.66 0.65 0.63 0.63 0.61
+0.1 0.67 0.65 0.63 0.62 0.61 0.61
+(e) Diversity
+Table S2: Results of hyperparameter tuning when optimizing torchvina. lr =0.1 and hz =50 results in both the best average Vina score and best top 10% Vina score.
+that are output by the procedure based on our validity checks. We tabulate these results and include the same metrics when QuickVina [42] is used for docking for comparison. QuickVina
+was used to dock structures after generation in DiffSBDD [19]. We find that setting the weight on ANI energy to 0.1 gives the best balance of high binding affinity with high validity. For lr,
+18
+
+
+lr 0.001 0.005 0.01 0.05 0.1 SA 5.00 4.93 4.73 4.64 4.69 SA10% 3.69 3.37 3.12 3.04 3.14 Synth 5.5 % 7.7 % 12.4 % 13.1 % 11.7 %
+Table S3: Results of hyperparameter tuning for latent vector optimization with torchSA. Each run has its average SA score, top 10% SA score, and percent of synthesizable ligands generated recorded. Setting lr to 0.05 gives the best results for all three metrics.
+2468 SA Score
+0.0
+0.1
+0.2
+0.3
+0.4
+Density
+torchSA DiÆSBDD
+Fig. S3: Distribution of SA scores before and after optimization of latent vectors with torchSA, when the lr in Adam is set to 0.05. The cutoff for determining synthesizability is denoted by a bolded dotted black line.
+there is a trade-off between high binding affinity and validity. For lr between 0.01 and 0.05, we find that a slight drop-off in the percent of valid structures yielded can be traded off for higher binding affinity. For lr > 0.05, the validity drops off dramatically. We therefore choose to use an lr of 0.05 for our pipeline. With this lr we achieve a higher average Vina score than QuickVina (-9.45 vs 8.70) and a higher top 10% Vina score (-12.37 vs. -11.15), at the cost of lowered validity (89.2% vs 98.3%). Furthermore, since our algorithm makes use of Pytorch’s L-BFGS minimizer, it is highly parallelizable and can dock 100 ligands in just over 2 minutes on an NVIDIA A10G GPU with 8 CPU cores. Although this comparison isn’t completely fair in that our L-BFGS algorithm takes advantage of the GPU’s computing resources, while QuickVina relies entirely on the CPU cores, this gives an accurate estimate of efficiency when integrating these docking procedures into our pipeline, which requires running on a GPU.
+−10.0 −9.5 −9.0 −8.5 −8.0 Vina
+60
+70
+80
+90
+100
+Validity
+lr=0.01
+lr=0.02
+lr=0.03
+lr=0.04
+lr=0.05
+lr=0.1
+lr=0.25
+Fig. S4: The trade-off between validity and high binding affinity experienced when changing lr in IDOLprodock. Once lr exceeds 0.05 there is a sharp drop-off in validity.
+S.2.4 Accelerating Diffusion
+In DiffSBDD, although the models are trained to generate ligands over 500 diffusion steps, there is the option to reduce the overall number of steps at the cost of accuracy in predictions. To test whether we can speed up the run-time of our pipeline, we run the pipeline with 100 diffusion steps, and a horizon of 10. This corresponds to the best setting found in Section S.2.1. We found a slightly lower overall Vina score (-7.52 vs -7.38), albeit a slightly higher ⟨Vina⟩top10% when running with less generative diffusion steps (-10.56 vs 10.70). Running the pipeline in this setting results in a 4× speedup when generating ligands. Due to the lack of degradation in Vina score when using fewer diffusion steps, we adopt this setting for our pipeline.
+19
+
+
+Description Vina [kcal/mol] Vina10% [kcal/mol] Validity [%] Time [s/ligand] QuickVina -8.70 -11.15 98.3 13.30 IDOLprodock(lr =0.01) -7.89 -11.18 98.9 2.25 IDOLprodock(lr =0.02) -8.59 -11.67 97.0 2.25 IDOLprodock(lr =0.03) -8.82 -11.83 96.0 2.23 IDOLprodock(lr =0.04) -9.27 -12.21 92.2 2.25 IDOLprodock(lr =0.05) -9.45 -12.37 89.2 2.25 IDOLprodock(lr =0.10) -9.78 -12.44 72.4 2.28 IDOLprodock(lr =0.25) -9.82 -12.17 60.8 2.06
+Table S4: Results when docking ligands generated for pockets in the validation set with QuickVina and with IDOLpro when used with several learning rates.
+S.2.5 Stopping Criteria, Backtracking, and Decaying Learning Rate
+We use per-parameter options in Pytorch [32] to allow for individualized learning rates for different ligands. For each ligand, we optimize it with Adam with the chosen hyperparameters. We optimize each latent vector for 10-200 optimization steps. Often, during latent vector optimization, a ligand will be pushed to a part of latent space such that it becomes invalid. In such a case, we attempt to generate a ligand 10 times with the given latent vector. If after 10 attempts, reverse diffusion has not produced a valid ligand, we backtrack to the previous latent vector in the optimization trajectory, reduce the learning rate by a factor of 10, and restart the optimization. If at another point in the optimization, with the reduced learning rate, another latent vector fails to generate a valid ligand over 10 attempts, the optimization of that trajectory is stopped.
+S.3 An Additional Scoring Function: DiffDock
+We include the scoring module from DiffDock [29] in our evaluator module. DiffDock is composed of two modules, a docking module and a scoring module, which together can dock ligands to a target protein without pocket information. The DiffDock docking module was trained to predict the experimental binding pose of ligands in the PDBBind dataset [69]. The DiffDock scoring module was trained on experimental data where the goal of the model was to classify whether or not a candidate ligand is < 2  ̊A of the experimental binding pose. DiffDock docks ligands by producing many binding poses for a target ligand with
+the docking module, and returning these poses as a ranked list using the scoring module. The node from the final classification layer of the scoring network, indicating the likelihood that a docked ligand is < 2  ̊A from an experimentally derived binding pose, can be used as a scoring function. DiffDock was shown to have state-of-the-art performance on a blind docking task for proteinligand pairs extracted from the PDBBind dataset, significantly outperforming other state-of-the-art ML-based docking procedures [29].
+S.4 Visualization of Latent Vectors
+Fig. S5: Latent vector visualizations of IDOLpro when generating ligands for 14gs. The points are coloured by Vina score (darker implies lower scores), and a green star marks the end of the optimization trajectory.
+20
+
+
+Supplementary References
+[62] Schu ̈tt, K., Unke, O., Gastegger, M.: Equivariant message passing for the prediction of tensorial properties and molecular spectra. In: International Conference on Machine Learning, pp. 9377–9388 (2021). PMLR
+[63] Chanussot, L., Das, A., Goyal, S., Lavril, T., Shuaibi, M., Riviere, M., Tran, K., HerasDomingo, J., Ho, C., Hu, W., et al.: Open catalyst 2020 (oc20) dataset and community challenges. Acs Catalysis 11(10), 6059–6072 (2021)
+[64] Tran, R., Lan, J., Shuaibi, M., Wood, B.M., Goyal, S., Das, A., Heras-Domingo, J., Kolluru, A., Rizvi, A., Shoghi, N., et al.: The open catalyst 2022 (oc22) dataset and challenges for oxide electrocatalysts. ACS Catalysis 13(5), 3066–3084 (2023)
+[65] Liaw, R., Liang, E., Nishihara, R., Moritz, P., Gonzalez, J.E., Stoica, I.: Tune: A research platform for distributed model selection and training. arXiv preprint arXiv:1807.05118 (2018)
+[66] Loshchilov, I., Hutter, F.: Decoupled weight decay regularization. In: International Conference on Learning Representations (2019). https://openreview.net/forum?id= Bkg6RiCqY7
+[67] Ragoza, M., Masuda, T., Koes, D.R.: Generating 3d molecules conditional on receptor binding sites with deep generative models. Chemical science 13(9), 2701–2713 (2022)
+[68] Lin, H., Huang, Y., Liu, M., Li, X., Ji, S., Li, S.Z.: Diffbp: Generative diffusion of 3d molecules for target protein binding. arXiv preprint arXiv:2211.11214 (2022) https:// doi.org/10.48550/arXiv.2211.11214
+[69] Wang, R., Fang, X., Lu, Y., Yang, C.-Y., Wang, S.: The pdbbind database: methodologies and updates. Journal of medicinal chemistry 48(12), 4111–4119 (2005)
+21

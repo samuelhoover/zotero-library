@@ -1,0 +1,202 @@
+L. S. Shapley
+4 1 . INTRODUCTION
+At the foundation of the theory of games is the assumption that the players of a game can evaluate, in their utility scales, every "pros pect" that might arise as a result of a play. In attempting to apply the theory to any field, one would normally expect to be permitted to include, in the class of "prospects," the prospect of having to play a game. The possibility of evaluating games is therefore of critical importance. So long as the theory is unable to assign values to the games typically found in application, only relatively simple situations -- where games do not depend on other games -- will be susceptible to analysis and solution.
+p
+In the finite theory of von Neumann and Morgenstern difficulty in evaluation persists for the "essential" games, and for only those. In this note we deduce a value for the "essential" case and examine a number of its elementary properties. We proceed from a set of three axioms, having simple intuitive interpretations, which suffice to determine the value uniquely. Our present work, though mathematically self-contained, is founded conceptually on the von Neumann-Morgenstern theory up to their introduction of characteristic functions. We thereby inherit certain important under lying assumptions: (a) that utility is objective and transferable; (b) that games are cooperative affairs; (c) that games, granting (a) and (b), are adequately represented by their characteristic functions. However, we are not committed to the assumptions regarding rational behavior embodied in the von Neumann-Morgenstern notion of "solution." We shall think of a "game" as a set of rules with specified players in the playing positions. The rules alone describe what we shall
+A VALUE FOR n-PERSON GAMES1
+1The preparation of this paper was sponsored (in part) by the RAND
+Corporation.
+2Reference [3 ] at the end of this paper. Examples of infinite games with
+out values may be found in [2 ], pp. 58-59, and in [1 ], p. 1 1 0 . See also
+Karlin [2 ], pp. 152-153
+307
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+508 SHAPLEY
+call an "abstract game." Abstract games are played by roles -- such as "dealer," or "visiting team" -- rather than by players external to the game. The theory of games deals mainly with abstract games.^ The dis tinction will be useful in enabling us to state in a precise way that the value of a "game" depends only on its abstract properties. (Axiom 1 below).
+\ 2. DEFINITIONS
+Let U denote the universe of players, and define a game to be any superadditive set-function v from the subsets of U to the real numbers, thus:
+(1 ) v(0 ) = 0 ,
+(2 ) v(S) > v(S A T) + v(S - T) (all S, T C U) .
+A carrier of v is any set N C_ U with
+(5) v(S) = v(N n S) (all S C U) .
+Any superset of a carrier of vis again a carrier of v. The use of carriers obviates the usual classification of games according to the num ber of players. The players outside any carrier have no direct influence on the play since they contribute nothing to any coalition. We shall restrict our attention to games which possess finite carriers. The sum ("superposition") of two games is again a game. Intui tively it is the game obtained when two games, with independent rules but possibly overlapping sets of players, are regarded as one. If the games' happen to possess disjunct carriers, then their sum is their "composition. " 14 Let 7T(U) denote the set of permutations of U -- that is, the one to one mappings of U onto itself. If ir £ TRU), then, writing TTS for the image of S under IT, we may define the function 1Yv by
+(k) Trv(frS) = v(S) (all S C U) .
+If v is a game, then the class of games irv, K G TT(U) , may be regarded as the "abstract game" corresponding to v. Unlike composition, the opera tion of addition of games can not be extended to abstract games.
+^An exception is found in the matter of symmetrization (see for example [2 ],
+pp. 8 1 -8 5 ), in which the players must be distinguished from their roles.
+S e e [3 ], 2 6 .7 . 2 and M .3 .
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+A VALUE FOR n-PERSON GAMES 309
+By the value $[v] of the game v we shall meana function which associates with each i in U a real number (^[v], and which satisfies the conditions of the following axioms. The value will thus provide an additive set-function (an inessential game)v :
+(5) v(S) = % 3 ct>± [v] (all S C U) ,
+to take the place of the superadditive function v.
+AXIOM 1 . For each TT in TRU) >
+^ [ T T v ] = <D± [V] .
+AXIOM 2 . For each carrier N of v,
+X n ^ [ v ] = v(N) •
+AXIOM 3• For any two games v and w,
+<|>[v + w] = $[v] + $[w] .
+COMMENTS. The first axiom ("symmetry") states that the value is essentially aproperty of the abstract game- The second axiom ("efficien cy") states that the value represents a distribution of the full yield of the game. This excludes, for example, the evaluation $^[v] = v((i)), in which each player pessimistically assumes that the rest will all cooperate against him. The third axiom ("law of aggregation") states that when two independent games are combined, their values must be added player by player This is a prime requisite for any evaluation scheme designed to be applied eventually to systems of interdependent games. It is remarkable that no further conditions are required to
+R
+determine the value uniquely.^
+\ 3 • DETERMINATION OF THE VALUE FUNCTION
+LEMMA 1 . If N is a finite carrier of v, then, for i $ N,
+<J>± [v] = 0 .
+^Three further properties of the value which might suggest themselves as
+suitable axioms will be proved as Lemma 1 and Corollaries 1 and 3 below.
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+310 SHAPLEY
+PROOF. Take i t N. Both N and N v (i) are carriers of v; and v(N) = v(N u (i)) . Hence $i [v] = 0 by Axiom 2, as was to be shown. We first consider certain symmetric games. For any R C U, R / 0 define Vpj:
+(6) vR (S) «
+if S o R ,
+if S $ R .
+The function cvR is a game, for any non-negative c, and R is a carrier. In what follows, we shall use r, s, n, ... for the numbers of elements in R, S, N, ... respectively.
+LEMMA 2. For c > 0 , 0 <(r<oo, we have
+f c/r if i £ R ,
+0 if i $ R .
+^ [ cVr ] =
+PROOF. Take i and j in R, and choose i t £ 1T(U) so that TTR =R and TTi = j. Then we have ttvr = vR ,and hence, byAxiom 1 ,
+^j^CVR^ = ^i^cvR^ ’
+By Axiom 2,
+c = C V R ( R ) = X j GR ^ j[cVR ] = ^ ± [ C V R ] ,
+for any i £ R. This, with Lemma 1, completes the proof.
+LEMMA 3-^ Any game with finite carrier is a linear combination of symmetric games v^:
+(7) v = X RCN cR (v)vR * R^O
+N being any finite carrier of v. The coefficients are independent of N, and are given by
+^The use of this lemma was suggested by H. Rogers.
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+A VALUE FOR n-PERSON GAMES 311
+(8) cR (v) = X Tc r ( - D r*tv(T) (0 < r < oo) .
+PROOF. We must verify that
+(9) v(S) = X RCN cR (v)vR (S) R^O
+holds for allS C U, and for any finite carrierN of v. If S £ N, then (9) reduces, hy (6) and (8), to
+v(S) = ^ T C R V (T)
+The expressionin brackets vanishes except for s =t, so weare left with the identity v(S) = v(S). In general we have, by ( 3 ) ,
+v(S) = v(N A S) = ^ R CN cr (v )v r (N A S) = 1^RCN cR (v)vR (S) .
+This completes the proof. REMARK. Itis easily shown that c^(v) = 0 if Ris not contained in every carrier of v. An immediate corollary to Axiom 3 is that $[v-w] = $[v] - $[w] if v,w, and v - w are all games. We can therefore apply Lemma 2 to the representation of Lemma 3 and obtain the formula:
+(10) <t>i tv] = ^ RCN cR (v)/r (all 1 £ N) . Rli
+Inserting (8) and simplifying the result gives us
+<’■> - S s c n = v(3) - z sal v(3, S3i S f i (all i G N)
+Introducing the quantities
+( 1 2 ) * V 3 ^ = ( s ~1 ) 1 ( n ” s ) ! / n l >
+we now assert:
+THEOREM. A unique value function $ exists satisfying Axioms 1 - 3, for games with finite carriers;
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+312 SHAPLEY
+it is given by the formula
+(13) <t>±[v] = Xscn ■ v(s-(i))] (all 1 6 U) ,
+where N is any finite carrier of v .
+PROOF. (1 3 ) follows from (11), (12), and Lemma 1. We note that (13), like (1 0), does not depend on the particular finite carrier N; the $ of the theorem is therefore well defined. By its derivation it is clearly the only value function which could satisfy the axioms. That it does in fact satisfy the axioms is easily verified with the aid of Lemma 3•
+$ it.. ELEMENTARY PROPERTIES OF THE VALUE
+COROLLARY 1. We have
+(1*0 <J>±[v] > v((l)) (all 1 C U) ,
+with equality if and only if i is a dummy -- i.e., if and only if
+(15) v(S) = v(S - (i)) + v((i)) (all S B i) .
+PROOF. For any i £ U we may take N 3 i and obtain, by (2),
+<t>±[v] > XSCNlrn(s)v((1)) ’
+S31
+with equality if and only if (15), since none of the *n (s) vanishes. The proof is completed by noting that
+(16) 2scnVs)=2^, (si]) *n(s) =^S=1 5= 1 •
+sai
+Only in this corollary have our results depended on the super additive nature of the functions v.
+COROLLARY 2. If v is decomposable -- i.e., if games w ^ , w ^ , ..., w ^ having pairwise disjunct carriers N^1^, N^2^, ..., exist such that
+v-2kE,»(k>,
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+-- then, for each k = 1, 2, •••, p,
+$j_[v] = (all 1 £ N ^ ) .
+PROOF. By Axiom 3 •
+COROLLARY 3 • If v and w are strategically equivalent -- i.e., if
+(17) w = cv + a ,
+where c is a positive constant and a an additive set-function on U with finite carrier -- then
+4)± [ W ] = c(|).[v] + a( (i)) (all i £ U) .
+PROOF. By Axiom 3, Corollary 1 applied to the inessential game a, and the fact that (13) is linear and homogeneous in v.
+COROLLARY h. If v is constant-sum -- i.e., if
+(1 8 ) v(S) + v(U- S) = v(U) (all S C U) ,
+-- then its value is given by the formula:
+(19) 4>i tv] = 2 [ S Sc n *n (s)v (s ) ] " V W (a11 i ^ N) . Sli
+where N is any finite carrier of v.
+PROOF. We have, for i £ N,
+♦itv] = X s c n *n (s)v(S) - X T£N *n (t+l)v(T) S9i T^i
+= ^ SCN )fn (s)v(S) - X SCN yn (n-s+1)[v(N) - v(S) ] . Sli s ¥ i
+But ifn (n-s+1) = *n (s); hence (1 8 ) follows with the aid of (1 6 ).
+A VALUE FOR n-PERSON GAMES 313
+7‘This is McKinsey's "S-equivalence" (see [2], p. 120), wider than the
+"strategic equivalence" of von Neumann and Morgenstern ([3], # 2 7 .1 ).
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+SHAPLEY
+§ 5- EXAMPLES
+If N is a finite carrier of v, let A denote the set of n-vectors (cC^) satisfying
+( 2 A = v <N > '
+V > v( (i)) (all i Q N) .
+If v is inessential A is a single point; otherwise A is a regular simplex of dimension n - 1. The value of v may be regarded as a point $ in A, by Axiom 2 and Corollary 1. Denote the centroid of A by e:
+e± = v((i)) + 1 [ v(N) - v((j))] .
+EXAMPLE 1. For two-person games, three-person constant-sum games, and inessential games, we have
+(2 0 ) $ = © .
+The same holds for arbitrary symmetric games -- i.e., games which are invariant under a transitive group of permutations of N -- and, most generally, games strategically equivalent to them. These results are demanded by symmetry, and do not depend on Axiom 3EXAMPLE 2. For general three-person games the positions taken by $ in A cover a regular hexagon, touching the boundary at the mid point of each 1-dimensional face (see figure). The latter cases are of course the decomposable games, with one player a dummy.
+o
+EXAMPLE 3• The quota games are characterized by the existence
+oDiscussed in [t].
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+A VALUE FOR n-PERSON GAMES 315
+of constants ^ satisfying
+z' + Uj = v( (i,j)) (all i, j 6 N, i ^ j)
+V = v(N) ■
+For n = 3, we have
+(21) (J) - e = - - .
+Since u> can assume any position in A, the range of $ is a triangle, inscribed in the hexagon of the preceding example (see the figure). EXAMPLE L . All four-person constant-sum games are quota games. For them we have
+(22) $ - 9 = ^ ~ 6 •
+Q
+The quota <*> ranges over a certain cube, containing A. The value $ meanwhile ranges over a parallel, inscribed cube, touching the boundary of A at the midpoint of each 2-dimensional face. In higher quota games the points $ and w are not so directly related. EXAMPLE 5 • The weighted ma.jority games10 are characterized by the existence of "weights” w^ such that never S g W ^ = and such that
+r v(S) = n - s If X s > X N _s wi '
+\ v ( S ) = - s If S g wj_ ^ ^ N - S wi ‘
+The game isthen denoted by the symbol[w1, w2 , ..., w ]. It iseasily shown that
+(23) $i < <t>j implies w± < w. (all i, j £ N)
+in any weighted majority game [w^, w2 , ..., w ]. Hence "weight" and "value" rank the players in the same order. The exact values can be computed without difficulty for particular cases. We have
+^Illustrated in [i], figure 1 (page 353 in this volume).
+1°See 1 3 ] , $ 50.1.
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+316 SHAPLEY
+$ = (-1 , -1 , .. -1 , n-1 )
+for the game [1, 1, ..., 1, n-2],11 and
+$ = | (1 , 1, 1, -1 , -1 , -1)
+for the game [2, 2, 2, i, 1, 1],12 etc.
+6 . DERIVATION OF THE VALUE FROM A BARGAINING MODEL
+The deductive approach of the earlier sections has failed to suggest a bargaining procedure which would produce the value of the game as the (expected) outcome. We conclude this paper with a description of such a procedure. The form of our model, with its chance move, lends support to the view that the value is best regarded as an a priori assess ment of the situation, based on either ignorance or disregard of the social organization of the players. The players constituting a finite carrier N agree to play the game v in a grand coalition, formed in the following way: 1. Starting with a single member, the coalition adds one player at a time until every one has been admitted. 2. The order in which the players are to join is determined by chance, with all arrangements equally probable. 3- Each player, on his admission, demands and is promised the amount which his adherence contributes to the value of the coalition (as determined by the function v ) . The grand coalition then plays the game Mefficiently" so as to obtain the amount v(N) -- exactly enough to meet £.11 the promises. The expectations under this scheme are easily worked out. Let T ^ be the set of players preceding i. For any S 9 i, the payment to i if S - (i) = T ^ is v(S) - v(S - (i)), and the probability of that contingency is yn (s)* The total expectation of i is therefore just his value, (1 3 ), as was to be shown.
+1discussed at length in [3], $ 55*
+12Discussed in [3], $ 53-2.2.
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+A VALUE FOR n-PERSON GAMES 317
+BIBLIOGRAPHY
+[1] BOREL, E. and VILLE, J., ''Applications anx jeux de hasard," Traite du
+Calcul des Probabilites et de ses Applications, vol. 1, part 2 (Paris,
+Gauthier-Villars, 1938) .
+[2] KUHN, H. W. and TUCKER, A. W., eds., Contributions to the Theory of
+Games (Annals of Mathematics Study No. 2b), Princeton, 1950.
+[3] von NEUMANN, J- and MORGENSTERN, 0., Theory of Games and Economic
+Behavior, Princeton 19bb, 2nd eci. 19^-7. [b] SHAPLEY, L. S., "Quota solutions of n-person games," this Study.
+L. S. Shapley
+Princeton University and The RAND Corporation
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM
+
+
+Brought to you by | Cornell University Library Authenticated Download Date | 10/16/16 11:21 PM

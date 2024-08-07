@@ -1,0 +1,4756 @@
+32/<0(5 75$16/2&$7,21
+
+32/<0(5 75$16/2&$7,21
+0XUXJDSSDQ0XWKXNXPDU
+
+CRC Press Taylor & Francis Group 6000 Broken Sound Parkway NW, Suite 300 Boca Raton, FL 33487-2742
+© 2011 by Taylor & Francis Group, LLC CRC Press is an imprint of Taylor & Francis Group, an Informa business
+No claim to original U.S. Government works Version Date: 20110708
+International Standard Book Number-13: 978-1-4200-7517-5 (eBook - PDF)
+This book contains information obtained from authentic and highly regarded sources. Reasonable efforts have been made to publish reliable data and information, but the author and publisher cannot assume responsibility for the validity of all materials or the consequences of their use. The authors and publishers have attempted to trace the copyright holders of all material reproduced in this publication and apologize to copyright holders if permission to publish in this form has not been obtained. If any copyright material has not been acknowledged please write and let us know so we may rectify in any future reprint.
+Except as permitted under U.S. Copyright Law, no part of this book may be reprinted, reproduced, transmitted, or utilized in any form by any electronic, mechanical, or other means, now known or hereafter invented, including photocopying, microfilming, and recording, or in any information storage or retrieval system, without written permission from the publishers.
+For permission to photocopy or use material electronically from this work, please access www.copyright. com (http://www.copyright.com/) or contact the Copyright Clearance Center, Inc. (CCC), 222 Rosewood Drive, Danvers, MA 01923, 978-750-8400. CCC is a not-for-profit organization that provides licenses and registration for a variety of users. For organizations that have been granted a photocopy license by the CCC, a separate system of payment has been arranged.
+Trademark Notice: Product or corporate names may be trademarks or registered trademarks, and are used only for identification and explanation without intent to infringe.
+Visit the Taylor & Francis Web site at http://www.taylorandfrancis.com
+and the CRC Press Web site at http://www.crcpress.com
+
+DEDICATION
+To Lalitha
+
+CONTENTS
+
+Preface
+
+xiii
+
+Acknowledgments
+
+xv
+
+Author
+
+xvii
+
+1
+
+General Premise
+
+1
+
+1.1 Biological Contexts
+
+1
+
+1.2 Single-Molecule Experiments
+
+4
+
+1.3 Nomenclature
+
+7
+
+1.4 Entropic Barrier Idea
+
+7
+
+1.5 Physics of Translocation
+
+9
+
+1.5.1 Drift–Diffusion
+
+9
+
+1.5.2 Capture
+
+9
+
+1.5.3 Translocation
+
+11
+
+1.6 Outlook
+
+12
+
+2
+
+Size, Shape, and Structure of Macromolecules
+
+13
+
+2.1 Measures of Polymer Conformations
+
+13
+
+2.2 Universal Behavior
+
+21
+
+2.3 Excluded Volume Interaction
+
+23
+
+2.4 Coarse-Grained Models of Chain Connectivity
+
+24
+
+2.4.1 Freely Jointed Chain
+
+24
+
+2.4.2 Kuhn Chain Model
+
+25
+
+2.4.3 Gaussian Chain
+
+27
+
+2.4.4 Wormlike Chain
+
+32
+
+2.5 Chain Swelling by Excluded Volume Effect
+
+34
+
+2.6 Coil–Globule Transition
+
+39
+
+2.7 Concentration Effects
+
+40
+
+2.8 Summary
+
+44
+
+3
+
+Electrolyte Solutions, Interfaces, and Geometric Objects
+
+45
+
+3.1 Electrolyte Solutions
+
+45
+
+3.1.1 Coulomb Interaction and Bjerrum Length
+
+46
+
+3.1.2 Poisson–Boltzmann Equation
+
+48
+
+3.1.3 Debye–Hückel Theory
+
+49
+
+VII
+
+VIII C O N T E N T S
+
+3.1.3.1 Electrostatic Screening Length
+
+50
+
+3.1.3.2 Effect of Ion Size
+
+52
+
+3.1.3.3 Charge Distribution around an Ion
+
+54
+
+3.1.3.4 Free Energy
+
+56
+
+3.2 Charged Interfaces
+
+57
+
+3.2.1 Charged Spherical Particles
+
+58
+
+3.2.2 Planar Interfaces
+
+60
+
+3.2.2.1 Salt-Free Solutions
+
+61
+
+3.2.2.2 Salty Solutions
+
+62
+
+3.2.3 Cylindrical Pore
+
+65
+
+3.2.4 Charged Cylinder
+
+69
+
+3.2.5 Charged Line
+
+72
+
+3.2.6 Dielectric Mismatch
+
+74
+
+3.3 Summary
+
+77
+
+4
+
+Flexible and Semiﬂexible Polyelectrolytes
+
+79
+
+4.1 Concepts
+
+80
+
+4.1.1 Coulomb Strength
+
+81
+
+4.1.2 Debye Length for Polyelectrolyte Solutions
+
+81
+
+4.1.3 Chain Connectivity
+
+82
+
+4.1.4 Counterion Worm
+
+84
+
+4.1.5 Dielectric Mismatch
+
+85
+
+4.1.6 Electrostatic Excluded Volume
+
+87
+
+4.1.7 Electrostatic Persistence Length
+
+88
+
+4.1.8 Hydrophobic Interaction
+
+90
+
+4.2 Experimental Results
+
+90
+
+4.3 Simulation Results
+
+92
+
+4.3.1 Radius of Gyration
+
+94
+
+4.3.2 Counterion Adsorption and Effective
+
+Charge
+
+95
+
+4.4 Electrostatic Swelling with Fixed
+
+Polymer Charge
+
+100
+
+4.4.1 High Salt Limit
+
+100
+
+4.4.2 Low Salt Limit
+
+102
+
+4.4.3 Electrostatic Blob
+
+104
+
+4.4.4 Crossover Formula
+
+106
+
+4.5 Self-Regularization of Polymer Charge
+
+107
+
+4.6 Concentration Effects
+
+111
+
+4.7 Summary
+
+113
+
+5
+
+Conﬁnement, Entropic Barrier, and Free Energy Landscape
+
+115
+
+5.1 Hole in a Wall
+
+116
+
+5.2 Spherical Cavities
+
+121
+
+5.2.1 Gaussian Chain
+
+122
+
+5.2.2 Uncharged Polymer with Excluded Volume
+
+128
+
+5.2.3 Polyelectrolyte Chain
+
+132
+
+5.3 Cylindrical Pores
+
+134
+
+5.3.1 Flexible Chain
+
+135
+
+5.3.2 Semiﬂexible Chain
+
+138
+
+C O N T E N T S IX
+
+5.4 Inﬁnitely Wide Channels
+
+141
+
+5.5 Summary
+
+142
+
+6
+
+Random Walks, Brownian Motion, and Drift
+
+145
+
+6.1 Biased Random Walk
+
+146
+
+6.1.1 Gaussian Chain Statistics
+
+148
+
+6.1.2 Drift–Diffusion
+
+149
+
+6.2 Brownian Motion and Langevin Equation
+
+152
+
+6.2.1 Brownian Particle without External Force
+
+153
+
+6.2.2 Brownian Particle under an External Force
+
+156
+
+6.2.3 General Form of Langevin Equation
+
+156
+
+6.3 Fokker–Planck–Smoluchowski Equation
+
+157
+
+6.4 Collection of Brownian Particles
+
+159
+
+6.5 Equilibrium versus Steady State
+
+160
+
+6.5.1 Equilibrium
+
+161
+
+6.5.2 Steady State
+
+161
+
+6.6 Finite Boundaries and First Passage Time
+
+162
+
+6.6.1 General Equations
+
+163
+
+6.6.2 General Solutions
+
+165
+
+6.7 Properties of Drift–Diffusion Process
+
+167
+
+6.7.1 One Absorbing Barrier
+
+168
+
+6.7.2 Two Absorbing Barriers
+
+169
+
+6.7.3 Reﬂecting Boundary
+
+172
+
+6.7.4 Radiation Boundary Condition
+
+173
+
+6.8 Summary
+
+174
+
+7
+
+Polyelectrolyte Dynamics
+
+177
+
+7.1 Solvent Continuum and Hydrodynamic Interaction
+
+178
+
+7.2 Uncharged Polymer
+
+181
+
+7.2.1 General Expectations
+
+181
+
+7.2.2 Rouse Model
+
+183
+
+7.2.3 Zimm Dynamics
+
+186
+
+7.2.4 Semidilute Solutions and Hydrodynamic
+
+Screening
+
+189
+
+7.2.5 Entanglement Regime
+
+193
+
+7.3 Diffusion of Polyelectrolyte Chains
+
+194
+
+7.4 Electrophoretic Mobility
+
+198
+
+7.5 Coil Stretch under Flow
+
+204
+
+7.6 Summary
+
+206
+
+8
+
+Ion Flow in Single Pores
+
+209
+
+8.1 A General Scenario
+
+209
+
+8.2 Equilibrium
+
+212
+
+8.3 Steady State without Diffusion
+
+213
+
+8.3.1 Ionic Current and Ohm’s Law
+
+214
+
+8.3.2 Relaxation of Charge Density
+
+215
+
+8.4 Steady State with Drift and Diffusion
+
+216
+
+8.4.1 Analogy to Electrical Circuits
+
+217
+
+8.4.2 Solutions of PNP Equations
+
+218
+
+X CONTENTS
+
+8.4.3 Constant Field Approximation
+
+219
+
+8.4.3.1 GHK Current Equation
+
+220
+
+8.4.3.2 Concentration Proﬁle
+
+221
+
+8.4.3.3 Resting Potential
+
+221
+
+8.5 Effect of Barriers
+
+223
+
+8.6 Ionic Current through Protein Pores
+
+224
+
+8.6.1 Gramicidin A Channel
+
+225
+
+8.6.2 α-Hemolysin Pore
+
+226
+
+8.7 Fluctuations in Ionic Current
+
+230
+
+8.8 Electroosmotic Flow
+
+234
+
+8.8.1 EOF near Planar Interfaces
+
+234
+
+8.8.2 EOF inside Cylindrical Pores
+
+236
+
+8.9 Summary
+
+238
+
+9
+
+Polymer Capture
+
+241
+
+9.1 Representative Experimental Results
+
+241
+
+9.2 General Considerations
+
+244
+
+9.3 Diffusion-Limited Capture
+
+247
+
+9.4 Drift-Limited Regime
+
+250
+
+9.5 Effect of Convective Flow
+
+251
+
+9.6 Polymer Capture with Electroosmotic Flow
+
+252
+
+9.7 Effect of Barriers on Capture Rate
+
+256
+
+9.7.1 Capture Rate
+
+259
+
+9.7.2 Probability of Successful Translocation
+
+262
+
+9.7.3 Phenomenological Chemical Kinetics Model
+
+265
+
+9.8 Summary
+
+268
+
+10
+
+Translocation Kinetics: Nucleation and Threading
+
+271
+
+10.1 Representative Experimental Results
+
+271
+
+10.1.1 Translocation through α-Hemolysin Pore
+
+272
+
+10.1.2 Translocation through Solid-State Nanopores
+
+276
+
+10.1.3 Translocation through Channels
+
+278
+
+10.2 Insights from Simulations
+
+279
+
+10.3 Theory of Translocation Kinetics
+
+284
+
+10.3.1 Nucleation Time
+
+288
+
+10.3.2 Translocation Time
+
+289
+
+10.3.2.1 Two Absorbing Barriers
+
+291
+
+10.3.2.2 One Absorbing Barrier and One
+
+Reﬂecting Barrier
+
+293
+
+10.3.3 Effect of Pore–Polymer Interactions
+
+295
+
+10.3.3.1 Escape from a Spherical Cavity
+
+296
+
+10.3.3.2 Translocation between Two Spherical
+
+Cavities
+
+297
+
+10.3.3.3 Two Spherical Cavities Connected by
+
+a Pore
+
+297
+
+10.3.3.4 Translocation with a Membrane
+
+Potential
+
+300
+
+10.4 Comparison between Experimental Data and Theory
+
+302
+
+10.4.1 Translocation through α-Hemolysin Pore
+
+302
+
+C O N T E N T S XI
+
+10.4.2 Translocation through Solid-State Nanopores
+
+304
+
+10.4.3 Translocation through Channels
+
+306
+
+10.5 Summary
+
+311
+
+11
+
+Further Issues
+
+313
+
+11.1 Nonequilibrium Conformations during Threading
+
+313
+
+11.2 Ampliﬁcation of Chemical Details
+
+315
+
+11.2.1 Chemical Decoration of the Pore
+
+316
+
+11.2.2 Secondary Structures of the Translocating Polymer 318
+
+11.3 Biological Examples
+
+320
+
+11.3.1 Mitochondrial Transport
+
+320
+
+11.3.2 Bacterial Conjugation
+
+322
+
+11.3.3 Transport through Nuclear Pore
+
+322
+
+11.3.4 Genome Packing in Bacteriophages
+
+323
+
+11.4 Summary
+
+325
+
+References
+
+327
+
+Index
+
+343
+
+PREFACE
+The process of polymer translocation occurs in many biological and biotechnological phenomena, where electrically charged polymer molecules, such as polynucleotides and proteins and their complexes, move from one region of space to another in crowded environments. Substantial research activities are currently being pursued in an effort to understand the macromolecular basis of polymer translocation. These activities are further stimulated by the societal need to sequence an enormous number of genomes immediately and inexpensively. Due to the inherent challenges of formulating the molecular basis of polymer translocation, this area has attracted a diverse set of researchers in biology, physics, chemistry, materials science, chemical engineering, and electrical engineering.
+The thread that is central to polymer translocation is polyelectrolyte physics, which is perhaps one of the most challenging areas of modern research. The challenge in understanding the complex behavior of polyelectrolyte molecules arises from three long-range forces due to chain connectivity, electrostatic interactions, and hydrodynamic interactions. In addition, translocation of polyelectrolyte molecules through a protein pore or a solid-state nanopore becomes more complex by the polymer–pore interactions, confinement effects, and flow fields in the system. Unraveling the rich phenomenology of polymer translocation requires a grasp of modern concepts of polymer physics and polyelectrolyte behavior.
+With this goal in mind, this book strives to present a summary of the key concepts of polyelectrolyte structures, electrolyte solutions, ionic flow, mobility of charged macromolecules, polymer capture by pores, and threading of macromolecules through pores. The main concepts and theoretical results are presented without formal derivations whereas the cited references provide adequate derivations. For situations where there is a lack of readily usable references, derivations are given. Every effort has been made to give the reader
+XIII
+
+XIV P R E F A C E
+an overview of basic concepts, established experimental facts, relevance of the concepts to real systems, ongoing challenges, and strategies for applying these ideas and summarized formulas to design new experiments. An attempt has also been made to avoid heavy mathematics and an exhaustive repetition of published literature.
+
+ACKNOWLEDGMENTS
+This book would not have been possible without the collaborations with my former and current students, as should be evident from the bibliography. I am sincerely grateful to all of them for their intellectual stimulation and friendship. I especially thank Stephen Mirigian, Mithun Kumar Mitra, and Jing Hua for many valuable suggestions for improving the presentation and for help with many figures. I am indebted to S. Bezrukov, E. DiMarzio, D. Hebert, R. Kumar, J. Machta, and C. Santangelo for their comments on one or more chapters.
+I also gratefully acknowledge support from the National Institutes of Health and the National Science Foundation, without which the writing of this book and some of the advances presented here would have been almost impossible. I am also indebted to many collaborators outside my laboratory. In particular, it is a pleasure to acknowledge the tremendous encouragement and support from H. Bayley, S. Bezrukov, D. Branton, D. Deamer, E. DiMarzio, J. Kasianowicz, and M. Schmidt.
+Finally, it is a great pleasure to thank Luna Han for her invitation to write a book on polymer translocation and her constant encouragement throughout the writing stage. It is also a pleasure to thank Kyle Meyer and Anto Aroshini Fernandez for their tremendous support during the production of the book.
+XV
+
+AUTHOR
+Murugappan Muthukumar is Wilmer D. Barrett Distinguished Professor at the University of Massachusetts, Amherst. After his undergraduate education at the University of Madras, India, he studied chemical physics at the University of Chicago, Illinois, followed by postdoctoral research at the Cavendish Laboratory, Cambridge University, Cambridge, U.K. He has taught polymer physics and biophysics at the University of Massachusetts for over 25 years. His research interests cover many areas of polymer science and physical biology, including polymer statistics, dynamics and thermodynamics of polymer solutions, and phase transitions of polymer systems. His current major interests concern the basic mechanisms of polymer crystallization, biomineralization, polyelectrolyte physics, assembly of viruses, and polymer translocation.
+Muthukumar is a fellow of the American Physical Society and has received the Alfred P. Sloan fellowship, the Dillon Medal and the Polymer Physics Prize of the American Physical Society, the Chancellor’s Medal of the University of Massachusetts, a Senior Humboldt Award, and the Gutenberg Lecture Award from the University of Mainz.
+XVII
+
+1
+GENERAL PREMISE
+Polymer translocation is one of the most fundamental macromolecular processes in life. This ubiquitous phenomenon deals with how electrically charged polymer molecules, such as polynucleotides and proteins, move from one region of space to another in crowded environments. Examples of biological phenomena for which polymer translocation is a crucial fundamental step include passage of mRNA through nuclear pore complexes, injection of DNA from a virus head into a host cell, gene swapping through pili, and protein translocation across biological membranes through channels (Lodish et al. 2007, Alberts et al. 2008). In addition, primarily due to societal and technological demands on DNA sequencing, there has recently been a tremendous effort to monitor and control the translocation of single macromolecules through a single pore made of proteins or synthetic solid-state materials. Although these apparently diverse phenomena emerge from different specific chemical details that are unique to each of these phenomena, we seek to identify the most common universal features behind these phenomena. The chemical details indeed decorate the basic universal feature of the passage of long macromolecules differently and impart specific directions and targets. We will first attempt to identify the common universal aspects of translocation and then to explore ways of incorporating the specific details relevant to different contexts. After illustrating the richness of the phenomenon with a few examples, we will offer an operating definition of the process and introduce the main concept, namely the entropic barrier idea (Muthukumar 2007), behind the polymer translocation. This will be followed by a brief outline of the various significant components, which need to be put together for a molecular understanding of the polymer translocation phenomenon.
+1.1 B I O L O G I C A L C O N T E X T S If we were to look into any volume element inside a eukaryotic cell (Figure 1.1), we are most likely to meet charged polymer molecules (such as proteins, RNA, and DNA) and electrolyte ions. In fact, the cell is a very crowded environment, and due to the nature of electrical (Coulomb) forces mediating the structures and functions of the constituent molecules inside the cell, it can be considered to be a thick “Coulomb soup.” A comprehensive fundamental understanding of the structures, dynamics, and mobilities of single macromolecules and their complexes with other molecules in the in vivo environments, even in
+1
+
+2 POLYMER TRANSLOCATION Microtubules
+
+Nuclear envelope
+
+Nuclear pore
+
+Ribosomes
+
+Golgi
+
+Rough endoplasmic
+reticulum
+Plasma membrane
+
+Figure 1.1 A cell is a crowded “Coulomb soup,” with charged macromolecules and their assemblies moving between different compartments.
+
+the absence of penetration through channels, is currently absent. Our expedition of trying to understand the translocation process by these molecules and their complexes, which themselves remain as poorly understood systems, becomes even more daunting. It is therefore necessary to investigate isolated translocation events before embarking on the coupled multiple translocation processes occurring simultaneously in vivo.
+Even an isolated translocation process in in vivo is extremely rich in its phenomenology. As an illustration of the richness of details and complexities, consider the nuclear pore complex (Alberts et al. 2008), a crude sketch of which is given in Figure 1.2. The pore itself is apparently self-assembled by roughly a hundred different proteins with elaborate structural motifs: a basketlike cage with several openings capable of sieving different-sized molecules, a capillary in the middle of the passage with the capacity to dilate under macromolecular pressures, suspension of the passage into the double membrane of the nuclear envelope with a combination of hydrophobic and hydrophilic moieties, and charged polymer bristles protruding into the outside of the nucleus. The typical size of this assembly along the nuclear envelope is about 100 nm. It is through such an elaborate assembly, the mRNA, present as an mRNP complex of mRNA and more than 30 different carrier proteins inside the nucleus, is threaded into. In its own right, the mRNP complex is big with typical radius size of 50 nm. Thus, a structurally correlated object of about 50 nm is somehow pushed into the nuclear pore complex, and mRNA undergoes translocation. What is amazing is that this process is taking place all the time with fidelity, as instruction for synthesis of coded proteins would not occur without mRNA translocation. Indeed, we are yet to understand how this phenomenon takes
+
+GENERAL PREMISE 3
+20 nm Figure 1.2 A sketch of the nuclear pore complex, and the mRNP. The typical feature sizes of these structures are 20–100 nm.
+place. Nevertheless, it is evident that the phenomenon is manifest at very large length and timescales in comparison with atomistic scales. It is perhaps more fruitful to borrow ideas from polymer physics (de Gennes 1979), dealing with large-scale behaviors of macromolecules, to gain the “bird’s eye view” and then to reckon the specific higher resolution features.
+Not all contexts of polymer translocation are as complicated as in the nuclear pore complex. The passage of dsDNA from a virus head into a host cell as a single-file threading (Figure 1.3) and the transfer of DNA molecule from one bacterium to another (Figure 1.4) are examples of less complex situations. Again, the relevant length scales in the translocation phenomenon are much larger than atomistic length scales, calling for ideas from polymer physics.
+Figure 1.3 Cartoon of threading of DNA from a bacteriophage into a host cell.
+
+4 POLYMER TRANSLOCATION
+Figure 1.4 Cartoon of gene swapping between bacteria.
+1.2 S I N G L E - M O L E C U L E E X P E R I M E N T S The above-mentioned in vivo biological phenomena are too complex to directly monitor one long macromolecule undergoing translocation in its totality. Fortunately, there have recently been many exciting single-molecule nanopore-based electrophysiology experiments, whereby the features of translocation by single polymer chains can be measured in great quantitative detail. Although these experiments were stimulated by the societal need of having to sequence enormous number of genomes immediately and inexpensively, they are serendipitously paving the way toward a fundamental molecular understanding of the phenomenon of polymer translocation.
+In the single-molecule nanopore-based translocation experiments (Kasianowicz et al. 1996), a single nanopore is incorporated (either by a selfassembly of proteins or by ion-beam sculpting) into a membrane separating a donor (cis) chamber and an acceptor (trans) chamber. Each chamber contains a buffer solution with a strong electrolyte such as KCl. In many of the experiments, involving protein channels, the pore is a heptameric selfassembly of α-hemolysin (αHL) with a length of ∼10 nm and a narrow constriction of ∼1.4 nm, as sketched in Figure 1.5a (Song et al. 1996). In the case of solid-state nanopores (Figure 1.5b) (Chen et al. 2004a), the diameter is in the tunable range of 3–10 nm and the length is in the order of 10 nm or more. When an external voltage is applied across the membrane, the pore allows passage of small ions and the resulting ionic current is measured. When this experiment is repeated with ssDNA/RNA originally present in the cis chamber (with negative electrode), the measured ionic current decreases significantly whenever the polymer interferes with the pore. A typical trace of ionic current versus time for the passage of a polymer chain through αHL is given in Figure 1.6. Although every encounter with the pore is caused by identical polymer molecules, the resultant ionic response is stochastic. As marked in Figure 1.6, there are apparently three timescales. The time t0 is the approach time between two successive events and we may define the inverse of the average t0 as the capture rate Rc, independent of whether the polymer actually underwent the translocation process or not. Also, as indicated in Figure 1.6, there are partial blockades
+
+GENERAL PREMISE 5
+
+~3 nm
+
+2.6 nm 4.6 nm
+
+5 nm
+
+1 μm 5 nm
+
+1.5 nm
+
+5 nm
+
+100 nm
+
+200 nm
+
+(a)
+
+2 nm
+
+(b)
+
+Figure 1.5 Sketches of (a) the α-hemolysin pore and (b) solid-state nanopore used in single-molecule electrophysiology experiments.
+
+160
+
+I (pA)
+
+120
+
+t0
+
+80
+
+t2
+
+t1 40
+
+0
+
+Level 1
+
+Level 1 2
+
+Level 2
+
+0
+
+10
+
+20
+
+30
+
+Time (ms)
+
+Figure 1.6 A typical ionic current associated with the encounter of polymer chains with an αHL pore.
+
+(with duration t1) and deep blockades (with duration t2). Furthermore, the common feature of the experimental results is that the distributions of t0, t1, t2, and the various blocked current levels are very broad.
+The details of the time-dependence of the ionic current bear information on the manner in which polymer molecules attempt to translocate through a pore and the underlying molecular mechanism of polymer threading. Experiments show that the average translocation time, for single-file translocation processes,
+
+6 POLYMER TRANSLOCATION
+is directly proportional to the polymer length and inversely proportional to the applied voltage, in spite of the fact that the translocation time generally has a broad distribution (Kasianowicz et al. 1996). The capture rate depends on the polymer concentration, the direction of the translocation (cis-to-trans vs. trans-to-cis), and the applied voltage above a threshold value (Henrickson et al. 2000). In addition, polymer sequences and their ability to spontaneously form secondary structures influence their migration through nanopores as manifest in the corresponding ionic current traces (Akeson et al. 1999, Meller et al. 2000). In fact, such distinguishing features in the ionic current traces, associated with translocation of different polymer sequences, raised high hopes for cultivating single-molecule electrophysiology technique into a fast sequencing technology (Branton et al. 2008).
+As a complement to the threading of single-stranded DNA/RNA, and to avoid potential complications from the role of the vestibule of α-hemolysin pore in interpreting the ionic current traces, much experimental effort has gone into forming solid-state nanopores with diameters large enough to thread double-stranded DNA (Chen et al. 2004a). The ionic current traces associated with the passage of dsDNA through these solid-state nanopores are apparently more complex than the corresponding results for the α-hemolysin pore. Now, the polymer can translocate in quantized configurations such as a single file, chain with one hairpin, etc. Even the seemingly simplest situation of translocation of dsDNA through a nanopore of 15 nm diameter exhibits rich puzzles. Time-resolved fluorescence studies have revealed that a depletion (capture) region of about 3 μm (much larger than the pore size) develops in front of the pore (Chen et al. 2004a). The DNA molecules were found to diffuse slowly (∼4s) until they approach the capture region. Once the molecules reach the capture region, they were found to be depleted rapidly (∼50 ms) by active pulling through the pore.
+In addition to nanopores, nanoscopic channels have also been used to investigate the translocation of DNA molecules (Han and Craighead 2000). Consider a periodic alternation of deep (∼2 μm) and shallow (∼100 nm) wells, with the width of both of these wells being far wider than the size of a DNA molecule. Experimental measurement of the average time τ taken by one λDNA molecule to pass through a pair of adjacent deep and shallow wells showed that it takes shorter time for longer molecules in accordance with an empirical formula, τ ∼ N−0.42, where N is proportional to the polymer length. This counterintuitive finding is in direct opposition to the linear increase of τ with N for single-file translocation through pores.
+The general picture that emerges from the above selective description of the phenomenology of polymer translocation is that the phenomenon is quite complex even in simple experimental setups and is controlled by numerous factors. The translocation time of one macromolecule depends on the chain length, chemical sequence of the polymer, chain stiffness in terms of whether singlestranded or double-stranded, applied voltage, chemical nature of the pore, pore geometry, and flow fields in the experimental setups. In general, the
+
+GENERAL PREMISE 7
+
+λ
+
+L
+λ << Rg (a)
+
+a λ < Rg
+(b)
+
+Rg
+
+λ ~ Rg (c)
+
+( d ) λ >> Rg
+
+Figure 1.7 Different regimes (a–d) of polymer conﬁnement by the pore. The process is translocation for a ≤ λ < Rg.
+
+translocation process is stochastic with broad distributions of various measures of the process, even though identical molecules are undergoing translocation.
+
+1.3 N O M E N C L A T U R E
+It is perhaps useful to associate certain specific criteria in defining the process of polymer translocation, in order to distinguish it from the general transport of macromolecules. Consider a uniform pore with radius λ and length L, through which a chain of average radius of gyration Rg undergoes translocation. Let a be the radius of each of the monomers constituting the polymer. If λ is slightly larger than a but much smaller than Rg, the chain can undergo translocation only as a single file or as a hairpin (Figure 1.7a and b). If λ is much larger than a but smaller than Rg, the chain can be squeezed inside the pore as sketched in Figure 1.7c. On the other hand, if λ is much larger than Rg (Figure 1.7d), then the polymer undergoes transport through the capillary as in free solutions, except for the possible adsorption/depletion effects at the walls of the pore. In the nomenclature adopted here, the phenomenon of polymer translocation refers to the constrained motion of polymer chains where the size of the pore is smaller than the size of the polymer, a ≤ λ < Rg.
+
+1.4 E N T R O P I C B A R R I E R I D E A
+One of the inherent properties of an isolated polymer chain is its ability to assume a large number of conformations N . As a result, the chain entropy (kB ln N ; kB is the Boltzmann constant) can be high and its free energy F is given by
+
+F = E − TS = E − kBT ln N ,
+
+(1.1)
+
+where E is the energy of interaction between the monomers and the surrounding solvent molecules, and T is the absolute temperature. There can be additional
+
+8 POLYMER TRANSLOCATION
+
+I F3
+
+III
+
+II
+
+III Entropic barrier
+
+F
+
+F1
+
+I
+
+F2
+
+II
+
+Distance
+
+Figure 1.8 Genesis of the entropic barrier for polymer translocation.
+
+entropic contributions to F due to a reorganization of solvent molecules accompanying conformational changes of the chain. When such a chain is exposed to a restricted environment such as a pore, the number of conformations that can otherwise be assumed by the chain is reduced, and as a result the chain entropy decreases and the chain free energy increases. This effect is depicted in Figure 1.8.
+F1, F2, and F3 are the free energies of the chain in regions I, II, and III, respectively. Owing to the reduction of conformations in region III, F3 is higher than F1 and F2. We shall call (F3 − F1) the entropic barrier to the passage of the chain out of region I. Although this barrier is called the entropic barrier, it is indeed a free energy barrier because additional enthalpic contributions to F3 can arise from the interactions between the polymer and the pore. In general, the environment of the chain in region II can be different from that in region I (due to different electrochemical potentials in these regions), so that F2 is not necessarily equal to F1. The net driving potential for polymer translocation from region I to region II is (F1 − F2). The polymer chain must negotiate the entropic barrier in order for it to successfully arrive at the opposite side of the pore.
+It is important to recognize that the role of conformational entropy of polymer chains in various biological processes cannot be treated as only a minor factor. Since the temperature T is essentially fixed for a given physiological system and because only rather minor variations are permitted in E for a fixed T, the only way the free energy landscape can be dramatically modified must
+
+GENERAL PREMISE 9
+be through the entropy S. The ability of polymer molecules to undergo large conformational changes, without losing their topological connectivity, makes them ideal candidates for large entropic changes. No wonder that life is made of polymer strings instead of, say, cubes or spheres. With the help of such entropic considerations, we will formulate the arguments for the structure, dynamics, mobility, and translocation of polymer chains in what follows in the book.
+1.5 P H Y S I C S O F T R A N S L O C A T I O N
+Given the rich features of the translocation phenomenon, the objective is to identify the various significant contributing factors and to assess their relative contributions to translocation. Even with the modern computational technologies, it is impossible to build from atomistic details and force fields at subnanometer resolution and calculate the behavior of the whole macromolecular assemblies of hundreds of nanometers in size. The nature of forces among all atoms of translocating polymer molecules, enzymes, and protein pores in salty and crowded aqueous solutions with highly heterogeneous dielectric function remains as a huge challenge to be unraveled. Nevertheless, it is worthwhile to explore theoretical possibilities where local details at the spatial resolution of amino acids and nucleotides are surrogated into coarse-grained parameters at multiple nanometer resolution. This will allow implementation of wellestablished concepts from polymer physics. With this attitude, we will present basic concepts, arguments, predictions, and comparison with experimental results related to polymer translocation in the following chapters.
+The general scope of the translocation process may be divided into several separate parts. There are three essential steps associated with the transit of a polymer through a nanopore (illustrated in Figure 1.9 for a structureless blunt pore): (1) drift–diffusion, (2) capture, and (3) translocation.
+1.5.1 D r i f t – D i f f u s i o n In the first step (far away from the pore), the polymer undergoes a combination of drift, due to the externally imposed force fields, and diffusion arising from collisions with solvent molecules. The drift–diffusion of the polymer is established by the structure and size of the polymer, the nature of the background fluid (such as solvent quality and ionic strength), and influences from external forces (such as electric field and pressure gradient).
+1.5.2 C a p t u r e At the pore mouth, force fields may be generated by chemical decoration of the inside surface of the pore. More importantly, steep electric potential gradients may occur at the pore mouth due to the dielectric mismatch between the layer in which the pore is embedded and the rest of the system, in the presence of an applied voltage gradient. Furthermore, strong flow currents may arise at the
+
+10 P O L Y M E R T R A N S L O C A T I O N
+
+(1) (3)
+(2)
+
+rc
+(a) B
+
+A
+
+−∞
+
+–rc
+
+0
+
+L
+
++∞
+
+B
+
+(b)
+
+C
+
+D
+
+A
+
+B
+
+C
+
+D
+
+(c)
+
+Figure 1.9 (a) Three main stages of polymer translocation process: (1) drift– diffusion, (2) capture, and (3) translocation; (b) free energy landscape; and (c) three stages in the third translocation step.
+
+pore mouth due to the movement of water through the pore. In particular, for situations dealing with charge-bearing pores containing electrolyte solutions, this force, called the electroosmotic force, can be quite significant. Since the flux of the water flow must be continuous in the system, and since there is only a narrow passage for fluid flow inside the pore, strong velocity gradients may develop at the pore mouth. All of these effects generate an effective sucking force at the pore entrance, which in turn tries to capture the polymer to facilitate the translocation. Thus, near the pore, the flow field and the electric field can be significantly influenced by electroosmotic forces, dielectric mismatch between the pore wall and the aqueous medium, ionic strength gradients, and pressure gradients. Depending on the details of these contributing factors, the nature of the flow field within a range of rc from the pore can be qualitatively different from that outside this range. rc can vary between subnanometers to microns. Within the range of rc, the polymer may undergo conformational deformation.
+
+G E N E R A L P R E M I S E 11
+By experiencing such forces within rc, the polymer approaches the pore mouth, designated as step (2) in Figure 1.9a. The capture of the polymer at the pore mouth is controlled by the strength of the sucking force at the pore entrance and by the range of the flow field in front of the pore where the velocity gradients are strong.
+1.5.3 T r a n s l o c a t i o n
+In general, when the polymer is caught at the pore mouth, it is in a jammed state without any initial correlation between the chain ends and the pore mouth. The chain needs to unravel itself to place one of its ends at the pore mouth for the single-file translocation to occur, and then to thread through the pore. This step of translocation consists of three stages: (a) chain-end localization, (b) nucleation, and (c) threading. An entropic barrier must be overcome in placing one of the chain ends at the pore mouth from a jammed coil state (designated as A → B in Figure 1.9b and c), in order to enable the eventual single-file translocation. This is due to the requirement that one end must be at a specific spacial location, instead of all possible locations, whereby the chain end is losing its translational entropy. After the localization of one chain end, there is an additional entropic barrier for reducing the conformational degrees of freedom for the chain in order to be squeezed into the pore. The polymer chain is thus hung across the entropic barrier. As will be seen later, only if a sufficient number of monomers crosses this “nucleation barrier” can the chain undergo further translocation. The nucleation stage is B → C in Figure 1.9b and c. The final stage of translocation, C → D, is a downhill threading process, which is in its own right a drift–diffusion process. The chain is finally kicked out of the pore into the receiver compartment as the ultimate step.
+The shape of the pore can lead to additional complexities. As an example, the free energy landscape for a protein pore, such as αHL, containing a traplike vestibule in front of the pore, is qualitatively different (Figure 1.10) from that for a blunt pore. Here, the jammed coil at the pore mouth is separated by two barriers, one for successful translocation into the trans side and the other for the return to the cis side.
+
+F+ F–
+
+–∞
+
+Vestibule
+
+β-Barrel
+
++∞
+
+(a)
+
+(b)
+
+Figure 1.10 The polymer can get jammed in the metastable state at the pore mouth, for αHL, with two barriers for forward and backward movements: (a) sketch of αHL and (b) free energy proﬁle.
+
+12 P O L Y M E R T R A N S L O C A T I O N
+1.6 O U T L O O K
+The above description highlights only the generic physical aspects of the translocation process. In the translocation step, specific to a particular polymer and a particular pore, the fine details of the electrostatic and hydrophobic properties of the amino acids constituting the protein pores, charge decoration of the inside wall of the solid-state nanopores, geometry of the pore, and the polymer sequence contribute significantly. An accounting of these effects manifest at both subnanometer level and microscopic level is essential for a fundamental understanding of polymer translocation. In view of our approach to adopt a coarse-grained methodology, we will implement concepts from polymer physics cultivated over the past seven decades to explore this phenomenon. We shall first devote several chapters to discuss size, shape, and structure of isolated polymers in equilibrium and under flow, and their dynamics and mobility in free solutions containing a certain amount of strong electrolytes. We will address the various origins of the capture zone and the process of polymer capture. Quantitative descriptions of the entropic barrier and the free energy landscape associated with the translocation, and the kinetics of polymer threading into pores will be presented next. We will then put all of these components together in order to understand the various experimental results on translocation.
+
+2
+SIZE, SHAPE, AND STRUCTURE OF MACROMOLECULES
+Polymer molecules are monomers contiguously connected by covalent bonds in a chain-like fashion. The monomers themselves are groups of atoms, and can be either identical repeat units (as in polyethylene or polyuridylic acid) or chemically different units (as in a protein molecule or a deoxyribonucleic acid (DNA) containing different bases). Depending on the chemical nature of the repeat units of the polymer, the number of monomers per chain, and the nature of the solvent in which the polymer is dispersed, the molecule can assume different sizes and shapes such as globular, coil-like, and rod-like. It might seem at the outset that it is necessary to treat each polymer in a given solvent condition as a unique case by accounting for the specific chemical nature of the polymer and solvent. However, it turns out that there are certain universal laws that can describe average polymer conformations. It is possible to surrogate the local degrees of freedom of chemical specificity into a few parameters and obtain useful coarse-grained models in order to understand the universal properties of polymer chains.
+In this chapter, we shall introduce various measures of polymer conformations and some of their universal laws. We will give a summary of coarsegrained models of polymer conformations and discuss how local details are parametrized in these models. The basic vocabulary of polymer statistics, including concepts like persistence length, radius of gyration, hydrodynamic radius, size exponent, structure factor, fractal dimension, excluded volume parameter, and coil–globule transition, will be introduced. In experiments exploring the translocation phenomenon discussed in this book, the polymer is electrically charged and the solvent medium is an aqueous electrolyte solution. When electrical charges are present in a polar dielectric medium, there are additional significant concepts that are required to describe polymer statistics. This in itself constitutes a separate field of study and still remains to be fully understood. In view of this, we relegate the discussion of charged polymers and electrolyte solutions to the following chapters. In the present chapter, we shall consider only uncharged polymers.
+2.1 M E A S U R E S O F P O L Y M E R C O N F O R M A T I O N S
+When a polymer is dispersed in a solvent, there are generally three kinds of pairwise interactions at the local level: monomer–monomer, monomer–solvent,
+13
+
+14 P O L Y M E R T R A N S L O C A T I O N
+
+ℓp
+
+(a)
+
+(b)
+
+Rg
+
+(c)
+
+Figure 2.1 Major conformations of isolated polymer chains: (a) globule, (b) coil, and (c) rod-like. Rg is the radius of gyration and p is the persistence length.
+
+and solvent–solvent. If the hydrophobic interaction, due to van der Waals attractive forces, between the monomer units were to be dominant over the monomer–solvent interaction, then the monomers would aggregate together to form a globular structure (Figure 2.1a) by excluding the solvent molecules out of the globule. On the other hand, if the monomer–solvent interaction is preferable over the monomer–monomer attractive interaction, the solvent becomes a good solvent for the swelling of the polymer, which then adopts a swollen coil-like conformation (Figure 2.1b). In an average sense, the coil would look like a rough porous ball of wool, carving out a rough sphere of revolution with a radius Rg, called the radius of gyration (defined below). For some polymers, the chemical details associated with adjacent monomer units along the chain backbone are such that rotation of these monomers around the connecting chemical bond can be severely restricted. Furthermore, conformations of adjacent monomers could be locked together by hydrogen bonding, as in the helical conformations of polypeptides and double-stranded DNA molecules. As a result, the chain backbone can be locally stiff. If the contour length of the polymer is short enough, then it would look rod-like (Figure 2.1c), with the obvious shape anisotropy. If the contour length of the polymer is very long, the chain would be rod-like locally (for distances less than or comparable to the persistence length p, defined below) but would bend and curve at longer distances appearing overall as a coil. Such polymers are called semiflexible polymers. Indeed, the chain can undergo conformational transitions between the coil and globular states when experimental conditions alter the relative weights of the monomer–monomer, monomer–solvent, and solvent–solvent energies. Also, the same polymer in identical experimental conditions could be either rod-like or coil-like, depending on its molecular length.
+We shall now define some quantities, which are either measured experimentally or computed theoretically, to describe polymer conformations. These definitions are general, independent of the particular conformations taken by the polymer. As an example, consider a specified conformation of a polyethylene
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 15
+
+a4
+
+CH2–CH2–CH2–CH2 (a)
+
+RN
+
+R1
+
+(CM)
+
+a1
+
+R0
+
+(b)
+
+Figure 2.2 (a) Backbone structure of a polyethylene chain. (b) A typical con-
+formation of a skeletal chain. Ri is the distance vector of the ith united atom from the center of mass (CM) of the conformation, and ai is the bond vector connecting (i − 1)th and ith united atoms.
+
+chain (Figure 2.2a) with (N + 1) methylene monomers. Denoting each repeat unit (a methylene group in this case) as a united atom (skeletal atom), the skeletal structure of a conformation can be drawn as in Figure 2.2b. Here Ri is the position coordinate of the ith skeletal atom from the center of gravity (CM) of the specified chain conformation, and ai is the bond vector of the ith skeletal bond. For each of such conformations, quantities like the end-toend distance R and radius of gyration Rg can be defined as follows. Since the chain can adopt many conformations during the typical measurement times, we construct averages of these quantities over all possible conformations. These averages constructed in equilibrium are time-independent. We also assume that the repeat units are identical with identical bond lengths connecting them.
+1. Mean square end-to-end distance, R2 :
+
+NN
+
+R2 = (RN − R0)2 =
+
+ai · aj ,
+
+i=1 j=1
+
+(2.1)
+
+where the angular brackets denote the averages over allowed conformations at a given experimental condition.
+2. Radius of gyration, Rg: This is defined as the root mean square radius of gyration, where the mean square radius of gyration is given by
+
+R2g
+
+=
+
+(N
+
+1 +
+
+1)
+
+N
+
+R2i .
+
+i=0
+
+(2.2)
+
+This quantity is measured in static scattering techniques using light, x-rays, and
+
+neutrons.
+
+3. Hydrodynamic radius, Rh:
+
+⎛
+
+Rh
+
+=
+
+⎝
+
+(N
+
+1 +
+
+1)2
+
+N i=0
+
+j>i
+
+⎞−1
+
+1
+
+⎠
+
+| Ri − Rj |
+
+.
+
+(2.3)
+
+16 P O L Y M E R T R A N S L O C A T I O N
+
+This quantity is measured in dynamic light-scattering technique, and its origin
+lies in the hydrodynamic interactions in the solution. 4. Size exponent, ν: It is evident from the above definitions that after taking
+the conformational averages, R2 , Rg, and Rh depend only on the number of monomers (N + 1) in the chain and the bond length (a). As will be derived in the following sections, it can be shown that each of these three quantities is directly proportional to an exponent ν of the number of monomers per chain. The only difference between the three relations of R2 1/2, Rg, and Rh is the numerical prefactor of order unity. Also, the difference between the number of monomers (N + 1) and the number of bonds (N) can be omitted for the large values of N for polymers typically dealt with in translocation experi-
+ments. By suppressing the proportionality constant for the root mean square
+end-to-end distance, average radius of gyration and the hydrodynamic radius,
+and using the generic symbol R to represent any of these three quantities, we
+write
+
+R ∼ aNν ,
+
+(2.4)
+
+where R is taken to represent the average “size” of the polymer, and ν is called the size exponent. The bond length a is used in the above equation to make both sides of the equation to have the same dimension of length. Furthermore, it is sometimes useful to think of the polymer coils as statistically fractal objects with their own fractal dimensions embedded in the space of three dimensions of the solution (or two dimensions corresponding to a membrane). Note that N is directly proportional to the mass of the polymer and that a compact object (with its own dimension being three) obeys the relation, Rd ∼ N, where d is the space dimension (d = 3, 2, and 1, for a sphere, disk, and line, respectively). Analogous to this geometric relation, we define a dimension for the average polymer conformation by rewriting the above equation as
+
+Rdf ∼ N,
+
+(2.5)
+
+where df is called the fractal dimension of the polymer and is defined according to the above two equations as
+
+df
+
+≡
+
+1 ν.
+
+(2.6)
+
+The fractal dimension of the polymer is different from the space dimension d in which the polymer is present.
+5. Shape factor, Rg/Rh: The ratio of Rg to Rh is sometimes used to remark on the anisotropy of the shape of the molecule. Since the dependence of Rg and Rh on N is the same with identical size exponent, the ratio is only a numerical factor reflecting the different values of the proportionality factors in their relations to N. For example, the shape factor is 0.77 for a compact sphere and increases to values of about 4 for rod-like conformations.
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 17
+
+i+1
+
+θi+1
+
+ai+2
+
+ai+1
+
+θi
+ai
+Figure 2.3 Sketch of local conformations deﬁning the bond angle θ and the dihedral angle φ.
+
+6. Persistence length, p: The bond angles between the contiguous chemical bonds along the chain backbone cannot be arbitrary and are restricted by quantum mechanical properties. This feature results in the persistence of the direction of a bond over a certain distance along the chain contour. There can be additional reasons for this orientational persistence, due to hydrogen bonding among consecutive monomers as well. The relative orientation of a bond next to the preceding two bonds is defined by two angles, namely the bond angle θ and the dihedral angle φ, as illustrated in Figure 2.3. Here, the bond angle between the ith and (i + 1)th bond vectors is defined as 180 − θi. The dihedral angle φi+1 is the angle between the plane of the bond vectors ai+2 and ai+1 and the plane of the bond vectors ai+1 and ai. The chemical nature of the atoms constituting the united atoms influences the allowed values of the dihedral angles, which then are manifest as the persistence length of the polymer. There are two ways of defining the persistence length. In one way, the average of the product of the orientation (that is the bond vector) of the ith bond and that of the jth bond is monitored as a function of the distance along the chain backbone | i − j |. This correlation function obeys the typical formula,
+
+ai · aj = a2 exp − | i − j | ,
+
+(2.7)
+
+p
+
+where p is defined as the persistence length. For distances | i − j | less than p, the bond orientations are correlated and hence the conformation is rod-like. For distances | i − j | larger than p, the bond orientations are uncorrelated and hence the conformation can become coil-like. Another way to define the per-
+sistence length of the polymer is by projecting the end-to-end distance vector
+of the chain on the first bond in the limit of large values of n. We shall later
+
+18 P O L Y M E R T R A N S L O C A T I O N
+
+introduce a model in order to extract the persistence lengths of polymers from experimental data.
+7. Monomer density distribution, ρ(r): For coil-like conformations, as sketched in Figure 2.1b, the density of monomers at the center is expected to be high and progressively decreasing with the radial distance until reaching the coil’s boundary. This is to be contrasted with a compact object where the density is uniform until the radius at which it discontinuously becomes zero. Let ρ(r) be the number of monomers inside a spherical volume of radius r around a tagged monomer inside a large polymer coil. It can be shown (de Gennes 1979), based on general arguments for self-similar fractal objects, that the number density of monomers depends on the radial distance according to
+
+ρ (r)
+
+∼
+
+1 r3−df
+
+,
+
+(2.8)
+
+where df (reciprocal of the size exponent ν) is the fractal dimension of the coil. This result is valid as long as the radial distance is not too close to the monomeric dimensions or not larger or comparable to the polymer radius. Basically, this relation is obtained by constructing the ratio of number of monomers in a volume of radius r to this volume. If the coil can be assumed to be selfsimilar inside the polymer coil, then the numerator of this ratio is proportional to rdf (see Equation 2.5) and the denominator is proportional to r3, thus leading to the above equation. Since df is less than three (except for solid-like conformations), ρ(r) decreases algebraically with the radial distance (Figure 2.4a). This result is contrasted with the corresponding result for a solid object in Figure 2.4b. Therefore, the topological correlation arising from chain connectivity leads directly to long-ranged correlation between monomer densities for polymer chains that assume noncompact and ramified conformations.
+
+Rg ~ N ν
+
+R ~ N1/3
+
+ρ(r)
+
+ρ(r) 1/r(3 – 1/ν)
+
+r
+
+(a)
+
+Rg
+
+(b)
+
+Rr
+
+Figure 2.4 (a) Algebraic decay of monomer density correlation with radial distance. The determining factor is the fractal dimension (reciprocal of the size exponent ν). (b) The density proﬁle is a step function for solid objects.
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 19
+
+8. Form factor, s(k): The easiest method to determine the molar mass, size, and the size exponent of a macromolecule for a given experimental condition is to use scattering techniques with light, x-rays, or neutrons. The choice of the scattering beam in these techniques depends on the contrast between the polymer and the solution background: refractive index for light, electron density for x-rays, and neutron-scattering length for neutron scattering. The key quantity that is measured in these experiments is the form factor of the polymer chain, defined as
+
+s(k) ≡ 1 N
+
+exp(ik · (Ri − Rj)) ,
+
+(2.9)
+
+ij
+
+where Ri is the position vector of the ith scattering element of the macromolecule. The magnitude of the scattering wave vector k depends on the wave length λs of the incident beam and the scattering angle θs (Figure 2.5),
+
+k
+
+=
+
+4π λs
+
+sin
+
+θs . 2
+
+(2.10)
+
+The expression for the form factor connects theoretical predictions on the righthand side to experimental measurements of s(k) on the left-hand side. k is the
+reciprocal of the probe length that is being explored in a particular scattering
+experiment. In measurements of Rg, it is necessary to satisfy the condition kRg < 1 whereby the characteristic length probed in the experiment is larger than Rg. On the other hand, if we are interested in exploring the internal structure within the polymer coil, the probe length must be smaller than Rg so that kRg > 1. In general, the form factor has the following limiting behaviors:
+
+⎧
+
+⎨ s(k) = ⎩
+
+N ∼
+
+1−
+
+1 k1/ν
+
+,
+
+k2 R2g 3
+
++···
+
+,
+
+kRg < 1 kRg > 1.
+
+(2.11)
+
+θs λs
+Figure 2.5 Sketch of scattering experiments. λs is the wavelength of the incident beam and θs is the scattering angle.
+
+20 P O L Y M E R T R A N S L O C A T I O N
+
+These limiting laws are valid for all fractal-like objects. The above equation allows us to determine N, Rg, and ν in one set of scattering experiments by judiciously tuning the scattering wave vector k, namely λs and θs.
+9. Total number of conformations, Z: The total number of conformations of a chain at any given experimental condition depends on its number of
+monomers N as
+
+Z(N) = zN Nγ −1,
+
+(2.12)
+
+where z is essentially the effective coordination number for the orientation of the adjacent bonds, and γ is a critical exponent. The z can be alternatively written as exp(−μ/kBT), where μ is the chemical potential per segment. The exponent γ depends on the nature of the polymer and the background fluid, and also on any spatial restriction on the polymer. In writing the above result
+for the allowed number of conformations, namely, the partition sum in the
+canonical ensemble (McQuarrie 1976), potential energies of interaction among
+segments and the boundaries are accounted for. The Helmholtz free energy FN of the chain is related to the partition sum according to FN = −kBT ln Z(N) (McQuarrie 1976),
+
+FN = μN − (γ − 1) ln N, kBT kBT
+
+(2.13)
+
+where Equation 2.12 is used. The free energy of the chain has an extensive part proportional to N and a logarithmic part proportional to (γ −1) ln N. As we shall see in later chapters, the logarithmic part plays a crucial role in constructing the free energy landscape for polymer translocation. An additional factor of volume V of the system, corresponding to the number of possible locations for the placement of one end of the chain, is needed on the right-hand side of Equation 2.12, if we were to be interested in the total free energy of the system.
+10. Free energy of a constrained chain: It is of considerable interest to count the number of conformations of a polymer chain with some constraints imposed on it. For example, by fixing one end of the chain, the other end is allowed to take an end-to-end distance R. Now, the number of chain conformations N (R) depends on R, and the chain entropy for a given R is
+
+S(R) = kB ln N (R),
+
+(2.14)
+
+so that the free energy now is
+
+F(R) = E(R) − TS(R),
+
+(2.15)
+
+with E corresponding to the total internal energy of the chain with the end-toend distance fixed at R. The result of F(R) depends on the particular model
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 21
+
+of the chain that will be used. From this result, the tensile force f required to maintain an end-to-end distance R can be obtained by using the relation,
+
+f
+
+=
+
+−
+
+∂ F(R) ∂R
+
+.
+
+(2.16)
+
+2.2 U N I V E R S A L B E H A V I O R
+It would seem that the above measures would be unique to a particular polymer for a given experimental condition. However, in spite of the diversity of monomeric details, macromolecules obey certain universal laws. As an example, consider the following collection of dilute polymer solutions at 25◦C: polystyrene (PS) in benzene (Miyaki et al. 1978), poly(d-β-hydroxybutyrate) (PHB) in trifluoroethanol (Miyaki et al. 1977), poly(α-methylstyrene) (PαMS) in toluene (Kato et al. 1970), and poly(isobutylene) (PIB) in cyclohexane (Matsumoto et al. 1972). Clearly the chemical details are different in these systems. Nevertheless, when the ratio of the square of the radius of gyration to molar mass (M, proportional to N) is plotted against M1/5, a straight line is observed (Fujita 1990), showing that Rg is proportional to N3/5 for each of these systems (Figure 2.6). Even more remarkably, many denatured proteins (such as
+8
+PHB
+
+αS2 ~ Rg2/N
+
+6
+
+PS
+
+4
+
+PIB
+
+PαMS
+
+2
+
+0
+
+0
+
+10
+
+20
+
+30
+
+M1/5 ~ N1/5
+
+Figure 2.6 Different polymers exhibit the same universal law, Rg ∼ N3/5. Only the prefactors of this law are speciﬁc to the polymer–solvent combinations. (Adapted from Fujita, H., Polymer Solutions, Elsevier, Amsterdam, the Netherlands, 1990.)
+
+22 P O L Y M E R T R A N S L O C A T I O N
+90 80 70 60 50 40 30 20
+10
+
+Rg (Å)
+
+10 (a)
+32
+
+50
+
+100
+
+500
+
+N
+
+Rg (Å)
+
+16
+
+8
+
+32
+
+64
+
+128 256 512 1024
+
+(b)
+
+L~N
+
+Figure 2.7 (a) Coil-like universal behavior of unfolded proteins. Many proteins follow the universal law: Rg = R0Nν, with R0 = 0.193 nm and ν = 0.598. (Adapted from Kohn, J.E. et al., Proc. Natl. Acad. Sci. USA, 101, 12491, 2004.) (b) Many proteins in their native states exhibit the universal law, Rg ∼ N1/3, corresponding to globular statistics. (Adapted from Banavar, J.R. et al., J. Chem.
+Phys., 122, 234910, 2005. With permission.)
+
+lysozyme, RNase A, ubiquitin, cytochrome C, and carbonic anhydrase) follow the same power law (Figure 2.7a) with the size exponent being 3/5 (Kohn et al. 2004, Fitzkee and Rose 2004). In their native states, hundreds of proteins follow a similar power law (Banavar et al. 2005), now the size exponent (given by the slope of the double logarithmic plot) being 1/3, as shown in Figure 2.7b. In
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 23
+Figure 2.7b, Rg is plotted against the contour length L (which is proportional to the number N of amino acid residues) of the protein molecules. The graphs in Figures 2.6 and 2.7 clearly show that polymer chains exhibit certain universal features, despite their different chemical specificities.
+In view of the universal nature of certain properties of polymer chains, such as the relation between polymer size and its length, it is desirable to integrate the local degrees of freedom that reflect the chemical specificity into a few parameters and build coarse-grained models to capture the essentials of the global properties of polymer statistics. In order to accomplish this purpose, there are two major features of polymer chains that require coarse graining. One deals with the chain connectivity and the other deals with the potential interaction among various monomers that are not neighbors along the chain backbone. The latter is generically called the excluded volume interaction. We shall first introduce a model for the treatment of the excluded volume interaction in the next section, followed by a summary of a few coarse-grained models for chain connectivity. We shall later combine these two together to describe conformational changes of isolated polymer chains.
+2.3 E X C L U D E D V O L U M E I N T E R A C T I O N
+Consider a real chain dispersed in a solvent. Following the discussion of Figure 2.2b, a conformation of the skeletal part of the chain is represented in Figure 2.8a, where the monomers i and j, separated by a distance rij, are marked. In reality, every monomer interacts with the nearby solvent molecules and other monomers, in addition to its neighbors along the chain backbone. As a result, there is an effective potential interaction energy u(rij) between the ith and jth monomers, mediated by solvent molecules, in addition to the connectivity forces operating on i and j from their backbone neighbors. For any polymer–solvent system, ab initio calculation of u(rij) is a very difficult task. Nevertheless, we expect this interaction to become infinitely repulsive as the two monomers approach too close to each other, due to the fact that one monomer will exclude a certain volume for the placement of another monomer.
+
+rij
+
+i
+
+j
+
+u(rij)
+
++
+
+rij
+
+–
+
+θF
+
+T
+
+(a)
+
+(b)
+
+(c)
+
+Figure 2.8 (a) Excluded volume interaction between a pair of monomers. Details of the interaction energy, sketched in (b), unique to a particular combination of the polymer and solvent are parametrized by the parameter v. (c) v appears to be zero at a special temperature θF.
+
+24 P O L Y M E R T R A N S L O C A T I O N
+
+Of course, u(rij) is zero if the monomers are far away from each other. As in the case of a pair of atoms or molecules in a gaseous state, we expect a van der Waals–type attractive interaction between the monomers at some intermediate distances between the monomers, as sketched in Figure 2.8b. The depth and range of the attractive well depend on the specificities of the monomer and the solvent. We call the effective pairwise interaction energy u(rij) between the monomers as the excluded volume interaction.
+Since the precise details of the pairwise potential energy between monomers are very difficult to determine, we define a parameter, called the excluded-volume parameter v, that is specific to a particular combination of the polymer and solvent,
+
+v=
+
+drij
+
+1 − exp
+
+−
+
+1 kBT
+
+u(rij
+
+)
+
+.
+
+(2.17)
+
+This parameter is actually the second virial coefficient for the monomers in the solvent medium. Clearly, v is temperature-dependent. At higher temperatures, as the monomers collide against each other, the interaction energy is repulsive (positive) so that the first term inside the square bracket of the above equation dominates over the second term. Therefore, v is positive at higher temperatures. At lower temperatures, the monomers tend to attract (u is negative), and now the second term dominates over the first term so that v is negative. The temperature dependence of v is sketched in Figure 2.8c.
+It is obvious from Figure 2.8c that there is a special temperature that is unique to a particular combination of the polymer and solvent, at which the net effective pairwise interaction energy between the monomers would appear to vanish due to a cancelation of the repulsive and attractive contributions. This can happen only at one special temperature for a given system. This special temperature is called the ideal temperature, or the theta temperature, or the Flory temperature (θF). At this temperature, the excluded volume parameter v is identically zero.
+In addressing the coarse-grained models of polymer chains, we first describe the skeletal models without any excluded volume effects, by considering the special case of v = 0. We shall address the role of the excluded volume effect in Sections 2.5 and 2.6.
+
+2.4 C O A R S E - G R A I N E D M O D E L S O F C H A I N CONNECTIVITY
+2.4.1 F r e e l y J o i n t e d C h a i n
+Let us briefly return to the skeletal conformation given in Figures 2.2b and 2.3, where the bond angles θi and the dihedral angles φi are depicted. Let us also imagine a hypothetical situation where there are no restrictions on θi and φi. Of course, this is a violation of fundamental laws of chemical bonds. Nevertheless, this imagination allows us to map a polymer conformation to a trajectory of a
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 25
+
+random walk and to import the familiar properties of random walks to polymer chain statistics. When there are no restrictions on θi and φi, the skeletal bonds can rotate freely and bend back on themselves. Also, the bond vectors are completely uncorrelated in their directions. This hypothetical model is called the freely jointed chain.
+The mean square end-to-end distance of a freely jointed chain follows from the second equality of Equation 2.1 as
+
+R2 = N0a2,
+
+(2.18)
+
+where N0 is now the number of the skeletal bonds in the chain, and a is the bond length. The change to the symbol N0 is to avoid confusion with the symbol for the number of segments N defined below. In obtaining the above result, ai · aj = 0, unless i = j. This result is exactly the same as the famous Einsteinian law that the mean square displacement of a particle undergoing Brownian motion is directly proportional to the number of steps taken by the particle. The implication of Equation 2.18 is that the size exponent for a freely jointed chain is half,
+
+ν
+
+=
+
+1 .
+
+2
+
+(2.19)
+
+It is a straightforward, but lengthy, exercise to calculate R2 by constraining the
+bond angle to be fixed (freely rotating chain). Also, much effort (Flory 1969)
+has gone into calculating the consequences of some preferred dihedral angles on R2 . The net result for large values of N0, in the absence of any excluded volume effect, is
+
+R2 = C∞N0a2,
+
+(2.20)
+
+where C∞ is a temperature-dependent numerical prefactor independent of N0. It is a measure of the average number of bonds beyond which the bond orientations are uncorrelated. The value of C∞ is specific to the chemical details of the polymer backbone and is the ratio by which R2 is expanded over a freely jointed chain by restrictions on bond angle and dihedral angle. Therefore, it is called the characteristic ratio of the polymer. The characteristic ratio is a measure of the local stiffness of the chain backbone. The nonuniversal value of C∞ is related to the persistence length of the polymer (Section 2.4.4).
+
+2.4.2 K u h n C h a i n M o d e l
+As seen above, the key result of the freely jointed chain statistics and incorporation of local conformational details such as restricted bond angles and dihedral angles is that R2 is always proportional to the chain length, that is, the size exponent ν = 1/2, as long as the excluded volume effect is absent. The only
+
+26 P O L Y M E R T R A N S L O C A T I O N
+ℓ =
+
+Figure 2.9 Kuhn chain model: a real chain conformation of N0 bonds with bond length a is mapped into a freely jointed chain of N steps, each of length .
+
+place where the chemical identity of the polymer backbone appears is in the prefactor of the relation,
+
+R2 ∼ N0.
+
+(2.21)
+
+This conclusion therefore suggests that we could build an equivalent freely jointed chain, without compromising the N0-dependence of the polymer size given by Equation 2.20, by defining an effective bond length, which is renormalized by incorporating the consequences of C∞. Such a model is the Kuhn chain model and is the basis of all coarse-grained models of polymer chains.
+Let be the distance along the chain contour beyond which local conformations are uncorrelated. We imagine (Figure 2.9) that the real chain (with N0 skeletal bonds), in the absence of excluded volume interactions, can be replaced by an equivalent chain consisting of N hypothetical bonds (or segments) each of length connected by free joints. In other words, the chain can be taken to be a string of segments each of length . Clearly, each segment may contain many actual monomers. This model chain is referred to as the Kuhn chain. is called the Kuhn statistical segment length or simply Kuhn length, and N is called the number of Kuhn steps.
+The Kuhn parameters N and are related to the number of actual skeletal bonds and bond length by requiring that both Kuhn and real chains have the same chain length L at full extension. For the Kuhn chain, L = N since the model chain is freely jointed. For the real chain of the type discussed in Section 2.1, L = N0a cos(θ/2), where (180 − θ ) is the bond angle. Therefore,
+
+L=N
+
+= N0a cos
+
+θ 2
+
+.
+
+(2.22)
+
+Also the mean square end-to-end distance for the Kuhn chain (being a freely jointed chain) is
+
+R2 = N 2.
+
+(2.23)
+
+Equating this with the result of Equation 2.20, we get R2 = N 2 = C∞N0a2.
+
+(2.24)
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 27
+
+TABLE 2.1 Some Examples of Relationship between Kuhn Length and Bond Length
+
+Polymer
+Polyethylene Poly-L-alanine dsDNA (0.2 M salt)
+
+a (nm)
+0.154 0.38 0.35
+
+(nm)
+1.24 3.6 30
+
+It follows from the above two equations that
+
+N=
+
+L2 R2
+
+=
+
+N0
+
+cos2 (θ /2) ,
+
+C∞
+
+(2.25)
+
+= R2 = C∞a . L cos(θ/2)
+
+(2.26)
+
+The two Kuhn parameters, N and , are related to N0 and a of the real chain according to the above equations. Since C∞ depends on temperature, both N and are in principle temperature-dependent. Nevertheless, N is directly proportional to N0. Some examples (Cantor and Schimmel 1980) of the relationship between and a are given in Table 2.1.
+In the rest of the book, we shall use N to denote interchangeably the number of Kuhn segments, the degree of polymerization of the chain, and chain length. By using the same symbol R to denote the various measures of the polymer radius, one of the main results of the Kuhn chain model is the universal law,
+
+R ∼ Nν,
+
+(2.27)
+
+with the size exponent,
+
+ν
+
+=
+
+1 .
+
+2
+
+(2.28)
+
+In addition to the above result for the size exponent, several quantities such as the probability distribution function for finding a particular end-to-end distance can be derived for the Kuhn model. In particular, the results become simple if the end-to-end distance is smaller than the chain contour length N . In this limit, for example, the probability distribution function for the end-to-end distance is a Gaussian function. In view of this, a Kuhn model chain with large enough N is called a Gaussian chain. The major properties of a Gaussian chain are now summarized.
+
+2.4.3 G a u s s i a n C h a i n
+Since a Gaussian chain is a freely jointed chain of large number of Kuhn steps without excluded volume interactions, it does not describe any chain statistics
+
+28 P O L Y M E R T R A N S L O C A T I O N
+
+in almost all experiments pertinent to translocation experiments. However, the merit of this model chain is the amenability for explicit closed-form analytical expressions for various quantities of interest. Therefore, we give below a summary of key results for the various measures of conformations introduced in Section 2.1, based on Gaussian chain statistics. These results should be taken as a qualitative guidance for describing the consequences of chain connectivity. Revisions of these results due to excluded volume interactions will be addressed in Sections 2.5 and 2.6.
+a. Probability of finding the end-to-end distance at R:
+
+P(R) =
+
+3 2π N 2
+
+3/2
+exp
+
+−
+
+3R2 2N 2
+
+(2.29)
+
+The shape of this Gaussian function√is given in Figure 2.10a. Here, R3eP(R) is plotted against R/Re, where Re = N is the root mean square end-to-end distance for a Gaussian chain. The radius of gyration, root mean square endto-end distance, and the hydrodynamic radius (in units of Re) are also marked.
+b. Mean-square end-to-end distance:
+
+R2 = N 2
+
+(2.30)
+
+c. Mean square radius of gyration:
+
+R2g
+
+=
+
+N2 6
+
+d. Hydrodynamic radius:
+
+3√ Rh = √ N
+46
+
+(2.31) (2.32)
+
+Re3 P(R/Re) ρ(r)
+
+0.3
+
+0.25
+
+0.2
+
+0.15
+
+0.1 0.05
+
+Rh
+
+Rg
+
+Re
+
+0.5
+
+1
+
+1.5
+
+(a)
+
+R/Re
+
+2 1.5
+1 0.5
+2 (b)
+
+2 4 6 8 10 r
+
+Figure 2.10 (a) The normalized end-to-end distance probability distribution
+function for a Gaussian chain. The radius of gyration Rg and the hydrodynamic radius Rh are shown in units of the root mean square end-to-end distance Re. (b) Sketch of the long-ranged segment density proﬁle falling inversely with the radial
+distance from the center of the chain.
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 29
+
+e. Size exponent: f. Fractal dimension:
+
+R ∼ Nν, ν = 1 2
+
+(2.33)
+
+df = 2
+
+(2.34)
+
+g. Shape factor:
+
+h. Segmental density profile:
+
+Rg = 4 Rh 3
+
+(2.35)
+
+ρ(r) ∼ 1 r
+
+(2.36)
+
+The long-range correlation of segment density arising from chain connectivity is sketched in Figure 2.10b.
+i. Form factor:
+
+s(k)
+
+=
+
+2N k4R4g
+
+k2R2g − 1 + exp
+
+−k2R2g
+
+(2.37)
+
+This form factor for a Gaussian chain is known as the Debye structure factor. The asymptotic limits of this equation are as in Equation 2.11 with ν = 1/2.
+j. Total number of conformations: Upon integrating P(R) over all possible values of R, the total number of conformations of a Gaussian chain becomes
+
+Z(N) = zN,
+
+(2.38)
+
+with the critical exponent (defined through Equation 2.12) given by
+
+γ = 1.
+
+(2.39)
+
+k. Chain entropy for a fixed end-to-end distance: Since the entropy is kB ln P(R), we get from Equation 2.29,
+
+S(R) = 3kB ln 2
+
+3 2π N 2
+
+−
+
+3kBR2 2N 2
+
+.
+
+(2.40)
+
+The first term on the right-hand side is a constant independent of R. The second term shows that the chain entropy decreases quadratically with the end-toend distance due to the reduction in the number of conformations. Therefore, coil-like conformations are entropically favorable, and it would cost energy to expand the chain to rod-like conformations.
+
+30 P O L Y M E R T R A N S L O C A T I O N
+
+l. Free energy for a fixed end-to-end distance: Substituting the expression for the chain entropy from the above equation, the free energy of a Gaussian chain with end-to-end-distance at R follows from F = E − TS as
+
+F(R) = E − 3kBT ln 2
+
+3 2π N 2
+
++
+
+3kBTR2 2N 2
+
+,
+
+(2.41)
+
+with the total energy being simply the number of segments times the energy s of each segment (because of absence of any intersegment excluded volume interactions),
+
+E = N s.
+
+(2.42)
+
+By combining the above two equations, we see that the free energy of a chain with the end-to-end distance at R is given by
+
+F(R)
+
+=
+
+constant
+
++
+
+3kBTR2 2N 2
+
+.
+
+(2.43)
+
+The constant depends on N and T, but not on R. The above equation shows that the free energy of the Gaussian chain depends quadratically on the end-to-enddistance. This behavior is analogous to that of a Hookean spring. Therefore, it is sometimes imagined that a Gaussian chain is like a Hookean spring, or a dumbbell, with a force constant kG given by 3kBT/(2N 2),
+
+F(R) = F(0) + kGR2;
+
+kG
+
+=
+
+3kBT 2N 2
+
+.
+
+(2.44)
+
+Since the spring constant (proportional to T/N) can be very small, with N being very large, the chain is highly elastic resulting in many familiar societal benefits from polymers.
+The above result is not valid for large chain extensions. A more careful analysis (des Cloizeaux and Jannink 1990) of the Gaussian chain statistics, by allowing fluctuations in each Kuhn segment length, shows that the free energy of the chain is given by
+
+F(R) = F(0) + 3kBT 2
+
+R2 N2
+
+−
+
+1
+
+−
+
+ln
+
+R2 N2
+
+.
+
+(2.45)
+
+This equation reduces to Equation 2.43 for large values of R2 N 2. m. Force to pull: The tensile force f required to maintain one end of a Gaus-
+sian chain at a radial distance R from the location of the other end follows from f = −∂F(R)/∂R and Equation 2.45 as
+
+f = 3kBT R − . NR
+
+(2.46)
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 31
+
+Naturally, the tensile forc√e is zero when the end-to-end distance is equal to its root mean square value, N . For large R N , we get
+
+f
+
+=
+
+3R .
+
+kBT N
+
+(2.47)
+
+n. Finite extensibility: According to the above formulas derived for Gaussian chain statistics, the tensile force is linear with the end-to-end distance R for large values of R. In fact, it is theoretically possible for this model chain to extend the chain ends to infinite distances, which is physically unrealistic. This result is a mathematical consequence of the assumption R N in obtaining the Gaussian statistics. This assumption is of course not valid at large chain extensions. A general formula for the force–distance relation can be derived (Flory 1953), without making this assumption. For a freely jointed Kuhn chain, with the tensile force acting uniformly on all segments, the relation between the end-to-end distance R and the tensile force f is given by
+
+R = coth f − kBT ≡ L f .
+
+N
+
+kBT
+
+f
+
+kBT
+
+(2.48)
+
+where the Langevin function L is defined. By inverting the above equation, the tensile force can be written in terms of the end-to-end distance,
+
+f = L−1 R
+
+kBT
+
+N
+
+(2.49)
+
+where L−1 is the inverse of the Langevin function L defined above. The difference between the results for the Gaussian chain (Equation 2.47) and the Kuhn chain with finite extensibility (Equation 2.49) is shown in Figure 2.11.
+
+f ℓ/kBT
+
+10
+
+8 FJC
+
+6
+
+G
+
+4
+
+2
+
+0.5
+
+1
+
+1.5
+
+2
+
+R/Nℓ
+
+Figure 2.11 Relation between tensile force and chain extension for the freely jointed Kuhn chain (FJC) (Equation 2.49) and the Gaussian chain (G) (Equation 2.47). The vertical dashed line represents the fully extended state.
+
+32 P O L Y M E R T R A N S L O C A T I O N
+
+2.4.4 W o r m l i k e C h a i n
+Many polymer chains are not completely flexible under the usual experimental conditions of interest. In order to incorporate the local chain stiffness, the Kuhn model is modified slightly by introducing a “bond angle” 180 − θ between the consecutive Kuhn steps, as sketched in Figure 2.12a. Obviously, this angle is a parameter to capture the backbone stiffness of the chain. Further, let us assume that the Kuhn steps are freely rotating, and now the model is called the Kratky–Porod or wormlike chain model.
+Analogous to Equation 2.1, the mean square end-to-end distance of the Kuhn chain is
+
+R2 =
+
+i· j .
+
+ij
+
+(2.50)
+
+Since the adjacent Kuhn steps are freely rotating, the projection of a Kuhn step onto the direction of the preceding step is cos θ , so that the correlation function for the segmental orientations becomes
+
+i · j = 2 cos|i−j| θ .
+
+(2.51)
+
+By using this result and taking the definition of the persistence length p to be the projection of the end-to-end distance vector on the first step (Cantor and Schimmel 1980, Yamakawa 1997),
+
+lim
+p ≡N →∞
+
+N
+1·
+
+j,
+
+j=1
+
+(2.52)
+
+we get
+
+p = (1 − cos θ ) .
+
+(2.53)
+
+Clearly, as the parameter θ approaches zero, the persistence length becomes very large. For fixed values of p and the contour length L ≡ N for a specific
+
+θ ℓ
+
+u(s)
+
+L
+
+s
+
+R(s)
+
+(a)
+
+(b)
+
+Figure 2.12 Sketches of a wormlike chain. (a) Freely rotating Kuhn chain. (b) Space curve representation: R(s) is the position vector of the segment at the contour variable s; u(s) and ∂u(s)/∂s are the local tangent and curvature, respectively.
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 33
+
+polymer, we make a continuous representation of the freely rotating Kuhn chain by taking smaller and smaller so that the chain curves continuously. Now, θ between the adjacent small steps is necessarily very small. Since (1 − cos θ ) − ln cos θ for θ ∼ 0,
+
+cos θ = exp − .
+p
+
+(2.54)
+
+Therefore, the orientational correlation function follows from Equations 2.51 and 2.54 as
+
+i · j = 2e− |i−j|/ p .
+
+(2.55)
+
+Thus, p is a measure of the distance along the chain contour over which segmental orientations are correlated, as introduced in Section 2.1. Substituting this result in Equation 2.50, the mean square end-to-end distance is given by
+
+R2
+
+= 2 pL
+
+1− p L
+
+1 − e−L/ p
+
+.
+
+(2.56)
+
+This is the full expression for the mean square end-to-end distance in the Kratky–Porod model. The limits of small persistence length with respect to the contour length and vice versa follow from this formula as
+
+R2 = 2 pL ≡ L, p L
+
+L2,
+
+p L.
+
+(2.57)
+
+Therefore, the Kratky–Porod model reduces to the rod conformation for p L, and the freely-jointed random-walk conformation for p L. As noted in the above equation, the Kuhn length is equivalent to twice the persistence length p,
+
+= 2 p,
+
+(2.58)
+
+and hence the Kuhn length is also a measure of chain stiffness. Similar to Equation 2.57, the two limits for the radius of gyration of a wormlike chain are
+
+R2g =
+
+L /6, L2/12,
+
+p p
+
+L L.
+
+(2.59)
+
+Therefore, depending on the ratio of persistence length to the chain length, the same polymer can have different effective size exponents.
+An alternate interpretation of the parameter θ that enters in the definition of p can be reached by considering a continuous representation of the chain backbone. Let us consider a space curve (Figure 2.12b) of contour length L to represent a wormlike chain. Here, the arc length variable s represents a segment along the contour (0 ≤ s ≤ L), whose position, local tangent, and local
+
+34 P O L Y M E R T R A N S L O C A T I O N
+
+curvature are R(s), u(s) = ∂R(s)/∂s, and ∂2R(s)/∂s2 = ∂u(s)/∂s, respectively. Based on the elasticity theory of rods, the energy to bend a rod, per unit length, is half the bending force constant ( b) times the inverse square of the local radius of curvature Rc,
+
+Ub = b
+
+12 .
+
+L 2 Rc
+
+(2.60)
+
+By integrating over the whole contour length of the chain, the total energy Ub of the chain due to all local bends along the contour is
+
+L
+
+Ub =
+
+b
+2
+
+0
+
+∂u 2 ds.
+∂s
+
+(2.61)
+
+The correlation function for the segmental orientations of the wormlike chain follows from an analogy with a quantum mechanical free particle (Yamakawa 1997) as
+
+u(s1) · u(s2) = e−|s1−s2|/ p ,
+
+(2.62)
+
+where the persistence length p is related to the bending energy,
+
+p
+
+=
+
+b. kBT
+
+(2.63)
+
+2.5 C H A I N S W E L L I N G B Y E X C L U D E D V O L U M E E F F E C T
+
+In addition to effects arising from local stiffness along the chain, monomers of real chains undergo excluded volume interactions among themselves mediated by solvent molecules as pointed out in Section 2.3. Since the chain connectivity has been parametrized in terms of Kuhn steps, we define the second virial coefficient (v) for a pair of Kuhn segments, in an equivalent way to Equation 2.17, as
+
+v=
+
+drij
+
+1 − exp
+
+−
+
+1 kBT
+
+u(rij
+
+)
+
+,
+
+(2.64)
+
+where i and j denote the Kuhn segments, and u(rij) is the effective interaction energy between the two segments. Since the right-hand side of the above equation has the dimension of volume, the excluded volume parameter v can be rewritten as
+
+v ≡ w 3 ≡ 1 − χ 3, 2
+
+(2.65)
+
+by expressing the unit of volume as the cube of the Kuhn length. The parameter χ defined above is called the Flory–Huggins χ parameter. The chemical specificity of a particular combination of polymer and solvent at a given temperature
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 35
+
+appears in the value of this parameter. We shall use w and χ interchangeably to address the effect of excluded volume interactions among polymer segments. The temperature dependence of w is as sketched in Figure 2.8c for v. Also, since the intersegment pairwise potential u(rij) is short-ranged, in the absence of charged moieties on the polymer, we parametrize this as the pseudo-potential,
+
+u(rij) kBT
+
+≡
+
+vδ(rij),
+
+(2.66)
+
+where δ(rij) is the Dirac delta function. In the usual sense of high-temperature phenomena, the above definition is consistent with Equation 2.64. Basically, this means that whenever two segments are in contact, the cost of energy is w in units of kBT.
+Let us consider the consequences of including the excluded volume effect in the Gaussian chain model (same as the freely jointed Kuhn chain model with large number of Kuhn steps). To begin with, let us consider repulsive excluded volume interaction, that is, w > 0, corresponding to temperatures higher than the Flory temperature. We expect a swelling of the chain due to excluded volume effect under these conditions. The free energy F (in units of kBT) of the chain is the sum of contributions from chain connectivity Fconnectivity and excluded volume effect Feve,
+
+F = Fconnectivity + Feve.
+
+(2.67)
+
+Fconnectivity is given by Equation 2.43 for a Gaussian chain. Feve is the product of energy cost per contact in volume element 3, probability of finding two
+segments to make the contact at any space location within the coil and the vol-
+ume of the coil. Since the probability of finding two segments at a location is
+proportional to the square of the segment density, we get
+
+Feve
+
+∼
+
+w3 2
+
+N R3
+
+2
+R3,
+
+(2.68)
+
+where we have left out some numerical prefactors. R is the coil radius and the segment density is N/R3. By combining Equations 2.43, 2.67, and 2.68,
+
+F
+
+=
+
+3R2 2N 2
+
++
+
+w3 2
+
+N2 R3 .
+
+(2.69)
+
+Therefore, the repulsive excluded volume interaction favors larger values of R (by lowering Feve), and the entropic part due to chain connectivity favors smaller values of R (by lowering Fconnectivity). As a result, an optimum is attained. This is obtained by minimizing F with respect to R. Leaving out the coefficients, the result is
+
+∂F ∂R
+
+=R N
+
+−
+
+w
+
+4N2 R4
+
+= 0,
+
+(2.70)
+
+36 P O L Y M E R T R A N S L O C A T I O N
+
+so that the optimum coil radius, called the Flory radius, follows as
+
+RF ∼ w1/5N3/5.
+
+(2.71)
+
+For strong repulsive excluded volume interactions, corresponding to “good” polymer solutions (T > θF), the size exponent is 3/5, called the Flory exponent νF
+
+νF
+
+=
+
+3 .
+5
+
+(2.72)
+
+The size exponent given by the above equation is universal for all polymer chains in their good solvents. In fact, data given in Figure 2.6 for different polymer systems obey this universal value of the size exponent. The place where the specificity of the polymer–solvent pair appears is in the slope of the lines in Figure 2.6, which is proportional to w2/5 as given in Equation 2.71. The excluded volume parameter w is of course nonuniversal, depending on the specificity of the intersegment potential interactions for a particular polymer–solvent system.
+The result of Equation 2.71 is valid only asymptotically for very large values of the excluded volume parameter. The√actual variable that determines the strength of the excluded volume effect is w N, which is known as the Fixman parameter. Both the chain length and√the thermodynamic parameter w, appearing together in the co√mbination of w N, determine the extent of the excluded volume effect. If w N is small, then the Gaussian chain size exponent of 1/2 is the result. In general, depending on the magnitude of the excluded volume parameter, there is a crossover between the two limits of Gaussian chain (random-walk statistics) and the excluded volume chain (self-avoiding-walk statistics). A formula that is useful in describing such a crossover is
+
+R2 N2
+
+5/2
+−
+
+R2 N2
+
+3/2 = 4 3
+
+3 2π
+
+3/2 √ w N,
+
+(2.73)
+
+where R is the root mean square end-to-end distance. This equation is derived by taking the correct form (Equation 2.45) for the entropic contribution to the total free energy of the chain and writing the numerical coefficient (that is consistent with the perturbation theory [Muthukumar and Nickel 1984]) for the excluded volume part in Equation 2.68. The free energy F(R) of the chain with its end-to-end distance at R, which leads to the above formula, is
+
+F(R) = 3 kBT 2
+
+R2
+
+R2
+
+N
+
+2
+
+− 1 − ln N
+
+2
+
++4 3
+
+3 2π
+
+3/2 N2 2 w R3 ,
+
+(2.74)
+
+where Equations 2.45 and 2.68, with correct numerical coefficients, are used. R-independent constant terms (except −3/2) are ignored.
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 37
+
+The above result for the coil size (Equation 2.73) crosses over smoothly
+
+between the Gaussian and Flory limits,
+
+⎧√
+
+R
+
+=
+
+⎨ ⎩
+
+N,
+4 1/5 3
+
+3 2π
+
+3/10 w1/5N3/5,
+
+w=0 √
+wN
+
+1.
+
+(2.75)
+
+A similar formula to the above can be derived for the radius of gyration. The qualitative features and the exponents in the asymptotic regimes are the same, the only difference being a slight variation in the numerical coefficients. The factor 4/3 on the right-hand side of Equations 2.73 and 2.75 must be replaced by 134/105 (Yamakawa 1971).
+When a flexible chain can swell maximally due to repulsive excluded volume interactions among its segments, the size exponent is 3/5 and the fractal dimension of the chain is 5/3. In this asymptotic regime,
+
+ν
+
+=
+
+3 ,
+
+5
+
+df
+
+=
+
+5 .
+3
+
+(2.76)
+
+Rigorous calculations (Muthukumar and Nickel 1987, des Cloizeaux and Jannink 1990) based on renormalization group theory give a more accurate value for the size exponent as ν = 0.5886. The difference between this value and the Flory value is indiscernible experimentally, and, as a result, we will use the more transparent Flory value in this book.
+The critical exponent γ determining the total number of chain conformations, and hence the nonextensive part of the N-dependence of the chain free energy, is
+
+γ
+
+=
+
+6 ,
+
+5
+
+(2.77)
+
+as can be readily seen by substituting the N-dependence of the optimum value of R in the free energy expression (Equation 2.74). On the other hand, the renormalization group calculations (Muthukumar and Nickel 1987, des Cloizeaux and Jannink 1990) give
+
+γ ∼ 1.16.
+
+(2.78)
+
+For γ , the Flory’s calculation as derived in this section is not as accurate. There are no closed-form expressions (Muthukumar and Nickel 1987, des
+Cloizeaux and Jannink 1990) for other measures of polymer conformations of a swollen chain, such as the form factor and monomer density profiles. Nevertheless, the general laws discussed in Section 2.2 for statistical fractals are valid, with the approximate value of 5/3 for df . The monomer density decays with the radial distance r as
+
+1 ρ(r) ∼ r4/3 ,
+
+(2.79)
+
+38 P O L Y M E R T R A N S L O C A T I O N
+
+and the form factor depends on the scattering wave vector as
+
+s(k)
+
+∼
+
+1 k5/3 ,
+
+(2.80)
+
+for large angles of scattering, kRg > 1. It is noteworthy that the probability distribution function for finding the end-
+to-end distance is qualitatively different for swollen chains in good solvents from that for a Gaussian chain. Since the segments are avoiding each other due to repulsive excluded volume effect, the probability that the two ends of a chain are close by is very small. This feature is sketched in Figure 2.13 for a swollen chai√n in the asymptotic limit. Here, R3eP(R) is plotted against R/Re, where Re = N . The Gaussian chain result is included in Figure 2.13 for comparison.
+As we shall see later, effects from chain confinement in channels and pores can force the chain to be essentially in space dimensions of two or one. In the space dimension of d, Feve of Equation 2.68 is ∼ w dN2/Rd. By repeating the above procedure of free energy minimization, the Flory radius of a swollen coil in d-dimensions is
+
+RF ∼ Nνd ,
+
+(2.81)
+
+with the size exponent given by
+
+νd
+
+=
+
+d
+
+3 +
+
+. 2
+
+(2.82)
+
+Re3 P(R)
+
+0.3
+
+RW
+
+0.25
+
+0.2
+
+0.15
+
+SAW
+
+0.1
+
+0.05
+
+0.5
+
+1
+
+1.5
+
+2
+
+R/Re
+
+Figure 2.13 Normalized probability distribution of the end-to-end distance. The top curve is for the Gaussian chain (random walk, RW) and the bottom curve is for a fully swollen coil (self-avoiding-walk, SAW).
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 39
+
+For the three space dimensions of interest,
+
+⎧ ⎪⎪⎨ 1,
+
+d=1
+
+ν
+
+=
+
+⎪⎪⎩
+
+3/4, 3/5,
+
+d=2 d = 3.
+
+(2.83)
+
+The values of the Flory exponent for d = 1 and 2 are exact, whereas the value of 3/5 in three dimensions is only approximate, but very close to the rigorous result of 0.5886. It is experimentally impossible to measure differences arising from such a small discrepancy in the exponent. As a result, the mean field theories of the type derived above have been very useful in organizing the conceptual framework for polymer physics.
+
+2.6 C O I L – G L O B U L E T R A N S I T I O N
+
+When the intersegment excluded volume interaction becomes attractive, either
+by the choice of a poorer solvent, or by a change in temperature, or by an
+increase in salt concentration (to be addressed in the next chapter), the polymer
+chain tends to contract in its average size. For the excluded volume parameter w < 0, that is, T < θF, the analysis of the free energy given in Section 2.5 is inadequate. According to Equation 2.69, for w < 0, the free energy minimum of the chain would occur at R → 0 with F approaching −∞. Such a catastrophe is of course unphysical. As the chain contracts, the monomer density increases
+and a description of a chain with only two-body interactions becomes inade-
+quate. Based on a systematic theoretical analysis (des Cloizeaux and Jannink
+1990) of many-body interactions in a polymer chain, it has been shown that
+it is sufficient to include only the three-body interactions between the various
+segments, which turn out to be repulsive. These repulsive interactions counter
+the precipitous collapse of the chain due to the two-body attractive interactions
+and stabilize the chain size.
+In addition to the two terms in Equation 2.69, we take the three-body contribution into account when w < 0. The energy per chain due to three-body interactions is proportional to the product of the triple-contact energy (w3, in units of kBT), probability of finding three monomers in a volume of 3 (proportional to the cube of monomer density, (N/R3)3) and the volume of the coil (∼ R3). Adding this term to Equation 2.69 and ignoring the numerical factors, we get
+
+F=
+
+R2 N2
+
++w
+
+3 N2 R3
+
++ w3
+
+6
+
+N3 R6
+
+.
+
+(2.84)
+
+By minimizing the free energy with respect to R and writing w as − | w |, we obtain
+
+R N
+
++
+
+|
+
+w
+
+| 4N2 R4
+
+−
+
+w3 7N3 R7
+
+=
+
+0.
+
+(2.85)
+
+40 P O L Y M E R T R A N S L O C A T I O N
+
+Again, th√e numerical coefficients are ignored. When the chain collapses such that R < N (the Gaussian chain value), we expect that the free energy contribution arising from the conformational entropy to be weaker in comparison with the two-body and three-body interaction terms. Therefore, by ignoring the first term in the above equation, we get
+
+R=
+
+w3
+
+1/3
+N1/3.
+
+|w|
+
+(2.86)
+
+Substitution of Equation 2.86 into Equation 2.85 for R self-consistently justifies the omission of the first (entropic) term in arriving at Equation 2.86.
+The main conclusion is that when w becomes negative, for temperatures below the Flory temperature, the chain attains the globular state in the asymptotic regime of large N,
+
+R ∼ N1/3,
+
+(2.87)
+
+with the size exponent being 1/3,
+
+ν
+
+=
+
+1 ,
+
+3
+
+df = 3.
+
+(2.88)
+
+It must be noted however that the globule is not fully compact, despite its dimension being three, and there is enough room for rearrangement of various monomers inside the globule. A simple crossover formula that connects the globule and the swollen coil is (Grosberg and Khokhlov 1994)
+
+R2 N2
+
+5/2
+−
+
+R2 N2
+
+3/2 = 4 3
+
+3 2π
+
+3/2 √ w N + w3
+
+N 2 3/2
+
+R2
+
+.
+
+(2.89)
+
+This expression allows the calculation of the polymer size in terms of the chain
+length for different values of the two parameters w and w3. Such calculations (Grosberg and Khokhlov 1994) show that the coil–globule transition is a con-
+formational phase transition and is similar to the liquid–gas phase transition of
+a van der Waals fluid.
+A typical set of experimental data for the contraction of a coil as the tem-
+perature decreases is illustrated in Figure 2.14 for polystyrene in cyclohexane (Slagowski et al. 1976). For the molecular weight of 44×106 g/mol, the radius of gyration decreases from 348 nm at 55 ◦C to 121 nm at 34 ◦C. The Flory temperature is 35.4 ◦C, at which Rg = 207 nm. Chains of rather very large molecular weights were needed in order to experimentally observe significant
+coil shrinkage. However, in most of the experiments, the coil size is smaller with Rg ≤ 100 nm.
+
+2.7 C O N C E N T R A T I O N E F F E C T S
+So far, we have considered only isolated chains where the average distance between any two chains in the solution far exceeds their radius of gyration.
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 41 400
+
+Rg (nm)
+
+200
+
+35
+
+45
+
+55
+
+T (°C)
+
+Figure 2.14 Shrinkage of Rg with lowering temperature. (From Slagowski, E. et al., Macromolecules, 9, 687, 1976.)
+
+As the polymer concentration increases, the polymer size and thermodynamic properties of the solution are significantly modified in ways unique to the stringlike nature of the polymers. Let us consider a solution of volume V, containing n flexible chains with N Kuhn segments per chain. The monomer concentration c is defined as
+
+c
+
+=
+
+nN .
+
+V
+
+(2.90)
+
+A useful marker in addressing the polymer concentration variable (usually
+defined as the total number of monomers per volume, c) is the overlap con-
+centration c , at which the polymer coils are about just touching each other.
+If there are n chains in the polymer solution, then the total volume is roughly
+the volume of each coil times n. Since the chains have not yet penetrated on average into each other at this concentration, the volume of coil is R3g, which in turn is proportional to N3ν. Therefore, the monomer concentration at the chain
+overlap condition is
+
+c
+
+∼
+
+nN nR3g
+
+∼ N(1−3ν).
+
+(2.91)
+
+As a result, for a good solution, c is proportional to N−4/5. The longer the chain, the lower the monomer concentration at which the chains would interpenetrate.
+When c < c , we label the solution as dilute (Figure 2.15a). All of the above results in this chapter are applicable in this limit. As the concentration is increased above the overlap concentration, we have either the semidilute
+
+42 P O L Y M E R T R A N S L O C A T I O N
+
+Dilute
+
+Semidilute
+
+Concentrated
+
+β
+j i
+
+α
+
+(a) c < c
+
+c
+
+c>c
+
+c
+
+(b)
+
+Figure 2.15 (a) Different concentration regimes. c is the overlap concentration. (b) Interpenetration of chains results in the screening of intrachain excluded volume interaction.
+
+solutions (where the monomer density fluctuations can be substantial) or the
+
+concentrated solutions (with only weak monomer density fluctuations).
+
+One of the remarkable consequences of the string-like nature of polymer
+
+chains in crowded environments is the ability for the chains to interpenetrate
+
+and attain significant entropy instead of merely colliding against each other.
+
+As a result, for concentrations higher than the overlap concentration, the intra-
+
+chain excluded volume interaction is substantially screened (Edwards 1966,
+
+de Gennes 1979, Doi and Edwards 1986) by other interpenetrating chains
+
+(Figure 2.15b). This is known as the Edwards screening. Since the intrachain
+
+excluded volume effect is diminished by this screening phenomenon progres-
+
+sively with increasing concentration, the effective value of the size exponent of
+
+a labeled chain in good solvents decreases with polymer concentration and ulti-
+
+mately reaches the Gaussian chain value of 1/2. In fact, the radius of gyration
+
+of a labeled chain in semidilute solutions depends on the polymer concentration
+
+and N according to (de Gennes 1979, Muthukumar and Edwards 1982a)
+
+√ N
+Rg ∼ c1/8 .
+
+(2.92)
+
+Also, remarkably, the radius of gyration of a labeled chain in a melt obeys the
+
+Gaussian chain scaling law (Cotton et al. 1974, Wignall et al. 1974),
+
+√ Rg ∼ N, melt.
+
+(2.93)
+
+The correlation length ξ that characterizes the monomer density fluctuations depends on the polymer concentration. For dilute solutions with c < c , the monomers are correlated over the coil radius, and therefore, ξ ∼ Rg. For c > c , the concentration dependence of ξ depends on whether c corresponds to
+the semidilute regime or concentrated regime. In the semidilute regime, where the monomer density fluctuations are substantial, ξ ∼ c−ν/(3ν−1), where the size exponent ν depends on the solvent quality for the polymer swelling (de Gennes
+1979). On the other hand, for concentrated solutions where monomer density fluctuations are weak, ξ ∼ c−1/2, and in this regime, ξ is known as the
+Edwards screening length. The above results are summarized in Table 2.2 for good solutions (ν = 3/5).
+
+S I Z E , S H A P E , A N D S T R U C T U R E O F M A C R O M O L E C U L E S 43
+
+TABLE 2.2 Rg and ξ in Dilute, Semidilute, and Concentrated Solutions of Flexible Chains in Good Solvents
+
+Quantity
+Rg ξ
+
+Dilute N 3/5 Rg
+
+Semidilute √
+c−1/8 N c−3/4
+
+Concentrated √ N c−1/2
+
+Source: Muthukumar, M. and Edwards, S.F., J. Chem. Phys., 76, 2720, 1982a.
+
+The free energy of a concentrated polymer solution has two parts. The first part is the mean field contribution arising from the translational entropy of the chains and solvent molecules, and the enthalpic interactions among the polymer segments and solvent molecules. The second part is due to monomer density fluctuations. Assuming that the components are randomly mixed without any topological correlations associated with chain connectivity and that the solution is incompressible, the mean field part is given by the Flory–Huggins theory (Flory 1953) as
+
+F0 = φ ln φ + (1 − φ) ln(1 − φ) + χ φ(1 − φ), kBTV N
+
+(2.94)
+
+where φ is the volume fraction of the polymer nN 3/V, and the Flory–Huggins parameter χ is defined in Equation 2.65. The first two terms on the right-hand side of Equation 2.94 are due to the entropy of random mixing of the polymer segments and solvent molecules. The third term is the enthalpy of mixing with the assumption of random mixing. In deriving the above equation, the volumes of a solvent molecule and a segment are assumed to be identical for convenience, and the reference state of pure polymer and solvent components is taken. With this reference state in deriving the free energy of mixing, F0, the Flory–Huggins χ parameter is a measure of the relative pairwise interaction energy between a polymer segment and a solvent molecule (wps) with respect to the pairwise energies for the pure components (wpp for the polymer segments, and wss for the solvent molecules),
+
+χ∼ 1 kBT
+
+wps
+
+−
+
+1 2
+
+(wpp
+
++
+
+wss)
+
+.
+
+(2.95)
+
+For good solutions where the polymer–solvent interactions are more favorable (wps < 0) in comparison with polymer–polymer and solvent–solvent interactions, χ is negative. It can be shown that the polymer solution is miscible and homogeneous if χ is less than about 1/2 (Flory 1953).
+
+44 P O L Y M E R T R A N S L O C A T I O N
+
+The free energy part, Ffl,p, arising from monomer density fluctuations can be derived to be (Muthukumar and Edwards 1982a)
+
+Ffl,p kBTV
+
+=
+
+1 24π ξ 3 ,
+
+(2.96)
+
+where ξ depends on the polymer concentration as a crossover function between
+
+the regimes of Table 2.2. By adding the above two parts, the free energy density
+
+of a crowded polymer solution follows as
+
+F kBTV
+
+=
+
+φ N
+
+ln φ + (1 − φ) ln(1 − φ) + χ φ(1 − φ) +
+
+1 24π ξ 3 .
+
+(2.97)
+
+This equation can be used to obtain an expression for the osmotic pressure of a polymer solution inside a confining region.
+We do not dwell more on the thermodynamic consequences of chain interpenetration in the crowded semidilute and concentrated polymer solutions, as we will mainly focus on the translocation phenomenon involving single chains in this book.
+
+2.8 S U M M A R Y
+
+Although the polymer chains must possess chemical specificity in order to express their unique functions in various macromolecular processes, they exhibit certain universal behavior at larger length scales. By parametrizing the chemical details at the monomeric level, we have described various coarsegrained models, namely the Kuhn chain, Gaussian chain, and the wormlike Kratky–Porod chain. Chain stiffness is captured by the persistence length parameter.
+We introduced several measures of polymer conformations, the most important being the radius of gyration Rg of the chain. It depends on the number of monomers N in the chain, according to a power law,
+
+Rg ∼ Nν ,
+
+(2.98)
+
+where the size exponent can take universal values. The fractal dimension df of the polymer is the reciprocal of ν.
+Excluded volume interactions among segments mediated by the solvent lead to different scaling behaviors. In good solvents, the excluded volume interactions are repulsive and the coils are swollen (ν 3/5). In poor solvents, the excluded volume interactions are attractive and the chain contracts to become globules (ν 1/3).
+If the chain stiffness is strong and if the contour length is short, then the polymer is rod-like (ν 1). Even a stiff chain can look coil-like with randomwalk statistics (ν = 1/2), if the contour length is too long in comparison with the persistence length and if the excluded volume interactions are absent. At short distances along the backbone, the chain is rod-like, while at larger length scales it appears coil-like.
+
+3
+ELECTROLYTE SOLUTIONS, INTERFACES, AND GEOMETRIC
+OBJECTS
+What happens when a pinch of table salt is added to a cup of water? The dissociated cations (sodium ions) and anions (chloride ions) in the polar solvent distribute themselves in a correlated manner due to their electrical charges. Like charges repel each other and the opposite charges attract, and the pairwise electrostatic interactions can be long-ranged. As a result, the long-ranged correlations among the dissociated electrolyte ions lead to thermodynamic properties distinctly different from those for solutions containing uncharged solute molecules, although the electrolyte solution is overall neutral. When a foreign body such as a colloidal particle or a cylindrical pore is present in an electrolyte solution, the interfaces tend to be charged with one sign, and the oppositely charged ions (counterions) hover over near the interfaces. The amount of counterions near the interfaces is dictated by the balance between the strength of the attractive interaction between opposite charges and the loss of translational degrees of freedom of free counterions. Polyelectrolytes are no exception to this phenomenon. However, the conformational degrees of freedom of the charged macromolecules play an additional role in the way the various ions are correlated. Since an adequate description of ions surrounding a fluctuating macromolecule is quite complex, approximations are necessary. On the other hand, some rigorous results are known for the behavior of electrolyte solutions near rigid geometries such as planar interfaces, spheres, cylinders, pores, and lines. Therefore, it is useful to first gain an understanding of the behavior of electrolyte solutions around rigid geometric objects, before we address suitable models and approximations for charged macromolecules. The primary focus of this chapter is to collect the key concepts of electrostatic interactions in electrolyte solutions containing rigid geometric objects.
+3.1 E L E C T R O L Y T E S O L U T I O N S Let us consider a dilute solution of a completely dissociated simple electrolyte. The charges of the ions are denoted by zae, where the subscript a refers to the different kinds (cations and anions) of ions. e is the absolute value of the unit electronic charge. za is a positive or a negative integer. Let na0 be the number density of ions of the a-type, namely the number of ions of the a-type per unit
+45
+
+46 P O L Y M E R T R A N S L O C A T I O N
+
++ –
+––
+
+– +
+
++i
+
+–
+
++ i
+
+–+
+
+(a) –
+
+–+
+
+(b)
+
+Figure 3.1 Sketches of (a) distribution of ions and (b) the cloud around the reference ion i.
+
+volume of the solution. Since the solution as a whole is electrically neutral,
+
+na0za = 0.
+a
+
+(3.1)
+
+Due to the electrostatic interaction being not short-ranged, the ions are not randomly distributed in the solution. Although the distance between any two nearby ions is about the same (which is set by the electrolyte concentration), the distribution of the ion charge is not uniform. The immediate neighborhood of an ion of positive charge is likely to have more of negative ions than the average number that would be at distances sufficiently far away from the reference ion. As a result, we can imagine that every ion in the solution is surrounded by a cloud of ions such that the net charge of the cloud is exactly the same as that of the reference ion but of opposite sign (Figure 3.1). Before we address the essential features of the counterion cloud around a labeled ion and the spatial variations of the ion distributions and electrical potentials in the system, let us first consider only one pair of ions.
+
+3.1.1 C o u l o m b I n t e r a c t i o n a n d B j e r r u m L e n g t h
+The electric potential ψ(r) due to a point-charge ezi at a radial distance r =| r | from the center of the ion is given by the Coulomb law,
+
+ψ(r) = ezi 4π 0
+
+1 ,
+r
+
+(3.2)
+
+where is the dielectric constant of the medium where the ion is placed, and 0 is the permittivity of the vacuum. The electric field due to the ion is the negative gradient of the potential,
+
+E(r) = −∇ψ(r).
+
+(3.3)
+
+Therefore, the electric potential (ψ ∼ 1/r) and the electric field (E ∼ 1/r2) due to a charge are long-ranged. This is to be contrasted with the hydrophobic forces that operate only at monomeric distances and hence short-ranged. When another ion of charge ezj is placed at a distance r from the first ion, the
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 47
+
+electrostatic energy of the second ion in the field created by the first ion is given by
+
+uij(r) = ezjψ(r).
+
+(3.4)
+
+Substituting Equation 3.2 for ψ(r) in the above equation, the electrostatic energy of a pair of ions of charges zie and zje, separated by a distance r, is given by the Coulomb energy,
+
+uij(r)
+
+=
+
+zizje2 4π 0
+
+1 .
+r
+
+(3.5)
+
+The strength of the interaction depends on the valencies of the ions and the dielectric constant of the medium, in addition to the fundamental constants e and 0. A convenient measure of the strength of the electrostatic interaction between two ions in a medium with uniform dielectric constant is the Bjerrum length B defined as
+
+B≡
+
+4π
+
+e2 .
+0 kBT
+
+(3.6)
+
+The Bjerrum length is the distance at which the electrostatic energy of bringing
+two charges is equal to the thermal energy kBT. If the distance between two monovalent ions is shorter than B, the ions would interact stronger; for r > B, the interaction would be weaker. The value of B depends importantly on the dielectric constant of the medium. For example, for aqueous solutions at 25◦C,
+the Bjerrum length is
+
+B 0.7 nm,
+
+= 80 and T = 25◦C,
+
+(3.7)
+
+where the dielectric constant is taken to be 80 along with e = 1.602 × 10−19 C, 0 = 8.854 × 10−12 C2/N · m2, and kB = 1.381 × 10−23 J/K. On
+the other hand, for oil-like media such as alkanes ( = 2.25), B is
+
+B 24.9 nm,
+
+= 2.25 and T = 25◦C.
+
+(3.8)
+
+As the interior of a folded protein or the neighborhood of the backbone of a polyelectrolyte has lower dielectric constant, the counterions are bound more strongly to the charged monomers in the interior, in comparison with the monomers at the outside boundary of the molecule. Also, as the experimental conditions change, the chain conformations can alter substantially. For example, a folded protein or a globule-like polyelectrolyte can open up. Simultaneously to this change, the previously bound counterions would become unbound as the local dielectric constant becomes higher (i.e., B becomes smaller). The binding of counterions to the polymer is self-regulated with the changes in polymer conformations in a self-consistent manner, as we shall see in the next chapter. It also must be recognized that the dielectric constant
+
+48 P O L Y M E R T R A N S L O C A T I O N
+
+of a solvent is temperature dependent, and as a result, B depends on temperature through both and T in Equation 3.6. A special feature of aqueous solutions is that B is essentially insensitive to the temperature. The temperature dependence of for water is such that the product T is insensitive to the temperature.
+
+3.1.2 P o i s s o n – B o l t z m a n n E q u a t i o n
+The electric potential around a labeled ion in an electrolyte solution is determined by the correlated distribution of other ions in the system. The electric potential ψ(r) at any spatial location r is given by the Poisson equation (Griffiths 1999),
+
+∇2ψ(r) = − ρ(r) ,
+
+(3.9)
+
+0
+
+where ρ(r) is the local charge density of ions at r. The total charge density due to all ions at r is given by
+
+ρ(r) = ezana(r)
+a
+
+(3.10)
+
+where na(r) is the local number density of a-type ions (cations or anions). The potential energy of an ion of the a-type in the electric field created by ψ(r) around the ion is ezaψ(r). We assume that the local number density of each kind of ions follows the Boltzmann distribution,
+
+na(r) ∼ exp
+
+− ezaψ(r) kBT
+
+.
+
+(3.11)
+
+The potential energy from nonuniform distribution of ions in the ion cloud vanishes at very large distances from the reference ion, because the ion distribution is uniform (na0) with respect to the reference ion at such large distances. Therefore, the proportionality factor in the above equation is the average number density na0 so that
+
+na(r) = na0 exp
+
+− ezaψ(r) kBT
+
+.
+
+(3.12)
+
+Combining the Poisson equation (Equation 3.9) and the Boltzmann equation (Equation 3.12), and using Equation 3.10, we get the Poisson–Boltzmann equation,
+
+∇2ψ(r) = − e
+0
+
+a
+
+zana0 exp
+
+− eza ψ(r) kBT
+
+.
+
+(3.13)
+
+We must be aware that the Boltzmann formula for the distribution of ions is not exact, and the potential of mean force from all ions should be used in
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 49
+
+the argument of the exponential instead of the average potential. As a result, the Poisson–Boltzmann equation is known to lead to some incorrect results (McQuarrie 1976, Barthel et al. 1998). Nevertheless, this formalism is adequate in explaining many experimental situations. In particular, we shall implement the results of the Poisson–Boltzmann equation in the treatment of ionic current through nanopores.
+
+3.1.3 D e b y e – H ü c k e l T h e o r y
+The Poisson–Boltzmann equation for the electric potential, or equivalently distribution of ions, is nonlinear, and the solution of the equation requires numerical methods, except for a few special situations. However, tremendous simplification arises, without losing the major concepts of ion correlations, by linearizing the above nonlinear equation, Equation 3.13.
+Let us consider experimental conditions where the electrostatic interaction of the ions is relatively weak such that the electrical potential energy of an ion interacting with its cloud, ezaψ, is small in comparison with the thermal energy kBT. Under these conditions, the exponential of Equation 3.13 can be expanded as a series,
+
+∇2ψ(r) = − e
+0
+
+zana0
+a
+
+1 − eza ψ(r) + · · · kBT
+
+.
+
+(3.14)
+
+Due to the electroneutrality condition of Equation 3.1, the first term on the righthand side of the above equation vanishes. By ignoring all the higher order terms inside the square brackets except the linear term in ψ, we get the linearized Poisson–Boltzmann equation,
+
+∇2ψ(r) = κ2ψ(r),
+
+(3.15)
+
+where
+
+κ2 ≡
+
+e2 0 kBT
+
+z2ana0.
+a
+
+(3.16)
+
+The linearized Poisson–Boltzmann equation is referred to as the Debye– Hückel equation. The constant coefficient κ2 appearing in the above equation is one of the important parameters in the discussion of electrolyte solutions and polyelectrolytes. We shall describe its physical interpretation and experimental relevance below and in Section 3.1.3.1.
+Let us consider the electric potential around a reference ion i with charge ezi. Since the ion cloud is spherically symmetric on average, Equation 3.15 can be rewritten as
+
+1d r2 dr
+
+r2 dψ dr
+
+= κ2ψ,
+
+(3.17)
+
+50 P O L Y M E R T R A N S L O C A T I O N
+
+where r is the radial distance from the reference ion i. Assuming that all ions are point-like and using the boundary conditions that the electric potential vanishes as r → ∞ and it is given by Equation 3.2 for very small values of r, the solution of the above equation is
+
+ψ (r)
+
+=
+
+ezi 4π 0
+
+e−κ r .
+r
+
+(3.18)
+
+Thus, the potential is Coulomb-like at distances shorter than κ−1, and it becomes small at distances longer than κ−1. The net effect of correlations
+among all ions is to screen the potential from an ion and make it less long-
+ranged than the Coulomb potential. The potential given by Equation 3.18 is
+called the Debye–Hückel potential, screened Coulomb potential or the Yukawa potential. κ−1 is called the Debye length or the electrostatic screening length.
+The electrostatic energy between two charges ezi and ezj separated by a distance rij is the product of ezj and the potential due to the charge ezi,
+
+uij(rij) =
+
+e2zizj 4π 0
+
+e−κ rij .
+rij
+
+(3.19)
+
+Using the definition of the Bjerrum length, Equation 3.6, Equation 3.19 can be rewritten as
+
+uij(rij) = zizj
+
+e−κ rij BkBT rij .
+
+(3.20)
+
+The electrostatic potential energy between two ions given by Equations 3.19 and 3.20 is called the Debye–Hückel potential energy. The collective effect of the ions in the solution is to screen the Coulomb interaction between a pair of ions given by Equation 3.5 resulting in the screened electrostatic interaction given by Equation 3.19.
+
+3.1.3.1 Electrostatic Screening Length The electrostatic screening length, also called the Debye length ξD, is the key measure of the range of electrostatic interaction among charges in a medium. It is defined as the reciprocal of κ, as mentioned above
+
+ξD ≡ κ−1.
+
+(3.21)
+
+Substitution of Equation 3.16 in the above definition gives
+
+ξD =
+
+e2 0 kBT
+
+z2ana0
+a
+
+−1/2
+.
+
+(3.22)
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 51
+
+This result can be expressed in terms of the electrostatic strength parameter (Bjerrum length B), by using Equation 3.6 in the above equation, as
+
+ξD =
+
+−1/2
+
+4π B z2ana0
+
+.
+
+a
+
+(3.23)
+
+Thus, ξD is inversely proportional to the square root of the Bjerrum length for a fixed concentration of the electrolyte,
+
+1 ξD ∼ √ .
+B
+
+(3.24)
+
+Whereas the Bjerrum length is a property of the solvent, the Debye length is a property of the solution. The dependence of ξD on the electrolyte concentration can be written in terms of the experimentally convenient concentration unit (molarity, i.e., number of moles per liter, with liter being dm3). The number
+density na0 of ions of a-type is
+
+na0 = 103NAca0,
+
+(3.25)
+
+where ca0 is the concentration of ions of a-type in molarity, NA is the Avogadro number, 6.023 × 1023, and the factor of 103 arises from the relation
+1000 dm3 = 1 m3. Utilizing the above conversion factor, κ2 becomes
+
+κ2 = 4000π BNA z2aca0,
+a
+
+(3.26)
+
+where ca0 is in molarity, and κ−1 and B are in the SI unit of m. It is also convenient to group the valencies of ions and their concentrations together by defining the ionic strength I of the electrolyte solution as
+
+I≡1 2
+
+a
+
+z2aca0.
+
+In terms of the ionic strength, κ2 becomes
+
+(3.27)
+
+κ2 = 8000π BNAI,
+
+(3.28)
+
+or more explicitly
+
+κ2 = 2000e2NA I. 0 kBT
+
+For an aqueous electrolyte solution at 25◦C (with = 78.54),
+
+√ κ = 2.32 × 109 2I
+
+m−1,
+
+(3.29) (3.30)
+
+52 P O L Y M E R T R A N S L O C A T I O N
+
+and the Debye length is
+
+ξD = 0√.43 nm. 2I
+
+(3.31)
+
+For monovalent salts, ξD is conveniently given by
+
+ξD
+
+0.3 √ nm,
+cs
+
+(3.32)
+
+where cs is the salt concentration in units of moles per liter. The typical values of the Debye length are given in Table 3.1 for (1:1)
+(sodium chloride type) and (2:1) (calcium chloride type) salts at concentration cs. The dependence of ξD on cs, for (1:1) and (2:1) type salts, is presented in Figure 3.2. In general, ξD decreases with salt concentration, and more sharply for ions with higher valencies. Specifically, the Debye length is 0.78 nm (which is comparable to the value of the Bjerrum length) at 150 mM monovalent salt in the solution. It progressively decreases with cs and becomes merely 0.3 nm (which is less or comparable to monomer sizes) at 1 M of monovalent salt. These values for the electrostatic range become even smaller if multivalent ions such as magnesium and calcium are present in the solution. Thus, for higher salt concentrations typically used in the translocation experiments, the electrostatic correlation is not long-ranged, and it is possible to combine the electrostatic interaction among monomers with the short-ranged excluded volume interaction in describing equilibrium properties. We shall return to this issue in the next chapter.
+
+3.1.3.2 Effect of Ion Size Instead of taking the ions as point charges, as done above, the Debye–Hückel theory can be extended to ions with finite sizes. Let each of the ions (cations and anions) be modeled as a hard sphere of diameter a with its charge located
+
+TABLE 3.1 Debye Length in Nanometer for Different Electrolyte Concentrations and Valencies (Aqueous Solutions at 25◦C)
+
+cs (mol/L)
+10−4 10−3 10−2 10−1 0.150 1.0
+
+(1:1)
+30.4 9.6 3.04 0.96 0.78 0.304
+
+(2:1)
+17.6 5.55 1.76 0.555 0.453 0.176
+
+ξD (nm) ψ~
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 53
+
+1.4
+
+1.2
+
+1
+
+0.8
+(1:1) 0.6
+
+0.4
+
+0.2
+
+(2:1)
+
+0.2
+
+0.4
+
+0.6
+
+0.8
+
+1
+
+cs (M)
+
+Figure 3.2 Dependence of the Debye length on salt concentration for (1:1) and (2:1) types.
+
+at the origin of the hard sphere (Figure 3.3a). Further, let us assume that each of the ions is made of a material with the same dielectric constant as the solvent. This model is known as the restricted primitive model (McQuarrie 1976) of electrolytes. The electric potential around a reference ion i of diameter a and charge ezi can be readily derived (McQuarrie 1976), by extending the above Debye–Hückel theory to finite ion sizes, to be
+
+ψ(r) = ezi
+
+e−κ (r−a) ,
+
+r > a,
+
+4π 0 r(1 + κa)
+
+(3.33)
+
+and
+
+ψ(r) =
+
+ezi 4π 0
+
+r
+
+− 4π
+
+0
+
+eziκ (1 +
+
+κ
+
+a)
+
+,
+
+0 < r < a.
+
+(3.34)
+
+1
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+
+a
+
+(a)
+
+(b)
+
+1 a
+
+2
+
+3 r4
+
+Figure 3.3 (a) Ions with diameter a. (b) Electric potential around a charge of ezi with diameter a (Equation 3.33) for a = 1 nm and κ−1 = 0.78 nm. The lower curve is (Equation 3.18) for point charges. The ordinate is 4π 0 ψ/ezi.
+
+54 P O L Y M E R T R A N S L O C A T I O N
+
+The electric potential given by Equation 3.33 is called the extended Debye– Hückel potential and is plotted in Figure 3.3b. For comparison, the result of Equation 3.18 is included in the figure. The finite size of the ion modifies the prefactor by a factor of exp(κa)/(1+κa), and the beginning of the decay of the potential is shifted to the ion diameter. The distance dependence is the same as the screened Coulomb potential for r > a. For a → 0, Equation 3.33 reduces to the Debye–Hückel potential.
+The first term on the right-hand side of Equation 3.34 is obviously the contribution from the reference ion itself (according to the Coulomb law, Equation 3.2). As a result, the second term must be the contribution of all ions outside the reference ion. Hence, the second term is identified as the electric potential ψcloud from the ion cloud acting on the reference ion,
+
+ψcloud
+
+= − 4π
+
+0
+
+eziκ (1 +
+
+κ
+
+a)
+
+.
+
+(3.35)
+
+We now consider the charge distribution inside the cloud that leads to the potential given by Equation 3.35.
+
+3.1.3.3 Charge Distribution around an Ion The net charge density distribution of the ion cloud around a reference ion i of charge ezi follows from Equations 3.10 and 3.12 as
+
+ρcloud(r) =
+
+a
+
+ezana0 exp
+
+− eza ψ(r) kBT
+
+.
+
+(3.36)
+
+As the cloud is outside the reference ion, corrections of order 1/n, with n being the total number of ions in the solution, are ignored. As in the Debye–Hückel theory, by expanding the exponential term and keeping up to the linear term in ψ, we obtain
+
+ρcloud (r)
+
+=
+
+−
+
+e2 kBT
+
+z2ana0 ψ(r).
+a
+
+(3.37)
+
+With the definition of the inverse Debye length κ (Equation 3.16), the charge density in the cloud becomes
+
+ρcloud(r) = − 0 κ2ψ(r).
+
+(3.38)
+
+Substituting Equation 3.33 for the electric potential, we get
+
+ρcloud (r)
+
+=
+
+− eziκ2 4π(1 + κa)
+
+e−κ (r−a) r
+
+.
+
+(3.39)
+
+The charge density around an ion has a sign opposite to that of the reference ion and is proportional to the potential in the Debye–Hückel approximation. The
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 55
+
+total charge surrounding the reference ion is
+
+∞
+ezcloud = ρcloud(r)4π r2dr,
+a
+
+(3.40)
+
+where radial symmetry is used and the lower limit of the integral reflects that the centers of ions in the cloud cannot approach the reference ion within the diameter a of the ion (Figure 3.3a). Also, the evaluation of the integral of Equation 3.40 leads to the expected result that the total charge around the reference ion i is equal and opposite to the charge of the reference ion,
+
+ezcloud = −ezi.
+
+(3.41)
+
+The fraction of net charge, dezcloud, between r and r + dr in the cloud is 4π r2ρcloud, proportional to κr exp(−κr), as seen from Equations 3.39 and 3.40.
+Rewriting this result,
+
+pcloud(r) ≡
+
+− (1 + κa)(dezcloud) exp(−κa) eziκ
+
+= κre−κr.
+
+(3.42)
+
+The form and the extent of the cloud around an ion are illustrated in Figure 3.4, where pcloud(r) is plotted against κr. The maximum occurs at the Debye length ξD ≡ κ−1, and the most important region of the ion cloud is in the neighborhood of r ∼ κ−1. As seen in Table 3.1 and Figure 3.2, the location of this region moves to larger values as the solution becomes more dilute in salt concentration.
+For distances near the reference ion, larger than the ion radius but shorter than the distance of contact between two ions, the above results of Equation 3.41 and Figure 3.4 lead to a simple geometric representation of the cloud.
+
+p (r)
+
+0.35
+
+0.3
+
+0.25
+
+0.2
+
+0.15
+
+0.1
+
+r = ξD
+
+0.05
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+κ r
+
+Figure 3.4 Fraction of net charge of the cloud versus the radial distance in units of the Debye length ξD.
+
+56 P O L Y M E R T R A N S L O C A T I O N
+
+Zie a
+
+Cloud (–zie)
+ξD
+
+Figure 3.5 Geometrical interpretation of a cloud as a thin spherical shell of radius (a + ξD) with net charge being the negative of the charge of the reference ion.
+
+The cloud around the reference ion i with charge ezi can be imagined equivalently as a thin spherical shell with a net charge of −ezi at a radial distance of a + κ−1 from the center of the ion i. The electric potential from this spherical layer on the ion i is precisely as given in Equation 3.35, by substituting a + κ−1 for r in Equation 3.2. Thus, the net potential acting at r from the center of the ion i is the sum of the self-potential arising from itself and the potential arising from the cloud taken as a thin shell of opposite charge, located at the distance of the Debye length away from the diameter of the ion. This result, as given by Equation 3.34, is sketched in Figure 3.5. Of course, for distances larger than the distance of pairwise contact, namely the diameter of the ion, the potential is given by Equation 3.33 and Figure 3.3b.
+As we shall see later in dealing with charged macromolecules, the clouds of counterions around each of the charged monomers dominate the behavior of these macromolecules. In fact, the physics of polyelectrolytes can be termed as counterion physics. It is thus essential to have a good grasp of the results presented in Section 3.1.3 to understand the structure and mobility of charged macromolecules.
+
+3.1.3.4 Free Energy The electrostatic correlations of the ions in the electrolyte solution contribute to the Helmholtz free energy of the system, depending on the Debye length and ion size. Based on the Debye–Hückel theory for the restricted primitive model (Figure 3.3a), the result (McQuarrie 1976) is
+
+Fel kBT
+
+=
+
+−
+
+V 4π a3
+
+ln(1 + κa) − κa + 1 κ2a2 2
+
+,
+
+(3.43)
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 57
+
+where V is the total volume of the system. For low salt concentrations (i.e., ξD ≡ κ−1 is large), κa may become so small that the above equation
+simplifies to
+
+Fel = − Vκ3 , κa → 0.
+
+kBT
+
+12π
+
+(3.44)
+
+The above equations are valid also for nonneutral plasma containing only counterions of a polyelectrolyte (Muthukumar 2002a), without considering the polymer charge in the treatment of ionic clouds. As the degree of ionization of a macromolecule changes, due to changes in experimental conditions, the counterion concentration changes, and consequently the free energy due to correlations of counterions changes. Such effects must be accounted for in constructing the free energy landscape for the translocation process.
+
+3.2 C H A R G E D I N T E R F A C E S
+All electrolyte solutions, pertinent to experimental systems, contain interfaces such as the walls of the container, internal surfaces of pores, surfaces of lipid bilayers, and surfaces of macroions present in solutions. Due to either chemical reactions, ionic equilibria, or adsorption of specific ions at the interfaces, all interfaces usually bare charges. Also, charges can be deliberately injected into the interfaces by using electrodes with an externally applied voltage. The charge density at the interface determines the electrical potential and density distribution of the electrolyte near and away from the interfaces. In general, the behavior of electrolyte solutions near charged interfaces can be quite complex. However, the salient conceptual issues associated with charged interfaces can be gleaned by considering suitably tailored theoretical models with simplifying assumptions.
+As examples, we shall consider planar interfaces, cylindrical pores, large spherical and cylindrical macroions, and even an infinitely thin line of charges. Since the ideas presented in the previous section can be readily implemented to spherical macroions (Figure 3.6a), this example will be dealt with first. Next, planar-charged interfaces (Figure 3.6b) will be discussed in some detail, due to the common occurrence of this geometry in experiments. The situation of rolling the planar interface into a pore (Figure 3.6c) will follow next. Finally, a cylinder bearing charges on the outside (Figure 3.6d), along with the asymptotic limit of an infinitely thin line of charges (Figure 3.6e), will be discussed.
+In realistic situations, the dielectric constants of the media across the interfaces are different. Consideration of the dielectric mismatch is quite important in assessing the quantitative aspects of forces among ions in the neighborhood of interfaces. A full treatment of dielectric heterogeneity (Frohlich 1958, Verwey and Overbeek 1999) in electrolyte solutions is beyond the scope of this book. Nevertheless, we shall consider one example in Section 3.2.6 to illustrate the effects due to dielectric mismatch across interfaces. Our primary
+
+58 P O L Y M E R T R A N S L O C A T I O N
+
+(a)
+
+(b)
+
+(c)
+
+(d)
+
+(e)
+
+Figure 3.6 Interfaces of (a) spherical particles, (b) planar surfaces, (c) cylindrical pores, (d) cylindrical particles, and (e) inﬁnitely thin lines.
+
+focus is only on the major concepts related to electric potential, electric field, and ion distributions near the interfaces, by ignoring the quantitative details arising from the dielectric mismatch at interfaces.
+
+3.2.1 C h a r g e d S p h e r i c a l P a r t i c l e s
+Consider a spherical macroion of radius R with its total charge Q distributed uniformly on its surface, present in an electrolyte solution. Since the total system is electrically neutral, the solution contains the counterions of the macroion and the dissociated salt ions. One kind of the dissociated ions, say the anions, has the same sign as the charge of the macroion. The ions of this kind are called coions. The other kind, now the cations, has the same sign as that of the counterions of the macroion. Without regard to the possible difference in the specificity of the counterions from the macroion and the salt, we shall call both of these as simply counterions. The electric potential and distributions of counterions and coions around the macroion can be obtained by solving the Poisson–Boltzmann equation (Equation 3.13). No analytical solutions are possible for this nonlinear equation with this geometry. Just as we did in Section 3.1.3, we make the linearization approximation. The Debye–Hückel theory derived for small ions can be immediately applied to the macroion case as well. Let a be the radius of the effective sphere that excludes the small ions (Figure 3.7), where
+
+a = R + ai,
+
+(3.45)
+
+with ai being the mean radius of small ions. Copying the result of Equation 3.33, the electric potential outside the effective sphere of the macroion is given by the Debye–Hückel potential,
+
+ψ(r) =
+
+Q
+
+e−κ (r−a) ,
+
+r > a.
+
+4π 0 r(1 + κa)
+
+(3.46)
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 59
+Cloud (–Q)
+
+R ai
+
+Q ξD
+
+(a)
+
+a
+
+(b)
+
+Figure 3.7 Effective radius of a spherical macroion, a = R + ai. The ion cloud is at the Debye length from a. For electrolyte ions much smaller than the macroion, a R.
+
+For distances shorter than the sum of particle radius and small ion radius, Equation 3.34 gives
+
+Q ψ = 4π 0
+
+1 r
+
+−
+
+(1
+
+κ +
+
+κ a)
+
+,
+
+r < a.
+
+(3.47)
+
+If the radius of the small ion is negligible in comparison with the radius R of the macroion (or a spherical colloidal particle) of net charge Q, the electric potential from the macroion is
+
+ψ(r) =
+
+Q
+
+e−κ (r−R) ,
+
+r > R.
+
+4π 0 r(1 + κR)
+
+(3.48)
+
+The properties of ψ(r) and the counterion cloud are exactly the same as described in Section 3.1.3. The ionic cloud around the macroion contributes to the surface potential of the macroion, in addition to the potential arising from the charge of macroion itself. Equation 3.47 yields for r = R,
+
+ψ= Q 1− κ
+
+.
+
+4π 0 R (1 + κR)
+
+A slight rearrangement of this equation gives
+
+(3.49)
+
+Q ψ = 4π 0
+
+1 R
+
+−
+
+R
+
+1 + κ−1
+
+.
+
+(3.50)
+
+Therefore, the potential on the surface of a spherical-charged particle is the
+sum of the potential from its charge and that from its ion cloud, as a spherical shell with the opposite charge of the particle, located at the Debye length (κ−1) away from the surface of the macroion. We shall use this result in describing
+the mobility of macroions in electrolyte solutions.
+
+60 P O L Y M E R T R A N S L O C A T I O N
+
+eσs
+
++–
+
+–
+
++
+
++
+
+–+
+
+––
+
++– +–
+
+–+
+
++ –
+
++
+
+–
+
++
+
++–
+
+–
+
+–
+
+x Figure 3.8 An electrolyte solution near an interface.
+
+3.2.2 P l a n a r I n t e r f a c e s
+Let us consider an electrolyte solution at a planar interface with uniform charge density eσs (Figure 3.8). Let the ions in the solution be point-charges and the solution has a uniform dielectric constant . The image charges due to the dielectric mismatch at the interface are ignored. The spatial variation of the electric potential away from the interface and the density distributions of the counterions and coions can be obtained exactly from the Poisson– Boltzmann equation for this model. This theory is known as the Gouy– Chapman theory. In fact, this situation is one of the few cases where the nonlinear Poisson–Boltzmann equation can be solved exactly, and helps to have confidence in using the Debye–Hückel theory under appropriate experimental conditions. We shall give below only the important results without derivations (Evans and Wennerstrom 1999).
+Since the planar interface is taken as infinitely wide, the spatial variations of the electric potential and ion distributions occur in only one dimension along the x-axis normal to the interface (Figure 3.8). Therefore, the Poisson–Boltzmann equation (Equation 3.13), becomes
+
+d2 ψ (x) dx2
+
+=−
+
+e
+0
+
+a
+
+zana0 exp
+
+− eza ψ(x) kBT
+
+,
+
+(3.51)
+
+where na0 is the average number density of the a-type ions in the solution. The electric field due to the interface vanishes at distances far away from the interface. Also, let ψ0 be the surface potential. These are used as boundary conditions in solving Equation 3.51,
+
+ψ(x = 0) = ψ0,
+
+(3.52)
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 61
+
+and
+
+dψ
+
+= 0.
+
+dx x→∞
+
+(3.53)
+
+We now give the results of this calculation for the two cases of (a) salt-free solutions and (b) salty solutions.
+
+3.2.2.1 Salt-Free Solutions Here, the ions in the solution are only the counterions to the charges on the surface in order to maintain the overall electroneutrality of the system. Let the valency of the counterion be z. The electric potential depends on the distance from the interface logarithmically,
+
+zeψ (x) = 2 ln(x + λ) + C,
+kBT
+
+(3.54)
+
+where C is a constant term independent of x, and λ (called the Gouy–Chapman
+
+length) is
+
+λ≡
+
+1 .
+
+2π B | zσs |
+
+(3.55)
+
+Here B is the Bjerrum length defined in Equation 3.6. Since ln(x + λ) in Equation 3.54 can be written as ln(1 + x/λ) by adjusting the x-independent C term, λ defines a characteristic distance in the system. The Gouy–Chapman length λ is a measure of the range of attraction for the counterion cloud from
+
+the interface. The fall of the electric potential with distance from the inter-
+face is illustrated in Figure 3.9 for monovalent counterions and three surface charge densities (σs = 0.1, 1, and 10 per nm2) and B = 0.7 nm. The values of the Gouy–Chapman length are also included in these figures to indicate the
+characteristic length for the decay of the potential.
+
+The electric field follows from Equations 3.3 and 3.54 as
+
+E(x)
+
+=
+
+−
+
+kBT ze
+
+(x
+
+2 +
+
+λ)
+
+.
+
+(3.56)
+
+e ψ/kBT n (x)
+
+12
+
+10
+
+8
+
+6
+
+σs = 10
+
+41 2
+0.1
+
+2
+
+4
+
+6
+
+(a)
+
+x (nm)
+
+6 5 4 σs = 2 3 2 11
+
+8 10 (b)
+
+0.5 1 1.5 2 2.5 3 x (nm)
+
+Figure 3.9 (a) Decay of electric potential with distance from the interface. (b) Counterion crowding near a charged interface.
+
+62 P O L Y M E R T R A N S L O C A T I O N
+
+For positively charged interfaces, the counterions are negatively charged, and the electric field is normal to the surface pointing into the electrolyte solution. The opposite is true for negatively charged interfaces. The electric field at the interface Es in salt-free solutions follows from the above equation as
+
+Es = eσs ,
+0
+
+(3.57)
+
+a general result known as the contact theorem (Israelachvili 1992). The density profile of the counterions can be derived by substituting Equa-
+tion 3.54 in the Boltzmann law (Equation 3.12) as
+
+n(x) =
+
+2π Bσs2
+
+1+
+
+x λ
+
+2
+
+.
+
+The number density of counterions at the interface (x = 0) is
+
+(3.58)
+
+n(x = 0) = 2π Bσs2.
+
+(3.59)
+
+Thus, the counterions pile up at the interface. The counterion density, due only to the electrostatic attraction and thermal motion, at the interface is proportional to the square of the surface charge density and to the Bjerrum length.
+
+3.2.2.2 Salty Solutions When a strongly dissociating salt is present in the solution in addition to the counterions, the general behavior of the electric potential is the same as in saltfree solutions. In terms of the density distributions of ions, we need to consider the coions as well. For simplicity, let us assume that the added salt is of the symmetric type (z:z) with the valencies of the cations and anions of the salt and the counterions being the same as z. Only the signs are different depending on whether they are positively charged or negatively charged. According to the Gouy–Chapman theory (Evans and Wennerstrom 1999), the electric potential ψ(x) is given by
+
+tanh zeψ(x) = e−κx tanh zeψs ,
+
+4kBT
+
+4kBT
+
+(3.60)
+
+where ψs is the surface potential, and κ is the inverse Debye length. According to the Gouy–Chapman theory, tanh(zeψ/4kBT) decreases exponentially with x.
+Since kBT/e sets the scale for the electric potential in terms of the tempera-
+ture, we give a special symbol to it,
+
+At 25◦C, ψθ = 25.7 mV.
+
+ψθ
+
+≡
+
+kBT . e
+
+(3.61)
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 63
+
+For weak potentials such that zψ ψθ , Equation 3.60 reduces to the result of linearized Poisson–Boltzmann equation,
+
+ψ(x) = ψse−κx.
+
+(3.62)
+
+This is the Debye–Hückel law for the one-dimensional variation along the
+x-axis, normal to the two-dimensional interface.
+The extent of error arising from the Debye–Hückel approximation to the
+full Gouy–Chapman theory is presented in Figure 3.10a, by comparing Equations 3.60 and 3.62. Here the electric potential ψ is plotted against x for a 0.01 M solution of a (1:1) electrolyte and at the constant surface potential of 77.1 mV (i.e., three times the room temperature value, 3ψθ ). For this electrolyte solution, the Debye length is 3 nm and the potential is significant even at 10 nm.
+The discrepancy between the Gouy–Chapman (nonlinear Poisson–Boltzmann)
+and Debye–Hückel (linearized Poisson–Boltzmann) is rather mild for surface potentials that are even three times kBT/e. This offers confidence in utilizing the Debye–Hückel approximation to extract the main qualitative features of
+more complex situations of polyelectrolyte–electrolyte solution interfaces. The surface charge density σs, namely the number of unit charges per nm2,
+is uniquely related to the surface potential ψs as a function of the salt concentration (Evans and Wennerstrom 1999). The result is
+
+κ σs = 2π z B sinh
+
+zψs 2ψθ
+
+.
+
+(3.63)
+
+Substituting the values of the Bjerrum length and the Debye length (in terms of monovalent salt concentration cs in molarity) for aqueous solutions at room
+
+ψ (mV) σs
+
+80
+
+60 DH
+
+40 GC
+
+20
+
+ξD
+
+246
+
+(a)
+
+x (nm)
+
+5 4 3 2 1
+8 10 (b)
+
+1 M
+10–1 M 10–2 M 10–3 M
+12345 zψs/ψθ
+
+Figure 3.10 (a) Comparison of Gouy–Chapman (GC) and Debye–Hückel (DH) results for the electric potential. κ−1 = 3 nm (0.01 M monovalent salt)
+and the surface potential is 77.1 mV corresponding to three times the equiva-
+lent of room temperature. (b) Relation between the number of charges on the surface per nm2, σs, and the surface potential ψs for different concentrations of a monovalent salt.
+
+64 P O L Y M E R T R A N S L O C A T I O N
+
+temperatures, a more convenient form is
+
+√ σs = 0.731 cs sinh
+
+ψs 2ψθ
+
+,
+
+(3.64)
+
+with ψθ = 25.7 mV. The dependence of this relation between the surface charge density and the surface potential on cs is given in Figure 3.10b. The dependence is progressively steeper as cs increases. For a fixed surface potential, the surface charge density increases as the electrolyte concentration is increased. For example, the number of surface charges per nm2 triples roughly as the electrolyte concentration is increased from 0.1 to 1 M, at ψs being four times ψθ . Equivalently, the surface potential decreases with an increase in cs for fixed surface charge density.
+As seen above (Figure 3.10a), the electric potential falls off roughly expo-
+nentially with the distance from the interface for a constant surface potential.
+A more realistic experimental scenario occurs when the surface maintains a
+constant surface charge density. By combining Equations 3.60 and 3.63, the electric potential can be obtained in terms of σs. The typical result for ψ(x) is illustrated in Figure 3.11a for cs = 0.1 and 1 M monovalent salt in water at T = 25◦C, by keeping σs at the constant value of 1 per nm2. The electric potential decreases roughly exponentially with x with the characteristic
+distance being the Debye length. Also, the electric field at the interface is inde-
+pendent of the salt concentration when the surface charge is fixed (as seen from
+the contact theorem [Equation 3.57]).
+The distribution of the ions in the solution from the interface can be read-
+ily obtained from the Boltzmann law (Equation 3.12) by using the result for
+the potential. The distributions of counterions and coions are given in Figure 3.11b for 0.1 and 1 M monovalent electrolyte solutions in water at T = 25◦C, by keeping the surface charge density σs at the constant value of 1 per nm2. For each electrolyte concentration, the upper curve represents the counterion
+
+ψ (mV) cs (M)
+
+120
+
+10
+
+100
+
+8
+
+80 60 0.1 M
+
+6
+
+4
+
+40
+
+20 1 M
+
+2
+
+12345
+
+(a)
+
+x (nm)
+
+(b)
+
+1 M 0.1 M
+12345 x (nm)
+
+Figure 3.11 (a) Dependence of electric potential on electrolyte concentration for ﬁxed surface charge density σs = 1 nm−2. (b) Concentration proﬁles of coun-
+terions and coions in molarity for bulk concentrations of monovalent electrolyte at 0.1 and 1 M. Surface charge density is ﬁxed at 1 nm−2.
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 65
+
+distribution describing the excess counterions near the surface. There is naturally a depletion of coions near the surface given by the lower curve. There exists a threshold distance beyond which the interface has little influence on the counterion excess. The value of this threshold distance increases as the electrolyte concentration decreases. The area enveloped by the curves of counterions and coions for each electrolyte concentration is the net charge of the solution and must be exactly the opposite of the surface charge.
+The key result is that the counterions prefer to be closer to highly charged interfaces, although they are not permanently adsorbed. It can be shown (Israelachvili 1992, Evans and Wennerstrom 1999) that the total number density of all ions at the interface is given by
+
+n(x
+
+=
+
+0)
+
+=
+
+n∞
+
++
+
+0
+2kBT
+
+Es2,
+
+(3.65)
+
+where n∞ is the number density of all ions in the bulk solution far away from the interface, and Es is the electric field at the interface, given by Equation 3.57. The above equation is a general result, known as the Grahame equation, and can be used to assess the accumulation of various ions at a charged interface essentially as a monolayer.
+Since the excess of counterions and depletion of coions occur only within a distance comparable to the Debye length, it is useful to construct a geometrical representation of the ion cloud near the interface, as in Section 3.2.1. The capacitance Cinterface of the interface is given by dσse/dψs and it follows from Equation 3.63 that
+
+For zψs
+
+Cinterface
+
+≡
+
+deσs dψs
+
+=
+
+0
+κ −1
+
+cosh
+
+zeψs 2kBT
+
+.
+
+(3.66)
+
+ψθ , the capacitance of the interface assumes the simple form,
+
+Cinterface
+
+=
+
+0
+κ −1
+
+.
+
+(3.67)
+
+This expression is exactly the capacitance of a parallel-plate capacitor with two parallel plates with a separation distance of the Debye length κ−1 confining a dielectric medium of permittivity 0 . In view of this equivalence between the capacitance of a charged interface (for sufficiently weak surface potentials) and that of a parallel-plate capacitor, a charged interface is called an “electric double layer.” Combining the above-described concepts of strong accumulation (adsorption) of counterions near the interface, finite range for the excess of counterions and depletion of coions, and the electric double layer, a cartoon of a charged interface can be depicted as in Figure 3.12.
+
+3.2.3 C y l i n d r i c a l P o r e
+Consider a cylindrical pore of length L and radius a containing a symmetric (z:z) type electrolyte at the number concentration n0. Let the internal wall of
+
+eσs ψ/ψs
+
+66 P O L Y M E R T R A N S L O C A T I O N
+
++–
+
+–+
+
++
+
+–+
+
+––
+
++– +–
+
+–+
+
++ –
+
++–
+
++
+
++–
+
+–
+
+–
+
+Adsorbed layer
+
+Diffuse layer
+
+Uniform
+
+Electric double layer Figure 3.12 Cartoon of a charged interface as an electric double layer.
+
+the pore be charged with a uniform charge density eσs, or equivalently let the surface potential be ψs. Let the axis of the cylinder be along the z-direction, and the radial direction r is perpendicular to the z-axis (Figure 3.13a).
+The electric potential inside the pore is calculated by following exactly the same procedure as in the above cases. The potential is given by the Poisson–Boltzmann equation (Equation 3.13). For symmetric electrolytes, the valencies zi are the same for both the anions and cations, except for the sign. Also, it turns out that, for both types of ions, ni0 = n0 is a good approximation.
+
+z
+
++
+
++
+
+L
+
++
+
++
+
+r
+
++
+
++
+
+a
+
+ξD/a = 10 1
+
+0.8 1.0
+0.6
+
+0.4
+
+0.3
+
+0.2
+
+0.1
+
+–1
+
+–0.5
+
+0.5
+
+1
+
+(a)
+
+(b)
+
+r/a
+
+Figure 3.13 (a) Cylindrical pore of radius a and length L with surface potential ψs. (b) The variation of potential inside a cylindrical pore of radius a for ξD/a = 0.1, 0.3, 1.0, and 10.
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 67
+
+As a result, Equation 3.13 becomes
+
+∇2ψ(r) = − ezn0 exp −ezψ(r) − exp ezψ(r) .
+
+0
+
+kBT
+
+kBT
+
+Using the relation, sinh(x) = (ex − e−x)/2, we get
+
+(3.68)
+
+∇2ψ(r) = 2ezn0 sinh ezψ(r) .
+
+0
+
+kBT
+
+(3.69)
+
+If we consider long enough pores to ignore end effects in the interior of the pore, there is a cylindrical symmetry about the axis of the pore. For this twodimensional problem, the above Poisson–Boltzmann equation is solved in the cylindrical coordinate system of Figure 3.13, where r is the radial distance from the pore axis. Rewriting the Laplacian ∇2 in the cylindrical coordinate system,
+
+1d
+
+dψ (r) r
+
+= 2ezn0 sinh
+
+ezψ (r)
+
+.
+
+r dr dr
+
+0
+
+kBT
+
+(3.70)
+
+In general, this equation needs to be solved numerically to get the spatial variations of the electric potential and charges (Gross and Osterle 1968). Therefore, as usual, we make the Debye–Hückel approximation by linearizing the above equation,
+
+1d
+
+dψ (r) r
+
+= κ2ψ(r),
+
+r dr dr
+
+(3.71)
+
+where
+
+κ2 = 2e2z2n0 . 0 kBT
+
+(3.72)
+
+κ−1 is the Debye length and its properties are as in Section 3.1.3. Due to the radial symmetry, the electric field (the negative gradient of the potential) at the center of the axis must be zero. Using this as a boundary condition and taking the potential at the surface as ψ(r = a) = ψs, the Debye–Hückel equation for the present geometry can be solved. The result is
+
+ψ
+
+(r)
+
+=
+
+ψs
+
+I0 (κ r) I0 (κ a)
+
+,
+
+(3.73)
+
+where In(x) is the nth-order modified Bessel function of the first kind. This function is an increasing function of the argument and is conveniently tabulated in handbooks of mathematical functions (Abramowitz and Stegun 1965). The result of the above equation is presented in Figure 3.13b, where ψ(r)/ψs is plotted against r/a for different values of the ratio of the Debye length to the pore radius. For high salt concentrations such that the Debye length is much shorter than the pore radius, the electric potential is zero
+
+68 P O L Y M E R T R A N S L O C A T I O N
+
+over most of the interior of the pore. On the other hand, the electric potential is nearly constant across the pore for larger Debye lengths than the pore radius, possibly occurring at low salt concentrations. As an example, for a pore of 1 nm radius containing monovalent salts inside a pore, 1 and 0.1 M salt correspond to the curves labeled with 0.3 and 1.0, respectively, for the ratio of the Debye length to the pore radius (see Table 3.1). These results can be correct only qualitatively, due to the linearization approximation used in solving the Poisson–Boltzmann equation. However, there are no significant differences between the results in Figure 3.14 and the numerical results from the nonlinear Poisson–Boltzmann equation (Gross and Osterle 1968). A more serious problem might be that even the Poisson– Boltzmann formalism breaks down for such crowded environments as the inside of nanopores. In fact, the electrostatics inside a nanopore remains as a major challenging problem due to the lack of understanding of structure of water inside the confined region and the role of image charges arising from dielectric mismatch at the pore walls.
+The net charge density ρ(r) inside the pore follows from Equations 3.12 and 3.71. With the Debye–Hückel approximation used in getting Equation 3.73 (i.e., linearization of the exponentials in Equation 3.12), ρ(r) is − 0 κ2ψ(r),
+
+ρ(r) = −
+
+0
+
+κ
+
+2
+
+ψs
+
+I0 (κ r) I0 (κ a)
+
+.
+
+(3.74)
+
+The radial dependence of the net charge density (due to the excess of coun-
+terions and depletion of coions) from the wall of the pore into the solution is similar to the results of Figure 3.13b, except for the multiplicative factor of κ2.
+
+z
+
+ezp L
+ℓ a
+(a)
+
+0.8
+
+0.7
+
+0.6
+
+0.5 0.1 M
+
+r
+
+ψ΄
+
+0.4
+
+0.3 0.2 0.5 M
+
+0.1 1M
+
+2
+
+3
+
+4
+
+5
+
+(b)
+
+r/a
+
+Figure 3.14 (a) A cylinder with its charges along its central axis. (b) Dependence of potential on r/a for monovalent salt concentrations at 0.1 M (ξD 0.98 nm), 0.5 M (ξD 0.424 nm), and 1 M (ξD 0.3 nm) (ψ ≡ 2π 0 ψ/ezp).
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 69
+
+The value of the ratio of the Debye length to the pore radius, pertinent to an experiment, is obtained from the radius of the nanopore and the electrolyte concentration (Table 3.1). For the typical salt concentrations used in singlemolecule electrophysiology experiments, the ion cloud is close to the wall of the pore, its thickness being given by the Debye length. The interior of the pore near the pore axis has no net charge due to the uniform distribution of counterions and coions.
+
+3.2.4 C h a r g e d C y l i n d e r
+
+In view of the appearance of a short dsDNA molecule roughly as a charged rod, the electrostatics around a rod can be used to get some insight into the electric potential and ion distributions around some models of rod-like polymers. Consider a cylinder of radius a and length L with its axis along the z-direction and the radial distance perpendicular to the z-axis (Figure 3.14a). Let the identical charges in the cylinder be distributed uniformly along the cylinder axis with being the charge separation. The charge density is ezp/ and the total charge is Q = ezpL/ , where zp represents the valency and sign of the individual charges. Outside the cylinder, the solution has the symmetric (zc:zc) type electrolyte, and the counterions from the salt and the cylinder are taken to be identical. Analogous to the restricted primitive model of simple electrolytes discussed in Section 3.1.3.2, the volume of the cylinder of radius a excludes counterions and coions. Again, the simplifying assumption that there is no dielectric mismatch between the inside and outside of the cylinder is made.
+The electric potential ψ(r) at the radial distance from the axis of the cylinder is given by the same Poisson–Boltzmann equation (Equation 3.70) as for the case of cylindrical pores, due to the cylindrical symmetry for sufficiently long cylinders. The only difference now is in the boundary conditions to be used in solving Equation 3.70. Using the Gauss law (Young and Freedman 2000), the electric field E(r) at a radial distance r from the cylinder axis, without any regard to the presence of ions in the electrolyte solution, is given by
+
+E(r)
+
+=
+
+ezp 2π 0
+
+, r
+
+(3.75)
+
+so that the electric field at the surface of the cylinder is
+
+Es
+
+=
+
+ezp 2π 0
+
+. a
+
+(3.76)
+
+The electric potential due to the charge distribution inside the cylinder follows from Equations 3.3 and 3.76 as
+
+ψ
+
+(r)
+
+=
+
+−
+
+ezp 2π 0
+
+r ln .
+a
+
+(3.77)
+
+The electric potential is an arbitrary constant at the cylinder surface (r = a), and it must be emphasized that there is no mathematical divergence in the potential
+
+70 P O L Y M E R T R A N S L O C A T I O N
+
+for the physically relevant values of r at the surface of the cylinder and its neighborhood in the solution, for cylinders of finite radius. For large distances from the cylinder, the potential varies logarithmically, reflecting the two-dimensional spatial symmetry around an infinite cylinder.
+The ion cloud in the solution modifies the result of Equation 3.77. Exact solution of the Poisson–Boltzmann equation (Equation 3.70) is known for the salt-free solutions containing only the counterions (Alfrey et al. 1951). As expected, the electric potential falls off smoothly with the radial distance, and there exists a counterion cloud near the cylinder. In order to get insight into the basic nature of the electrostatics in salty electrolyte solutions around a charged thin cylinder, we linearize Equation 3.70 to get the Debye–Hückel theory (Equation 3.71). Solving this equation with the boundary conditions that the electric field vanishes far away from the cylinder and that it is given by Equation 3.76 at the surface of the cylinder, the result is
+
+ezc ψ (r) kBT
+
+=
+
+2zpzc
+
+B
+
+1 κa
+
+K0 (κ r) K1 (κ a)
+
+,
+
+(3.78)
+
+where Kn(r) is the modified Bessel function of nth order (Abramowitz and Stegun 1965). Noting that the strength of electrostatic interaction compared to the thermal energy is given by the Bjerrum length, we define a dimensionless Coulomb strength parameter as the ratio of the Bjerrum length to the charge separation distance along the cylinder axis,
+
+≡
+
+B= 4π
+
+e2 0 kBT
+
+.
+
+(3.79)
+
+We shall call as the charge density parameter or Coulomb strength parameter interchangeably. The electric potential follows from Equations 3.78 and 3.79 as
+
+ezc ψ (r) kBT
+
+=
+
+2zpzc κa
+
+K0 (κ r) K1 (κ a)
+
+,
+
+(3.80)
+
+depending on two dimensionless parameters κa and . The spatial variation of the potential given by the above equation is presented
+in Figure 3.14b, where eψ(r)/2zp kBT is plotted against r/a for different values of the ratio of the Debye length to the radius of the cylinder. As an illustration, let us assume that a dsDNA molecule can be modeled as a cylinder of radius a = 0.9 nm and charge separation length = 0.17 nm, so that
+= 4.2 at 20 ◦C. If the concentration of monovalent salt is 0.1, 0.5, and 1 M, the corresponding Debye lengths are 0.98, 0.42, and 0.3 nm, respectively. The potential variations for these three concentrations are given in Figure 3.14b. For low salt concentrations, the range of the potential can be substantially longer in comparison with the radius of the cylinder. However, as the salt concentration increases, the electric potential away from the cylinder axis dies quickly.
+If the Debye length is very large as in the case of extremely dilute electrolyte solutions, and if the radius of the cylinder is very small, the arguments of the
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 71
+
+modified Bessel functions in the above equations can become small. For very small values of the argument, the limiting behaviors of the modified Bessel functions (Abramowitz and Stegun 1965) are
+
+K0(κr) − ln(κr),
+
+(3.81)
+
+and
+
+K1 (κ a)
+
+1 κa.
+
+Therefore, in the limit of κa → 0, the electric potential is given by
+
+(3.82)
+
+ψ(r) 2kBTzp [− ln(κr)]. e
+
+(3.83)
+
+Substitution of Equation 3.79 in the above equation yields
+
+ψ(r) = − ezp 2π 0
+
+(ln r − ln ξD).
+
+(3.84)
+
+The first term (ln r) in the above equation corresponds to the potential due to the charges inside the cylinder, and the second term (− ln ξD) is the potential due to the ion cloud essentially located at the Debye length ξD.
+The above formula (Equation 3.84) is valid only for large Debye lengths. For the usual electrolyte concentrations used in experiments, Equation 3.80 should be used. In general, the electric potential around a cylinder is directly proportional to the charge density parameter , defined in Equation 3.79. If is large, the potential can become so large that the assumption of linearization of the Poisson–Boltzmann equation (ezcψ/kBT 1) breaks down. Therefore, for large values, the Debye-Hückel description is valid only for large distances away from the cylinder where the potential becomes weak enough to satisfy the assumption made in the derivation of Equation 3.80. Also, similar to the case of planar interfaces, for very short distances from the surface, the counterions adsorb essentially into a monolayer. Thus, we can imagine three regimes (Hiemenz and Rajagopalan 1997) for the variation of the electric potential as a function of the radial distance from the cylinder axis: (a) the Debye–Hückel regime at large distances, (b) Gouy regime at closer distances from the cylinder, where the nonlinear Poisson-Boltzmann description is needed, and (c) a monolayer of adsorbed counterions, called the Stern regime. Although the quantitative details of the crossover behaviors between these regimes are rather intricate, the basic feature is that the counterions accumulate near the charged surface and the electric potential decays into the solution with a characteristic distance for the decay roughly given by the Debye length. The dependencies of the electric potential and ion distribution on the radial distance are smooth as evident from the exact solutions for salt-free solutions around thin-charged cylinders (Alfrey et al. 1951).
+
+72 P O L Y M E R T R A N S L O C A T I O N z y
+ezp r x
+ℓ
+
+Figure 3.15 Geometry of a line charge used in deriving Manning condensation.
+
+3.2.5 C h a r g e d L i n e
+
+There is extensive theoretical description in the literature for an electrolyte
+
+solution containing an infinitely thin and infinitely long line of charges, as this
+
+model is the simplest that might mimic a long rigid polyelectrolyte. Using this
+
+model, an argument, called the Manning condensation, can be made to derive
+
+a simple relation for the accumulation of counterions near the line charge. In
+
+view of the simplicity of the Manning relation for the condensation of counte-
+
+rions on the line charge, we give details of its derivation. The geometry and the
+
+parameters of the model are given in Figure 3.15. Let the separation distance
+
+between the consecutive uniform charges be and each charge be ezp, as in the preceding section. The difference now is that the line charge does not have any
+
+radius. The line charge is along the z-direction and r is the radial distance from
+
+the line charge in a plane perpendicular to the line charge. The electric field at
+
+r follows from the Gauss law (Section 3.2.4), as
+
+E(r) = ezp , 2π 0 r
+
+(3.85)
+
+and (because E = −dψ/dr)
+
+ψ (r)
+
+=
+
+A
+
+−
+
+ezp 2π 0
+
+ln r,
+
+(3.86)
+
+where A is an integration constant. The potential energy W for bringing a counterion of valency zc to the location at r is
+
+W(r) = (−ezc)ψ(r).
+
+(3.87)
+
+Therefore, the number of counterions at r is proportional to
+
+exp − W(r) kBT
+
+= exp
+
+ezcA kBT
+
+exp
+
+− e2zpzc 2π 0 kBT
+
+ln r
+
+.
+
+(3.88)
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 73
+
+By combining the exponential and the logarithm in the last factor, we get
+
+exp − W(r) kBT
+
+=
+
+r2
+
+1
+zp zc
+
+exp
+
+ezcA kBT
+
+,
+
+(3.89)
+
+where is the charge density parameter defined in Equation 3.79. The number of counterions inside a cylinder of radius r0 (of length ) is
+
+r0
+nr0 ∼ (2π r)e−W(r)/kBT dr.
+
+(3.90)
+
+0
+
+Combining Equations 3.89 and 3.90 yields
+
+r0
+1 nr0 ∼ r r2 zpzc dr,
+0
+
+(3.91)
+
+which upon integration results in
+
+nr0 ∼
+
+r2(
+
+1
+zpzc−1)
+
+r0
+.
+0
+
+(3.92)
+
+This shows that nr0 diverges at r → 0 for zpzc > 1. This apparent divergence can be mathematically avoided by assuming that zpzc is never allowed to be
+greater than unity. In other words, we imagine that enough counterions con-
+
+dense on the line charge and reduce the charge density parameter to be eff so as to make zpzc eff to become unity. Hence, the effective charge separation eff is imagined to be greater than .
+
+The above argument, constructed to avoid the divergence in the number of
+
+counterions on an infinitely thin and infinitely long line charge, is the Manning
+
+condensation. According to this hypothesis, a plot of eff against is given in Figure 3.16a. By accounting for the counterion condensation, the charge fraction α of the line charge is defined as the ratio of to eff ,
+
+α≡
+
+= eff .
+
+eff
+
+(3.93)
+
+1
+
+1
+
+1/zpzcΓ
+
+zpzcΓeff α
+
+0 (a) 0
+
+1
+
+zpzcΓ
+
+0 (b) 0
+
+1
+
+zpzcΓ
+
+Figure 3.16 Counterions condense on the line charge for zpzc > 1. (a) Effective charge density parameter. (b) Fraction of uncondensed charge density, α = / eff .
+
+74 P O L Y M E R T R A N S L O C A T I O N
+
+For zpzc < 1, eff = so that α = 1. For zpzc > 1, eff zpzc = 1 so that α = 1/ zpzc,
+
+1,
+
+α=
+
+1 zp zc
+
+,
+
+zpzc < 1 zpzc > 1
+
+(3.94)
+
+as sketched in Figure 3.16b.
+The simplicity and implication of the above results can be illustrated by
+considering a line charge model of dsDNA. Let the charge separation length be 0.17 nm, so that = 4.2 at 20 ◦C. Let zp = 1 and zc = 1. Therefore,
+for conditions where counterions would condense ( zpzc > 1), the fraction of condensed counterions, 1 − α, follows from Equation 3.94 as
+
+1 − 1 = 0.76.
+
+(3.95)
+
+Therefore, the effective charge fraction is only about a quarter. The effective charge of each phosphate group depends on the valency of the counterion,
+
+e (ezp)eff = zc .
+
+(3.96)
+
+However, it must be emphasized that these results are only mathematical artifacts, as the exact solutions for the potential and counterion distribution, for the line charge model with a finite radius, do not show any such phasetransition-like discontinuities (Alfrey et al. 1951). The three major objections to the line-charge model of flexible polyelectrolyte are zero thickness, infinite length, and no-chain flexibility.
+There has been extensive discussion about the validity and applicability of the Manning condensation (Manning 1969, 1978). While the above argument is exact for the particular model of an infinitely thin and infinitely long one-dimensional line charge, the results of Equation 3.94 cannot be applied to experimental systems involving flexible and semiflexible polyelectrolyte molecules (Holm et al. 2004b, Muthukumar 2004). The discontinuity of α shown in Figure 3.16b is also not to be expected for these experimental systems (Alfrey et al. 1951). However, the condition
+
+zpzc = 1
+
+(3.97)
+
+has been used as a qualitative measure for binding of counterions around a polyelectrolyte. This interpretation of zpzc = 1 is equivalent to the criterion for the formation of a Bjerrum ion-pair at a separation distance of . This makes Equation 3.97 attractive in spite of the above objections.
+
+3.2.6 D i e l e c t r i c M i s m a t c h
+Consider a point charge Q inside a semi-infinite medium of dielectric constant 1 at a distance d away from a planar interface that separates the first medium
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 75
+
+z
+
+Q
+
+r
+
+ε1
+
+d
+
+y
+
+ε2
+
+x
+
+Figure 3.17 Planar surface separating two media of dielectric constants 1 and 2. A point-charge Q inside the medium of 1 at a distance d from the interface exerts an electric potential at r from its location.
+
+from another semi-infinite medium of dielectric constant 2. Let the interface be the plane at z = 0 in the coordinate system of Figure 3.17. The electric
+
+potential at r due to the charge Q is no longer given by Equation 3.2, which is
+
+valid for a homogeneous infinite medium. The dielectric mismatch alters the
+
+potential. The standard arguments (Griffiths 1999) in electrostatics show that
+
+the effect of dielectric mismatch is equivalent to placing an image charge Q at
+
+a distance d below the interface and considering the effects of Q and Q in a
+
+medium of uniform dielectric constant 1. The result is
+
+⎧
+
+⎪⎪⎨ ψ = ⎪⎪⎩
+
+1
+
+Q+Q
+
+4π 0 1 r r
+
+1
+
+2Q
+
+4π 0 ( 1 + 2) r ,
+
+,
+
+z>0 z<0
+
+(3.98)
+
+as given in Figure 3.18, where the image charge Q is
+
+Q=
+
+1− 1+
+
+2 Q.
+2
+
+(3.99)
+
+The distances r and r are, respectively, (x2 + y2 + (z − d)2)1/2 and (x2 + y2 + (z + d)2)1/2, as marked in Figure 3.18.
+Depending on the ratio 1/ 2, the image charge may attract or repel the charge Q. For 1 2, the image charge has the same sign and magnitude as Q, and the charge Q is repelled by the interface. On the other hand, if 2 1, the charge in a medium of dielectric constant 1 is attracted by the medium of dielectric constant 2. As an example of the net effect from the charge Q and its image charge Q , let us consider the electric potential at a distance r much
+
+76 P O L Y M E R T R A N S L O C A T I O N
+
+Z
+
+Q
+
+d ε1
+
+ε2
+
+r
+
+d
+
+ψ
+
+=
+
+Q 4πε0
+
+2 (ε1+ ε2
+
+)
+
+1 r
+
+r
+
+ψ
+
+=
+
+Q 4πε0ε1
+
+1 r
+
++
+
+ε1– ε1+
+
+ε2 ε2
+
+1 r΄
+
+r΄
+
+Q΄=
+
+ε1 – ε2 ε1+ ε2
+
+Q
+
+Figure 3.18 Effects of dielectric mismatch. The image charge is Q . The potential due to Q at a distance r depends on whether r is in medium of 1 or medium of 2.
+
+larger than the distance d of the charge from the interface. This follows from the above equations as
+
+ψ= Q
+
+21 .
+
+4π 0 ( 1 + 2) r
+
+(3.100)
+
+Therefore, an effective dielectric constant eff may be identified in describing the electric potential at distances far away from Q, by writing the above equation as
+
+ψ
+
+=
+
+4π
+
+Q ,
+0 eff r
+
+(3.101)
+
+where
+
+eff =
+
+1 + 2. 2
+
+(3.102)
+
+If the dielectric constants of an aqueous medium and an oily cavity, such as the interior of a protein or a hydrophobic polymer, are taken to be 80 and 3, respectively, then the effective dielectric constant at large distances is roughly 40. Thus, the apparent dielectric constant can be different by a factor of two. The complementary problem of how a charge buried in an oily enclosure is subjected to an attractive force by its image charge, which is now present in the surrounding aqueous medium with higher dielectric constant, can be readily addressed from the above equations.
+Analogous calculations of the effects of dielectric mismatch due to curved interfaces become highly technical. Nevertheless, if one is interested in very accurate estimates of various forces near interfaces with dielectric mismatch,
+
+E L E C T R O L Y T E S O L U T I O N S , I N T E R F A C E S , A N D G E O M E T R I C O B J E C T S 77
+such as solid-state nanopores or protein pores embedded in a lipid membrane, such computations as the above must be resorted to. We shall avoid these details in this book and focus mainly on general concepts and qualitative trends.
+3.3 S U M M A R Y
+The electrolyte solutions are characterized by two length scales: the Bjerrum length and the Debye length. The Bjerrum length is a property of the solvent and depends on the dielectric constant and temperature. It is the separation distance between two unit charges at which the electrostatic energy is comparable to the thermal energy. The Debye length is a property of the solution depending on the concentration and valencies of dissociated ions as well as the dielectric constant and temperature. It is the range over which ions are correlated.
+Charged interfaces in electrolyte solutions cause counterions to adsorb. A cloud with net opposite charge hovers around the interface, with a characteristic thickness comparable to the Debye length. At distances much larger than the Debye length, the effect of charged interfaces is essentially absent.
+The Poisson–Boltzmann formalism is used to compute the electric potentials and charge distributions. In general, this requires numerical work. The Debye–Hückel theory assumes a weak electrical energy compared to the thermal energy allowing closed form analytical formulas for various quantities of interest in electrolyte solutions.
+Formulas for the electric potential and ion distributions are given for various geometries: planar interfaces, spheres, cylinders, cylindrical pores, and lines.
+
+4
+FLEXIBLE AND SEMIFLEXIBLE POLYELECTROLYTES
+Let us throw a tiny amount of a polyelectrolyte salt, such as deoxyribonucleic acid sodium salt or sodium polystyrene sulfonate, into an aqueous solution containing a known amount of a simple electrolyte such as potassium chloride. In due course, the polymer salt dissolves into a homogeneous solution consisting of the charged polymer molecules, their dissociated counterions, and the cations and anions of the simple electrolyte. As in the cases of rigid charged particles in electrolyte solutions, an ion cloud would surround a polyelectrolyte chain, due to an optimization between the attractive interaction among opposite charges and the loss of translational freedom of free ions. A generic picture of a polyelectrolyte is drawn in Figure 4.1a. For one particular conformation of a polymer molecule, some of the counterions hover around the chain backbone. However, unlike rigid bodies, the polymer has the intrinsic capacity to assume enormous number of conformations due to the chain flexibility. The polymer conformations are influenced by the electric forces arising from the charges of counterions and salt ions, and the charges on the chain backbone itself. The polymer conformations, in turn, influence the spatial distribution of the small ions. After an elapse of a certain short time, the polymer conformations in equilibrium would have changed (Figure 4.1b). Now the ion cloud surrounding the polymer skeleton will contain different configurations of the counterions, with some of the original counterions replaced by new ones at new locations. Thus, on an average, we imagine a counterion worm around a polymer chain. The counterion worm is dynamic, with the counterions continuously binding and unbinding with the polymer backbone at random locations, but maintaining an average number inside the worm. As a result, the effective charge of the polyelectrolyte is not the same as its chemical charge that could be estimated by assuming that all ionizable groups of the polymer fully dissociate. The effective charge is unique to the average polymer conformation, and it self-regulates with changes in polymer conformations accompanying changes in experimental conditions. The repulsion among the effective charges on the polymer backbone is manifest as electrostatic swelling for flexible polymers, or equivalently as chain stiffening for semiflexible polymers. The primary focus of this chapter is to combine the key concepts of electrostatic interactions (Chapter 3) and the various polymer models (Chapter 2), toward a description of the equilibrium properties of polyelectrolyte molecules in dilute solutions. After
+79
+
+80 P O L Y M E R T R A N S L O C A T I O N
+
++–
+
++–
+
+–
+
+–
+
+–
+
+–
+
++
+
+–
+
+– +
+
+–
+
+–
+
+–
+
+–+ –
+
+–
+
++ –+
+
+(a)
+
+–
+
++– – –
+
+–
+
+–
+
+–
+
++ –+
+
+–
+
+–
+
++–
+
+(b)
+
+–– – + –+
+– +
+
+Figure 4.1 Cartoon of a polyelectrolyte chain (negatively charged as an example). + is counterion; circled + and − represent ions from the salt. Oppositely charged ions may adsorb on the polymer. (a) and (b) are different conformations in equilibrium.
+
+presenting major concepts and some key experimental and simulation results, we shall describe simple treatments of electrostatic effects endowed on polymer conformations.
+
+4.1 C O N C E P T S
+
+Firstly, before describing the key concepts, we consider the parameters that reflect the various experimental variables such as the length, charge, and concentration of polymer molecules, and the concentration of simple salt in a polyelectrolyte solution. Let the polyelectrolyte be a homopolymer with each repeat unit carrying one ionizable group. Upon ionization in a polar solvent, each repeat unit is assumed to carry one monovalent charge e. If the charge separation between any two consecutive monomeric charges along the chain backbone is 0 (comparable to a couple of bond lengths), the chemical charge density q along the chain contour is e/ 0. Since the basic model for chain connectivity is the Kuhn model with segmental length , we write the chemical charge density as ezp/ ,
+
+q = e = ezp ,
+
+(4.1)
+
+0
+
+where zp is the average number of ionizable monomers per one Kuhn length, according to the chemical formula of the polyelectrolyte. The total chemical charge of one polymer molecule is eN0 (with N0 being the number of ionizable monomers per chain), or equivalently ezpN, where N is the number of Kuhn segments per chain. Let the charge of each counterion be ezc. Although all repeat units of the chain are ionizable, it turns out that only a certain fraction of these dissociate and consequently bear the monomer charge. As we shall see below, this fraction depends on the experimental conditions. Let α be the average degree of ionization. The number of counterions nc in a solution containing
+
+F L E X I B L E A N D S E M I F L E X I B L E P O L Y E L E C T R O L Y T E S 81
+
+n polyelectrolyte chains of uniform length with an average degree of ionization α is given by the electroneutrality condition as
+
+nc =
+
+zp zc
+
+αnN.
+
+(4.2)
+
+In addition, there are cations and anions from the simple salt, with their charges
+and numbers represented by eza and na0 for the a-type ions. Let V be the total volume of the solution, so that the number densities of salt ions and counterions are na0/V and nc/V, respectively. The average segment number density of the polymer in the solution is nN/V. We now enumerate the key concepts pertinent to the equilibrium properties of polyelectrolyte chains.
+
+4.1.1 C o u l o m b S t r e n g t h
+As discussed in Chapter 3, there are two basic length scales describing the electrostatic interactions among ions, namely the Bjerrum length and the Debye length. The Bjerrum length is the distance between two ions at which their electrostatic energy equals the thermal energy. Dividing the Bjerrum length by the Kuhn length, and absorbing the magnitudes of the charges of the segment and the counterion, we define a parameter,
+
+= | zpzc |
+
+B = | zpzc | 4π
+
+e2 0 kBT
+
+,
+
+(4.3)
+
+where the definition of B from Equation 3.6 is used. We shall call as the Coulomb strength parameter. This dimensionless parameter is a measure of the strength of the attractive interaction between the counterion and the monomer. This is also the charge density parameter given in Equation 3.79, for monovalent charges.
+
+4.1.2 D e b y e L e n g t h f o r P o l y e l e c t r o l y t e S o l u t i o n s
+The range of electrostatic interaction between two ions in an electrolyte solution is given by the Debye length (Section 3.1.3.1). For electrolyte solutions, all types of ions contribute to the Debye length ξD, as given by Equation 3.22. We make a slight modification for polyelectrolyte solutions. When an electrolyte solution contains long polymers, which are gigantic in size in comparison with the small ions from the simple electrolyte, we expect the timescales for the rearrangements of the small ions and polymer conformations to be widely separated. Therefore, it is convenient to imagine (de Gennes et al. 1976, Muthukumar 1996a) that the polymer molecules are present in an effective medium where the degrees of freedom of all small ions are integrated out. The effective medium is assumed to obey the Debye–Hückel description, with the Debye length arising from only the counterions and the ions from the simple electrolyte,
+

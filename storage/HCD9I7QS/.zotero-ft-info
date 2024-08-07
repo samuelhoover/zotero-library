@@ -1,0 +1,16 @@
+Title:          Simulation of Nanopore Sequencing Signals Based on BiGRU
+Subject:        Oxford Nanopore sequencing is an important sequencing technology, which reads the nucleotide sequence by detecting the electrical current signal changes when DNA molecule is forced to pass through a biological nanopore. The research on signal simulation of nanopore sequencing is highly desirable for method developments of nanopore sequencing applications. To improve the simulation accuracy, we propose a novel signal simulation method based on Bi-directional Gated Recurrent Units (BiGRU). In this method, the signal processing model based on BiGRU is built to replace the traditional low-pass filter to post-process the ground-truth signal calculated by the input nucleotide sequence and nanopore sequencing pore model. Gaussian noise is then added to the filtered signal to generate the final simulated signal. This method can accurately model the relation between ground-truth signal and real-world sequencing signal through experimental sequencing data. The simulation results reveal that the proposed method utilizing the powerful learning ability of the neural network can generate the simulated signal that is closer to the real-world sequencing signal in the time and frequency domains than the existing simulation method.
+Keywords:       ONT nanopore sequencing; Bi-directional gated recurrent units; signal simulation; neural network
+Author:         Firstname Lastname, Firstname Lastname and Firstname Lastname
+Creator:        LaTeX with hyperref
+Producer:       pdfTeX-1.40.21
+CreationDate:   Thu Dec 17 23:03:57 2020
+ModDate:        Thu Dec 17 23:03:57 2020
+Tagged:         no
+Form:           none
+Pages:          15
+Encrypted:      no
+Page size:      595.276 x 841.89 pts (A4) (rotated 0 degrees)
+File size:      1891694 bytes
+Optimized:      no
+PDF version:    1.5

@@ -1,0 +1,16 @@
+Title:          Feature Representation and Data Augmentation for Human Activity Classification Based on Wearable IMU Sensor Data Using a Deep LSTM Neural Network
+Subject:        Wearable inertial measurement unit (IMU) sensors are powerful enablers for acquisition of motion data. Specifically, in human activity recognition (HAR), IMU sensor data collected from human motion are categorically combined to formulate datasets that can be used for learning human activities. However, successful learning of human activities from motion data involves the design and use of proper feature representations of IMU sensor data and suitable classifiers. Furthermore, the scarcity of labelled data is an impeding factor in the process of understanding the performance capabilities of data-driven learning models. To tackle these challenges, two primary contributions are in this article: first; by using raw IMU sensor data, a spectrogram-based feature extraction approach is proposed. Second, an ensemble of data augmentations in feature space is proposed to take care of the data scarcity problem. Performance tests were conducted on a deep long term short term memory (LSTM) neural network architecture to explore the influence of feature representations and the augmentations on activity recognition accuracy. The proposed feature extraction approach combined with the data augmentation ensemble produces state-of-the-art accuracy results in HAR. A performance evaluation of each augmentation approach is performed to show the influence on classification accuracy. Finally, in addition to using our own dataset, the proposed data augmentation technique is evaluated against the University of California, Irvine (UCI) public online HAR dataset and yields state-of-the-art accuracy results at various learning rates.
+Keywords:       human activity recognition; data augmentation; feature representation; deep learning; long short term memory; inertial measurement unit sensor
+Author:         Odongo Steven Eyobu and Dong Seog Han
+Creator:        LaTeX with hyperref package
+Producer:       pdfTeX-1.40.18
+CreationDate:   Fri Aug 31 22:08:58 2018
+ModDate:        Fri Aug 31 22:08:58 2018
+Tagged:         no
+Form:           none
+Pages:          26
+Encrypted:      no
+Page size:      595.276 x 841.89 pts (A4) (rotated 0 degrees)
+File size:      3857458 bytes
+Optimized:      no
+PDF version:    1.5

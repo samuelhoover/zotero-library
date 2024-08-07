@@ -1,0 +1,985 @@
+An Analysis of Linear Time Series Forecasting Models
+William Toner 1 2 Luke Darlow 2
+Abstract
+Despite their simplicity, linear models perform well at time series forecasting, even when pitted against deeper and more expensive models. A number of variations to the linear model have been proposed, often including some form of feature normalisation that improves model generalisation. In this paper we analyse the sets of functions expressible using these linear model architectures. In so doing we show that several popular variants of linear models for time series forecasting are equivalent and functionally indistinguishable from standard, unconstrained linear regression. We characterise the model classes for each linear variant. We demonstrate that each model can be reinterpreted as unconstrained linear regression over a suitably augmented feature set, and therefore admit closed-form solutions when using a mean-squared loss function. We provide experimental evidence that the models under inspection learn nearly identical solutions, and finally demonstrate that the simpler closed form solutions are superior forecasters across 72% of test settings.
+1. Introduction
+Time series forecasting is a crucial challenge across a wide array of domains, where accurate predictions of the future are essential. Key areas such as finance, meteorology, healthcare, cloud infrastructure, and traffic flow management rely heavily on forecasting for decision-making and strategic planning (Wu et al., 2021; Lai et al., 2018; Sloss et al., 2019; Taylor & Letham, 2018; Darlow et al., 2023; Joosen et al., 2023). This has led to significant research efforts to develop effective forecasting models. Deep learning has transformed many fields, most notably in computer vision and language processing, superseding simpler classical models. Following these successes, deep learning has seen increasing usage in time series forecasting. In particular transformer models
+1Department of Informatics, University of Edinburgh, Edinburgh 2SIR Lab, Huawei Research Centre, Edinburgh. Correspondence to: William Toner <w.j.toner@sms.ed.ac.uk>, Luke Darlow <luke.darlow1@huawei.com>.
+Preprint
+have been adapted for broader time series forecasting applications (Nie et al., 2022; Zhou et al., 2021; Liu et al., 2021; Wu et al., 2021; Liu et al., 2023; Anonymous, 2024).
+Linear models for forecasting Despite the advantages offered by deep learning, its application to time series forecasting has encountered unique challenges. Recent studies have shown that the performance benefits of deep models for forecasting are often marginal when compared to simpler linear models (Zeng et al., 2023; Li et al., 2023). Linear models are also appealing due to their simplicity, explainability, and efficiency. This is particularly relevant in industries where forecasting models are queried frequently and/or involve high-resolution data, such as in cloud resource allocation (Joosen et al., 2023; Darlow et al., 2023). This has spurred a growing interest in refining linear models: several variants of linear time series forecasting models have emerged, each purporting superiority owing to some architectural difference (summary in Section 2). We show in this research that many of these popular, and often high-performing, linear models are essentially equivalent. By this we mean that the parametric families of functions which they describe, are equal (up to choice of data normalisation). The convexity of least-squares linear regression makes this a significant finding since it implies that all these models should converge to the same optima, given a suitable optimiser.
+Outline and Contributions In this paper, we delve into the mathematics of several well-known linear time series forecasting models. We fully characterise the set of functions which are expressible using each architecture. We show, somewhat remarkably, that they are all essentially equivalent: corresponding either to unconstrained or weakly constrained (via feature augmentation) linear regression. The convexity of least-squares linear regression suggests that the behaviour of these models should therefore be virtually indistinguishable. We provide experimental evidence which supports this hypothesis, showing that, in practice, all models tend to the same optima. Furthermore, we show that the closed form solution to least-squares linear regression performs either comparably or better than those trained by gradient descent. Our contributions are:
+1. Mathematical proofs that several popular linear models for time series forecasting are essentially identical.
+1
+arXiv:2403.14587v2 [cs.LG] 25 Mar 2024
+
+
+Submission and Formatting Instructions for ICML 2024
+2. Experimental evidence that each model indeed tend to the same solution when trained on the same data, differing only in the bias parameter.
+3. Quantitative evidence that closed form ordinary least squares (OLS) solutions are typically superior to existing models trained using stochastic gradient descent.
+The goal of this paper is to provide a, much-needed, in-depth mathematical analysis of several popular linear time-series forecasting models. We aim to demonstrate that, from a functional and performance point of view, these models are not substantially different to each other and amount to weakly constrained linear regression.
+2. Related Work
+Zeng et al. (2023) asked the important question of whether the transformer architecture (Vaswani et al., 2017) had utility for time series forecasting. Their work introduced two models, namely DLinear (Section 3.1.1) and NLinear (Section 3.5.1), that have become widely used baselines for other research in time series forecasting (Anonymous, 2024; Nie et al., 2022; Liu et al., 2023). Their work served to show that linear models are comparable, and sometimes better, than complex transformer architectures.
+Reversible instance normalisation (Kim et al., 2021) (RevInv) is a feature normalisation technique that typically improves time series forecasting. It operates by standardising input features (zero mean, unit standard deviation) before passing these through a given model, and reversing this standardisation process as a final step (with an optional learnable affine transformation). We unpack the mathematics of how various modes of instance normalisation constrain the underlying model class in Section 3.2.
+Li et al. (2023) revisited long-term time series forecasting by exploring the impact of RevInv and channel independence (CI). CI for linear models implies learning distinct models for each variate in a given dataset. They proposed RLinear – a linear mapping that uses RevInv – and tested the impact of CI, showing how for some datasets (usually with a higher number of channels and/or complexity) CI improves generalisation. We define RLinear in Section 3.4.1.
+Xu et al. (2023) recently proposed FITS, a linear time series model that operates in frequency space and includes an optional high-frequency filtering component to reduce the model footprint. FITS first computes the real discrete Fourier transform (RFT), applies a complex linear map, and inverts the result back into the time domain. We define FITS in Section 3.1.2. The performance of FITS is impressive, obtaining at or near state of the art (SoTA) under its optimal hyperparameter settings.
+3. Analysis of Linear Time Series Forecasting Models
+For the purpose of this paper we refer to a ‘model class’ as the parametric set of functions induced by a model architecture. For example, a single layer linear neural network with no hidden layer has the model classx⃗ 7→ Ax⃗ + ⃗ b, where the dimensions of A and ⃗ b are as appropriate. We call this ‘Linear’ for the remainder of this paper. In this section we define the task of forecasting with a linear model. We then analyse the widely used DLinear (Section 3.1.1) and the recent SoTA FITS architectures (Section 3.1.2). We prove mathematically that these models are equivalent to linear regression in that they have the same model class.
+We then define and discuss several invertible data normalisation strategies employed for time series forecasting in Section 3.2. These normalisation strategies yield additional linear model variants, namely RLinear, NLinear, and FITS+IN (i.e., FITS with instance normalisation, as per Xu et al. (2023)). We show how each choice of feature normalisation restricts the model class. This allows us to categorise all linear model variants into only 3 similar but distinct classes.
+3.1. Notation
+The following notations are used throughout this paper:
+• L: Context length (time steps in the input sequence).
+• c: Number of channels (distinct time series).
+• T : Forecast horizon (future time steps predicted).
+•x⃗ : Context vector (historical data),x⃗ ∈ RL×c.
+•y⃗ : Target vector (values to be predicted),y⃗ ∈ RT ×c.
+The models we look at in Section 3 do not explicitly use cross-channel information in their predictions. By this we mean that the ith channel of the target is predicted only using the ith channel of the context. Therefore, for improved clarity, we consider the case of c = 1 (univariate), with x⃗ ∈ RL.
+Definition 3.1 (Forecast Model and Model Class). A forecast model is a function f : RL → RT that generates a forecasty⃗ from a given input, or context vectorx⃗ . The collection of such forecast models forms a Model Class, denoted as M .
+Example: In the case of (unconstrained) Linear Regression, the model class M (Linear) consists of all functions of the formx⃗ 7→ Wx⃗ + ⃗ b, where W is a weight matrix from RT ×L and ⃗ b is a bias vector from RT . If there are specific limitations or conditions applied to the values of W and ⃗ b, we term this as constrained Linear Regression.
+2
+
+
+Submission and Formatting Instructions for ICML 2024
+3.1.1. DLINEAR
+DLinear Model Definition: Letx⃗ ∈ RL be a context vector. DLinear works by decomposingx⃗ into a ‘trend’ and ‘seasonal’ components. The trend component is defined by taking a moving average of the components ofx⃗ . The seasonal component is given by the residualx⃗ seasonal := x⃗ −x⃗ trend. The moving average is padded so that it preserves the dimensionality of x. One then takesx⃗ seasonal andx⃗ seasonal and passes these though separate learnable linear layers.
+Lemma 3.2 (DLinear Model Class). Let M (DLinear) denote the DLinear model class, i.e. the set of functions f : RL → RT which can be represented as a DLinear model. M (DLinear) is precisely equal to the space of affine linear functions. That is, all functions of the form Ax + ⃗ b may be expressed as a DLinear model and vice versa.
+Proof. Following our definition, any DLinear model can be written as Bx⃗ seasonal + Cx⃗ trend +c⃗ + ⃗d where B, C ∈ RT ×L,
+c⃗, ⃗d ∈ R are the weight matrices and biases of DLinear’s two linear layers. This can be expressed as Bx(⃗ −x⃗ trend) + Cx(⃗ trend) +c⃗ + ⃗d = Bx(⃗ − Dx⃗ ) + C(Dx⃗ ) +c⃗ + ⃗d = (B − BD + CDx)⃗ +c⃗ + ⃗d where D is the (square) matrix corresponding to a padded moving average (See Appendix D for an explanation). Thus we have shown that any DLinear model may be expressed in the form Ax⃗ + ⃗ b. It remains to show the converse, that is, any affine linear map is expressible in the form of a DLinear model.
+Let Ax⃗ + ⃗ b be some arbitrary affine linear map. We claim that Ax⃗ +⃗ b can be expressed in the form (B−BD+CDx)⃗ + c⃗ + ⃗d. By setting e.g.c⃗ = ⃗ b, ⃗d = 0 we match the bias terms. By setting B = C = A we match the weight matrices
+M (DLinear) = M (Linear)
+3.1.2. FITS
+FITS Model Definition: Letx⃗ ∈ RL be a context vector. FITS applies the Real (discrete) Fourier Transform (RFT) tox⃗ . This mapsx⃗ to a complex vector of length ⌊L/2⌋ + 1. Next one applies a learnable complex linear map with output dimension ⌊(L + T )/2⌋ + 1. After this one applies the inverse RFT to map to RL+T .
+Remark: As proposed by Xu et al. (2023), FITS optionally includes a low-pass filter (LPF) to discard high frequencies components. Our initial experiments showed that utilising a LPF results in a degradation in performance – this is confirmed by analysing the settings of FITS that yield highperformance. Thus, we analyse FITS without the LPF.
+Remark: Unlike other models, FITS outputs both a forecast and a reconstruction of the context vector. The forecast may be obtained by discarding the first L components output by the model.
+Theorem 3.3 (FITS Model Class). Let M (FITS) denote the FITS model class, i.e. the set of functions f : RL → RT which can be represented as a FITS model. When L ≥ T −2, M (FITS) is precisely equal to the space of affine linear functions Ax⃗ + ⃗ b.
+Proving Theorem 3.3 is somewhat involved. Importantly, as a combination of a Fourier transform, a complex linear map, an inverse Fourier transform, FITS is a composition of linear maps and is therefore expressible in the form Ax⃗ + ⃗ b. The proof in Appendix A.1 shows when L ≥ T − 2 that both A and ⃗ b are entirely unconstrained. This is significant since all the settings in Xu et al. (2023) utilise a context larger or equal to the prediction horizon T .
+M (DLinear) = M (Linear) = M (FITS)
+(when L ≥ T − 2 and without a low-pass filter)
+3.2. Invertible Data Normalisations
+Invertible instance-wise feature normalisation has been recently adopted for time-series forecasting. ‘Instance normalisation’ (in the context of time series) was proposed by Kim et al. (2021). In this section we cover three such mechanisms: Instance Norm (IN), Reversible Instance Norm (RevIN), and NowNorm (NN) which is the name we give to the normalisation scheme implemented by NLinear. For clarity, RevIN and IN are identical except for the learnable affine mapping of RevIN – we mark this distinction because the optional learnable affine map is often not used (e.g., FITS). We look at how each normalisation restricts the model class when used in conjunction with linear models.
+3.3. Instance Norm
+Definition 3.4 (Instance normalisation). Given a context vectorx⃗ and a target vectory⃗ , instance normalisation (IN) for each data instance involves normalizingx⃗ by its mean μx(⃗ ) and standard deviation σx(⃗ ), applying a model f on the normalizedx⃗ ′, and inversely transforming the prediction yˆ back to the original scale. Formally, this is expressed as:
+x⃗ ′ =x⃗ − μx(⃗ )
+σx(⃗ ) + ε ,
+yˆ = fx(⃗ ′),
+yˆout = yˆ · (σx(⃗ ) + ε) + μx(⃗ ),
+where ε is a small constant for numerical stability.
+Lemma 3.5 (Linear+IN). Let M (ILinear) represent the set of forecast models that can be expressed as a linear layer combined with instance normalization (Definition 3.4). M (ILinear) is equal to the set of functions f : RL → RT expressible in the form A ̃x⃗ +⃗ bσx(⃗ ). A ̃ is a matrix with each row summing to 1, and σx(⃗ ) is the standard deviation ofx⃗ .
+3
+
+
+Submission and Formatting Instructions for ICML 2024
+Proof. Letx⃗ ∈ RL be a context vector. Let f be a forecast model obtained by applying a linear layer after IN. If A,⃗ b are the weight matrix and bias of the linear layer then we have fx(⃗ ) =μ⃗ x(⃗ ) + σx(⃗ )(A(x⃗ −μ⃗ x(⃗ )
+σx(⃗ ) ) +⃗ b). Herex⃗ −μ⃗ x(⃗ )
+denotes the subtraction of the mean μx(⃗ ) from every component ofx⃗ . We can expand this expression out to obtain simplyμ⃗ x(⃗ ) + Ax(⃗ −μ⃗ x(⃗ )) + σx(⃗ )⃗ b. The T −dimensional vectorμ⃗ x(⃗ ) of means can be written as a matrix multiplication BTx⃗ where Bm denotes a matrix of shape m × L populated exclusively by 1
+L ’s. Using this notation we have:
+fx(⃗ ) =μ⃗ x(⃗ ) + Ax(⃗ −μ⃗ x(⃗ )) + σx(⃗ )⃗ b
+=(BT + A − ABLx)⃗ + σx(⃗ )⃗ b
+Thus f can be written in the form A ̃x⃗ + bσx(⃗ ), it remains only to demonstrate that BT + A − ABL satisfies the condition that the rows sum to one. And, conversely that any matrix of shape T ×L whose rows sum to one can be written in this form. Begin by noting that ABL can be written as:
+ABL =
+
+  
+A11 A12 . . . A1L A21 A22 . . . A2L ......... AL1 AL2 . . . AT L
+
+  
+
+  
+1/L 1/L . . . 1/L 1/L 1/L . . . 1/L ........ 1/L 1/L . . . 1/L
+
+  
+=
+
+  
+1 L
+PL
+i=1 A1i 1
+L
+PL
+i=1 A1i . . . 1
+L
+PL
+i=1 A1i 1 L
+PL
+i=1 A2i 1
+L
+PL
+i=1 A2i . . . 1
+L
+PL
+i=1 A2i
+....................
+1 L
+PL
+i=1 ALi 1
+L
+PL
+i=1 ALi . . . 1
+L
+PL
+i=1 ALi
+
+  
+Therefore the ijth element of (BT +A−ABL) may be written as 1
+L +Aij − 1
+L
+PL
+k=1 Aik. It follows that the sum of row i of (BT +A−ABL)
+=
+X
+j=1
+1
+L +Aij − 1
+L
+L
+X
+k=1
+Aik
+
+=1+
+L
+X
+j=1
+Aij − L
+L
+L
+X
+k=1
+Aik
+=1.
+Conversely we wish to show that any T by L matrix C whose rows sum to one can be written in the form (BT + A − ABL). Let C be such a matrix. One may easily show that in fact C may be expressed as C = BT + C − CBL, thus we may let A = C.
+3.4. Reversible Instance Normalisation
+A second more general form of data normalisation is known as Reversible Instance Norm (RevIN) (Kim et al., 2021). This normalisation is designed to allow a forecasting model to handle shifts in the temporal distribution over time. Li
+et al. (2023) showed that a simple linear model using RevIN is able to outperform most deep models on standard datasets.
+Definition 3.6 (Reversible Instance Normalisation). Given a context vectorx⃗ and a target vectory⃗ , Reversible Instance Normalisation (RevIN) for each data instance involves a two-step normalization process. First,x⃗ is normalized by its mean μx(⃗ ) and standard deviation σx(⃗ ). Subsequently, an affine transformation with parameters α and β is applied, followed by the application of a forecasting model f on the transformedx⃗ ′. The process is then reversed to retrieve the prediction in the original scale. Formally, this is expressed:
+x⃗ ′ =x⃗ − μx(⃗ )
+σx(⃗ ) + ε ,
+x⃗ ′′ =x⃗ ′ − β
+α,
+yˆ = fx(⃗ ′′),
+yˆ′ = αyˆ + β,
+yˆout = yˆ′ · (σx(⃗ ) + ε) + μx(⃗ ).
+3.4.1. RLINEAR
+RLinear is a linear model using RevIN (Li et al., 2023).
+Lemma 3.7 (RLinear). Let M (RLinear) denote the RLinear model class, i.e. the set of functions f : RL → RT which can be represented as an RLinear model. M (RLinear) is precisely equal to the space of functions A ̃x⃗ + ⃗ bσx(⃗ ) where the rows of A ̃ each sum to 1 and where σx(⃗ ) denotes the standard deviation of the context vectorx⃗ .
+Proof. Let f be arbitrary RLinear model (i.e., a forecast model obtainable by the composition of a linear layer and reversible instance norm). If A,c⃗ are the weight matrix and bias of the linear layer then
+fx(⃗ ) = μx(⃗ ) + σx(⃗ ) (β + α(ARx(⃗ ) + c))
+where Rx(⃗ ) := 1
+α
+x⃗ − μx(⃗ )
+σx(⃗ ) − β
+
+We can expand this out to obtain the following
+fx(⃗ ) = (μx(⃗ )+Ax⃗ −Aμx(⃗ ))+βσx(⃗ )+αcσx(⃗ )−Aβσx(⃗ ).
+As per the proof on Lemma 3.5 we can write the vector of means μx(⃗ ) as BTx⃗ where BT is a T × L matrix populated by 1
+L ’s. Therefore fx(⃗ ) can be expressed as
+fx(⃗ ) =A ̃x⃗ + σx(⃗ )⃗ b
+where A ̃ =BT + A − ABL
+and ⃗ b =β + αc − Aβ
+As in the proof of Lemma 3.5, BT + A − ABL are precisely the set of matrices where each row sums to one. It is left
+4
+
+
+Submission and Formatting Instructions for ICML 2024
+therefore to demonstrate that ⃗ b can be any vector in RT . Since we are free in our choice of β, α, c then we can let β = 0, α = 1 andc⃗ be any desired arbitrary vector in RT . This concludes the proof.
+IN and RevIN impose the constraints: (1) the rows of the weight matrix must sum to 1; (2) the bias is scaled by the standard deviation of the instance.
+3.5. NowNorm
+Definition 3.8 (Now-Normalisation). Given a context vectorx⃗ and a target vectory⃗ , NowNorm (NN) involves normalising the context so that xL, the most-recent value ofx⃗ , is zero. Explicitly;x⃗ norm :=x⃗ − (xL, xL, . . . , xL). Next we apply a forecasting model f on the normalizedx⃗ norm, before adding xL back on to each component of the output. Formally, this is expressed as:
+x⃗ norm =x⃗ − xL,
+yˆ = fx(⃗ norm),
+y⃗ˆout = yˆ + xL.
+3.5.1. NLINEAR
+Nlinear is a linear model using NN (Zeng et al., 2023).
+Lemma 3.9 (NLinear). Let M (NLinear) denote the NLinear model class, i.e. the set of functions f : RL → RT which can be represented as a NLinear model. M (NLinear) is precisely equal to the space of linear functions A ̃x⃗ + ⃗ b where the rows of A ̃ each sum to 1.
+Proof. By Definition 3.8, an NLinear model can be written
+(xL, xL, . . . , xL) + Ax⃗ norm + ⃗ b (1)
+Where A,⃗ b are the weight matrix and bias terms of NLinear’s linear layer andx⃗ norm is the normalised context vector. If we let Bm denote an m by m matrix with 1’s in the final column and zeros elsewhere. Then we can write Equation 1 equivalently as BTx⃗ + Ax(⃗ − BLx⃗ ) + ⃗ b = (BT + A − ABLx)⃗ + ⃗ b. We claim that the rows of the matrix BT + A − ABL sum to one. Begin by noting that ABL has the following form:
+ABL =
+
+  
+A11 A12 . . . A1L A21 A22 . . . A2L ......... AL1 AL2 . . . AT L
+
+  
+
+  
+0 0 ... 1 0 0 ... 1 .... 0 0 ... 1
+
+  
+=
+
+  
+0 0 . . . PL
+i=1 A1i
+0 0 . . . PL
+i=1 A2i
+......... 0 0 . . . PL
+i=1 ALi
+
+  
+Therefore BT + A − ABL may be expressed as follows:
+
+  
+A11 A12 . . . 1−PL−1
+i=1 A1i
+A21 A22 . . . 1−PL−1
+i=1 A2i
+............. AL1 AL2 . . . 1−PL−1
+i=1 ALi
+
+  
+(2)
+It is clear to see that the rows of this matrix sum to one as claimed. Moreover, any matrix whose rows sum to 1 may be written as Equation 2. Since the bias ⃗ b is unconstrained then we conclude our proof.
+NowNorm imposes the same weight matrix constraint as IN and RevIN, but does not constrain the bias.
+Integrating the insights from Lemma 3.2 and Theorem 3.3 with the analyses presented in this subsection, we establish the following equivalences among the model classes:
+M (DLinear+IN) = M (Linear+IN) = M (FITS+IN) = M (RLinear) ≈ M (NLinear)
+4. Discussion
+Model Class Variants Normalisation Constraints Ax⃗ + ⃗ b Linear, DLinear, FITS None None Aex⃗ + ⃗ b NLinear NowNorm Rows sum to one
+Aex⃗ + ⃗ bσx(⃗ )
+RLinear RevIn Rows sum to one
+FITS+IN Instance Bias coupled with σ
+Table 1. A summary of the model classes for the DLinear, FITS, RLinear, NLinear and Linear models. Here Ae denotes a matrix whose rows must each sum to one and σx(⃗ ) denotes the standard deviation of the components of the context vector.
+Our analysis is summarised in Table 1. When L ≥ T − 2 FITS and DLinear are functionally equivalent to unconstrained linear regression (Definition 3.1). In Section 3.2 we looked at the model classes for linear models which use one of the standard normalisation procedures for time series analysis. We saw how using normalisation slightly alters the model class. For example, NLinear is equivalent to restricted linear regression wherein the rows of the weight matrix must sum to 1. We showed that Linear+IN, Linear+RevIN (RLinear (Li et al., 2023)), and FITS+IN (i.e., the setting in (Xu et al., 2023)) are equivalent to each other, and differ from NLinear in that the bias is parameterised as ⃗ bσx(⃗ ). Perhaps most importantly, each model class can be reformulated as unconstrained linear regression on an augmented feature set, and are solvable in closed form owing to convexity.
+5
+
+
+Submission and Formatting Instructions for ICML 2024
+Convexity Each of the models we have discussed train using a mean-squared error (MSE) loss function (Xu et al., 2023; Zeng et al., 2023). Linear regression with a meansquared loss function is a convex optimisation problem. By this we mean that the training loss is a convex function of the parameters. A consequence of convexity is that there exists a unique global optima which minimises the training loss (uniqueness requires that the training data is full rank). Significantly, this means that given the same training data, these models should converge to the same solution, via a suitable optimisation procedure.
+Closed Form An important property of least-squares linear regression is that it admits a closed-form solution. A recap of how one computes a closed-form solution for linear regression and closed form solutions for the three model classes in Table 1 may be found in Appendix D.2. In Section 5 we refer to the closed form solutions as the ordinary least-squares (OLS) models, and we will determine how each model fairs against this closed form approach.
+Remark: FITS has two separate training modes. In mode 1 the model is trained by mean-squared error (MSE) between the forecast and the target. In mode 2 an additional term is added to the loss which is the MSE between the context vector and FITS reconstruction. Empirically both settings have similar performance (Xu et al., 2023). In our analysis and experiments we consider mode 1 only.
+For each model class in Table 1, the leastsquares optima may be found in closed form.
+We have hypothesised that the convexity of least-squares linear regression means that each model should converge to the same solution given the same data. Nevertheless, given that each model architecture yields a different parameterisation and initialisation, this still leaves open the possibility that early stopping may impact generalisation. Next, we explore how the parameterisation of FITS has the effect of inducing a much lower learning rate on the bias term compared to that of the weight matrix.
+4.1. The FITS Bias-Term
+In Theorem 3.3 we showed that any FITS model can be written in the form Ax⃗ + ⃗ b. Moreover, we showed how one may obtain A,⃗ b given the weight matrix and the bias of the complex linear layer (Appendix A.7). Specifically, ifc⃗ denotes the complex bias of the complex linear layer then ⃗ b = iRF Tc(⃗ ) where iRFT denotes the inverse discrete Fourier transform (Definition A.2). It is important to consider what the implications are of parameterising the bias term in this way, rather than simply parameterising ⃗ b directly.
+Consider representing the complex vectorc⃗ , of dimen
+sion L+T
+2 , as a (T + L)-dimensional real vector. This is achieved by separating the real and imaginary components ofc⃗ . Given that the iRFT is a linear mapping, it follows that ⃗ b andc⃗ are interconnected through the equation ⃗ b = Mc⃗ , where M is a specific matrix derived from the iRFT. Critically, the matrix M plays a pivotal role in determining the effective learning rate for the bias in our linear model. For instance, small values within M imply that adjustments inc⃗ induce only minor changes in ⃗ b. Due the choice of normalisation used for the RFT, the entries of the matrix M are of the order ∼ √1L and FITS manifests this exact phenomena. A detailed breakdown of this may be found in Appendix C.
+5. Experiments
+In Section 5.1 we demonstrate that the models discussed in this paper tend toward their corresponding closed form solutions. In Section 5.2 we test and compare each model across 8 benchmarking datasets, and show how the closed form solution is usually superior.
+5.1. Convergence
+Comparison of Learned Weight Matrices Figure 1 visualises the internal weight matrices for 4 trained linear model variants plus the closed-form solution (denoted OLS+IN). The models shown are RLinear, NLinear, DLinear+IN, FITS+IN (the SoTA variant of FITS from (Xu et al., 2023)), and OLS+IN. Each model is trained for 50 epochs1 on the ETTh1 dataset with a context of 720 and a prediction horizon length of 336. The weight matrices are then extracted and visualised using the same colour scale. In all cases the learned matrices are near identical. The similarity of the weight matrices for Linear+IN, RLinear, FITS+IN and OLS+IN is precisely in line with our hypothesis and matches the theory and discussion from previous sections. Note that while NLinear lies is a slightly different model class (See Table 1), the learned matrix is still near identical.
+Plotting the learned matrices as in Figure 1 requires us to first convert each trained model into the form fx(⃗ ) = Ax⃗ + ⃗ b. To do this we note that f (⃗0) = A⃗0 + ⃗ b = ⃗ b. Thus, the bias can be found by passing the zero vector into the trained model. We can determine A in a similar manner. Lete ⃗ i denote the ith coordinate vector, that ise ⃗ i is the vector which is 1 at position i and zero elsewhere. Then fe(⃗ i) = Ae ⃗ i +⃗ b = A·,i +⃗ b where A·,i is the ith column of A. Hence, given that we have already computed the bias term, we may derive A simply by passing through each coordinate vectore ⃗ i and subtracting ⃗ b. The procedure for extracting
+the weight matrices for models of the form Ax⃗ + ⃗ bσ(x) is similar and is discussed in Appendix F.1.
+1except for OLS which is solved using an SVD solver in Scikitlearn (Pedregosa et al., 2011).
+6
+
+
+Submission and Formatting Instructions for ICML 2024
+Figure 1. This figure displays the cropped weight matrices after 50 epochs of training for all four models with instance normalization, juxtaposed with their corresponding closed-form solution (extreme left). These show how similar the underlying models are. There are slight differences that affect forecasts to a marginal degree (see Figure 3).
+Figure 2. A demonstration of how the model’s weight matrices tend to the OLS solution during training. This is a visualised as the cosine similarity between a given model’s weight matrix and that determined by the closed form solution.
+Cosine similarity during training Figure 2 tracks the cosine similarity (Defined d(x, y) := x·y
+||x||2·||y||2 ) between
+the above-mentioned 4 models’ weight matrices and their OLS counterpart during training. A cosine similarity of one, corresponds to exact equality between the matrices. In line with our hypothesis, all model’s weight converge toward the OLS solution. The rapidity of this behaviour differs per model, thus demonstrating that SGD optimisation coupled with each unique parameterisation impacts the particularly route taken and rate of convergence.
+Forecasts Figure 3 shows the forecasts from these models after 50 epochs of training. While subtle differences in the models do indeed result in subtle differences in forecasts, there is clear and pervasive similarity between forecasts.
+Bias Terms The bias terms for each trained model are visualised in Figure 4. As expected, the models DLinear+IN, RLinear and OLS+IN learn the same bias terms as each other. Notably however, the bias for FITS+IN differs considerably from the other models. Moreover the magnitude of this bias is much smaller. This difference is despite the
+Figure 3. Forecast comparison on ETTh1 with T = 336, comparing the 5 models that use instance normalisation.
+fact that all these models’ classes are equivalent (Table 1). This confirms our analysis from Section 4.1.
+Figure 4. Comparison of the learned bias parameters for several linear models implementing feature normalisation technique. FITS results clearly in a different bias term.
+5.2. Performance
+Table 2 presents the Mean Squared Error (MSE) values, accompanied by error bars, for the models evaluated in this study, both with and without instance normalization.2 In the table, green highlighting signifies instances where the Ordinary Least Squares (OLS) solution achieves a lower MSE compared to the model being evaluated. Conversely,
+2We included NLinear in the grouping ‘with’ instance normalisation, even though the model classes is slightly different.
+7
+
+
+Submission and Formatting Instructions for ICML 2024
+Table 2. Long-term multivariate forecasting results, showing MSE values for all models investigated in this work. The green and blue highlighting indicate when the OLS is superior and within 1 standard deviation of a given model, respectively. Bolding indicates the best performing model for a given dataset-horizon combination.
+Methods without instance normalisation Methods with instance normalisation T OLS FITS DLinear Linear OLS+IN FITS+IN DLinear+IN RLinear NLinear
+ETTm1
+96 0.306 0.310 ±0.0005 0.311 ±0.0008 0.314 ±0.0037 0.307 0.309 ±0.0002 0.312 ±0.0008 0.312 ±0.0024 0.319 ±0.0021 192 0.335 0.338 ±0.0008 0.342 ±0.0014 0.343 ±0.0012 0.336 0.338 ±0.0005 0.341 ±0.0014 0.343 ±0.0010 0.346 ±0.0009 336 0.364 0.367 ±0.0003 0.372 ±0.0006 0.374 ±0.0008 0.365 0.367 ±0.0001 0.372 ±0.0006 0.372 ±0.0016 0.378 ±0.0003 720 0.413 0.435 ±0.0010 0.422 ±0.0016 0.426 ±0.0058 0.415 0.417 ±0.0006 0.422 ±0.0016 0.421 ±0.0018 0.424 ±0.0029
+ETTm2
+96 0.166 0.165 ±0.0003 0.164 ±0.0017 0.163 ±0.0010 0.162 0.162 ±0.0001 0.163 ±0.0011 0.164 ±0.0009 0.164 ±0.0009 192 0.228 0.225 ±0.0001 0.222 ±0.0023 0.218 ±0.0013 0.216 0.217 ±0.0001 0.217 ±0.0004 0.217 ±0.0007 0.217 ±0.0007 336 0.295 0.291 ±0.0008 0.267 ±0.0029 0.272 ±0.0021 0.268 0.269 ±0.0000 0.269 ±0.0007 0.270 ±0.0011 0.270 ±0.0011 720 0.415 0.409 ±0.0004 0.356 ±0.0056 0.362 ±0.0073 0.349 0.350 ±0.0002 0.354 ±0.0016 0.354 ±0.0010 0.355 ±0.0010
+ETTh1
+96 0.376 0.378 ±0.0002 0.380 ±0.0027 0.390 ±0.0016 0.375 0.377 ±0.0002 0.379 ±0.0010 0.387 ±0.0006 0.383 ±0.0027 192 0.413 0.413 ±0.0002 0.424 ±0.0045 0.426 ±0.0029 0.413 0.413 ±0.0002 0.419 ±0.0018 0.415 ±0.0015 0.418 ±0.0016 336 0.448 0.500 ±0.0014 0.458±0.0104 0.465 ±0.0044 0.445 0.432 ±0.0008 0.451 ±0.0020 0.450 ±0.0007 0.446 ±0.0006 720 0.491 0.506 ±0.0062 0.522 ±0.0051 0.512 ±0.0017 0.460 0.428 ±0.0002 0.470 ±0.0013 0.460 ±0.0074 0.464 ±0.0006
+ETTh2
+96 0.309 0.307 ±0.0008 0.276 ±0.0013 0.277 ±0.0119 0.270 0.270 ±0.0001 0.275 ±0.0002 0.272 ±0.0015 0.279 ±0.0020 192 0.423 0.447 ±0.0019 0.351 ±0.0140 0.351 ±0.0123 0.331 0.331 ±0.0000 0.342 ±0.0025 0.335 ±0.0010 0.343 ±0.0026 336 0.540 0.566 ±0.0014 0.424 ±0.0139 0.455 ±0.0053 0.353 0.354 ±0.0001 0.359 ±0.0062 0.357 ±0.0011 0.383 ±0.0028 720 0.900 0.971 ±0.0018 0.664 ±0.0400 0.619 ±0.0185 0.380 0.377 ±0.0001 0.384 ±0.0001 0.384 ±0.0012 0.406 ±0.0054
+ECL
+96 0.133 0.134 ±0.0002 0.134 ±0.0001 0.133 ±0.0002 0.133 0.133 ±0.0001 0.134 ±0.0001 0.134 ±0.0001 0.134 ±0.0002 192 0.147 0.148 ±0.0001 0.148 ±0.0005 0.148 ±0.0001 0.148 0.148 ±0.0000 0.149 ±0.0000 0.148 ±0.0000 0.149 ±0.0002 336 0.162 0.164 ±0.0002 0.164 ±0.0009 0.163 ±0.0001 0.164 0.164 ±0.0001 0.165 ±0.0001 0.165 ±0.0001 0.165 ±0.0001 720 0.197 0.200 ±0.0001 0.197 ±0.0034 0.198 ±0.0002 0.203 0.203 ±0.0000 0.205 ±0.0003 0.204 ±0.0001 0.205 ±0.0002
+Traffic
+96 0.385 0.386 ±0.0003 0.387 ±0.0003 0.386 ±0.0005 0.385 0.386 ±0.0002 0.387 ±0.0002 0.386 ±0.0004 0.387 ±0.0003 192 0.396 0.397 ±0.0001 0.398 ±0.0001 0.398 ±0.0003 0.397 0.398 ±0.0001 0.399 ±0.0003 0.397 ±0.0004 0.398 ±0.0000 336 0.410 0.411 ±0.0001 0.412 ±0.0001 0.412 ±0.0002 0.410 0.411 ±0.0001 0.412 ±0.0005 0.412 ±0.0000 0.412 ±0.0000 720 0.450 0.450 ±0.0002 0.450 ±0.0006 0.451 ±0.0003 0.448 0.449 ±0.0001 0.450 ±0.0002 0.449 ±0.0002 0.451 ±0.0000
+Weather
+96 0.142 0.144 ±0.0002 0.145 ±0.0017 0.145 ±0.0011 0.141 0.142 ±0.0000 0.142 ±0.0006 0.143 ±0.0005 0.144 ±0.0004 192 0.185 0.188 ±0.0013 0.188 ±0.0029 0.189 ±0.0028 0.184 0.185 ±0.0001 0.185 ±0.0008 0.185 ±0.0007 0.187 ±0.0010 336 0.235 0.238 ±0.0003 0.235 ±0.0004 0.238 ±0.0019 0.234 0.236 ±0.0001 0.235 ±0.0003 0.235 ±0.0005 0.235 ±0.0002 720 0.304 0.304 ±0.0004 0.308 ±0.0005 0.310 ±0.0018 0.307 0.307 ±0.0001 0.310 ±0.0004 0.309 ±0.0006 0.311 ±0.0003
+Exchange
+96 0.091 0.099 ±0.0009 0.084 ±0.0003 0.100 ±0.0097 0.086 0.087 ±0.0001 0.085 ±0.0003 0.086 ±0.0006 0.090 ±0.0008 192 0.217 0.243 ±0.0032 0.160 ±0.0088 0.161 ±0.0012 0.180 0.183 ±0.0005 0.178 ±0.0028 0.179 ±0.0024 0.187 ±0.0034 336 0.450 0.498 ±0.0026 0.315 ±0.0070 0.323 ±0.0126 0.343 0.344 ±0.0011 0.335 ±0.0031 0.334 ±0.0040 0.347 ±0.0024 720 1.392 1.256 ±0.0083 0.929 ±0.0218 0.717 ±0.1699 0.992 0.965 ±0.0010 0.920 ±0.0219 0.948 ±0.0082 1.035 ±0.0130
+blue highlighting denotes cases where the differences are within one standard deviation.
+Table 2 shows that the linear models are generally outperformed by their corresponding OLS solution (72% of settings). It is interesting that the OLS solution usually outperforms those trained with SGD and early stopping, particularly given that the OLS solutions are purely linear regression (not ridge or lasso regression), meaning that there is no regularisation. The comparably strong performance of the closed-form solution on larger datasets (ECL, Traffic, and Weather) suggests that a linear model may not have sufficient representational capacity in this setting.
+Conversely, FITS performs particularly well on the hourly ETT dataset (ETTh1 and h2). We believe that the reason for this is owed to the fact that these datasets are small, such that overfitting can occur rapidly. Since FITS inadvertently imposes a restriction on the bias parameter (see Section 4.1 and Figure 4), it is less prone to this overfitting restriction.
+OLS solutions were superior across 23 of 32 (72%) settings.
+6. Conclusion
+Simple linear models are often on par, or better, than complex or deep models for time series forecasting. Thus, much energy has thus been spent on ‘modernising’ linear regression for time series forecasting: modelling separately trends and residuals (DLinear), applying some form of instance normalisation (RLinear, NLinear), or by processing in Fourier space (FITS). We have shown in this paper that, from a functional standpoint, these alterations barely deviate these models from standard linear regression. We demonstrated empirically that these model behave and perform similarly to each other and generally worse than their closed-form solutions. A full discussion of the limitations and future of this work may be found in Appendix F.2.
+8
+
+
+Submission and Formatting Instructions for ICML 2024
+References
+Anonymous. DAM: A foundation model for forecasting. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview. net/forum?id=4NhMhElWqP.
+Darlow, L. N., Joosen, A., Asenov, M., Deng, Q., Wang, J., and Barker, A. FoldFormer: Sequence folding and seasonal attention for fine-grained long-term FaaS forecasting. In Proceedings of the 3rd Workshop on Machine Learning and Systems, pp. 71–77, 2023.
+Hastie, T., Tibshirani, R., Friedman, J. H., and Friedman, J. H. The elements of statistical learning: data mining, inference, and prediction, volume 2. Springer, 2009.
+Joosen, A., Hassan, A., Asenov, M., Singh, R., Darlow, L., Wang, J., and Barker, A. How does it function? characterizing long-term trends in production serverless workloads. In Proceedings of the 2023 ACM Symposium on Cloud Computing, SoCC ’23, pp. 443–458, New York, NY, USA, 2023. Association for Computing Machinery. ISBN 9798400703874. doi: 10.1145/ 3620678.3624783. URL https://doi.org/10. 1145/3620678.3624783.
+Kim, T., Kim, J., Tae, Y., Park, C., Choi, J.-H., and Choo, J. Reversible instance normalization for accurate time-series forecasting against distribution shift. In International Conference on Learning Representations, 2021.
+Lai, G., Chang, W.-C., Yang, Y., and Liu, H. Modeling long-and short-term temporal patterns with deep neural networks. In The 41st international ACM SIGIR conference on research & development in information retrieval, pp. 95–104, 2018.
+Li, Z., Qi, S., Li, Y., and Xu, Z. Revisiting long-term time series forecasting: An investigation on linear mapping, 2023.
+Liu, S., Yu, H., Liao, C., Li, J., Lin, W., Liu, A. X., and Dustdar, S. Pyraformer: Low-complexity pyramidal attention for long-range time series modeling and forecasting. In International conference on learning representations, 2021.
+Liu, Y., Hu, T., Zhang, H., Wu, H., Wang, S., Ma, L., and Long, M. itransformer: Inverted transformers are effective for time series forecasting, 2023.
+Nie, Y., Nguyen, N. H., Sinthong, P., and Kalagnanam, J. A time series is worth 64 words: Long-term forecasting with transformers. In The Eleventh International Conference on Learning Representations, 2022.
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., et al. Scikit-learn: Machine learning in python. Journal of machine learning research, 12(Oct):2825–2830, 2011.
+Silva, T. Understanding linear regression using the singular value decomposition, 2024. URL https://sthalles.github.io/ svd-for-regression/. Online; accessed Day Month Year.
+Sloss, B. T., Nukala, S., and Rau, V. Metrics that matter. Communications of the ACM, 62(4):88–88, 2019.
+Taylor, S. J. and Letham, B. Forecasting at scale. The American Statistician, 72(1):37–45, 2018.
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., and Polosukhin, I. Attention is all you need. Advances in neural information processing systems, 30, 2017.
+Wu, H., Xu, J., Wang, J., and Long, M. Autoformer: Decomposition transformers with auto-correlation for long-term series forecasting. Advances in Neural Information Processing Systems, 34:22419–22430, 2021.
+Xu, Z., Zeng, A., and Xu, Q. Fits: Modeling time series with 10k parameters. arXiv preprint arXiv:2307.03756, 2023.
+Zeng, A. Ltsf-linear. https://github.com/ cure-lab/LTSF-Linear, 2023.
+Zeng, A., Chen, M., Zhang, L., and Xu, Q. Are transformers effective for time series forecasting? In Proceedings of the AAAI conference on artificial intelligence, volume 37, pp. 11121–11128, 2023.
+Zhijian, X. Fits. https://github.com/VEWOXIC/ FITS, 2023.
+Zhou, H., Zhang, S., Peng, J., Zhang, S., Li, J., Xiong, H., and Zhang, W. Informer: Beyond efficient transformer for long sequence time-series forecasting. In Proceedings of the AAAI conference on artificial intelligence, volume 35, pp. 11106–11115, 2021.
+9
+
+
+Submission and Formatting Instructions for ICML 2024
+A. Appendix
+A.1. FITS
+This section is dedicated to fully unpacking the FITS model and proving Theorem 3.3.
+FITS Model Definition: Letx⃗ ∈ RL be a context vector. FITS applies the Real (discrete) Fourier Transform (RFT) tox⃗ . This mapsx⃗ to a complex vector of length ⌊L/2⌋ + 1. After this one applies a Low-Pass Filter (LPF), zeroing out the high frequency components. Next one applies a learnable complex linear layer. The output is padded with zeros and the result is passed though the inverse RFT, mapping to RL+T . The result is then scaled by L+T
+L.
+Throughout this section we will assume both the prediction horizon length T and the context length L are even. This will avoid over-cluttered expressions involving the floor functions. Moreover this condition holds for every experiment setting in the original paper (Xu et al., 2023).
+Remark: FITS is a state-of-art model. One of the goals of this paper is to understand the superior performance of this model given that it is simply a composition of linear operations. For this reason we restrict our analysis to those settings which give SoTA performance. To this end we ignore the LPF entirely in our subsequent analysis. While the LPF is an effective tool for compressing FITS, it comes with a performance degradation.
+In order to fully analyse FITS it is critical to introduce definitions for the Discrete and Real Fourier transforms.
+Definition A.1 (Discrete Fourier Transform). Letx⃗ ∈ RL, we define the Discrete Fourier Transform (DFT) ofx⃗ as DF TL : CL → CL so that for j ∈ {0, 1, . . . ⌊L⌋}
+DF TLx(⃗ )j :=
+L−1
+X
+k=0
+e −2πikj
+L xk (3)
+The DFT can be written in matrix form DF TLx(⃗ ) = DLx⃗ where, if ω denotes the Lth root of unity (ω := e −2πi
+L ), then DL is the matrix:
+DL :=
+
+  
+1 1 1 ... 1 1 ω ω2 . . . ωL−1 ................
+1 ωL−1 ω2(L−1) . . . ωL(L−1)
+
+  
+(4)
+The DFT is an invertible map and we define the inverse DFT (iDFT) by iDF Tx(⃗ ) := D−1
+Lx⃗ where D−1
+L =1
+L D⋆
+L.
+FITS does not directly employ the DFT. Rather, it employs a closely related transform called the Real Fourier Transform, which we now define.
+Definition A.2 (Real Discrete Fourier Transform). Letx⃗ ∈ RL, we define the Real Discrete Fourier Transform (RFT) of x⃗ as RF TL : RL → C⌊L/2⌋+1 so that for j ∈ {0, 1, . . . ⌊L/2⌋}
+RF TLx(⃗ )j :=
+L−1
+X
+k=0
+e −2πikj
+L xk (5)
+In other words, the RFT and DFT are identical other than the RFT is a truncated version that discards the last ⌊L/2⌋ − 1 components. The motivation for this comes from the fact that whenx⃗ is real, then the kth and (L − k)th components of the DFT are complex conjugates (DF Tx(⃗ )j = DF Tx(⃗ )⋆
+L−j). For this reason these components contain the same information in that the original signal may be entirely reconstructed from the first ⌊L/2⌋ + 1 components via (Y0, Y1, . . . , Y⌊L/2⌋+1) 7→ iDF T (Re(Y0), Y1, Y2, . . . , Re(Y⌊L/2⌋), Y ⋆
+⌊L/2⌋−1, . . . , Y1⋆). We call this map the inverse-RFT (iRFT).
+When ⃗Y has been obtained by taking the RFT of some real vector then Y0, Y⌊L/2⌋ ∈ R thus, taking the real part of these components, Re(Y0), Re(Y⌊L/2⌋), does nothing. However writing the inverse like this allows us to also take the inverse
+RFT of complex vectors ⃗Y ∈ C⌊L/2⌋ which do not lie in the image RF T (RL).
+We can make the relationship between the DFT and RFT more explicit by defining the following linear map.
+10
+
+
+Submission and Formatting Instructions for ICML 2024
+Definition A.3. Define the projection ΠL : CL → C L
+2 +1
+ΠL(Y0, Y1, . . . , YL−1) := (Y0, Y1, . . . , Y L
+2)
+Let ⃗Y = (Y0, Y1, . . . , Y L
+2 ). Then, the inverse map Π−1
+L : CL
+2 +1 → CL is defined as
+Π−1
+L (⃗Y ) = (Re(Y0), Y1, . . . , Re(Y L
+2 ), Y ⋆
+L
+2 −1, . . . , Y ⋆
+1)
+Example: Π−1
+L+T (Y0, Y1, Y2, Y3) = ( Y0+Y ⋆
+0
+2 , Y1, Y2, Y3+Y ⋆
+3
+2 , Y2⋆, Y1⋆)
+Remark A.4. Using this transformation one may express RF TL = ΠL ◦ DL and iRF TL = D−1
+L ◦ Π−1
+L
+Remark A.5. For any ⃗Y ∈ DF TL(RL) one may confirm that Π−1
+L ◦ ΠL = idL. Likewise, for any ⃗Y ∈ RF TL(RL) one
+may confirm that ΠL ◦ Π−1
+L = id L
+2 +1
+Having explicitly defined the discrete and discrete real Fourier transforms we are ready to begin the process of proving Theorem 3.3 which we restate below.
+Theorem A.6 (FITS). Let M (FITS) denote the FITS model class, i.e. the set of functions f : RL → RT which can be represented as a FITS model. When L ≥ T − 2, M (FITS) is precisely equal to the space of affine linear functions Ax⃗ + ⃗ b.
+As a composition of affine linear operation, FITS is itself an affine linear model. As a result any FITS model may be expressed in the form Ax⃗ + ⃗ b. The remainder of this section is dedicated to showing that when L ≥ T − 2 that A and ⃗ b are unconstrained meaning that FITS model class is equivalent to unconstrained linear regression. Before this we present a prescription, showing how one may obtain A,⃗ b, given the complex bias and weight matrix from FITS’s linear layer.
+Lemma A.7. Let f : RL → RL+T be some FITS model. Let W,c⃗ be the weight matrix and bias of the complex linear layer in this model. Then we can express f as a real affine linear map f (x) = Ax⃗ + ⃗ b where A = D−1
+L+T ◦ Π−1
+L+T W ◦ ΠL ◦ DL
+and ⃗ b = iRF Tc(⃗ )
+Proof. As discussed before, as a composition of affine linear operation, FITS is itself an affine linear model. As a result any FITS model may be expressed in the form Ax⃗ +⃗ b. One may recover the bias by applying f to the zero vector by noting that f (⃗0) = A⃗0 + ⃗ b = ⃗ b. f is a composition of the RFT, the complex affine mapx⃗ 7→ Wx⃗ +c⃗ and an iRFT. Since the RFT maps zero to zero then f (⃗0) = iRF T (W⃗0 +c⃗ ) = iRF Tc(⃗ ) as desired.
+We know therefore that Ax⃗ = Ax⃗ + ⃗ b − ⃗ b = iRF T (Wz⃗ +c⃗ ) − iRF Tc(⃗ ) wherez⃗ := RF Tx(⃗ ). Using the linearity of the iRFT we have Ax⃗ = iRF T (Wz⃗ +c⃗ −c⃗ ) = iRF T (Wz⃗ ) = iRF T ◦ W ◦ RF Tx⃗ . By writing the RFT and iRFT in terms of the DFT and the operator Π as in Remark A.4 concludes our proof of Lemma A.7.
+Proof Structure for Theorem 3.3: Our goal is to demonstrate that for L ≥ T − 2, any affine mapx⃗ 7→ Ax⃗ +⃗ b can be represented using a FITS architecture. We achieve this by characterizing the set of matrices representable within a FITS framework. The detailed characterization is presented in Lemma A.8 and Lemma A.9, which will be introduced subsequently. In Lemma A.8, we introduce a specific set of linear maps, illustrating their formulation as complex matrix multiplications and detailing the process for deriving the corresponding matrix from the linear map. Lemma A.9 then ties these concepts directly to the FITS architecture, demonstrating how the linear map type discussed is integral to FITS. This establishes a comprehensive characterization of matrices expressible via FITS. Following these lemmas, we will prove that for L ≥ T − 2, this characterization includes all affine transformationsx⃗ 7→ Ax⃗ + ⃗ b.
+In order to prove Theorem 3.3 we must introduce the following set of complex matrices.
+Lemma A.8. Let A denote the set of linear maps T : DF T (RL) → iDF T (RL+T ) which can be expressed as a composition T = Π−1
+L+T ◦ W ◦ ΠL where W is some L+T
+2 + 1 by L
+2 + 1 complex matrix. We claim that each T can be expressed as
+11
+
+
+Submission and Formatting Instructions for ICML 2024
+a complex matrix multiplication T (W ) : DF T (RL) → iDF T (RL+T ) where T (W ) is derived from W as follows:
+(T (W ))ij =
+
+        
+        
+Re(Wij), i ∈ {0, L+T
+2 }, j = 0, L
+2
+1
+2 (Wij ), i ∈ {0, L+T
+2 }, 0 < j < L/2
+1
+2 (W ⋆
+i,L−j ), i ∈ {0, L+T
+2 }, j > L/2
+Wij , 0 < i < L+T
+2 ,j ≤ L
+2
+0, 0 < i < L+T
+2 ,j > L
+2
+W⋆
+L+T −i,j , i ∈/ {0, L+T
+2 }, j = 0
+W⋆
+L+T −i,L−j , otherwise
+
+        
+        
+(6)
+For example let T = 2 and L = 4 and let W be an arbitrary complex 4 × 2 matrix. Then one has:
+T (W ) = (Π−1
+L+T (W ΠL)) =
+
+      
+Re(W00) W01
+2 Re(W02) W ⋆
+01 2 W10 W11 W12 0
+W20 W21 W22 0
+Re(W30) W31
+2 Re(W32) W ⋆
+31 2
+W2⋆0 0 W2⋆2 W2⋆1
+W1⋆0 0 W1⋆2 W1⋆1
+
+      
+(7)
+Remark: In the statement of Lemma A.8, Π−1
+L+T ◦ W ◦ ΠL denotes the application of Π−1
+L+T to each column of W and applying ΠL to each row. The order of these operations makes no difference since ΠL is a projection.
+Proof. Let W be some arbitrary complex matrix of dimension L+T
+2 + 1 by L
+2 + 1. Let T be the linear map defined on
+the domain DF T (RL) formed from the composition Π−1
+L+T ◦ W ◦ ΠL. We begin by assuming that there exists a complex T + L by L matrix T (W ) which is equivalent to this linear map and derive it’s structure. At the end we then show that it is indeed equivalent to the linear map T .
+As a projection onto the first 1 + L
+2 components, ΠL can be written as an ( L
+2 + 1) × L matrix where the iith entry of ΠL is 1
+and all other entries are zero. Right composing W by ΠL yields a single matrix equivalent to appending L
+2 − 1 columns of zeros to the right of W . That is:
+(ΠW )ij =
+ Wij, for j ≤ L
+2 +1 0, otherwise
+
+(8)
+For example, in the case L = 4, T = 2;
+W ◦ ΠL =
+
+  
+W11 W12 W13
+W21 W22 W23
+W31 W32 W33
+W41 W42 W43
+
+  
+
+
+1000 0100 0010
+
+
+=
+
+  
+W11 W12 W13 0
+W21 W22 W23 0
+W31 W32 W33 0
+W41 W42 W43 0
+
+  
+Now, let B = (W ◦ ΠL) be some complex ( T +L
+2 × L) matrix. One may similarly write Π−1
+L+T ◦ B, as a single matrix D ∈ C((T +L)×L). Using the definition of Π−1
+T +L (Definition A.3) we can derive the entries of the matrix D. We do
+this by noting that the matrix D must satisfy D ⃗Y = Π−1
+L+T ◦ B for any ⃗Y ∈ DF T (RL). By equating the components
+(D ⃗Y )i = (Π−1
+L+T ◦ B)i, one may deduce the matrix D in terms of B.
+Case 1: Let i = 0, L+T
+2.
+12
+
+
+Submission and Formatting Instructions for ICML 2024
+(D ⃗Y )i = (Π−1
+L+T B ⃗Y )i := Re((B ⃗Y )i) = (B ⃗Y )i+(B ⃗Y )⋆
+i
+2 . Therefore,
+(D ⃗Y )i =
+L−1
+X
+j=0
+Dij Yj = 1
+2
+ L−1
+X
+j=0
+Bij Yj + B⋆
+ij Y ⋆
+j
+
+=
+ Bi0 + B⋆
+i0
+2
+
+Y0 +
+L−1
+X
+j=1
+ Bij + B⋆
+i,L−j
+2
+
+Yj
+As this holds for all ⃗Y ∈ DF T (RL), we may conclude; Di0 = Re(Bi0), Di,L/2 = Re(Bi,L/2) and otherwise; Dij =
+
+Bij +B⋆
+i,L−j 2
+
+.
+Case 2: Let 0 < i < L+T
+2.
+By the definition of Π−1
+L+T we have (D ⃗Y )i = (Π−1
+L+T B ⃗Y )i = (B ⃗Y )i. Since this holds for all ⃗Y we must have Dij = Bij for all j.
+Case 3: Let i > L+T
+2.
+Using Def. A.3 we may derive the following which holds for all ⃗Y ∈ DF T (RL):
+(D ⃗Y )i = (Π−1
+L+T B ⃗Y )i = (B ⃗Y )⋆
+L+T −i
+=⇒ (
+L−1
+X
+j=0
+Dij Yj ) =
+L−1
+X
+j=0
+B⋆
+L+T −i,j Y ⋆
+j
+=(
+L−1
+X
+j=1
+B⋆
+L+T −i,j YL−j ) + B⋆
+L+T −i,0Y0
+Since ⃗Y ∈ DF T (RL) we know that Y0, YL/2 ∈ R and otherwise Yj = Y ⋆
+L−j. It follows therefore that Di0 = B⋆
+L+T −i,0
+and Dij = B⋆
+L+T −i,L−j for j > 0.
+Below we summarise our findings, writing a general expression for the ijth component of D = Π−1
+L+T B
+(Π−1
+L+T B)ij =
+
+    
+    
+Re(Bij), i ∈ {0, L+T
+2 }, j = 0
+1
+2 (Bij + B⋆
+i,L−j ), i ∈ {0, L+T
+2 }, j ̸= 0
+Bij , 0 < i < L+T
+2
+B⋆
+L+T −i,j , i ∈/ {0, L+T
+2 }, j = 0
+B⋆
+L+T −i,L−j , otherwise
+
+    
+    
+(9)
+We may combine Equation 9 with the earlier Equation 8 to establish a general form for the ijth element of Π−1
+L+T W ΠL:
+T (W )ij := (Π−1
+L+T W ΠL)ij =
+
+        
+        
+Re(Wij), i ∈ {0, L+T
+2 }, j = 0, L
+2
+1
+2 (Wij ), i ∈ {0, L+T
+2 }, 0 < j < L/2
+1
+2 (W ⋆
+i,L−j ), i ∈ {0, L+T
+2 }, j > L/2
+Wij , 0 < i < L+T
+2 ,j ≤ L
+2
+0, 0 < i < L+T
+2 ,j > L
+2
+W⋆
+L+T −i,j , i ∈/ {0, L+T
+2 }, j = 0
+W⋆
+L+T −i,L−j , otherwise
+
+        
+        
+(10)
+This is precisely the characterisation given in Equation 10.
+13
+
+
+Submission and Formatting Instructions for ICML 2024
+Existence Proof: We have demonstrated the necessary structure for a complex matrix T (W ) that is equivalent to the linear map Π−1
+L+T ◦ W ◦ ΠL. The task now is to prove that such a complex matrix representation, T (W ), indeed exists.
+The map Π−1
+L+T ◦ W ◦ ΠL, being real-linear, can be represented by a real matrix M when considering its domain, DF T (RL), as a real vector space of dimension 2L. The domain DF T (RL) consists of complex vectors (z0, z1, . . . , zL/2, . . . , zL−1), with z0 and zL/2 real, and zi = z∗
+L−i for other indices, indicating complex conjugate pairs.
+To transition from a real to a complex matrix representation, we exploit the structure of these complex vectors by expressing
+the real and imaginary parts of zi as Re(zi) = zi+z∗
+i
+2 and Im(zi) = zi−z∗
+i
+2 , respectively. This approach allows for the real matrix M , defined in terms of the real and imaginary components, to be reformulated as a complex matrix, thus confirming the existence and formulation of T (W ) as a complex matrix multiplication.
+Lemma A.9. Any FITS model can be expressed in the formx⃗ 7→ Ax⃗ + ⃗ b where A ∈ D−1
+L+T ◦ A ◦ DL and ⃗ b ∈ RL+T .
+Here A denotes the set of matrices introduced in Lemma A.8. Conversely, ifx⃗ 7→ Ax⃗ + ⃗ b is affine linear map such that A ∈ D−1
+L+T ◦ A ◦ DL, then there exists a functionally equivalent FITS model.
+Proof. We reiterate, that as a sequence of affine linear operations, FITS is a real affine linear model RL → RL+T . It follows that any FITS model can be expressed in the form Ax⃗ + ⃗ b for some choice of A ∈ R(L+T )×L and ⃗ b ∈ RL. It remains to show that for any FITs model, A can be selected from the family D−1
+L+T ◦ A ◦ DL.
+We showed in Lemma A.7 that, if W,c⃗ are the weights matrix and bias of the complex linear layer in the FITS model then ⃗ b = iRF Tc(⃗ ) and A = D−1
+L+T ◦ Π−1
+L+T W ◦ ΠL ◦ DL.
+Putting this together, we have
+F IT Sx(⃗ ; W,c⃗ ) = D−1
+L+T (Π−1
+L+T W ΠL)DLx⃗ + iRF Tc(⃗ )
+which can be compactly expressed as
+F IT Sx(⃗ ; W,c⃗ ) = D−1
+L+T BDL
+where B = Π−1
+L+T W ΠL : DF T (RL) → iDF T (RL+T ) belongs to A as desired.
+Since W can be any complex matrix then the converse also holds in that any linear mapx⃗ 7→ Ax⃗ where A ∈ D−1
+L+T ADL
+must be equivalent to a FITS model.
+It remains to show that any bias ⃗ b ∈ RL+T can be expressed in the form iRF Tc(⃗ ) wherec⃗ ∈ C L+T
+2 +1. This follows from the bijectivity of the DFT. Specifically, we can obtain any ⃗ b by lettingc⃗ := RF T (⃗ b). Then iRF T (RF T (⃗ b)) = iDF T ◦ Π−1
+L+T ◦ ΠL+T ◦ DF T (⃗ b) = ⃗ b by Remark A.5.
+Having proved Lemma A.9 and the more technical Lemma A.8 we are now ready to prove Theorem 3.3.
+Proof of Lemma 3.3
+Proof. We showed in Lemma A.9 that every FITS modelx⃗ 7→ F IT Sx(⃗ ; W,c⃗ ) can be written in the form x 7→ Ax⃗ +⃗ b where A ∈ R(L+T )×L, ⃗ b ∈ RL+T . Moreover we showed how one may obtain A,⃗ b from W,c⃗ via A = D−1
+L+T Π−1
+L+T W ΠLDL and
+⃗ b = iRF Tc⃗ . FITS outputs both a forecast and a reconstruction of the context. Consequently we may decompose A =
+AL AT
+
+where AT ∈ RT ×L is the matrix which produces a forecast from the context vector. We have already seen in Lemma A.9
+that FITS imposes no restriction on our bias term ⃗ b. Our claim is that additionally, when L ≥ T − 2, any real T × L matrix
+AT by be attained an appropriate selection of W . If we define the operator P : R(T +L)×L → RT ×L by P
+ AL
+AT
+
+= AT
+then we can formulate this claim as
+L ≥ T − 2 =⇒ RT ×L ⊆ P ◦ D−1
+L+T ◦ A ◦ DL
+14
+
+
+Submission and Formatting Instructions for ICML 2024
+Since DL is bijective this may be equivalently be written as
+RT ×L ◦ D−1
+L ⊆ P ◦ D−1
+L+T ◦ A
+Note that we already have the reverse inclusion P ◦ D−1
+L+T ◦ A ◦ DL ⊆ RT ×L by Lemma A.9.
+We begin by characterising the space of matrices RT ×L ◦ D−1
+L . This is the space of matrices one gets when you apply
+an inverse DFT to the rows of all real T × L matrices. That is, RT ×L ◦ D−1
+L is the subset of complex T × L matrices
+where each row is in the set D−1
+L (RL). These are precisely the complex vectors of length L where v0, vL/2 ∈ R and where otherwise vi = v⋆
+L−i. For example, for T = 6, L = 4 the general form of RT ×L ◦ D−1
+L can be written as follows where lowercase denotes a real entry.
+
+      
+b00 B01 b02 B0⋆1
+b01 B11 b12 B1⋆1
+b02 B21 b22 B2⋆1
+b03 B31 b32 B3⋆1
+b04 B41 b42 B4⋆1
+b05 B51 b52 B5⋆1
+
+      
+(11)
+Using this fact, RT ×L ◦ D−1
+L may be alternatively be characterised as the set of complex T × L matrices where the zeroth
+and L/2th columns, c0, cL/2, are arbitrary real vectors and where otherwise all other columns are arbitrary complex vectors subject to the condition ci = c⋆
+L−i. Written as a vector space isomorphism this is:
+RT ×L ◦ D−1
+L ∼= RT ⊕ CT ⊕ . . . ⊕ CT
+| {z }
+(L
+2 −1) times
+⊕RT ⊕ CT . . . ⊕ CT
+| {z }
+(L
+2 −1) times
+Using Lemma A.8 one may characterise A similarly in terms of its columns. The zeroth and L/2th columns are arbitrary vectors in DL+T (RL+T ). For 0 < i < L/2 the ith column, ci, is an arbitrary complex vector of length T + L, subject to the condition cij = 0 for j > (T + L)/2. For i > L/2 column ci satisfies the condition ci0 = cL−i,0 and otherwise cij = c⋆
+L−i,L+T −j. In the case T = 2, L = 4 the general form for a matrix in A can be written as follows where lowercase once again denotes a real entry:
+
+      
+a00 A01 A02 a03 A0⋆2 A0⋆1
+A10 A11 A12 A13 0 0
+A20 A21 A22 A23 0 0
+a30 A31 A32 a33 A3⋆2 A3⋆1
+A2⋆0 0 0 A2⋆3 A2⋆2 A2⋆1
+A2⋆0 0 0 A1⋆3 A1⋆2 A1⋆1
+
+      
+We will use the notation S to represent the space of complex vectorsv⃗ ∈ C(L+T ) where vi = 0 for i > (T + L)/2.
+S := v{⃗ ∈ C(L+T )|vi = 0, i > (T + L)/2}
+Using this, one may write A as a vector isomorphism.
+A ∼= DL+T (RL+T ) ⊕ S ⊕ . . . ⊕ S
+| {z }
+(L
+2 −1) times
+⊕DL+T (RL+T ) ⊕ S ⊕ . . . ⊕ S
+| {z }
+(L
+2 −1) times
+Remark: Note that in both cases A and RT ×L ◦ D−1
+L are completely specified by their first (L/2)+1 columns since the for i > L/2 column ci can be determined completely by cL−i
+If AT is some arbitrary matrix in RT ×L ◦ D−1
+L we want to show that, when L ≥ T − 2, we can find W ∈ A where
+P ◦ D−1
+L+T (W ) = A.
+15
+
+
+Submission and Formatting Instructions for ICML 2024
+We observe that the linear map P ◦ D−1
+L+T : CL+T → CT operates independently on each column of A. Thus, using the decompositions given above for A and DL+T (RL+T ), we only need to show that:
+RT ⊆ P ◦ D−1
+L+T (DL+T (RL+T ))
+and
+CT ⊆ P ◦ D−1
+L+T (S)
+The former of these is trivial since DL+T is a bijection; hence P ◦ D−1
+L+T (DL+T (RL+T )) = P (RL+T ) = RT . To show the second inclusion, we recollect that we already have P ◦ D−1
+L+T (S) ⊆ CT . Hence, we need only to show that the dimension of the space P ◦ D−1
+L+T (S) is greater than T (the dimension of CT ).
+We claim that dim(P ◦ D−1
+L+T (S)) = min(T, T +L
+2 + 1). Hence, we have dim(P ◦ D−1
+L+T (S)) ≥ T ⇐⇒ T +L
+2 +1≥ T ⇐⇒ L ≥ T − 2 as required.
+In order to demonstrate this claim, note that P ◦ D−1L + T can be written as a T × (L + T ) matrix formed by taking the bottom T rows of the matrix DL + T −1. Then, due to the structure of S (namely, that vi = 0 for all i > T +L
+2 ),
+dim(P ◦ D−1L + T (S)) is equal to the rank of the T × T +L
+2 + 1 submatrix extracted from the bottom left of the
+(L + T ) × (L + T ) matrix DL + T −1. If we can show that this submatrix has full row and column rank, then we are done. Let a := min T +L
+2 + 1, T  and form the squared a × a matrix by discarding the excess rows or columns. We claim this square matrix has rank a. This follows from the fact that this submatrix is a Vandermonde matrix generated from a root of unity, thus it has a non-zero Vandermonde determinant and is therefore full rank.
+B. Further Results and Experiments
+Figure 5. The biases learned by the FITS, Linear, DLinear after being trained on ETTh1 for 50 epochs. We also include the bias learned by the closed-form OLS linear regression. We note that, in line with theory from Section 3, we get the same bias for the DLinear, OLS and Linear models. Notably the bias for FITS is substantially different. This is explained by the choice of normalisation used in the Fourier transform in FITS.
+C. FITS Bias Term - Detailed Breakdown
+In this section we explain and breakdown Section 4.1 explaining how FITS operates as an almost bias-free model early in training.
+In Def A.1 we defined the DFT and its inverse. The definition we use is standard and in line the implementation used in FITS 3. An alternative definition of the DFT instead defines it as follows:
+DF TLx(⃗ )j := √1N
+L−1
+X
+k=0
+e
+−2πikj
+L xk (12)
+3https://github.com/VEWOXIC/FITS/
+16
+
+
+Submission and Formatting Instructions for ICML 2024
+The inverse DFT is then defined as √1N D∗
+L where DL is as defined in Eqn. 4.
+This second definition is identical, differing only in the choice of normalisation. This alternative definition is referred to as the Normalised or Orthonormallly Normalised DFT. A key property of the normalised DFT is that it is distance-preserving. By this we mean that ||DF Tx(⃗ )||2 = |x|⃗ ||2. On the contrary, the DFT as it is defined in Def. A.1 satisfies ||DF Tx(⃗ )||2 =
+√N |x|⃗ ||2 where N is the number of components of the vectorx⃗ . In other words, the DFT as defined in Section 3.1.2 stretches distances by a factor of
+√N . The opposite of this is true for the inverse DFT so that ||iDF Tx(⃗ )||2 = √1N |x|⃗ ||2.
+We saw in Lemma A.7 that any FITS model may be expressed in the form Ax⃗ + ⃗ b. Moreover ifc⃗ denotes the bias in FITS’s complex linear layer then we may obtain ⃗ b via ⃗ b = iRF Tc(⃗ ). Since the iRF T is real-linear this means that ⃗ b and c⃗ are related via a matrix equation ⃗ b = M ⃗C where ⃗C is the real vector obtained by splittingc⃗ into its real and imaginary
+components ⃗C :=
+"R ⃗e(c)
+Im⃗ (c)
+#
+Let us now consider what the ramifications are of learning ⃗ b by stochastic gradient descent (SGD) using the parameterisation ⃗ b = M ⃗C rather than learning ⃗ b directly. If v ̄ denotes the derivative of the loss with respect to the variablev⃗ : that is v ̄ := ∂L
+∂v⃗
+and η denotes our learning rate then the gradient update using a naive parameterisation of ⃗ b is:
+⃗ b 7→ ⃗ b − η ̄b
+Conversely, if we let ⃗ b = M ⃗C and we instead learn ⃗C by gradient descent. One may show by the chain rule that C ̄ := M T  ̄b. Thus, using the same learning rate as before, this induces an update
+⃗C 7→ ⃗C − ηC ̄ = ⃗C − ηM T b ̄
+=⇒ ⃗ b 7→ ⃗ b − ηM M T b ̄
+Thus, this choice of parameterisation means that we get an update of M M T  ̄b where naively we would have an update of  ̄b.
+It should be immediately clear, that unless M M T is approximately distance preserving that we are effectively scaling the learning rate of our bias ⃗ b. As we have discussed, because we are using a non-orthonormal normalisation M scalesc⃗ in the order of √L1+T . Put together, this means that M M T is scalingc⃗ in the order of 1
+L+T . FITS applies a scaling of L+T
+L before
+outputting the forecast which partially mitigates this. However in conclusion, ⃗ b still has a learning rate approximately 1
+L
+times smaller than one would obtain through a naive parameterisation of ⃗ b.
+As we saw, any FITS model can be expressed in the form Ax⃗ + ⃗ b. It is natural to ask whether this phenomena also impacts the weight matrix A. In fact it does not. As a result the issue with the bias cannot simply be resolved by increasing the learning rate as this would result in a learning rate which is too high for learning A. Let briefly sketch the reason why the weight matrix doesn’t also have these issues. Crudely speaking the weight matrix W in FITS’s complex linear layer and A are related via an expression of the A = M1W M2 where M1, M2 are real matrices corresponding to the iRFT and RFT respectively. If one chooses to normalise the iRFT by 1
+N this is then offset by the fact that the right multiplication M2 is unnormalised. In terms of backpropagation rules we have:
+W ̄ = M T
+1 A ̄M T
+2
+Therefore, whereas under a naive parameterisation we would have an update of A ̄, FITS gives us an update of M1M1T A ̄M2T M2. Thus, whatever normalisation standard we use for the RFT; whether we normalise the RFT (M2)
+by 1
+N but not the iRFT (M1) or whether we normalise them both equally, leads the same update.
+D. Further Proofs
+D.1. DLinear
+In Lemma 3.2 we write the padded moving average, utilised in DLinear to obtain the trend ofx⃗ , as a matrix multiplication Dx⃗ . In this part we explain the structure of D. We do this by means of an example: Consider the simple case where we have
+17
+
+
+Submission and Formatting Instructions for ICML 2024
+a context vectorx⃗ of length 6 and we take a moving average with a kernel size of 3. In order to preserve dimension ofx⃗ on must pad either side ofx⃗ . We do this by repeating the first and last values twice before applying the moving average. That is:
+(x1, x2, x3, x4, x5, x6) 7→ (x1, x1, x2, x3, x4, x5, x6, x6)
+In general if we have a kernel size of K where K is odd then we must pad each side with K−1
+2 repeated entries. (In DLinear they use a kernel size of 25 (Zeng et al., 2023)).
+This padding operation can be expressed in matrix form. For this example
+
+          
+x1 x1 x2 x3 x4 x5 x6 x6
+
+          
+=
+
+          
+100000 100000 010000 001000 000100 000010 000001 000001
+
+          
+
+      
+x1 x2 x3 x4 x5 x6
+
+      
+The moving average of the expandedx⃗ is calculated by taking the arithmetic mean of each successive run of K = 3 values. This may be written as a matrix multiplication:
+1 3
+
+      
+11100000 01110000 00111000 00011100 00001110 00000111
+
+      
+
+          
+x1 x1 x2 x3 x4 x5 x6 x6
+
+          
+(13)
+We can combine these two operations into a single matrix multiplication to obtain
+Dx⃗ := 1
+3
+
+      
+210000 111000 011100 001110 000111 000012
+
+      
+
+      
+x1 x2 x3 x4 x5 x6
+
+      
+D.2. Closed Form Solution to Linear Regression
+A well-known property of least-squares linear regression is that it admits a closed-form solution (Hastie et al., 2009). There are a number of ways in which one may compute this solution numerically. Below we define one of the more common approaches:
+Definition D.1 (Closed-Form Solution). Let X denote the N × L design matrix containing our training data, and let Y denote the N × T matrix of training targets. The L × T weight matrix W that minimises the training loss ∥XW − Y ∥22 is given in closed form as follows:
+W ⋆ = (XT X)−1XT Y (14)
+If the rank of X is less than L, indicating that X is rank-deficient, a unique solution may not exist. In such cases, a solution can be obtained using the Moore-Penrose pseudo-inverse, denoted as (XT X)+, instead of the regular inverse.
+In practice the solution given in Def. D.1 may be numerically unstable if XT X is ill-conditioned. In Section 5 we use the more stable but more expensive SVD approach. Details of this may be found in Silva (2024).
+18
+
+
+Submission and Formatting Instructions for ICML 2024
+D.2.1. CLOSED FORM SOLUTIONS FOR LINEAR REGRESSION PLUS DATA NORMALISATION
+Standard least-squares linear regression admits a closed-form solution. We claimed in Section 4 that the other model families in Table 1, corresponding to RLinear and NLinear also admit a closed form solution under a least-squares loss. The reason for this is that one can formulate each of these models as linear regression on a suitable feature set ofx⃗ .
+In the following we will let X, Y be N × L and N × T denote matrices containing N training samples and their targets respectively.
+NLinear: Suppose that we wish to find the matrix A ̃ ∈ RT ×L and bias ⃗ b ∈ RT which minimises ||AXT + ⃗ b − Y T ||2 subject to the condition that the rows of A must sum to one. Augment X and Y by computing the row-mean of X and subtracting this off each of the rows of both X and Y . We denote the augmented matrices as X ̃ and Y ̃ . Specifically, for row i; X ̃i := Xi − μ(Xi) and Y ̃i := Yi − μ(Xi). We now solve the unconstrained least-squares regression on these augmented matrices. This yields a matrix A∗ and a bias ⃗ b which minimises ||AX ̃ T + ⃗ b − Y ̃ T ||2. This matrix is not uniquely defined
+since one may add any multiple of the vector (1, 1, 1, . . . , 1) to each row and obtain the same train loss since ⃗1X ̃ = ⃗0. Thus, we can choose to project A so that each of it’s rows do sum to 1. We claim that this matrix minimises our original constrained objective ||AXT + ⃗ b − Y T ||2.
+Letx⃗,y⃗ be an arbitrary context-target pair. Let μx(⃗ )k be notation for a k-dimensional vector formed by taking the mean of x⃗ and repeating this k-times. Since the rows of of A sum to one then Aμ(X)L = μ(X)T . Therefore:
+||(Ax⃗ + ⃗ b −y⃗ )||2 = ||(Ax⃗ + ⃗ b −y⃗ ) + μx(⃗ )T
+T − μx(⃗ )T
+T ||2
+= ||(Ax⃗ + ⃗ b −y⃗ ) + μx(⃗ )T
+T − (Aμx(⃗ )L)T ||2
+= ||(Ax(⃗ − μx(⃗ )L) + ⃗ b − y(⃗ − μx(⃗ )T )||2
+Therefore, any matrix A will get the same MSE on any pairx⃗,y⃗ as it will on the augmented versionsx⃗ − μx(⃗ )L,y⃗ − μx(⃗ )T ).
+It follows that A∗ obtains the same MSE on X ̃ , Y ̃ as X, Y and vice versa. In particular if A∗ is also optimal for X ̃ , Y ̃ then it is too for X, Y . Thus, the matrix which we obtained by closed-form OLS on X ̃ , Y ̃ satisfies the properties claimed.
+RLinear: We showed that one can find a global optima for the NLinear models class in closed form when using a meansquares loss function. The same is true for RLinear and the constuction is much the same. We wish to find a matrix A and bias ⃗ b which minimise ||AXT + ⃗ bσ(X) − Y T ||2 subject to the condition that the rows of A must sum to one. Here σ(X) denotes an N -dimensional vector formed of the standard deviation of the rows of X. AXT + ⃗ bσ(X) is equivalent to augmenting X by appending σ(X) to X as an additional column and then fitting a (T + 1) × L matrix and no bias. Having appended this columns we then proceed along the same lines as before; subtracting the row means from X and Y and solving the resulting regression problem in closed form. One should be careful not to change the final column in this process and not include σ(x) in the computation of the mean.
+E. Experiment Details
+Datasets: For our experiments in Section 5.2 we use 8 standard time series benchmarking datasets: ETTh1 and ETTh2: 7-channel hourly datasets (Train-Val-Test Splits [8545,2881,2881]). Their per-minute equivalents; ETTm1, ETTm2 (also 7-channel) (Train-Val-Test Splits [34465,11521,11521]). ECL, an hourly 321-channel Electricity dataset (Train-ValTest Splits [18317,2633,5261]), Weather, a per-10-minute resolution 21-channel weather dataset (Train-Val-Test Splits [36792,5271,10540]), Traffic; an 862-channel traffic dataset (Train-Val-Test Splits [12185,1757,3509]) and Exchange: a small 8-channel finance dataset (Train-Val-Test Splits [5120,665,1422]).
+In each case we use the well-established dataset divisions and normalisation protocols. We refer the reader to (Wu et al., 2021) for further details.
+Models: The models we compare are DLinear, NLinear, RLinear, FITS and Linear (a single linear layer neural network). We also run FITS+IN and DLinear+IN. FITS+IN corresponds to the implementation of FITS used in Xu et al. (2023). Alongside these we run the closed-form solutions (OLS and OLS+IN). The mathematics behind these solutions are explained in Sec D.2. These are implemented using the LinearRegression model from scikit-learn using an SVD solver.
+Hyperparameters: For each model, dataset, and horizon combination we train for 50 epochs using a learning rate of 0.0005 and the Adam optimizer with the default hyperparameter settings. We use a batch size of 128 in all experiments. We track the validation loss during training. At test time we load the model with minimal validation loss to evaluate on the training
+19
+
+
+Submission and Formatting Instructions for ICML 2024
+set, which is equivalent to early stopping. Each experiment is run (at least) 3 times using different random seeds and the standard deviation of the MSEs is computed and given in Table 2. We test on prediction horizons of 96, 192, 336 and 720 which are the standard in the literature (Nie et al., 2022). In all cases we use a context length of 720, as per the setting used by Xu et al. (2023). Our implementation of the DLinear model is taken from Zeng (2023). Our implementation of FITS is taken from Zhijian (2023). We re-implemented the RLinear and NLinear models using the detailed descriptions of these models in their respective papers (Zeng et al., 2023; Li et al., 2023).
+Weight Comparison Experiments: In Section 5 we compare the weight matrices, biases and forecasts of the different models. The hyperparameter settings are largely identical to those used to populate Table 2. One difference is that we compare our weights/biases/forecasts at the end of 50 epochs of training rather than using early stopping. A second difference is that the Figure 2 shows the cosine similarity over 350 training epochs and uses a learning rate of 0.0002 rather than 0.0005. The purpose of this change was to demonstrate clearly the convergence behaviour of these models, which inevitably requires a longer training run. All figures are obtained after training on the ETTh1 dataset. For the weight, forecast and cosine similarity figures (Figures 1, 3, 2) we use a prediction horizon of 336, The bias figure (Figure 4) uses a horizon of 720.
+F. Further Discussion
+F.1. Extracting the Weight Matrices
+Suppose that we have a trained model of the form fx(⃗ ) = Ax⃗ + ⃗ bσ(x) and we wish to determine A and ⃗ b. The vector of all ones has standard deviation equal to zero. Therefore passing in this vector we obtain f (⃗1) = A⃗1 = PL
+i=1 Aji, i.e the
+sum of the columns of A. Let √LL−1e ⃗ i be a multiple of the ith coordinate vectore ⃗ i, where the multiple is chosen so that the vector has standard deviation equal to one. Passing in this vector for f we get:
+fe(⃗ i) = L
+√L − 1 Ae ⃗ i + ⃗ bσ
+L
+√L − 1e ⃗ i
+
+=L
+√L − 1 Ae ⃗ i + ⃗ b = L
+√L − 1 A·,i + ⃗ b (15)
+One may solve this system of equations to derive A and ⃗ b. In particular, PL
+i=1 fe(⃗ i) = L⃗ b + √LL−1
+PL
+i=1 A·,i. So:
+ √L − 1 L
+L
+X
+i=1
+fe(⃗ i)
+
+− f (⃗1) = (√L − 1)⃗ b
+Having obtained ⃗ b one can then use Eqn. 15 to derive the columns of A.
+F.2. Limitations and Future Work
+In Section 3 we show how Linear+IN and Linear+RevIN have the same model classes. While Linear+RevIN and Linear+IN are identical in the single channel setting, they can differ subtly in the multi-channel setting. Specifically, in the setting where one shares weights of the linear layer across channels, but allows RevIN separate affine parameters per channel, then RevIN can have marginally different biases for each channel.
+We wish to reiterate that our findings for FITS hold when the low-pass filter is not applied. As we have said, we are motivated to understand each model under their optimal settings, as such we have ignored the LPF which typically hinders performance. When one uses an LPF there will typically be restrictions on the model class meaning it is not equivalent to unconstrained linear regression. A further analysis of this is required in future work.
+One of the key contributions of FITS ((Xu et al., 2023)) is that it allows one to compress models by disregarding higher frequencies during training. Having established how to map between FITS models and their underlying affine representations, this opens the possibility of using the FITS technique to compress OLS solutions post hoc. This is something which should be looked at in future work.
+20

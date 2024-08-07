@@ -1,0 +1,471 @@
+European Polymer Journal 215 (2024) 113177 Contents lists available at ScienceDirect
+European Polymer Journal
+journal homepage: www.elsevier.com/locate/europolj
+
+Chemical specificity in polyzwitterion-polyelectrolyte coacervates: polycations vs polyanions
+Jong K. Keum *,1, Panagiotis Christakopoulos *,1, Zening Liu, Tianyu Li, Jihua Chen, Alexis Williams, Dale K. Hensley, Kunlun Hong, Yangyang Wang, Rigoberto Advincula, Rajeev Kumar
+Center for Nanophase Materials Sciences, Oak Ridge National Laboratory, Oak Ridge, TN 37831, USA
+
+ARTICLE INFO
+Keywords: Polyelectrolytes Coacervation Polyzwitterions
+
+ABSTRACT
+Aqueous solutions containing polyzwitterions and polyelectrolytes were studied to probe the effects of chemical specificity on the complexation among different types of chains and resulting liquid–liquid phase separation (coacervation). Two kinds of blends were studied. A polyzwitterion, poly(sulfobetaine methacrylate) (PSBMA), was blended with either (1) a polycation, poly(diallydimethylammonium chloride) (PDADMAC), or (2) a poly­ anion, sodium poly(styrene sulphonate) (NaPSS). Coacervation was observed in both blends after equilibration, while the freshly prepared blend solutions exhibited distinct behavior dependent on the mixing protocols. Mixing solutions of the polyzwitterions and the polycations led to coacervation almost instantaneously. In contrast, the blends containing the same polyzwitterions and the polyanions exhibited no such coacervation by following the same mixing protocol. However, blends prepared after dissolving a solid mixture containing the same poly­ zwitterions and the polyanions in water exhibited coacervation. Based on the small-angle X-ray scattering (SAXS), cryo-electron microscopy, and rheology measurements, complexation and coacervation in the polyzwitterion-polyelectrolyte blends is rationalized in terms of the entropy change associated with reorgani­ zation of solvent (water), which appears to be larger in the polyzwitterion-polycation case in comparison with the polyzwitterion-polyanion blends. These results highlight the importance of chemical specificity and mixing protocols leading to metastable structures in designing a new class of materials based on macromolecular complexation of polyzwitterions.
+
+1. Introduction
+Complexation of charged polymers has been a topic of extensive research [1–6] due to its relevance to the development of a number of technologies such as biosensors, underwater adhesives, drug-delivery systems, and membranes. Processing of the complexes based on charged polymers has been made possible due to the dependence of rheological properties of these complexes on salt [3,4]. Due to the effects of salt on processing of the complexes, a new class of materials termed as “saloplastic” has emerged, where salt has been used as an aid in pro­ cessing [3,4]. These materials include a mixture of polyanions such as sodium poly(styrenesulphonate) (NaPSS) and polycations such as poly (diallydimethylammonium chloride) (PDADMAC) mixed with water and salt. Effects of mixing ratios, chain lengths, temperature, salt-type,
+
+and salt-concentration on rheological properties of the mixtures have been studied extensively [7–10]. These mixtures undergo a liquid–liquid phase separation due to gain in entropy [11,12] resulting from release of counterions and solvent (water) reorganization when oppositely charged polymers complex with each other. A major focus of previous studies has been to understand and control properties of the dense phase (coacervate) containing polymer chains, which coexist with a superna­ tant phase containing primarily ultra-dilute concentration of polymer chains. Due to the liquid–liquid phase separation, the complexation in oppositely charged polyelectrolytes [13] can be used to generate ma­ terials spanning a continuum ranging from extremely hydrated dense phase (coacervate) to fully dehydrated (“solid” precipitate) complexes.
+In recent years, polyzwitterions, a special class of polyampholytes [14–16], have emerged, which exhibit quite interesting properties in
+
+* Corresponding authors. E-mail addresses: keumjk@ornl.gov (J.K. Keum), christakopop@ornl.gov (P. Christakopoulos), kumarr@ornl.gov (R. Kumar).
+1 These authors contributed equally to this work.
+https://doi.org/10.1016/j.eurpolymj.2024.113177 Received 9 April 2024; Received in revised form 24 May 2024; Accepted 25 May 2024 Available online 6 June 2024 0014-3057/© 2024 Published by Elsevier Ltd.
+
+J.K. Keum et al.
+aqueous solutions [17–23]. Polyzwitterions have been studied exten­ sively due to their relevance for various applications such as anti-fouling coatings [24–27], low-friction materials for synovial joints [28], drugdelivery systems based on coacervation, [6] and solid-state batteries [29]. Based on the synthesis scheme, polyzwitterions can be synthesized without any “free” counterions such that a polyzwitterionic chain re­ mains net neutral but contains explicit positive and negative charges in each monomer. This, in turn, means that a complex formed by such a polyzwitterionic chain and a polyelectrolyte chain, will carry the charge of the polyelectrolyte chain and can act as an effective polyelectrolyte chain. Such a complexation between a polyzwitterion and a poly­ electrolyte chain is fundamentally different from a complexation be­ tween oppositely charged polyelectrolyte chains because the complexation involving a polyzwitterion doesn’t gain the entropy of counterion release, while it has been shown that the entropy of the counterion release [11,12] plays a significant role in driving the complexation of oppositely charged polymers. Additional driving forces resulting from solvent reorganization [12] on complexation of a poly­ zwitterion and a polyelectrolyte may drive the complexation towards liquid–liquid phase separation (co-acervation). Previous reports [30–32,24,33–36] on complexation of polyzwitterions and poly­ electrolytes in aqueous solutions have shown that 1) polyzwitterionpolyelectrolyte complexes can indeed undergo liquid–liquid phase sep­ aration but the dense phase (coacervate phase) contains nonstochiometric complexes [31,32,35] containing majority of poly­ zwitterions. This, in turn, implies that supernatant phase contains either paired polyzwitterion-polyelectrolyte chains or the polyelectrolytes. This kind of liquid–liquid phase separation is called cascade complexa­ tion [31]. 2) The cascade complexation is primarily observed in solu­ tions of polyzwitterions and polycations [31,32,35]. In contrast, blends
+
+European Polymer Journal 215 (2024) 113177
+containing polyzwitterions and polyanions such as poly(carbox­ ybetaines) and poly(ionenes), respectively, were reported to exhibit no liquid–liquid phase separation [31–33]. Instead, highly viscous solu­ tions were obtained on mixing solutions of polyzwitterions and poly­ anions, which exhibited altered upper critical solution temperatures (UCST) in comparison with that of the polyzwitterions. These results point out an importance of chemical specificity in coacervates based on polyzwitterions.
+Origin of this chemical specificity can be understood by considering attractive ion–dipole interactions between a polyzwitterion and a polyelectrolyte chain. Based on ion–dipole interactions [20,37], which can either be repulsive or attractive depending on orientation of the dipoles in electric field of the ions, the complexation between a poly­ zwitterion chain and a polyanion (Fig. 1(a)) should differ from that of the same polyzwitterion and a polycation (Fig. 1(c)) in two ways. First, the complexation between the anions and the finite sized dipoles in Fig. 1(a) will have the distance of closest approach limited by the steric effects originating from the backbone of the polyzwitterion chain. There is no such limitation on the distance of the closest approach in the case of the complexation between the same polyzwitterion and a polycation. Due to the fact that the distances of the closest approach among ions and dipoles are smaller for the polyzwitterion-polycation complex than the polyzwitterion-polyanion, the complexes formed by polyzwitterions and polycations are expected to exhibit higher strengths than those based on polyzwitterions and polyanions. This expectation results from the more attractive ion–dipole interactions in the polyzwitterion-polycation complex in comparison with the polyzwitterion-polyanion complex. Second, the polyzwitterion-polyanion complex must be negatively charged and the polyzwitterion-polycation complex must be positively charged with the oppositely charged counterions screening the net
+
+Fig. 1. (a) Schematic of an expected complexation between a polyzwitterion chain (shown in red) and a polyanion (shown in blue) resulting from attractive ion­ –dipole interactions. (b) Cascade complexation between a polyzwitterion-polyanion complex and another polyzwitterion chain leading to liquid–liquid phase sep­ aration so that the arrow shows the direction of moving growth front, which remains negatively charged. (c) Schematic of the complexation between a polyzwitterion chain (shown in red) and a polycation (shown in orange). (d) Cascade complexation leading to liquid–liquid phase separation in mixtures of polyzwitterions and polycations so that the arrow shows the direction of the moving growth front, which remains positively charged.
+2
+
+J.K. Keum et al.
+charge. So, the entropy of counterion release can not provide a strong thermodynamic force for the complexation. Rather, the entropy of sol­ vent reorganization remains a strong thermodynamic force for the complexation, which can be shown to be dependent on temperature dependence of the dielectric constant of the solvent [37]. Furthermore, the net charge of the complex plays an important role in setting up the direction of a growth front on which more and more polyzwitterion chains can complex further (see Fig. 1(b) and (d)). Such a complexation is termed as the cascade complexation [35], leading to liquid–liquid phase separation so that the dense phase should have excess of poly­ zwitterions. Hence, complexation driven primarily by ion–dipole attraction should have led to the similar results for the liquid–liquid phase separation in the blends containing polyzwitterion-polycation and polyzwitterion-polyanion pairs in the same solvent. The two pairs differ in the first complex between a polyzwitterion and a polyelectrolyte. We should point out that the pairs should behave the same way (i.e., inde­ pendent of the charge of the polyelectrolyte) if the theoretical analysis is done on the basis of orientationally averaged ion–dipole interactions [20,37]. In this sense, reported results so far in the literature showing liquid–liquid phase separation primarily in polyzwitterion-polycation blends remain poorly understood and don’t provide a clear explana­ tion for the experimentally observed chemical specificity in polyzwitterion-based coacervates.
+In this work, we investigate the origin of chemical specificity in the polyzwitterion-polyelectrolyte coacervates and show an importance of the metastable nature of the solutions. In turn, the chemical specificity can be used to develop materials exhibiting either liquid–liquid phase separation (coacervates) or thermosensitive viscous liquids by changing mixing protocols. In agreement with other reports, we have found that mixing solutions of a sulfobetaine (PSBMA) with polycations like PDADMAC exhibit coacervation spontaneously. In contrast, mixing so­ lutions of the same polyzwitterion with polyanions like NaPSS leads to highly viscous fluids, which span the whole sample volume without any supernatant phase. Here we focus more on understanding the reasons for the lack of coacervation in the mixtures containing polyzwitterions and polyanions. SAXS is used to investigate structure of the solutions con­ taining the polyzwitterions and the polyanions, which shows that these solutions contain polyzwitterion-polyanion pairs and these pairs act as
+
+European Polymer Journal 215 (2024) 113177
+effective polyanions (in agreement with Fig. 1(a)) but don’t undergo coacervation, cryogenic electron microscopy (CryoEM) confirms this by directly visualizing the complexes. These results show that complexa­ tion of polyzwitterions with polycations is similar to that the poly­ zwitterions and polyanions. However, coacervation requires additional driving force (likely due to solvent reorganization), which is dominant in solutions containing the polyzwitterions and the polycations. Furthermore, dissolution of a solid mixture of the polyzwitterions and the polyanions exhibit coacervation, which highlights the role of kinetic effects in the coacervation.
+This paper is organized as follows: the next section shows Results for the blends followed by the Conclusions. Details of the synthesis, experimental measurements, and data analysis are presented in the Experimental Section, and the Supplementary Materials.
+2. Results
+We have synthesized a poly(sulfobetaine methacrylate) (PSBMA) with molecular weight of Mn = 143 kg/mol by free radical polymeri­ zation of a zwitterionic monomer. For preparing blends with poly­ electrolytes, we have purchased PDADMAC (polycations), and NaPSS (polyanions). Chemical structures and molecular weights of the poly­ cations, PDADMAC, and the polyanions, NaPSS, are presented in Fig. 2a) and and Table 1, respectively. These polymers are referred to as PZs, PCs, and PAs, which are abbreviations for polyzwitterions, polycations, and polyanions, respectively. For improving solubility of the PZs in water, and processing of the blends, potassium bromide (KBr) was used.
+Fig. 2(b) shows the SAXS curves of the solutions with varying
+
+Table 1 Molecular weight information of the polyzwitterions (PZs), the polycations (PCs), and the polyanions (PAs) studied in this work. Mn is number-average molecular weight, Nm is degree of polymerization, and Ð is dispersity.
+
+Polymer
+
+Mn (kg/mol)
+
+Nm
+
+Ð
+
+PSBMA
+
+143
+
+PDADMAC
+
+200
+
+NaPSS
+
+200
+
+512
+
+1.15
+
+1237
+
+1.13
+
+970
+
+1.15
+
+Fig. 2. (a) Chemical structures of the three types of polymers studied in this work, where PZ, PC, and PA are abbreviations for polyzwitterion (PSBMA), polycation (PDADMAC), and polyanion (NaPSS), respectively. (b) SAXS results for the polyzwitterions with varied concentrations in 20 mg/mL KBr aqueous solutions. (c) The concentration (c) dependence on the correlation length (ξ) extracted from the double logarithmic ξ vs. c curve, agreed well with literature [38–40] value for semi dilute concentration regime in good solvent, ξ = 524.8c− 0.71. In (b), reduced zero angle scattering, I(0)/c also decreases as power-laws of the polyzwitterion con­ centrations, exhibited by the best-fit line in panel. Here, zero angle scattering, I(0) = C +B in Eq. 1. (d) mass fractal dimension (m) as a function of c.
+3
+
+J.K. Keum et al.
+
+European Polymer Journal 215 (2024) 113177
+
+concentrations of the PZs, which exhibit different scattering patterns, and power-law behaviors. SAXS results show that solution behaviors of the PZs in aqueous solution deviate from that of charged polymers. Charged polymers usually show a peak in SAXS (referred to as poly­ electrolyte peak) resulting from electrostatic correlations. In contrast, the PZ chains show scattering pattern similar to uncharged polymers, which is in qualitative agreements with our recent work on similar polyzwitterions (i.e., polysulfobetaines) in dilute aqueous solutions [23]. The SAXS data were fit using correlation length model combined with power law model. Specifically, we fit the SAXS data using a cor­ relation length model, written as
+
+I(q)
+
+=
+
+A qn
+
++
+
+1
+
++
+
+C (qξ)m
+
++
+
+B
+
+(1)
+
+where the first term describes the Porod scattering from clusters with
+
+exponent = n. The second term is a Lorentzian function describing
+
+scattering from polymer chains with exponent = m. This second term
+
+characterizes the polymer/solvent interactions and therefore the ther­
+
+modynamics. The two multiplicative factors A and C, the incoherent
+
+background B and the two exponents n and m are used as fit parameters.
+
+Another fit parameter, ξ is a correlation length for the polymer chains.
+
+Note that when m = 2, this functional form becomes the familiar Lor­
+
+entzian function used for the long neutral polymer chains exhibiting
+
+random walk statistics. In solutions, we expect m to vary with the con­
+
+centration due to mixing of chains and solvent molecules. Even with the
+
+concentration dependent m, ξ represents the characteristic distance in
+
+the polymer solutions.
+
+Using the correlation length model, one can obtain information
+
+about inter-chain and intra-chain correlation and mass fractal dimen­
+
+sion, m. Extracted fit parameters are shown in Fig. 2(c,d). It is found that
+
+the inter-/intra-chain correlation length (ξ) decreases with polymer
+
+concentration since chains becomes more crowded with an increase in
+
+the concentration. The correlation length (ξ) dependence on the con­
+
+centration, ξ = 524.8c− 0.71 as shown in Fig. 2(c) agrees well with the
+
+literature value measured for neutral polymer (polystyrene) [40] and
+
+close to the expected ξ ∼ c− 3/4 scaling for semi-dilute solutions of
+
+neutral polymers in good solvent [38,39]. Also, the zero angle scattering
+
+normalized by the polyzwitterion concentrations, I(0)/c decreases as per
+
+the predicted form [41] i.e., I(0)/c ∼ [ 1] , where wpp is the
+
+1024 Mn NA N
+
++wpp c
+
+excluded volume parameter (in units of Å3), NA = 6.023 × 1023, Mn is the molecular weight (in gm/mol) and N is the number of Kuhn statis­
+
+tical segments. Here, I(0) = C +B in Eq. 1. The mass fractal dimension
+
+(m) increases with concentration since solution contains more polymer
+
+chains within the same volume (see Fig. 2d). The extracted mass fractal
+
+dimension, m = 1.7, 2 and 2.6 are close to those of swollen chains, ideal
+
+Gaussian chains and globules, respectively, however the individual
+
+polymer chain conformation might not be as such.
+
+For the purpose of studying effects of chemical specificity in
+
+polyzwitterion-polyelectrolyte coacervates, we have mixed solutions
+
+containing 1) the PZs and the PCs, and 2) the same PZs and the PAs. We
+
+have observed coacervation in the mixtures of the PZs and the PCs
+
+within minutes. In contrast, no coacervation was observed on mixing the
+
+solutions of the PZs and the PAs. These results are in qualitative
+
+agreements with previous reports on other mixtures of polyzwitterions,
+
+polycations, and polyanions [31–33,35]. As these results point out the
+
+importance of chemical specificity in polyzwitterion-based coacervates,
+
+we have investigated reasons for the lack of coacervation in the mixtures
+
+containing PZs and PAs. These mixtures should have behaved similar to
+
+the mixtures of PZs and PCs if the coacervation were to be driven by
+
+orientationally averaged ion–dipole attractive interactions [37]. Indeed,
+
+coacervation was observed in the solutions prepared by dissolving solid
+
+mixtures of the PZs and the PAs in water. In retrospect, these results
+
+imply that the coacervation in the mixtures of the PZs and
+
+polyelectrolytes is affected by a gain in entropy due to solvent reorga­ nization, which must be higher in the case of the PZ-PC blends in comparison with the PZ-PA blends. Furthermore, complexation of the PZ and the PA chains in the solutions may lead to kinetically-trapped highly viscous fluids. In the following, we present these results highlighting effects of chemical specificity in polyzwitterion-polyelectrolyte blends.
+2.1. Coacervation in the Polyzwitterion-Polycation (PZ-PC) Mixtures
+Fig. 3 shows images of the solutions at room temperature containing blends of the PZs and the PCs at different concentrations by weight but at the same mixing ratio of 1 : 1 and at two different concentrations of KBr. For both sets of the aqueous solutions containing 10 mg/mL and 20 mg/ mL KBr, PZ-PC coacervates precipitated out when lower concentrations of polymer stock solutions were mixed (e.g., 25 mg/mL PZ-25 mg/mL PC, 50 mg/mL PZ-50 mg/mL PC) (see images 1,2,4, and 5 in Fig. 3). In contrast, higher concentrations of the polymer solutions (e.g., 100 mg/ mL PZ-100 mg/mL PC-10 mg/mL KBr), exhibited water soluble com­ plexes and liquid–liquid phase separation. Zoomed-in images of the panels (3) and (6) in Fig. 3 are shown in Fig. 4, which clearly show that the liquid–liquid phase separation (coacervation) is dependent on the salt content, which is a well-established phenomenon in mixtures con­ taining oppositely charged polyelectrolytes [3,13]. A similar depen­ dence of the coacervation on the salt content in polyzwitterion based blends is expected due to the electrostatic screening of multipolar in­ teractions [20,23]. Specifically, in the Fig. 4 (right), the dense phase appearing at the bottom is the PZ-PC coacervate, while the supernatant phase at the top contains the polymers with very low concentration. In contrast, turbid homogeneous PZ-PC coacervate solution is obtained by mixing high concentrated polymer stock solutions in 20 mg/mL KBr aqueous solution (Fig. 4 (left)). These results are in qualitative agree­ ments with previous reports and point out that the coacervate phase should contain non-stochiometric complexes with the PZs in excess (i.e., cascade complexation) [31,35]. Also, the coacervation should be driven by the solvent reorganization [35]. Structure of these solutions were characterized using Small Angle X-ray Scattering (SAXS) and Scanning Electron Microscopy (SEM). Results from these techniques support the hypothesis of phase segregation in these mixtures (see Figures S1, S3, and S5 in the Supplementary Materials).
+2.2. Complexation and coacervation in the polyzwitterion-polyanion (PZPA) mixtures
+Fig. 5 shows images of the mixtures prepared by mixing solutions of the PZs and the PAs (NaPSS) at the same weight concentrations as used for the PZ-PC blends. In contrast to the behavior seen in the PZ-PC so­ lutions, no liquid–liquid phase separation was observed. Instead, highly viscous translucent solutions were obtained (Fig. 5). The solutions were yellowish due to the PAs used in these blends and the color becomes more yellow with higher PA content. Also, at the room temperature (RT), these liquids become highly viscous (and behave like a physical gel) especially with an increase in polymer concentration (Fig. 6 (top row)). Furthermore, an increase in temperature leads to a decrease in viscosity of these solutions (Fig. 6 (bottom row)).
+To quantify the viscoelastic properties of these solutions, rheological measurements were performed on the salt-free 250 mg/mL PZ-250 mg/ mL PA-H2O sample. Due to the concern of solvent evaporation, we did not perform rheological measurements at elevated temperatures (e.g., 100◦C). An increased concentration of the polymers was used to estab­ lish whether a physical gel can be obtained based on the complexation among the PZ and the PA chains. Fig. 7a shows that the dynamic modulus of these solutions is reminiscent of that of an entangled poly­ mer solution: a rubbery “plateau” is observed at high frequencies and terminal flow behavior is found at low frequencies. This result is in agreement with the qualitative behavior displayed in Fig. 6. Addition­ ally, the sample exhibits strain softening behavior under large-
+
+4
+
+J.K. Keum et al.
+
+European Polymer Journal 215 (2024) 113177
+
+Fig. 3. Images of (1) 25 mg/mL PZ-25 mg/mL PC-20 mg/mL KBr, (2) 50 mg/mL PZ-50 mg/mL PC-20 mg/mL KBr, (3) 100 mg/mL PZ-100 mg/mL PC-20 mg/mL KBr, (4) 25 mg/mL PZ-25 mg/mL PC-10 mg/mL KBr, (5) 50 mg/mL PZ-50 mg/mL PC-10 mg/mL KBr, and (6) 100 mg/mL PZ-100 mg/mL PC-10 mg/mL KBr.
+
+Fig. 4. Zoomed-in version of the panels (3) and (6) from Fig. 3 are shown in here on the left and the right, respectively. These images establish liquid–liquid phase separation in the PZ-PC blends, which depends on the salt concentration. (left) 100 mg/mL PZ-100 mg/mL PC-20 mg/mL KBr, (right) 100 mg/mL PZ-100 mg/mL P.C10 mg/mL KBr.
+Fig. 5. Images of (7) 25 mg/mL PZ-25 mg/mL PA-20 mg/mL KBr, (8) 50 mg/mL PZ-50 mg/mL PA-20 mg/mL KBr, (9) 100 mg/mL PZ-100 mg/mL PA-20 mg/mL KBr, (10) 25 mg/mL PZ-25 mg/mL PA-10 mg/mL KBr, (11) 50 mg/mL PZ-50 mg/mL PA-10 mg/mL KBr, and (12) 100 mg/mL PZ-100 mg/mL PA-10 mg/mL KBr.
+
+Fig. 6. Top row: PZ-PA solutions at room temperature resulting from variation of the polymer concentration. Bottom: 250 mg/mL PZ-250 mg/mL PA-H2O changes from a viscous fluid to a hydrogel with the changes in temperature: (left) 100 ◦C, (right) RT.
+
+amplitude oscillatory shear (Fig. 7b). An increase in viscosity on mixing the PZs and the PAs implies that
+there must be accompanying structural changes. Lack of liquid–liquid phase separation in these mixtures hints that these changes must be different from the solutions containing the PZs and the PCs and cannot be described using non-stochiometric/cascade complexation driven by the solvent reorganization. For understanding structural changes on
+
+mixing the PZs and the PAs, we have used SAXS, and these results are presented in Fig. 8. As complexes of the PZs and the PAs will act as effective PAs, we hypothesize that the increase in viscosity can be interpreted in terms of complexation leading to effective polyanions. In order to verify this hypothesis, we fitted the measured SAXS patterns by a worm-like (flexible charged cylinder) model, inset in Fig. 8(b) con­ voluted with a structure factor based on the Random Phase
+
+5
+
+J.K. Keum et al.
+
+Fig. 7. Linear and nonlinear viscoelastic properties of 250 mg/mL PZ-250 mg/ mL PA-H2O. (a) Linear viscoelastic spectrum at T = 20◦C, constructed by the
+time–temperature superposition principle. aT and bT are horizontal and vertical shift factors, respectively. Filled (red) circles: storage modulus Gʹ. Open (blue) diamonds: loss modulus Gʹʹ. (b) Result of large-amplitude oscillatory shear at 4◦C and angular frequency ω = 1 rad/s. The imposed strain γ was varied from 1
+to 1000%.
+
+Approximation (RPA) model (as described in the SAXS model section in
+
+the Supplementary Materials). The fit results are tabulated in Table 2.
+
+The fits indicated that the complexations in the PZ- PA mixtures pro­
+
+duced the worm-like polyanionic micelles with almost the same contour
+
+length and cross-section regardless of the concentration. Only difference
+
+was
+
+the
+
+magnitude
+
+of
+
+the
+
+parameter
+
+vRPA
+
+=
+
+1 S(0)
+
+−
+
+1,
+
+which
+
+increased
+
+with increasing concentration of PZ and PA, inset in Fig. 8a) and and
+
+Table
+
+2.
+
+Using
+
+the
+
+thermodynamic
+
+relation
+
+[41]
+
+1 S(0)
+
+=
+
+1 kB T
+
+∂∂Πc , where Π is
+
+the osmotic pressure of the solutions, kB is the Boltzmann constant, T is
+
+the temperature, an increase in the parameter vRPA with the concen­
+
+tration reveals concentration dependence of the osmotic pressure of the
+
+solutions. Concentration normalized SAXS curves are shown in Fig. 8(b),
+
+where the curves well superimposed at high-q while the curves deviated
+
+at low-q with increase in concentrations of the PZ and the PA. Physically,
+
+European Polymer Journal 215 (2024) 113177
+this implies that the viscous liquids possessed the worm-like micelles with almost identical dimensions, so that the almost identical form factor of worm- like micelles leads to the same scattering at high-q, while the deviations at low-q results from increasing contribution of structure factor resulting from interactions between worm-like micelles. The concentration-dependent parameter vRPA can be rationalized by considering monopolar and dipolar interactions involving the mono­ mers and the solvent [42,41]. Overall, these results show that the PZs and the PAs form complexes but doesn’t undergo liquid–liquid phase separation. This, in turn, implies that solvent reorganization mechanism leading to cascade complexation in the PZs and the PCs must not be strong enough in the case of the PZs and the PAs. These molecular mechanisms, driving the coacervation, need to be investigated in more details to understand the origin of the chemical specificity observed in the polyzwitterion-based coacervates.
+In our attempt to observe coacervation in the blends containing the polyzwitterions and the polyanions, we used a different preparation method. In this method, we first mixed the solid polymers and KBr; and then added the solvent. This led to solutions with a visual liquid liquid phase separation (Fig. 9). This implies that the coacervation in the blends prepared by mixing solutions of the polyzwitterions and the polyanions is affected by kinetic effects, where the complexation among the chains may render the solution as one-phase instead of being phase separated. This was further evaluated with SEM images from samples that were prepared similarly to the PZ-PC counterparts (see Figures S4, S5, and S6 in Supplementary Materials).
+
+2.3. CryoEM of PZ-PA Blends
+In the biological sciences, low-dose cryoEM experiments routinely produce three-dimensional structures of hydrated polymers (biological macromolecules) suspended in vitreous ice from thousands of low-
+
+Table 2 Fit parameters obtained by fitting SAXS from the solutions containing the PZs and the PAs to worm-like chain model of polyelectrolytes.
+
+Parameter
+
+25 PZ-25 PA
+
+50 PZ-50 PA
+
+100 PZ-100 PA
+
+Contour length, L (Å) Kuhn length, b (Å) Radius, RCS (Å) Dispersity of radius vRPA
+
+977 95.7 13.0 0.12 0.43
+
+975 94.4 13.1 0.13 1.07
+
+967 93.0 13.2 0.13 3.77
+
+Fig. 8. (a) Absorption and background corrected SAXS of PZs-PAs containing 20 mg/ml KBr. The intensities were scaled to absolute scale by using direct beam intensity measurements. (b) Concentration normalized SAXS curves of each viscous liquid, where the absolute scale intensities were divided by concentrations, i.e., 25, 50 and 100. Inset in (a) is based on vRPA in Table 2 and inset in (b) shows a schematic of the worm-like micelle.
+6
+
+J.K. Keum et al.
+
+European Polymer Journal 215 (2024) 113177
+
+Fig. 9. Macroscopic observation of coacervation in the PZ-PC and the PZ-PA solutions at different salt concentrations. A different mixing protocol was used to prepare these solutions (see main text for more information) leading to the observed coacervation in the PZ-PA blends, which is in contrast to one-phase solutions shown in Fig. 5. (a) Solutions containing 20 mg/mL KBr in (1) 25 mg/mL PZ - 25 mg/mL PC, (2) 50 mg/mL PZ - 50 mg/mL PC and 3) 100 mg/mL PZ - 100 mg/mL PC. (b) Solutions 4–6 containing 10 mg/mL KBr for the same concentrations of PZ-PC as in (a). (c) Solutions containing 20 mg/mL KBr in 7) 25 mg/mL PZ - 25 mg/mL PA, 8) 50 mg/mL PZ - 50 mg/mL PA and 9) 100 mg/mL PZ - 100 mg/mL PA. (d) Solutions 10–12 containing 10 mg/mL KBr for the same concentrations of PZ-PA as in (c). (e) Comparison of PZ-PC and PZ-PA solution having the same concentrations of the polymers and KBr showing similar coacervation behavior.
+
+contrast micrographs with high particle density. We took a similar approach to observe any structural changes in the PZ-PA blends. Fig. 10 shows two representative micrographs for PA alone and PZ-PA blend at concentrations five to twenty times lower than those probed by the SAXS. Despite multiple attempts, the PZ sample was never observed in the grid holes and appears to have an affinity to the carbon support
+
+instead (data not shown). Future experiments will alter the chemical properties of the grid surface to overcome this preferred binding and allow for imaging of PZ samples.
+We utilized CryoSPARC™ to evaluate our datasets and produce 3D reconstructions of the samples [43]. Within the CryoSPARC™ work­ space various algorithms are available to increase contrast (Topaz
+
+Fig. 10. (a) Two representative micrographs of PA and PZ-PA datasets. (b) Representative images showing results of automated, template-free filament tracer. Filaments detected by the software are traced in pink. Post-processing traces (white filaments) are shown with the additional globular structure highlighted in green.
+7
+
+J.K. Keum et al.
+denoise) [44], correct for the contrast-transfer function (CTFFIND4) [45], and correct for sample and stage drift (MotionCor2) [46]. Various Deep Neural Networks (DNN) automated particle picking regimes are also available in this software package. This work utilized template-free filament tracing to determine filament length and distribution and blobpicker to select more globular images. Fig. 10 shows the filament tracing results for two representative PA and PZ-PA micrographs. In the PA micrographs, filaments adopted an elongated, worm-like structure. In the PZ-PA micrographs, we see the worm-like state present and the emergence of a secondary structural state (green circles) with multiple filaments aligning in a globular-like formation. Ab-initio and symmetryfree reconstructions of the filament-traced particles produced two structures that differ slightly in their length and thickness (Fig. 11) but adopt similar (worm-like) structures. For the PZ-PA data, we used a second round of particle picking (’blob picker’ in CryoSPARC™) to ac­ count for the globular-like structure seen in the data and to ignore the filament states. The resulting 3D structure of this population state is shown in Fig. 11, with projections extending off the central hub in a nonuniform fashion.
+The resulting cryoEM structures are in the low-resolution range, limiting the possibility of building atomistic models into the density. However, the resulting density envelope produced in these re­ constructions can be compared to SAXS data, allowing for orthogonal assessments of polymer systems. Both methodologies reveal the diam­ eter of the worm-like structures to be around 25 Å. However, the con­ tour length of the complexes estimated using the SAXS (∼ 1000 Å) and the EM (∼ 100 Å) differ, most probably due to the differences in the concentrations of the solutions probed using the two techniques. Also, EM revealed the emergence of a secondary state in the PZ-PA mixture that was not seen in PA alone. While coacervation was not seen in these samples, it is clear that at least two population states exist in the PZ-PA samples. What remains unclear is the structure of PZ alone, given that we were unable to image the PZ samples. However, given that the PZ sample behaves differently during the vitrification process (e.g., high affinity for the carbon grid) it is clear that complexation alters some chemical properties of the sample.
+Some points of caution should be considered when interpreting this
+
+European Polymer Journal 215 (2024) 113177
+data. First, the PA and PZ-PA samples adopted a preferred orientation, with the predominant views being along the long axis and limited numbers of end-on views. Missing information from the end-on pro­ jections can cause problems for any structure interpretation along that axis [47]. Second, a minimal number of micrographs (590 micrographs for PA and 320 micrographs for PZ-PA) and particles (less than 100 K per reconstruction) were used relative to the biological field [48]. This also limits the structural information obtained in these experiments. Finally, polymers of interest can result in either missing data related to the structure or low-resolution reconstructions [43]; therefore, it may never be possible to get information in the sub 5 Å range, which is necessary for atomistic model building typically seen in the biological field for these polymers. However, this work does show the benefit of employing biological EM methodologies for soft matter materials, provided caution is taken in the data processing and results interpretation stage. Future soft-matter experiments should take advantage of these methods where possible to analyze their polymers of interest in the hydrated (or sol­ vated) functional state.
+3. Conclusions
+Solutions containing polyzwitterions can exhibit either liquid–liquid phase separation or remain one-phase but show high viscosity, when mixed with polycations and polyanions, respectively. In either case, polyzwitterions tend to form complexes with polyelectrolytes. However, the coacervation is mainly observed on mixing the solutions of the polyzwitterions and the polycations. In contrast, mixing the solutions of the polyzwitterions and the polyanions doesn’t exhibit coacervation. Instead, metastable viscous fluids are obtained and the high viscosity results from the underlying complexation of the chains. One way to avoid the metastable one-phase is to dissolve solid mixtures of the polymers in water instead of mixing solutions containing individual polymers. These results clearly show that the chemical specificity plays an important role in affecting the coacervation. Here, we have hypoth­ esized the entropy gain due to the solvent reorganization as a molecular mechanism leading to the coacervation. Future works should focus on such molecular processes leading to the chemical specificity, which can
+
+Fig. 11. 3D reconstructions for PA and PZ-PA samples. PA (blue) adopts a predominant worm-like structure that was solved using filament-tracing parameters. PZPA adopts worm-like (purple) and globular-like (pink) states that were solved using filament-tracing and blob-particle picking, respectively.
+8
+
+J.K. Keum et al.
+be leveraged for many applications involving filtration, drug delivery, and anti-microbial surfaces. For example, changing orientations of the dipoles on zwitterionic monomers such as in choline phosphate and phosphorylcholine [49]; and understanding its effects on complexation and coacervation when mixed with polyelectrolytes can shed more light on the chemical specificity. Furthermore, the viscous solutions of the polyzwitterions and the polyanions are responsive to salt and tempera­ ture, exhibit strain-softening and are promising materials for future applications. We envision the use of polyzwitterion based complexes and coacervates in the preparation of next generation of membranes and anti-fouling materials.
+4. Experimental section
+4.1. Materials
+All reagents were used as received from suppliers without further purification unless otherwise noted. [2-(methacryloyloxy) ethyl] dimethyl-(3- sulfopropyl) ammonium hydroxide (DMAPS), PDADMAC (Mn ∼200 K) and NaPSS (Mn ∼200 K) were purchased from Sigma­ –Aldrich. Deionized (DI) water of 18.2 MΩ cm (Millipore) was used throughout this work.
+4.2. Synthesis of the polyzwitterions
+To obtain polyzwitterions with 100% of pendant groups of zwitter­ ions, [2- (methacryloyloxy) ethyl] dimethyl-(3-sulfopropyl) ammonium hydroxide (DMAPS) was polymerized by free radical polymerization using recrystallized 2,2’-Azobis (2-methylpropionitrile) (AIBN) as the initiator. In a typical procedure, DMAPS (50.0 g, 178.99 mmol, 118 eq), AIBN (0.25 g, 1.52 mmol, 1 eq), and 550 mL of deionized water were added into a 1 L flask under the inert atmosphere. Degassing was per­ formed by bubbling with nitrogen for at least 30 min. After stirring at 60 ◦C for 4 h, the reaction was quenched in the liquid nitrogen, followed by precipitation in cold ethanol to afford white solids as the pure products. (70 % yield).
+4.3. Preparation of coacervates and other mixtures
+PSBMA solid was dissolved into water with the addition of KBr and/ or heat (100 ◦C). The 20 wt% PDADMAC solution and 30 wt% PSS so­ lution were diluted using either KBr solution or water and were used as stocking solutions with designated polymer and salt concentration. For preparing polyzwitterion-polyelectrolyte coacervates, two polymer stocking solutions containing the same polymer and salt concentration and volume were mixed and briefly vortexed at room temperature. Note that for preparing coacervates using high concentration of the polymers (especially 250 mg/mL PZ-250 mg/mL PA-H2O), the stocking solutions were heated and mixed at 100 ◦C. The resulting mixture was stored at room temperature.
+We have prepared coacervates for the PZ-PA blends by using a different mixing protocol. First, we freeze-dried NaPSS solutions to obtain the solid NaPSS. Then, we added all solid materials including the PSBMA, the NaPSS, and the salt into a vial. Subsequently, we added water to the desired concentrations. The obtained solutions were initially vortexed and then stored at room temperature.
+4.4. Scanning Electron Microscope (SEM)
+Both, the PZ-PC and the PZ-PA samples were prepared the same way. Specifically, 100 μl of the polyzwitterion-polyelectrolyte mixture was drop-casted onto a cleaned silicon wafer (size: 1 × 2 cm). The samples were dried under ambient environment for several days before SEM measurements. The coating-free SEM samples were imaged using SNE4500 M Plus or Zeiss Merlin Scanning Electron Microscope at 1–5 kV for reduced electrostatic charging and electron beam damage to the
+
+polymer films.
+
+European Polymer Journal 215 (2024) 113177
+
+4.5. Small Angle X-ray Scattering (SAXS)
+The polyzwitterion and polyzwitterion-polyelectrolyte mixtures were characterized using a laboratory based Xenocs Xeuss 3.0 instru­ ment equipped with a D2 + MetalJet X-ray source (GaKα, 9.2 keV, λ = 1.341 Å). The polymer solutions were filled into 2.0 mm quartz capil­ laries (HR6-126, Hampton Research) and sealed with epoxy. The cap­ illaries were placed vertically in the X-ray beam (transmission mode). The scattered beam was recorded on a Dectris Eiger 2R 4 M hybrid photon counting detector with a pixel dimension of 75 × 75 μm2. The sample-to-detector distance for SAXS was calibrated using Silver Behenate (AgBeh) standard, which was 1750 mm and the exposure time was 600 s. The collected 2- dimensional (2D) SAXS images were circu­ larly averaged and expressed as absolute intensity versus scattering vector q, where q = (4πsinθ)/λ with θ and λ being the half of scattering angle and X-ray beam wavelength, respectively. All the data were cor­ rected for X-ray beam transmission, X-ray beam path length in solution, detector background and the absolute intensity calibration was achieved by direct beam measurement.
+
+4.6. Rheology
+Rheological measurements of the PZ-PA mixtures were performed on a DHR2 rheometer (TA Instruments) at two temperatures, 4◦C and 20◦C, with a 20 mm diameter parallel plate and Peltier temperature control base. To evaluate the linear viscoelastic properties, small-amplitude oscillatory shear was imposed in the angular frequency (ω) range of 0.1–100 rad/s with 1–2% strain. To probe the nonlinear rheological behavior, amplitude sweep measurements were carried out at ω = 1 rad/s in the strain range of 1–1000%.
+
+4.7. Cryogenic Electron Microscopy (CryoEM)
+4.7.1. Sample Preparation Three samples, PA at 5 mg/mL, PZ at 5 mg/mL, and PZ-PA blend at
+2.5 mg/mL and 2.5 mg/mL, were prepared for analysis. Gold Quanti­ foil® 2/2 grids were glow discharged in a Quorum GloQube® system and loaded into a Vitrobot Mark IV system preequilibrated to 100% humidity at 4 ◦C. For each sample 5 μl of liquid was deposited on the grids, blotted for 6 s with a blot force of − 5, and immediately plunged into nitrogen-cooled ethane to produce a thin layer of vitreous ice. Samples were clipped into autoloader cartridges, loaded into a cassette, and inserted into a Krios G4 (S/TEM) microscope operating at 300kEV and liquid nitrogen temperatures in the ORNL’s CNMS facility.
+4.7.2. Data collection Each sample was evaluated to measure ice thickness, potential
+contamination (e.g., crystalline ice), and any potential devitrification. Here, we noticed that PZ showed preferential for the carbon support grid, and further processing of PZ was halted. We continued with the PA and PZ-PA samples that showed thin, vitreous ice and good particle distribution. We collected data using ThermoFisher’s EPU software to mitigate dose and allow for automated collection as seen in biological methodologies. Briefly, we used a defocus range from − 0.5 μm to − 4.0 μm, the Falcon3EC in counting mode with dose fractionation turned on, a total dose of 50 e/˚A2, and a pixel size of 0.85 Å/pixel. The total number of micrographs for each data set was 590 for PA and 320 for PZ. These micrographs were motion-corrected using MotionCor2 [46], CTFcorrected using CTFFIND4 [45], and denoised using Topaz denoising [44] all within the CryoSPARC [43] environment.
+4.7.3. Reconstruction For the PA and PZ-PA data, a template-free filament tracer was used
+
+9
+
+J.K. Keum et al.
+for particle picking with a filament diameter of 15 Å, separation of 1, and minimum length to consider of 2 Å. Data was analyzed, and bad picks were discarded. Particles were extracted with a box size of 324 pixels and separated using 2D classification of filament classes aligned vertically to discard ’junk’ particles. An initial volume was generated from selected particles using ab- initio reconstruction, with a final vol­ ume generated by a series of non-uniform refinements. Symmetry was not imposed at any point in the reconstruction. Since the filament tracing options for the PZ-PA sample revealed a more ’particle-like’ structure was also present, the PZ-PA micrographs were processed using the ’blob-picker’ option in CryoSPARC™ with the particle diameters set between 40–110 Å. Picks were again inspected, extracted, classified, and reconstructed as previously mentioned.
+Declaration of Competing Interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Data availability
+Data will be made available on request.
+Acknowledgements
+This work was supported by Center for Nanophase Materials Sciences (CNMS) and Neutron Scattering Division (NSD), which are US Depart­ ment of Energy, Office of Science User Facilities at Oak Ridge National Laboratory. JKK acknowledge the ORNL instrumentation pool and ORNL Laboratory Directed Research and Development (LDRD) for the use of Xeuss 3.0 SAXS instrument. We thank Dr. Nickolay V Lavrik, CNMS, ORNL for assisting us in taking photographs presented in Fig. 9. RK thank Dr. Yue Yuan and Dr. Ada Sedova from the ORNL for pre­ liminary Isothermal Titration Calorimetry measurements on the poly­ zwitterions and the polyanions.
+Appendix A. Supplementary material
+Supplementary data associated with this article can be found, in the online version, at https://doi.org/10.1016/j.eurpolymj.2024.113177.
+References
+[1] A.S. Michaels, Polyelectrolyte complexes, Industr. Eng. Chem. 57 (1965) 32–40, https://doi.org/10.1021/ie50670a007.
+[2] C.G. De Kruif, F. Weinbreck, R. de Vries, Complex coacervation of proteins and anionic polysaccharides, Curr. Opin. Colloid Interface Sci. 9 (2004) 340–349.
+[3] C.H. Porcel, J.B. Schlenoff, Compact polyelectrolyte complexes: saloplastic candidates for biomaterials, Biomacromolecules 10 (2009) 2968–2975, https:// doi.org/10.1021/bm900373c. PMID: 19835412.
+[4] R.F. Shamoun, A. Reisch, J.B. Schlenoff, Extruded saloplastic polyelectrolyte complexes, Adv. Funct. Mater. 22 (2012) 1923–1931, https://doi.org/10.1002/ adfm.201102787.
+[5] V.S. Meka, M.K. Sing, M.R. Pichika, S.R. Nali, V.R. Kolapalli, P. Kesharwani, A comprehensive review on polyelectrolyte complexes, Drug Discov. Today 22 (2017) 1697–1706, https://doi.org/10.1016/j.drudis.2017.06.008.
+[6] A.E. Neitzel, G.X. De Hoe, M.V. Tirrell, Expanding the structural diversity of polyelectrolyte complexes and polyzwitterions, Curr. Opin. Solid State Mater. Sci. 25 (2021) 100897.
+[7] S. Srivastava, M.V. Tirrell, Advances in Chemical Physics, John Wiley & Sons Ltd, 2016, pp. 499–544, https://doi.org/10.1002/9781119290971.ch7.
+[8] L. Li, S. Srivastava, M. Andreev, A.B. Marciel, J.J. de Pablo, M.V. Tirrell, Phase behavior and salt partitioning in polyelectrolyte complex coacervates, Macromolecules 51 (2018) 2988–2995, https://doi.org/10.1021/acs. macromol.8b00238.
+[9] A.B. Marciel, S. Srivastava, M.V. Tirrell, Structure and rheology of polyelectrolyte complex coacervates, Soft Matter 14 (2018) 2454–2464, https://doi.org/10.1039/ C7SM02041D.
+[10] C.E. Sing, S.L. Perry, Recent progress in the science of complex coacervation, Soft Matter 16 (2020) 2885–2914, https://doi.org/10.1039/D0SM00001A.
+
+European Polymer Journal 215 (2024) 113177
+[11] Z. Ou, M. Muthukumar, Entropy and enthalpy of polyelectrolyte complexation: Langevin dynamics simulations, J. Chem. Phys. (2006) 124.
+[12] S. Chen, Z.-G. Wang, Driving force and pathway in polyelectrolyte complex coacervation, Proc. Nat. Acad. Sci. 119 (2022), https://doi.org/10.1073/ pnas.2209975119 e2209975119.
+[13] Q. Wang, J.B. Schlenoff, The polyelectrolyte complex/coacervate continuum, Macromolecules 47 (2014) 3108–3116, https://doi.org/10.1021/ma500500q.
+[14] A.B. Lowe, C.L. McCormick, Synthesis and solution properties of zwitterionic polymers, Chem. Rev. 102 (2002) 4177–4190, https://doi.org/10.1021/ cr020371t.
+[15] A.V. Dobrynin, R.H. Colby, M. Rubinstein, Polyampholytes, J. Polym. Sci., Part B: Polym. Phys. 42 (2004) 3513–3538, https://doi.org/10.1002/polb.20207.
+[16] P.G. Higgs, J.-F. Joanny, Theory of polyampholyte solutions, J. Chem. Phys. 94 (1991) 1543–1554, https://doi.org/10.1063/1.460012.
+[17] J. Salamone, W. Volksen, A. Olson, S. Israel, Aqueous solution properties of a poly (vinyl imidazolium sulphobetaine), Polymer 19 (1978) 1157–1162.
+[18] D. Schulz, D. Peiffer, P. Agarwal, J. Larabee, J. Kaladas, L. Soni, B. Handwerker, R. Garner, Phase behaviour and solution properties of sulphobetaine polymers, Polymer 27 (1986) 1734–1742.
+[19] P. Mary, D.D. Bendejacq, M.-P. Labeau, P. Dupuis, Reconciling low- and high-salt solution behavior of sulfobetaine polyzwitterions, J. Phys. Chem. B 111 (2007) 7767–7777, https://doi.org/10.1021/jp071995b.
+[20] R. Kumar, G.H. Fredrickson, Theory of polyzwitterion conformations, J. Chem. Phys. 131 (2009) 104901, https://doi.org/10.1063/1.3216107.
+[21] F. Wang, J. Yang, J. Zhao, Understanding anti-polyelectrolyte behavior of a welldefined polyzwitterion at the single-chain level, Polym. Int. 64 (2015) 999–1005.
+[22] J.D. Delgado, J.B. Schlenoff, Static and dynamic solution behavior of a polyzwitterion using a hofmeister salt series, Macromolecules 50 (2017) 4454–4464, https://doi.org/10.1021/acs.macromol.7b00525.
+[23] Z. Liu, J.K. Keum, T. Li, J. Chen, K. Hong, Y. Wang, B.G. Sumpter, R. Advincula, R. Kumar, Anti-polyelectrolyte and polyelectrolyte effects on conformations of polyzwitterionic chains in dilute aqueous solutions, PNAS Nexus 2 (2023) pgad204, https://doi.org/10.1093/pnasnexus/pgad204.
+[24] E. Kharlampieva, V.A. Izumrudov, S.A. Sukhishvili, Electrostatic layer-by-layer self-assembly of poly(carboxybetaine)s: role of zwitterions in film growth, Macromolecules 40 (2007) 3663–3668, https://doi.org/10.1021/ma062811e.
+[25] J.B. Schlenoff, Zwitteration: coating surfaces with zwitterionic functionality to reduce nonspecific adsorption, Langmuir 30 (2014) 9625–9636, https://doi.org/ 10.1021/la500057j.
+[26] J. Koc, E. Scho¨nemann, A. Amuthalingam, J. Clarke, J.A. Finlay, A.S. Clare, A. Laschewsky, A. Rosenhahn, Low-fouling thin hydrogel coatings made of photocross-linked polyzwitterions, Langmuir 35 (2019) 1552–1562, https://doi.org/ 10.1021/acs.langmuir.8b02799.
+[27] H. Yan, Q. Wu, C. Yu, T. Zhao, M. Liu, Recent progress of biomimetic antifouling surfaces in marine, Adv. Mater. Interfaces 7 (2020) 2000966, https://doi.org/ 10.1002/admi.202000966.
+[28] M. Chen, W.H. Briscoe, S.P. Armes, J. Klein, Lubrication at physiological pressures by polyzwitterionic brushes, Science 323 (2009) 1698–1701, https://doi.org/ 10.1126/science.1169399.
+[29] S.D. Jones, H. Nguyen, P.M. Richardson, Y.-Q. Chen, K.E. Wyckoff, C.J. Hawker, R. J. Cl´ement, G.H. Fredrickson, R.A. Segalman, Design of polymeric zwitterionic solid electrolytes with superionic lithium transport, ACS Central Sci. 8 (2022) 169–175, https://doi.org/10.1021/acscentsci.1c01260.
+[30] L. Chen, Y. Honma, T. Mizutani, D.-J. Liaw, J. Gong, Y. Osada, Effects of polyelectrolyte complexation on the UCST of zwitterionic polymer, Polymer 41 (2000) 141–147.
+[31] K. Okawa, J.P. Gong, Y. Osada, Self-propagating association of zwitterionic polymers initiated by ionene polymers, Macromol. Rapid Commun. 23 (2002) 423–425.
+[32] B.-S. Kim, Y. Osada, Tuning the thermochromism of water-soluble poly(3thiopheneacetic acid) conjugated polymer by complexation with zwitterionic polymer, Colloids Surf., A 280 (2006) 237–240, https://doi.org/10.1016/j. colsurfa.2006.03.004.
+[33] P. Mary, D.D. Bendejacq, Interactions between sulfobetaine-based polyzwitterions and polyelectrolytes, J. Phys. Chem. B 112 (2008) 2299–2310, https://doi.org/ 10.1021/jp0769274. PMID: 18229914.
+[34] J. de Grooth, M. Dong, W.M. de Vos, K. Nijmeijer, Building polyzwitterion-based multilayers for responsive membranes, Langmuir 30 (2014) 5152–5161.
+[35] J. Niskanen, A.J. Peltekoff, J.-R. Bullet, B.H. Lessard, F.M. Winnik, Enthalpy of the complexation in electrolyte solutions of polycations and polyzwitterions of different structures and topologies, Macromolecules 54 (2021) 6678–6690.
+[36] K.O. Margossian, M.U. Brown, T. Emrick, M. Muthukumar, Coacervation in polyzwitterion-polyelectrolyte systems and their potential applications for gastrointestinal drug delivery platforms, Nat. Commun. 13 (2022) 1–11.
+[37] J.N. Israelachvili, Intermolecular and Surface Forces (Third Edition), third edition ed.; Israelachvili, J.N., Ed.; Academic Press: San Diego, 2011; pp. 71–90, doi: 10.1016/B978-0-12-375182-9.10004-1.
+[38] P.-G. De Gennes, Scaling concepts in polymer physics, Cornell University Press, 1979.
+[39] M. Muthukumar, S. Edwards, Extrapolation formulas for polymer solution properties, J. Chem. Phys. 76 (1982) 2720–2730.
+[40] W. Brown, K. Mortensen, G. Floudas, Screening lengths in concentrated polystyrene solutions in toluene determined using small-angle neutron and small angle X-ray scattering, Macromolecules 25 (1992) 6904–6908.
+
+10
+
+J.K. Keum et al.
+[41] R. Kumar, B. Lokitz, T.E. Long, B.G. Sumpter, Enhanced scattering induced by electrostatic correlations in concentrated solutions of salt-free dipolar and ionic polymers, J. Chem. Phys. 149 (2018).
+[42] J.P. Mahalik, B.G. Sumpter, R. Kumar, Vertical phase segregation induced by dipolar interactions in planar polymer brushes, Macromolecules 49 (2016) 7096–7107.
+[43] R.-J.L.F.D.J., Punjani, B.M.A., A. cryoSPARC: algorithms for rapid unsupervised cryo-EM structure determination. Nature Methods 2017, 14, DOI: doi.org:10.1038/ nmeth.4169.
+[44] K.-K.N.A.J. Bepler, B.B., T. Topaz-Denoise: general deep denoising models for cryoEM and cryoET. Nature Communications 2020, 11, DOI: 10.1038/s41467-01700782-3.
+
+European Polymer Journal 215 (2024) 113177
+[45] Rohou, N., A. & Grigorieff CTFFIND4: Fast and accurate defocus estimation from electron micrographs. Journal of Structural Biology 2015, 192, DOI: 10.1016/j. jsb.2015.08.008.
+[46] Zheng, S.Q. e. a. MotionCor2: anisotropic correction of beam-induced motion for improved cryo-electron microscopy. Nature Methods 2017, 14, DOI: 10.1038/ nmeth.4193.
+[47] R. Henderson, Avoiding the pitfalls of single particle cryo-electron microscopy: Einstein from noise, PNAS 110 (2013), https://doi.org/10.1073/ pnas.1314449110.
+[48] C.J. Naydenova, K. & Russo Measuring the effects of particle orientation to improve the efficiency of electron cryomicroscopy, Nat. Commun. 2017, 8, DOI: 10.1038/s41467-017-00782-3.
+[49] G. Hu, T. Emrick, Functional choline phosphate polymers, J. Am. Chem. Soc. 138 (2016) 1828–1831, https://doi.org/10.1021/jacs.5b13156. PMID: 26841336.
+
+11
+

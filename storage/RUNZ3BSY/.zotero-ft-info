@@ -1,0 +1,16 @@
+Title:          Basecalling Using Joint Raw and Event Nanopore Data Sequence-to-Sequence Processing
+Subject:        Third-generation DNA sequencers provided by Oxford Nanopore Technologies (ONT) produce a series of samples of an electrical current in the nanopore. Such a time series is used to detect the sequence of nucleotides. The task of translation of current values into nucleotide symbols is called basecalling. Various solutions for basecalling have already been proposed. The earlier ones were based on Hidden Markov Models, but the best ones use neural networks or other machine learning models. Unfortunately, achieved accuracy scores are still lower than competitive sequencing techniques, like Illumina's. Basecallers differ in the input data type--currently, most of them work on a raw data straight from the sequencer (time series of current). Still, the approach of using event data is also explored. Event data is obtained by preprocessing of raw data and dividing it into segments described by several features computed from raw data values within each segment. We propose a novel basecaller that uses joint processing of raw and event data. We define basecalling as a sequence-to-sequence translation, and we use a machine learning model based on an encoder­decoder architecture of recurrent neural networks. Our model incorporates twin encoders and an attention mechanism. We tested our solution on simulated and real datasets. We compare the full model accuracy results with its components: processing only raw or event data. We compare our solution with the existing ONT basecaller--Guppy. Results of numerical experiments show that joint raw and event data processing provides better basecalling accuracy than processing each data type separately. We implement an application called Ravvent, freely available under MIT licence.
+Keywords:       basecalling; sequence-to-sequence; nanopore; bioinformatics; encoder decoder; attention; neural network; machine learning; joint processing
+Author:         Adam Napieralski and Robert Nowak
+Creator:        LaTeX with hyperref
+Producer:       pdfTeX-1.40.21
+CreationDate:   Thu Mar 17 17:13:00 2022
+ModDate:        Thu Mar 17 10:18:16 2022
+Tagged:         no
+Form:           none
+Pages:          14
+Encrypted:      no
+Page size:      595.276 x 841.89 pts (A4) (rotated 0 degrees)
+File size:      3473402 bytes
+Optimized:      no
+PDF version:    1.7

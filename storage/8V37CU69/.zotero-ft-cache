@@ -1,0 +1,601 @@
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+MSDE
+
+PAPER
+
+View Article Online
+View Journal
+
+Quantitative prediction of charge regulation in oligopeptides†
+Cite this: DOI: 10.1039/d0me00147c
+Raju Lunkad, Anastasiia Murmiliuk, Pascal Hebbeker, Milan Boublík, Zdeněk Tošner, Miroslav Štěpánek and Peter Košovan *
+
+Received 22nd October 2020, Accepted 24th November 2020
+DOI: 10.1039/d0me00147c
+rsc.li/molecular-engineering
+
+Weak ampholytes are ubiquitous in nature and commonly found in artificial pH-responsive systems. However, our limited understanding of their charge regulation and the lack of predictive capabilities hinder the bottom-up design of such systems. Here, we used a coarse-grained model of a flexible polymer with weakly ionisable monomer units to quantitatively analyse the ionisation behaviour of two oligopeptides as model ampholytes. Our simulations predict differences in the charge states between oligopeptides and monomeric amino acids, showing that not only electrostatic interactions between charged groups but also conformational flexibility plays a key role in the charge regulation. By comparing our simulations with experimental results from potentiometric titration, capillary zone electrophoresis and NMR, we demonstrated that our model reliably predicts the charge state of various peptide sequences. Ultimately, our simulation model is the first step towards understanding the charge regulation in flexible ampholytes, and towards predictive bottom-up design of charge-regulating systems.
+
+Introduction
+Acid–base properties of molecules with multiple titratable groups are very different from low-molecular weak acids or bases. For acids with few titratable groups (e.g., oxalic acid or phosphoric acid), different pKA values can be assigned to each ionisation state because the titration curve contains several distinct inflection points. In contrast, titration curves of synthetic polymers, such as poly(acrylic acid), vary smoothly across a broad range of pH, thus making it impossible to assign a specific pKA to each state. A molecule with n different titratable groups has 2n distinct ionisation states. Even if n is rather small, this number of states becomes too large. In addition, electrostatic interactions between ionised groups affect the overall ionisation response in a complicated manner.1–6 The general notion is that repulsion between likecharged groups suppresses ionisation, while attraction between oppositely charged groups enhances ionisation. The net result depends on the pKA of individual groups and on their distribution in space, defined by conformation of the macromolecule. This electrostatic effect on the ionisation should be distinguished from the effect of replacing local
+Department of Physical and Macromolecular Chemistry, Charles University, Hlavova 8, 128 43 Prague, Czech Republic. E-mail: peter.kosovan@natur.cuni.cz † Electronic supplementary information (ESI) available: Technical details of CG and AA simulations; determination of model parameters; comparison of different pKA values from literature; comparison of computational demands and costs; experimental materials; technical details, and data analysis of CZE, potentiometric titration and NMR. See DOI: 10.1039/d0me00147c
+
+substituents upon formation of the peptide bond, which
+conditions the pKA by affecting the electron density in neighbouring chemical bonds.
+Changes in pH affect solubility of peptides,7 they can be used to control enzyme activity or protein aggregation,8,9 to trigger the release of anti-cancer drugs10 or to control protein sequestration in polyelectrolyte brushes, gels and complexes,11–14 as shown by the rapid development of pHresponsive materials, and their applications.15 In addition, pH-responsive polyelectrolytes can be used as nanobuffers in
+biological systems to tune the local environment on the nanoscale.16–18 In all these applications, a precise control over charge regulation is desired, involving simultaneous
+changes in the ionisation of different acid and base groups
+accompanied by conformational changes of the whole molecule.16 However, fundamental studies of charge
+regulation in such systems are either very scarce or
+nonexistent, which hinders further development. Their behaviour remains poorly understood and therefore is often
+interpreted only qualitatively, based on the pKA of their parent monomers. Accordingly, fundamental studies and quantitative predictions are highly desirable.16
+Computational models based on the Poisson–Boltzmann
+approach have explained the effect of electrostatic interactions on charge regulation in various proteins and peptides with rigid secondary and tertiary structures.19–24
+Additionally, their ionisation has been rarely studied in a broad range of pH, far from the isoelectric point, because it
+is usually not relevant for their biological function.
+
+This journal is © The Royal Society of Chemistry 2020
+
+Mol. Syst. Des. Eng.
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+Paper
+
+View Article Online
+MSDE
+
+Nevertheless, recent advances in the synthesis of polyampholytes, polyzwitterions25–28 and polyampholyte gels29,30 have underscored the need to further understand their behaviour in the whole range of pH and ionisation states, particularly for peptide-based pH-responsive materials31,32 and for therapeutic peptides used in biomedical applications.33 Most synthetic polymers, short peptides or disordered proteins lack structural rigidity and therefore cannot be modeled as rigid objects. The importance of coupling between the charge distribution and conformation in intrinsically disordered proteins has been previously demonstrated in both simulations and experiments,34–38 albeit disregarding their ionisation response. Accounting for their conformational flexibility and its coupling to the ionisation state is a prerequisite to obtain reliable predictions of charge regulation from modeling.
+Computer simulations using coarse-grained models can account for ionisation–conformation coupling, which has been shown to play a key role in flexible synthetic polyelectrolytes.3,39–42 Despite the simplicity of these models, few attempted comparisons with experimental results have been surprisingly quantitative,39,43–45 thus suggesting that they correctly capture the most important effects. The challenge is to assess whether such simulations, using suitably designed coarse-grained models, are able to predict the ionisation of polyampholytes, peptides or flexible proteins which are more complex than long homopolymer chains.
+To answer this question, we used two oligopeptides with weak acid and weak base side-chains as a model system with a complex ionisation response in which acid and base groups mutually influence each other. Our model considers the ionisation response of these oligopeptides and its relation to molecular geometry and conformational flexibility, similar to earlier simulations of weak ampholytes.46–48 However, it is presumably for the first time that such a model is used for one-to-one comparison of such simulations with experiments. Synthetic peptides are an ideal model system because they can be synthesized with a well-defined sequence, at sufficient purity, and with suitable combinations of pKA values.49 Ultimately, modeling short peptides paves the way towards more complex biomolecules, such as polyampholytes or intrinsically disordered proteins, and engineering pHresponsive materials, including therapeutic peptides, for a wide range of applications.33,34,49,50
+The ionisation state of acid and base groups is described by the following reactions:
+
+HA ⇌ A− + H+
+
+(1)
+
+BH+ ⇌ B + H+
+
+(2)
+
+where A and B stands for the weak acid or base group, while A− and BH+ represent their ionised forms. In the ideal case (in the absence of interactions), the degree of ionisation, α, of each ionisable group depends only on the difference pH– pKA via the Henderson–Hasselbalch equation:
+
+pH −
+
+pK
+
+acid A
+
+¼
+
+log10 1
+
+α −
+
+α
+
+;
+
+pH
+
+−
+
+pK
+
+base A
+
+¼
+
+1 log10
+
+−α α
+
+(3)
+
+where pKaAcid and pKbAase are the acidity constants of the acid and base groups, respectively.39 The total charge of the
+
+peptide at a given pH is then given by X
+
+zðpHÞ ¼ niαiðpHÞzi
+
+(4)
+
+i
+
+where ni is the number of groups of type i in the peptide, αi is their average degree of ionisation, and zi = ±1 is their charge in the ionised state. If ΔpKA = pKbAase − pKaAcid is large, then the peptide responds to a change in pH by varying the charge of one group or the other. If the ΔpKA is small, then the peptide responds to a change in pH by simultaneously varying the charge of both groups.
+To assess the effect of ΔpKA, we selected model peptides consisting of two blocks: five amino acids with weak acid side chains and five with weak base side chains (see Fig. 1). The Glu5–His5 peptide has pKaAcid = 4.25, pKbAase = 6.00 and a small ΔpKA = 1.75. The Lys5–Asp5 peptide has pKaAcid = 3.65, pKbAase = 10.53, and a large ΔpKA = 6.88. Both termini on each peptide were protected to ensure that the ionisation response is not affected by free carboxyl and amino groups. The reported pKA values correspond to side-chains of free amino acids, with slightly different values reported in the literature.51,52 Furthermore, these values can also change when the amino acid is incorporated into the peptide bond. We selected rather short peptides to ensure that they exist as single chains in solutions, do not aggregate, and do not form hairpin conformations or other types of rigid secondary structures, thereby resembling disordered proteins. On the other hand, the sequences of like-charged amino acids within individual blocks provide an analogy with synthetic polyelectrolyte homopolymers, the ionization response of which is quite well understood.
+
+Results and discussion
+Coarse-grained model of the peptides
+To represent the peptides in a simulation, we created a simple bead-spring model, shown in Fig. 1, derived from the well established Kremer–Grest polymer model.39,53 Each amino acid is represented by one central bead C for the backbone and one side-chain bead A or B for the acid or base group. All beads have the same size, σ = 0.35 nm, and are connected by harmonic springs. Distances between ionisable groups are crucial to quantify the ionisation response. Therefore, we used all-atom simulations to determine the distances rAC, rBC, rCC in our model, as detailed in the ESI,† section 1.3 and Table S2. The beads are neutral in the nonionised state and carry an elementary charge in the ionised state (±1e for acid or base, respectively). To account for the ionisation response, we simulated the ionisation reactions (eqn (1) and (2)) in the constant-pH ensemble, using the pKA of side-chains of the corresponding free amino acids. The
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry 2020
+
+MSDE
+
+View Article Online
+Paper
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+Fig. 1 Chemical structure of the real peptides and a schematic representation of the coarse-grained bead-spring model consisting of A, B and C beads.
+
+solvent is treated implicitly, as a dielectric continuum with permittivity corresponding to aqueous solutions at room temperature. We emphasize that there are no additional parameters which could be adjusted to match the simulations with experiments.
+Charge on the peptides from simulations
+The simulations predict a significantly lower charge of the model peptides, in comparison to the free amino acids, as shown in Fig. 2. The weak acid and weak base groups in our model have identical interaction parameters, except for pKA and geometry (bond lengths rAC, rBC). Therefore, the isoelectric point derived from simulations is very close to the ideal value pIsim ≈ pIideal = (pKaAcid + pKbAase)/2. The two distinct inflection points in the ionisation of Lys5–Asp5 indicate that the two blocks change their ionisation in different pH ranges because of the large ΔpKA. Conversely, the ionisation of Glu5–His5 lacks a clear inflection point and is nearly linear across a broad range of pH, indicating that the ionisation of the acid and base blocks varies simultaneously because the ΔpKA is much smaller. These
+
+changes in ionization are accompanied with conformational changes, as evidenced by the pH-dependence of the end-toend distance of the peptide backbone, shown in Fig. S1.† Our results qualitatively agree with similar observations in ref. 46, however, we observe smaller conformational changes because of using short chains. Nevertheless, the following question remains unanswered: to what extent does such a simple simulation model predict the behaviour of real ampholytes if it accounts only for the pKA values of the amino acids, disregarding all chemical complexity, which should be essential for biological functions?
+Experimental validation
+To answer this question, we followed the charge of the peptides using several independent experiments: capillary zone electrophoresis (CZE), potentiometric titration and NMR. In principle, these measurements yield quantities proportional to the charge or degree of ionisation. In practice, each method has its own limitations and pitfalls, which hinder quantitative analysis.
+In CZE, we directly measure the effective electrophoretic mobility
+
+μðpHÞ
+
+¼
+
+vðpHÞ E
+
+≈
+
+ezðpHÞ 6πηRH
+
+(5)
+
+Fig. 2 Simulation predictions of the total charge of the Glu5–His5 and Lys5–Asp5 peptides (data points), compared with the respective ideal curves obtained from eqn (3) using pKA values of free amino acids (solid lines).
+
+where v is the velocity of charged particle moving in an electric field E. The relation between μ, charge on the peptide z, its hydrodynamic radius, RH, and solvent viscosity, η, is only approximate because electrophoretic mobility yields the effective charge, which is lower than the bare charge.54–56
+Nevertheless, CZE yields the exact isoelectric point, defined by μ(pI) = 0. We were able to estimate the bare charge on the
+peptides by observing that RH of both peptides was virtually independent of pH and then renormalising the mobility μ(pH) by the maximum absolute mobility μmax(pHmax), and by the charge zsim(pHmax) determined from the simulations (see ESI,† section 2.2.2).
+
+This journal is © The Royal Society of Chemistry 2020
+
+Mol. Syst. Des. Eng.
+
+Paper
+
+View Article Online
+MSDE
+
+To complement the CZE with an independent experiment, we performed potentiometric titration of peptides in 10 mM HCl titrated by 10 mM NaOH. Using the electroneutrality condition, we determined the charge on the peptide from the known volume of HCl and amount of added NaOH and from the measured pH. In principle, the potentiometric titration should yield the absolute value of z. In practice, each peptide sample contained a slight excess of TFA counterions that shifted the apparent z(pH) to lower values, which was corrected by adding a constant value to match the isoelectric point determined from CZE.
+Lastly, we used the NMR chemical shifts to determine the degree of ionisation of each type of amino acid, averaged over amino acids of the same type in the peptide, and calculated charge on the peptide using eqn (4) (see ESI,† section 2.4.3). Unlike the other two methods, determination of the degree of ionisation from NMR did not require additional independent inputs.
+Despite the simplicity of the model, the simulations agree with all experiments (NMR, CZE and potentiometric titration) in a broad range of pH, as shown in Fig. 3(a and b). All approaches yield curves with very similar shapes, clearly deviating from the ideal curve. To better visualise these deviations, we plotted the difference from the ideal curve as
+
+a function of pH–pI, using pIideal for the ideal curve, pIsim ≈ pIideal for the simulations, and pIcze for all experimental data. The use of different pI values for simulations and experiments accounts for the fact that in the Henderson– Hasselbalch equation and in simulations we used the pKA values of free amino acids as input parameters, while in real peptides investigated experimentally these values are slightly shifted by the substituent effects. Generally, the NMR results almost coincide with CZE. For Glu5–His5 the simulations quantitatively match CZE at pH < pI, while the titration data deviate slightly more from the ideal curve, as shown in Fig. 3c. At pH > pI, the difference between simulation and CZE is slightly larger than between CZE and titration. Nevertheless, the deviations of all three curves from the ideal curve have the same trend and a similar magnitude. Eventually, at high pH, the titration yields nonphysical values of ztitration < −|zmax|, caused by the numerical instability of the calculation of ztitration(pH) using eqn (11) due to its sensitivity to temperature and to the precision of the pH measurement, as indicated by the broad error band. For Lys5–Asp5, the simulation results very closely follow the CZE in the whole pH range, except pH ≈ pI, as shown in Fig. 3d. The titration agrees well with both simulation and CZE at pH < 10 but then follows a different trend from the other two
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+Fig. 3 Panels (a) and (b): Total charge on the peptides as a function of pH from the ideal Henderson–Hasselbalch equation, simulations, NMR, potentiometric titration and capillary zone electrophoresis (CZE). The gray vertical line indicates the ideal isoelectric point whereas the red vertical line indicates the isoelectric point determined from CZE. Panels (c) and (d): Differences between the determined charge on the peptide and the ideal curve as a function of pH–pI.
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry 2020
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+MSDE
+
+View Article Online
+Paper
+
+methods. This difference can also be ascribed to numerical difficulties in calculating ztitration (pH ≳ 10) using eqn (11). Considering the whole pH range, we conclude that, despite some minor discrepancies, all three methods consistently depict the ionisation response of both peptides. This demonstrates that the dominant contribution to non-ideal ionisation of weak ampholytes originates from electrostatic interactions.
+It is tempting to explain the lower charge on the peptide in Fig. 2 by the like-charge repulsion within the weak acid and weak base block, in analogy to the ionisation response of polyacid or polybase homopolymers.57 However, a closer look at ionisation of acid and base blocks in Fig. 4 suggests otherwise. In both cases, the peptide is fully ionised at the isoelectric point, although its total charge is zero. In Lys5– Asp5 (Fig. 4b), ionisation within each block is higher than the expected ideal behaviour. The fully ionised oppositely charged block enhances the ionisation and overrides the effect of like-charge repulsion within the partly ionised block. Thus, even though the ionisation of each block of Lys5–Asp5 varies in a different pH range, the two blocks strongly affect each other. In Glu5–His5 (Fig. 4a), ionisation within the base block is suppressed at pH < pI but enhanced at pH > pI, and the opposite holds true for the acid block. This demonstrates that the small ΔpKA enables both blocks to interact strongly, whilst simultaneously affecting each other's ionisation. The simulated average degree of ionisation of individual amino acids in Fig. 4 matches the degree of ionisation determined by NMR. Generally, the NMR curves adopt the same shape as the simulated curves, but some of them are shifted towards higher pH. These shifts can be attributed to using pKA of free amino acids in the model, which does not account for the change in pKA when the amino acid is incorporated into the peptide. The values of these shifts are not known a priori but can be qualitatively assessed based on the amino acid structure, that is, the shift
+
+should decrease with the increase in the distance between the charged group on the side chain and the peptide bond. Thus, we expect almost no shift in Lys, larger shifts in Glu and His and the largest shift in Asp. Accordingly, both NMR curves of Glu5–His5 are shifted towards higher pH in comparison to simulations, suggesting a similar shift in the pKA values of Glu and His. In the case of Lys5–Asp5, only the Asp curve is shifted, while the Lys curves almost overlap, suggesting that the pKA of Asp is affected by its incorporation into the peptide, while Lys remains almost unaffected. These effects may also explain the difference between pI calculated from simulations and CZE. To test this hypothesis, we ran a new set of simulations, increasing the pKA of Glu and His by ΔpI of Glu5–His5 and the pKA of Asp by 2ΔpI of Lys5–Asp5 so that the pI of the new simulations would match the pI of CZE. Simulations using the modified pKA values almost perfectly match the NMR results for each individual amino acid, as shown in Fig. S20.† Thus, the NMR results confirm that the simulations quantitatively capture the deformation of the curves and support the hypothesis that this deformation is primarily caused by electrostatic interactions between charged groups, while the incorporation of amino acids into the peptide slightly increases their pKA values in comparison to free amino acids.
+NMR spectroscopy provides local information on the atomic structure and, in principle, on the degree of ionisation of each individual amino acid, as long as its signal can be resolved in the spectrum. Thus, NMR chemical shifts reflect not only the degree of ionisation but also other changes in the local environment, e.g., due to conformational changes. Specific carbon atoms have been selected according to the literature as good reporters of ionisation, based on previous studies on proteins.58 However, we did not always observe 5 peaks, as expected for 5 amino acids (see ESI,† section 2.4.3). Therefore, we used the centre of mass of the NMR peaks corresponding to the same carbon atoms within
+
+Fig. 4 The degree of ionisation of acid and base groups on the Glu5–His5 and Lys5–Asp5 peptides from simulations, NMR measurements and ideal Henderson–Hasselbalch equation. Red and grey vertical lines represent the isoelectric point determined from CZE and from the simulations. Shaded areas indicate the spread of 5 NMR signals corresponding to 5 amino acids of the same type.
+
+This journal is © The Royal Society of Chemistry 2020
+
+Mol. Syst. Des. Eng.
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+Paper
+
+View Article Online
+MSDE
+
+the amino acid to determine the average degree of ionisation of amino acids of the same type. Thus, NMR appears to be the best method for determining local ionisation because its only limitation is the need to resolve individual peaks in the spectrum of a peptide composed of nearly equivalent amino acids.
+Conclusion
+Ultimately, combining coarse-grained simulations with several experimental methods allowed us to quantitatively analyse the charge regulation in two peptides as model polyampholytes. The large ΔpKA of the Lys5–Asp5 peptide results in two inflection points in the variation of charge as a function of pH, each corresponding to ionisation changes within one of the blocks. In contrast, the small ΔpKA of the Glu5–His5 peptide results in an almost linear variation of charge as a function of pH in a broad range around the isoelectric point, indicating simultaneous changes in the ionisation of both blocks. We predicted the ionisation response of both peptides using a simple coarse-grained model without any free parameters, accounting for basic aspects of molecular geometry and for electrostatic interactions and using pKA of free amino acids as input parameters. Our simulation predictions agreed with the experimentally determined charge of the peptides, thus suggesting that their ionisation response is predominantly controlled by electrostatic interactions. Capillary zone electrophoresis yielded the isoelectric point but the calculation of charge on the peptide required renormalisation using the simulation results as the input. Potentiometric titration yielded a systematically shifted absolute charge due to the presence of other ions, thus requiring independently determining the isoelectric point to yield the actual charge of the peptide, and even then the determination was unreliable at high pH. Lastly, NMR provided detailed information about the ionisation of individual acid and base groups and allowed us to estimate how the pKA of each amino acid was affected by its incorporation into the peptide. Our study was limited to rather short peptides in order to prevent their aggregation and to ensure reliable experimental determination of the ionization degree. The observed deviations from the ideal behaviour might seem rather small, however, it has been shown in previous qualitative studies that such effects can be boosted by using longer chains.46–48,59 Thus, our results suggest a novel route to bottom-up engineering the ionisation response of peptides and weak ampholytes by choosing suitable pKA values of the side-chains and by optimising the sequence using numerical simulations. These simulations can be completed within a few hours of computer time (see ESI,† section 1.4). As a result, such modeling is considerably less expensive than experiments. A more refined model would be needed for modeling more complicated polyampholytes, such as disordered proteins or synthetic polyelectrolyte nanobuffers. However, such models have been previously designed, and
+
+they could be easily adopted to augment our current model, accounting for restrictions on bond angles, dihedrals, hydrophobicity, hydrogen bonding and other effects.35,34,38 Therefore, our results provide the missing piece of the puzzle by showing that the ionisation–conformation coupling can be modeled quantitatively. Thanks to these developments, our coarse-grained modeling may become a key predictive tool in the design of ampholytes with tunable ionisation, as well as in understanding the ionisation–conformation coupling in disordered proteins.
+Methods
+Full details of all simulations and experiments, including the data analysis and simulation/experimental protocol are provided in ESI.†
+
+Simulations
+Coarse-grained simulations. The simulation contained 10 peptide chains and 100 additional salt ion pairs to keep the ionic strength approximately constant, I = 10 mM. The box length L = 25.513 nm was chosen to match the concentrations used in the titration experiments. We used the full Coulomb potential to account for electrostatic interactions, the WCA potential for steric interactions and the harmonic potential for connections between particles, with no restrictions on bond angles or dihedrals.
+We performed a Langevin dynamics simulation in implicit solvent, using the constant-pH ensemble to account for the ionisation reactions (eqn (1) and (2)).39,60 pKA and pH were input parameters, while degree of ionisation was the output of the simulation. The reaction was implemented as a Monte Carlo procedure, changing the state from non-ionised to ionised in the forward direction of the reaction, or vice versa in the reverse direction.39,60 In both reactions, H+ was inserted or deleted at a random position in the system, and the new state was accepted with the probability39,60
+
+Pξacc = min[1, exp(−βΔUon + ξ(pH − pKA)ln(10))]
+
+(6)
+
+where β = 1/kBT, ΔUon = Un − Uo is the energy difference between the new state (n) and the old state (o), and ξ = ±1 for the forward or reverse direction of the reaction.
+Interaction potentials and parameters of the model. Bonds in the coarse-grained model were represented by the harmonic potential
+
+U h ðrÞ
+
+¼
+
+− kh ðr 2
+
+−
+
+bÞ2
+
+(7)
+
+with the stiffness constant kh = 400 kBT nm−1 common to all bonds. The bond stiffness was chosen arbitrarily. We tested that different values of this parameter yield very similar simulation results. The parameter b determines the equilibrium bond length. The bond length between central beads was bCC = 0.382 nm for all amino acid pairs. The bond lengths between central and side chain beads were bAC =
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry 2020
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+MSDE
+
+View Article Online
+Paper
+
+0.435 nm for glutamic acid, bAC = 0.329 nm for aspartic acid,
+
+bBC = 0.452 nm for histidine, and bBC = 0.558 nm for lysine.
+
+These values were determined from all-atom simulations
+
+described in the ESI,† section 1.2. In order to keep the model
+
+as simple as possible, we intentionally omitted any potentials
+
+accounting for bond angles or dihedrals. Nevertheless, these
+
+types of potentials might be necessary to account for the
+
+natural twist of the peptide backbone when modeling longer
+
+peptide sequences. In the current model the only restrictions
+
+on bond angles or dihedrals arise from steric repulsion due
+
+to finite size of the beads.
+
+The short-range excluded volume interaction was modeled
+
+using the fully-repulsive Weeks–Chandler–Andersen (WCA)
+
+potential between all bead pairs
+
+8
+
+U WCA ðrÞ
+
+¼
+
+< :
+
+4∈
+
+σ12 − σ6! þ ∈
+
+r
+
+r
+
+0
+
+r ≤ rcut r > rcut
+
+(8)
+
+where ∈ = 1kBT, σ = 0.35 nm and rcut = 0.393 nm, which defines the effective particle size.
+Electrostatic interaction between point charges i and j were represented by the Coulomb potential:
+
+U ij ðrÞ
+
+¼
+
+zizjkBT
+
+lB r
+
+¼
+
+1 4π∈0∈r
+
+zi zj e2 r
+
+(9)
+
+where z is the valency, e is the elementary charge, ∈0 is the permittivity of free space and ∈r is the relative permittivity. We set the Bjerrum length to its approximate value in aqueous solutions at room temperature, lB ≈ 0.71 nm. Electrostatic interactions were calculated using the P3M
+method, tuned to relative accuracy 0.001 using the tuning
+algorithm implemented in the ESPResSo simulation software that we used for simulations of the CG model.61
+All-atom simulations. Equilibrium bond lengths for the
+CG model, rCC, rAC and rBC were determined using all-atom (AA) molecular dynamics (MD) simulations of amino acid
+tetramers Glu4, His4, Lys4 and Asp4, with fully ionised side chains and protective groups on the C and N-ends. They were solvated by water and neutralised by Cl− and Na+ ions, with additional Na+ and Cl− ions to fix the ionic strength. The use
+of tetramers allowed us to assess whether these distances
+were affected by position of the amino acid in the sequence:
+N-terminus, middle, C-terminus.
+
+Experiments
+Capillary zone electrophoresis (CZE). Samples for CZE with the concentration of the peptide chains c = 0.1 mM, equivalent to the concentration of the monomeric units [Glu] = [His] = [Asp] = [Lys] = 0.5 mM, were prepared by dissolving the peptide directly in running buffers, specified in ESI,† Table S6. We determined RH using the diffusion ordered spectroscopy (DOSY) NMR (ESI,† section 2.4.4), showing that RH is almost constant throughout the pH range in both peptides. This allowed us to eliminate RH from the function μ(pH) and to determine the charge on the peptides using the
+
+maximum mobility, μmax, measured at pHmax. If the peptide was fully ionized at pHmax, this approach should re-scale the
+
+electrophoretic mobilities to yield the bare charge because
+
+the factors relating bare and effective charge cancel each
+
+other. Unfortunately, we were able to measure CZE only in a
+
+limited range, preventing us from reliably assuming full ionisation at pHmax. We corrected for this limitation by renormalising μmax(pHmax) by the peptide charge determined from our simulations, zsim(pHmax + ΔpI) (ESI† section 2.2.2
+
+for full details of data analysis)
+
+À
+
+Á
+
+zczeðpHÞ
+
+¼
+
+μ pH − pIcze μmaxðpHmaxÞ
+
+zsimðpHmax
+
+þ
+
+ΔpIÞ
+
+(10)
+
+where ΔpI = pIcze − pIsim is the difference between isoelectric points determined from CZE and from the simulations.
+Potentiometric titration. The peptides were dissolved in 0.01 M standardised HCl to prepare solutions to a final concentrations of monomeric units: [Glu] = [His] = [Asp] = [Lys] = 5 mM, yielding the concentration of peptide chains cpeptide = 1 mM. Sample volumes of approximately 2 ml were weighed to determine the precise amount and then titrated with standardised 0.01 M NaOH. The measurements were performed in an air-conditioned room at ambient temperature t ≈ 22 °C and temperature of the solution was monitored constantly with the precision of 0.01 °C. The charge on the peptide was calculated from the pH and from the known volumes of HCl and NaOH
+
+ztitration
+
+¼
+
+V HClcHCl
+
+− V NaOHcNaOH þ ðcOH − cHÞðV HCl cpeptideV HCl
+
+þ
+
+V NaOHÞ
+
+þ zmaxxTFA
+
+(11)
+
+where c is the concentration, z is the charge on the peptide, zmax = 5 is the maximum charge on the peptide and xTFA ≳ 1 is the mole fraction of trifluoroacetate (TFA) counterions contained in the peptide sample, relative to the basic side
+chains on the peptide. To correct for the unknown value of
+xTFA, we used it as an adjustable parameter to match the pI determined from CZE. This correction resulted in adding a constant value to ztitration (pH): +1.37 for Glu5–His5 and +1.00 for Lys5–Asp5. The concentrations of H+ and OH− ions, used in eqn (11), were calculated from the measured pH and pKw. Because pKw is sensitive to temperature, ztitration(pH) from eqn (11) was also sensitive to temperature and to the precision of the pH measurement, yielding reliable results only at intermediate pH range, 3 ≳ pH ≳ 11. We quantified
+the reliability of ztitration(pH) by comparing titrations of peptide samples with blank titrations of HCl stock solutions.
+For further technical details of processing the titration results, see ESI† section 2.3.2.
+Nuclear magnetic resonance (NMR). Samples for NMR
+were prepared by dissolving each peptide in 0.01 M HCl to a final concentration of 15 g L−1 and by titrating the solutions with NaOH to adjust the pH to the desired value. 2D NMR spectra, COSY and 1H–13C HSQC, (Fig. S18 and S19†) at pH 2
+
+This journal is © The Royal Society of Chemistry 2020
+
+Mol. Syst. Des. Eng.
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+Paper
+
+View Article Online
+MSDE
+
+were used for peak assignment. The degrees of ionisation were
+
+determined from the chemical shift of specific atoms, which
+
+were identified in the literature as good reporters of ionisation
+
+αbaseðpHÞ
+
+¼
+
+δmax − δðpHÞ δmax − δmin
+
+;
+
+αacidðpHÞ
+
+¼
+
+δðpHÞ − δmin δmax − δmin
+
+(12)
+
+Conflicts of interest
+There are no conflicts to declare.
+Acknowledgements
+The authors would like to thank Dr. Carlos V. Melo for proofreading the manuscript and Dr. Pavel Dubský for advice regarding the CZE experiments. This work was supported by the Czech Science foundation, grant 19-10429S, and by the Grant agency of the Charles University, grant GAUK 978218. Miroslav Štěpánek acknowledges support from the Ministry of Education, Youth and Sports of the Czech Republic, Operational Programme Research, Development and Education: “Excellent Research Teams”, Project No. CZ.02.1.01/0.0/0.0/15_003/0000417-CUCAM. Computational resources were supplied by the project “e-Infrastruktura CZ” (e-INFRA LM2018140) provided within the program Projects of Large Research, Development and Innovations Infrastructures.
+References
+1 M. Lund and B. Jönsson, Charge regulation in biomolecular solution, Q. Rev. Biophys., 2013, 46, 265–268.
+2 A. Katchalsky and J. Gillis, Theory of the potentiometric titration of polymeric acids, Recl. Trav. Chim. Pays-Bas, 1949, 68, 879.
+3 R. Israëls, F. A. M. Leermakers and G. J. Fleer, On the Theory of Grafted Weak Polyacids, Macromolecules, 1994, 27, 3087–3093.
+4 G. S. Hartley and J. W. Roe, Ionic concentrations at interfaces, Trans. Faraday Soc., 1940, 35, 101–109.
+5 R. Arnold, The titration of polymeric acids, J. Colloid Sci., 1957, 12, 549–556.
+6 B. W. Ninham and V. A. Parsegian, Electrostatic potential between surfaces bearing ionizable groups in ionic equilibrium with physiologic saline solution, J. Theor. Biol., 1971, 31, 405–428.
+7 H. T. Do, Y. Z. Chua, J. Habicht, M. Klinksiek, M. Hallermann, D. Zaitsau, C. Schick and C. Held, Melting properties of peptides and their solubility in water. Part 1: dipeptides based on glycine or alanine, RSC Adv., 2019, 9, 32722–32734.
+8 M. Ikebuchi, A. Kashiwagi, T. Asahina, Y. Tanaka, Y. Takagi, Y. Nishio, H. Hidaka, R. Kikkawa and Y. Shigeta, Effect of medium pH on glutathione redox cycle in cultured human umbilical vein endothelial cells, Metabolism, 1993, 42, 1121–1126.
+
+9 W. N. Ainis, A. Boire, V. Solé-Jamault, A. Nicolas, S. Bouhallab and R. Ipsen, Contrasting Assemblies of Oppositely Charged Proteins, Langmuir, 2019, 35, 9923–9933.
+10 K. Ulbrich, Polymeric anticancer drugs with pH-controlled activation, Adv. Drug Delivery Rev., 2004, 56, 1023–1050.
+11 J. J. van Lente, M. M. A. E. Claessens and S. Lindhoud, Charge-Based Separation of Proteins Using Polyelectrolyte Complexes as Models for Membraneless Organelles, Biomacromolecules, 2019, 20, 3696–3703.
+12 U. Freudenberg, P. Atallah, Y. D. P. Limasale and C. Werner, Charge-tuning of glycosaminoglycan-based hydrogels to program cytokine sequestration, Faraday Discuss., 2019, 219, 244–251.
+13 L. Schirmer, K. Chwalek, M. V. Tsurkan, U. Freudenberg and C. Werner, Glycosaminoglycan-based hydrogels with programmable host reactions, Biomaterials, 2020, 228, 119557.
+14 G. Ferrand-Drake del Castillo, R. L. N. Hailes, Z. Adali-Kaya, T. Robson and A. Dahlin, Generic high-capacity protein capture and release by pH control, Chem. Commun., 2020, 56, 5889–5892.
+15 S. Jana and M. Uchman, Poly(2-oxazoline)-based StimulusResponsive (Co)polymers: An Overview of their Design, Solution Properties, Surface-chemistries and Applications, Prog. Polym. Sci., 2020, 101252.
+16 W. Tao, J. Wang, W. J. Parak, O. C. Farokhzad and J. Shi, Nanobuffering of pH-Responsive Polymers: A Known but Sometimes Overlooked Phenomenon and Its Biological Applications, ACS Nano, 2019, 13, 4876–4882.
+17 P. Anees, Y. Zhao, A. A. Greschner, T. R. Congdon, H. W. de Haan, N. Cottenye and M. A. Gauthier, Evidence, Manipulation, and Termination of pH ‘Nanobuffering’ for Quantitative Homogenous Scavenging of Monoclonal Antibodies, ACS Nano, 2019, 13(2), 1019–1028.
+18 C. Wang, Y. Wang, Y. Li, B. Bodemann, T. Zhao, X. Ma, G. Huang, Z. Hu, R. J. DeBerardinis, M. A. White and J. Gao, A nanobuffer reporter library for fine-scale imaging and perturbation of endocytic organelles, Nat. Commun., 2015, 6, 8524.
+19 D. Srivastava, E. Santiso, K. Gubbins and F. L. Barroso da Silva, Computationally Mapping pKa Shifts Due to the Presence of a Polyelectrolyte Chain around Whey Proteins, Langmuir, 2017, 33, 11417–11428.
+20 M. Lund, Electrostatic chameleons in biological systems, J. Am. Chem. Soc., 2010, 132, 17337–17339.
+21 W. M. de Vos, F. A. M. Leermakers, A. de Keizer, M. A. Cohen Stuart and J. M. Kleijn, Field Theoretical Analysis of Driving Forces for the Uptake of Proteins by Like-Charged Polyelectrolyte Brushes: Effects of Charge Regulation and Patchiness, Langmuir, 2010, 26, 249–259.
+22 Y. Avni, D. Andelman and R. Podgornik, Charge regulation with fixed and mobile charged macromolecules, Curr. Opin. Electrochem., 2019, 13, 70–77.
+23 R. de Vries and M. Cohen Stuart, Theory and simulations of macroion complexation, Curr. Opin. Colloid Interface Sci., 2006, 11, 295–301.
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry 2020
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+MSDE
+
+View Article Online
+Paper
+
+24 H.-X. Zhou and X. Pang, Electrostatic Interactions in Protein
+
+Structure, Folding, Binding, and Condensation, Chem. Rev.,
+
+2018, 118, 1691–1741.
+
+25 M. von der Lühe, A. Weidner, S. Dutz and F. H. Schacher,
+
+Reversible Electrostatic Adsorption of Polyelectrolytes and
+
+Bovine Serum Albumin onto Polyzwitterion-Coated Magnetic
+
+Multicore Nanoparticles: Implications for Sensing and Drug
+
+Delivery, ACS Appl. Nano Mater., 2018, 1, 232–244.
+
+26 P. Biehl, M. von der Lühe and F. H. Schacher, Reversible
+
+Adsorption of Methylene Blue as Cationic Model Cargo onto
+
+Polyzwitterionic Magnetic Nanoparticles, Macromol. Rapid
+
+Commun., 2018, 39, 1800017.
+
+27 D. Vrbata and M. Uchman, Preparation of lactic acid- and
+
+glucose-responsive
+
+poly(ε-caprolactone)-b-poly(ethylene
+
+oxide) block copolymer micelles using phenylboronic ester
+
+as a sensitive block linkage, Nanoscale, 2018, 10, 8428–8442.
+
+28 V. Dordovic, J. Vojtová, S. Jana and M. Uchman, Charge
+
+reversal and swelling in saccharide binding polyzwitterionic
+
+phenylboronic
+
+acid-modified
+
+poly(4-vinylpyridine)
+
+nanoparticles, Polym. Chem., 2019, 10, 5522–5533.
+
+29 M. A. Dyakonova, G. Gotzamanis, B.-J. Niebuur, N. S.
+
+Vishnevetskaya, K. N. Raftopoulos, Z. Di, S. K. Filippov, C.
+
+Tsitsilianis and C. M. Papadakis, pH Responsiveness of
+
+hydrogels formed by telechelic polyampholytes, Soft Matter,
+
+2017, 13, 3568–3579.
+
+30 W. Xu, A. Rudov, A. Oppermann, S. Wypysek, M. Kather, R.
+
+Schroeder, W. Richtering, I. I. Potemkin, D. Wöll and A.
+
+Pich, Synthesis of Polyampholyte Januslike Microgels by
+
+Coacervation of Reactive Precursors in Precipitation
+
+Polymerization, Angew. Chem., Int. Ed., 2020, 59, 1248–1255.
+
+31 K. Praveen, S. Das, V. Dhaware, B. Pandey, B. Mondal and
+
+S. S. Gupta, pH-Responsive “Supra-Amphiphilic”
+
+Nanoparticles Based on Homoarginine Polypeptides, ACS
+
+Appl. Bio Mater., 2019, 2, 4162–4172.
+
+32 A. A. Martens, G. Portale, M. W. T. Werten, R. J. de Vries, G.
+
+Eggink, M. A. Cohen Stuart and F. A. de Wolf, Triblock
+
+Protein Copolymers Forming Supramolecular Nanotapes and
+
+pH-Responsive Gels, Macromolecules, 2009, 42, 1002–1009.
+
+33 A. W. Du and M. H. Stenzel, Drug Carriers for the Delivery of
+
+Therapeutic Peptides, Biomacromolecules, 2014, 15,
+
+1097–1114.
+
+34 W. Zheng, A. Borgia, K. Buholzer, A. Grishaev, B. Schuler
+
+and R. B. Best, Probing the Action of Chemical Denaturant
+
+on an Intrinsically Disordered Protein by Simulation and
+
+Experiment, J. Am. Chem. Soc., 2016, 138, 11702–11713, tex.
+
+ids: zheng2016a.
+
+35 A. Soranno, A. Holla, F. Dingfelder, D. Nettels, D. E. Makarov
+
+and B. Schuler, Integrated view of internal friction in
+
+unfolded proteins from single-molecule FRET, contact
+
+quenching, theory, and simulations, Proc. Natl. Acad. Sci. U.
+
+S. A., 2017, 114, E1833–E1839, tex.ids: soranno2017a.
+
+36 A. Kyrychenko, M. M. Blazhynska and O. N. Kalugin,
+
+Protonation-dependent adsorption of polyarginine onto
+
+silver nanoparticles, J. Appl. Phys., 2020, 127, 075502.
+
+37 A. Statt, H. Casademunt, C. P. Brangwynne and A. Z.
+
+Panagiotopoulos, Model for disordered proteins with
+
+strongly sequence-dependent liquid phase behavior, J. Chem. Phys., 2020, 152, 075101, tex.ids: statt2020a. 38 U. Baul, M. Bley and J. Dzubiella, Thermal Compaction of Disordered and Elastin-like Polypeptides: A TemperatureDependent, Sequence-Specific Coarse-Grained Simulation Model, Biomacromolecules, 2020, 21, 3523–3538. 39 J. Landsgesell, L. Nová, O. Rud, F. Uhlík, D. Sean, P. Hebbeker, C. Holm and P. Košovan, Simulations of ionization equilibria in weak polyelectrolyte solutions and gels, Soft Matter, 2019, 15, 1155–1185. 40 M. Ullner, B. Jönsson and P. Widmark, Conformational properties and apparent dissociation constants of titrating polyelectrolytes: Monte Carlo simulation and scaling arguments, J. Chem. Phys., 1994, 100, 3365. 41 M. Ullner, B. Jönsson, B. Söderberg and C. Peterson, A Monte Carlo study of titrating polyelectrolytes, J. Chem. Phys., 1996, 104, 3048–3057. 42 O. V. Borisov, E. B. Zhulina, F. A. Leermakers, M. Ballauff and A. H. E. Müller, in Self Organized Nanostructures of Amphiphilic Block Copolymers I, ed. A. H. E. Müller and O. Borisov, Adv. Polym. Sci., Springer, Berlin Heidelberg, 2011, vol. 241, pp. 1–55. 43 F. Uhlík, P. Košovan, Z. Limpouchová, K. Procházka, O. V. Borisov and F. A. M. Leermakers, Modeling of Ionization and Conformations of Starlike Weak Polyelectrolytes, Macromolecules, 2014, 47, 4004–4016. 44 A. Murmiliuk, P. Košovan, M. Janata, K. Procházka, F. Uhlík and M. Štepánek, Local pH and Effective pK of a Polyelectrolyte Chain: Two Names for One Quantity?, ACS Macro Lett., 2018, 7, 1243–1247. 45 A. Laguecir, S. Ulrich, J. Labille, N. Fatin-Rouge, S. Stoll and J. Buffle, Size and pH effect on electrical and conformational behavior of poly(acrylic acid): Simulation and experiment, Eur. Polym. J., 2006, 42, 1135–1144. 46 S. Ulrich, M. Seijo and S. Stoll, A Monte Carlo Study of Weak Polyampholytes: Stiffness and Primary Structure Influences on Titration Curves and Chain Conformations, J. Phys. Chem. B, 2007, 111, 8459–8467. 47 A. K. Narayanan Nair, S. Uyaver and S. Sun, Conformational transitions of a weak polyampholyte, J. Chem. Phys., 2014, 141, 134905. 48 A. K. Narayanan Nair, A. Martinez Jimenez and S. Sun, Complexation behavior of polyelectrolytes and polyampholytes, J. Phys. Chem. B, 2017, 121, 7987–7998. 49 L.-W. Chang, T. K. Lytle, M. Radhakrishna, J. J. Madinya, J. Vélez, C. E. Sing and S. L. Perry, Sequence and entropybased control of complex coacervates, Nat. Commun., 2017, 8, 1723. 50 P. Zhang, Z. Gao, J. Cui and J. Hao, Dual-Stimuli-Responsive Polypeptide Nanoparticles for Photothermal and Photodynamic Therapy, ACS Appl. Bio Mater., 2019, 3, 561–569. 51 W. Haynes, CRC Handbook of Chemistry and Physics, 96th edn, CRC Press, New York, 2015. 52 D. R. Lide, CRC Handbook of Chemistry and Physics, 72nd edn, CRC Press, New York, 1991.
+
+This journal is © The Royal Society of Chemistry 2020
+
+Mol. Syst. Des. Eng.
+
+Paper
+
+View Article Online
+MSDE
+
+53 G. S. Grest and K. Kremer, Molecular dynamics simulation for polymers in the presence of a heat bath, Phys. Rev. A: At., Mol., Opt. Phys., 1986, 33, 3628–3631.
+54 V. Lobaskin, B. Dünweg and C. Holm, Electrophoretic mobility of a charged colloidal particle: a computer simulation study, J. Phys.: Condens. Matter, 2004, 16, S4063–S4073.
+55 R. J. Hill, D. Saville and W. Russel, Electrophoresis of spherical polymer-coated colloidal particles, J. Colloid Interface Sci., 2003, 258, 56–74.
+56 P. C. Griffiths, A. Paul, P. Stilbs and E. Petterson, Charge on Poly(ethyleneimine): Comparing Electrophoretic NMR Measurements and pH Titrations, Macromolecules, 2005, 38, 3539–3542.
+57 L. Nová, F. Uhlík and P. Košovan, Local pH and effective pKA of weak polyelectrolytes - insights from computer
+
+simulations, Phys. Chem. Chem. Phys., 2017, 19, 14376–14387. 58 M. A. Hass and F. A. Mulder, Contemporary NMR Studies of Protein Electrostatics, Annu. Rev. Biophys., 2015, 44, 53–75, tex.ids: hass2015a. 59 M. K. Hazra and Y. Levy, Charge pattern affects the structure and dynamics of polyampholyte condensates, Phys. Chem. Chem. Phys., 2020, 22, 19368–19375. 60 C. E. Reed and W. F. Reed, Monte Carlo study of titration of linear polyelectrolytes, J. Chem. Phys., 1992, 96, 1609–1620. 61 F. Weik, R. Weeber, K. Szuttor, K. Breitsprecher, J. de Graaf, M. Kuron, J. Landsgesell, H. Menke, D. Sean and C. Holm, ESPResSo s4.0 – an extensible software package for simulating soft matter systems, Eur. Phys. J.: Spec. Top., 2019, 227, 1789–1816.
+
+Published on 24 November 2020. Downloaded on 12/17/2020 9:00:23 PM.
+
+Mol. Syst. Des. Eng.
+
+This journal is © The Royal Society of Chemistry 2020
+

@@ -1,0 +1,335 @@
+
+View Online
+
+Export Citation
+RESEARCH ARTICLE | FEBRUARY 01 1975
+Theory of inhomogeneous polymers: Fundamentals of the Gaussian random‐walk model 
+Eugene Helfand
+J. Chem. Phys. 62, 999–1005 (1975) https://doi.org/10.1063/1.430517
+30 July 2024 03:09:36
+
+
+Theory of inhomogeneous polymers: Fundamentals of the Gaussian random-walk model
+Eugene Helfand
+Bell Laboratories. Murray Hill. New Jersey 07974 (Received 20 September 1974)
+In earlier work a theory of inhomogeneous polymers was developed from a mean field theory point of view. Applications were made to polymer-polymer interfaces and to the microdomain structure of block copolymers. Here a connection is made between the intuitive mean field arguments for these problems and more fundamental statistical mechanics. Functional integral techniques are employed extensively.
+I. INTRODUCTION
+In recent years an effort has been made to develop theoretical tools for the description of inhomogeneous polymeric systems. 1-4 We believe that there is some importance to be attached to such an investigation because of the common occurrence of inhomogeneity. The theory has been applied to several specific problems: the interface between immiscible polymers1•3; block copolymer microdomain structure2 ; and the surface of concentrated polymer solutions. 4 Agreement with experiment has been good. In this paper we shall delve deeply into the statistical mechanical foundations of our work.
+The theory of inhomogeneous systems, particularly interfaces, has received considerable attention over the years. There are two major developments which should be singled out for mention. The first is the general approach by Landau and Lifschitz, 5 where one sees most clearly that inhomogeneous structure is controlled by the competition between the free energy cost of making sharp boundaries (associated with delocalization of the free energy), and the opposing cost of locally having states which are not of minimum free energy density. In small molecule classical systems, the delocalization of the free energy is primarily associated with the fact that molecules interact with other molecules at neighboring points, where the concentration (or some other order parameter) may be different. An application of Landau-Lifshitz theory to surfaces was made by Kahn and Hilliard. 6
+Debye7 applied these ideas to polymer-solvent systems. He regarded the polymer as a permanent Gaussian distribution of segments with extent, essentially, the radius of gyration. This large size for the polymer created a long-range delocalization in the interactions with solvent. The Debye theory, strictly, is applicable only to dilute solutions, and is least appropriate under conditions of large interpenetration.
+We have approached the theory of inhomogeneous polymer systems in two ways. The first is on the basis of Gaussian statistics for the conformations of the macromolecules. 1•2 The second is by use of a lattice model, extending the techniques of Flory and Huggins. 3.4 The equations in the latter case reduce to the former when the distance scale of inhomogeneity is large compared with the lattice spacing.
+In this paper we expound on the theoretical basis of the Gaussian molecule approach. We hope to: (i) reinforce the reasonableness of the formulas derived previously by intuitive mean field arguments; (ii) furnish systematic procedures for more difficult problems, where intuition might fail; (iii) develop inSight into the limitations, improyements, and extensions of the theory; and (iv) derive a formula for the free energy, which is the most difficult quantity to obtain correctly from mean field theories.
+In several of the previous papers we have discussed qualitative ways of viewing the theory, and a review article is forthcoming, 8 so we shall not repeat those arguments here. Likewise, the solutions of the equations and comparison wit\l experiment are found elsewhere.
+We believe that clarity will be served best by studying particular systems. Generalizations can be done, but to treat them from the outset would confuse the issue. We will consider the problem of the interface between two immiscible polymers in Secs. II, III,' and V. A partition function and average densities will be evaluated using a phenomenological Hamiltonian, at first chosen to have a special form. Functional integrals, which are brought into the problem, are handled by a saddle-function technique (the generalization of saddlepoint methods for Riemann integrals). Experience in other areas of physics indicates that this is related to mean-field theory. Block copolymer systems and the statistical thermodynamics of their microphase structure are discussed in Sec. IV using the same type of arguments. In the final section we indicate how a more accurate phenomenological Hamiltonians may be employed.
+II. THE PARTITION FUNCTION
+We will be conSidering the interface between two polymeric materials, A and B, which are immiscible (we use the symbol K when we refer to A or B). The molecules will be looked upon as space curves rIK(t) with t varying from 0 to Z K, the degree of polymerization.
+In the Gaussian model the space curves representative of the macromolecules are taken to have the same statistics as Brownian motion paths. (Freed9 has reviewed this approach to polymer statistical mechanics.) The probability density functional for a space curve r( . ) is
+The Journal of Chemical Physics, Vol. 62. No.3, 1 February 1975 Copyright © 1975 American Institute of Physics 999
+30 July 2024 03:09:36
+
+
+1000 Eugene Helfand: Theory of inhomogeneous polymers
+Pw[r(' )]=:Jl1exP[-2!iiZdtld;?)11, (2.1)
+called Wiener measure. This says that the space curves are continuous with a rate of extension at each point,
+drI dt, which is Gaussianly distributed and independent of the rate of all other parts of the curve. :Jl1is a nor
+malization constant selected so that
+f. or(· )Pw[r(' )] = 1.
+'0
+(2.2)
+[The symbol Jor(· )... indicates a functional integral over all space curves, and the lower limit ro means one end is fixed at ro.] It is easily shown that the mean square separation between the points r(t) and r(t') is, as usual,
+<1r(t) - r(t') 12) = bi 1t - t' I. (2.3)
+By the central limit theorem we know that the Gaussian model of the polymer becomes accurate for phenomena where large values of It - t' I control the situation. For the inhomogeneous polymer systems we expect this to be the case if concentration changes are small over the distance b (or, in a single direction, bl Y3).
+The partition function for the collection of N A macromolecules of A and NB of B (the number of units of K is nK= NKZK) will be written as
+DNANB
+_ 1 f:D ' {_3C[r1A(,), ... ,rNBB(')]}
+- NA!NB! w{r( )}exp kT '
+(2.4) where we have abbreviated the measure of independent molecule states with the symbol
+NA NB
+=I I llr iA(' )Pw[rlA(')lIT orJB(' )pw[rJB(' )]. (2.5)
+1=1 J=1
+Into the Hamiltonian has been absorbed the effects of integration over the momenta (or quantum mechanical treatment, if appropriate), and internal degrees of freedom. Actually we will use a phenomenological Hamiltonian, closely related to the free energy as a functional of the density pattern implied by the state r 1A( . ), ... ,
+rNBB (·). To be explicit, the macromolecules in a given state produce microscopic densities of monomer units, fJA(r) and fJB(r), given by
+fJK(r) =~ fa ZKdt orr - rIK(t)]· (2.6)
+Let us say that the Helmholtz free energy density of a homogeneous (perhaps hypothetical) mixture of A and B isj(PA,PB)' In that case one would like to have
+(2.7)
+where V is the volume. This is achieved if one uses for the phenomenological Hamiltonian
+NA!~B! exp[- kiJ
+_ kTfJA(r) I fJA(r) _ kTfJB(r) I fJB(r) - / ()~)
+Z og Z og flue! r .
+A PwA B PwB
+(2.8) We have introduced the quantities VWK and PWK related by
+(2.9)
+Careful examination of the right hand side of Eq. (2.8) will reveal that it is actually independent of VwA and VwB , so these quantities can be selected later for convenience. In the case where the degrees of polymerization are very high it is appropriate to choose VWK such that PwK is the density of pure K. When Z K is finite the choice is more complex.
+The fluctuation term is meant to take up any errors introduced by approximations. For instance, we intend to use the effective Hamiltonian, and the densities fJA and f'J B, in a coarse-grained sense. Otherwise we would find microscopic densities which only take the values zero and infinity. Then, too, we know that a reasonable evaluation of the sequence of integrals over molecules should prohibit overlap in space, which gives rise to the so-called "communal entropy." This is familiar in the context of the Flory-Huggins quasilattice theory. However, such an effect is hard to include implicitly if we coarse grain. A third example of errors to be absorbed in the fluctuation term are those arising from use of saddle-integration techniques and neglect of fluctuations about the saddle point. What we shall ultimately assume is that there is a cancellation (at least in good approximation) between the fluctuation term of the reference homogeneous and the inhomogeneous systems. With this in mind we shall henceforth drop the fluctuation term.
+When we go from the homogeneous to the heterogeneous system we may want to include in the free energy density, j[fJA(r), flB(r)], some terms that are nonlocal. We illustrate with an example. Let us say we have a term as part of the free energy which goes like aV( PAlPOA)( PBIPOB) for a uniform system. In a nonuniform system, as a result of the nonlocality of interactions
+(a unit at r interacts with another unit at r' *r), it may be more appropriate to write
+J
+drfdr' a' (I r' - r I) fJA(r) f'JB(r') .
+POA POB (2. 10)
+A gradient expansion may be made by Taylor series development of PB(r') about r' = r:
+afdiPA(r) PB(r) - !cfv PA(r) • 'if PB(r) + .• j,
+. LPOA POB 6· POA POB (2.11) with
+a = f dr' a'( 1r' - r I), (2.12)
+a2a= f dr' Ir'-rI 2a'(lr'-rl). (2.13)
+This type of nonlocality is of central import for small molecule systems, and plays a key role in many polymer
+J. Chem. Phys., Vol. 62, No.3, 1 February 1975
+30 July 2024 03:09:36
+
+
+Eugene Helfand: Theory of inhomogeneous polymers 1001
+systems, too. However we shall not carry along such non
+locality of f in this paper, for two reasons. First, we want to concentrate on the polymeric aspects of the problem, particularly the nonlocality of the conformational entropy. Secondly, it will be easy enough for the
+reader to restore such nonlocality of f when an understanding of the local case is achieved. Nonlocality of interactions has been included previously,1,3,4 and it will be taken into account in subsequent work, too.
+Assembling the pieces, we need to evaluate the partition function
+D!{A!{B =exp{ - [nAJ.LA H1BJ.LB - PVl/kT}Dr, (2.14)
+Droo !{A1 !{Bf~w{r(o)}expLk1TJdrt.j*U'lA(r)'~B(r)]},
+VwA V wB 1 . (2.15)
+Af*(PA, PB) =f(PA, PB) - kzTPAIOgpPA - kzTPBIog.!::lLpP
+A wA B wB
+where J.LK is the chemical potential and p is the pressure. The interfacial tension is given by
+(2.17)
+where a is the interfacial area.
+In Eq. (2.14) we have separated out the free energy of the asymptotic phases in a manner which is especially convenient, because it is explicitly independent of the location of any Gibbs dividing surface. Sometimes one arbitrary places a surface between the phases which divides the system into V1 and Vz s\lch that V1+ V2 =V.
+Then one defines surface excesses of units of K by
+r Koon K- P1K V1- PZKVz. (2.18)
+The total free energy is written as
+Foof(P1A,P1B)V1+f(pzA, P2B)VZ+ rAJ.LA + rBJ.LB +ya.
+(2.19) USing the formula
+f(PA, PB) =PAil A (PA, PB) + PBJ.LB(PA, PB) - p (2.20)
+it is easy to show that, alternatively to Eq. (2.19),
+(2.21)
+i. e., Helmholtz free energy equals Gibbs free energy minus p V plus YCl, as is well known.
+III. A SPECIAL, BUT REALISTIC, FREE ENERGY
+Before attacking the problem of a general free energy function, we shall conSider a special quadratic choice
+of f as a function of densities. l,Z The form we choose should be reasonable under conditions of low compressibility, when interactions are not directionally specific, and if random mixing is appropriate. Let us furthermore assume that the degrees of polymerization are very high. This enables us to disregard various ideal terms which are proportional to the density of molecules and retain only terms proportional to the density of units. Also the asymptotic phases are then pure A and pure B. We write
+(3.1)
+where POK is the density of pure K. A further discussion of this choice and its relation to familiar forms, like Flory-Huggins, is contained in Appendix A.
+The parameter O! measures the relative repulsion between species A and B. Sometimes a parameter Xis used, but it is not a good quantity to employ for nonsymmetric mixtures, except in the extreme where one component is a solvent. An advantage of X is that it is dimensionless. For those accustomed to think in terms of X, a reasonable way to relate X to O! is
+(3.2)
+The quantity K is an average compressibility of A and B. We shall assume it to be independent of concentration in this section and the next.
+Even with this relatively simple form of the free energy, the functional integrals necessary for evaluation of the partition function are difficult, because of the quadratic dependence on density. We begin an attack on the problem by making a formal transformation, which has its roots in works on field theory and the many-body problems in the 1950's. The technique was first employed on polymer problems by Edwards. 10,9
+As a generalization of the one-variable integral
+exp(- i ax2) = (27Tat1/z1~dk exp(- ~ a-1k z) exp( - ikx), (3.3)
+one can write the functional integral
+exp(- f dr {O! P;o~J P~~:) +2K~Tr~~:) +P~~:) - 1T})oom2JowA(· )OWB(') exp(t Jdrh +K~~kTGOAWA(r) + POBwB(r) + K!iT
+- ~ [POAwA(r) - POBwB(r)]Z- K!T1) exp {- Jdr[WA(r)PA(r) + WB(r)PB(r)]}. (3.4)
+mZ is an appropriate normalization constant. The limits on WA and w B integrals are such that POAwA(r) - POBwB(r) goes from - 00, to 00 while POAwA(r)+POBwB(r) runs from - ioo to ioo. Note that Eq. (2.6) implies
+JdrwK(r)~K(r) =~ JdfwK[rIK(t)]. (3.5)
+One can write
+J. Chem. Phys., Vol. 62, No.3, 1 February 1975
+30 July 2024 03:09:36
+
+
+1002 Eugene Helfand: Theory of inhomogeneous polymers
+- ~ [POAWA(r) - POBWB(r)]2 - K;T}) ~:A~:B ,
+with
+~K=: f or(o)Pw[r(')]exp{- iZKdtwK[r(td.
+wK 0 )
+(3.6)
+(3.7)
+Define the function QK(r, t; ro) by the functional integral
+QK(r,t;ro)= f:or(')Pw[r(')]exp {- Ia1dtlwK[r(t l
+)]},
+(3.8) where the limits on the integral indicate that we are to integrate over all paths which start at roand end at r. This is the standard functional integral of Kac and Feynman. Its value is given by solution of the partial differential equation
+aQL£l: 2 ( )
+at - 6 V QK - wK r QK,
+subject to the initial value
+QK(r, 0; ro) = o(r - ro),
+and the boundary condition
+QK(r, t; ro) - 0, as 1r - ro 1- 00.
+(3.9)
+(3.10)
+(3.11)
+In HT a derivation of Eq. (3.9) contained some invalid steps [Eq. (2.10) of HTlb is wrong]. Appendix B is devoted to a corrected derivation.
+Returning to the partition function, we find that the factors ~K in Eq. (3.6) are given by
+~K= v1 !drdroQK(r,ZK;rO)'
+wK (3.12)
+What we have done so far in going from Eq. (2.15) to Eq. (3.6) for 31 is exact. The difficulty has been shifted
+to performing the wK(·) functional integrals. This we will do by an approximation which might be termed a saddle-function method (as a generalization of the saddle-point method used for one-variable Riemann integrals). The essential step will be to find the functions wA(r) and wB(r) for which
+if dr {2+K:~T[poAWA(r)+poBWB(r)+ K!if
+-~ [POAWA(r) - POBwB(r)]2 - K!T}+NAIOg~A +NB 10g~B
+(3.13) is stationary. Using the functional derivative formula
+oQK(r"Z;ro)_ (z ( (
+owK(r) -- Jo dtQK r"Z-t;r)QK r,t;ro),
+(3.14) it is easy to show that the saddle functions wK(r) satisfy
+(3. 15)
+POBwB(r)=aPA(r) +_1_rPA(r) +PB(r) -1J,
+POA Kk T [ POA POB (3. 16)
+As just written PK(r) is just some functional of w K(· )
+(via the QK) and we are told to solve Eqs. (3.15-3.17) simultaneously. In fact, as the notation implies, it can be shown that PK(r) is the average density of species K at the point r. In order that PK(r) go to POK in the pure phase we must have
+(3.18)
+At least to order surface-to-volume terms, this is easily shown to be true (note that the left hand side is independent of the arbitrary VWK )' We see also that wK(r) is
+kTw (r)= a[J(pA,PB)-PA~A(POA)-PB~B(POB)+P]
+K apK '
+(3.19) (3.20)
+(with no entropy of mixing term or other ideal terms). In our earlier work1•2 this expression for w K was simply assumed as a logical means of constructing a mean field theory, and Eq. (3. 17) for PK(r) was derived on physical grounds.
+Although we have duplicated the equations of HT, 1 surprisingly we get a different free energy formula. By inserting the saddle values of WA and wB we find
+Y<1 =Jdr{-aPA(r) PB(r) kT POA POB
++_1_~+PA(r) +PB(r)] [1_PA(r) _PB(r)]I. (3.21)
+2Kk T L POA POB POA POB (
+( the NKlog~K contributions are dropped as order 1/ZK). In HT we calculated the interfacial tension by a coupling parameter procedure which yielded
+Y<l = 2afdr PA(r) PB(r) •
+kT POA POB (3.22)
+With some manipulation one can also show that the two expressions for yare equal.
+In Appendix A we observe that Eq. (3.21) has the form of an integral of the negative of the excess pressure which would obtain if the system were uniform at the local densities. In Sec. V we find that this result has some generality.
+Actually we have derived in this section a slight generalization of HT to nonsymmetric polymers. HT is recovered if we: (i) assume that POAb~ = POBb~; (ii) wr.ite
+X= a(POAPo Bf l/2 ; (iii) and let t'= 1/KkT(POAPOB)1/2. How
+ever it is almost as easy to solve the more general equations with POAb~ '* POBb~. This will be done in a forthcoming paper by Helfand and Sapse. 11
+IV. BLOCK COPOLYMERS
+It is not difficult to see how the procedure just outlined may be used to treat the block copolymer problem. Consider that we have a volume V, and N macromolecules. To keep matters relatively simple we assume that these are diblock copolymers with degree of polymerization Z A of A and Z B of B.
+One gains insight into what to use as a phenomenolog
+J. Chem. Phys., Vol. 62, No.3, 1 February 1975
+30 July 2024 03:09:36
+
+
+Eugene Helfand: Theory of inhomogeneous polymers 1003
+ical Hamiltonian by examining the following question. Consider that one has a (perhaps hypothetical) uniform system of block copolymer with densities PA and PB' How does its free energy differ from a mixture made by cutting at the A-B joints and resplicing pairs of A's and pairs of B's? There is some difference due to the change of the preferential contacts near the joint. This should not be included in a theory based on random mixing. The difference we want to focus on is that the block copolymer system does not have an entropy of mixing. In the previous section entropy of mixing was neglected on the basis of its being small for high degree of polymerization. Examination of Eq. (2.16) for t:.f* reveals also that the entropy of mixing term is essentially subtracted off, in any event, when proper choose of PWK is made. For the block copolymer the free energy initially contains no entropy of mixing. It does still contain the kinetic term Nlog(N/V).
+It will be convenient to take as a reference state the uniform system, which would have densities PuK =NZ K/ V. In this way a negative free energy difference will indicate stability of the microdomain structure.
+We must evaluate the partition function
+3N = ~N f'Dw{r(' )}exp{- kIT f dr t:.f*[,IlA (r), f)B(r)]}, (4.1)
+N
+'Dw{r(· )} == I I or;(· )Pw[r l (· )]. (4.2)
+;=1
+Here t:.f* is the difference between free energy at the local densities and free energy of the uniform system; but the kinetic term is to be excluded since we changed
+the prefactor from l/N! to l/vN. We will parameterize the space curves r(.) with a variable tA which runs from 0, the joint, to ZA in the A direction; and another variable t Bwhich runs from 0 to Z B in the B direction. In parallel to the choice for t:.f* in the previous section, let us take
+t:.f*(PA>Pe) = a~.f!.JJ.. +_I_(PA +E»... _1)2
+k T POA POB 2Kk T POA POB
+_ a&t..~.
+POA Poe (4.3)
+We can introduce wA and w B fields, and bring the par
+tition function to the form
+liN =exp [+ Va &A. fuJf OWA(' )OWe(')
+POA Poe
+xexp{ifdr(2 +K~~kTGoAwA(r) +POBWB(r)+ K!TJ
+-~[PoAwA(r)-PoeWB(r)]2-K!T)} ~N. (4.4)
+In this case ~ is given by
+~
+= t f drAdrBdr J QA(rA, ZA;r J)QB(rB,ZB;rJ). (4.5)
+QK(r,t;ro) satisfies Eq. (3.9), as before.
+When one finds the saddle point with respect to W A and we, Eqs. (3.15)-(3.16) for wK are again obtained,
+but with the density of species A given by
+xQA(r, t; r J)QB(rB, ZB; r J ),
+and similar formula for PB(r).
+(4.6)
+One seeks solutions for which the wK(r) and PK(r) are periodic in one, two, or three dimensional patterns. In general it is expected that many regular arrays will represent stationary points of the partition function's integrand, but one will correspond to the lowest free energy (absolute maximum of the integrand). In seeking a periodic solution we need only interpret V as the volume of the cell, and N as the number of molecules it contains. Then tl)e cell size V may be choosen to minimize the free energy density.
+These are essentially the formulas which have been used as the starting point for the calculation of the properties of block copolymer microdomains. A preliminary report has appeared,2 and more is being readied for publication.
+V. GENERAL FREE ENERGY FORMULA
+For two reasons we are motivated to seek a generalization of the theory just described which goes beyond the quadratic free energy function. First, the intuitive derivation1 indicates that wK should be a chemicalpotential-like quantity, independent of the form of the free energy. The second reason is we have discovered that for the interface problem the equations with general free energy can be solved almost as easily as those based on the quadratic free energy. 11 We proceed in a fashion which amounts to doing integrals in a different order, and also introduces one more set of functional integrals to be performed by a saddle technique. We feel the resulting derivation actually has a conceptual advantage over the previous one.
+Let us specialize again to the interface problem for which we need the integral Dr of Eq. (2.15). Into this integral we introduce an integral over a Dirac 0 function which fixes the density pattern. To do so define OD[P~' ) - P~ (. )] such that
+f
+oPK( • )OD[PK(' ) - p~(. )]L[PK(' )] = L[p~(, )] (5.1)
+for any test functional L. Write
+Dr= JoPA(' )OPB(' )exp{- Sdrt:.f*[PA(r),pe(r)]}'Y, (5.2)
+'Y = VN }VNB f:,ow{r(· )}%[PA( • ) - f)A (. )]OD[PB(' ) - f)B( . )].
+wA wB . (5.3) (Note that k log 'Y may be interpreted as the change of conformational entropy associated with fixing the density pattern.) In analogy to the integral representation
+of the one-variable °function as an inverse Laplace
+transform we may write
+0D[PK(' )-PK(' )]=m:3I ioQ
+owK(·)
+-I'"
+xexp{fdr wK(r)[PK(r) - ,IlK(r)]}. (5.4)
+J. Chem. Phys., Vol. 62, No.3, 1 February 1975
+30 July 2024 03:09:36
+
+
+1004 Eugene Helfand: Theory of inhomogeneous polymers
+with :JL3 an appropriate normalization constant. Then
+1)= V;~3VNB JowA(· )owB(· )
+wA wB
+xexp{Jdr [wA(r)PA(rl+wB(r)PB(r)]}f :Dw{r(·)}
+xexp {- t fa ZAdtw[rjA(t)] - ~ l ZBdtw[rJB(tll}
+(5.5) The path integral over the r( . ) set is just the product of Kac-Feynmann integrals which occurred in Eq. (3.6). It may again be expressed in terms of ~A and ~B [functionals of w A (·) and w B ( • )]:
+1) =:JL3J owA( . )ow B( • ) exp{fdr [WA(r)PA (r) + wB(r )PB(r II
++NAIOg~A+NBIOg~B} (5.6)
+(5.7)
+This is a repeat of Eq. (3.7), except that now PK(r) is the integration variable related to density of K; and this equation is to be regarded as a functional equation for the saddle w K(· ) as a functional PK('), instead of vice
+versa.
+We complete the 31 integral by finding the saddle point, with respect to PA(' ) and PB('), of
+:~ = f dr{k1T 4f*[PA(r),PB(r)] - PA(r)wA(r)- PB(r)WB(r)}
+-NAlog~A-NBlog~B' (5.8)
+Here wK (· ) is the saddle value, which is a functional of PK ( .). Note that only the explicit variations with respect to the p/s need be taken since this expression is stationary with respect to the w/s. The result is, simply,
+() a~j*[pA(r),PB(r)]
+wK r = ( )
+apK r (5.9)
+[In the more general, nonlocal case where ~j* is a functional of the density pattern one finds
+(r) =.l...Jdr' o4f*[r' IPA( • ), PB( • )]
+w K kT oPK(r) (5.10)
+where %PK(r) indicates a functional derivative.] Thus, as anticipated, kTwK(r) is a chemical-potential-like quantity.
+Finally, the interfacial tension is obtained by substituting w K into Eq. (5.8). Again the integrand has the character of a difference of a Helmholtz and Gibbs free energy density, i. e., negative of an excess pressure.
+APPENDIX A. THERMODYNAMICS OF THE QUADRATIC FREE ENERGY
+\
+In earlier work1•2 and in Secs. III and IV we have used a form for the free energy which is quadratic in the
+density. In this appendix we will discuss some of the thermodynamic features of that form, and in particular make contact with the more familiar thermodynamic equations of the Flory-Huggins theory. 12 It will be assumed that the degrees of polymerization are so high that ideal terms (e. g. entropy of mixing) are negligible and the asymptotic phases are pure.
+ConSider a mixture of 1iA units of A and n B units of B
+in volume V. The density of K is PK= tlK/V, At pres
+sure p pure phase K has density POK' The equation we assume for the free energy density (Helmholtz free energy per unit volume) is
+~j(PA,PB) =a J!..t..h+_1_/PA +.2.i!_1)2 (AI)
+kT POA POB 2KkT\POA Poe '
+The chemical potential of species K is (without entropy of mixing)
+Il K(PA, PB) =raj(pA' PB)/ apK1PK' ,
+= ilK (POK)+ kT ra~+_l_(~+i!..lL_ l)J '
+POK L' POK' Kk T POA Po B
+(A3) where K' is B if K is A and vice l'ersa. The pressure is given by (neglecting kinetic terms)
+P(PA, Pe ) = PAil A(PA, PB) + PBIlB (p A, PB) - j(p A. PB)' (A4)
+=P +a~ +_1_(~+..E.J:...+ 1\ (u+i!..lL -1\
+POAPO B 2KkT\POA POB ') POA POB '/ • (A5) If the pressure on the mixture is the same as that on the pure phases, we obtain, to lowest order in K,
+u+i!..lL = 1- 2aKkT~
+PM ~B ~A~B (A6)
+from the last two terms of Eq. (A5). This can be written as an equation for the volume change of mixing:
+~ V = V - (nA/ POA) - (n B/ POB)
+V- V
+=2aKkT~ •
+POAPOB
+(A7)
+(A8)
+Inserting Eq. (A6) into chemical potential we find to lowest order in K
+(A9)
+a form familiar in Flory-Huggins theory.
+The physics implied in our free energy formula is that the relative repulsive energy per unit volume A and B grows linearly weaker as these materials have decreased density, which seems reasonable for a nonspecific kind of interaction. The system expands on mixing until the rate of increase of cohesive free energy [the third term on the right hand side of Eq. (A5)] balances the rate of decrease of repulsion between unlike species (the second term).
+The reader's attention is called to the fact that - [P(PA, Pe ) - p] as given by Eq. (A5) is the integrand of
+J. Chem. Phys., Vol. 62, No.3, 1 February 1975
+30 July 2024 03:09:36
+
+
+Eugene Helfand: Theory of inhomogeneous polymers 1005
+Eq. (3.21) for the surface tension. This is as expected from Eq. (5.8).
+In subsequent workll we shall use more general free energy functions than Eq. (A1). However, the results for surface tension are unaltered to zeroth order in the small quantities compressibility and volume change of mixing [although these need not be related by Eq. (A8)].
+APPENDIX B. THE KAC-FEYNMAN FUNCTIONAL ·INTEGRAL
+In HTlb Sec. lIB, we tried to present a Simple derivation of Eq. (3.9) for the Kac-Feynman integral. That derivation has an illegitimate intermediate steps in it, so we wish here to provide a corrected version.
+The object is to evaluate the integral
+Q(r, t;ro)= ~J:or(· )exp[- 2~2 fa tdTld~~T) \1
+xexp{- .(dTW[r(T)]}. (B1)
+Let us discretize the space curve r(T) and write
+rj=r(i€), i=O, ..• ,M, (B2)
+with M = t/ €. Then M-l
+Q(rM , t; ro) = lim JdrM- 1 • •• dr 1 expL 2b32 L:I r l +1 - rj 12J
+• - 0 [ € 1=0
+M
+X exp [- € ~ w(rj)J. (B3)
+= l:~ JdrM_1 exp[- 2;2€ 1r M - rM_112]
+xexp[ - €w(r M)] Q(rM_1, t - €;ro). (B4)
+A useful operator representation of the GaUSSian function is
+(21f~2€r2 exp [- 2;2€ 1r - s 1~ =exp(~b2€V~)o(r - s).
+(B5)
+One can explicitly show that both sides satisfy the diffusion equation
+Be =b2 v2 e
+B€ 6 .
+This enables Eq. (B4) to be written as
+Q(rM, t; ro) =~i_~ exp[ - €w(rM)] exp(~b2€V;M)
+or expanding to lowest order in €
+Q(rM , t; ro) = lim {Q(r M, t - €; ro)
+• -0
++ €[b6
+2
+V2 - w(rM~Q(rM' t; ro)}.
+When the € - °limit is taken this becomes
+aQ(r,t; ro) =[b2 v2 _ (J) Q
+at 6 w r1 .
+(B6)
+(B7)
+(B8)
+(B9)
+l(a) E. Helfand and Y. Tagami, J. Polymer Sci. B 9, 741 (1971); (b) J. Chern. Phys. 56, 3592 (1971); (c) 57, 1812 (1972). These references will be referred to as HT.
+2E. Helfand, Recent Advances in Blends, Grafts, and Blacks, edited by L. H. Sperling (Plenum, New York, 1974). 3E. Helfand, J. Chern. Phys. "Theory of Inhomogeneous Polymers: Lattice Theory of the Polymer-Polymer Interface" (submitted for publication). 4E. Helfand, Polymer Preprints 15(2), 246 (1974). 5L. D. Landau and E. M. Lifshitz, Statistical Physics (Addison-Wesley, Reading, MA., 1969). 6J. W. Cahn and J. E. Hilliard, J. Chern. Phys. 28, 258 (1958). 7p. Debye, J. Chern. Phys. 31, 680 (1959). BE. Helfand, Acc. Chern. Res. Acc. Chern. Res. (to be published). 9K. F. Freed, Adv. Chern. Phys. 22, 1 (1972). lOS. F. Edwards, Proc. Phys. Soc. (Lond.) 85, 613 (1965); see also Ref. 9. 11 E . Helfand and A. M. Sapse, J. Chern. Phys., "Theory of Unsymmetric Polymer-Polymer Interfaces" (to be published). 12p. J. Flory, Principles of Polymer Chemistry (Cornell UniverSity, Ithaca, NY, 1953).
+J. Chern. Phys., Vol. 62, No.3. 1 February 1975
+30 July 2024 03:09:36

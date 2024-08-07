@@ -1,0 +1,133 @@
+Primary sequences of proteinlike copolymers: Levy-flight–type long-range correlations
+Elena N. Govorun,1 Victor A. Ivanov,1 Alexei R. Khokhlov,1 Pavel G. Khalatur,2 Alexander L. Borovinsky,3
+and Alexander Yu. Grosberg3,4
+1Physics Department, Moscow State University, Moscow 119899, Russia 2Department of Physical Chemistry, Tver State University, Tver 170002, Russia 3Department of Physics, University of Minnesota, Minneapolis, Minnesota 55455 4Institute of Biochemical Physics, Russian Academy of Sciences, Moscow 117977, Russia
+~Received 20 November 2000; revised manuscript received 5 July 2001; published 25 September 2001!
+We consider the statistical properties of primary sequences of two-letter H P copolymers (H for hydrophobic and P for polar! designed to have water soluble globular conformations with H monomers shielded from water inside the shell of P monomers. We show, both by computer simulations and by exact analytical calculation, that for large globules and flexible polymers such sequences exhibit long-range correlations which can be described by Levy-flight statistics.
+DOI: 10.1103/PhysRevE.64.040903 PACS number~s!: 87.15.Cc, 61.41.1e, 36.20.Ey
+In Refs. @1,2#, a new approach to the design of specific primary sequences for the H P-copolymers consisting of monomeric units of two types ~hydrophobic, H and polar, P) has been proposed by some of the present authors. Unlike some other methods of sequence design known in the literature ~see review @3# and references therein!, the approach in question does not aim to mimic folding into one particular conformation. The goal is to model simpler and more robust property of proteins, such as their ability to stay dissolved and shield their hydrophobic monomers from water. The essence of this approach is illustrated in Fig. 1. We start with an arbitrary computer-generated globular conformation of a homopolymer chain @formed due to the strong attraction of monomer units, Fig. 1~a!# and perform a ‘‘coloring’’ procedure: monomer units in the core of the globule ~having many neighbors! are set to be H-units while monomer units belonging to a globular surface ~where the number of neighbors is smaller! are assigned to be of P-type, Fig. 1~b!. Then the obtained primary sequence is fixed, uniform attraction of monomer units is removed and newly generated H P-copolymer is ready for the further investigation @Fig. 1~c!#. Thus, obtained macromolecules are proteinlike in the sense that they mimic segregation of globule into hydrophobic core and stabilizing hydrophilic envelope. The properties of proteinlike copolymers were examined in Refs. @1,2,4,5#; see also Refs. @6,7# for possible ways of experimental realization. In this Rapid Communication, we address correlations between H- and P-units along the proteinlike sequences. This may shed light on the conditions which must be met by the sequence to provide for the water solubility of globules, the issue of great potential relevance to our understanding of early evolution. We show, both by computer simulations and by exact analytical calculation, that correlations have a longrange character. More specifically, for the simple model of flexible polymer, they belong to the so-called Levy-flight statistics. To begin with, statistical properties of proteinlike H P-sequences can be assessed computationally by the method similar to that used by Stanley and co-workers @8,9# in their search for long-range correlations in DNA se
+quences. We choose the ‘‘window’’ of length l , move it step by step along the generated H P-sequence, and at each step count the number of H units inside the window. This
+number, which we write as (ij51jl ui is a random variable, depending on the position j of the window along the sequence; here ui is the variable associated with every monomer i, such that ui51 if monomer i is H and ui50 if it is P. This random variable has certain distribution. Its average is determined by the overall sequence composition ~total numbers of H- and P-monomers!, and its dispersion is easy to calculate:
+Dl
+2 5i, j(5k
+k1l
+~^uiu j&2^ui&^u j& !. ~1!
+For a completely random H P-sequence, the value of Dl
+scales as l 1/2 with the window width l . The dependence
+Dl ;l a with a.1/2 would then manifest the existence of
+long-range correlations. The result of such calculation for averaging over 2000 independent proteinlike H P-sequences of N51024 monomer units with 1:1 composition ~obtained as in Ref. @2#! is presented by the squares in Fig. 2. For comparison, the data for two other types of sequences ~averaged over 2000 independent species! are also shown. One of them is a purely
+random 1:1 sequence; it demonstrates Dl ;l 1/2 scaling.
+Comparing this curve with Monte Carlo results we see immediately that the proteinlike sequence is not random and some correlations do exist in it. Thus, it is interesting to compare the squares in Fig. 2 and the dashed curve showing data for the sequence which was called ‘‘random-block’’ in Refs. @1,2,4,5#: the lengths of H- and P-blocks in a sequence
+FIG. 1. Sequence design scheme for proteinlike copolymers: ~a! homopolymer globule; ~b! the same globule after the coloring procedure; ~c! proteinlike copolymer in the coil state.
+RAPID COMMUNICATIONS
+PHYSICAL REVIEW E, VOLUME 64, 040903~R!
+1063-651X/2001/64~4!/040903~4!/$20.00 64 040903-1 ©2001 The American Physical Society
+
+
+are determined by the Poisson distributions adjusted to achieve the same 1:1 composition and the same ‘‘degree of blockiness’’ ~average block length! as for a proteinlike H P-copolymer. This sequence exhibits a somewhat more rapid variation of Dl at small l , but ultimately the law Dl
+;l 1/2 is obeyed for large values of l . Nevertheless, this random-block model is also seen to be unsatisfactory for the statistical behavior of a proteinlike sequence throughout the interval of l examined, 2,l ,500. Although the data do
+not fit accurately to any power law Dl ;l a, the slope of the observed Dl dependence corresponds to a significantly larger than 1/2, up to about 0.85, thus indicating pronounced long-range correlations in a proteinlike sequence. In what follows we present an analytical theory which produces curve Dl in Fig. 2 in complete agreement with observations.
+First of all, let us turn to the origin of long-range correlations in the primary sequences for H P-copolymers generated via the procedure illustrated in Fig. 1. Conceptually, this problem is fairly easy to address: since sequence in this scheme is uniquely determined by the parent conformation, the statistics of sequences reflects nothing but the statistics of parent conformations, which, in turn, is well understood. Indeed, the coloring procedure @Fig. 1~b!# operates in dense globular conformation. Since we consider very compact parent conformations, the statistics of polymer chain conformations inside the globule is ideal ~Gaussian! according to the well-known Flory theorem @10#. Therefore, all the statistical properties of parental conformations, including the correlations in the primary sequences produced by coloring procedure, can be derived via the solution of diffusion equation for random walks with appropriate boundary conditions. To understand the fractal aspect of the sequences, it is convenient to concentrate on their uninterrupted homocolored sections and on the points of connection between them. Our coloring procedure ~Fig. 1! introduces a separation
+sphere of radius R*,R, such that all the units which in the parent conformation are confined inside this sphere are of the H-type and the units belonging to the shell layer R*,r,R are of the P-type. Therefore, the homocolored section is produced in our model by the chain section of the parent conformation placed entirely in either internal or shell regions of the globule. The probability to have an uninterrupted succession of some k of H-monomer units in the sequence is equal to the probability that the Gaussian ~due to Flory theorem! polymer has a loop of k monomer units entirely confined in the H-region with ends on the separation surface. Similarly, the probability to have an uninterrupted succession of some k of P-monomer units in the sequence is equal to the probability that ideal parental conformation has a loop of k monomer units confined within the shell P-region, again with ends on the separation surface. To address probability distributions PH(k) and PP(k), we begin with simple physical arguments yielding
+PH,P~k!. H k23/2, 1,k,S dH,P
+a D2
+;
+S
+a
+dH,PD 3
+e2lH,Pk, k.S dH,P
+a D2
+.
+~2!
+The upper asymptotic form is valid for short polymer loops, when neither curvature of the separating boundary nor overall globule shape play any role. In this regime, P(k) is simply the probability for a random walk to start at the planar wall and to return to it for the first time after k steps. This is a classical probabilistic ‘‘first return’’ problem, for which the
+;k23/2 answer is well known @12#. This scaling is valid for
+loop sizes aAk much larger than unity but smaller than the relevant characteristic length scale, dH5R* for the H-loops
+inside the inner sphere, or dP5R2R* for the P-loops in the spherical shell. The second asymptotic form in Eq. ~2! indicates that for long polymer loops the function P(k) decays exponentially. It is easier to explain this in terms of polymer statistics: to confine a polymer chain of k monomer units in a
+cavity costs some entropy DS, at aAk@d this entropy goes linearly with k, making the probability, exp(DS), exponential in k. Let us now look closer at the cross-over values of k. In order to achieve the 1:1 composition, R* must be chosen such that volumes of internal H- and shell P-regions are the
+same, which means R*5221/3R'0.8R. The volume fraction of polymer units in a globule, f, is controlled by the energy of interactions of monomer units used to prepare parental
+conformation. It is clear that R'0.6aN1/3f21. Therefore, H-loops remain in the power law long-range correlation re
+gime up to the length k,0.24N2/3f22, while for P-loops this
+cross-over occurs somewhat earlier: k,0.015N2/3f22. Thus, we predict that there should be over a decade of length scales in which H-loops are still long-range correlated, while only short-range correlations remain in the P-loops. Result ~2! is sufficient to explain qualitatively correlations in proteinlike sequences, including the data shown in Fig. 2. Indeed, according to our discussion, a proteinlike sequence can be thought of as an alternating succession of H- and
+FIG. 2. Dispersion of the number of H-units in the fragment of sequence of size l for the proteinlike H P-sequence, random copolymer and random-block copolymer. Results of analytical theory for proteinlike sequence are shown for both continuous approximation ~thick solid line! and for discrete approximation ~thin solid line! @see explanation around Eq. ~11!#. Corresponding Monte Carlo results are presented by squares. There is no adjustable parameters involved in the fit, length scale a is uniquely determined by the geometry of the bond fluctuation model @13#.
+RAPID COMMUNICATIONS
+ELENA N. GOVORUN et al. PHYSICAL REVIEW E 64 040903~R!
+040903-2
+
+
+P-stretches, with lengths of stretches taken independently from the corresponding distributions PH(k) and PP(k). This mathematical scheme is called a Levy flight @11#. We conclude that the long-range correlations in the primary sequences of proteinlike copolymers are described by Levy
+flight statistics. Furthermore, for the k23/2 behavior of P(k), the averaged block length diverges, and, therefore, the value of Dl in the power law regime is controlled by the longest block, yielding Dl ;l , or a51. This is true as long as both
+H- and P-loops remain in fractal regime. On the other hand, when all loops cross-over to exponential distribution, Dl crosses over to a51/2:
+Dl . H l , for 1,l ,0.015N2/3f22
+l 1/2, for l .0.24N2/3f22. ~3!
+The cross-over region for Dl is very broad, it corresponds to
+the situation in which P-loops are already ‘‘large,’’ while H-loops are still ‘‘small.’’ Both a51 and a51/2 limits and wide cross-over agree qualitatively well with computational data, Fig. 2. This motivates more careful theory, in which instead of scaling estimates ~2! and ~3!, the expressions in terms of infinite series, suitable for numerical calculation, is obtained. To develop full analytical theory, it is convenient to use the random walk terminology to describe parent conformation. In this language, for instance, PH(k) is the probability
+that the random walker enters a sphere of the radius R* and then arrives back to the boundary for the first time after ‘‘time’’ k. Recall that the statistical weight of all random walk trajectories starting at the point rW0 and arriving after k steps at the point rW, G(rW,kurW0), obeys the diffusion equation
+]G~ rW,kurW0!
+]k 5a2
+6 DG~ rW,kurW0!1d~ k !d~ rW2rW0!, ~4!
+where a2 is the mean square length of one step ~the squared size of one monomer unit along the chain!. To introduce the condition of first return we have to say that the walker never touches the boundary, which is achieved by imposing the boundary condition
+G~ rW,kurW0!uurWu5R*50. ~5!
+The probability distribution of the ‘‘first return times’’ in terms of G is then given as the time-dependent flux of diffusing particles through the absorbing wall:
+PH~k!5U R dsa2
+6
+]G
+]r Ur5R* U, ~6!
+where ]/]r means the component of gradient normal to the surface, integration is performed over the closed separating surface, and the absolute value is written to avoid thinking about the direction of the flux. The normalization condition * PH(k)dk51 is guaranteed by the fact that all diffusing
+particles eventually leave through the surface. As regards rW0, it should be taken within a distance of order a from the separating R* surface. The problem thus formulated, includ
+ing Eqs. ~4!–~6!, is easy to solve: we write G in terms of
+bilinear expansion G5 (neklncn(rW)cn(rW0) over the eigen
+functions cn satisfying (a2/6)Dcn5lncn with boundary condition ~5!. Upon spherical integration in Eq. ~6!, all angular dependent harmonics vanish, and we arrive at
+PH~ k !5 pa2
+3R*r0 n(51
+`
+n~21!n11sinS np r0
+R*D
+3expF 2 a2
+6 S np
+R*D2
+kG. ~7!
+The distribution PP(k) can be derived similarly, except that now we have to take care of the boundary condition at the outer surface of the globule. To this end, we argue that this condition must be taken in the form
+πrWG~ rW,kurW0!ur5R50. ~8!
+Indeed, formally this condition ensures the constant density of monomer units throughout the globule for large values of k, as well as breaking of correlations as soon as polymer chain is ‘‘reflected’’ by a globular boundary. Physically, this boundary condition reflects the fact that there is always a ‘‘sticky layer’’ ~or depletion layer! formed self-consistently along the internal surface of the globule due to the effective attraction of monomer units to the outer region where polymer density is depleted and excluded volume effect is reduced. As long as we are not interested in the structure of surface layer of the globule, we can just replace this layer by effective boundary condition ~8!. After calculations for PP(k) we obtain
+PP~k!5 a2R*
+3~ R2R*!2r0 n(51
+` zn2sinS zn
+r02R*
+R2R* D zn2sin zncos zn
+3expF 2 a2
+6 S zn
+R2R*D 2
+kG, ~9!
+where zn satisfies zn5(12R*/R)tan zn . Finally, to compute the dispersion Dl , we note that uiu j
+in Eq. ~1! is the probability that both units i and j are of the H type, which happens if both are located inside the R* region in the parental conformation. Thus,
+^uiuj&5 1
+V EV*d3r EV*d3r0G~rW,ui2 juurW0!
+51
+V n(50
+`
+elnui2juS EV*d3rcn~rW! D 2
+, ~10!
+where G(rW,kurW0) is the Green function satisfying Eq. ~4! with boundary condition ~8!, cn and ln are the corresponding eigenfunctions and eigenvalues. Plugging this into Eq. ~1!, one arrives at the cumbersome looking expression for Dl which is easy to implement numerically; the result is
+RAPID COMMUNICATIONS
+PRIMARY SEQUENCES OF PROTEINLIKE . . . PHYSICAL REVIEW E 64 040903~R!
+040903-3
+
+
+plotted in Fig. 2 and shows virtually a perfect fit to the Monte Carlo data @13#. In fact, this fit may even be somewhat fortuitous; indeed, along with diffusion equation ~4!, which is an approximation for the underlying bond fluctuation model, we can also switch from summation to integration in Eq. ~1!, yielding
+Dl
+2 56l 2n(51
+`
+gS jn2a2
+6R2 l D an , ~11!
+where jn satisfies the equation jn5tan jn , an
+5@(jnR*/R*)cos(jnR*/R*)2sin(jnR*/R*)#2(11jn2)/jn6, and
+the function g is defined as g(x)52@x211exp(2x)#/x2. @Note that the sum in Eq. ~11! starts from n51 and does not include the ground state, for which c0 is a constant#. It is easy to check that Eq. ~11! does indeed have asymptotic behavior in accord with Eq. ~3!, including a broad crossover; similarly, Eqs. ~7! and ~9! agree with Eq. ~2!. Numerically, Eq. ~11! fits pretty well to the data ~Fig. 2!, but, we repeat, best fit is achieved by the cumbersome discrete formula. In conclusion, we have shown that proteinlike copolymers generated according to the coloring procedure proposed earlier @1,2# exhibit long-range correlations in the primary sequences. For the flexible polymers and large enough globules, these correlations belong to the Levy-flight statistics. This result, first observed in computer experiments, is confirmed and explained by analytical calculation. Analytical
+theory suggests that Levy-flight statistics, albeit with a broader cross-over region, is expected even if parental conformation is not maximally compact, but rather a globule somewhat closer to the u-point. It becomes clear from our model that segregation of globule into a hydrophobic core and a hydrophilic peel, which is the necessary condition for water solubility, does impose severe restrictions on the sequence, and, therefore, must be manifested in certain correlations. However, we would like to emphasize once more that the correlations in the primary sequences obtained above apply to designed synthetic copolymers rather than to real proteins. The chains in the core of real proteins do not obey Gaussian statistics ~mainly due to the elements of secondary structure!; therefore, deviations from randomness due to long-range correlations @14# and to regularity @15,16# were found in protein sequences. Besides, the compact folding of molecules was shown to favor regularity in unit sequences for small globules @16#. Nevertheless, identification of long-range correlations in protein sequences is an interesting task which promisses to shed light on the evolutionary criteria involved in the selection of proteins and the role of water solubility among them.
+The work was supported by NATO ~PST/CLG. 974956!, INTAS ~INTAS-OPEN-97-0678!, and RFBR ~98-0333337a!. The authors thank Dr. A. Irb ̈ack for the useful correspondence.
+@1# A.R. Khokhlov and P.G. Khalatur, Physica A 249, 253 ~1998!. @2# A.R. Khokhlov and P.G. Khalatur, Phys. Rev. Lett. 82, 3456 ~1999!. @3# V.S. Pande, A.Yu. Grosberg, and T. Tanaka, Rev. Mod. Phys. 72, 259 ~2000!. @4# E.A. Zheligovskaya, P.G. Khalatur, and A.R. Khokhlov, Phys. Rev. E 59, 3071 ~1999!. @5# V.A. Ivanov, A.V. Chertovich, A.A. Lazutin, N.P. Shusharina, P.G. Khalatur, and A.R. Khokhlov, Macromol. Symp. 146, 259 ~1999!. @6# J. Virtanen, C. Baron, and H. Tenhu, Macromolecules 33, 336 ~2000!. @7# V.I. Lozinskii, I.A. Simenel, E.A. Kurskaya, V.K. Kulakova, V.Ya. Grinberg, A.S. Dubovik, I.Yu. Galaev, B. Mattiasson, and A.R. Khokhlov, Dokl. Chem. 375, 273 ~2000!. @8# N.V. Dokholyan, S.V. Buldyrev, Sh. Havlin, and H.E. Stanley, Phys. Rev. Lett. 79, 5182 ~1997!. @9# I. Grosse, H. Herzel, S.V. Buldyrev, and H.E. Stanley, Phys.
+Rev. E 61, 5624 ~2000!. @10# A.Yu. Grosberg and A.R. Khokhlov, Statistical Physics of Macromolecules ~AIP, Woodbury, NY, 1994!.
+@11# Levy Flights and Related Topics in Physics, edited by M.F. Shlesinger, G.M. Zaslavskii, and U. Frisch, Lecture Notes in Physics ~Springer-Verlag, Berlin, 1996!.
+@12# W. Feller An Introduction to Probability Theory and Its Applications, 3rd ed. ~Wiley, New York, 1970!. @13# For the bond fluctuation model @2#, parameter a is given by a5A8b, where b is the lattice spacing. Also, the value R527.8b was used to adjust to the actual radius of gyration of the parent globule at the coloring conditions. @14# V. Pande, A. Grosberg, and T. Tanaka, PNAS 91, 12 972 ~1994!. @15# A. Irba ̈ck, C. Peterson, and F. Potthast, PNAS 93, 9533 ~1996!. @16# A. Irba ̈ck and E. Sandelin, Biophys. J. 79, 2252 ~2000!.
+RAPID COMMUNICATIONS
+ELENA N. GOVORUN et al. PHYSICAL REVIEW E 64 040903~R!
+040903-4

@@ -1,0 +1,16 @@
+Title:          SemanticCAP: Chromatin Accessibility Prediction Enhanced by Features Learning from a Language Model
+Subject:        A large number of inorganic and organic compounds are able to bind DNA and form complexes, among which drug-related molecules are important. Chromatin accessibility changes not only directly affect drug­DNA interactions, but they can promote or inhibit the expression of the critical genes associated with drug resistance by affecting the DNA binding capacity of TFs and transcriptional regulators. However, the biological experimental techniques for measuring it are expensive and time-consuming. In recent years, several kinds of computational methods have been proposed to identify accessible regions of the genome. Existing computational models mostly ignore the contextual information provided by the bases in gene sequences. To address these issues, we proposed a new solution called SemanticCAP. It introduces a gene language model that models the context of gene sequences and is thus able to provide an effective representation of a certain site in a gene sequence. Basically, we merged the features provided by the gene language model into our chromatin accessibility model. During the process, we designed methods called SFA and SFC to make feature fusion smoother. Compared to DeepSEA, gkm-SVM, and k-mer using public benchmarks, our model proved to have better performance, showing a 1.25% maximum improvement in auROC and a 2.41% maximum improvement in auPRC.
+Keywords:       chromatin accessibility; drug design; language model; transformer; feature fusion
+Author:         Yikang Zhang, Xiaomin Chu, Yelu Jiang, Hongjie Wu and Lijun Quan
+Creator:        LaTeX with hyperref
+Producer:       pdfTeX-1.40.21
+CreationDate:   Thu Mar 24 10:27:22 2022
+ModDate:        Thu Mar 24 07:27:21 2022
+Tagged:         no
+Form:           none
+Pages:          23
+Encrypted:      no
+Page size:      595.276 x 841.89 pts (A4) (rotated 0 degrees)
+File size:      3555999 bytes
+Optimized:      no
+PDF version:    1.7
