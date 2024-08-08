@@ -1,0 +1,147 @@
+MONITORING AND MODELING OF DISINFECTION BY-PRODUCTS (DBPs)
+JINSIK SOHN1∗, DOMINIQUE GATEL2 and GARY AMY3
+1 Ministry of Environment, Division of Water Supply and Drinking Water Management, Joongang-Dong, Kwacheon, Kyonggi-Do, 427-729, Korea; 2 Generale des Eaux, France; 3 Department of Civil and Environmental Engineering, University of Colorado, Boulder, U.S.A. (∗ author for correspondence, e-mail: sohn@me.go.kr)
+Abstract. In the United States, the newly promulgated disinfectant/disinfection by-product (D/DBP) regulations force water treatment utilities to be more concerned with finished and distributed water qualities. In this study, monitoring of DBP formation was conducted from three French water treatment plants trying to assess DBP variations through time and space. Compared to the in-plant total trihalomethanes (TTHM) levels, TTHM levels in the distribution system increased from less than
+150% to more than 300%. Significant variations for TTHM and bromate (BrO−
+3 ) levels throughout
+the seasons were also observed; generally higher levels in the summer and lower levels in the winter. Combining chemical DBP models (empirical power functional models) and hydraulic simulations,
+DBPs including TTHM and BrO−
+3 were successfully simulated from the full-scale monitoring data,
+indicating that empirical DBP model can be a potential tool to access DBP formation in actual plants. This study also provides the protocols to assess DBP simulations in the water treatment systems.
+Keywords: BrO−
+3 , disinfection by-products (DBPs), modeling, NOM, reactivity, TTHM
+1. Introduction
+In the United States, more stringent disinfection by-product (DBP) regulations have been promulgated, placing limits on chlorination DBPs (TTHM and sum of five species of haloacetic acids (HAA5)) and alternative DBPs (BrO−
+3 and chlorite
+(ClO−
+2 )). Thus, water utilities are facing the challenge of supplying drinking water that is safe in terms of microbial contamination while minimizing DBP formation. DBPs are known carcinogens. Natural organic matter (NOM) is the organic precursor in the formation of chlorination by-products such as trihalomethanes (THMs) and haloacetic acids (HAAs). Various treatment processes not only reduce the amount of NOM, but also induce changes in NOM characteristics, and accordingly result in changes of DBP reactivity. Under in-plant conditions, chlorine is exposed to ‘unreacted’ NOM, while NOM in a distribution system has already been significantly reacted with chlorine. All of these factors affect chlorination DBP formation. Other than NOM, the formation of chlorination DBPs including THMs and HAAs is dependent on many factors such as Br−, pH, temperature, reaction time, and chlorine dose. NOM inhibits BrO−
+3 formation on an ozone dose basis,
+Environmental Monitoring and Assessment 70: 211–222, 2001. © 2001 Kluwer Academic Publishers. Printed in the Netherlands.
+
+
+212 JINSIK SOHN ET AL.
+largely in response to its positive influence of ozone decay in case of ozonation process (Krasner et al., 1993). BrO−
+3 formation, a major ozonation by-product,
+also depends on Br−, pH, temperature, contact time, and ozone dose. Since water qualities and operating conditions vary with time and space, associated DBP formation also shows spatial and temporal variations. Analysis of THMs and HAAs takes lots of time and efforts compared to the monitoring of other water qualities and operating conditions. In this study, simulation of DBP formation by using the models derived from bench-scale experiments and monitored full-scale data was attempted to access DBP formation in the actual water treatment facilities. This challenge has also stimulated the establishment of monitoring protocols of water qualities and operating conditions for DBP simulation. The objectives of this study are (i) to assess the seasonal and spatial variations of water qualities and associated DBP formation, and (ii) to evaluate the existing DBP models, which are developed from bench-scale experiments, for simulation of fullscale DBP formation from the routinely monitored water qualities and operating conditions.
+2. Methods and Procedures
+2.1. DESCRIPTION OF GENERALE DES EAUX (GDE) WATER TREATMENT
+SYSTEM
+In this study, three water treatment plants operated by one French company (Generale des Eaux) were selected to investigate monitoring and modeling of water qualities and DBP formation. GDE currently operates three water treatment plants within vicinity of Paris: the Mery, Neuilly, and Choisy plants use source waters from the Oise River, Marne River, an Seine River, respectively. The general process train employed at all three plants consists of rapid mix, flocculation, settling, sand filtration, ozonation, biological activated carbon (BAC), chlorination (typically up to 3 mg L−1), contact/storage, and dechlorination (≈0.4 mg L−1 Cl2). The Choisy plant has an additional pre-ozonation step before coagulation. The distribution systems of the plants are interconnected, although there are regions which are dominated by each plant’s finished water. While finished water maintains a low chlorine residual, the large distribution system network also includes chlorination ‘booster’ stations to control microbial regrowth.
+2.2. THE GDE DATABASE
+GDE monitored water qualities, operating conditions, and DBPs, covering the period of January 1995 through December 1996 for THMs modeling. Samples were collected daily, weekly or semi-monthly from the three plant effluents (finished water) and thirteen locations throughout the distribution system. Figure 1 shows a schematic of the treatment processes and sampling points for the plant,
+
+
+MONITORING AND MODELING OF DBPs 213
+TABLE I
+Statistical summary of water quality and chlorination parameters for finished waters (1995–1996)
+Water quality Mery Choisy Neuilly
+parameters Cases Mean Median Range Cases Mean Median Range Cases Mean Median Range
+DOC 731 1.8 1.8 1.20– 2.60 731 1.3 1.3 0.80– 2.5 731 1.34 1.3 0.90– 2.0
+(mg L−1)
+pH 731 7.61 7.60 7.42– 7.95 731 7.66 7.68 7.25– 7.95 731 7.67 7.67 7.27–8.12
+Temperature 731 13.6 13.9 3.20–24.80 731 14.0 14.3 2.20–26.8 731 13.3 13.3 2.30–25.2
+(◦C)
+Br− 21 55 55 23.00–73 21 39 40 26.00–65 19 41 40 30.00–60
+(μg L−1)
+Cl2 Dose 731 2.48 2.45 1.65– 3.81 730 1.45 1.50 0.30– 3.21 330 2.45 2.40 1.92– 3.59
+(mg L−1)
+
+
+214 JINSIK SOHN ET AL.
+Figure 1. Schematic of the treatment processes and sampling points.
+Figure 2. Schematic of sampling points for in-plant (P) and distribution system (D).
+and Figure 2 shows a schematic of the sampling points for the distribution system. The comprehensive database was created from the monitoring data by using Microsoft EXCEL software. The database included the following information: BAC effluent water quality (dissolved organic carbon (DOC), pH, temperature), chlorination conditions (chlorine dose and rechlorination dose), and finished water quality (THMs, chlorine residual) for both in plant effluent and distribution system samples. Only very limited bromide (Br−) data were provided. A statistical summary of the overall database is shown in Table I, portraying the water quality of the BAC treated waters and chlorination conditions. Contact time in the plants was calculated from volume of contact basin divided by flow rate. Travel/residence time in the distribution system, which is one major
+
+
+MONITORING AND MODELING OF DBPs 215
+parameter in the formation of DBPs, can not be monitored, thus travel/residence time was estimated from Hardy-Cross type hydraulic model based on the STONER software. The estimated contact/travel time was added in the comprehensive database. For the modeling of BrO−
+3 formation, another database was generated from samples collected at the Mery, Choisy, and Neuilly plants, from April 1996 through March 1997. Water qualities including DOC, Br−, pH, alkalinity, and temperature were monitored on sand-filtered waters, while bromate analyses were performed on ozonated waters. Samples were usually collected semi-monthly. Contact time was calculated from volume of ozone contactor divided by flow rate.
+2.3. MODELING OF DBPS
+In-plant TTHM modeling focused on the post-chlorination step involving chlorine dose and contact time. Required information included the DOC, Br−, pH, and temperature of the BAC effluent, the applied chlorine dose, and the residence time of the contact basin. The database had limited Br− data, thus the average values of the measured Br− data were used in in-plant and distribution system TTHM prediction when Br− data were not available. Required information for TTHM modeling in the distribution system included the rechlorination dose and the travel/residence time in addition to the information for in-plant THMs modeling such as DOC, Br−, pH, and temperature of the BAC effluent, and applied chlorine dose. Required information for bromate modeling included DOC, Br−, pH, temperature, ozone dose, and travel/residence time in the ozone contactor. DBP prediction was conducted by using existing models suggested by Amy and co-workers (1998) and Ozekin (1994) for TTHM and BrO−
+3 formation, respectively.
+3. Results and Discussion
+3.1. VARIATION OF BAC EFFLUENT DOC, FINISHED WATER TTHM, AND
+DISTRIBUTION SYSTEM TTHM
+Figure 3 shows the variations in DOC for BAC treated waters and TTHM in plant effluent and the distribution system from January 1995 through December 1996 for the Mery plant. The average of DOC for BAC treated waters was 1.8 mg L−1, ranged from 1.2 to 2.6 mg L−1. Generally, higher THM formation occurred in spring and summer for all the three plants. On the average, in-plant TTHM levels for the three plants ranged from 5.9 to 8.2 μg L−1, while distribution system TTHM levels ranged from 11.8 to 25.1 μg L−1. It is noted that TTHM levels in the distribution system increased from less than 150% to more than 300% compared to the in-plant TTHM levels. This implies that TTHM levels in consumer’s tap can be much higher than TTHM levels in plant’s effluent water, and vary with different locations. The increases in the distribution system were not directly correlated with
+
+
+216 JINSIK SOHN ET AL.
+Figure 3. Variations in DOC, in-plant TTHM, and distribution system TTHM for Mery Plant.
+the total travel/residence times. NOM, different travel times to rechlorination, different numbers of booster stations, and different rechlorination doses all influence this disparity.
+3.2. MODEL SIMULATIONS OF TTHM
+The first model simulations were performed by employing the Amy et al. (1998) raw/untreated water model without any adjustment of the DOC term to account for precursor reactivity. The model takes the following form:
+TTHM = 4.12 × 10−2 (DOC)1.1 (Cl2)0.152 (Br−)0.068 (Temp)0.61
+(pH)1.6 (time)0.26 (1)
+where the independent parameters DOC, Cl2, Br−, Temp, pH, and time corres
+pond to the dissolved organic carbon (mg L−1), chlorine dose (mg L−1), bromide concentration (μg L−1), temperature (◦C), chlorination pH, and reaction/residence time (hours). In the distribution system, the influence of dechlorination and booster chlorination was considered as additive:
+TTHM = TTHM1 + TTHM2 + TTHM3 + TTHM4 (2)
+where
+
+
+MONITORING AND MODELING OF DBPs 217
+TABLE II Summary of reactivity coefficient (φ) for in-plant and distribution system
+Description Mery Choisy Neuilly
+φ1 In-plant 0.45 0.58 0.47
+φ2 Distribution system 0.33 0.23 0.40
+(dechlorination)
+φ3 Distribution system 0.26 0.17 0.26
+(rechlorination 1)
+φ4 Distribution system 0.18 0.06 N/Aa
+(rechlorination 2)
+a Not applicable.
+TTHM1 = TTHM before the point of entry to the distribution system (= in-plant TTHM);
+TTHM2 = TTHM from the point of entry to distribution system (dechlorination) to the first booster station;
+TTHM3 = TTHM from the first booster station to the second booster station (2 booster system) or monitoring point (1 booster system);
+TTHM4 = TTHM from the second booster station to monitoring point (2 booster system only).
+The simulations were over-predicted both in-plant and distribution system TTHM (results not shown), and it is clear that the reactivity of the DOC with chlorine warrants additional consideration. The second set of simulations involved the raw/untreated water model (Equation (1)) coupled with a reactivity coefficient (φ). The φ concept was developed to account for changes in precursor (i.e., DOC) reactivity through treatment processes (e.g., coagulation) and repeated chlorination (e.g., rechlorination). The raw-water model (Equation (1)) is based on the reactivity of untreated water; the φ parameter adjusts the DOC term to reflect a lower reactivity (φ DOC, φ = 0 to 1), based on preferential removal of THM-reactive DOC by treatment processes or reduction of THM-reactive sites by rechlorination. φ values were determined by mathematical estimation using least-square analysis of measured TTHM data, and used as a fitting parameter. Table II shows the summary of φ values for in-plant and distribution system. It is noted that all the μ values were less than 1, and gradually decreased with further chlorination (i.e., φ1> φ2 > φ3 > φ4). The examples of simulation results for in-plant and distribution system are shown in Figures 4 and 5, respectively. Except for the relatively high-level TTHM
+
+
+218 JINSIK SOHN ET AL.
+Figure 4. Model simulations for in-plant TTHM for Mery Plant (M-P-0).
+Figure 5. Model simulations for distribution system TTHM (M-D-2).
+period, the simulations are reasonably good for in-plant and distribution system TTHM. 42% of the predicted values were within 20% of the measured values and 95% of the predicted values were within 40% of the measured values for in-plant TTHM. The root mean square error (RMSE) was 2.5 μg L−1. For the distribution system, 44 and 91% of the predicted values were within 20 and 40% of the measured values, respectively (RMSE = 5.8 μg L−1).
+
+
+MONITORING AND MODELING OF DBPs 219
+Figure 6. Comparison of measured and predicted in-plant TTHM for Mery Plant (M-P-0).
+Figure 7. Variations of bromide concentration for sand-filtered water.
+
+
+220 JINSIK SOHN ET AL.
+Figure 8. Variations of bromate formation for BAC effluent water.
+Figure 6 shows the simulation results of in-plant TTHM formation using the monitored input data for water qualities and operating conditions, and Figure 6 portraits that variations of TTHM levels were dynamic even on daily and weekly basis.
+3.3. Br− AND BrO−
+3 BEHAVIOR THROUGHOUT THE PROCESS TRAIN
+Figure 7 shows bromide concentrations measured in the Seine, Marne, and Oise rivers, as the raw water inputs to the Choisy, Neuilly, and Mery plants. Higher concentrations of bromide were detected in Oise river, mainly between May and October. Figure 8 shows bromate concentrations measured in ozonated water from the three plants. A clear impact of season on bromate formation was demonstrated, probably due to temperature and higher ozone doses applied during summer. Despite higher levels of bromide in the Oise, the Mery plant did not produce more bromate than the Neuilly and Choisy plants, probably due to its higher amount of NOM.
+3.4. MODEL SIMULATIONS OF BrO−
+3
+The model simulations for BrO−
+3 formation was conducted based on the Ozekin bromate model (Ozekin, 1994). The Ozekin model takes the following form:
+[BrO−
+3 ] = 1.55 × 10−6 (DOC)−26 (pH)5.82 (O3)1.57 (Br−)0.73 (time)0.28 (3)
+where the independent parameters DOC, pH, O3, Br−, and time correspond to the
+dissolved organic carbon (mg L−1), ozonation pH, transferred ozone doses (mg
+
+
+MONITORING AND MODELING OF DBPs 221
+Figure 9. Simulation of bromate formation for Mery Plant.
+L−1), bromide concentration (μg L−1), and reaction/residence time (minutes). The major limitation is the Ozekin model was developed based on a 20 ◦C temperature, therefore the model can not consider the variation of temperature in BrO−
+3 formation. In order to overcome this limitation, temperature effect was considered by the following approach. Firstly, the trends of temperature variations for measured values and predicted values using Equation (3) were examined. The intercept of the two regression curves was determined, and then the coefficient of temperature for the following Equation (4) was determined by using a best-fit method:
+[BrO−
+3 ]@temp T = [BrO−
+3 ]@temp 20◦C (1.035)T −20 (4)
+where,
+[BrO−
+3 ]@temp T = bromate concentration at temperature T.
+[BrO−
+3 ]@temp 20◦C = bromate concentration at temperature 20 ◦C.
+The implication of the Equation (4) is a 41% bromate increase with every 10 ◦C increase. Figure 9 shows the results of simulation for BrO−
+3 formation by using the Ozekin model with temperature correction. The percent deviation defined as predicted value minus measured value divided by measured value indicates that 39 and 79% of the predicted values were within 20 and 40% of the measured values, respectively (RMSE = 7.0 μg L−1).
+
+
+222 JINSIK SOHN ET AL.
+4. Conclusions
+DBP formation in water facilities is more concerned due to the stringent DBP regulations in the United States. In this study, monitoring and modeling of DBP formation in the actual water treatment systems was conducted. The empirical models derived from bench-scale experiments can be used for full-scale DBP simulations over a wide range of water quality and treatment conditions. However, such models are to be calibrated before full-scale application because of different NOM reactivity (in the case of TTHM simulation) and temperature effect (in the case of BrO−
+3 simulation). Water treatment utilities can use the modeling approach employed in this study in assessing how both water quality and operating conditions affect DBP formation. Such modeling approach will also be useful in assessing potential DBP control strategies, for example, utilities can predict the changes of DBP formation due to reducing disinfectant doses or decreasing contact/residence time.
+References
+Amy, G., Siddiqui, M., Ozekin, K., Zhu, H.-W. and Wang, C.: 1998, ‘Empirical Based Models for Predicting Chlorination and Ozonation By-products: Haloacetic acids, Chloral hydrate, and Bromate’, EPA Report CX 819579. Krasner, S. W., McGuire, M. J., Jacangelo, J. G., Patania, N. L., Reagan, K. M. and Aieta, E. M.: 1989, ‘The occurrence of disinfection by-products in U.S. drinking water’, JAWWA 81, 8–41. Ozekin, K.: 1994, ‘Modeling Bromate Formation During Ozonation and Assessing its Control’, Ph.D. Dissertation, University of Colorado.

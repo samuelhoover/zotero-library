@@ -1,0 +1,501 @@
+Physics-Informed Generative Model for Drug-like Molecule Conformers
+David C. Williams* and Neil Inala*
+Cite This: https://doi.org/10.1021/acs.jcim.3c01816 Read Online
+ACCESS Metrics & More Article Recommendations s*ı Supporting Information
+ABSTRACT: We present a diffusion-based generative model for conformer generation. Our model is focused on the reproduction of the bonded structure and is constructed from the associated terms traditionally found in classical force fields to ensure a physically relevant representation. Techniques in deep learning are used to infer atom typing and geometric parameters from a training set. Conformer sampling is achieved by taking advantage of recent advancements in diffusion-based generation. By training on large, synthetic data sets of diverse, drug-like molecules optimized with the semiempirical GFN2-xTB method, high accuracy is achieved for bonded parameters, exceeding that of conventional, knowledge-based methods. Results are also compared to experimental structures from the Protein Databank and the Cambridge Structural Database.
+■
+INTRODUCTION
+Conformer generation is the process of identifying a valid and useful set of atomic coordinates for a given molecule. Since so many tools in computational chemistry rely on atomic coordinates, it plays an important role in structure-based drug
+discovery.1 As such, several different methods for conformer generation have been developed and refined over the years, each with their own advantages and disadvantages, but all with the general goal of providing a tool of sufficient quality for
+downstream computation work such as protein docking.2−10 In a broad sense, we can define a valid conformer for a target molecule as a local minimum in potential energy. As a practical matter, we could also insist that any such local energy minima be somewhat close in energy to a global minimum. There are still ambiguities, however, since the energy of a molecule is influenced by its environment, such as whether the molecule is solvated, in some type of solid form, or bound to a protein. In addition, from some perspectives, the Gibbs free energy is a more appropriate measure. To help address these ambiguities, consider the bonded parameters of a molecule such as bond lengths, bond angles, and torsions (Figure 1). We generally expect such parameters to be weakly dependent on the environment, a tendency reflected in the “1-4” exclusion for pair energies found in many classical
+force-field parametrizations.11−13 As such, an accurate reproduction of these bonded parameters could be considered a defining characteristic of a valid molecule conformer, independent of the environment. Note that proper torsions are typically parametrized as periodic, such that each associated term has an equally spaced set of favored values of torsion angle φ. Thus, it is possible for a molecule to exhibit multiple conformers with identical bonded parameters by sampling among a set of favored values of φ, a property we refer to as torsional freedom. Many docking algorithms take advantage of torsional freedom to sample ligand poses by manipulating proper torsion angles along with overall
+translation and rotation.4,14−17 From this point of view, when developing a conformer generation algorithm, one could proceed with the assumption that a reproduction of bonded terms is the primary goal, with the
+Received: November 9, 2023 Revised: February 27, 2024 Accepted: February 29, 2024
+pubs.acs.org/jcim Article
+© XXXX American Chemical Society A
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 22, 2024 at 13:42:32 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+sampling of torsional freedom as secondary, the latter being dependent on the molecular environment and target application. This approach is an advantage for models that rely on data sets for training because the availability of experimental data on molecular conformers is limited. If we instead rely on synthetic data, then we are limited to the assumptions used in constructing such data sets. For example, the public data sets used to train the model described in this work were generated under conditions of vacuum, an environment that is unnatural for a drug-like molecule. It should be emphasized, however, that sampling torsional
+freedom is a stated goal of most conformer solutions,5,6 since many applications, especially in drug development, are primarily concerned with a specific molecule environment (water solvent), and many do not perform their own independent, torsional sampling. For such applications, the model presented here will likely require additional downstream processing to be useful. The atoms associated with the bonded parameters are separated by no more than three bonds (Figure 1). The distance between atoms separated by four or more bonds is therefore not constrained by a single bonded term. Such atom pairs will be referred to as nonbonded. In general, torsional freedom allows the distances between nonbonded atom pairs to vary. Rings can pose several challenges. Because a cycle of atoms must be closed, constraints are imposed on the bond angles. For nonaromatic systems, these constraints can often be satisfied in multiple ways, introducing different categories of corner folding (such as the “chair” and “twist boat” conformations of
+cyclohexane18). The situation becomes more complicated for polycyclic systems. A successful conformer generator must be able to sample from the various possibilities within a reasonable energy window. Macrocycles impose constrains on torsional freedom that can
+be challenging to accommodate algorithmically.8 In addition to locating energy minima, a useful conformer generator must be able to distinguish between stable isomers.
+The two most important are chirality19,20 and cis/trans
+isomerism.21 Several algorithmic approaches to conformer generation have
+been developed over the years. CORINA,2 one of the first commercial offerings, uses a simple ansatz for bond lengths and bend angles combined with geometric rules and backtracking, with a particular focus on the difficult problem of ring systems.
+FROG9 employs a template library for ring systems interconnected using canonical bond lengths and angles,
+followed by torsional freedom sampling via Monte Carlo. DG
+AMMOS10 employs a hybrid Krylov solver for distance
+geometry,22 followed by force-field minimization, and makes no attempt at sampling torsional freedom. In contrast, the
+OMEGA toolkit6,23 specializes in targeted sampling of torsional freedom, and employs a fragment library combined with rule
+based sampling for bonded parameters. Balloon3 is a conformer generator based on a multiobjective genetic algorithm.
+ETKDGv35,8 is a knowledge-based generator provided by
+RDKit24 based on distance geometry, with additional heuristics targeted at macrocycles. EKTDGv3 is commonly followed by force-field optimization to improve the accuracy of bonded
+parameters,5 an option conveniently provided by RDKit. The problem of conformer generation has been an attractive target for the machine-learning community, due to the broad availability of cheminformatics libraries, the approachable, geometric nature of the problem, and its relevance in drug discovery. Many attempts, however, have focused on technological advancement at the detriment of physical viability and utility, perhaps due to a lack of appropriate domain knowledge. Several strategies have been employed, such as energy
+gradients,25−27 Gibbs sampling,28 and conditional variational
+encoders.29,30 The drawback of these approaches is that the energy of disordered molecule systems is difficult to characterize
+directly due to singularities and large energy barriers. GeoMol31 learns local structure and applies incremental construction. Since incremental construction is poorly suited to cycles, it fails to reproduce all but the simplest ring systems.
+GeoDiff32 is a stochastic diffusion model. It follows conventions most closely related to “denoising diffusion
+probabilistic models”33 (an approach developed for images), employs around 800,000 independent parameters and relies on an uncharacteristically large number of steps for generation. GeoDiff attempts to learn explicit values for the distances between nonbonded atom pairs, a physically ambiguous quantity due to torsional freedom. This requirement likely contributes to a high level of computational complexity.
+Torsional diffusion34 is a generative model designed to
+explore torsional freedom. It relies entirely on the ETKDGv38 algorithm for the difficult task of establishing the bonded parameters. To make the task more tractable, macrocycles are ignored, and molecules are limited to no more than seven free torsion angles. The authors trained this model to reproduce the torsional freedom of a synthetic data set of drug-like molecule
+conformers selected arbitrarily and generated in a vacuum,35 an objective of questionable physical relevance.
+Figure 1. Force fields typically include bonded terms associated with (a) bond lengths, (b) bond angles, (c) proper torsions, and (d) improper torsions. Each term has an associated subgraph topology and a single characteristic property.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+B
+
+
+Diffusion-Based Generation. Diffusion is a machine
+learning technique introduced in 201536 and more recently,
+the subject of groundbreaking research in image generation.33,37 The results have been impressive enough to spawn several
+commercial endeavors38,39 and capture the imagination of the
+general public.40 The methodology of diffusion-based generative modeling is
+described in detail elsewhere41,42 and only the general principles are summarized here. By applying noise of varying amounts to a suitable data set, it is possible to train a “denoising” model that can take a system with noise and predict the original state. If properly prepared, a model of this type can be applied in a series of sequential steps to extract a random sample from pure noise. If the data used for training are labeled in some fashion and if those labels are incorporated in the model during training, a diffusion model can be instructed to bias generation to match a given set of labels, producing a result corresponding to instructions. Because of their success, diffusion-based models have been
+the subject of considerable study43−45 and many applications
+outside of image generation have been developed.46−50 Various approaches to diffusion have been proposed, from DDPM
+(denoising diffusion probabilistic models),33 VDM (variational
+diffusion models),44 score-based modeling,45 and LDM (latent
+diffusion models),51 to name a few. The approach used in this work is based on recent developments in formulating a universal
+framework for describing diffusion-based models41 around the
+concept of denoising score matching.52 Extending diffusion-based techniques developed for images to molecule conformer generation appears simple on the surface; however, they are important differences. In images, each element xi of the model space corresponds to the color of a pixel, and the size of {xi} depends on the number of pixels in the image to be generated. For a molecule, the size of {xi} corresponds to the number of atoms, and each element corresponds to the projection of a given atom position onto an arbitrary Cartesian reference system. Whereas the solution {xi} for an image is bound to the color space of the problem (with a universal origin and scale), the solution {xi} of a molecule need only be internally consistent and should otherwise be translationally and rotationally invariant. Described in this article is a novel method of conformer generation using a physics-informed, denoising model (PIDM). By taking advantage of established methods employed in classical force fields, the intent is to construct a model that is accessible, transferable, and robust. Suitable training sets and benchmark criteria are chosen with these same concepts in
+mind. Building upon recent theoretical advancements,41 both deterministic and stochastic methods of generation are explored. A form of guided generation is demonstrated as a means of exploring torsional freedom. Limitations. Neglecting to appropriately sample torsional freedom will produce conformers that are inadequate for applications that do not perform their own sampling, such as rigid ligand docking or 3D pharmacophore modeling, unless additional processing of some kind is applied. Conformer generation for molecules with chemical groups or atom types outside the training set may perform poorly or fail. Molecules with certain challenging topologies, such as a central ring with several large branches, may perform poorly (see Figure 12). Conformer quality is expected to degrade as molecules grow in size beyond ∼200 heavy atoms.
+■
+METHODS
+Our goal is to provide a method that can be used to generate realistic conformers, independent of torsional freedom, for any drug-like molecule when provided with just the atom composition, connectivity, and isomer (chirality, cis/trans) identity. Emphasis is placed on the reproduction of bonded terms and the preservation of the given chirality and cis/trans isomerism. Denoising Function. As discussed earlier, diffusion-based models can be generalized around the concept of denoising. To that end, we may represent our model as a denoising function D that yields an estimate of the actual coordinates x of the atoms of a molecule when provided with coordinates that have been perturbed by a centered, uncorrelated Gaussian of width σ
+x D( (x; 0, I), ; )
+2 (1)
+where ζ represents the composition of the molecule (i.e., its atom types, connectivity, and isomer identity). The behavior of D is controlled by a set of internal parameters that are optimized during training by using standard deep-learning techniques. The overall structure of the model for D is shown in Figure 2 and consists of two major components: a graph transformer
+network to build a form of atom typing and a series of bonded subcomponents, whose outputs are summed together for coordinate prediction. The purpose of the graph transformer network is to place the atoms of each molecule in a suitably descriptive embedding space that can be employed by the bonded components. It begins by assigning an initial embedding by enumerating by atomic number, formal charge, and hybridization. The latter is arrived at using the algorithm built into the RDKit
+cheminformatics library.24 All hydrogens are treated as explicit. Chiral and cis/trans atoms are flagged by the addition of global vectors reserved for this purpose. The initial atom embedding is refined by multiple layers of a
+graph transformer network, based on the GATv2 algorithm.53 The final outputs are the atoms of the molecule represented in a new embedding space that captures information on connectivity. No information about atom coordinates is used at this stage. The GATv2 graph attention network contained in each layer is constructed by associating each molecular bond with a graph edge. Self-edges are not included since they would not reflect an appropriate physical analogue (a self-edge would be equivalent
+Figure 2. Schematic of denoising model D.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+C
+
+
+to a bond to an identical atom). Instead, the input to the graph network is concatenated to the output in order to preserve a form of atom self-identity. This concatenation is fed into a feedforward network to form the output of each layer. It should be noted that the edges used in the graph layers include no labeling, such as bond order. Such labeling was not deemed necessary since connectivity alone, in combination with atomic number, formal charge, and hydridization, should
+provide sufficient context to describe relevant chemistry.54 Each of the bonded components has its own challenges and is individually described in what follows. The purpose of the “bond” component is to calculate a correction to atom positions to account for the expected distance |δ| between bonded atoms:
+xx
+ij j i (2)
+In this notation, we use the subscript to refer to the Cartesian
+coordinates of the corresponding atom. The correction Δd, a vector in Cartesian space, is calculated as a displacement along δ separately for each of the two atoms associated with the bond. The magnitudes of the displacements are implemented using a multilayer perceptron (MLP) as an arbitrary function of the current distance, the characteristic Gaussian width of the noise, and the associated atom embeddings a. The correction applied to each atom of a bond can thus be described, under a certain convention, as the following:
+[ , ]= 1 | | a a
+2 MLP( , ; , )
+i
+d j
+d
+ij i j ij (3)
+where ij is the normal vector along the direction of δij. In the
+implementation, the input to the MLP is a concatenation of the function variables and parameters after suitable weighting. A similar method is used for the other components described below. For the “bend” component, a complication is that the target bend angle depends on whether the corresponding three atoms are a part of a ring and, if so, the size of the ring. One of the unfortunate weaknesses of message-passing, graph convolution networks, of which GATv2 is a member, is the inability to detect
+cycles.55 To work around this weakness, a bit-encoded integer is used to enumerate the size and number of rings that belong to all three of the atoms of the bend, for ring sizes up to and including 6 (it is possible for a bend to be embedded in more than one ring). This integer is mapped to an embedding cijk. The bend
+angle correction Δθ applied to the two outer atoms then follows a scheme similar to that of the bond correction:
+[ , ]= 1 | | a a a c
+2 MLP( , ; , , , )
+i k ik i j k ijk ik (4)
+Notice that eq 4 uses the distance between the outer two atoms instead of the bend opening angle (Figure 3). This is a deliberate choice. Unlike the opening angle, the distance is unbounded and thus more numerically tractable. Eliminating the dependence on the position of the central atom also removes some noise, especially when σ approaches the associated bond lengths. For similar reasons, the correction for atom position is calculated along the vector between the two outer atoms rather than as a rotation around the central atom. A similar strategy is used for the “proper torsion” component
+[ , ]= 1 | | a a a a
+2 MLP( , , ; , , , )
+i l il ijkl i j k l il (5)
+where the proper torsion angle φ is included as an argument to the MLP. The angle is useful because proper torsions, as discussed earlier, typically have multiple, favored values of φ, each of which will be characterized by a corresponding distance |δil| (see Figure 1c). To avoid discontinuities in the modulo of φ, the concatenation for the input of the MLP uses [ cosφ, sinφ] in place of φ. Improper torsions, used by force-field parametrizations primarily as a means to enforce planarity in conjugated systems, are already constrained by bond lengths and bend angles. There is, however, an important connection between chirality and the sign of the improper torsion angle γ (Figure 4).
+Consider an improper torsion centered on atom i, with a plane defined in combination with atoms j and k, and a forth atom l for which we calculate γ. We can define a distance d∥ along the plane and a signed distance d⊥ out of the plane:
+=·
+=·
+d
+d
+ijkl il ijk
+ijkl il ijk
+,,
+, , (6)
+where
++
+×
+()
+()
+ijk ij ik
+ijk ijkl ij ik
+,
+, (7)
+and where χijkl = ± 1 is the target chirality. The “chirality” bonded component of the model uses the above to enforce a given signed distance out of the plane by displacing atoms i and l:
+[ , ]= 1 d d a a a a
+2 MLP( , , ; , , , )
+i
+t l
+t
+,ijkl ,ijkl i j k l ,ijk
+(8)
+Figure 3. Characterizing bonded terms using atom distances |δ|. Shown are (a) bonds, (b) bends, and (c) proper torsions.
+Figure 4. Sign of chirality in terms of an improper torsion angle. The sign depends on whether a neighboring atom is above or below the plane formed by the other three atoms. The sign changes if two neighboring atoms are swapped.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+D
+
+
+The above term is used for all three combinations of the atoms in an improper torsion, such that the total correction for the central atom is a vector sum of the three. For a chiral atom with four bonded atoms, there are four improper torsions and thus 12 terms in total. The “cis/trans” component is the last of five and is designed to enforce explicit cis/trans isomerism associated with double bonds. The planar structures typically associated with double bonds allow two possible configurations for the associated proper torsions, corresponding to φ ≃ 0 and φ ≃ ±π. Rather than use the angle φ directly, we introduce, for a more robust solution, the average vector between the inner and outer atoms of a proper torsion:
+x +x x x
+1
+2( )
+ijkl j l i k (9)
+which is equivalent to the vector between the center of the segment connecting the outer atoms and the center of the bond connecting the inner atoms. The implementation of the component can be expressed as
+[ ]=[ ]
+= | | aaa a
+,,
+1
+2 MLP( , , ; , , , )
+i
+c j
+c l
+c k
+c
+ijkl ijkl i j k l ijkl
+(10)
+where χijkl is equal to −1 (+1) for the target cis (trans) state and the same correction is applied to pairs of atoms. Depending on the chemistry, each cis/trans group can be associated with up to four proper torsions, in which case each outer atom receives a vector sum of two corrections, and the two inner atoms each receive four. The final output of the model is an estimate of the unsmeared coordinates and can be expressed symbolically as the sum of all contributions:
+=+ + + +
++
+D(x, ) x d t
+cis trans
+c
+bonds bend proper chirality
+/ (11)
+Here the various arguments and indices have been suppressed for the sake of clarity. By training on the vector sum of the five components, the model can learn to adapt to correlated behavior. As consistent with our goals, the denoising function of eq 11 makes no attempt to predict the distance between nonbonded pairs of atoms. For the models reported here, an atom embedding of dimension 50 is used throughout. Four graph transformer layers were employed. The result is a model with a total of 135,080 parameters (weights), with 63,480 reserved for the molecule graph and 71,240 in the geometry components. Training. For the purposes of training, we chose to evenly sample from the canonical set {σ1...σN}:
+=+ <
+=
+i
+N iN
+iN
+1
+1( ) 1
+0
+i
+max
+1/ min
+1/ max
+1/
+l
+moooo
+n
+oooo
+i
+kjjj y
+{zzz
+(12)
+The total loss is calculated as the weighted sum of the contribution from each sample σi
+= +
+=
+1 ()
+i
+N
+i
+i 1
+22
+(13)
+with
+( ) = D(x + n, ) x
+x data,n (0, I) 2
+2
+2 (14)
+and where is the expected value obtained from the training data after applying random Gaussian sampling. Standard
+techniques such as the AdamW algorithm56 and mini batches were used to establish model weights that minimize .
+Hyperparameter values of N = 100, σmax = 8 Å, σmin = 10−5 Å,
+ε = 10−5 Å, and ρ = 6 were found to produce satisfactory results. Concerning data sources for training, a large, representative sample of drug-like molecules would be ideal. For a meaningful benchmark, a well quantified baseline is also desirable. Two
+publicly available synthetic data sets come to mind: QMugs57
+and GEOM-drugs.35 Both contain samples of several hundred thousand drug-like molecules with conformers optimized (in vacuum) using the GFN2-xTB semiempirical quantum
+mechanical method.58,59 Statistics for both sets are shown in Table 1. Molecular weights and estimated LogP distributions are shown in Figure 5.
+To measure the similarity of two compounds, we employ the ECFP6 (extended-connectivity) fingerprint, as implemented by
+RDKit24 and folded to 1024 bits. Using a relatively permissive Tanimoto threshold of 0.9, we find that only 5.6% of the compounds in QMugs overlap with those in GEOM-drugs. This increases to 6.3% if the threshold is lowered to 0.8. The processing used by their authors to create the two data
+sets is somewhat different. For the QMugs data set,57 molecules
+extracted from the ChEMBL database61 were charge-neutralized, and a limit of three conformers is selected for each molecule. Radical species were also removed. The result is a total of 28 distinct atom types, as enumerated by element, formal charge, and hydridization. The total number of edges, when counted by conformer, is approximately 200 million.
+For the GEOM-drug data set,35 molecules were taken from
+the AI Cures conference open challenge62,63 and Molecule
+Net.64 No molecule charge neutralization was attempted, which is somewhat unnatural, given that the conformers were generated and optimized in a vacuum. The result is a total of 64 distinct atom types, a superset of those found in the QMugs data set. Conformer generation was more liberal, resulting in an
+Table 1. Statistics on the QMugs57 and GEOM-Drug35 Data Sets, after Quality Filtering
+quantity QMugs GEOM-drugs
+molecules 665,911 301,821 molecule atoms 36,679,641 13,378,196 molecule bonds 38,640,204 13,981,212 molecule angles 67,526,717 24,090,418 proper torsions 98,098,868 33,819,616 improper torsions 32,187,240 11,220,749 proper torsions with cis/trans isomerism 237,879 149,831 improper torsions with chirality 2,864,349 540,979 conformers 1,992,984 30,906,135 conformer atoms (nodes) 110,044,367 1,599,467,582 conformer bonds (edges) 202,017,554 1,658,998,071 average molecular weight 433.3 355.5 average number of heavy atoms 30.6 24.8
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+E
+
+
+average of around 100 conformers per molecule or a total of nearly 1.7 billion edges. Performing quantum-level optimization of charged species in a vacuum can increase the likelihood of artifacts, as bonds are broken and created. For the purposes of this study, the conformers provided by GEOM-drugs for each molecule were checked for strict consistency at the graph level, and if any discrepancy was detected, the molecule was removed from consideration. This affected about 2% of the data set. It should be noted that the conformers in the QMugs data set are stored in a standard SDF format. This limits coordinate resolution to 10−4 Å. The GEOM-drug data set does not suffer from this limitation.
+Both data sets are randomly divided into training (80%), validation (10%), and test (10%) subsets. One version of the model is trained on the QMugs training subset using a fixed schedule of 100 epochs, corresponding to approximately 1.6 million steps, with no evidence of overtraining (Figure 6a). The loss, as calculated independently for the validation set during training, is remarkably consistent with the training loss. A second version of the model is trained on the GEOM-drug training subset using a fixed schedule of 25 epochs, corresponding to approximately 6.2 million steps. There is also little evidence of overtraining, and there is no apparent difference between training and validation losses (Figure 6b). Probing the Models. Perhaps the most direct way to judge the quality of a trained model is to apply it in generation and
+Figure 5. Distribution of molecular weight (left) and log P (right) for two data sets. The log P value is estimated using the Crippen algorithm.60
+Figure 6. Loss per conformer as calculated during model training for (a) QMugs and (b) GEOM-drugs. Plotted are losses calculated for the training subset and for an independent validation set of 1/8 the size.
+Figure 7. Example bond correction for the two models for an atom involved in an alkane bond in adrenaline. Corrections for various values of σ are plotted. The vertical gray line is the expected bond distance from a GFN2-xTB optimization.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+F
+
+
+inspect the resulting conformers. That task will be the subject of the following sections. Before doing so, it is instructive to probe the model structure using example compounds and infer characteristics of their learned behavior. Some examples are described below. Further examples are available in the Supporting Information. Shown in Figure 7 is the output of the bond component for an example alkane bond as a function of |δij|, calculated for various values of σ (see eq 3). As |δij| increases, the model predicts larger corrections. This has an overall tendency of pulling bonded atoms closer together. As σ approaches zero, the correction vanishes once the correct bond length is achieved. Notice that the correction for the bond is smaller than that required for that bond alone (that is, the correction falls well inside a line of the unit slope). This is characteristic of the individual corrections learned by the model, because the final result is the sum of all corrections. As a consequence, bonded components tend to act in concert. An example of the output of the bend component is shown in Figure 8. The example has a behavior similar to that of the bond, except there is more of a tendency to push atoms apart if they are too close. Presumably, this is part of a compensating mechanism for the tendency of the bond component to pull atoms together. Probes of the proper torsion, chirality, and cis−trans components are also revealing. Details can be found in the Supporting Information. Generation. We adopt a score-based, probability flow
+framework45 in order to generate conformers from our trained model. As is typical in this approach, we consider a multidimensional Wiener process applied to molecule coordinates x over a time interval t ∈ [0, 1]:
+p (y(t)|x; (t)) = (y(t); x, (t) I)
+t
+2
+(15)
+where y(t) are the resulting random coordinates and where σ(t) is a width schedule we are free to choose to suit our task with the only requirement that limt→0 σ(t) = 0. For generation, we start by sampling from a random Gaussian distribution (0, (1)2I) as an approximation for y(1) and solve for the corresponding reverse process (denoising) to obtain y(0) as a candidate solution for x. To construct a solution for the reverse process, we identify the marginal distribution p(y;σ) as
+p(y; ) = p (y|x; )p(x)dx
+t (16)
+where the t dependence is implicit and p(x) represents the marginal distribution of the training data. We can use p(y;σ) to
+express the time dependence of y as a probability f low ODE:41
+y= y
+d dt p t
+d log ( ; )d
+y (17)
+where ∇y log p(y) is the score f unction. In a score-based framework, there is a direct relationship between the score
+function and our denoising model D:41,52
+log p (y; ) 1 (D(y, ; ) y)
+y t 2 (18)
+where ζ represents the molecular structure of interest. This important relation connects our denoising model to the conformer generation process. In our implementation, we selected the linear function σ(t) = αt, where α is a scale parameter in units of Å. Applying this selection to eqs 17 and 18 results in a simple form for the probability flow ODE:
+y= y y
+t Dt t
+d
+d ( ( ; ; ))/ (19)
+Our conformer generation process is the numerical solution to this equation, calculated in steps of t in reverse, and using as initial conditions y(1) (0, 2I). Inspired by work elsewhere,41 we solve eq 19 using Heun’s second-order method, augmented by a form of backtracking (Algorithm 1). The backtracking provides an option to add additional noise to the generation process. We can begin by dividing the interval [0, 1] into a fixed set of sequentially diminishing steps {ti} over which we iterate, to calculate a set of intermediate solutions {yi}. Instead of relying on solving along the connected, nonoverlapping intervals ti+1 ≤ t < ti, we can substitute modified values for the upper bound ti of each interval:
+=
+yy
+tt
+( ; 0, t ( 1))
+ii
+ii i
+2 22 2
+(20)
+where β ≥ 1 and λ ≥ 0 are free parameters. This has the effect of introducing Gaussian noise in each step of the solution. For λ = 1, the amount of added noise compensates for the change in interval size.
+Figure 8. Example bend correction for the two models for an atom involved in the ethanol group of adrenaline. Corrections for various values of σ are plotted. The vertical gray line is the expected atom distance from a GFN2-xTB optimization.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+G
+
+
+For reasons of convenience, we remove an overall center-ofmass during each generation step. This prevents solutions from slowing walking in the coordinate space and helps with inspecting results. The correction is small, and the quality of output is not affected. If we generate using λ = 0, no noise is added during the intermediate steps. In the language of diffusion-based models, we call this a “deterministic” approach, even though we still begin with a random initial state y(1). Combined with β > 0, the algorithm is equivalent to pretending that each intermediate value yi belongs to a solution sampled from a larger value of σ. This has the effect of overcorrecting, which improves the accuracy in our case.
+If we generate using λ > 0 and β > 0, then we inject noise during each step of generation. This is referred to as a “stochastic” approach. Both stochastic and deterministic approaches have been used for image generation, with
+impressive results.33,41,43−45,65−67 To apply our algorithm, we use an exponentially decreasing set {t1... tN} of a given size N and a final step size tε:
+=< =
+t t iN
+iN
+1
+0
+i
+i/(N 1)
+lmoo
+noo (21)
+The quality of the generated output is reasonably stable for a large range of parameter values. The results reported here use tε = 0.0006, α = 2.5 Å, and β = 5. Quality improves marginally if the solution is calculated using more steps at a proportional cost in processing time. To quantify this trade off, we report on results for N = 100, 200, and 500. We also report results for both deterministic (λ = 0) and stochastic (λ = 1) generation.
+■
+RESULTS
+Shown in Figure 9 are random examples of generated conformers using deterministic generation, 500 steps, and the model trained on QMugs (PIDM[QMugs]). Similar figures, generated under different conditions, such as stochastic
+Figure 9. Example conformer output, for the model trained on QMugs, using deterministic generation and 500 steps, and for molecules randomly selected from an independent benchmark molecule set (see text for details). Shown in the second column from left (gray background) is the first conformer from QMugs. Shown on the right are four conformer outputs, selected randomly. All molecule renderings are oriented by the principal components.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+H
+
+
+generation or using PIDM[GEOM-drugs], are available in the
+Supporting Information, along with corresponding molecular
+structures files. Visual inspection alone does not reveal any
+apparent difference in conformer quality.
+Figure 10. Select examples of conformer generation. These examples were generated by using PIDM[QMugs] with 500 steps in the deterministic scheme.
+Figure 11. Steps in the generation of the example conformers are illustrated in Figure 10.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+I
+
+
+Shown in Figure 10 are some selected examples of conformer generation. For each of these molecules, good quality conformers are generated the majority of the time. Sterols, such as cholesterol, contain fused ring systems whose conformations could not have been reliably generated without faithfully reproducing multiple chiralities. Large aromatic systems, such as naphthacene, are generated as reasonably flat, even though our model does not contain the associated improper torsion terms. Complex, fused ring systems are also reliably reproduced, even those with bridges, such as artemether. One of the characteristics of deterministic generation is that the frames smoothly transition to the final solution. This behavior is most apparent when generation is presented as an animation, samples of which are included in the Supporting Information. A static depiction of stages in the generation process is shown in Figure 11 for the four examples shown in Figure 10. The overall structure of the molecule conformer arises early in the generation process with the remainder focused on refinement. There are some systems that are challenging to generate. An example is atorvastatin (Figure 12). This molecule has a central
+aromatic ring connected to four large substitutions. This aromatic ring usually fails to generate as flat, probably because planarity imposes tight constraints on the orientation of two of the attached phenyl groups, which are difficult to satisfy. Benchmarks. As discussed earlier, 10% of the QMugs data set was set aside as a test subset, corresponding to a random selection of 66,591 molecules. This subset will form the basis of our first set of benchmarks. Because drug molecules are often synthesized as part of a family of closely related compounds during drug development, this randomly selected subset likely contains compounds similar in structure to molecules in the training subset. To remove structural overlap (at the level of the entire molecule) and thus guard against data leakage, Tanimoto similarity is calculated for each molecule against the contents of the QMugs training subset and the entire GEOM-drug data set. Any molecule with a similarity exceeding 0.7 is discarded. The same threshold is also used within the test set to reduce its size and ensure some level of diversity.
+We are interested in reproducing the annotated chirality and cis−trans isomerism of our test compounds. To independently verify this information, each test molecule is checked against the
+public PubChem database,68 and the annotations available are retrieved for this purpose. In addition, we queried PubChem for
+a copy of the first 10 of their generated conformers69 for later analysis. Molecules that could not be validated or did not have a generated PubChem conformer were discarded. The final result is an independent set of 15,763 fully annotated test molecules reserved for benchmarks. The molecular weight is an average of 15% smaller than the full QMugs data set but has a similar shaped distribution. Although it was not mentioned earlier, the random sample of compounds shown in Figure 9 was drawn from this independent benchmark set, as are the other examples included in the Supporting Information. We are interested in establishing conformer accuracy by measuring the reproduction of bonded parameters such as the bond length (d), bond angle (θ), and proper torsion angle (φ). Proper torsions require special attention because, as discussed earlier, they can have multiple favored values. To limit our statistics to proper torsion angles associated with the same favored angle, we only consider angles that are generated within ±30° of the angle found in the reference conformer. We are also interested in measuring how often a generated structure fails to reproduce the desired chirality and cis/trans isomerism. To do so, we checked each related improper torsion and cis/trans bond for a geometry that is consistent with given annotations. Failures are recorded as a fraction of the total occurrence of an improper torsion atom or cis/trans atom pair. Because our model makes no attempt to address torsional freedom, the resulting conformers may have atoms that overlap in position (clashes). Although less important for applications that introduce their own torsional sampling (such as flexible ligand docking), clashes nevertheless represent an unphysical molecular state that is explicitly excluded in conventional conformer generators. To measure their occurrence, we count the fraction of generated conformers that include any nonbonded atom pair within a distance of less than 1.5 Å. To provide overall benchmark statistics, we generate ten random conformers for each of the molecules in the benchmark set. Each generated conformer is compared against all of the corresponding conformers for that molecule as provided by QMugs. Overall errors in d, θ, and φ (within cutoffs) are measured using the mean absolute deviation (MAD), to avoid sensitivity to tails. Results are shown in Table 2. In the same table are results taken from other published conformer generation solutions. In all cases, ten conformers are requested, although some conformer solutions by design provide less than the requested number under certain circumstances. Results are briefly summarized below.
+The public PubChem API68 provides access to a set of
+conformers calculated under the PubChem3D scheme.69 This
+scheme is based on the OMEGA toolkit23 using parameters selected by the authors. Of particular note is the choice to apply
+the MMFF94s classical force field13 minus long-distance charged interactions. The results, according to our benchmarks, are robust conformer predictions, particularly for proper torsion angles.
+The ETKDGv35,8,24 algorithm produces the most accurate proper torsion values, but is less accurate with bond lengths and angles. Following conformer generation with MMFF94 force
+Figure 12. Example of a challenging molecule. Atorvastatin (Lipitor) contains a central, aromatic ring that consistently fails to generate as planar.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+J
+
+
+field optimization produces conformers of quality similar to PubChem3D, which relies on a similar force field for parametrization. No chiral inconsistencies were detected. Balloon produces bond distance and bend angle accuracies consistent with those of other conformer generation solutions that take advantage of the MMFF94 force field. Like the model presented here, GeoMol focuses on the bonded components of the molecules. As mentioned earlier,
+message-passing networks are incapable of detecting cycles,55 so it is not surprising that the GeoMol has difficulty accurately representing them, despite incorporating ad-hoc corrections to compensate for this weakness. Tested here is the version of the model trained on the GEOM-drugs data set. Performance is
+poor by all metrics presented here, especially for the bond lengths.
+Tested here is the version of GeoDiff32 trained on the GEOMdrugs data set, as provided by the authors. Although this model is capable of accurate bond distance and bend angle prediction, proper torsion angles are poorly reconstructed (Figure 13). GeoDiff has no mechanism for enforcing chirality nor cis/trans isomerism. Although this limits the usefulness for drug discovery, the omission appears to be an oversight of the authors rather than a fundamental limitation of their approach. Several of the conformer methods described above rely on the MMFF94 force field. When compared against benchmark conformers optimized by the more realistic GFN2-xTB
+Table 2. Benchmark Data for the Models Presented Here under Various Different Running Conditions and Compared against
+Other Conformer Generation Methodsa
+mean absolute deviation inconsistency rate clash rate
+d (Å) θ (rad) φ (rad) chirality cis−trans <1.5 Å
+PIDM[QMugs] deterministic 100 0.0042 0.015 0.036 0.031 0.033 0.753 deterministic 200 0.0038 0.013 0.027 0.022 0.009 0.681 deterministic 500 0.0036 0.012 0.023 0.013 0.002 0.576 stochastic 100 0.0051 0.021 0.079 0.112 0.027 0.587 stochastic 200 0.0047 0.019 0.069 0.081 0.013 0.571 stochastic 500 0.0045 0.018 0.062 0.057 0.004 0.549 PIDM[GEOM-drugs] deterministic 100 0.0044 0.015 0.034 0.031 0.034 0.761 deterministic 200 0.0040 0.013 0.027 0.023 0.015 0.705 deterministic 500 0.0037 0.012 0.023 0.015 0.005 0.601 Pubchem3D (OMEGA) 0.0075 0.020 0.020 0.020 0.014 0.000 ETKDGv3 0.0183 0.039 0.019 0.000 0.017 0.000 ETKDGv3 + MMFF94 0.0081 0.017 0.021 0.000 0.017 0.000 Balloon 0.0082 0.018 0.032 0.002 0.011 0.000 GeoMol 0.0125 0.030 0.042 0.032 0.087 0.495 GeoDiff 0.0051 0.017 0.170 0.500 0.263 0.032
+aResults for models trained on the QMugs and GEOM-drug data sets are shown for generation steps of sizes 100, 200, and 500, and using both deterministic and stochastic schemes. Best values in each category are italicized.
+Figure 13. Difference in generated and ground truth for proper torsion angle φ for four different generation methods applied to the set of benchmark conformers. The vertical dashed lines indicate the median absolute deviation, calculated for differences with ±30°.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+K
+
+
+semiempirical quantum mechanical method, an overall bias is apparent in bond lengths (Figure 14). If the bond length parameters in the MMFF94 force field were refit, it is possible that conformer methods such as PubChem3D, RDKit followed by MMFF94, and Balloon would outperform the generative model presented here. The statistics on φ accuracy shown in Table 2 were limited to those cases where the generated proper angle was aligned within ±30°. Accuracy aside, we can check to see how well the overall distribution is reproduced. Interestingly enough, the PIDM models tend to favor φ = 0 more than the conformers provided by QMugs (Figure 15). The authors of QMugs used an elaborate procedure involving molecular dynamics and clustering via RMSD to select the conformers in their data set, and
+uniformity in proper torsion angles is likely a natural consequence of this process. For ligand-protein docking methods that explore torsional freedom during pose optimization, the dihedral angle sampling for input conformers should have little relevance. For the benefit of applications that do not independently sample dihedral angles, we can perform further analysis. The QMugs and GEOM-drugs data sets provide a sample of conformers taken from states of favorable energy calculated in vacuum. These samples are selected to represent some amount of diversity, as measured using the root-mean-squared deviation
+(RMSD).35,57 Although these data sets were constructed with care, they remain synthetic and the strategies used to enforce diversity were somewhat arbitrary. Thus, we see little value in comparing the dihedral sampling of our conformer model to those of these data sets. In place of synthetic data sets, we can rely on experimental data. To measure conformer generation performance, the authors of the OMEGA toolkit selected two small experimental
+sets:23 480 molecules from the Cambridge Structural Database (CSD) and 197 ligands from the PDB. We will use the same experimental data here. Both the CSD and PDB data sets are derived from X-ray data, in which only heavy atoms are reliably resolved. The CSD data are for crystalline solids of the molecules either by themselves or with salts. The PDB data set is for ligands bound to proteins. Both are typically resolved in the solid state. The X-ray structures in the PDB have limited resolution and their solutions are reconstructed, in part, based on assumed
+force-field parameters.70 As such, PDB files are not useful for testing the accuracy of the bonded parameters. The atom coordinates in the CSD data set, however, are not as constrained by such assumptions. A comparison of the bonded parameters in generated conformers for the CSD data set show the same trends as observed from the QMugs data set, although with lower resolution, presumably due to experimental uncertainties (Table
+Figure 14. Difference in generated and ground truth for bond distance d for four different generation methods applied to the set of benchmark conformers. The vertical dashed lines indicate the median absolute deviation. The methods in the left column were trained on conformers optimized in the same fashion as for the benchmark conformers (GFN2-xTB). The methods in the right column rely on some variation of the MMFF94 force field.
+Figure 15. Distribution of the magnitude of proper torsion angle φ for the benchmark set of conformers compared to the distribution generated from the same set of molecules using PIDM.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+L
+
+
+3). A bias in the MMFF94 bond length is confirmed (Figure 16). Generated results show little bias, presumably reflecting the accuracy (on average) of GFN2-xTB, used in the training data. We will use the RMSD to measure how well the experimental coordinates of the entire molecule are reproduced, calculated on heavy atoms after solid-body alignment. To do so, atoms between generation and experiment are paired by graph matching, where atoms are distinguished by element, formal charge, and number of hydrogens, and bond orders are ignored. The graph matching may produce more than one solution (due to symmetries). The match that produces the smallest RMSD value is used. Our goal in this work is to use RMSD to measure how close a generator is able to mimic the torsional freedom experimentally observed for a molecule. For our model, in which each conformer is randomly generated, the result will depend on how many attempts we allow. Shown in Table 4 are statistics for the closest conformer out of 10, 100, and 1000 attempts. Also shown are published values23 for the OMEGA toolkit and to 1000 conformers generated by RDKit followed by MMFF94 optimization. Both OMEGA and RDKit clearly outperform the model presented here, even after 1000 attempts.
+Our model does not consider the distances between nonbonded atom pairs, so it may be unrealistic to expect it to randomly sample torsional angles as effectively as algorithms
+Table 3. Statistics on Generated Conformers Compared to Experimental Data for 480 Structures Extracted from the CSDa
+mean absolute deviation inconsistency rate clash rate
+d (Å) θ (rad) φ (rad) chirality cis/trans <1.5 Å
+PIDM[QMugs] deterministic 500 0.0134 0.030 0.032 0.026 0.003 0.581 stochastic 500 0.0141 0.035 0.061 0.112 0.016 0.492 PIDM[GEOM-drugs] deterministic 500 0.0136 0.031 0.033 0.039 0.027 0.584 ETKDGv3 + MMFF94 0.0161 0.026 0.033 0.000 0.042 0.000 balloon 0.0163 0.029 0.037 0.000 0.041 0.000 GeoDiff 0.0140 0.030 0.153 0.488 0.242 0.008 aOnly bonded terms entirely involving heavy atoms are included.
+Figure 16. Difference in generated and experimental bond distance d for 480 structures from the CSD. Only bonds involving two heavy atoms are included. The vertical dashed lines indicate the median absolute deviation. Both models on the right rely on some variation of the MMFF94 force field.
+Table 4. RMSD Statistics on the Closest Conformer Generated through Various Methods Compared to Experimental Data from the CSD and PDB
+RMSD (Å)
+CSD PDB
+model N mean median mean median
+PIDM[QMugs] 10 1.24 1.38 1.37 1.52 deterministic 500 100 0.93 1.03 1.04 1.16 1000 0.74 0.84 0.90 0.98 PIDM[GEOM-drugs] 10 1.28 1.41 1.37 1.59 deterministic 500 100 0.97 1.10 1.15 1.32 1000 0.78 0.91 0.96 1.10 OMEGAa 0.51 0.44 0.67 0.51 RDKit + MMFF94 10 0.70 0.76 0.92 1.06 100 0.47 0.54 0.67 0.80 1000 0.43 0.48 0.53 0.64 aPublished statistics.23
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+M
+
+
+such as OMEGA and ETKDGv3, which are specifically designed to do so. This flaw is evident in the clash rates (Table 3). To better appreciate the kind of dihedral sample space that our generative model is failing to sample, we can investigate the tail of the RMSD distribution. Shown in Figure 17 is the ligand from PDB structure 1EC0, which is the molecule with the worst RMSD result (2.9 Å). This ligand, a symmetric system with four rings, is observed in an extended conformation in the PDB. The best generated pose is more confined. The failure to generate a more compatible, extended conformation could be due to a lack of any explicit mechanism to repel nonbonded atom pairs from each other. Guided Generation. As discussed above, our model makes no attempt to predict the distance between nonbonded pairs of atoms. If we are not concerned about the torsional freedom, this
+is an acceptable compromise. Even so, there are some drawbacks, including the tendency to produce conformers that are more tightly constrained in space than experimentally observed, as discussed in the previous section. The introduction of unphysical clashes may also be an issue, depending on the application. If dihedral sampling is important, then some method of introducing bias during generation could be useful. Given that our denoising model places no explicit constraint on the distance between nonbonded atom pairs, one approach for dihedral sampling would be to add some type of bias to that distance during generation. This section describes such an addition as a proof of concept intended to prevent overlapping atoms. Consider a modified probability flow ODE:
+Figure 17. Conformer generation result for the ligand (BEA403) contained in the PDB structure 1EC0. The experimental conformer is drawn as transparent. Overlaid is the best RMSD result of 1000 attempts at generation using PIDM[QMugs].
+Figure 18. Distribution of distance between all nonbonded atom pairs for the conformers in the CSD and PDB experimental data sets. Also shown are generated results for PIDM[QMugs] using 500 steps in the deterministic scheme. Difference strengths of a repulsive term are applied. The vertical dashed line represents the distance used (1.5 Å) when reporting the clash rate.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+N
+
+
+y= y y y
+t DtE t
+d
+d ( ( ; ) ( ))/ (22)
+where E(y) is a function external to the denoising model that is introduced in order to guide generation in a desired fashion. Solving for eq 22 in place of eq 19 provides a mechanism for guided generation where E(y) serves as a type of conditional
+score.42 For our proof of concept, consider a term that is analogous to
+a repulsive force of strength δ−10, similar to what is found in the repulsive portion of a van der Waals interaction:
+[ , ] = r2 max( , r )
+i
+n j
+nu
+ij
+ij ij
+11
+pairs
+2 c
+25
+(23)
+where rc is a clipping distance, nominally set to a value of 0.7 Å, and ru is a unit distance of 1 Å. Because this term is not trained, it contains no atom embedding and is applied to all nonbonded atom pairs equally. Using eq 23, we can introduce a corresponding candidate for E(y) that is moderated by an overall strength of η:
+E(y) = n
+(24)
+Shown in Figure 18 is the distribution of distances between all atom pairs in the CSD and PDB data sets. Also shown are the same distances sampled from ten conformers generated by PIDM[QMugs] under various conditions and otherwise using 500 steps in the deterministic scheme. With default generation, there is a tendency for atom pairs to overlap, which is unphysical. Adding a term of eq 24 with strength η = 0.5 is sufficient to move the distribution closer to experiment. The result is a modest improvement in the RMSD statistics, as shown in Figure 19 and Table 5. If we revisit PDB system 1EC0, we observe an improvement in matching the extended conformer observed in that structure (Figure 20). Including a simple repulsive term, however, comes with a cost. As shown in Table 6, error rates for chirality grow to as much as 6%. Fortunately, the accuracy of bonded parameters such as bond length d is only marginally affected. Interestingly enough, error rates for cis/trans isomerism actually tend to slightly improve. Clashes are almost entirely eliminated. Adding a repulsive term can also be helpful for generating conformers for both long molecules and macrocycles. One example is shown in Figure 21. Besides largely eliminating overlapping atoms, an interesting question is whether a repulsive term improves the overall sampling of the torsional freedom. To explore this question, one
+can use a torsional fingerprint such as TFD71 to compare the generated conformers against each other. Results using the TFD
+implement of RDKit24 are shown in Figure 22 for each pair of ten conformers generated for the CSD and PDB data sets. Based on this criteria, a repulsive term does improve torsional sampling but only marginally. The TFD results also indicate that it is rare for PIDM to generate the same conformer twice, with or without guided
+Figure 19. RMSD performance with and without a repulsive term for the CSD and PDB experimental data sets. Shown for comparison are the
+published results from OMEGA.23
+Table 5. RMSD Statistics on the Best Out of 1000 Conformers Generated with and without a Repulsion Term
+Compared to Experimental Data from the CSD and PDBa
+RMSD (Å)
+CSD PDB
+conditions mean median mean median
+undirected 0.74 0.84 0.90 0.98 η = 0.5 0.53 0.58 0.70 0.75 η = 1 0.51 0.55 0.67 0.73 OMEGAb 0.51 0.44 0.67 0.51
+aThe model shown here is PIDM[QMugs] using the deterministic
+scheme. bPublished statistics23
+Figure 20. Improved conformer generation result after employing guided generation for the ligand contained in the PDB structure 1EC0. The experimenter conformer is presented as transparent. Overlaid is the best RMSD result of 1000 attempts at generation using PIDM[QMugs] in the deterministic scheme guided by a repulsive strength of η = 1.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+O
+
+
+generation. This is in contrast to ETKDGv3.5 The generation of duplicate conformers by ETKDGv3 may not be surprising since some of the molecules in the CSD and PDB data sets have a relatively small number of proper torsions, and in those cases, torsional space can be algorithmically exhausted even with just ten conformers. Note that the RDKit implementation of ETKDGv3 provides the option to remove duplicate conformers based on an RMSD threshold, although this option is disabled by default and was not used for the results in this work.
+■
+DISCUSSION
+Conformer generation is an established problem in computational structure-based drug discovery. Conventional solutions, which have served the community well for decades, are based on carefully tuned, hand-crafted algorithms. Machine learning has made rapid advances recently, and so, it is natural to see how well the latest advancements in deep learning can be applied to this space. One of the goals of this current effort is to remain sensitive to prior work in computational chemistry, particularly in the fields of cheminfomatics, classical force fields, and quantum simulation. In this work, we combine some of the latest advancements in diffusion-based generative modeling with established techniques used in classical force fields. Classical force fields divide up energy contributions based on subgraph topologies that naturally fit into graph convolution models. They also conveniently divide energy contributions between components that we value (bonded interactions) and those that we deem less important (nonbonded interactions). Our generative model is based on a denoising model constructed from the sum of five separate, bonded terms. Each term is parametrized by a simple MLP. By training all terms together, the denoising model can account for correlated behavior. Accuracy is improved by ensuring that each term is provided with sufficient information. For example, small rings can influence the angle of any bends that they contain. We also find that parametrizing bonded terms as functions of atom
+Table 6. Bonded Benchmark Data for Our Models Measured against the Benchmark Set of 15,763 Molecules and
+Generated with and without a Repulsive Terma
+mean absolute deviation Inconsistency rate clash rate
+d (Å) θ (rad) φ (rad) chirality cis/trans <1.5 Å
+PIDM[QMugs] unguided 0.0036 0.012 0.023 0.013 0.002 0.576 η = 0.5 0.0035 0.012 0.025 0.028 0.001 0.000 η = 1 0.0036 0.012 0.026 0.057 0.001 0.000 PIDM[GEOM-drugs] unguided 0.0037 0.012 0.023 0.015 0.005 0.601 η = 0.5 0.0036 0.012 0.025 0.029 0.002 0.001 η = 1 0.0036 0.012 0.025 0.048 0.003 0.000
+aResults for models trained on the QMugs and GEOM-drug data sets are shown for 500 steps in the deterministic scheme.
+Figure 21. Micafungin is a cyclic hexapeptide antifungal agent with a molecular weight of 1,270. A reasonable conformation can be generated if a repulsive force (η = 1) is employed.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+P
+
+
+distances is more robust than using other geometric measures such as relative angles. A critique of deep learning is that the internal structure of a trained model is often inscrutable (they are so-called “black box”
+models).72,73 By constructing our denoising model from the sum of bonded components, we can probe the response of each component separately and explore how the model learned to solve the denoising problem. By using different input molecules as probes, the solutions for bond lengths, bend angles, and torsion angles can be explored for specific chemical groups. Some examples are presented above, and further are available in the Supporting Information. This ability to test each bonded component under controlled conditions was invaluable during the development. We used two separate data sets (QMugs and GEOM-drugs) for training. Both include conformers of drug-like molecules optimized in vacuum using GFN2-xTB, a semiempirical quantum mechanical calculation. This type of calculation is expected to provide bonded parameters that are more accurate than those available from classical force fields. During training, the losses calculated on holdout validation data sets show no evidence of increasing, suggesting little overtraining. This loss also matches the loss from the training subset, implying a level of transferability. Remarkably, despite little overlap in the two training sets, the resulting models perform nearly identically on all of the benchmarks. Probes indicate that both models have derived similar solutions. For generation, we numerically solve for the probability flow ODE, using a form of oversampling. Both deterministic and stochastic generation are tested, and the former outperforms the latter for most criteria. Generation in as little as 100 steps appears sufficient for conformers of reasonable quality, but using more steps noticeably improves performance. To test the accuracy of the generated conformers, we use an independent subset of the QMugs data set. We used Tanimoto similarity to ensure that the molecules in this subset had little structural overlap with the training subsets. Based on the median absolute deviation, generated conformers have more accurate
+bond lengths and bond angles than established solutions, at least on average. Much of the reason is likely due to training on structures optimized by GFN2-xTB, whereas established conformer solutions rely, in part, on force-field parametrization, such as MMFF94. Average performance on the proper torsion angle is also competitive. It is interesting that another published diffusion model, GeoDiff, performs quite poorly at torsional angles. GeoDiff also requires ten times the amount of generation steps and contains about six times as many parameters. Molecule conformers for drug-like compounds typically achieve a large part of their diversity through torsional freedom. Outside of macrocycles, dihedral angles are relatively easy to manipulate, which is why they are among the degrees of freedom commonly optimized in ligand-protein docking algorithms. In such applications, the focus of a conformer generator should be the production of quality bonded parameters such as bond lengths, bend angles, and ring conformations. Conformer RMSD is sensitive to the dihedral angles. This makes the RMSD a poor metric for evaluating the quality of generated conformers unless the goal is to reproduce the selection of dihedral angles. Gauging the quality of a conformer generator based on reproducing the RMSD of synthetic data sets, such as QMugs and GEOM-drugs, is merely testing if the generator can reproduce the somewhat arbitrary choices the authors of these data sets employed for dihedral angle sampling. Measuring RMSD against experimental data does have value, but data are limited in size and resolution and restricted to certain physical conditions, such as crystal solids. For training, limited statistics is a problem for deep-learning techniques which rely on a large and diverse sample of training data. We used experimental data to explore the dihedral space sampled by our conformer generation model and have uncovered some deficiencies. This is a problem for applications that do not independently sample dihedral space. This deficiency can be partially mitigated by introducing a form of guided generation. We tested a simple technique that applied universal repulsion between nonbonded atom pairs. One could
+Figure 22. Difference in torsional fingerprint (TFD) values between all pairs of ten conformers generated for the CSD and PDB experimental data sets. Results for PIDM[QMugs] are shown for 500 steps in the deterministic scheme and with or without a repulsive term. Results from RDKit are included for comparison.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+Q
+
+
+imagine more complex guided techniques that are capable of sampling dihedral angles appropriate for any number of molecular environments or conditions. The atom encoding used in our model was generated using a
+Graph Attention Transformer (GATv2).53 One could substitute other types of comparable message-passing graph networks,
+such as a graph isomorphism network (GIN),74 and probably obtain comparable results. We suspect that using a type of graph network that can capture the same quality of chemical information while also recognizing cycles would be an improvement. Such a graph model would not only allow the removal of the ad-hoc ring embedding we use for the bend angle component but also provide a mechanism for correcting bond lengths and torsion angles that are also impacted by rings. Other challenges remain. There are some molecules that fail to generate correctly, such as atorvastatin. Because our denoising model is based on local molecular structure (via bonded components), large scale movements, such as those needed to swing an arm of a molecule to ensure planarity for an aromatic ring, are difficult to accommodate. On average, the generative model presented here reproduces bonded parameters with an accuracy comparable to conventional methods (such as the synthesis of OMEGA and ETKDGv3), with perhaps the exception of dihedral angle sampling. This is accomplished without relying on preestablished constraints, template libraries, or external parametrization such as classical force fields. Extending this model to additional atom types should only require the construction of a suitably representative molecule data set for training that can be prepared using GFN2-xTB. It should also be possible to employ
+masking techniques, widely available for images,75−77 to extend molecule conformer generation to tasks such as fragment
+bridging.78−80 and fragment screening.81,82
+■
+CONCLUSIONS
+Presented is a physics-inspired diffusion-based model for molecule conformer generation inspired by the bonded components of classical force fields. Parameters were trained on high-quality conformers from the QMugs and GEOM-drug data sets. Learning appears robust, transferable, and explainable. Both deterministic and stochastic generation schemes are demonstrated. Average performance on the reproduction of bonded parameters exceeds that of conventional conformer generation tools. A simple example of guided generation is successful at improving dihedral sampling when compared with experimental data.
+■
+ASSOCIATED CONTENT Data Availability Statement
+A complete model implementation is available in source form at https://github.com/nobiastx/diffusion-conformer. Included are model checkpoints and scripts for training and inference. The training and benchmark data (QMugs, GEOM-drugs, CSD, and PDB) are available from public sources. s*ı Supporting Information
+The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acs.jcim.3c01816.
+Additional model probes and additional example conformer output (PDF) Video of example generation of cholesterol, using PIDM[QMugs] and 500 steps in the deterministic scheme (MP4)
+Video of example generation of naphthacene, same conditions (MP4) Video of example generation of artemether, same conditions (MP4) Video of example generation of penicillin, same conditions (MP4) Molecular structure file containing conformer outputs (MOL) SMILES strings representing conformer inputs (ZIP)
+■
+AUTHOR INFORMATION
+Corresponding Authors
+David C. Williams − Nobias Therapeutics, Inc., Mountain View, California 94041, United States; orcid.org/00000002-4123-9339; Email: dwilliams@nobiastx.com Neil Inala − Nobias Therapeutics, Inc., Mountain View, California 94041, United States; Email: inala@nobiastx.com
+Complete contact information is available at: https://pubs.acs.org/10.1021/acs.jcim.3c01816
+Notes
+The authors declare no competing financial interest.
+■
+REFERENCES
+(1) Schaduangrat, N.; Lampa, S.; Simeon, S.; Gleeson, M. P.; Spjuth, O.; Nantasenamat, C. Towards reproducible computational drug discovery. J. Cheminform. 2020, 12, 9.
+(2) Gasteiger, J.; Rudolph, C.; Sadowski, J. Automatic generation of 3D-atomic coordinates for organic molecules. Tetrahedron Computer Methodology 1990, 3, 537−547.
+(3) Vainio, M. J.; Johnson, M. S. Generating Conformer Ensembles Using a Multiobjective Genetic Algorithm. J. Chem. Inf. Model. 2007, 47, 2462−2474. (4) Corbeil, C. R.; Moitessier, N. Docking Ligands into Flexible and Solvated Macromolecules. 3. Impact of Input Ligand Conformation, Protein Flexibility, and Water Molecules on the Accuracy of Docking Programs. J. Chem. Inf. Model. 2009, 49, 997−1009.
+(5) Riniker, S.; Landrum, G. A. Better Informed Distance Geometry: Using What We Know To Improve Conformation Generation. J. Chem. Inf. Model. 2015, 55, 2562−2574.
+(6) Hawkins, P. C. D. Conformation Generation: The State of the Art. J. Chem. Inf. Model. 2017, 57, 1747−1756.
+(7) Friedrich, N.-O.; de Bruyn Kops, C.; Flachsenberg, F.; Sommer, K.; Rarey, M.; Kirchmair, J. Benchmarking Commercial Conformer Ensemble Generators. J. Chem. Inf. Model. 2017, 57, 2719−2728. (8) Wang, S.; Witek, J.; Landrum, G. A.; Riniker, S. Improving Conformer Generation for Small Rings and Macrocycles Based on Distance Geometry and Experimental Torsional-Angle Preferences. J. Chem. Inf. Model. 2020, 60, 2044−2058.
+(9) Leite, T. B.; Gomes, D.; Miteva, M.; Chomilier, J.; Villoutreix, B.; Tufféry, P. Frog: a FRee Online druG 3D conformation generator. Nucleic Acids Res. 2007, 35, W568−W572.
+(10) Lagorce, D.; Pencheva, T.; Villoutreix, B. O.; Miteva, M. A. DGAMMOS: A New tool to generate 3D conformation of small molecules using D istance Geometry and A automated Molecular Mechanics Optimization for in silico S creening. BMC Chem. Biol. 2009, 9, 6. (11) Dauber-Osguthorpe, P.; Hagler, A. T. Biomolecular force fields: where have we been, where are we now, where do we need to go and how do we get there? Journal of Computer-Aided Molecular Design 2019, 33, 133−203. (12) Case, D. A.; Cheatham, T. E., III; Darden, T.; Gohlke, H.; Luo, R.; Merz, K. M., Jr.; Onufriev, A.; Simmerling, C.; Wang, B.; Woods, R. J. The Amber biomolecular simulation programs. J. Comput. Chem. 2005, 26, 1668−1688. https://onlinelibrary.wiley.com/doi/pdf/10. 1002/jcc.20290
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+R
+
+
+(13) Halgren, T. A. Merck molecular force field. I. Basis, form, scope, parameterization, and performance of MMFF94. J. Comput. Chem. 1996, 17, 490−519. (14) Guo, L.; Yan, Z.; Zheng, X.; Hu, L.; Yang, Y.; Wang, J. A comparison of various optimization algorithms of protein-ligand docking programs by fitness accuracy. J. Mol. Model. 2014, 20, 2251 DOI: 10.1007/s00894-014-2251-3. (15) Kitchen, D. B.; Decornez, H.; Furr, J. R.; Bajorath, J. Docking and scoring in virtual screening for drug discovery: methods and applications. Nat. Rev. Drug Discovery 2004, 3, 935−949.
+(16) Pagadala, N. S.; Syed, K.; Tuszynski, J. Software for molecular docking: a review. Biophysical Reviews 2017, 9, 91−102. (17) Corso, G.; Stärk, H.; Jing, B.; Barzilay, R.; Jaakkola, T. DiffDock: Diffusion Steps, Twists, and Turns for Molecular Docking. arXiv:2210.01776 2022, DOI: 10.48550/arXiv.2210.01776. (18) Nelson, D. J.; Brammer, C. N. Toward Consistent Terminology for Cyclohexane Conformers in Introductory Organic Chemistry. J. Chem. Educ. 2011, 88, 292−294.
+(19) Jamali, F.; Mehvar, R.; Pasutto, F. M. Enantioselective Aspects of Drug Action and Disposition: Therapeutic Pitfalls. J. Pharm. Sci. 1989, 78, 695−715. (20) Brooks, W.; Guida, W.; Daniel, K. The Significance of Chirality in Drug Design and Development. Curr. Top. Med. Chem. 2011, 11, 760− 770. (21) Dugave, C.; Demange, L. Cis- trans isomerization of organic molecules and biomolecules: implications and applications. Chem. Rev. 2003, 103, 2475−2532. (22) Chastine, J. W.; Brooks, J. C.; Zhu, Y.; Owen, G. S.; Harrison, R. W.; Weber, I. T. Ammp-vis: a collaborative virtual environment for molecular modeling. In Proceedings of the ACM symposium on Virtual reality software and technology. 2005; pp. 8−15.
+(23) Hawkins, P. C. D.; Skillman, A. G.; Warren, G. L.; Ellingson, B. A.; Stahl, M. T. Conformer Generation with OMEGA: Algorithm and Validation Using High Quality Structures from the Protein Databank and Cambridge Structural Database. J. Chem. Inf. Model. 2010, 50, 572−584. (24) Landrum, G. et al. RDKit: Open-source cheminformatics. 2021; doi: DOI: 10.5281/zenodo.3732262. (25) Luo, S.; Shi, C.; Xu, M.; Tang, J. Predicting Molecular Conformation via Dynamic Graph Score Matching. In Advances in Neural Information Processing Systems; Curran Associates, Inc., 2021, pp. 19784-19795. (26) Shi, C.; Luo, S.; Xu, M.; Tang, J. Learning Gradient Fields for Molecular Conformation Generation. In Proceedings of the 38th International Conference on Machine Learning, 2021; pp. 9558−9568. (27) Xu, M.; Luo, S.; Bengio, Y.; Peng, J.; Tang, J. Learning Neural Generative Dynamics for Molecular Conformation Generation. arXiv:2102.10240 2021, DOI: 10.48550/arXiv.2102.10240. (28) Mansimov, E.; Mahmood, O.; Kang, S.; Cho, K. Molecular Geometry Prediction using a Deep Generative Graph Neural Network. Sci. Rep. 2019, 9, 20381.
+(29) Simm, G. N. C.; Hernández-Lobato, J. M. A Generative Model for Molecular Distance Geometry. arXiv:1909.11459 2020, DOI: 10.48550/arXiv.1909.11459. (30) Xu, M.; Wang, W.; Luo, S.; Shi, C.; Bengio, Y.; GomezBombarelli, R.; Tang, J. An End-to-End Framework for Molecular Conformation Generation via Bilevel Programming. In Proceedings of the 38th International Conference on Machine Learning, 2021; pp. 11537−11547. (31) Ganea, O.; Pattanaik, L.; Coley, C.; Barzilay, R.; Jensen, K.; Green, W.; Jaakkola, T. GeoMol: Torsional Geometric Generation of Molecular 3D Conformer Ensembles. In Advances in Neural Information Processing Systems; Curran Associates, Inc., 2021, pp. 13757-13769. (32) Xu, M.; Yu, L.; Song, Y.; Shi, C.; Ermon, S.; Tang, J. GeoDiff: a Geometric Diffusion Model for Molecular Conformation Generation. arXiv:2203.02923 2022, DOI: 10.48550/arXiv.2203.02923. (33) Ho, J.; Jain, A.; Abbeel, P. Denoising Diffusion Probabilistic Models. In Advances in Neural Information Processing Systems; Curran Associates, Inc., 2020.
+(34) Jing, B.; Corso, G.; Chang, J.; Barzilay, R.; Jaakkola, T. Torsional Diffusion for Molecular Conformer Generation. In Advances in Neural Information Processing Systems; Curran Associates, Inc., 2022; Vol. 35, pp. 24240-24253. (35) Axelrod, S.; Gómez-Bombarelli, R. GEOM, energy-annotated molecular conformations for property prediction and molecular generation. Sci. Data 2022, 9, 185. (36) Sohl-Dickstein, J.; Weiss, E. A.; Maheswaranathan, N.; Ganguli, S. Deep Unsupervised Learning using Nonequilibrium Thermodynamics. arXiv:1503.03585 2015, DOI: 10.48550/arXiv.1503.03585. (37) Croitoru, F.-A.; Hondru, V.; Ionescu, R. T.; Shah, M. Diffusion Models in Vision: A Survey. IEEE Transactions on Pattern Analysis and Machine Intelligence 2023, 45, 10850−10869.
+(38) DALL-E. 2023; https://en.wikipedia.org/w/index.php?title= DALL-E&oldid=1171382222, Page Version ID: 1171382222. (39) Midjourney. 2023; https://en.wikipedia.org/w/index.php?title= Midjourney&oldid=1173734882, Page Version ID: 1173734882. (40) Schaul, K.; Shaban, H.; Tan, S.; Woo, M.; Tiku, N. AI can now create images out of thin air. See how it works. https://www. washingtonpost.com/technology/interactive/2022/ai-imagegenerator/. (41) Karras, T.; Aittala, M.; Aila, T.; Laine, S. Elucidating the Design Space of Diffusion-Based Generative Models. In Advances in Neural Information Processing Systems.; Curran Associates, Inc., 2022.
+(42) Luo, C. Understanding Diffusion Models: A Unified Perspective. arXiv:2208.11970 2022, DOI: 10.48550/arXiv.2208.11970. (43) Nichol, A. Q.; Dhariwal, P. Improved Denoising Diffusion Probabilistic Models. In Proceedings of the 38th International Conference on Machine Learning, 2021; pp. 8162−8171.
+(44) Kingma, D.; Salimans, T.; Poole, B.; Ho, J. Variational Diffusion Models. In Advances in Neural Information Processing Systems; Curran Associates, Inc., 2021; pp. 21696-21707. (45) Song, Y.; Sohl-Dickstein, J.; Kingma, D. P.; Kumar, A.; Ermon, S.; Poole, B. Score-Based Generative Modeling through Stochastic Differential Equations. arXiv:2011.13456 2022, DOI: 10.48550/ arXiv.2011.13456. (46) Luo, S.; Hu, W. Diffusion Probabilistic Models for 3D Point Cloud Generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2021; pp. 2837−2845.
+(47) Kong, Z.; Ping, W.; Huang, J.; Zhao, K.; Catanzaro, B. DiffWave: A Versatile Diffusion Model for Audio Synthesis. arXiv:2009.09761 2021, DOI: 10.48550/arXiv.2009.09761. (48) Daniels, M.; Maunu, T.; Hand, P. Score-based Generative Neural Networks for Large-Scale Optimal Transport. In Advances in Neural Information Processing Systems; Curran Associates, Inc., 2022.
+(49) Chen, K.; Chen, X.; Yu, Z.; Zhu, M.; Yang, H. EquiDiff: A Conditional Equivariant Diffusion Model For Trajectory Prediction. In 2023 IEEE 26th International Conference on Intelligent Transportation Systems (ITSC), 2023.
+(50) Wang, W.; Yang, D.; Ye, Q.; Cao, B.; Zou, Y. NADiffuSE: Noiseaware Diffusion-based Model for Speech Enhancement. In 2023 Asia Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC), 2023.
+(51) Rombach, R.; Blattmann, A.; Lorenz, D.; Esser, P.; Ommer, B. High-Resolution Image Synthesis With Latent Diffusion Models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, 2022; pp. 10684−10695. (52) Vincent, P. A Connection Between Score Matching and Denoising Autoencoders. Neural Computation 2011, 23, 1661−1674. (53) Brody, S.; Alon, U.; Yahav, E. How Attentive are Graph Attention Networks? arXiv:2105.14491 2022, DOI: 10.48550/arXiv.2105.14491. (54) Glendening, E. D.; Weinhold, F. Natural resonance theory: II. Natural bond order and valency. J. Comput. Chem. 1998, 19, 610−627. (55) Xu, K.; Hu, W.; Leskovec, J.; Jegelka, S. How Powerful are Graph Neural Networks? arXiv:1810.00826 2019, DOI: 10.48550/ arXiv.1810.00826. (56) Loshchilov, I.; Hutter, F. Decoupled Weight Decay Regularization. arXiv:1711.05101 2017, DOI: 10.48550/arXiv.1711.05101.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+S
+
+
+(57) Isert, C.; Atz, K.; Jiménez-Luna, J.; Schneider, G. QMugs, quantum mechanical properties of drug-like molecules. Sci. Data 2022, 9, 273. (58) Grimme, S.; Bannwarth, C.; Shushkov, P. A Robust and Accurate Tight-Binding Quantum Chemical Method for Structures, Vibrational Frequencies, and Noncovalent Interactions of Large Molecular Systems Parametrized for All spd-Block Elements (Z = 1−86). J. Chem. Theory Comput. 2017, 13, 1989−2009. (59) Bannwarth, C.; Ehlert, S.; Grimme, S. GFN2-xTB�An Accurate and Broadly Parametrized Self-Consistent Tight-Binding Quantum Chemical Method with Multipole Electrostatics and Density-Dependent Dispersion Contributions. J. Chem. Theory Comput. 2019, 15, 1652−1671. (60) Wildman, S. A.; Crippen, G. M. Prediction of Physicochemical Parameters by Atomic Contributions. J. Chem. Inf. Comput. Sci. 1999, 39, 868−873. (61) Mendez, D.; et al. ChEMBL: towards direct deposition of bioassay data. Nucleic Acids Res. 2019, 47, D930−D940. (62) MIT Schwarzman College of Computing, I. AI Cures: datadriven clinical solutions for Covid-19. 2020; https://www.aicures.mit. edu/data. (63) Yang, K. Data and scripts for COVID-19. https://github.com/ yangkevin2/coronavirus_data, 2020. (64) Wu, Z.; Ramsundar, B.; Feinberg, E. N.; Gomes, J.; Geniesse, C.; Pappu, A. S.; Leswing, K.; Pande, V. MoleculeNet: a benchmark for molecular machine learning. Chem. Sci. 2018, 9, 513−530. (65) Song, J.; Meng, C.; Ermon, S. Denoising Diffusion Implicit Models. arXiv:2010.02502 2022, DOI: 10.48550/arXiv.2010.02502. (66) Bansal, A.; Borgnia, E.; Chu, H.-M.; Li, J. S.; Kazemi, H.; Huang, F.; Goldblum, M.; Geiping, J.; Goldstein, T. Cold Diffusion: Inverting Arbitrary Image Transforms Without Noise. arXiv:2208.09392 2022, DOI: 10.48550/arXiv.2208.09392. (67) Song, Y.; Dhariwal, P.; Chen, M.; Sutskever, I. Consistency Models. arXiv:2303.01469 2023, DOI: 10.48550/arXiv.2303.01469. (68) Kim, S.; Chen, J.; Cheng, T.; Gindulyte, A.; He, J.; He, S.; Li, Q.; Shoemaker, B. A.; Thiessen, P. A.; Yu, B. PubChem 2023 update. Nucleic Acids Res. 2023, 51, D1373−D1380.
+(69) Bolton, E. E.; Kim, S.; Bryant, S. H. PubChem3D: Conformer generation. J. Cheminform. 2011, 3, 4. (70) Deller, M. C.; Rupp, B. Models of protein-ligand crystal structures: trust, but verify. Journal of computer-aided molecular design 2015, 29, 817−836. (71) Schulz-Gasch, T.; Schärfer, C.; Guba, W.; Rarey, M. TFD: Torsion Fingerprints As a New Measure To Compare Small Molecule Conformations. J. Chem. Inf. Model. 2012, 52, 1499−1512. (72) Rudin, C. Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead. Nature Machine Intelligence 2019, 1, 206−215.
+(73) Blazek, P. J.; Lin, M. M. Explainable neural networks that simulate reasoning. Nature Computational Science 2021, 1, 607−618. (74) Xu, K.; Hu, W.; Leskovec, J.; Jegelka, S. How powerful are graph neural networks? arXiv:1810.00826 2018, DOI: 10.48550/ arXiv.1810.00826. (75) Liu, H.; Jiang, B.; Song, Y.; Huang, W.; Yang, C. Rethinking image inpainting via a mutual encoder-decoder with feature equalizations. In Computer Vision−ECCV 2020 16th European Conference, Glasgow, UK, August 23−28, 2020, Proceedings, Part II 16. 2020; pp. 725−741. (76) Lugmayr, A.; Danelljan, M.; Romero, A.; Yu, F.; Timofte, R.; Van Gool, L. Inpainting Using Denoising Diffusion Probabilistic Models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022; pp. 11461−11471. (77) Girshick, R.; Kirillov, A.; Mintun, E.; Ravi, N.; Mao, H.; Rolland, C.; Gustafson, L.; Xiao, T.; Whitehead, S.; Berg, A. C.; Lo, W.-Y.; Dollakjr, P. Segment Anything. arXiv:2304.02643 2023, DOI: 10.48550/arXiv.2304.02643. (78) Lauri, G.; Bartlett, P. A. CAVEAT: A program to facilitate the design of organic molecules. Journal of Computer-Aided Molecular Design 1994, 8, 51−66.
+(79) Thompson, D. C.; Aldrin Denny, R.; Nilakantan, R.; Humblet, C.; Joseph-McCarthy, D.; Feyfant, E. CONFIRM: connecting fragments found in receptor molecules. Journal of Computer-Aided Molecular Design 2008, 22, 761−772.
+(80) Imrie, F.; Bradley, A. R.; van der Schaar, M.; Deane, C. M. Deep Generative Models for 3D Linker Design. J. Chem. Inf. Model. 2020, 60, 1983−1995. (81) Kumar, A.; Voet, A.; Zhang, K. Fragment Based Drug Design: From Experimental to Computational Approaches. Curr. Med. Chem. 2012, 19, 5128−5147. (82) Jacquemard, C.; Kellenberger, E. A bright future for fragmentbased drug discovery: what does it hold? Expert Opinion on Drug Discovery 2019, 14, 413−416.
+Journal of Chemical Information and Modeling pubs.acs.org/jcim Article
+https://doi.org/10.1021/acs.jcim.3c01816 J. Chem. Inf. Model. XXXX, XXX, XXX−XXX
+T

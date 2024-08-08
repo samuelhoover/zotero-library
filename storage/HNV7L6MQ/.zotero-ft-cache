@@ -1,0 +1,351 @@
+Size and pH effect on electrical and conformational behavior of poly(acrylic acid): Simulation and experiment
+Abohachem Laguecir *, Serge Ulrich, Je ́ro^me Labille, Nicolas Fatin-Rouge, Serge Stoll, Jacques Buffle
+Analytical and Biophysical Environmental Chemistry (CABE), Department of Inorganic, Analytical and Applied Chemistry, University of Geneva, Sciences II, 30 quai E. Ansermet, CH-1211 Geneva 4, Switzerland
+Received 21 June 2005; received in revised form 2 November 2005; accepted 27 November 2005 Available online 10 January 2006
+Abstract
+Monte Carlo simulations, experimental titrations and fluorescence correlation spectroscopy experiments were used to investigate the conformational and electrical properties of polyacrylic acids (PAA). On the one hand, titration curves were calculated to get an insight into the role of pH on the degree of ionization and conformation of PAA chains. On the other hand, experimental potentiometric titrations of PAA were also achieved for different PAA molecular weights and compared to the calculated titration curves obtained by Monte Carlo coarse grained simulations. It was found that for a large range at intermediate PAA ionizations, a good correlation is obtained between experimental and simulations data thanks to the prominence of electrostatic interactions in this domain. The effect of ionic concentration and PAA molecular weight on the titration curves was also investigated. In order to get a better understanding of PAA conformational behavior, we also investigated PAA diffusion properties in aqueous solutions as a function of pH and ionic strength by fluorescence correlation spectroscopy (FCS), thanks to its high sensitivity to measure diffusion coefficients of tracer solutes. Good qualitative agreements were observed between experimental diffusivities and polymer properties calculated from MC simulations. It was shown that the high molecular weight PAA chains display more significant changes in diffusivity in agreement with the ionization degrees and conformational changes observed in the simulations. Ó 2005 Elsevier Ltd. All rights reserved.
+Keywords: Poly(acrylic acid) ionization; Titration curves; Diffusion coefficient; Fluorescence correlation spectroscopy; Monte Carlo simulations
+1. Introduction
+Polyelectrolytes are defined as macromolecules with many ionizable groups. Due to their remarkable properties and wide possible applications, they have since more than one half-century stimulated great interest from both experimental and theoretical point of views [1–3]. Polyelectrolytes may be
+0014-3057/$ - see front matter Ó 2005 Elsevier Ltd. All rights reserved. doi:10.1016/j.eurpolymj.2005.11.023
+* Corresponding author. Tel.: +41 22 379 6449; fax: +41 22 379 6069. E-mail addresses: abohachem.laguecir@cabe.unige.ch, abohachemlaguecir@yahoo.fr (A. Laguecir). URL: http://www.unige.ch/cabe (A. Laguecir).
+European Polymer Journal 42 (2006) 1135–1144
+www.elsevier.com/locate/europolj
+EUROPEAN POLYMER JOURNAL
+
+
+classified based on their behavior against pH variations. Charged polymers are usually termed as strong polyelectrolytes when the charge amount and distribution along the polyelectrolyte is not sensible to large pH variations and depends only on the initial chemistry. On the other hand, when the amount of charged sites varies as a function of pH, and therefore ionization sites are able to move along the chain, the polymer is defined as a weak polyelectrolyte such as polyvinylamine (PVAm), poly(methacrylic acid) (PMA) or poly(acrylic acid) (PAA) just to quote a few. Polyacrylic acids are of particular interest because of their use as model ligands for natural organic polyacids which play a major role in many physicochemical processes in aquatic systems [4,5]. The metal ions transport properties of such polyelectrolytic compounds are still not fully understood [6]. Moreover, their conformations and aggregation behavior are critical in their transport properties. The number of charges of a weak polyelectrolyte at a given pH depends on its acid–base properties but also on its concentration, solution ionic strength and on the presence of other charged species such as co-ions and counter-ions. The equilibrium constant of an isolated acid monomer (HA) in an aqueous medium is given by KA = [H+][A]/[HA] where
+[H+], [A] and [HA] are the concentration of dissociated protons, dissociated and undissociated acid, respectively. The degree of ionization is defined by a = [A]/([A] + [HA]). Solution pH and ionization degree are related to pKA via the Henderson–Hasselbach equation [10]:
+pKA 1⁄4 pH  log a
+1  a ð1Þ
+The behavior of polyacids can be described in a very similar way. Nonetheless, it is well established that, due to the monomer connectivity along a linear chain and the presence of short and long range interactions, the further increase of the charge density is made difficult [7,8]. Hence, the increase of the electrostatic repulsions between charged monomers along the chain is expected to play an important role in the acid–base properties of the polyelectrolyte. As a consequence, one of the most important characteristic features of the dissociation equilibrium is the continuous decrease of K with increasing the degree of ionization a [9–12]. Potentiometric titrations of polyelectrolytes in aqueous solutions have been largely studied in the literature both from an experimental and theoretical point of view
+[13–15]. In some situations, computer simulations fill the gap between existing theories and experiments. Monte Carlo simulations have been used by Ullner et al. to investigate different models for linear polyelectrolytes [10,16–18]. Recently, we used lattice Monte Carlo simulations to study titration and conformational properties of polyelectrolytes either isolated or absorbed onto a colloidal surface [19–21]. In this work, we performed Monte Carlo simulations using screened Coulomb potentials in the grand canonical ensemble to gain an insight into the titration curves and conformations of weak polyelectrolytes. A coarse-grained model using a pearlnecklace chain consisting of point charges connected to each other is used to describe the PAA polyelectrolyte chain. Simultaneously, experimental potentiometric titrations of PAA were also achieved for different PAA molecular weight and compared to the calculated titrations curves obtained by simulations. The effect of ionic concentration and PAA molecular weight on the titration curves was also investigated. Fluorescence correlation spectroscopy (FCS) experiments on PAA were achieved in order to get a better understanding of PAA conformational behavior through the study of PAA diffusion properties in aqueous solutions. By comparison with simulations, the PAA diffusivity behavior with respect to pH and ionic strength versus molecular weight is also discussed. The paper contains an experimental section, the description of the Monte Carlo procedure and model used, and finally a comparison between experimental and calculated data for titration curves and polymer diffusivity.
+2. Experimental section
+2.1. Reagents and general procedures
+Four polyacrylic acids of different molecular weights [–CH2CH(COOH)–]n were obtained from Polysciences, Inc. (Warrington PA, USA): 1800 Da (65 w/w% solution), 5000 Da (50 w/w% solution), 50 000 Da (25 w/w% solution), and 4 · 106 Da (powder). The fluorophore Rhodamine 123 (R123, Sigma 99%) C21H17N2O3 used for FCS was of analytical grade. 1-[3-(Dimethylamino)-propyl]-3-ethylcarbodiimide hydrochloride (EDC) was obtained from Acros Organics, while N-hydroxysulfosuccinimide sodium salt (HSSS) was obtained from Fluka.
+1136 A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144
+
+
+PAAs have been labelled with the fluorescent tag, Rhodamine 123 (R123), by using a ratio of one fluorophore per PAA molecule in the synthesis solution in order to get no more than one fluorophore inserted per PAA molecule to prevent any change in the polymer conformation. Fluorescent labelling of PAA with average molecular weights 5000 and 50 000 Da was performed in aqueous solution (see Fig. 1). Typically, few milligrams of HSSS and EDC were dissolved in 10 mL of water. This solution was immediately mixed with an aqueous solution of PAA (2 mmol in 10 mL). Finally, a small aliquot of R123 in DMF (2 mmol in 100 lL) was added and the mixture was let under stirring at RT for a day. The reaction mixture was dried, and then the solid was dissolved in 50 mL of water at pH 9, followed by three extractions with CH2Cl2. The aqueous phase was concentrated to about 2 mL. A subsequent purification procedure was used, consisting in the separation from free R123 by size exclusion chromatography on Sephadex G100 beads using a phosphate buffer for the 50 000 Da PAA and by HPLC using a Shodex OHpak SB-805Q column with a 1 mM phosphate buffer as the eluent.
+2.2. Potentiometric titration
+The titration set-up was composed of an Ionometer–pHmeter (PHM250, Radiometer), an auto-burette (ABU901, Radiometer), and a thermostated titration cell (HMT200 Radiometer) regulated at 298 ± 0.1 K by a thermocryostat (CBN 8-30 Heto Lab Equipment), and kept under nitrogen gaz. The pH measurements were made with a combination electrode GK2401 (Radiometer). Automatic titration was used. Small doses of titrant were added, followed by pauses for pH stabilisation. When the pH drift satisfied the selected stability requirement,
+equilibrium pH was recorded and the next titrant increment was added. The volume of the increments was adjusted between 5 and 50 lL by a proportional, integral, derivative (PID) regulation. All solutions were prepared with MilliQ water. Samples were prepared by dissolving 10 mg of PAA in 50 mL of background electrolyte NaCl (103 M), and were first acidified to pH 3 by HClO
+4 addition. The titrant was NaOH (2 ·
+102 M), and the procedure was stopped when pH 10 was reached. The ionisation of the PAA with increasing pH was calculated by subtracting the free OH concentration in solution from the total OH added to the PAA solution.
+2.3. Fluorescence correlation spectroscopy (FCS)
+FCS is based on the quantification of the intensity fluctuations of the light emitted by a small number of fluorescent molecules diffusing in a micrometricconfocal volume. For a single diffusing specie, the normalized autocorrelation function of these fluorescence intensity fluctuations can be described by the hyperbolic function [22]:
+GðtÞ 1⁄4 Gð0Þ 1 þ t
+s
+ 1
+1þ t
+p2s
+ 0:5
+ð2Þ
+where G(0) is the value of G(t) at time t = 0, s is the diffusion time of the dye within the confocal volume and p is the structure parameter (ratio of the transversal, xxy, to longitudinal radius, xz, of the confocal volume: p = xxy/xz). Values of p were obtained by calibration of the apparatus with R123, which has a known diffusion coefficient of 2.8 · 106 cm2 s1 in water [23]. Diffusion coefficients (D) were then calculated from measured diffusion times using the following equation [24]:
+D 1⁄4 x2
+xy=4s ð3Þ
+HO
+O
+HO
+O
+HO
+O
+HO
+O
+HO
+O
+n
+EDC in H2O, pH = 6
+N
+H3CO2C
+NH2 O H
+H
++
+in DMF
++
+HO
+O
+HO
+O
+HO
+OO
+HO
+O
+n
+N
+CO2CH3
+H2N
+O
+H+
+Fig. 1. Labelling of the poly(acrylic acid) [–CH2CH(COOH)–]n (PAA) with the fluorescent tag, Rhodamine 123 (R123), with a ratio 1:1.
+A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144 1137
+
+
+Experiments were performed with a ConfoCor Axiovert 135 TV; Carl Zeiss. The samples were excited with an Ar+ laser (488 nm) and fluorescence intensity was measured with an avalanche photodiode detector (SPCM-200PQ). The variations in fluorescence intensity in the confocal volume (1 lm3) were attributed to translational diffusion of the fluorophore only and were analyzed using Eq. (2) modified for a two component system made of fluorescently tagged PAA and free R123. Each reported data was determined as a mean of ten measurements at least to ensure representative values for D. Acquisition times of 20–200 s were used to get a good signal-to-noise ratio.
+3. Monte Carlo simulations
+The linear polymer chain is represented as a succession of N off-lattice three-dimensional freely jointed hard spheres and each sphere is considered to be a physical monomer of radius rm = lB/2 =
+3.57 A ̊ (lB represents the Bjerrum length at 298 K). Depending on the solution pH, the monomers may have a negative charge equal to 1 on their centres or be neutral. Hard-sphere repulsions Eev are considered to include monomers excluded volumes. The total energy Etot of the system does not include the component originating from the entropy of the polymer chain for a given conformation but is the sum of the hard-sphere, repulsive and attractive interactions between monomers. Hard-sphere repulsions between a monomer i and a monomer j are described as
+uevðrijÞ 1⁄4 1 when rij < ri þ rj
+0 when rij P ri þ rj
+
+ð4Þ
+The solvent is treated as a dielectric medium with a relative dielectric permittivity constant er taken as that of water at 298 K, i.e. 78.5. The long-range repulsive electrostatic potential along the distance rij between a charged monomer i and a charged monomer j is described via a screened Debye–Hu ̈ ckel potential,
+uelðrijÞ 1⁄4 zizje2
+4pere0rij
+expðjrijÞ ð5Þ
+where e is the elementary charge (e = 1.6 · 1019 C), e0 is the permittivity of the vacuum (e0 = 8.85 ·
+1012 C V1 m1) and z is the amount of charge on the monomer equal to 0 or 1. The potential uel(rij) is therefore expressed in C V or J. The overall effect
+of free ions is described via the dependence of the inverse Debye screening length j2 (m2) on the electrolyte concentration as
+j2 1⁄4 1000e2N A
+X
+i
+z2
+i Ci
+e0erkBT ð6Þ
+where NA represents the Avogadro number (NA =
+6.022 · 1023 mol1), Ci the ionic concentration
+(mol Æ L1), kB the Boltzmann constant (kB =
+1.38 times 1023 J K1) and T the temperature (all the simulation runs were performed with T = 298 K). We performed MC simulations according to the traditional Metropolis algorithm [25]. In this method, successive ‘‘trial’’ chain conformations are generated to obtain a reasonable sampling of lowenergy conformations. The monomer positions are randomly modified by specific movements to generate new conformations. These movements include two ‘‘internal’’ movements (end-bond and kinkjump) and pivot movements. After each elementary random move, the change in energy resulting from the move DE is computed and the Metropolis selection criterion is employed to either select or reject the movement. The perturbation process is continued a specified number of times (a typical run requires several millions of perturbations) until the conformation is energy-minimized and equilibrated. To generate reversible protonation/deprotonation processes, at regular simulation steps, monomers are chosen randomly and their charges are switched from neutral to charged state or inversely. In order to achieve an efficient conformational relaxation of the chain after switching on or off charged monomers, a limit of N/4 monomers was imposed during the protonation/deprotonation procedure. It should be noted that this procedure is less frequent than that of the monomer movements and that the ratio between them depends on the chain length owing to the fact that longer chains need more time to relax. The energy change corresponding to an additional charge on a given polyelectrolyte is measured by the chemical potential l, related to the pH via
+l 1⁄4 kBT ðpH  pK0Þ lnð10Þ ð7Þ
+where pK0 is the intrinsic pKA of an isolated monomer. For the study of polyacrylic acid, we consider the dissociation constant of acrylic acid i.e. pK0 = 4.756 [26]. The pH is an input parameter. Each acid–base reaction of an isolated monomer is accepted or not by considering again the Metropolis
+1138 A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144
+
+
+Monte Carlo selection criterion. Hence the energy change is defined by the change of electrostatic energy modulated by the chemical potential l according to
+DE 1⁄4 DEtot  kBT ðpH  pK0Þ lnð10Þ ð8Þ
+The plus and minus signs are used in Eq. (8) for protonated and deprotonated monomers, respectively. In grand canonical simulations, the chemical potential is fixed and, after energy minimization, the mean value of a is measured. Initially, in our simulations, the degree of ionization a is set to zero. Then to mimic the polyelectrolyte titration (deprotonation), the pH  pK0 value is increased by half unit after each equilibration periods. To characterize polyelectrolyte conformational changes during the increase of the degree of ionization a, the mean-square radius of gyration hR2
+gi and the mean-square end-to-end
+distance hR2
+eei are calculated.
+4. Results and discussion
+4.1. Titration curves
+We carried out experimental potentiometric titration curves of the PAA where the degree of ionization a of the PAA changes with pH. As shown in Fig. 2, three different PAA were considered with three different molecular weight Mw equal to 1800, 5000 and 50 000 Da. In Fig. 2, N is the number of monomer units in the corresponding PAA. The ionic strength used is equal to 0.001 M. First, one can observe that the curves present typical behavior with an increase of a with pH. Titration curves of PAA are very different from the acrylic acid. Obviously the electrostatic interactions play a major role in the solution behavior of PAA, the presence of vicinal charges making further ionization of the PAA chain more difficult. The difference between the acid/base properties of the polymeric acid and the corresponding acidity of an isolated monomer is defined as DpK 1⁄4 pK  pK0 1⁄4 pH  pK0  a
+1a where pK0 is the intrinsic pKA of the isolated monomeric acid (acrylic acid in our case) and pK is the apparent equilibrium constant. The difference between the apparent and intrinsic pKa is related to the excess of free energy due to the interactions between sites. During the neutralization of polymeric acids, there is a continuous decrease in acid strength. Hence, the apparent dissociation constant largely depends both on the degree of ionization of the acid and on the ionic concentration of the solution which influences DpK.
+Polyelectrolyte length i.e. polymer molecular weight as well as polymer concentration in solution are also expected to play roles because of the influence of monomer densities. To investigate chain length effects on the titration curves, titrations were done at low ionic concentration Ci = 0.001 M where size effects are expected to be the more important. Fig. 2 demonstrates that high molecular weight PAA is more difficult to ionize because of the increase of the total electrostatic potential on each monomer with increasing the molecular weight of the PAA. This size effect is clearly seen for instance by recording the pH corresponding to a = 0.5. For acrylic acid, one gets pH = pK0 = 4.76, but for PAA, pH = pK is equal to 5.98, 6.36 and 6.62 for Mw corresponding to 1800, 5000 and 50 000 Da, respectively. Hence, the apparent pK values clearly increase with Mw. PAA titration curves obtained experimentally and by Monte Carlo simulations were compared in Fig. 3 for three Mw values (1800, 5000 and 50 000 Da). The ionic strength was equal to 0.001 M in all cases. A good agreement between experimental and simulation data is observed for the three Mw values. Fig. 3(a) shows three domains of pH where we can discuss the accuracy of the simulations.
+2 3 4 5 6 7 8 9 10 11
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+4.76 5.98
+6.36
+6.62
+PAA Mw=1800 Da N=25
+PAA Mw =5000 Da N=70
+PAA Mw =50000 Da N=700
+Acrylic Acid behaviour pH=pK0+log ( /1- )
+Ionization degree
+pH
+Fig. 2. Experimental potentiometric titrations a = f(pH) presenting the PAA degree of ionization a as function of the pH. Different PAA molecular weights Mw equal to 1800, 5000 and 50 000 Da were used. N is the number of monomer units per molecule and the vertical lines, corresponding to a = 0.5 provide the apparent pKa values. The behavior of the monomeric acid i.e. acrylic acid (pKa = 4.76) is represented as solid line. The ionic strength is equal to 0.001 M (the size of the symbols includes the error).
+A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144 1139
+
+
+When 4.0 6 pH 6 8.5 and 0.1 6 a 6 0.8, there is a very good fit between simulations and experiments because of the importance of the electrostatic inter
+actions which are well described by using a screened Debye–Hu ̈ ckel approach. For extreme a (pH < 4 and pH > 8.5), the model overestimates a. At low pH (pH < 4), PAA exhibits a low degree of ionization: a < 0.1. In this region electrostatic interactions are not dominant, van der Waals interactions and hydrogen bonding are expected to play a non-negligible role by promoting compact conformations. Since our model does not include these interactions, it slightly overestimates chain ionization when a < 0.1. The last domain corresponds to pH > 8.5 and a > 0.8 where PAA is highly charged. In this domain, our model overestimates the value of a. This is due to the fact that in our model, electrostatic interactions are expressed by the Debye–Hu ̈ ckel approximation which is not fully valid at high charge densities by overestimating charge screening [1].
+4.2. PAA diffusivities obtained from FCS measurements
+For such compounds like PAA which can aggregate easily, an attractive aspect of FCS in studying polymer solutions is its ability to detect solutes at very diluted concentrations (108–1015 M). At high dilution and constant viscosity, solute diffusivity may reflect conformational changes, especially for flexible and ionic polymers. For example FCS has been used to study the diffusivity and size of different natural polysaccharides [27] and conformational changes of biomolecules [28]. The diffusivity at pH = 6 of the labelled PAA investigated here is reported in Fig. 4 and compared to other values
+2 3 4 5 6 7 8 9 10 11
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+(a)
+(b)
+(c)
+Mw =50000 Da; N=700
+Ionization degree
+pH
+2 3 4 5 6 7 8 9 10 11
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0 Mw=1800 Da; N=25
+Ionization degree
+pH
+2 3 4 5 6 7 8 9 10 11
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0 Mw =5000 Da; N=70
+Ionization degree
+pH
+Fig. 3. Comparison between PAA titration curves a = f(pH) obtained by experiments and Monte Carlo simulations at different PAA molecular weight Mw (1800 Da (c); 5000 Da (b) and 50 000 Da (a)). Hollow symbols (vh) represent the experimental data and filled symbols (b•j) the MC simulations. The ionic strength is equal to 0.001 M.
+10 2 10 3 10 4 10 5 10 6 10 7
+1E-9
+1E-8
+1E-7
+1E-6
+1E-5
+Free Rhodamine R123 FCS measurements Data from Polymer Handbook [29] Data from Clever Rob PhD Thesis [30]
+Diffusivity / cm2 s-1
+PAA Molecular Weight Mw / Da
+Fig. 4. Diffusion coefficients of several PAAs and free Rhodamine R123 as a function of their molecular weight. The ionic strength is equal to 0.01 M (NaCl); T = 20 °C.
+1140 A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144
+
+
+issued from the literature [29,30] in the same conditions. Diffusivity of free Rhodamine R123 is displayed in Fig. 4 for comparison. Diffusivities obtained for the two PAA investigated here are in agreement with those reported. By increasing the PAA Mw, the plot displays a change in the diffusion regime which could correspond to a conformational change of the polymer or aggregation process.
+4.3. pH effects on polymer conformation
+To get an insight on the conformational behavior of charged PAA, we calculated by Monte Carlo simulations the mean square radius of gyration hR2
+gi for the three PAA. This was performed as a function of pH (Fig. 5(a)) and a (Fig. 5(b)). The ionic strength was maintained to 0.001 M to mimic experimental conditions. As expected, the mean square radius of gyration hR2
+gi globally increases with pH and a.
+From the mean-square radius of gyration hR2
+gi and
+the mean-square end-to-end distance hR2
+eei, we cal
+culated the expansion factor r 1⁄4 hR2
+eei=hR2
+gi which quantifies the conformational change of the PAA and permits direct comparison with polymer chain models such as the self avoiding or rigid rods. When pH is low, a is close to 0 and the expansion factor r is equal to 6.6, 6.8 and 7.0 for Mw equal to 1800, 5000 and 50 000 Da, respectively. Such values are close to 6.5 for all Mw, which is a value representative of self-avoiding walk (SAW) dimensions [31]. On the other hand when pH is high, PAA are almost fully charged and long range interactions are strong enough to extend conformations and increase hR2
+gi. As illustrated by Fig. 5(a), the PAA adopts two different conformational behavior. The smaller molecular weight (Mw = 1800 Da) presents a monotonic increase (although not very important) of the mean square radius of gyration hR2
+gi (from
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+0
+2000
+4000
+6000
+8000
+10000
+20000
+40000
+60000
+80000
+100000
+120000
+<Rg2>
+<Rg2>
+(b) Ionization degree
+N=25 N=70 N=700
+2 3 4 5 6 7 8 9 10 11
+0
+2000
+4000
+6000
+8000
+10000
+20000
+40000
+60000
+80000
+100000
+120000
+(a) pH
+N=25 N=70 N=700
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+1E-7
+1E-6
+1E-5
+1E-4
+1E-3
+(c)
+Volume charge density [e.A-3]
+Ionization degree
+N=25 N=70 N=700
+2 3 4 5 6 7 8 9 10 11
+0.2
+0.3
+0.4
+0.5
+0.6
+(d)
+Mw= 50000 Da ; N=700
+PAA Diffusivity D x 10 6 /cm2 s-1
+pH
+Fig. 5. Evolution of the mean square radius of gyration hR2
+gi obtained by Monte Carlo simulation as function of pH (a); a (b) and evolution of the volume charge density q as function of a (c). Conformational changes of PAA as obtained from variations of diffusivity from FCS measurements (d). The ionic strength is equal to 0.001 M.
+A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144 1141
+
+
+about 500 at a = 0 to about 1400 at a = 1). For higher weights (Mw = 5000 and 50 000 Da) more important changes are observed at different pH and a values. For Mw = 5000 Da, the conformational change occurs at pH  6 which corresponds to a  0.45. For Mw = 50 000 Da, the corresponding pH is about 7.5 corresponding to a  0.6. Thus, the higher molecular weight PAA needs more charge to expand than the lower molecular weight PAA. This is due to the fact that spatial extension is directly induced by the increase of the persistence length due to electrostatic repulsions from ionization. Longer macromolecules require higher persistence length to induce a significant extension. For a = 1, the expansion factor r values are equal to 11, 10.5 and 10 for Mw equal to 1800, 5000 and 50 000 Da, respectively. These r value are a little bit smaller than that predicted (r = 12) for the rodlike conformations in free salt regime [31]. This is due to both the presence of salt (Ci = 0.001 M in our case) and thermal fluctuations that locally affect the monomer distribution. We calculated the volume charge density q from a and Rg and represented in Fig. 5(c) its evolution as function of a. For all Mw, the volume charge density presents the same profile, after an increase up to a = 0.25, q reaches a constant plateau value while a still continues to increase to 1. This clearly demonstrates that the polyelectrolyte conformation is continuously adjusted so as to keep its volume charge density to a constant value. Variations of the diffusivity obtained from FCS measurements on labeled 50 000 Da PAA are reported in Fig. 5(d). A good agreement is obtained between the curves displayed in Fig. 5(a) and (b) and variations of the polymer diffusivity hence supporting a direct relation between the ionization degree a and the PAA diffusivity. A qualitative agreement is obtained between the evolution of the mean square radius of gyration and diffusivity with pH and a.
+4.4. Ionic strength effects on polymer conformation
+Fig. 6(a) presents, at pH 6, the mean a value of PAA obtained by Monte Carlo simulations for Mw equal to 5000 and 50 000 Da (N = 70 and 700) as function of the logarithm of the ionic strength Ci. a increases with Ci because charge creation is made easier by the increase of charge screening. For a given Ci value, in the low ionic concentration regime (0.001 M 6 Ci 6 0.05 M), the higher molecular weight PAA presents a lower degree of ionization
+owing to the less important volume charge density. At large Ci, values of a are similar for low and high
+-3.0 -2.5 -2.0 -1.5 -1.0 -0.5 0.0
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+(a)
+N=70 N=700
+-3.0 -2.5 -2.0 -1.5 -1.0
+2000
+4000
+6000
+8000
+10000
+60000
+62000
+64000
+66000
+68000
+70000
+(b)
+<Rg 2>
+Log Ci
+Log Ci
+N=70 N=700
+-3.0 -2.5 -2.0 -1.5 -1.0
+0.2
+0.4
+0.6
+1.0
+1.5
+2.0
+(c)
+PAA N=70 Mw=5000 Da PAA N=700 Mw=50000 Da
+PAA Diffusivity D x 10 6 /cm2 s-1
+Log Ci
+Fig. 6. (a) Mean PAA degree of ionization a obtained at pH = 6, by MC simulations with respect to the logarithm of the ionic strength hai 1⁄4 f ðlogðCiÞÞ. (b) Mean square radius of gyration variation obtained at pH = 6, by Monte Carlo simulations with respect to the logarithm of the ionic strength hR2
+gi 1⁄4 f ðlogðCiÞÞ. (c) Evolution of the diffusion coefficient, D, of PAA obtained by FCS experiment with respect to the logarithm of the ionic concentration for PAA molecular weight equal to 5000 and 50 000 Da.
+1142 A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144
+
+
+Mw indicating that the screening Debye length is less than the chain dimensions. In Fig. 6(b), the variation of the mean square radius of gyration hR2
+gi of PAA for Mw equal to 5000 and 50 000 Da (N = 70 and 700) as function of log(Ci) is presented. These data were obtained from simulations at pH = 6. In general, the increase of ionic strength may have two opposite effects on a PAA backbone: (i) as shown in Fig. 6(a), it increases a which should induce an increase of hR2
+gi (Fig. 4) whereas (ii) it reduces the Debye length increasing thus the charge screening of the polyelectrolytes which is leading to a decrease of hR2
+gi. One can observe that the two PAAs exhibit the same conformational behavior in Fig. 6(b), hR2
+gi stays constant with the increase of the ionic strength because of the concomitant increase of a and charge screening with Ci, then it decreases in the high salt concentration domain where the charge screening effect is prevalent. Fig. 6(c) shows the evolution of the diffusion coefficient for PAA molecular weight equal to 5000 and 50 000 Da obtained by FCS as function of log(Ci). On the one hand, for the 5000 Da PAA, the ionic strength has no detectable effect on the polymer conformation in the limit of experimental errors. On the other hand, in agreement with Fig. 6(b), it is observed a significant variation of diffusivity for the 50 000 Da PAA in good agreement with the hR2
+gi decrease predicted by the simulations.
+5. Conclusions
+Acid–base titrations, FCS measurements and Monte Carlo simulations were used to investigate the conformational and electrical properties of polyacrylic acids (PAA). On the one hand, titrations curves were calculated to get an insight into the role of pH on the ionization degree and conformations of PAA chains. On the other hand, experimental potentiometric titrations and diffusivities of PAA were also achieved for different PAA molecular weights and compared to calculations of charge density and macromolecular expansion factor obtained by Monte Carlo simulations. It was found that for a large range of ionization degrees, a good correlation is obtained between experimental and simulations data where electrostatic interactions are dominant. Size effects on the PAA electrical properties were observed both from simulations and experiments and it was shown that high and low molecular weight PAA did not exhibit similar behavior. On one hand, at low ionic strength and
+for a given pH, larger molecular weights PAA have a lower ionization degree. However, the ionisation degree becomes very similar at high ionic strengths. On the other hand, high molecular weight PAA exhibit larger variations of diffusivity versus ionic strength in agreement with larger variations of their ionization degree and expansion factor.
+Acknowledgements
+We gratefully acknowledge Dr. F. Thomas and E. Schouller for their helpful contribution in potentiometric titration experiments. This work was financially supported by the Commission Suisse pour La Technologie et l’Innovation (CTI), Project 6824-1 IWS-IW and from the Swiss National Research, Project 200020-101974/1.
+References
+[1] Ullner M. Polyelectrolyte models in theory and simulation. In: Tripathy SK, Kumar J, Nalwa HS, editors. Handbook of polyelectrolytes and their applications, vol. 3. Los Angeles: American Scientific Publishers; 2002. p. 271–308. [2] Mandel M. Polyelectrolytes. In: Kroschwitz J, editor. Encyclopedia of polymer science and engineering, vol. 11. New York (NY): Wiley; 1987. p. 739–829. [3] De Gennes PG. Scaling concepts in polymer physics. Ithaca (NY): Cornell University Press; 1979. [4] Cleven R. Ph.D. Thesis, Heavy metal/polyacid interaction, 1989. [5] Buffle J. Complexation reactions in aquatic systems. An analytical approach. Chichester: Ellis Horwood Publishers; 1988. 700 pp. [6] Tsvetkov VN, Skazka VS, Lyubina SYa, Tarasova GV, Nikitin NA, Otradina GA. Sedimentation and diffusion of poly(acrylic acid) in solutions of high ionic strength. Ukrains’kii Fizichnii Zhurnal 1967;12(2):288–94 (Ukrainian edition). [7] Napper DH. Polymeric stabilization of colloidal dispersions. London, UK: Academic Press; 1983. [8] Overbeek JTG. The dissociation and titration constants of polybasic acids. Bull Soc Chim Belg 1948;57:252–61. [9] Reed CE, Reed WF. Monte-Carlo study of titration of linear polyelectrolytes. J Chem Phys 1992;96(2):1609–20. [10] Ullner M, Jo ̈ nsson B, Widmark PO. Conformational properties and apparent dissociation constants of titrating polyelectrolytes: Monte Carlo simulation and scaling arguments. J Chem Phys 1994;100(4):3365–6. [11] Katchalsky A. Solutions of polyelectrolytes and mechanochemical systems. J Polym Sci 1951;7:393–412. [12] Katchalsky A, Gillis J. Theory of the potentiometric titration of polymeric acids. Recl Trav Chim Pay-B 1949;68:879–97. [13] Mandel M. The potentiometric titration of weak polyacids. Eur Polym J 1970;6:807–22. [14] Nagasawa M. Potentiometric titration and conformation of synthetic and natural polyelectrolytes. Pure Appl Chem (Chimie pure et appliqu ́ee) 1971;26(3):519–36.
+A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144 1143
+
+
+[15] Raphael E, Joanny JF. Annealed and quenched polyelectrolytes. Europhys Lett 1990;13(7):623–8. [16] Ullner M, Jo ̈ nsson B. A Monte Carlo study of titrating polyelectrolytes in the presence of salt. Macromolecules 1996;29(20):6645–55. [17] Ullner M, Jo ̈ nsson B, Soederberg B, Peterson C. A Monte Carlo study of titrating polyelectrolyes. J Chem Phys 1996;104(8):3048–57. [18] Ullner M, Woodward CE. Simulations of the titration of linear polyelectrolytes with explicit simple ions: comparisons with screened coulomb models and experiments. Macromolecules 2000;33(19):7144–56. [19] Laguecir A, Stoll S. Adsorption of a weakly charged polymer on an oppositely charged colloidal particle: Monte Carlo simulations investigation. Polymer 2005;46(4):1359–72. [20] Ulrich S, Laguecir A, Stoll S. Complex formation between a nanoparticle and a weak polyelectrolyte chain: Monte Carlo simulations. J Nanopart Res 2004;6(6):595–603. [21] Ulrich S, Laguecir A, Stoll S. Titration of hydrophobic polyelectrolytes using Monte Carlo simulations. J Chem Phys 2004;122(9):094911/1–1/9. [22] Aragon SR, Pecora R. Fluorescence correlation spectroscopy as a probe of molecular dynamics. J Phys Chem 1975;64:1791–803.
+[23] Magde D, Elson EL. Fluorescence correlation spectroscopy. I. Conceptual basis and theory. Biopolymers 1974;13(1): 1–28. [24] Madge D, Elson EL, Webb WW. Fluorescence correlation spectroscopy. II. An experimental realization. Biopolymers 1974;13(1):29–61. [25] Chodanowski P, Stoll S. Monte Carlo simulations of Hydrophobic polyelectrolytes: evidence of complex configurational transitions. J Chem Phys 1999;111:6069–81. [26] Lide David R, editor. CRC handbook of chemistry and physics. 85th ed. CRC Press; 2004–2005. [27] Meunier F, Wilkinson KJ. Non-perturbing fluorescent labelling of polysaccharides. Biomacromolecules 2002;3:857–64. [28] Bo ̈ rsch M, Turina P, Eggeling C, Fries JR, Seidel CAM, Labahn A, et al. Conformational changes of the H+-ATPase from Escherichia coli upon nucleotide binding detected by single molecule fluorescence. FEBS Lett 1998;437:251–4. [29] Brandrup J, Immergut EH. Polymer handbook. 3rd ed. John Wiley & Sons Inc; 1989. [30] Cleven Rob FMJ. Heavy metal/polyacid interaction. Ph.D. Thesis, 1984. [31] Stevens MJ, Kremer K. The nature of flexible linear polyelectrolytes in salt free solution: a molecular dynamics study. J Chem Phys 1995;103(4):1669–89.
+1144 A. Laguecir et al. / European Polymer Journal 42 (2006) 1135–1144

@@ -1,0 +1,632 @@
+FULL PAPER
+The water molecule arrangement over the side chain
+of some aliphatic amino acids: A quantum chemical
+and bottom-up investigation
+Giuseppe Lanza | Maria A. Chiacchio
+Dipartimento di Scienze del Farmaco, Università di Catania, Catania, Italy
+Correspondence
+Giuseppe Lanza, Dipartimento di Scienze del Farmaco, Università di Catania, Viale A. Doria 6, Catania, Italy. Email: glanza@unict.it
+Funding information Università di Catania
+Abstract
+The geometry of surrounding water molecules on the side chain of glycine, alanine,
+α-aminoisobutyric acid, α-aminobutyric acid, valine, and related hydrocarbons has
+been analyzed combining bottom-up and quantum chemical methodologies. To mini
+mize the cavity size and to prevent water-water hydrogen bonding loss, the water
+molecules adopt a shape, resembling the one found in crystal structure of gas clath
+rate hydrates, with water molecules tangentially oriented to the surface of hydropho
+bic side chain. The cage is directly hydrogen bonded to the backbone's polar groups,
+thus hydration shells around hydrophobic and hydrophilic groups are folded together
+in amphiphilic molecules. The hydrophobe enclathration implies a substantial free
+dom degree reduction which makes it entropically disfavored. This disadvantageous
+entropic contribution is partially compensated by the favorable van der Waals inter
+actions with guest in stabilizing clathrate hydrate formation. The water shell around
+the side chain relates intimately with the side-chain rotational isomerism. Present
+data are correlated with the experimental determined populations of the three
+rotamers, yielding promising results for both α-aminobutyric acid and valine.
+KEYWORDS
+amino acid side chain, clathrate hydrates, DFT, hydrogen bond, hydrophobic effect
+1 | INTRODUCTION
+Hydrophobicity is one of the most important and one of the most discussed issues of structural biology.[1–9] In spite of the enormous
+experimental and modeling efforts, many microscopic aspects related to the nature of forces and action mechanism are still not well understood.
+When a hydrocarbon or the hydrophobic side chain of an amino acid is hydrated, it is generally assumed that there are modest favorable
+electronic interactions between the hydrophobic molecule and water molecules. In addition, the water molecule arrangement around nonpolar
+surfaces leads to a significant entropy reduction, hence to unfavorable Gibbs free energy variations. The decrease of entropy was interpreted as
+due to more “ordered” water distribution than in the bulk water, and the formation of microscopic icebergs around hydrophobic solutes or groups
+was proposed. Furthermore, it was suggested that the iceberg extension increases with the size of the solute molecule. This idea was further
+reinforced by the crystal structures of the gas hydrates[10] and by Kauzmann's successive studies.[1] He hypothesizes a hydration shell around
+nonpolar molecules or moieties resembling a clathrate-like structure. Intimately correlated with this, there are the hydrophobic effects, that is, the
+attractive interactions between nonpolar molecules or groups in aqueous solution mediated by water. The driving force for such hydrophobic
+interactions is the resulting favorable entropy gain due to the desolvation of nonpolar groups.[1–8] This thought was reworked in the following
+decades and several models have been developed.[5,11–13] These models make extensive use of thermodynamic properties of aqueous solutions
+containing nonpolar solute particles. Among them, we can mention those based on virial expansions of thermodynamic properties of aqueous
+Received: 10 September 2019 Revised: 22 December 2019 Accepted: 23 December 2019
+DOI: 10.1002/qua.26161
+Int J Quantum Chem. 2020;120:e26161. http://q-chem.org © 2020 Wiley Periodicals, Inc. 1 of 17 https://doi.org/10.1002/qua.26161
+
+
+solutions containing nonpolar solute particles, integral theories ST2 and RISM and scaled particle theory. Successively, a great deal of information
+on hydrophobic effects at atomistic level has been obtained using Monte Carlo and molecular dynamics.[14,15] Even though they have provided
+useful details that are experimentally inaccessible, reinforcing some aspects of the traditional ideas about hydrophobicity, in some cases different
+views of the same topic come up from various researches. Currently, the involved molecular forces are only partially known and it is challenging
+to separate some types of interactions from others in a clear and rigorous way.[16] This weakness becomes particularly important in amphiphilic
+molecules like peptides and protein, where the alternation of hydrophilic and hydrophobic groups is a condition far away from the one used to
+derive empirical functional forms.
+In the liquid state water molecules undergo rapid thermal motions on a time scale of picoseconds, thus there are few experimental techniques
+that can prove water distribution around hydrophobic molecules. Neutron diffraction and extended X-ray absorption fine structure spectroscopic
+studies on various hydrophobic molecules (N(CH3)4
++, CH4, and noble gases) in aqueous solutions showed that a hydration “cage” exists in the
+liquid, but it is more loosely defined than in the solid state clathrates.[17–22] Water molecules are not randomly oriented and preferentially place
+O─H bonds tangentially to the surface of the solute. These studies reported some estimations of the number of water molecules in the nearest
+neighboring hydration shell, that for methane is about 20.[23] Another important piece of experimentally proven information about amino acids
+and peptides is the slow dynamics of the water molecules composing the hydration shell with respect to the bulk water.[24–30] The slow-down
+reorientation has been attributed to the heterogeneity of the peptide surface and in particular to the strong peptide-water hydrogen bonds (HBs)
+and to the cage around the hydrophobic side chain that largely disrupts the water-water synergistic reorientation mechanisms.[31]
+Despite the enormous importance of hydration shell around nonpolar molecules and difficulties of methodologies based on classical physics
+in describing forces that involve them, there have been no significant efforts in using modern quantum chemical methods to derive plausible
+forces from a true ab initio procedure, that is, without parameters that accounts for the experimentally observed thermodynamic data. It is clear
+that if we had reliable estimations of the interatomic forces at play and the shape of the hydration shell around nonpolar molecules or groups in
+an unbiased manner, it might be easy to understand hydrophobic interactions.
+Recently, we reported a protocol to evaluate hydration effects on molecular properties by means of full quantum mechanics methods for
+atomic interactions along with a bottom-up approach for the water shell construction around di- and tripeptides.[32–36] Those investigations pro
+vided useful information on the intimate solute-water contacts and in particular, it was shown that hydrophilic interactions among water mole
+cules and peptide polar groups were very important for molecular structures and thermodynamic function predictions. In those studies the
+hydration of the nonpolar side chain was partially taken into account; nevertheless, it was shown that highly hydrophobic side chains, as in the
+case of Val3H+, significantly perturb water-hydrophilic group interaction.[36]
+The present work is aimed to investigate the very first hydration shell of amino acids with particular reference to the nonpolar side
+chain, which is not a trivial matter. To this purpose we chose representative amino acids in the zwitterion form with an increasing hydropho
+bic side chain namely, glycine, alanine, α-aminoisobutyric acid (Aib), α-aminobutyric acid (Aba) and valine. In the first part, we analyze the
+spheroidal water shell around some hydrocarbons (methane, ethane and propane), which relates to the side chain of alanine, α-aminobutyric
+acid and valine. This could provide some information on how to construct a spheroidal water molecule network around methyl, ethyl and
+isopropyl side chains. In the second part, we analyze the structure of water H-bonded to the charged groups and, how the spheroidal water
+molecule network over the side chain is built (Figure 1).[3,37] A detailed comparison of present data and spectroscopic results on the side
+chain orientation in the α-aminobutyric acid and valine is also reported. These experimental pieces of data provide a direct way to validate
+our quantum chemical/bottom-up modeling. Finally, we weigh present results against some previously reported modeling and what is known
+about the hydration shell of hydrophobic amino acids.
+2 | METHODOLOGICAL FRAMEWORK
+2.1 | Computational details
+The geometries were optimized using the DFT/M06-2X level[38] employing the 6-31+G* basis set and including implicitly solvent effects[39]
+(M06-2X/6-31+G*/PCM = WATER). The grid mesh in integral evaluation was settled to the “Integral(UltraFineGrid)” option. Minima were
+F I G U R E 1 Water ring hydrogen bonded to the charged groups of alanine (left). Spheroidal water molecule structure around methyl side chain (right)
+2 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+characterized evaluating the Hessian matrix and the associated harmonic vibrational frequencies. Implicit solvent effects were modeled using the
+polarized continuum method (PCM) adopting a 78.36 dielectric constant for water as implemented in the G09 program.[40] Initial geometries were
+prepared with the GaussView 5.0 software.[41]
+To improve energetics and to reduce intermolecular basis set superposition error, single point energy at the optimized geometries was per
+formed using the more accurate aug-cc-pVTZ basis set. The electronic energies were corrected for zero-point vibrational and thermal energies
+and entropies to obtain enthalpy and free energy changes at 298 K (ΔG298). To calculate the entropy, S298, the different contributions to the
+partition function were evaluated by using the standard expressions for an ideal gas in the canonical ensemble, the harmonic oscillator, and
+the rigid rotor approximations. If from one side the standard quantum chemical procedure to derive thermochemical data benefits of a good com
+putational efficiency, on the other side it presents two limitations that we would like to address. When a gas molecule is incorporated in a cavity,
+the quantization of the three translational degrees of freedom of its center of mass, in addition to its quantized rotational states, occurs.[42,43] The
+related zero-point-energy, with a rigid cage, when methane is enclathrated in the 512 and 51262 cages, was computed to be 0.47 and
+0.31 kcal mol−1, respectively, by Bacˇic et al[42] and 0.83 and 0.65 kcal mol−1, respectively, by Bowman et al.[43] In our approach, since only one
+nuclear configuration of the molecule was considered and as a consequence no rotational and translational motions occurred, the zero-point
+energy was slightly higher (1.7 kcal mol−1 for both cages). The second restriction of our model concerns the harmonic approximation in vibrational
+motions. More quantitative thermochemical data require to go beyond the standard quantum chemical methods and this may be the focus of
+future researches.
+2.2 | Modeling the water shell around hydrophobe
+Thermodynamic studies on the solubility of several hydrocarbons show positive free energy, negative enthalpy, large negative entropy and posi
+tive heat capacity. This thermodynamic signature has been explained by the presence of a dynamic hydration shell around nonpolar substances,
+which depends on the size and shape of the nonpolar solute.[1–8] Because of the ΔCp > 0, enthalpy and entropy of solution increase with the tem
+perature and the water shell “melts.”[1–8,44] The water shell implies that each water molecule does not act independently of its neighbors, but they
+are correlated through highly directional hydrogen-bonds giving rise to the well-known order of water molecules around a hydrocarbon.
+Hydrocarbon-water interactions are weakly attractive and for the H2OCH4 prototype a stabilization energy of −0.6 kcal mol−1 was found.[36]
+The water-water hydrogen bonds are much more attractive (about −5 kcal mol−1), thus when a hydrophobe is embedded into water it changes
+the structure of interfacial water and a cavity is formed.[45] The cavity formation is a process thermodynamically unfavored and depends on how
+many particles must be displaced. Therefore, there is a natural tendency of solvent to minimize the cavity size. The three-dimensional tetrahedral
+4-fold coordination of nearest neighbors in cavity persists, rather it is believed that water molecules in direct contact with hydrophobe are highly
+ordered[46] and participate more in hydrogen bonding than bulk water (increasing the strength or the number of H-bonds).[47]
+There are ample experimental evidences[17–22,24,48] and computational results,[37,45] indicating that water molecules around a hydrophobe are
+tangentially oriented with respect to its surface. Therefore in the construction of the hydration shell we cannot avoid considering the structure of
+the clathrate hydrates of gases.[47,49,50] These structures, where the water molecules preserve the highest hydrogen bonding network and the size
+of cavity can be regulated by the number of water molecules, allow an efficient dispersion solute-solvent interactions when hydrocarbon is
+included.
+The basic idea of present research agrees well with the space-filling models reported by Baldwin and Rose for the hydration shells on linear
+alkanes[7] and with the hemispheric water distribution around hydrophobic side chain of zwitterionic alanine.[3] The clathrate-like assumption,
+which may be considered a rough approximation of the true semi-rigid water shell in the case of large solutes, may play a significant role in the
+case of small size hydrocarbons as suggested by Stillinger “one should keep in mind, however, that many interesting solutes have sizes below this
+range, so that convex cage statistics is indeed relevant to their solutions”.[13]
+The temperatures at which the gas clathrate hydrates have 1 atm vapor pressure, that is, the dissociation temperature at ambient pressure, is
+rather low for methane and ethane (200 and 240 K, respectively),[51] while for propane and isobutane it raises significantly (262 and 273 K).[51,52]
+For the tetrahydrofuran and cyclopentane clathrate hydrates, the melting temperatures reach the astonishing values of 277.3 and 281 K respec
+tively, even above that of ice.[53,54] Thus solutes, which stabilize the water cavity by significant dispersive van der Waals interactions, give rise to
+clathrate hydrates of extraordinary stability. In order to get an idea of over-all magnitude of water-hydrocarbon interactions, we may consider the
+methane, ethane and propane encapsulated in 20, 24, and 28 water cages, respectively. For these systems stabilization energies of −6.7 kcal mol−1
+for CH4@(H2O)20, −8.2 kcal mol−1 for C2H6@(H2O)24 and −10.0 kcal mol−1 for C3H8@(H2O)28 were obtained (vide infra).
+In the liquid phase, clathrate-like structures might persist (over a picosecond time average) near a small hydrophobic particle at ordinary con
+ditions. The fact that regular clathrate cages do not exist in solution on a long scale time it is a well-established issue.[55] On the other hand, there
+are evidences that the hydrophobe imposes some geometrical constraints to water molecules in the immediate neighbors that reduce the configu
+rational space with respect to water molecules in the bulk.[48] Very recently, THz/FIR absorption spectroscopy studies suggested that hydration
+water layer around hydrophobes might contain clathrate-like structural motifs.[9]
+LANZA AND CHIACCHIO 3 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+Clathrate-like water structures play an important role in antifreezing proteins biological function.[56] For example, in a recent molecular
+dynamics study on the ice surface adsorption of a helical structures of the alanine-rich 37-amino acid with four equidistant threonine residues it
+was concluded that the contribution of hydrogen bonding (of threonine) to the ice surface is secondary to the van der Waals interactions involv
+ing side chains.
+The presently used computational methodologies based on clusters of water molecules to study the structure and properties of aqueous
+solutions of biomolecules is a fairly consolidated procedure.[57–59]
+3 | RESULTS
+3.1 | The clathrate hydrate structures
+Depending on the size of the guest molecule, several types of cages are formed (Figures 2, S1 and S2). Thus the methane is encapsulated in a cage
+formed by 20 water molecules (pentagonal dodecahedron), the ethane fills a cage of 24 water molecules (tetrakaidecahedron), while propane and
+butane are incorporated in a 28-water-molecule cavity (hexakaidecahedron).[10] There is also the opportunity to form a 36-water-molecule cage
+(icosahedron) to encapsulate larger alkanes or multiple small gas molecules. These four main cages pack together to form invariant crystal struc
+tures of clathrate hydrates: the cubic structure I (sI), the cubic (face centered) structure II (sII), the hexagonal structure (sH) and sometime
+the tetragonal structures (sT and TS-I).[60,61] In these structures, each water molecule is attached to four others, by donating two and accepting
+two HBs. This gives rise to stiff crystallographic structures, and the formation of one with respect to another depends on the size of the hydrocar
+bon guest.
+The (H2O)20 cavity is present in all known clathrate hydrate structures; it consists of a pentagonal dodecahedron (12 pentagonal faces, labeled
+512) with an equatorial ring of 10 water molecules. The distance between the centroid of the 20 oxygens and each oxygen atom is almost con
+stant indicating a spheroidal shape. The average computed (O20)centr─O 3.86 Å distance (Table 1) agrees with the cavity radius experimentally
+reported for the small cavity of the sI and sII (3.95 and 3.91 Å, respectively). In the sH clathrate structure, the (H2O)20 cage is an irregular dodeca
+hedron 435663. It is slightly less stable than the 512 structure (0.9 kcal mol−1) and its average cavity radius is slightly larger (computed 3.91 Å,
+experimental 4.06 Å).[10] The tetrakaidecahedron (H2O)24 is the second common unit and it is present in the sI, TS-I, and HS-I structures. It forms
+12 pentagonal faces and 2 hexagonal faces (51262) with an equatorial ring of 12 water molecules and its shape resembles an oblate ellipsoid with
+(O24)centr─Oax 4.03 Å and (O24)centr─Oeq 4.48 Å distances. Having a large cavity, the tetrakaidecahedron is able to host larger molecules than the
+(H2O)20 cage. The hexakaidecahedron (H2O)28 (51264) is present in the sII structure and it has an even larger encapsulation capability. Its structure
+shows a spheroidal shape with four hexagonal faces tetrahedrally arranged about the center with rings of 6 pentagons surrounding each hexagon.
+The computed (O28)centr─O average distance (4.62 Å) is close enough to the mean cavity radius (4.73 Å) found in the sII clathrate structure.[10]
+Smaller cavities could be supposed in the liquid phase, being the density greater than in the solid phase. Neutron diffraction studies at high
+pressure of water/methane solutions suggested that the hydration shell around methane in the liquid changes dramatically once the hydrate is
+F I G U R E 2 M06-2X/6-31+G*/PCM optimized structures of the methane and propane clathrate hydrates. Hollow and ethane clathrate hydrates are reported in Figures S1 and S2
+4 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+formed. The water shell around methane in the crystal is about 1 Å larger than that in the liquid one. Thus, the methane coordination number in
+the liquid one is around 16 ± 1 water molecules during hydrate formation.[19] Larger hydration numbers have been reported for aqueous methane
+in other neutron diffraction (17 ± 1), (19 ± 2) and NMR (20-21) measurements.[20,23,55] In view of these results, two other hollow cages with
+16 and 18 water molecules have also been considered (Figure S1). The regular decahedron, (H2O)16, forms 2 square faces and 8 pentagonal faces
+(4258) with an equatorial ring of eight water molecules and its cavity is large enough to host very small molecules. The cavity resembles a prolate
+ellipsoid with noticeable differences between distances of centroid from oxygens in equatorial and axial positions, (O16)centr─Oeq ~3.2 Å and
+(O16)centr─Oax ~3.7 Å (Table 1). The undecahedron (H2O)18 hollow cage has been obtained in two shapes namely 425861 and 435662. Their shapes
+resemble a “pendant droplet” with a hexagonal base, ten water units as an equator and a pinnacle of two water molecules. Their encapsulation
+capability is intermediate between the decahedron and dodecahedron (Table 1). The 435662 has a larger amount of ring strain and is 0.5 kcal mol−1
+less stable, so it will not be considered any further.
+In all the presently considered cages, each water molecule forms three HBs. Thus, 50% of water molecules act as an acceptor of two HBs and
+donors of one HB, while the other 50% accept an HB and donate two HBs. There are n/2 dangling HBs and n/2 oxygen lone pairs, and all of them
+point toward the external side of the cage volume. These dangling bonds will form HBs with the next hydration shell, hence there is no loss of
+HBs in clathrate hydrate formation. This reduces the energy cost to form the cavity and the idealized cages can host a large variety of small mole
+cules or encapsulate a hydrophobic side chain of amino acidic residues.
+The O─O─O bond angles in the pentagons are close to the 109 tetrahedral angle, while in the squares they are about 90 and around 120
+in the hexagons, thus there is a certain ring strain in the latter two. The HO─H  OH2 angles are very close to the optimal linear HB, >175, for
+pentagons and hexagons, while for squares there are small deviations from linearity, 165-170. The regularity of 425861 and the 512 structures in
+(H2O)18 and (H2O)20 clathrates allows them to have optimal bonding angles that reduce ring strain. Nevertheless, the close stability of the irregular
+undecahedron 435662 and dodecahedron 435663 structures (0.5 and 0.9 kcal mol−1, respectively) suggests that clathrates present a great deal of
+plasticity, thus they can be easily adapted to the heterogeneity of the peptide or protein surfaces with a modest energetic cost. The very first
+water shell contact around the hydrophobic side chain will be formed with an appropriate water tridimensional polygon in which the pentamer
+(H2O)5 is the preferred face, but four- and six-membered ring water molecules may form as well.
+The last aspect, that is worth to be analyzed, is the possible deviation from the tangential orientation of water molecules. This situation has
+been raised both experimentally and computationally.[18,21,62] Computations of the (H2O)20-512 and the (H2O)24-51262 cages, with an inverted
+water molecule orientation, show that these structures are ~3 kcal mol−1 less stable than the regular clathrate shape (Figure S2). The covalent
+O─H bond, that points toward the inside of the cage, profoundly alters its shape, although the total number of HBs is the same. Some O─O─O
+angles deviate significantly from the tetrahedral configuration and some HO─H  OH2 angles deviate from linearity. Furthermore, some room is
+lost reducing the capability to incorporate hydrophobic molecules or groups, but more importantly the inverted water molecule loses the opportu
+nity to form an HB with water molecules of the second hydration shell. This type of situation could occur only if charged or polar groups are con
+sidered. In these cases the inverted water molecule forms an HB with the charged or polar group stabilizing structures as reported for aspartic
+acid,[37] amines,[63] alcohols, and ketones.[64]
+T A B L E 1 Electronic and Gibbs free energies (kcal mol−1) and entropy (cal mol−1 K−1) variations for encapsulation of the hydrocarbons in clathrate hydrates
+ΔE ΔS298 ΔG298 Ocentr─Oeq Ocentr─Oax
+(H2O)16 (4258) 3.20 3.73
+(H2O)18 (425861) 3.77 3.58
+(H2O)18 (435662) 3.81 3.59
+(H2O)20 (512) 3.86a
+(H2O)20 (435663) 3.91a
+(H2O)24 (51262) 4.48 4.03
+(H2O)28 (51264) 4.61a
+CH4@(H2O)16 −6.2 −35.6 7.2 3.32 3.46
+CH4@(H2O)18 −7.2 −33.0 4.7 3.75 3.57
+CH4@(H2O)20 −6.7 −27.0 2.9 3.84a
+CH4@(H2O)24 −5.3 −27.2 4.5 4.48 4.01
+C2H6@(H2O)20 −10.0 −46.5 6.4 3.85a
+C2H6@(H2O)24 −8.2 −35.2 4.2 4.42 4.04
+C3H8@(H2O)24 −11.9 −50.1 5.7 4.45 4.02
+C3H8@(H2O)28 −10.0 −44.8 5.6 4.59a
+Note: Average distance (Å) between the centroid of all oxygens and equatorial or axial oxygen. aAverage distance of all oxygen atoms from the centroid.
+LANZA AND CHIACCHIO 5 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+Monte Carlo large scale searches for the optimal configurations of water molecules around the methane molecule, CH4@(H2O)n for n up to
+20, reported that the smallest value at which the (H2O)n cluster encapsulates the CH4 molecule occurs at n = 14.[65] Furthermore, water molecules
+are tangentially oriented with respect to the methane surface in a clathrate-like shape.
+3.2 | Hydrocarbon encapsulation
+Water molecule and hydrocarbon interactions were studied previously for the H2OCH4 prototype.[36] A shallow minimum with a stabilization
+energy of −0.6 kcal mol−1 and a H2O  CH4 distance of 3.4 Å was found at the present M06-2X/6-31+G*/PCM computational level. Further
+more, the water-methane interaction is weakly attractive for distances longer than 3 Å, while for shorter distances it becomes repulsive.
+The methane molecule has been placed in four different cavities, the (H2O)16 4258, (H2O)18 425861, (H2O)20 512, and (H2O)24 51262 (Figure 2).
+In CH4@(H2O)16 system the carbon atom lies near the centroid of the clathrate with the four C─H bonds pointing toward the center of four distal
+pentagonal faces. The C  Oeq and C  Oax contacts are ~3.32 and ~3.46 Å, respectively (Table 1), thus the cage expands equatorially and
+shortens axially in order to reach the optimal 3.4 Å C  O contact. The cage structure is not rigid and it can undergo minor deformations to better
+accommodate the guest; however, this distortion requires an energetic cost. For the CH4@(H2O)18 and CH4@(H2O)20 clathrates the methane
+takes place 0.19 and 0.12 Å away from the centroid, that is, it slightly moves toward some faces of the cages and some C  O contacts shorten to
+approach optimal C  O distance, while contacts with the distal faces lengthen. In this way the weak van der Waals interactions are slightly
+improved. The (H2O)18 and (H2O)20 cages are slightly perturbed by the inclusion of the guest molecule and the (O)centr  O contacts undergo very
+minor contractions (Table 1). In the CH4@(H2O)24 system the displacement of the methane from the (O24)centr is much more pronounced (>1 Å)
+and occurs along the equatorial direction (Figure 2). The shorter C  O distances are of ~3.4 Å, while the longest are of ~5.4 Å. The methane in
+(H2O)24 cavity shows a high mobility since it can move between several equivalent minima.
+The thermodynamic quantities for the encapsulation process can be evaluated from
+Solute gas
+ð Þ + Cage ! Inclusion compound ð1Þ
+For methane the encapsulation electronic energy becomes more negative on going from the (H2O)16 to (H2O)18 cages, while it slightly
+increases switching to the (H2O)20 one. A more pronounced increase of energy is computed for the CH4@(H2O)24 clathrate (Table 1), since the
+large size of the (H2O)24 cavity produces the loss of favorable van der Waals interactions. The encapsulation energy is large (−6.7 and
+− 7.2 kcal mol−1 for (H2O)20 and (H2O)18, respectively) if one considers that only van der Waals forces are active, therefore, they give an impor
+tant contribution in balancing disadvantageous entropic term in the cavity formation and encapsulation processes. The encapsulation energy of a
+methane molecule in a (H2O)20 dodecahedral cage was calculated using a variety of electronic structure methods in the gas-phase (no implicit sol
+vent effects included).[66] Complete basis set-limit MP2 calculations gave a binding energy of −6.1 kcal mol−1, while some functionals failed to
+give a bound complex and the inclusion of dispersion corrections is mandatory.[66] The Minnesota functionals M05-Class and M06-Class[38]
+included the medium-range dispersion effects, thus the M06-2X gave a binding energy (−6.5 kcal mol−1) close to the best MP2 estimated value.
+Ethane was encapsulated in the (H2O)20 and (H2O)24 cages (Table 1 and Figure S2). The optimized geometry of C2H6@(H2O)20 shows that
+the ethane centroid is close to the oxygens-centroid of the entire clathrate and the C─H bonds point toward the center of the six distal pentago
+nal faces. There is no significant steric repulsion since the closest C  OH2 contacts are about 3.2 Å, while many others are close to the optimal
+value of 3.4 Å. In the C2H6@(H2O)24 system the C─C bond lies in the equatorial plane; however, its centroid is significantly displaced with respect
+to the oxygens-centroid of the entire clathrate (0.5 Å) and overall a portion of favorable van der Waals interactions is lost. The encapsulation
+energy becomes less negative on enlarging the cage (Table 1).
+Propane was inserted into the cavity of 24 and 28 water molecule cages (Figure 2) and, using both geometrical and energetic argumentations,
+what emerges is that the (H2O)28 seems to be too large and some favorable van der Waals forces are lost (Table 1).
+The incorporation of a molecule within a system leads to a substantial freedom degree (related to the vibrational, translational and rotational
+motions) reduction and hence entropy reduction (Table 1). In the encapsulation there is also a sizable increase of zero-point energy. Considering
+all these corrections to the electronic interaction energy, it is possible to estimate the Gibbs free energy variations and results are reported in
+Table 1 and Figure 3. The ΔG298 data clearly suggest that the (H2O)20 cage is the best to encapsulate methane; however, with a modest energy
+penalty methane can be inserted in slightly larger or smaller cavities (20 ± 2), but not in the (H2O)16 cage as initially suggested by Koh et al.[19]
+Experimentally, the methane molecules occupy both the 512 and 51262 cavities of sI clathrate hydrate,[10] while in the liquid solutions the (17 ± 1),
+(19 ± 2) and (20-21) ranges were proposed.[20,23,55]
+Even though the C2H6@(H2O)20 is the best structure in terms of electronic energy, the entropy reduction for its formation is too unfavorable
+and on the basis of Gibbs free energy, the larger (H2O)24 structure is predicted as the best cavity for ethane incorporation (Table 1 and Figure 3).
+Experimentally, ethane occupies the 51262 cavity of the sI clathrate hydrate both in single component gas or in the presence of methane.[10] Simi
+larly, the large entropy reduction associated with the C3H8@(H2O)24 formation makes it slightly less stable than C3H8@(H2O)28 in terms of Gibbs
+6 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+free energy. This is in agreement with experimental evidence reporting that C3H8 occupies the 51264 cavity of the sII clathrate hydrate
+structure.[10] The present optimal clathrate size agrees well with primary coordination numbers for various alkanes in water obtained with Monte
+Carlo simulations. These range from 20 ± 0.5 for methane to 23 ± 0.5 for ethane and 27.3 ± 0.5 for propane.[67]
+The good agreement of present hydration numbers with those experimentally derived for methane in liquid water and in clathrate hydrates
+(for methane, ethane, and propane), and with those computationally derived[67] suggests that the proposed water structures are significant for
+small hydrocarbon solutions.
+From all these results, it emerges that there is an energetic preference for the structure with O─H tangentially oriented close to the hydro
+phobic molecule or group. Of course, thermal agitations can alter these structures; they form and modify continually with a quickly vanishing
+lifetime. Furthermore, from these data it can be envisaged that a water shell over the side chain of alanine, α-aminobutyric acid and valine should
+have a similar size to those of the cavities 512, 51262, and 51264, respectively.
+3.3 | Hydrating the glycine
+The minimal H-bonded water network surrounding glycine consists of 13 solvent molecules, Gly13H2O, Figure 4.[35] The model was developed
+maximizing glycine-water interaction energy with the minimal number of water molecules and considering some intuitive constraints: (a) a water
+molecule can form two H-bonds as an acceptor and two as a donor in the optimal coordination geometry; (b) each hydrogen of the ammonium
+group acts as an H-bond donor, while each oxygen of the carboxylate group forms two H-bonds as an acceptor; (c) clusters and wires of water
+molecules surround amino acids alternating donor/acceptor H-bonds to realize the highest-density packing; (d) the bridging water networks
+should avoid strained cyclic structures; (e) the dipoles of water molecules should align in the opposite direction to the huge dipole of charged
+amino acid. Furthermore, in the handcraft construction of the HB network around biomolecules, the maximization (more exoenergetic) of
+the amino acid-water interaction energy, ΔEint (Equation (2)), is followed. It corresponds to the difference between the total electronic energies of
+isolated water cluster/bare amino acid and to their assembly complex at the amino acid-water optimized geometry
+Xxx + ðH2OÞn ! XxxnH2O ΔEint ð2Þ
+The Gly13H2O complex has a symmetric water molecule distribution on both sides of the glycine, that is, it has a pseudo plane of symmetry
+(Figure 4). In the complex there are seven glycine-water H-bonds and 12 water-water H-bonds with the hydration energies of −52.6 kcal mol−1.
+Important contributions to the hydration energy could be obtained improving charge dispersions adding some water molecules at the cluster over
+the carboxylate and ammonium groups, as already reported for the zwitterion trialanine.[33] However, presently we are interested in studying side
+chain hydration and we are continuing the water-shell construction on the two side regions rather than expanding hydration on the charged
+groups.
+By adding one, three and four water molecules “symmetrically” to both sides of the Gly13H2O, the Gly15H2O, Gly19H2O, and Gly21H2O
+complexes are obtained (Figure 4). In Gly15H2O the water molecules form an irregular edge-sharing pentagonal prism in which the glycine is the
+shared geometrical unit. In the Gly19H2O and Gly21H2O complexes, the irregular edge-sharing pentagonal prism shows an additional stack of
+four and five water ring, respectively. In these complexes, the glycine is completely surrounded by water molecules but the overall hydration
+energy becomes less exoenergetic than Gly13H2O and Gly15H2O (Figure 4). These specific symmetric water networks impose some constraints
+F I G U R E 3 Electronic (solid lines) and Gibbs free (dashed lines) energies for encapsulation of methane (black), ethane (red) and propane (blue)
+LANZA AND CHIACCHIO 7 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+that hamper an optimal ─NH3
++-water interaction. During geometry optimization of the Gly19H2O complex an asymmetric water molecule
+arrangement was also obtained, Gly19H2O_asymmetric. In this structure, water molecules of one side maintain the compact three-stack prism
+shape (Figure 4) while on the other side a water-water HB breaks allowing some flexibility to the network. This structure is 1.5 kcal mol−1 less
+stable than the symmetric Gly19H2O one, but allows a substantial gain in the hydration energy, −57.4 kcal mol−1.
+Based on these results, in the hydration shell construction of alanine, α-aminoisobutyric acid and valine, the three-stack prism water network
+of the H-side will be maintained fixed.
+3.4 | Hydrating the alanine
+The shape of the Ala13H2O complex has been derived from the Gly13H2O complex, replacing the hydrogen atom with a methyl group. The
+water molecule arrangement differs slightly from the one previously reported.[35] However, these two structures are almost isoenergetic, because
+they have the same number of alanine-water and water-water HBs. Thanks to the higher “symmetry” in water molecule distribution and results
+obtained for GlynH2O complexes, the present Ala13H2O structure can be easily expanded by hydrating both sides of alanine. Thus, the addition
+of three water molecules to the “H-side” region leads to the formation of an irregular prism (Ala16H2O, Figure 5). Looking on the “CH3-side,” the
+water molecules of the Ala16H2O complex form an incomplete octagon (Figure 5), and when a further water molecule is added close to the
+ammonium group (Ala17H2O) an irregular nonagon is formed.
+Approximately, the Cβ is near the centroid of the nonagon with an average distance of ~3.6 Å. The nonagon is strongly anchored to the polar
+groups of alanine by four HBs and it can be seen as a ring around which to build-up the spheroidal cap. Considering results on the CH4@(H2O)20,
+the ring was expanded to form an irregular decagon (Ala18H2O, Figure 5). The average Cβ-OH2 distance increases (~3.8 Å) and there is a modest
+gain in hydration energy on enlarging the ring (−1.2 kcal mol−1), thus both models can be used to complete the hydration shell over the methyl
+group.
+Adding a cluster of four water molecules over the nonagon of the Ala17H2O complex, the formation of a spheroidal cap with 415361 faces
+(Ala21H2O) is found, while the addition of six water molecules over the decagon of the Ala18H2O complex produces a spheroidal cap with
+425461 faces (Ala24H2O, Figure 5). The overall hydrated structures, view from the “CH3-side” (Figure S3), resemble irregular water cages build-up
+over a distorted hexagonal base in which the alanine's nitrogen and oxygen atoms occupy three vertices. The methyl protrudes inside the 445462
+and 445662 cavities of the Ala21H2O and Ala24H2O models, respectively. For both Ala21H2O and Ala24H2O complexes, there is a conspicuous
+F I G U R E 4 Molecular structure and hydration energy (kcal mol−1) of the glycine-water complexes (GlynH2O, n = 13, 15, 19, and 21)
+8 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+gain on interaction energy (−3.4 kcal mol−1) upon methyl enclathration, mainly due to attractive van der Waals forces. In terms of electronic
+energy both the tight and the ample cages seem appropriate to represent the methyl hydration shell.
+The presently found water molecule arrangements resemble the semiclathrate structures experimentally characterized, where some water
+molecules of the cage are replaced by ions.[68]
+3.5 | Hydrating the α-aminoisobutyric acid
+The Aib amino acid has two methyls bonded to the Cα; nevertheless, it is possible to build-up the Aib13H2O complex with a symmetric
+distribution of water molecules on both sides (Figure S4). Adding two water molecules close to the ammonium group, one molecule on
+each side of the Aib13H2O complex, there is the formation of two nonagons, Aib15H2O. These are the two rings where two sets of four
+molecule water clusters may symmetrically bond, to complete the first hydration shell of methyls, Aib23H2O (Figure S4). In analogy to what
+was done for the alanine, larger rings (10 water molecules) were also considered and the build-up of the two spherical caps leads to the
+Aib27H2O complex.
+The hydration energies of Aib water complexes are always less exothermic than the alanine homologues (Figures 5 and S4). On
+one side, the additional methyl gives small van der Waals contribution to the hydration energy, while on the other side, their proximity to
+the charged groups significantly reduces hydrophilic water-amino acid interactions, that is, the two methyls shield the backbone from the
+solvent.
+F I G U R E 5 Molecular structure and hydration energy (kcal mol−1) of the alanine-water complexes (AlanH2O, n = 13, 16, 17, 18, 21, and 24). In the “view from the CH3-side” structures some water molecules have been removed for clarity. A detail of water molecule arrangement over the side chain in Ala21H2O and Ala24H2O models is reported in Figure S3
+LANZA AND CHIACCHIO 9 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+3.6 | Hydrating the α-aminobutyric acid
+The bare α-aminobutyric acid has three rotamers related to the different orientation of the ethyl group (Figure 6).[69] These rotamers correspond
+to staggered conformations of the Cα and Cβ substituents with the χAba torsion angle (N─Cα─Cβ─Cγ) around 180 or ±60. In the I rotamer the
+─CH3 of ethyl is in anti with respect to the ammonium group (χAba ~ 180), in the II rotamer the ─CH3 is in anti with respect to the carboxylate
+group (χAba ~ −60), while in the III rotamer the CH3 is in a gauche position to both groups (χAba ~ 60). The rotamers lie close in energy
+(Erel < 1.0 kcal mol−1) and they can convert each other by rotation around the Cα─Cβ bond. If we assume a pure repulsive electrostatic interaction
+between ─CH3 of the ethyl side chain with terminal charged groups and the greater steric encumbrance of the carboxylate over the ammonium
+groups, we would expect the following stability: II > I > III. However, the computed stability is different, III > II > I. The low stability of rotamer I is
+actually due to the very close contact of methyl with an oxygen of the carboxylate (H3C  O = 3.16 Å), while the greater stability of rotamer III is
+due to a favorable synergic polarization of the methyl C─H bonds due to the positive and negative charges of the terminals. Clearly the relative
+stability of these rotamers could be influenced by the strong coordination of the solvent to the charged groups, hence three different sets of
+hydrated complexes need to be studied.
+It was possible to optimize the structures of Aba13H2O with the II and III conformations maintaining the water shape described for the
+Gly13H2O and Ala13H2O complexes, while for the I rotamer, water molecules always clump together and an extra H-bond is formed (Table 2
+and Figure 7). In this particular orientation, the ethyl group is close to a water molecule wire, which moves toward the other water molecules to
+form an additional HB. Geometry optimizations of the Aba16H2O complex with all three ethyl rotamers were successfully performed maintaining
+the water shape discussed for the Ala16H2O complex. Due to its compactness, the 16 water arrangement is not altered by steric repulsions with
+a side chain, rather, the ethyl orientation is perturbed by the solvent network and χAba angle undergoes some changes with respect to the bare
+α-aminobutyric acid (179.9 to −170.9), thus the I rotamer results 2.6 kcal mol−1 less stable than the other two rotamers (Table 2).
+The larger size of the side chain in α-aminobutyric acid with respect to that of alanine requires a larger cage, hence a larger ring needs
+to be constructed. Furthermore, there is a noticeable anisotropy on hydrophobic surface upon rotating the ethyl and thus the ring of the sphe
+roidal cap should be constructed differently for the three rotamers. In the Aba18H2O complex the ring is an irregular decagon, whose water
+molecules, anchored to the amino acid charged groups, change for the various rotamers (Figure 7). Several computational tests have been per
+formed to complete the cage and the complex with 25 water molecules seems to be a reasonable solution. In the Aba25H2O_II complex the
+spheroidal cap is formed maintaining the decagon shape of the ring, while for rotamers I and III an enlargement of the ring (11 water molecules)
+occurs during geometry optimization. Looking from the ethyl side (Figure S3), the structure of the Aba25H2O_II complex, resembles an irregu
+lar 435663 cage in which three vertices of a hexagon are replaced by the α-aminobutyric acid's nitrogen and oxygen atoms with the ethyl group
+which protrudes inside the cavity. For the Aba25H2O_I and Aba25H2O_III models the cavities are irregular 425862 and 445563 dodecahe
+drons, respectively. Despite the different formed cages, due to the high flexibility of water molecules in forming clathrates, the three rotamers
+have comparable stability (Table 2).
+F I G U R E 6 Rotational isomerism of α-aminobutyric acid and valine. Definition of side chain, χ, orientation
+10 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+To further scrutinize this aspect, the three rotamers of the α-aminobutyric acid have been studied using a larger spheroidal cap, the
+Aba29H2O complex (Figure 7). In the ring, water molecules occupy vertices of an irregular dodecagon and do not change for various rotamers.
+The top is formed by a hexagon and is connected to the ring through 6 pentagons, thus the structure resembles the 51262 cage (Figure S3). The
+Aba29H2O_II and III rotamers are almost isoenergetic, while the Aba29H2O_I is 1.8 kcal mol−1 less stable. Worthy of note is the increase of the
+ΔEint (less exoenergetic) in the Aba29H2O complex, probably because the larger cavity reduces van der Waals interactions of side chain and
+spheroidal cap (Figure 7).
+3.7 | Hydrating the valine
+The bare valine has three rotamers, related to the different orientation of the isopropyl chain, which can be distinguished by the N─Cα─Cβ─Hγ
+dihedral angle (χVal). The three rotamers lie close in energy (Erel < 1.6 kcal mol−1) and can convert each other easily (Table 2 and Figure 6). The
+energy stability (II > III > I) reflects the subtle balance between repulsive steric and attractive methyl C─H bonds polarization, thus the rotamer II,
+with a methyl in anti with respect to the carboxylate and a methyl in between charged terminals, seems to be the most stable.
+Geometry optimization with minimal hydration was achieved only for the Val13H2O_II rotamer (Figure 8). When the side chain is in the
+I and III conformations, the bulky isopropyl pushes away the water molecules which clump together with the formation of an extra H-bond.
+T A B L E 2 Relative electronic and Gibbs free energies (kcal mol−1) for the three rotamers of the α-aminobutyric acid and valine at various stage of hydration
+Erel ΔGrel χ
+Aba_I 1.0 1.1 179.9
+Aba_II 0.4 0.1 −62.7
+Aba_III 0.0 0.0 65.1
+Aba13H2O_II 0.4 −1.0 −57.6
+Aba13H2O_III 0.0 0.0 70.2
+Aba16H2O_I 2.6 2.7 −170.9
+Aba16H2O_II 0.0 −1.4 −56.3
+Aba16H2O_III 0.0 0.0 72.9
+Aba18H2O_I 0.4 0.8 −173.8
+Aba18H2O_II −1.0 −1.0 −60.4
+Aba18H2O_III 0.0 0.0 76.0
+Aba25H2O_I 2.8 4.0 −177.5
+Aba25H2O_II 0.5 2.4 −66.0
+Aba25H2O_III 0.0 0.0 73.9
+Aba29H2O_I 1.8 2.2 −173.6
+Aba29H2O_II 0.1 2.9 −55.0
+Aba29H2O_III 0.0 0.0 70.4
+Val_I 1.6 0.2 50.6
+Val_II 0.0 0.0 −179.9
+Val_III 0.6 1.4 −51.3
+Val13H2O_II 179.7
+Val16H2O_I 4.1 0.8 64.0
+Val16H2O_II 0.0 0.0 −162.8
+Val16H2O_III 1.3 1.0 −38.2
+Val19H2O_I 2.5 1.4 64.0
+Val19H2O_II 0.0 0.0 −165.2
+Val19H2O_III 1.7 −0.2 −37.2
+Val29H2O_I 2.0 2.9 56.9
+Val29H2O_II 0.0 0.0 −170.0
+Val29H2O_III 2.0 1.7 −40.2
+Note: The side chain orientation is defined by the angle χ, deg, in Figure 6.
+LANZA AND CHIACCHIO 11 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+The hydration of the “H-side” of the valine is achieved in the Val16H2O complex and thanks to the stiffness of the pentagonal prism, geometry opti
+mizations of the three rotamers were successfully performed (Table 2 and Figure 8). To hydrate the bulky isopropyl at least a ring of 11 water mole
+cules is required and, in addition, because of its anisotropy the ring should be constructed differently for the three rotamers, the Val19H2O complex
+(Table 2 and Figure 8). The full hydration of the isopropyl is obtained with the Val29H2O complex creating a 6156 spheroidal cap over the 12-water
+molecule ring. The overall structure, from the isopropyl side (Figure S5), resembles the 51262 cage, in which three vertices of a hexagon are replaced
+by valine's nitrogen and oxygen atoms with the side chain that extend inside the cavity. The hydration becomes monotonically more exoenergetic as
+the water number increases and, independently on the hydration stage, the II rotamer seems to be the most stable (Figure 8 and Table 2).
+A comment deserves the cavity size decrease around side chains with respect to those found in related hydrocarbons, as a consequence of
+reduction of the hydrophobic surface exposure to the solvent.
+3.8 | Rotamer population in amino acids
+Rotational isomerism about the Cα─Cβ of amino acids has been largely studied in the past with the aim to determine the distribution of
+rotamers.[69–72] In spite of the simplicity of the molecular structure, the estimation of residence times (populations) and free energy differences of
+the three staggered rotamers in amino acids is a difficult task, because the transition between the three minima is very fast. In this regard, 1H─1H
+vicinal spin-spin coupling constants, determined by NMR experiments, have been proven as the best way to enquire the rotational isomerism in
+aqueous solutions.[69–72] The side chain CαH─CβH2 proton multiplets show the typical ABX or ABC patterns thus, three chemical shifts, δA, δB and
+δX and three coupling constants, JAX, JBX, and JAB can be obtained (Figure 6). The geminal JAB is useless because it is independent on rotamer
+populations, while the vicinal JAX and JBX are the population weighted sums of the individual couplings of rotamers (pI, pII and pIII).
+3JAX = pIJAXI + pIIJAXII + pIIIJAXIII
+3JBX = pIJBXI + pIIJBXII + pIIIJBXIII
+pI + pII + pIII = 1
+8>< >: ð3Þ
+F I G U R E 7 Molecular structure and hydration energy (kcal mol−1) of the α-aminobutyric acid-water complexes (AbanH2O, n = 13, 18, 25, and 29). In the “view from the C2H5-side” structures some water molecules have been removed for clarity. A detail of water molecule arrangement over the side chain in Aba25H2O, and Aba29H2O models is reported in Figure S3
+12 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+The coupling components can be obtained applying Karplus-like relationship for well characterized model molecules.[71] Once the JAXI, JAXII,
+JAXIII, JBXI, JBXII, and JBXIII components are determined, by measuring the 3JAX and 3JBX values it is possible to estimate the relative populations of
+the three rotamers of amino acids with a substituent at the Cβ and related residues in small peptides. Often it is assumed that the gauche and
+anti-coupling constants are the same in the three rotamers that is, JAXI = JAXIII = JBXII = JBXIII = Jg = 2.60 Hz and JAXII = JBXI = Janti = 13.56 Hz, thus
+Equations (3) are simplified and actually, several amino acids and small peptides have been studied in various ionized states and on changing tem
+perature or solvents.
+When the chemical shifts of the β-CH2 protons are very similar, as in the case of α-aminobutyric acid, or when the amino acids have only one
+β-proton, like valine, only a single vicinal 1H-1H spin coupling constant is obtained; therefore, only the fractional population of rotamer III and the
+sum of pI and pII can be calculated. To solve these issues, even the long range and vicinal 13C─1H and sometime vicinal 15N─1H NMR coupling
+constants with natural abundance or isotopic enrichment have been used to corroborate and validate 1H NMR results.[70,72] Although numerical
+results depend on methodology and on the assumptions made, these experimental studies provide important pieces of information, which deserve
+great attention in our amino acid hydration modeling.
+Experimental relative populations (molar fractions) and Gibbs free energy differences for α-aminobutyric acid and valine are reported in
+Table 3 along with present results. In the earliest 1H─1H NMR study Pachler reported the same population for the three rotamers of the anionic
+α-aminobutyric acid.[69] More recently, Roberts et al (using vicinal 1H─Cα─Cβ─1H and 13C─Cα─Cβ─1H coupling constants)[70] and Spassov et al
+(using also 15N─Cα─Cβ─1H and 15N─Cα─Cβ─13Cγ coupling constants)[72] reported two sets of population with compatible results (Table 3). They
+showed that: (a) rotamer population slightly depends on the ionized state of an amino acid; (b) rotamer I is less stable than others, but energy dif
+ferences are rather small. For valine, Roberts et al[70] reported a predominance of rotamer II in all ionized states and differences in populations are
+more pronounced than those found in α-aminobutyric acid. The bulky isopropyl side chain poses important restrictions in internal amino acid
+movements as already proposed for the trivaline.[36]
+The comparison of computed and experimental relative free energy for valine is good considering the simplicity of our bottom-up modeling
+and that no empirical parameters have been used in evaluating molecular forces (Table 3). For α-aminobutyric acid, computed and experimental
+comparison is less exciting, but acceptable. In any case, present results indicate that our full quantum chemical and bottom-up modeling is very
+F I G U R E 8 Molecular structure and hydration energy (kcal mol−1) of the valine-water complexes (ValnH2O, n = 13, 16, 19, and 29). In the “view from the C3H7-side” structures some water molecules have been removed for clarity. A detail of water molecule arrangement over the side chain in Val29H2O model is reported in Figure S5
+LANZA AND CHIACCHIO 13 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+promising not only for studying the main chain conformation, as was shown for various di- and tripeptides where the involved energies are
+larger,[32–36] but also for deriving fine details related to the side chains.
+4 | DISCUSSION
+Present results show that both hydrophilic and hydrophobic amino acid/water interactions are important and intimately connected. It is
+clear that for present zwitterion amino acids, hydrophilic forces are predominant and the water molecules directly bonded to charged groups
+represent the pillars on which to build the shell around the side chain. Hydrophilic biomolecule-water forces are usually paid less attention
+and often they are believed to have a minor role in peptide/protein dynamics. They undoubtedly provide the main contribution to the over
+all hydration energy of biomolecules (Figure 9), since the strength of the direct >CO  H2O and >N─H  OH2 HBs are of the same magni
+tude of the H2O  H2O ones.[32] For instance, they are the main stabilizing factor of the polyproline type II helix (PPII) in the unfolded
+peptide state.[32–36,73]
+Hydrophobic side chains act in a more intricate way in hydration shell formation around amino acid/peptide and hence on the structure. On
+one side, they shield the backbone from the solvent and, as seen for the α-aminoisobutyric acid (Figure 9), they significantly increase hydration
+energies (less exoenergetic) with respect to alanine.[36,73] The hydration energy increase disfavors structures promoted by hydrophilic interactions
+as in the case of the PPII. It is well documented that the β-strand = PPII equilibrium of peptide in unfolded state is modulated by the side chain. In
+particular, the methyl of the alanine does not interfere with backbone hydration and the alanine has the highest propensity toward PPII conforma
+tion, while the bulky-branched valine and isoleucine have the lowest tendency.[73] Residues containing only one nonhydrogen substituent
+attached to their β carbon result in intermediate propensities. Similarly, when an Ala residue is replaced by an Aib residue in the AcAla3OMe pep
+tide, the formation of a 310 helix is favored at the expense of the PPII structure.[74]
+The second effect of the hydrophobic side chain concerns the cavity formation and the related van der Waals interactions. Not so long ago, it
+was believed that the hollow cavities could not be formed since densely packed water molecules were invariably preferred and only the presence
+of a hydrophobic molecule or group prevented their collapse.[10] Recently, metastable guest-free sII clathrate (also named ice XVI) and guest-free
+spiraling channels, with a diameter of 6.10 Å (also named ice XVII), have been synthesized and characterized.[75,76] These porous ices have been
+obtained depleting the gas from the sII-neon clathrate and from the C0─H2/H2O filled ice. These lattices are mechanically stable at ambient pres
+sure up to a temperature of 145 and 130 K, respectively, indicating that water molecules themselves have a “natural tendency” to form low
+T A B L E 3 Experimental side chain rotamer distribution of the α-aminobutyric acid and valine in various protonated states
+I II III
+α-Aminobutyric acid
+Population aniona 0.33 0.33 0.33
+Population cationb 0.33 0.33 0.34
+Population zwitterionb 0.18 0.41 0.41
+Population anionb 0.29 0.37 0.34
+Population cationc 0.28 0.31 0.41
+Population zwitterionc 0.26 0.36 0.38
+Population anionc 0.18 0.48 0.34
+ΔGrel zwitterionb 0.49 0.00 0.00
+ΔGrel zwitterionc 0.22 0.03 0.00
+ΔGrel (Aba25H2O) 4.0 2.4 0.0
+ΔGrel (Aba29H2O) 2.2 2.9 0.0
+Valine
+Population cationb 0.17 0.50 0.23
+Population zwitterionb 0.17 0.59 0.24
+Population anionb 0.23 0.61 0.16
+ΔGrel zwitterionb 0.74 0.0 0.53
+ΔGrel (Val29H2O) 2.9 0.0 1.7
+Note: Experimental and calculated relative Gibbs free energy at 298 K (kcal mol−1) for zwitterions. aFrom Pachler.[69] bFrom Hansen et al.[70] cFrom Mikhova et al.[72]
+14 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+density (~0.81 g/mL) crystalline phases. Of course, the favorable hydrocarbon-water van der Waals interactions are significant (Table 1) in stabiliz
+ing the hydration shell and give an important contribution in balancing the void formation, making clathrate hydrates stable at higher
+temperatures.
+Encapsulation energies reported in Table 1 refer to the complete solvated hydrocarbons. However, when the hydrocarbon is attached to the
+backbone a part of the hydrophobic surface is not exposed to the solvent, hence van der Waals forces reduce (Figure 9). Furthermore, we should
+consider that some molecules of the side chain hydration shell are hydrogen bonded to charged groups (strongly polarized water molecules),
+hence dispersive forces could be different from those present in clathrate hydrates of hydrocarbons. This phenomenon was previously termed
+conditional solvation.[3]
+The presently proposed clathrate-like water arrangement around hydrocarbons and amino acids side chain are the most energetically advan
+tageous, since the void cavity is minimized and no HBs are lost. In fact, all oxygen lone pair and O─H dangling HB can be satisfied with the second
+shell water molecules, that is, water molecules maintain four HBs with angles close to tetrahedral as in bulk water. Conversely to solid clathrates,
+where atoms maintain fixed positions, thermal motion in aqueous solution alters the order of the labile structures, which break and continually
+reform around “optimal” configurations in a picosecond time scale.[44] To simplify computational complexity, we assumed the formation of a HB
+ring water, directly anchored to the carboxylate and ammonium groups, where enclathration occurs. However, this kind of HB water ring is not
+strictly necessary and rings with alternative HB networks are possible. Instead, what is important is the size of the ring, the tangential orientation
+of the water molecules with respect to hydrophobic surface and some connections between the water ring with charged groups. The hydration
+shell formation around amphiphilic molecules is a collective phenomenon, in which hydrophilic and hydrophobic hydration shells are folded
+together and there is no clear separation in between.[31]
+The strong water molecule HBs with the charged or polar groups together with the clathrate-like water shape around hydrophobe disrupt
+locally the water-water synergistic reorientation mechanisms, causing a dynamic retardation in close proximity to the biomolecule surface. Consid
+ering the energy involved in the hydrophilic and hydrophobic hydration (Figure 9) the experimentally observed slowdown dynamics is mainly
+imputable to hydrophilic hydration, while hydrophobic side chains have a moderate effect.[31] Recently, it has been shown that the four amino
+acids, glycine, alanine, aminobutyric acid, and norvaline, do not give the same solvation response in water, as assessed by measuring complex
+dielectric constant in the terahertz region.[77] It has been proven that each successive ─CH2─ group on the side chain restrained approximately
+two hydrophobic hydration water molecules. Thus, for alanine, α-aminobutyric acid, and norvaline the side chain order in tetrahedral network are
+four, six and eight water molecules, respectively. The hydration number found for the alanine agrees with the four “immobilized” water OH
+groups, when a hydration shell is formed over a ─CH3 group proposed by Bakker et al using femtosecond midinfrared spectroscopy.[24] The
+hydration number reported could correspond to the number of water molecules over the side chain, which close the water ring through 4, 6, and
+9 water molecules for alanine, α-aminobutyric acid, and valine, respectively.
+5 | CONCLUSIONS
+In the present study, we analyzed representative structures of the very first hydration shell around the lightest alkanes and the side chain of some
+hydrophobic amino acids in their zwitterionic form. It emerges a light iceberg model, in which the water molecules in direct contact with the
+hydrophobe should satisfy some geometrical constraints to get energetically suitable configurations: (a) minimize the cavity size; (b) tetrahedral
+4-fold coordination, and (c) no O─H bond or O-lone pair protrusions inside the cavity. With these restrictions, the most stable and hence
+F I G U R E 9 Interaction energies for the GlynH2O (black), AlanH2O (red), AibnH2O (red, dashed lines), AbanH2O_II (green), and ValnH2O_II (blue) complexes
+LANZA AND CHIACCHIO 15 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+statistically significant structures resemble those found in clathrate hydrates with spheroidal shapes for both alkanes and amino acids side chain.
+Because the amino acid's nitrogen and oxygens occupy three vertices of the cages and because a part of the hydrophobic surface is not exposed
+to the solvent, the optimal cage size around the side chain diminishes with respect to those found in related hydrocarbons.
+Even though from one side the bottom-up procedure with “static” structures might appear rough at first glance, the use of quantum chemical
+methodologies allows a rigorous evaluation of “unknown” interatomic forces, in principle without limit of accuracy. The progressive water shell
+construction allows to evaluate gradually what the water molecules experiences wrapping the heterogeneity of the amino acid or peptide surface,
+thus providing useful information on various contributions and hence to their role in the overall solute−solvent interactions.
+Results have been compared with a plethora of experimental and computational results obtaining a reasonable agreement. Particularly rele
+vant is the favorable comparison of the presently evaluated relative Gibbs free energy for side chain rotamers in both α-aminobutyric acid and
+valine with the experimental ones, which represent very well established data. The fair agreement with the experimental data supports and spurs
+the application of the present methodology to more complex systems and, hence, to more interesting biophysical problems such as amino acid
+hydration with elaborate side chain and full hydration of small peptides. From a fundamental point of view, an accurate evaluation of the quantum
+chemical potential energy could shed light on the delicate energetic balance affecting hydrophobic aggregation phenomena.
+ACKNOWLEDGMENT
+This work was supported by the Università di Catania within the FIR-2018 project.
+ORCID
+Giuseppe Lanza https://orcid.org/0000-0002-8358-0885
+REFERENCES
+[1] D. S. Eisenberg, W. Kauzmann, The Structure and Properties of Water, Clarendon Press; Oxford University Press, Oxford, New York 2005. [2] G. Graziano, Phys. Chem. Chem. Phys. 2019, 21, 21418. [3] A. Ben-Naim, Molecular Theory of Water and Aqueous Solutions Part II: The Role of Water in Protein Folding, Self-Assembly and Molecular Recognition, World Scientific Publishing, Singapore 2011. [4] C. Czaplewski, D. R. Ripoll, A. Liwo, S. Rodziewicz-Motowidlo, R. J. Wawak, H. A. Scheraga, Int. J. Quantum Chem. 2002, 88, 41. [5] W. Blokzijl, J. B. F. N. Engberts, Angew. Chem. Int. Ed. Engl. 1993, 32, 1545. [6] P. W. Snyder, M. R. Lockett, D. T. Moustakas, G. M. Whitesides, Eur. Phys. J.: Spec. Top. 2014, 223, 853. [7] R. L. Baldwin, G. D. Rose, Proc. Natl. Acad. Sci. USA 2016, 113, 12462. [8] I. N. Tsimpanogiannis, V. K. Michalis, I. G. Economou, Fluid Phase Equilibria 2019, 489, 30. [9] S. Funke, F. Sebastiani, G. Schwaab, M. Havenith, J. Chem. Phys. 2019, 150, 224505. [10] E. D. Sloan Jr., C. A. Koh, Clathrate Hydrates of Natural Gases, 3rd ed., Dekker, New York 2008. [11] D. Chandler, Nature 2005, 437, 640. [12] M. I. Chaudhari, S. B. Rempe, D. Asthagiri, L. Tan, L. R. Pratt, J. Phys. Chem. B 2016, 120, 1864. [13] F. H. Stillinger, J. Solution Chem. 1973, 2, 141. [14] E. Paquet, H. L. Viktor, Biomed. Res. Int. 2015, 2015, 183918. [15] S. A. Hollingsworth, R. O. Dror, Neuron 2018, 99, 1129. [16] K. A. Dill, S. B. Ozkan, M. S. Shell, T. R. Weikl, Annu. Rev. Biophys. 2008, 37, 289. [17] J. Turner, A. K. Soper, J. L. Finney, Mol. Phys. 1990, 70, 679. [18] D. T. Bowron, A. Filipponi, M. A. Roberts, J. L. Finney, Phys. Rev. Lett. 1998, 81, 4164. [19] C. A. Koh, R. P. Wisbey, X. Wu, R. E. Westacott, A. K. Soper, J. Chem. Phys. 2000, 113, 6390. [20] P. H. K. De Jong, J. E. Wilson, G. W. Neilson, A. D. Buckingham, Mol. Phys. 1997, 91, 99. [21] D. T. Bowron, A. Filipponi, C. Lobban, J. L. Finney, Chem. Phys. Lett. 1998, 293, 33. [22] R. D. Broadbent, G. W. Neilson, J. Chem. Phys. 1994, 100, 7543. [23] S. F. Dec, K. E. Bowler, L. L. Stadterman, C. A. Koh, E. D. Sloan Jr., J. Am. Chem. Soc. 2006, 128, 414. [24] Y. L. A. Rezus, H. J. Bakker, Phys. Rev. Lett. 2007, 99, 148301. [25] C. Malardier-Jugroot, M. E. Johnson, R. K. Murarka, T. Head-Gordon, Phys. Chem. Chem. Phys. 2008, 10, 4903. [26] J. Qvist, E. Persson, C. Mattea, B. Halle, Faraday Discuss. 2009, 141, 131. [27] K. Mazur, I. A. Heisler, S. R. Meech, J. Phys. Chem. B 2010, 114, 10684. [28] L. Comez, M. Paolantoni, S. Corezzi, L. Lupi, P. Sassi, A. Morresi, D. Fioretto, Phys. Chem. Chem. Phys. 2016, 18, 8881. [29] F. Böhm, G. Schwaab, M. Havenith, Angew. Chem. Int. Ed. 2017, 56, 9981. [30] K. Bhattacharyya, Chem. Commun. 2008, 2848. [31] G. Stirnemann, J. T. Hynes, D. Laage, J. Phys. Chem. B 2010, 114, 3052. [32] G. Lanza, M. A. Chiacchio, ChemPhysChem 2014, 15, 2785. [33] G. Lanza, M. A. Chiacchio, Phys. Chem. Chem. Phys. 2015, 17, 17101. [34] G. Lanza, M. A. Chiacchio, J. Phys. Chem. B 2016, 120, 11705. [35] G. Lanza, M. A. Chiacchio, ChemPhysChem 2017, 18, 1586. [36] G. Lanza, M. A. Chiacchio, J. Phys. Chem. B 2018, 122, 4289. [37] D. Meral, S. Toal, R. Schweitzer-Stenner, B. Urbanc, J. Phys. Chem. B 2015, 119, 13237. [38] Y. Zhao, D. G. Truhlar, Theor. Chem. Acc. 2008, 120, 215.
+16 of 17 LANZA AND CHIACCHIO
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+[39] J. Tomasi, B. Mennucci, R. Cammi, Chem. Rev. 2005, 105, 2999. [40] M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery Jr., J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, K. N. Kudin, V. N. Staroverov, R. Kobayashi, J. Normand, K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, D. J. Fox, Gaussian 09 Revision A.02, Gaussian, Inc., Wallingford CT 2010. [41] R. Dennington, T. Keith, J. Millam, GaussView, Version 5, Semichem Inc., Shawnee Mission KS 2009. [42] I. Matanovic, M. Xu, J. W. Moskowitz, J. Eckert, Z. Bacˇic, J. Chem. Phys. 2009, 131, 224308. [43] C. Qu, J. M. Bowman, J. Phys. Chem. C 2016, 120, 3167. [44] C. Petersen, K.-J. Tielrooij, H. J. Bakker, J. Chem. Phys. 2009, 130, 214511. [45] F. M. Floris, M. Selmi, A. Tani, J. Tomasi, J. Chem. Phys. 1997, 107, 6353. [46] S. Strazdaite, J. Versluis, E. H. G. Backus, H. J. Bakker, J. Chem. Phys. 2014, 140, 054711. [47] J. Grdadolnik, F. Merzel, F. Avbelj, Proc. Natl. Acad. Sci. U S A 2017, 114, 322. [48] N. Smolentsev, W. J. Smit, H. J. Bakker, S. Roke, Nat. Commun. 2017, 8, 15548. [49] J.-L. Li, R. Car, C. Tang, N. S. Wingreen, Proc. Nat. Acad. Sci. USA 2007, 104, 2626. [50] M. Montagna, F. Sterpone, L. Guidoni, J. Phys. Chem. B 2012, 116, 11695. [51] K. Yasuda, R. Ohmura, J. Chem. Eng. Data 2008, 53, 2182. [52] G. D. Holder, S. P. Godbole, AIChE J. 1982, 28, 930. [53] Y. P. Handa, R. E. Hawkins, J. J. Murray, J. Chem. Thermodynamics 1984, 16, 623. [54] S. S. Fan, D. Q. Liang, K. H. Guo, J. Chem. Eng. Data 2001, 46, 930. [55] P. Buchanan, A. K. Soper, H. Thompson, R. E. Westacott, J. L. Creek, G. Hobson, C. A. Koh, J. Chem. Phys. 2005, 123, 164507. [56] S. A. Bagherzadeh, S. Alavi, J. A. Ripmeester, P. Englezos, Phys. Chem. Chem. Phys. 2015, 17, 9984. [57] P. Carbonniere, S. Thicoipe, T. Very, X. Assfeld, Int. J. Quantum Chem. 2012, 112, 2221. [58] M. K. Shukla, J. Leszczynski, Int. J. Quantum Chem. 2010, 110, 3027. [59] H. Tachikawa, T. Iyama, Int. J. Quantum Chem. 2005, 102, 230. [60] A. V. Kurnosov, A. Y. Manakov, V. Y. Komarov, V. I. Voronin, A. E. Teplykh, Y. A. Dyadin, Dokl. Phys. Chem. 2001, 381, 303. [61] K. A. Udachin, G. D. Enright, C. I. Ratcliffe, J. A. Ripmeester, J. Am. Chem. Soc. 1997, 119, 11481. [62] Y.-K. Cheng, W.-S. Sheu, P. J. Rossky, Biophys. J. 1999, 76, 1734. [63] Ł. Dobrzycki, P. Taraszewska, R. Boese, M. K. Cyranski, S. A. Cirkel, Angew. Chem. Int. Ed. 2015, 54, 10138. [64] S. Alavi, K. Udachin, J. A. Ripmeester, Chem. Eur. J. 2010, 16, 1017. [65] G. Bravo-Pérez, H. Saint-Martin, Int. J. Quantum Chem. 2012, 112, 3655. [66] Y. Liu, J. Zhao, F. Li, Z. Chen, J. Comput. Chem. 2013, 34, 121. [67] W. L. Jorgensen, J. Gao, C. Ravimohan, J. Phys. Chem. 1985, 89, 3470. [68] T. V. Rodionova, A. A. Sizikov, V. Y. Komarov, G. V. Villevald, T. D. Karpova, A. Y. Manakov, J. Phys. Chem. B 2017, 121, 4900. [69] K. G. R. Pachler, Spectrochim. Acts 1964, 20, 681. [70] P. E. Hansen, J. Feeney, G. C. K. Roberts, J. Magn. Res. 1975, 17, 249. [71] J. Feeney, J. Magn. Res. 1976, 21, 473. [72] B. P. Mikhova, M. F. Simeonov, S. L. Spassov, Mag. Res. Chem. 1985, 22, 474. [73] A. L. Rucker, C. T. Pager, M. N. Campbell, J. E. Qualls, T. P. Creamer, Proteins: Struct. Funct. Genet. 2003, 53, 68. [74] R. Schweitzer-Stenner, W. Gonzales, G. T. Bourne, J. A. Feng, G. R. Marshall, J. Am. Chem. Soc. 2007, 129, 13095. [75] A. Falenty, T. C. Hansen, W. F. Kuhs, Nature 2014, 516, 231. [76] L. del Rosso, M. Celli, L. Ulivi, Nat. Commun. 2016, 7, 13394. [77] K. Shiraga, T. Suzuki, N. Kondo, Y. Ogawa, J. Chem. Phys. 2014, 141, 235103.
+SUPPORTING INFORMATION
+Additional supporting information may be found online in the Supporting Information section at the end of this article.
+How to cite this article: Lanza G, Chiacchio MA. The water molecule arrangement over the side chain of some aliphatic amino acids: A
+quantum chemical and bottom-up investigation. Int J Quantum Chem. 2020;120:e26161. https://doi.org/10.1002/qua.26161
+LANZA AND CHIACCHIO 17 of 17
+1097461x, 2020, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/qua.26161 by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

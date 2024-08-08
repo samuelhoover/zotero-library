@@ -1,0 +1,2237 @@
+50th Anniversary Perspective: A Perspective on Polyelectrolyte Solutions
+M. Muthukumar*
+Department of Polymer Science and Engineering, University of Massachusetts, Amherst, Massachusetts 01003, United States
+ABSTRACT: From the beginning of life with the information-containing polymers until the present era of a plethora of water-based materials in health care industry and biotechnology, polyelectrolytes are ubiquitous with a broad range of structural and functional properties. The main attribute of polyelectrolyte solutions is that all molecules are strongly correlated both topologically and electrostatically in their neutralizing background of charged ions in highly polarizable solvent. These strong correlations and the necessary use of numerous variables in experiments on polyelectrolytes have presented immense challenges toward fundamental understanding of the various behaviors of charged polymeric systems. This Perspective presents the author’s subjective summary of several conceptual advances and the remaining persistent challenges in the contexts of charge and size of polymers, structures in homogeneous solutions, thermodynamic instability and phase transitions, structural evolution with oppositely charged polymers, dynamics in polyelectrolyte solutions, kinetics of phase separation, mobility of charged macromolecules between compartments, and implications to biological systems.
+I. INTRODUCTION
+We do not know how life began on our planet. But we do know that polyelectrolytes must have existed before life began, since the life as we know it requires replicating charged polymers that contain information. Even beyond the information-containing polymers, many other varieties of polyelectrolytes constitute the makeup of various organisms and their behaviors. Beginning from the time of primordial origins some billions of years ago, we and other organisms have been living up with these polymers. Although modest in comparison with what these strings of life have managed to perform, our civilizations have made polyelectrolyte-based materials with amazing technologically relevant properties. Indeed, newer and newer polyelectrolytes are emerging from our laboratories, which continue to sculpt the way our civilization is being propelled with a natural responsibility to enhance human health care and our planet’s sustainability. Yet, we do not understand most of the aspects of how polyelectrolyte molecules behave. The description of polyelectrolytes is perhaps the most challenging subject today among all biological and chemical systems in their liquid and solid states. Why? From an experimental point of view, there are too many variables controlling the polyelectrolyte phenomena. These variables are nonlinearly coupled, and the end result can be synergistic or antagonistic, or even reversed depending on the time elapsed. From a conceptual point of view, the challenge for understanding arises from the fact that the whole system is strongly correlated, and every molecule knows every other one in the system. These challenges are not anew. They were present even before the birth of life billions of years ago. As an example, consider an isolated molecule of an information-containing polyelectrolyte, say RNA in salty water. A small portion of
+ssRNA molecule is sketched in Figure 1. For a synthetic analogue, say a solution of sodium poly(styrenesulfonate) in
+water containing low molar mass electrolytes, the cartoon is the same as in Figure 1, where every monomer is now replaced by a styrenesulfonate group. The primary confounding forces operative in polyelectrolyte systems are evident even in such a single molecule situation. The system is endowed with long-ranged electrostatic forces due to charges (phosphate groups, counterions, and salt ions), hydrogen-bonding and dipolar interactions (water), van der Waals interactions resulting in excluded volume effects, and
+Received: September 6, 2017 Revised: November 27, 2017 Published: December 14, 2017
+Figure 1. Sketch of a natural polyelectrolyte, RNA, that must have existed when life began billions of years ago. Chain connectivity, charges on the polymer, counterions, salt ions, excluded volume effects, hydrogen bonding, and structure of water contribute to the structures and functions of such polyelectrolytes.
+Perspective
+Cite This: Macromolecules 2017, 50, 9528−9560
+© 2017 American Chemical Society 9528 DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+This is an open access article published under an ACS AuthorChoice License, which permits copying and redistribution of the article or any adaptations for non-commercial purposes.
+
+
+chain connectivity. This cocktail, pregnant with potential of huge functionalities, is obviously inhomogeneous in terms of how a beam of light is going to be bounced around inside the system. The collective behavior of the above-mentioned interactions is not yet fully understood. When multiple chains of different kinds are present in the system, the challenge increases exponentially. The various interactions mentioned in Figure 1 have somehow sculpted the evolution of life on our planet. In a modest way, the field of polyelectrolytes offers an opportunity to systematically understand the components and their effective forces and put these results together. Hopefully, some day soon, we will be able to fabricate a molecular engine which might look like the first polymer of life with capacity to reproduce itself. We focus on size, structure, and dynamics of a collection of identical polyelectrolyte chains in an electrolyte solution and on the behavior of solutions containing two populations of identical polyelectrolyte chains, but with opposite charge. Other subjects such as polyelectrolyte brushes, block copolymers, gels, sequence effects, etc., are not addressed here. In terms of theoretical approaches, a difficult subject such as the present one naturally had attracted many attempts with varying answers for the same questions. We do not review this colorful literature here either. This Perspective, admittedly subjective, is leaning toward conceptual issues instead of a catalogue of all missteps taken and how we learnt from them. The rest of the Perspective is organized as follows. After introducing the relevant scales of energy, length, and time, and a brief overview of the literature on this subject, the size of an isolated polyelectrolyte chain is discussed in section IV. Next is the structure that emerges from multiple chains. Section VI addresses thermodynamic instability of polyelectrolyte solutions, followed by transport properties in section VII.
+II. SCALES OF ENERGY, LENGTH, AND TIME
+Energy. Consider the electrostatic interaction energy Uij between a pair of ions with charges zie and zje separated by a
+distance rij in a medium with uniform dielectric constant ε (in the absence of any other charges) given by the Coulomb law
+π
+= εε
+U
+k T zz e
+4 kTr
+1
+ij ij
+B ij
+2
+0 B (1)
+where kBT is the Boltzmann constant times the absolute temperature, zi is the valency of the ith ion, e is the electronic
+charge, and ε0 is the permittivity of a vacuum. The middle factor in the above equation has the dimension of length and is called the Bjerrum length, lB.
+π
+≡ εε
+le
+4 kT
+B
+2
+0 B (2)
+If the separation distance rij is comparable to lB, then the electrostatic interaction energy of two monovalent ions is comparable to the thermal energy kBT, as evident from eq 1. For oppositely charged ions, if the distance between them is shorter than lB, the attraction is stronger than kBT and the ions are more likely to be ion pairs instead of completely dissociated ions. The Bjerrum length sets the scale for energy. It is inversely proportional to εT, where ε itself is temperature dependent. For aqueous solutions at 25 °C, the Bjerrum length (with ε = 80) is
+l ≃ 0.7 nm
+B (3)
+Length. The pairwise interaction energy between two ions of charges zie and zje in an electrolyte solution is the screened Coulomb energy as given by
+=
+−κ
+U
+k T zzl r
+e
+ij ij
+r
+B ij
+B
+ij
+(4)
+where
+∑
+κ =εε
+e
+kT zn
+i
+ii
+22
+0B
+2 0
+(5)
+where ni0 is the average number concentration of the ith ion. While the strength of the electrostatic interaction between ions
+is given by the Bjerrum length, its range is given by κ−1, known
+as the Debye length ξD ≡ κ−1.
+∑
+ξ = εε
+−
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+e
+kT zn
+i
+D ii
+2
+0B
+2 0
+1/2
+(6)
+The range decreases if εT is reduced or/and the electrolyte concentration is increased. For monovalent salts in water (ε = 78.54 at 25 °C), the Debye length is
+ξ≃ c
+0.3 nm
+s
+D (7)
+where cs is the salt concentration in units of moles per liter. The
+screened potential (Debye−Hückel potential) given by eq 4 is only approximate, derived within the framework of linearized Poisson−Boltzmann equation. Nevertheless, the Debye length is a fundamental scale of length in the treatment of polyelectrolyte solutions. The above two fundamental parameters (lB and ξD) have very important consequences in the physics of polyelectrolyte solutions. Consider a polyelectrolyte solution at a finite concentration. Although the polyelectrolyte molecule is fully ionizable, the chance that a counterion would be near a monomer and be bound is finite, if the distance between the monomer and the counterion is less than lB. In particular, the
+effective dielectric constant in the neighborhood of the chain backbone can be quite low, and hence the binding energy is very high as can be seen from eq 1. As a result, a certain number of counterions are bound to the polymer as cartooned in Figure 2, and the naked charge of the molecule is never realizable in equilibrium at finite polyelectrolyte concentrations. Furthermore, when a counterion is
+Figure 2. Counterions can adsorb on chain backbone forming temporary dipoles. The area shaded in green denotes the local environment around the oil-like chain backbone where the local dielectric constant can be substantially lower than the bulk value away from the chain.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9529
+
+
+bound to the monomer of the polymer, a dipole is formed. Such dipoles are only temporary but can be sufficiently longlived to interact with other dipoles formed along the chain contour. These dipole−dipole interactions can be quite strong compared to kBT. For example, for two freely rotating dipoles p1 and p2 of unit charge separated by the distance r in an electrolyte solution, the interaction energy is attractive.
+κκ
+κκ
+=− + +
+++
+κ
+− −⎡
+⎣⎢
+⎤
+⎦⎥
+Ur
+kT
+ppl
+r rr
+rr
+()
+3 e 12 5
+3( )
+2
+3( ) 1
+6( )
+r
+dipole dipole
+B
+1
+2 2
+2 B
+2
+6
+22
+34
+(8)
+Analogous to the two-body excluded volume parameter for uncharged polymers, the two-body dipole−dipole interaction parameter, υdipole, can be dened using eq 8. At room
+temperature in water, υdipole ≃ −10kBT if the separation distance between the dipoles and the dipole length are 0.25 nm. Therefore, we readily anticipate that some segments of the chains would cling together due to the formation of quadrupoles and the rest of the chains repelling each other. Naturally, such a scenario can result in nonuniform structures and even attraction between similarly charged polymers. Time. Another message conveyed by Figure 2 is that there is a hierarchy of time scales: diffusion time for a free counterion, lifetime of an adsorbed counterion, segmental relaxation time, characteristic relaxation time for the whole polymer, characteristic time for the relaxation of the collection of dipole pairs, entanglement time, etc. As a result, the dynamics of polyelectrolyte chains and the transport properties of polyelectrolyte solutions exhibit very rich phenomenology. In qualitative terms, sometimes the large macromolecules follow the motion of small free counterions, and some other times the small ions hover over the large macromolecules, both by maintaining electroneutrality over a reasonably small volume.
+III. A BIRD’S-EYE VIEW OF LITERATURE ON POLYELECTROLYTE SOLUTIONS
+The literature on polyelectrolyte solutions is vast,1−159 encompassing a large body of publications over the past
+seven decades, based on experiments,1−61 theory,62−132 and
+simulations.133−159 Because of the difficult nature of the subject, where every molecule essentially knows every other one in the system, the particular aspects of the various publications have been quite diverse. In terms of experiments, the most notable issues are charge and size of isolated molecules, titration curves, colligative properties, structural organization in solutions, complexation, phase diagrams, and dynamical properties such as diffusion, viscosity, and ionic conductivity. These central issues have been addressed by a variety of theoretical, computational, and simulation works, which were designed to better understand the collective nature of electrostatic interactions among all charged macromolecules, their counterions, and additional electrolyte ions in the solution. A critical review of these publications or a comparative study of the various often incomplete theoretical attempts is certainly beyond the scope of the present paper. However, a modest attempt is made to outline some of the subjectively chosen conceptual cornerstones as given below. Specific references to the literature are mentioned in sections IV−VII. The symbols in the original publications are converted to their equivalents in the symbols used in the present article.
+Early Elegant Arguments for Polyelectrolyte Size. One of the earliest publications dealing with polyelectrolytes in
+solution is by Katchalsky, Künzle, and Kuhn in 1950.62 Consider a flexible polyelectrolyte chain of N Kuhn segments, each of length l and charge αzpe (α is the degree of ionization and zp is the number of ionizable groups per Kuhn segment), where there are no counterions or small electrolyte ions. With
+the end-to-end distance of the chain as R, Katchalsky et al.62 wrote the free energy of the chain as
+α
+=+
+FR
+kT
+R
+Nl
+l zN
+R
+() 3
+2
+()
+4
+p
+B
+2
+2
+B
+2
+(9)
+where the first term on the right-hand side is due to the conformational entropy of a Gaussian chain and the second term represents the electric repulsion. The second term follows from eqs 1 and 2 as the authors imagined that the total charge of the chain is evenly at the two ends separated by R. By minimizing F(R) with respect to R, the authors obtained
+α
+∼
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+R
+l
+zl
+l N (salt free)
+p
+22 B
+1/3
+(10)
+The proportionality between the end-to-end distance R and N suggested that flexible polyelectrolyte chains in salt-free conditions would adopt rod-like conformations. On the other hand, if adequate amount of salt is added to the polyelectrolyte solution in order to screen the electrostatic
+interaction, Flory argued in 195365 that the effect of intersegment electrostatic repulsion is simply to add the term 4πα2zp2lB/κ2l3 to the usual two-body excluded volume
+parameter w (related to the Flory−Huggins χ parameter, as w = (1/2 − χ)). In this limit of high salt concentration, the ratio of the radius of gyration Rg of the polyelectrolyte chain to its
+Gaussian chain value Rg0 is given by30
+π
+πα
+κ
+−= +
+⎜⎟
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟ ⎛
+⎝
+⎞ ⎠
+⎡
+⎣
+⎢⎢
+⎤
+⎦
+⎥⎥
+R
+R
+R
+R w zl
+lN
+134 105
+3 2
+4
+g
+g
+g
+g
+p
+0
+5
+0
+3 3/2 2 2
+B 23
+(11)
+When the excluded volume interaction (from both the hydrophobic part and the electrostatic part) is strong, this equation gives
+πα
+κ
+∼+
+⎡
+⎣
+⎢⎢
+⎤
+⎦
+⎥⎥
+R lw z l
+lN
+4 (high salt)
+g
+p
+22 B 23
+1/5
+3/5
+(12)
+An interpolation formula connecting the limits of eqs 10 and 12 was later derived in ref 77.
+Counterion Distribution around Rod-like Polyelectrolytes. Early experiments, reviewed in refs 2, 5, 7, and 9, showed that the osmotic pressure of polyelectrolyte solutions is significantly nonideal. The osmotic coefficient (defined as the ratio of the measured osmotic pressure to the value expected from the ideal van’t Hoff law) depends strongly on the degree of ionization of the polymer. Such observations on the colligative properties, in combination with unexpected large scattering intensity in turbidimetry, launched an avalanche of theoretical works in 1950s to understand the role of
+counterions on polyelectrolytes.5,9 Since rod-like conformations are suggested by eq 10, and due to theoretical difficulty in treating highly flexible fractal-like conformations, a polyelectrolyte solution was imagined to be an
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9530
+
+
+array of parallel charged rods of a certain small diameter and a long length.63,64 The distribution of counterions around each of these cylindrical rods was calculated exactly as a function of degree of ionization and the rod concentration. The exact results showed that there is a substantial accumulation of counterions near the polymer and that the total fraction of counterions around the polymer increases monotonically and continuously as the distance from the rod axis increases. These results are further augmented by more recent theoretical considerations.99,109,142
+The exact results of Alfrey et al.63 and Fuoss et al.,64 presented in 1951, are to be contrasted with the Manning argument (1969) of counterion condensation on an infinitely thin and infinitely long line charge.70,74 For this model, the number of counterions inside a cylinder of radius r0 around the line charge diverges if the space available for counterions starts at the line charge for zpzclB/l > 1 (with zpe as the charge of each of the point-like monomers on the line charge separated by l and zce as the charge of the counterion). This apparent divergence can be mathematically avoided by arguing that zpzclB/l is never allowed to be greater than unity. In other words, one can imagine that enough counterions condense on the line charge and reduce the initial charge density to a new value zpe/leff so as to make zpzclB/l = 1. Hence, the effective charge separation leff is now taken to be larger than l. Therefore, accounting for the counterion condensation in the Manning model, the charge fraction α on the line charge, defined as the ratio of l to lB (α = l/lB), is
+α=
+<
+>
+⎧
+⎨⎪
+⎩⎪
+z zl l
+l
+z zl z zl l
+1 /1
+/1
+pc
+pc
+pc
+B
+B
+B
+(13)
+The Manning criterion for binding of counterions around a line charge is zpzclB/l ≥ 1. While the Manning argument is exact for the particular model of an infinitely thin and infinitely long perfectly one-dimensional line charge, it cannot be applied to experimental systems involving flexible and semiflexible polyelectrolyte chains and even for rods with finite diameter.30,63,64 Considerable effort has been made to understand
+counterion condensation by using computer simulations133−159 in terms of the valency of counterions, salt concentration, chain length, and polymer concentration. The Manning transition as given by eq 13 is not observed in the simulations. In general, the degree of adsorbed counterions near the chain backbone increases with polymer concentration and salt concentration. In the presence of multivalent ions, charge reversal can readily emerge if the electrostatic interaction is strong.
+Electrostatic Blob and Scaling Laws. In 1976, de Gennes et al.71 generalized the scaling concepts of polymer physics160 to polyelectrolyte solutions. The style of scaling arguments in ref 71 was subsequently used by several other authors even to more complex experimental conditions.86,90,108 As an illustration of the scaling approach, let us consider a salt-free polyelectrolyte solution, where R ∼ N as given by eq 10. This result can be equivalently couched in terms of a graphical representation. The dimensionless variable for the strength of the electrostatic repulsion in eq 9 is α2zp2lBN3/2/l (by taking R ∼ √N for the unperturbed Gaussian chain). Therefore, the electrostatic repulsion is weak if
+α<
+z lN
+l1
+p
+22 B
+3/2
+(14)
+In other words, the electrostatic interaction is weak if the number of Kuhn segments in the chain is smaller than the threshold value N*.
+α
+*=
+−
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+N zl
+l
+p
+22 B
+2/3
+(15)
+Let us imagine a chain with N segments to be made up by several contiguous sections within which the electrostatic interaction is weak and beyond which the electrostatic interaction is significant. Calling these sections as electrostatic blobs of linear size ξe, let each blob contain g segments. We
+choose g and ξe by assuming that the electrostatic energy of each blob is comparable to the thermal energy kBT. From the second term on the right-hand side of eq 9, we get
+α
+ξ≃
+l ( z g) 1
+p
+e
+B
+2
+(16)
+Noting that the Gaussian statistics is applicable within each blob, ξe2 ∼ gl2, and combining with eq 16
+ξα α
+∼∼
+−−
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+l
+zl
+l g zl
+l
+;
+ep p
+22 B
+1/3 2 2 B
+2/3
+(17)
+Since the electrostatic interaction between the blobs is strong, we expect the chain to be stretched into a rod-like conformation with N/g blobs so that the end-to-end distance is
+ξ
+α
+∼∼
+⎛
+⎝⎜ ⎞
+⎠⎟
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+RN
+g l zl
+lN
+e
+p
+22 B
+1/3
+(18)
+which is the same result as eq 10. These scaling arguments have been generalized to solutions with excluded volume interaction
+(both good and poor solvents).75 It must be emphasized that there are no counterions or salt ions in deriving these scaling laws. Given that R ∼ N in the salt-free dilute limit (i.e., the size
+exponent (R ∼ Nν)ν = 1), the overlap concentration C* ∼
+N1−3ν ∼ N−2. For semidilute salt-free polyelectrolyte solutions, where the polyelectrolyte concentration C is above the overlap
+concentration, the scaling laws160 for the osmotic pressure (Π
+∼ C3ν/(3ν−1)), the correlation length (ξ ∼ C−ν/(3ν−1)), and the
+radius of gyration of a labeled chain (Rg ∼ √NC−(2ν−1)/2(3ν−1)) follow as
+Π∼ ξ∼ ∼
+−−
+C ; C ; Rg C
+3/2 1/2 1/4 (19)
+As we mention below, the scaling laws of ξ and Rg are in good agreement with experiments.
+Electrostatic Persistence Length. Another important concept emerged in 1977 related to the role of electrostatic interactions in semiflexible polyelectrolyte chains. Considering a rod-like chain, Odijk as well as Skolnik and Fixman independently calculated the electrostatic contribution to the
+bending energy when the chain is slightly bent.72,73 They showed that the stiff chain acquires an additional persistence length, called the electrostatic persistence length lpe, in addition
+to its intrinsic persistence length lp. The effective persistence length lp,eff is
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9531
+
+
+κ
+l =l +l l = l
+l
+;4
+p,eff p pe pe
+B
+2 2 (20)
+Thus, for salt-free conditions (κ → 0), the electrostatic persistence length can be significant. The concept of the electrostatic persistence has been implemented for flexible
+polyelectrolytes as well.25 For flexible polyelectrolytes, the relative magnitude of electrostatic stiffening with respect to electrostatic swelling (eq 11) has been debated in the literature
+without firm conclusions.25,30
+Experiments, Theory, and Simulations. Starting from around 1980 onward, the subject of polyelectrolytes attracted renewed interest from the polymer community. The availability of powerful scattering techniques resulted in a wealth of information regarding polyelectrolyte conformations and structure formation in dilute, semidilute, and concentrated
+solutions.13,14,17−19,24−27,31,34−38 The effects from counterions and salt ions can be quite dramatic, in particular with
+multivalent ions.28,32,34 Phase diagrams were composed in multicomponent polyelectrolyte solutions, but usually at room temperatures. More carefully measured data on diffusion, viscosity, conductivity, and dielectric properties also became available. Some of these experimental data will be discussed in sections VI and VII. There still remain several unresolved puzzles especially related to conductivity and dielectric
+relaxation.40 The theoretical efforts on polyelectrolyte solutions since 1980 may be classified into three groups: (a) scaling theories, (b) field-theory-based analytical theories, and (c) liquid-state theories. These will be commented upon in the following sections at appropriate places. In the field-theory-based analytical theories, one starts with the Edwards Hamiltonian appropriate for the particular polyelectrolyte system (as expanded in section V), and the free energy is calculated by introducing collective variables such as the local polymer concentration, the correlations of which are measured experimentally. From the calculated free energy, various quantities of experimental interest, such as degree of ionization, radius of gyration of labeled molecules, osmotic pressure, structure factors, dynamical properties, and phase diagrams, are calculated. This methodology is the one followed in almost all
+theoretical works. The approach of the liquid-state theory115 is complementary to the field-theoretic approach and starts with the correlation function of monomer density g(r). Using a closure protocol in the self-consistent integral equation for g(r), the structure factor and conformational properties of polyelectrolyte solutions are calculated. The simulation efforts may be classified into two groups: (a) united-atom-based molecular dynamics, Brownian dynamics, Langevin dynamics, and Monte Carlo simulations and (b) fieldtheoretic simulations. In the first category, the main focus has been on counterion condensation, osmotic pressure, electrostatic correlations, and complexation between oppositely charged polymers. The second category of simulations has provided insight into formation of large-scale structures. The main results from these simulations will be commented upon in the following sections.
+IV. CHARGE AND SIZE IN DILUTE SOLUTIONS
+Charge Regularization. The key fundamental quantity that dictates all properties of polyelectrolyte molecules in solutions is the net effective charge per molecule. The effective charge of even strongly dissociating polyelectrolytes, where
+every ionizable repeat unit can fully ionize, is significantly lower than the full chemical charge. The reason lies in the physics portrayed in Figure 2. As a specific example, consider the binding equilibrium of a counterion (say Na+) to a sulfonate group of a monomer, as in sodium poly(styrenesulfonate), in water of dielectric constant ε (Figure 3).
+The free energy associated with charging a sodium ion of radius a1 to its full charge in a medium of dielectric constant ε is
+given by the Born energy,161 e2/(8πε0εa1). Similarly, the Born
+energy for the sulfonate group of radius a2 is e2/(8πε0εla2).
+Here the dielectric constant εl in the neighborhood of the
+sulfonate group must be significantly lower than that of the bulk polar solvent as the group is permanently attached to oillike nonpolar backbone. No one yet knows how to theorize or measure the local polarizability effect in polyelectrolyte solutions. The early literature shows that the dielectric constant changes from a very low value of about 5 near the chain to the bulk value of about 80 at a distance of 2 nm from the chain
+backbone.85 Here, we shall be content with treating εl as a
+parameter. The ion-pair energy for a bound Na+ ion to the sulfonate group at a distance r is the Coulomb energy −e2/ (4πε0εlr). Therefore, the free energy of formation of the ion pair is
+ππ π
+Δ =− εε − ε ε + ε ≡− εε
+⎛
+⎝⎜ ⎞
+⎠⎟
+G
+kT
+e
+r
+e
+aa
+e
+48 d
+11
+4
+Bl l l
+2
+0
+2
+01 2
+2
+0
+(21)
+where 1/d = (1/r + 1/(2a2) + εl/(2εa1)). Here εl and d are
+unknown and their values depend on the specifics of the polylelectrolyte backbone and chemical identities of the various
+ions in the solution. In one approach,103 all of these unknowns are parametrized into one parameter δ defined as εl/(εld) so that
+δ
+Δ =−
+G
+kT
+l
+l
+B
+B
+(22)
+where l is the charge separation distance along the chain contour. The parameter δ is related to the ionization equilibrium constant Ki through
+K =− K = l δ
+l
+p log 1
+2.303
+ii
+B
+(23)
+The ionization equilibrium of a repeat unit as a part of the polyelectrolyte chain is clearly different from that of the unit if it were to be dispersed into the polar medium as simply a monomer. This fact has been recognized since the early
+investigations.2,7,9 The most recent experiments51 using fluorescence techniques are opening an opportunity to measure polarizability effects on ionic equilibria in polyelectrolyte solutions. Theoretical formulations of this effect in crowded environments are hard and remain as one of the major challenges in polyelectrolyte physics.
+Figure 3. Ionization equilibrium of a monomer of sodium poly(styrenesulfonate).
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9532
+
+
+Despite this challenge, it is clear that the degree of ionization
+of each charged repeat unit is less than unity.25 For the whole chain, made of the ionization equilibria of all ionizable repeat units, an average degree of ionization α may be ascribed to the whole chain. Although, in reality, the chain should be treated as a heteropolymer made of un-ionized groups and ionized groups, with the sequences changing dynamically, it is a good approximation to take the sequences as “annealed” and assume that the chain is uniformly charged with each repeat unit of degree of ionization α. The value of α depends on all nonuniversal chemical specifics of the polymer, counterion, salt ions, and solvent and the physical conditions such as the temperature, polyelectrolyte concentration, and salt concentration. As the chain conformations change, so would the value of α, which is not a fixed number for any polyelectrolyte solution as the experimental conditions change. The resulting charge regularization is uniquely specific to a particular set of experimental variables (temperature, polymer concentration, salt concentration, solvent, etc.). Polymer Size. The expectation that an isolated flexible polyelectrolyte chain in salt-free dilute solutions would adopt a rod-like conformation due to intrachain electrostatic repulsion is reasonable from a theoretical point of view, if the solution volume is so large that the enormous translational entropy associated with dissociated counterions prohibits any counterion adsorption on the chain. But, rod-like conformation has not
+been observed in experiments with flexible polyelectrolytes.30 An effective size exponent, νeff may be defined relating the radius of gyration Rg and the degree of polymerization.
+∼ν
+RN
+g eff (24)
+For salt-free solutions, typical values of νeff is in the range 0.7−
+0.8. Even when a value of νeff close to 1 is reported in the literature, the prefactor is much less than what is expected for rod-like conformations. As soon as the salt concentration is
+about 10−3 M or higher, the value30 of νeff is close to 0.6.
+The experimental observation of νeff being much less than unity is indeed a direct consequence of the adsorption of counterions. As emphasized above, the extent of degree of ionization is not a fixed number, and it varies as the experimental conditions change. As a straightforward example, consider the coil-to-globule transition of a flexible polyelectrolyte chain as the temperature is lowered or the dielectric
+constant is lowered or salt concentration is increased.44 The coil-to-globule transition of an uncharged polymer is addressed in terms of attractive two-body interaction (with the Flory− Huggins χ parameter being larger than 0.5) and a stabilizing (repulsive) three-body interaction parameter w3. When w3 is higher, lower temperature is required to induce the coil-toglobule transition. In the case of polyelectrolytes, there is the additional variable α. As the chain begins to collapse due to a change in temperature or solvent quality, α will decrease due to counterion adsorption, which in turn would facilitate more chain collapse (due to further reduced electrostatic repulsion
+from lowered value of α), resulting in a cascade.92,97 Thus, all counterions are expected to be collected by the collapsing polymer at the coil-to-globule transition. It is therefore necessary to perform a self-consistent calculation of α and Rg as the experimental conditions change. An example of such a calculation is given in Figure 4, where α and the square of the
+size expansion factor (l ̃1 ≡ Rg2/Rgθ2, where Rgθ is the radius of gyration at the Flory ideal temperature) are plotted against the
+reduced temperature t ≡ l/(4πlB) for several values of the w3
+parameter.117 The main result of this figure is that the chain collapse and the precipitous collection of counterions by the coil occur at the same time. There cannot be a coexistence of swollen and collapsed states for the same effective charge of the
+polymer. Experimental investigations44 on coil-to-globule transition of quarternized poly(2-vinylpyridine) in the mixed solvent of 1-propanaol and 2-pentanone clearly demonstrated this mutually cooperative coupling between α and Rg. In fact, the measured ionic conductivity of the solution dropped to zero when the chain formed the globule, clearly establishing that the counterions were progressively collected by the collapsing coil
+during the coil-to-globule transition.44 At this point, a cautionary note must be made. There is a
+preponderance of theories108 in polyelectrolyte literature based on scaling arguments, blobs, pearl-like structures, etc., all based on a fixed value of α over the entire ranges of the various experimental variables where the phenomena are addressed. While these theories are exciting on their own merit based on the definition of their corresponding models, they do not have any relevance to practical systems with wide variations in temperature, solvent quality, and salt concentrations. Exceptions might arise under conditions when α does not vary too much as perhaps in the situation of homogeneous single phases of polyelectrolyte solutions in a narrow temperature range. It is not experimentally relevant to formulate theories and computations of polyelectrolyte sizes or phase diagrams by fixing α and changing T, ε, polymer concentration, and salt concentration. The charge regularization associated with selfconsistently varying α with varying experimental conditions
+Figure 4. Plots of degree of ionization and the square of the size expansion factor versus reduced temperature for different values of the three-body repulsion term w3. The precipitous drop in the degree of
+ionization accompanies the coil−globule transition. Reproduced with permission from ref 117.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9533
+
+
+must be treated in any quantitative comparison between theoretical predictions and experimental results. Such selfconsistent treatment of charge regularization for polyelectrolyte solutions is largely lacking at this point in the literature. Only recently, a modest progress is made in treating charge regularization for radius of gyration, second viral coefficient, and static structure factor of a polyelectrolyte at infinitely dilute
+solutions containing added salt.50,119 Nevertheless, theoretical treatments without charge regularization have enabled exploration of the leading effects of electrostatics in the behavior of polyelectrolyte systems, with an implicit hope that the charge regularization is either weak or to be relegated to future work.
+V. ELECTROSTATICALLY DRIVEN STRUCTURE IN POLYELECTROLYTE SOLUTIONS
+One of the main attributes of polyelectrolyte solutions is that all chains are strongly correlated both topologically and electrostatically. Even in very dilute solutions such that the chains are
+not interpenetrating, the chains are still strongly correlated.71 In very dilute solutions, the molecules appear to position themselves at some preferred interchain distance to minimize the electrostatic repulsion between them. At higher polyelectrolyte concentrations, chains intermingle into each other by gaining entropy and modifying the nature of the Coulomb repulsion between them. These correlations are manifest in the
+scattering properties of polyelectrolyte solutions using light, X
+ray, and neutrons.11,13,14,17−19,21,24,26,31,35−38 For salt-free
+polyelectrolyte solutions, the most characteristic feature of the dependence of scattering intensity on the scattering wave vector k is the presence of a scattering peak, known as the “polyelectrolyte peak”, at km (Figure 5a). The peak position depends on the polyelectrolyte concentration C and this dependence has been cast empirically as
+∼β
+kC
+m (25)
+The value of β changes from 1/3 for extremely dilute solutions to 1/2 for for dilute and semidilute solutions. For extremely high polymer concentrations, β ∼ 1/4 over a very narrow range of polymer concentration, close to the hydrated limit of the polyelectrolyte salt. If low molar mass salt is present in sufficient amounts, the polyelectrolyte peak goes away and the scattering behavior is
+analogous to that of a solution of uncharged polymers. Another noteworthy feature of static structure factor of salt-free polyelectrolyte solutions is that the intensity at near zero scattering angles is enormous and this always accompanies the polyelectrolyte peak (Figure 5b). This zero-angle enhanced intensity goes away upon addition of salt. It has been surprising that similarly charged polymers would tend to clump together (presumably responsible for zero-angle intensity) under conditions where electrostatic repulsion is maximal and that such clumps become unstable when the repulsion is reduced by screening the electrostatics with added salt. An understanding of the above facts has been a challenge to theory community, and there have been numerous attempts on theories of polyelectrolyte solutions. The simplest and the most systematic among these approaches is based on the selfconsistent treatment of chain topology and electrostatics, called double screening. We shall call this theory as the double
+screening theory.81 In view of placing the experimental results and the predictions of the double screening theory in perspective, the key assumptions and approximations behind the analytically derived double screening theory will be presented first. Next, the inadequacies of the random phase approximation (RPA) which is being heavily used in many
+current theoretical approaches78,79,93,123,124 for polyelectrolyte solutions will be discussed. Predictions from the double screening theory, such as attraction at intermediate distances, polyelectrolyte peak, and size of a labeled polyelectrolyte chain, will be discussed in the context of experimental data. The situation of how two oppositely charged polyelectrolytes form complexes in dilute solutions will be briefly mentioned in terms of novel structure formation in dilute polyelectrolyte solutions. Essentials of Double Screening Theory. Consider a system of n flexible polyelectrolyte chains each containing N segments, nc counterions, nγ ions of species γ from dissolved
+salt, and ns solvent molecules in volume V. Let α be the fixed
+degree of ionization per chain so that each of the Nα segments of the chain carries a charge of ezp where e is the electronic
+charge. The total number of counterions is nc = αNzpn/zc where zc is the valency of the counterion. Let ezi be the charge of the
+ith charged species. Following Edwards,68,69 we represent the polymer chain as a continuous curve of length L = Nl, where l is the Kuhn step length. The Helmholtz free energy F of the system is given by
+Figure 5. (a) Concentration dependence of the polyelectrolyte peak. Reproduced with permission from ref 35. Copyright 2001 American Institute of Physics. (b) Occurrence of enhanced zero-angle scattering intensity along with the polyelectrolyte peak. Reproduced with permission from ref 21. Copyright 1990 Elsevier.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9534
+
+
+∫
+∫
+∫∫
+∫∫
+∫
+∏
+∏
+∑ ∑∑
+∑
+∑ ∑∑
+∑∑
+∑∑
+= ! ! !∏ !
+×−
+∂
+∂−
+−−
+−− −
+−−
+−−
+γγ α
+α
+γ
+α
+α
+αα
+α αβ
+α
+β αα ββ
+α
+α
+αα
+α
+α αα
+−
+=
++ +∑
+= ==
+=
+= ==
+=
+=
++∑
+=
++∑
+=
++∑
+γ
+γ
+γ
+γ
+γ
+γ γ
+γ
+⎪
+⎪ ⎧
+⎨ ⎩
+⎛
+⎝⎜ ⎞
+⎠⎟
+nn n n
+l
+ss
+ss
+sU s s s
+Us U
+s Us
+U
+R
+r
+R
+RR
+R r rr
+Rr
+rr
+e 1 []
+d exp 3
+2
+d () 1
+2d
+d [ ( ) ( )] d
+[ () ] 1
+2 ()
+d [ () ]
+1
+2 ( )}
+F kT
+cs
+n
+nn n
+i
+n N nn N
+N
+pp
+nN
+i
+n
+ps i
+i
+n
+j
+n
+ss i j
+nN
+i
+nn
+pi i
+i
+nn
+j
+nn
+ij i j
+/
+1
+2
+10
+2
+1 10
+0 10
+1 11
+10 1
+11
+cs
+s ss
+c
+cc
+B+
+(26)
+Here Rα(sα) is the position vector of the arc length variable sα
+(0 ≤ sα ≤ N) of the αth chain. Upp(r) is the interaction energy between two segments of the chain separated by a distance r
+δ
+α
+U =w + z l
+r
+(r) (r)
+pp
+p
+22 B
+(27)
+where w is the Edwards excluded volume pseudopotential, which is related to the Flory−Huggins parameter χ according to
+= −χ
+()
+wl
+1 2
+3. δ(r) is the Dirac delta function and r = |r|. The
+second term on the right-hand side of eq 27 represents the Coulomb interaction energy between the segments, where lB is the Bjerrum length (eq 2). In writing this second term, we have assumed that the total charge Nαzpe of the chain is uniformly distributed along the chain skeleton. The short-ranged interactions between the polymer segments and solvent molecules and between solvent molecules are given by
+U (r) = w δ(r) and U (r) = w δ(r)
+ps ps ss ss (28)
+where wps and wss are the corresponding pseudopotential excluded volume parameters. The electrostatic interactions between charged segments and various ions are given by
+α
+U = z zl =
+r U zzl
+r
+(r) and (r)
+pi
+pi ij
+B i jB
+(29)
+The above set of equations defines the model and the theory
+has two major steps.81 In the first step, all degrees of freedom associated with mobile (dissociated) counterions, electrolyte ions, and solvent molecules are integrated out, as cartooned as step 1 in Figure 6. This step is carried out with the Debye− Hückel theory of a charged plasma (here corresponding to the charged solution background which neutralizes the polyelectrolyte charges). As a result, the intersegment interaction between polymer segments is given by the screened Coulomb potential (in addition to the hydrophobic part) as
+δπ
+=+
+−κ
+v w wr
+(r) (r) e
+c4
+r
+(30)
+where
+w = 4πα z l
+cp
+22
+B (31)
+and
+∑
+κπ
+=+
+γ
+γγ
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+l
+V zn z n
+4
+cc
+2 B2 2
+(32)
+After the first step, the system consists of only n polymer chains which are coupled through both intrachain and interchain interaction potential v(r) given by eq 30. The Helmholtz free energy F of the whole system is now given by the free energy Fp of these n chains and the free energy of the background Fb as
+F=F +F
+p b (33)
+The free energy of the background fluid consists of the entropy of mixing terms and the charge fluctuations in the neutralizing background
+F =F +F
+b b0 fl,i (34)
+where
+∑
+= −+ −
++ −+ +
+γ
+γγγ
+F
+k TV C C C C C C
+C C C w C w CC
+ln ln
+[ ln ] 1
+2
+b
+sssccc
+ss s ps s
+0
+B
+2
+(35)
+and
+κ
+π
+=−
+F
+k TV 12
+fl , i
+B
+3
+(36)
+It should be noted that the expression for Ffl,i given by eq 36 is
+strictly valid only in the region of validity of the Debye−Hückel theory, namely, the local electric potential being less than kBT.
+Extensions can be made to go beyond the linearized Poisson−
+Boltzmann formalism.122,126 Extension to include the finite size of the ions generalizes eq 36 to
+=− π +κ −κ + κ
+⎡
+⎣⎢ ⎤
+⎦⎥
+F
+kT
+V
+l ll l
+4 ln(1 ) 1
+2
+fl , i
+B
+3
+22
+(37)
+The free energy Fp of n chains in the background where the interaction energy between any two segments separated by distance r is given by eq 30 follows from eq 26 as
+Figure 6. Computational scheme behind the double screening
+theory.81
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9535
+
+
+∫
+∫∫
+∫
+∏
+∑ ∑∑
+=! −
+∂
+∂−
+−
+α
+α
+α
+α
+αα
+α αβ
+α
+β αα ββ
+−
+=
+= ==
+⎪
+⎪ ⎧
+⎨ ⎩
+⎛
+⎝⎜ ⎞
+⎠⎟
+nl
+ss
+ss
+sv s s
+R
+R
+RR
+e 1 [ ] exp 3
+2
+d () 1
+2d
+d [ ( ) ( )]
+F kT
+n
+n N nn N
+N
+/
+1
+2
+10
+2
+1 10
+0
+pB +
+(38)
+This situation of n coupled chains through the interaction v(r) can be exactly mapped into a collection of n uncoupled chains by introducing a potential field variable Φ. Now, the effective interaction between any two segments of a labeled chain is given by Δ(r)
+v(r) → Δ(r) (39)
+where the arrow denotes the chain uncoupling with the introduction of the field Φ. Basically, the total pairwise potential interaction energy among all segments is replaced by the net energy of all segments with each segment interacting with the field generated by all other segments in the system. Δ(r) is also the correlation function of the field variable separated by the distance r as Δ(r) = ⟨Φ(r)Φ(0)⟩ , with the angular brackets denoting the average over the field variable. The topological correlations of the chain connectivity and longranged electrostatic correlations are strongly coupled, and these must be determined self-consistently in obtaining Δ(r) from v(r) by the introduction of the field variable Φ. This is labeled as step 2 in Figure 6. These two steps constitute the technical
+aspects of the double screening theory.81 The evaluation of Δ, field energy, and the consequent changes on the conformational fluctuations of the chain eventually lead to an expression for Fp as
+F = F + F (Δ)
+p p0 fl,p (40)
+where Fp0 is the contribution from the mean-field part without
+concentration fluctuations (equivalent to the Flory−Huggins form for the polymer contribution) and Ffl,p is the free energy
+contribution from fluctuations in the local polyelectrolyte concentration. In general, the polyelectrolyte fluctuation contribution to the free energy can be derived in the form
+πξ
+=
+F
+kT
+V 24
+1
+fl , p
+B
+3 (41)
+where ξ is the correlation length for concentration fluctuations. Because of the inherent nature of the coupled double screening (electrostatic and topological), ξ is a crossover function assuming asymptotic values for the limits of polyelectrolyte
+concentration and added salt concentration.81 Free Energy. By collecting all contributions to the free energy, including the fluctuations of mobile ions and chain conformational fluctuations, the Helmholtz free energy density f, defined as f ≡ Fl3/(VkBT), is given by
+f = Fl = + + +
+Vk T f f f f
+S H fl i fl p
+3
+B , , (42)
+To be more specific, the system consists of n polyelectrolyte chains, each with N Kuhn segments dispersed in a solvent with n0 molecules. Let α be the effective degree of ionization and zp
+be the effective valency of each segment so that each segment has an effective charge zpα. To maintain the electroneutrality of
+the solution, the total number of unadsorbed counterions in the solution is αzpnN/zc, with zc being the valency of the counterion. In addition, let n+ and n− ions, with z+ and z− valencies, respectively, be present in the solution from the added salt. Also, for simplicity, we assume that all ions, polymer segments, and solvent molecules have identical volume l3 (where l is the Kuhn length). f S in eq 42 represents the mixing entropy of ions, solvent molecules, and polymer chains
+= φ φ+φ φ+φ φ +φ φ +φ φ
+++ −−
+f N ln ln ln ln ln
+S c c 00
+(43)
+where φ = nNl3/V is the volume fraction of the polymer, φc =
+α1φ is the volume fraction of counterions from dissociated
+polyelectrolyte chains (α1 = αzp/zc), φ+ = n+l3/V and φ− =
+n−l3/V are volume fractions of salt cations and anions,
+respectively, and φ0 is the volume fraction of solvent. The enthalpy part f H in eq 42 is given by
+φ φ φφ φ
+πα
+κ
+= +++
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+f w w w zl
+l
+1 2
+1 2
+2
+pp ss ps
+p H
+2 0
+2 0
+2
+22 B 23
+(44)
+with
+κ = π φ+ φ + φ
+++ −−
+ll
+4 l [z z z ]
+cc
+22 B 2 2 2
+(45)
+The enthalpy part of the free energy density represents the mean-field energy that includes the short-range interactions among solvent and neutral polyelectrolyte segments as well as the electrostatic interactions among polyelectrolyte segments. The short-range interactions can be represented via the Flory− Huggins parameter χ. The effective electrostatic energy between two charged polyelectrolyte segments has the Yukawa form v(r) = Zp2lB exp(−κr)/r with the inverse screening length
+κ defined by eq 45. The second term of eq 44 is valid when there are enough counterions and salt ions in the system. For polyelectrolyte concentrations relevant to investigations of phase behaviors of solutions, this approximation is adequate even for the “salt-free” solutions. The free energy density due to ion fluctuations f fl,i is given by
+=− π +κ −κ + κ
+⎡
+⎣⎢ ⎤
+⎦⎥
+f ll l
+1
+4 ln(1 ) 1
+2( )
+fl , i
+2
+(46)
+As in the Debye−Hückel theory, this is derived by solving a
+linearized Poisson−Boltzmann equation100 for a non-neutral charged plasma. Note that the Debye−Hückel limiting law is
+recovered in the limit l → 0, f fl,i → −(κl)3/(12π), as was derived in ref 81. Finally, the free energy density due to polymer fluctuations f fl,p, as derived in ref 81 for both cases of high salt and low salt limits, can be written down via a simple interpolation. It is given by
+πα φ
+κ πα φ
+= +
+π
+π
+−
+−
+()
+()
+f
+Z ll
+l Z ll
+(4 / )
+( ) 2 (4 / )
+fl p
+p
+p
+,
+2
+93
+3 2
+9/4 2 2 B
+3/4 9/4
+3/2 5/4
+3
+3 2
+3/4 2 2 B
+1/4 3/4
+3/4
+(47)
+In eq 47 one can find that f fl,p ∼ φ3/2 in the low-salt limit and
+f fl,p ∼ φ9/4 in the high-salt limit.81 As it turns out, the
+contribution from polymer fluctuations is minor in comparison
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9536
+
+
+with the other terms so that elaborate crossover descriptions for Ffl,p is unnecessary.
+The set of eqs 42−47 form the basis for the calculation of theoretical phase diagrams discussed in section VI.
+Pitfall of RPA for Polyelectrolyte Solutions. The spectacular success of the random phase approximation (RPA) in describing the morphology of uncharged diblock copolymers and the initial discovery of the Edwards screening of excluded volume interaction in dense solutions of uncharged polymers have inspired the polyelectrolyte community to implement the RPA for polyelectrolyte systems as well. However, the use of RPA, originally designed for weakly correlated systems of uncharged polymers, in treating semidilute polyelectrolyte solutions with very strong correlations has
+led to unphysical consequences.93 In the methodology of RPA for polymer chains, the one-loop diagram (Figure 7a) and its multiples as a part of a geometric
+series are used in the calculation of ξ and hence Fp. In this one
+loop diagram, the segments s and s′ interact with each other, mediated by the potential fields (denoted by the green arrows) generated by all other chains in the system. The result is
+ξ ∼ C−
+RPA
+1/4 (48)
+where C is the monomer concentration of the polyelectrolyte. Substitution of eq 48 in eq 41 gives
+F ∼ VC
+fl , p , RPA
+3/4 (49)
+Π = −∂
+∂ ∼−
+F
+VC
+fl p
+fl p , ,RPA
+, ,RPA 3/4
+(50)
+∂Π
+∂ ∼−
+CC
+1
+fl , p , RPA
+1/4 (51)
+Thus, according to the RPA for polyelectrolyte solutions, the osmotic pressure contribution is negative and the osmotic compressibility is negative and divergent as the polyelectrolyte concentration is reduced. These unphysical results have their ramifications in the computed phase diagrams for polyelectrolyte solutions using RPA and necessitated artificial cutoff
+procedures in the infrared limit.93 Also, the predicted concentration dependence of the polyelectrolyte peak position (km ∼ C1/4) for semidilute conditions is in disagreement with the vast experimental literature. The RPA is technically valid only at very high polymer concentrations where concentration fluctuations are weak, as
+was originally pointed out by Edwards68,69 for uncharged
+polymers and by Borue and Erikhimovich78 for charged polymers. The divergence in the compressibility can be artificially removed by putting an infrared cutoff, but this
+does not have a physical basis. In a recent theoretical work,130 a Gaussian fluctuation theory is presented, where the divergence in the osmotic compressibility at low concentrations is avoided. Although the use of RPA has become a routine protocol, even in the most recent “field-theoretic” works on polyelectrolytes, this approximation should not be pursued, except for extremely high polymer concentrations where fluctuations are weak. Predictions of the double screening theory for correlation length, size of a labeled chain, attraction at intermediate distances, and polyelectrolyte peak are summarized in the following four subsections. Correlation Length. When correlations are strong as in semidilute polyelectrolyte solutions, it is necessary to go beyond RPA and consider higher order diagrams depicted in
+Figure 7b. The net result of such a calculation,81 with suitable mathematical approximations to enable analytical tractability, is
+πξ
+πξ
+=
+
+⎧
+⎨
+⎪⎪
+⎩
+⎪⎪
+F
+kT
+V
+V
+24 2
+1 salt free
+24
+1 salty
+fl , p
+B
+2
+3
+1
+3 (52)
+where ξ2 crosses from ξ2 ∼ C−1/2 in semidilute conditions to ξ2
+∼ C−1/4 in concentrated conditions for salt-free solutions. For the concentrated solutions, the negative contribution from fluctuations to the osmotic pressure is overwhelmed by the mean-field contribution. In salty solutions, ξ1 crosses from ξ1 ∼
+C−3/4 in semidilute conditions to ξ2 ∼ C−1/2 in concentrated conditions, as known for solutions of uncharged polymers. Size of a Label Chain. The probability distribution function for the end-to-end distance vector R of a labeled chain in a polyelectrolyte solution is given generally as
+∫∫
+∫∫
+= −∂
+∂
+− ′Δ − ′
+⎪
+⎪
+⎪
+⎪
+⎧ ⎨ ⎩
+⎛
+⎝⎜ ⎞
+⎠⎟
+⎫ ⎬ ⎭
+GN s l s s
+s
+s ss s
+RR R
+RR
+( , ) [ ( )] exp 3
+2 d ()
+1
+2 d d [ ( ) ( )]
+N
+NN
+R
+0 20
+2
+00
++
+(53)
+where Δ(r) is the effective interaction (eq 39) between two segments derived self-consistently by accounting for electrostatic and topological correlations. Clearly, the labeled chain is not a Gaussian chain. There are several theoretical procedures to compute the probability distribution function in terms of Δ and the physical variables (such as C and κ) which determine
+Δ. Following a variational method,76,81 an effective renormalized step length l1 can be defined as a functional of Δ, resulting in a coupled set of equations where all Rouse modes are coupled. Simplifications arise if we assume that the lowest Rouse modes dominate over the higher modes, which is equivalent to the uniform swelling approximation for the chain. According to the double screening theory, the radius of gyration Rg in the large N limit is given as
+κ
+∼ +−
+⎜⎟
+⎧
+⎨⎪
+⎩⎪
+⎛ ⎝
+⎞ ⎠
+R Nw w C
+N
+semidilute
+concentrated
+g
+c 2
+1/8 1/8
+(54)
+for salty solutions, and
+Figure 7. Polymer diagrams. (a) One-loop diagram used in RPA. The segments s and s′ interact with each other, mediated by the potential fields (denoted by green arrows) generated by all other chains. (b) Higher order correlations involve vertex diagrams involving additional segments s1 and s2.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9537
+
+
+∼
+−
+⎪
+⎪ ⎧
+⎨ ⎩
+R Nw C
+N
+semidilute
+concentrated
+g
+c
+1/12 1/4
+(55)
+for salt-free solutions. The numerical prefactors and the extent of the non-Gaussian corrections are worked out in the original
+publication.81 These predictions, which are fully consistent with scaling
+predictions71 (where screening is assumed a priori), have been validated experimentally. It is remarkable that even when all chains are charged similarly and uniformly, they obey the Flory
+theorem162 of Gaussian statistics in the melt due to the screening of both excluded volume and electrostatic effects.
+Attraction at Intermediate Distances. One of the remarkable features of the effective interaction Δ, calculated self-consistently by accounting for the simultaneous screening of topological and electrostatic correlations, is that Δ(r) is attractive at intermediate distances comparable to the correlation length ξ in low salt concentration solutions. This attraction emerges despite the fact that all interacting segments bear the same sign for the charge. In the limit of low added salt concentration, Δ(r) is given by the double screening theory
+as81
+πξ
+Δ= − ξ ⎛
+⎝⎜ ⎞
+⎠⎟
+rw
+r
+r
+( ) 4 e cos 1
+2
+c 1/ 2 r/
+2
+2
+(56)
+with
+ξπ
+=
+− −
+⎜⎟
+⎛
+⎝⎜ ⎞
+⎠⎟ ⎛
+⎝
+⎞ ⎠
+w
+l Cl
+62 3
+16 ( )
+c 2
+1/3 1/6 1/2
+(57)
+valid for semidilute conditions. Instead, for highly concentrated
+polyelectrolyte solutions, ξ2 ∼ C−1/4. An illustrative result for the emergence of attraction at intermediate distances is given in Figure 8, where 4πΔ(r)/wc is plotted against the distance r. For
+infinitely dilute limit (C → 0; ξ2 → ∞), the interaction is purely repulsive. As the polyelectrolyte concentration is increased, an attraction emerges due to topological correlations as shown by the bottom curve (for ξ2 = 1) in Figure 8. Here κ is
+0.1, and r, ξ2, and κ−1 are in units of the Kuhn length l. The attraction between similarly charged polyelectrolytes at intermediate distances is present only if the polyelectrolyte concentration is sufficiently large and the salt concentration is sufficiently low. As the salt concentration is increased, the longranged electrostatics is screened, and we are left with only the
+topological correlation, namely, the Edwards screening. Under these conditions, the double screening theory gives
+π
+κ δ πξ
+Δ = + − −ξ
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+⎡
+⎣⎢ ⎤
+⎦⎥
+r w wr r
+() 4 () 1
+4e
+cr 22
+/
+(58)
+where ξ ∼ C−3/4 for semidilute conditions and ξ ∼ C−1/2 for concentrated conditions. This topologically induced attraction is dierent from the van der Waals-type attraction in dense liquids. Does the emergence of intersegment attraction at intermediate length scales (between the Kuhn length and radius of gyration of a labeled chain in semidilute solutions), due to topological correlations, lead to clumping of similarly charged polyelectrolyte chains? No one knows the answer yet. But we can be sure that spontaneous formation of dipoles along chains, arising from counterion adsorption, and their mutual attraction to form quadrupoles can definitely lead to aggregation of multiple chains as manifest in the zero-angle scattering intensity in static light scattering and the slow mode in dynamic light scattering.
+Polyelectrolyte Peak from Double Screening Theory. The theoretical predictions of the double screening theory on the polyelectrolyte peak and a comparison with the known experimental results on polyelectrolyte solutions using light, Xray, and neutrons can be summarized as follows. There are five regimes of structure in salt-free polyelectrolyte solutions as
+depicted in Figure 9.127
+Regime I: Electrostatically Uncorrelated Dilute “Gas-like” Regime (0 < C < Cκ). When the polyelectrolyte concentration is
+extremely low, the average separation distance Λ between any two chains is so large that the strength of electrostatic interaction between them is vanishingly small. Under these conditions
+= ∼Λ
+C nN
+V
+nN
+n 3 (59)
+so that
+k ∼ Λ ∼C
+1
+m
+1/3
+(60)
+Defining the polyelectrolyte concentration Cκ as the concentration at which the average distance between any two chains is the Debye length
+∼κ ∼ κ
+κ−
+C nN
+nN
+3
+3
+(61)
+the “gas-like” regime corresponds to 0 < C < Cκ.
+Regime II: Electrostatically Correlated Dilute “Liquid-like” Regime (Cκ < C < C*). In this regime, Cκ < C < C*, the average
+Figure 8. Normalized effective potential interaction Δ(r) is attractive at intermediate distances r for finite polyelectrolyte concentrations in
+salt-free conditions.81
+Figure 9. Five regimes of electrostatically driven structures in salt-free polyelectrolyte solutions.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9538
+
+
+distance Λ between two chains is shorter than the Debye length, and yet the chains have not overlapped, such that 2Rg <
+Λ < κ−1. The overlap concentration C* is defined as C* = 3M/ 4πRg3, where M is the molecular weight and Rg is for a rod-like conformation with the span on the most extended direction as half of the contour length, as justified in ref 127. Under these conditions, the structure factor S(k), which is proportional to the scattering intensity I(k), is approximately the product of the form factor P(k) and the intermolecular structure factor given by
+=−
+⎡
+⎣⎢ ⎤
+⎦⎥
+Sk Pk C
+( ) ( ) 1 N Q (k) (62)
+where Q(k) depends on the pair-potential U(r) between two chains, with center-of-mass separation distance r, according to
+∫
+= −− ·
+Q (k) dr[1 e ]e
+U(r)/kBT ik r
+(63)
+Using the pair-potential for a pair of flexible polyelectrolyte chains (with the Debye−Hückel potential between the segments) and a generalized form factor for a fractal, S(k) of
+eq 62 exhibits a peak at127
+= +ν
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+k CNw
+1 2
+m eff c
+1/2
+(64)
+where νeff is the effective size exponent for the polyelectrolyte chain in dilute solutions. The general result for the polyelectrolyte peak in dilute solutions with electrostatic correlations is
+k ∼ C dilute
+m (65)
+although the polyelectrolyte concentration is below the overlap concentration C*.
+Regime III: Semidilute Regime (C* < C < C**). In this regime, the polyelectrolyte concentration is above the overlap concentration C* but below C** at which concentration fluctuations become weak. For polyelectrolyte concentrations above C*, the double screening theory gives the scattering intensity I(k) in terms of the effective interaction Δ(k) (k is the scattering wave vector and Δk is the Fourier transform of Δ(r) derived by the scheme of Figure 6) as
+= −Δ
+Ik k
+v
+() 1 ()
+k (66)
+where vk = w + wc/(k2 + κ2). For semidilute salt-free
+polyelectrolyte solutions, where concentration fluctuations are strong, Δ(k) from the double screening theory gives
+ξ
+=+
+Ik w
+k
+k
+() 1
+(1 )
+c
+2
+4 2
+4 (67)
+where
+ξ ππ
+=
+−
+−− −
+⎛
+⎝⎜ ⎞
+⎠⎟ ⎛
+⎝⎜ ⎞
+⎠⎟ w l C
+3 22
+62
+2c
+1/2 1/6 1/6 1/3 1/2
+(68)
+The scattering intensity as given by eq 67 is presented in Figure 10a for the choice of wc = 8.8 nm and ξ2 = 10 nm, exhibiting the
+polyelectrolyte peak. The peak position is at ξ2−1:
+k ∼ C semidilute
+m (69)
+It must be noted that the peak position is directly related to the position of the attractive minimum in the effective interaction Δ(r). Although the exponent β for the concentration
+Figure 10. Dependence of scattering intensity I(k) on the angularly averaged scattering wave vector k: (a) salt-free; (b) salty; (c) enhanced intensity at near zero angles and the polyelectrolyte peak in salt-free solutions. Reproduced with permission from ref 127. Copyright 2016 Springer.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9539
+
+
+dependence of km is the same for both the dilute correlated regime and the semidilute regime, the numerical prefactor is slightly different, as pointed out in ref 25.
+Regime IV: Concentrated Regime (C** < C < C***). As the polyelectrolyte concentration becomes higher than a certain value C**, the concentration fluctuations become weak and RPA becomes applicable. According to the double screening theory, I(k) is given by eq 67, but with ξ2 given as
+ξ= − − −
+2 6 wc l C
+1/4 1/4 1/2 1/4 (70)
+so that the position of the polyelectrolyte peak, km ∼ ξ−1, at very high polyelectrolyte concentrations, is
+k ∼ C concentrated
+m
+1/4 (71)
+Regime V: Hydrated Melt (C*** < C). In this regime, the polymer concentration is higher than C*** beyond which only hydrated melt exists. These five regimes for the concentration dependence of the polyelectrolyte peak are sketched in Figure 11. The extensive
+literature on the concentration dependence of km in salt-free
+aqueous solutions of sodium poly(styrenesulfonate) of different molecular weights, using light, X-ray, and neutron scattering, is summarized in Figure 12. The presence of different concentration regimes and crossover behaviors between these regimes are fully in conformity with the above summary based on the double screening theory, as evident from Figure 12. As already pointed out, the polyelectrolyte peak goes away upon addition of low molecular weight salt. According to the double screening theory, the scattering intensity for salty conditions is given by
+ξ
+=+
+Ik v k
+() 1 1
+(1 )
+0
+2 1
+2 (72)
+where v0 = w + wc/κ2 and ξ1 is proportional to v0−1/4C−3/4 and
+v0−1/2C−1/2, respectively, in semidilute and concentrated
+solutions. Now, the scattering intensity is of the Ornstein− Zernike form as illustrated in Figure 10b (where v0 = 1 nm3). As an example of a comparison between the double screening theory and the liquid-state theory, only two regimes, km ∼ C1/3
+for dilute solutions and km ∼ C1/2 for semidilute solutions, were
+found in the liquid-state theory.87
+Aggregation of Similarly Charged Polymers. Extensive experimental results on the scattering intensity extrapolated
+near zero scattering angles for salt-free polyelectrolyte solutions (Figure 5b) undoubtedly indicate that there are large clusters consisting of many chains, although these chains bear the same sign of charge. We have already argued that when counterions adsorb on the charged monomer along the chain backbone, dipoles form and the interaction energy u0 between two randomly oriented dipoles is attractive and can be easily ∼10kBT (eq 8) at low salt concentrations. If several such quadrupoles can form between several intermingling chains, the resultant net attractive forces can effectively compete against the electrostatic repulsion between the chains. In addition, if the time required for the dissociation of the whole collection of quadrupoles is sufficiently long, an equilibrium description of such aggregates can be implemented to assess the relative stability of such aggregates. As a concrete example, consider the formation of an aggregate of m polyelectrolyte chains (Figure 13), where each
+quadrupole junction has an energy of −u0. Using the classical
+theory of Flory162 for ionic gels, the free energy Fm of an m
+aggregate is given by128
+Figure 11. Concentration dependence of the polyelectrolyte peak in the five regimes. Reproduced with permission from ref 127. Copyright 2016 Springer.
+Figure 12. Dependence of km on polyelectrolyte concentration C in salt-free aqueous solutions of sodium poly(styrenesulfonate) at various molecular weights and using different radiation: (▽) light, M = 780
+kDa, Drifford (780k);14 (○) light, M = 1132 kDa, Johner (1132k);24
+(▷) X-ray, M = 8 kDa, Kaji (8k);18 (+) X-ray, M = 18 kDa, Kaji
+(18k);18 (◁) X-ray, M = 100 kDa, Kaji (100k);18 (△) X-ray, M = 220
+kDa, Kaji (220k);18 (◇) X-ray, M = 252 kDa, Nishida (252k);35 (□)
+X-ray, M = 1200 kDa, Kaji (1200k);18 (∗) neutrons, M = 72 kDa,
+Nierlich (72k).11 The slopes of 1/3, 1/2, 1/2, and 1/4 expected respectively for infinitely dilute “gas-like”, dilute “liquid-like”, semidilute, and concentrated are included as guides. Reproduced with permission from ref 127. Copyright 2016 Springer.
+Figure 13. Cartoon of aggregation of m polyelectrolyte chains into a charged microgel with quadrupole energy of −u0 and spacer length of N.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9540
+
+
+χφ φ
+φ φα
+φ
+= −+ +
++ ++ +
+−−
+−−
+⎜⎟
+⎡
+⎣⎢⎛
+⎝
+⎞ ⎠
+⎤
+⎦⎥
+⎡
+⎣⎢ ⎤
+⎦⎥
+F
+k T mN
+m N mN n
+n mu
+1 2
+1
+6 ...
+3 2
+1
+3 ln [ 4
+2 ] ln 2
+m
+s
+s
+B
+2
+1/3 2/3 2 2 2 2
+0 (73)
+where the first three terms on the right-hand side arise from free energy of mixing, rubber elasticity, and the excess osmotic pressure inside the gel to maintain the Donnan equilibrium for ionic gels. Here N is the number of Kuhn segments between cross-links, α is the degree of ionization, 2ns is the number of dissociated salt ions outside the aggregate, and m/2 is the number of quadrupole cross-links. The last term in eq 73 denotes the quadrupole energy from all cross-links inside the aggregate. After determining the equilibrium value of Fm (by
+minimizing with respect to φ), the standard theory of
+micellization163 can be used to calculate the mole fraction of m-aggregate Xm according to
+=−
+X m[X e ]
+m
+kT F F m m 1
+(1/ )( / )
+B 1 m (74)
+where the subscript 1 denotes the unaggregated chain. F1 is the free energy of a polyelectrolyte chain. The calculated distribution function of the mole fraction of m-mers for the polymer concentration of 1 g/L (using values of the various parameters appropriate for sodium poly(styrenesulfonate)) is
+given in Figure 14.128 About 30 chains on average aggregate
+together with a radius of gyration of the aggregate Rg,agg in the range of hundreds of nanometers. In general, the average number of chains in the aggregate is proportional to √C and Rg,agg ∼ NC1/6. As commented in section VII, this mean field argument is in qualitative agreement with the observed slow mode in dynamic light scattering studies. As the salt concentration is increased, quadrupoles are unstable due to electrostatic screening and the aggregates cannot be sustained. As a result, aggregates are present only at low salt concentrations.
+Complexation between Oppositely Charged Polyelectrolytes. When a solution of a polycation is mixed with a solution of a polyanion under salt-free conditions at room temperature, large polyelectrolyte complexes (PEC) form
+spontaneously.61 These complexes become unstable upon addition of salt to the solution. What is the driving force for
+two oppositely charged polymers to form a polymeric pair? It is natural to think that the driving force must arise from electrostatic attraction between the opposite charges. In fact, simulations of complexation in aqueous media at room temperature have shown that the dominant driving force for complexation is not the enthalpic changes associated with electrostatic attraction, but it is the favorable entropic changes arising from the release of counterions from the participating
+polyelectrolyte chains.147 The entropic forces also arise from reorganization of water molecules around the polymer chains during the complexation process as evidenced in recent
+experiments.55 A typical example of simulation results is given in Figure 15 portraying the time evolution of complexation between a
+flexible polycation and a flexible polyanion each of N beads, under salt-free conditions. The Coulomb strength parameter defined as Γ = lB/l is taken as 2. To begin with, the size of each chain is expanded due to electrostatic repulsion, and there is a finite number of adsorbed counterions on each chain. Once the two chains touch each other, there is a progressive release of adsorbed counterions during complexation. In the final state, the complex is essentially neutral without any counterions left. In this state, the complex is much smaller in size, in comparison with the size of an individual chain before complexation. The final state is equivalent to a double chain where the two chains are paired by many dipoles arising from the oppositely charged monomers (Figure 16). Because of dipole−dipole attraction, the double chain is collapsed. Therefore, upon complexation, two polyelectrolyte chains (each carrying a net charge) become one dipolar chain with essentially no net charge.
+Computation147 of free energy of complexation showed that the entropic contribution dominates over the enthalpies contribution for Γ > Γ* ≃ 1.5 for the parameters used in the simulations, as given in Figure 17. As already mentioned, the entropic contribution arises from the release of counterions during complexation. Thus, complexation of two oppositely charged polymers is driven by a combination of electrostatic attraction and counterion release, with the final state becoming
+Figure 14. Distribution of the mole fraction of m-mers. Reproduced with permission from ref 128. Copyright 2016 United States National Academy of Sciences.
+Figure 15. Counterion release during complexation of two oppositely charged polymers. Reproduced with permission from ref 147. Copyright 2006 American Institute of Physics.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9541
+
+
+an electrically neutral dipolar assembly, as sketched in Figure 16. The same principle behind complexation of two flexible synthetic polyelectrolyte chains has been shown to be adequate to understand several seemingly more complex biological assemblies. Consider an ssRNA virus, such as the common cold virus or hepatitis B virus. These viruses are assemblies of a finite number of capsid proteins (each carrying a net positive charge) and one or more ssRNA molecules (negatively charged) into
+icosahedral shapes.164−176 Using a self-consistent field theory for the electrostatic interaction between the negatively charged ssRNA and the positively charged protein tails protruding into the inside from the capsid surface, the genome (ssRNA) length that is optimally packaged inside the capsid is simply dictated by the electroneutrality between the net charge of packaged ssRNA and the net charge of capsid proteins inside. This simple
+universal prediction164 obtained without any regard to RNA sequence or invocation of the central dogma of biology is remarkably able to describe genome packing in all ssRNA viruses as demonstrated in Figure 18. The slope of the line in Figure 18 is 1.6, representing an overcharging of the genome in RNA viruses. This issue of overcharging has attracted attention
+from several researchers166,169,171 with detailed analysis of
+charge distribution on the protein tails. Siber and Podgornik166 have proposed an upper bound of 2.0 for the slope. Using considerations of excluded volume effect and Donnan
+equilibrium, Ting et al.169 have proposed nonuniversal values for the slope, but in the range of order unity. The result of sequence-independent genome packing based only on electro
+statics has been observed in experiments as well.165,172,173
+Simulation studies167,168,170 of the kinetics of virus assembly showed that the process is dominated by electrostatics and
+ideas from polymer crystallization can be substantively used to
+understand the simulation and experimental results.174−176 As one would expect, there are several additional avenues to expand the theoretical approach to address finer details of virus assemblies.
+VI. THERMODYNAMIC INSTABILITY AND PHASE BEHAVIOR
+A two-component solution of an uncharged polymer in a nonpolar solvent is well-known to exhibit the critical phenomenon of liquid−liquid phase separation. The phase behavior of such uncharged systems is fairly well understood. It is well recognized that the critical phenomenon of twocomponent polymer solutions belongs to the same universality class as the 3-d Ising model, sharing the same values of the various critical exponents. When the composition fluctuations are weak, namely when the system is sufficiently away from the critical point and the spinodal curve, the mean-field Flory− Huggins theory captures all of the essential features, at least qualitatively. Consider an incompressible two-component system of nA molecules of component A, each of NA segments, and nB molecules of component B, each of NB segments. The chemical mismatch between the two components is parametrized by the Flory−Huggins χ parameter
+χ= ε − ε +ε
+⎡
+⎣⎢ ⎤
+⎦⎥
+z
+kT
+1
+2( )
+AB AA BB
+B (75)
+where z is an effective coordination number for neighboring interactions and εij are the van der Waals energies for contacts between segments i and j. In general, the temperature dependence of χ can be quite complex. However, in simple polymer solutions, χ is written as
+χ= Θ
+2T (76)
+where Θ is the Flory temperature arising from all εij. The
+tremendous success of the Flory−Huggins theory is that it predicts liquid−liquid phase separation for χ above a certain critical value χc. The phase diagram is composed by plotting χ
+against the volume fraction of a component, say A, φ. The critical point is given by
+Figure 16. A dipole chain is formed when two oppositely charged polyelectrolytes complex together fully.
+Figure 17. Counterion release dominating the free energy of complexation of two oppositely charged polymers in water at room temperature. Reproduced with permission from ref 147. Copyright 2006 American Institute of Physics.
+Figure 18. Universal law of linear relation between the genome length and the total positive charge on the capsid protein tails inside the viruses. Reproduced with permission from ref 164. Copyright 2006 United States National Academy of Sciences.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9542
+
+
+χ = + φ= +
+NN
+NN
+N
+NN
+()
+2;
+c
+AB
+AB
+c
+B
+AB
+2
+(77)
+Specifically, for a two-component solution of uncharged polymer of uniform number of segments N in a small molecular solvent
+χ = + + φ= +
+NN
+1 2
+1 ...; 1 ...
+c c (78)
+Thus, the critical point is seen to be significantly affected by polymer molecular weight. The situation with polyelectrolyte solutions is drastically different from the above picture. Consider a two-component system of a polyelectrolyte salt (such as sodium poly(styrenesulfonate)) dissolved in a polar solvent such as water. Although the polymer backbone does not mix with the solvent, the charged groups along the chains generally repel each other, and the chains are distributed in the solution aided further by the translational entropy of dissociated counterions. No critical phenomena are observed experimentally for such aqueous twocomponent polyelectrolyte systems. In efforts to understand the role of long-ranged interactions in the phase behavior of simple polyelectrolyte solutions without added salt, only
+computer simulations and theoretical approaches have been
+reported.100,102,143
+In order to experimentally observe critical phenomena in polyelectrolyte solutions, a third component such as low molecular weight electrolyte is added. As soon as the third component is present, the phase behavior becomes extremely complex. As an example, Figure 19a is the phase diagram of aqueous solutions of poly(vinylsulfonic acid) (PVSA) containing the salt XCl (X = K, Na, and Rb) at a fixed concentration of PVSA.3 Note the wild variation in the cloud point temperature although X carries the same monovalent charge. Also, it is remarkable that there is no phase separation if X = H, Li, Cs, or NH4! For fixed concentrations of NaCl, the phase diagram in terms of the phase separation temperature Tp versus Na-PVSA
+concentration is given in Figure 19b.3 At a fixed temperature (0 °C), the phase diagram of NaPVSA concentration versus NaCl concentration is given in Figure 19c.3 None of these results are understood, although these experimental results are known for more than five decades! If the low molar mass third component salt is multivalent, the phase behavior is even more richer. A notable example is the universal re-entrant precipitation of polyelectrolytes such as NaPSS and ssDNA from aqueous solutions containing trivalent
+Figure 19. (a−c) Phase diagrams of aqueous solutions of poly(vinylsulfonic acid). (a) Effect of identity of monovalent salt XCl (X = K, Na, and Rb). (b) Effect of salt concentration. (c) Dependence on polymer concentration and salt concentration at a fixed temperature. (d) Effect of trivalent salts on flexible polyelectrolytes. (a−c) Reproduced with permission from ref 3. (d) Reproduced with permission from ref 34. Copyright 2000 Springer Science+Business Media.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9543
+
+
+salts (such as LaCl3 or spermidine), as depicted in Figure 19d.34 For a given polyelectrolyte concentration, precipitation is observed as the salt concentration cs is increased. If cs is increased further, the precipitate becomes soluble again. The range of cs for the precipitation of the polyelectrolyte decreases as the polyelectrolyte concentration is increased. The boundaries of precipitation do not depend on the identity of the flexible polyelectrolyte and the trivalent cation. Miscibility studies on mixtures of polyelectrolytes and other additives such as other polyelectrolytes, nonionic polymers, surfactants, and proteins are also known, primarily driven by applications in
+industry. In particular, the phenomenon of coacervation61 in multicomponent systems of two oppositely charged polymers in salt-containing aqueous solutions has attracted renewed experimental interest. Almost all of the experimental investigations on multicomponent polyelectrolyte solutions are conducted at room temperature. Systematic investigations on polyelectrolyte phase behavior are only at initial stages. On the theoretical side, the picture is cloudy due to the multicomponent nature and the variable extent of electrostatic correlations as the experimental parameters are varied in determining phase diagrams. Nevertheless, a few generic and qualitative concepts may be identified as below.
+Concentration Fluctuations and Ginzburg Criterion. When a solution of uncharged polymers is brought from a homogeneous phase to the proximity of the critical point or spinodal curve, composition fluctuations can be large and their correlation length ξ and the zero-angle scattering intensity I(0) diverge. Using the definition of χ as in eq 76 and writing the spinodal χs as ∼1/Ts,
+ξ∼ − ∼ −
+−ν −γ
+⎛
+⎝⎜ ⎞
+⎠⎟ ⎛
+⎝⎜ ⎞
+⎠⎟
+TT I TT
+1 1 ; (0) 1 1
+s s (79)
+It is well-known that the critical exponents ν = 0.63 and γ = 1.26. However, for conditions slightly away from the condition of thermodynamic instability, mean-field theories are adequate
+with ν = 1/2 and γ = 1. The Ginzburg criterion177 for validity of the mean field theory is
+A≪ T−T ≪
+T1
+s
+s (80)
+where A is a system-dependent constant. This general picture of 3-d Ising universality class seems to be valid for polyelectrolyte solutions as well. With small amounts of divalent added salt in aqueous solutions of NaPSS,
+critical fluctuations have been observed.38 The presence of salt is designed to induce a liquid−liquid phase separation and it enters as an effective χ parameter χeff as
+χχ
+α
+κ
+= − zp l
+eff
+22 B
+2 (81)
+As a result, a straightforward expectation for polyelectrolyte solutions is
+ξ
+α
+κ
+α
+κ
+∼ −+ ∼ −+
+−ν −γ
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+TT
+zl I T T
+zl
+1 1 ; (0) 1 1
+s
+p
+s
+p
+22 B 2
+22 B 2
+(82)
+The small-angle neutron scattering experiments have shown that ν = 0.63 and γ = 1.26 and that the crossover region from mean field to Ising behaviors is about 4 °C, as shown in Figure
+20.38 A quantitative description of the range of composition fluctuations and the Ginzburg criterion largely remains as an open topic to be fully explored. Lifshitz Point. In a ternary mixture of two uncharged homopolymers and an uncharged diblock copolymer, there is a competition between a liquid−liquid macrophase separation and an order−disorder microphase separation. At higher copolymer concentrations, microphase separation dominates, whereas at lower copolymer concentrations macrophase separation dominates. At the special multicritical point (Lifshitz point), the two phase transitions meet. The onset of macrophase separation is characterized by the Ornstein− Zernike-like scattering intensity decreasing monotonically from zero scattering angle to higher angles. The microphase separation is characterized by a scattering peak at finite scattering wave vectors. Around the Lifshitz point, the peak position of the structure factor continuously approaches zero as the amount of diblock copolymer is reduced. The same phenomenon can be expected for a polyelectrolyte where there is a polyelectrolyte peak at finite nonzero wave vectors for low salt concentrations and there is the Ornstein−
+Figure 20. Concentration fluctuations in polyelectrolyte solutions near critical point obey 3-d Ising behavior. Away from the critical point by about 4 °C, mean-field behavior is observed for the correlation length ξ and scattered intensity extrapolated at zero angle. Reproduced with permission from ref 38. Copyright 2003 American Instiute of Physics.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9544
+
+
+Zernike feature at high salt concentrations. An analysis of the structure factor discussed in section V gives the criterion for the Lifshitz point for polyelectrolyte solutions as
+κ = cwc
+4 (83)
+This electrostatically induced Lifshitz point in polyelectrolyte solutions is insensitive to the χ parameter. As in the ternary blend of uncharged homopolymers and a block copolymer, microemulsion-like structures could emerge at the Lifshitz point. Plausible occurrence of such structures and their relation to the slow mode (section VII) observed in dynamic light scattering studies are yet to be explored.
+Theoretical Phase Diagrams. The phase behavior of polyelectrolyte solutions, due to variations in composition and temperature, is theoretically addressed using the various χ parameters between the components (which are measures of hydrophobicity) and the Bjerrum Length lB which is a measure
+of the strength of the electrostatic interaction.100,114,118 The χ parameter and lB cannot be arbitrarily varied for any polyelectrolyte system because both of these quantities depend on temperature (see eqs 2 and 76). Let t be the reduced temperature in units of 1/lB (since lB is
+inversely proportional to Tε)
+π
+t= l
+4 lB (84)
+where l is the charge separation length along the chain contour. Choosing the χ parameter between the polymer and solvent as given by eq 76, χ is written in terms of the reduced temperature t as
+χπ
+≡ aχ
+20 t (85)
+The parameter aχ (= 10πε0εkBΘ/e2) reflects the magnitude of
+the Θ temperature and is taken as a measure of the hydrophobic interaction between the polyelectrolyte backbone and the solvent. For the example of NaPSS in water, the charge separation along the backbone is ∼0.25 nm and lB at room
+temperature is ∼0.7 nm, so that t ∼ 1/(12π). Therefore, when aχ = 1, χ is about 3/5, indicating correctly that the polymer
+backbone is immiscible in water. The range of 0 ≤ aχ ≤ 1 is
+reasonable for exploring the role of hydrophobic effect on the phase behavior of aqueous polyelectrolyte solutions. As anticipated from the generic nature of polyelectrolyte solutions where the translational entropy of counterions can dominate the free energy, the molecular weight of the polyelectrolyte chains might not be a key parameter in determining the phase diagram. This kind of Coulomb criticality is in sharp contrast to the hydrophobic criticality of phase diagrams of uncharged polymers (see eq 78). Furthermore, these two kinds of criticality can interfere with each other and lead to multicritical phenomena. As already noted, the presence of low molecular weight salt can dramatically complicate the phase behavior. In addition, different levels of charge regularization of polyelectrolyte chains accompanying the formation of the new phases during phase separation can modify the phase diagrams. These issues are briefly commented on below.
+Insignificance of Polymer Molecular Weight in Salt-Free Polyelectrolyte Phase Behavior. Consider a two-component system of flexible polyelectrolyte in water. The free energy density f is given by eqs 42−47 as
+f=f +f +f +f
+S H fl,i fl,p (86)
+where
+= +α φ φ+ − +α φ − +α φ
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+fN
+1 ln [1 (1 ) ] ln[1 (1 ) ]
+S1 1 1
+(87)
+f = −χ(1 + α )φ
+H1
+2 (88)
+=− π +κ −κ + κ
+⎡
+⎣⎢ ⎤
+⎦⎥
+f ll l
+1
+4 ln(1 ) 1
+2
+fl , i
+22
+(89)
+Here φ is the polymer volume fraction φ = nNl3/V, with l being the segment length, and α1 = αzp/zc as already defined. For the
+present case of salt-free condition, κ2l2 = 4πlBzc2α1φ/l. The
+fluctuation contribution from polymer conformations Ffl,p is given by eq 47, but it turns out to be negligible in comparison with the other terms in eq 86. The reduced temperature is t = l/ (4πlB) as defined in eq 84.
+The critical point (φc, tc) is determined from ∂2f/∂φ2 = 0 =
+∂3f/∂φ3 as100
+φ πα π
+α
+α
+= +
+= +
+() ()
+t zz
+1 64
+1; 1
+64
+c N
+c
+pc
+N
+1
+1 1
+1
+(90)
+Here, electrostatic contribution is taken to be dominant by assuming that χ = 0. As α1 (= αzp/zc) is of the order of 3 (by assuming that there are about 9 monomers per Kuhn segment, the average degree of ionization is 1/3, and the counterion is monovalent), 1/N in eq 90 is negligible in comparison with α1. Therefore, the theory of phase diagrams of salt-free polyelectrolyte solutions predicts that the molecular weight of polyelectrolyte chains is an insignificant variable, in sharp contrast with the situation of uncharged polymers. This
+prediction was later validated by simulations.143
+Interference Between Coulomb Criticality and Hydrophobicity Criticality. If the hydrophobic term involving χ were to be dominant in eq 86, say in the limit of α → 0, the critical condition for phase separation is that of the Flory−Huggins theory (see eq 77).
+φ= + χ = +
+⎛
+⎝⎜ ⎞
+⎠⎟
+NN
+1
+1; 1
+21 1
+cc
+2
+(91)
+Defining φ̃ = 64πφ and t̃ = 64πt, the hydrophobicity critical
+point (for N = 1000) is114
+φα
+̃ = 6.16 and t ̃ = 6.01 ( = 0)
+c c (92)
+where eq 85 is used in relating t̃c and χc. On the other hand, the
+Coulomb critical point for α = 1 and zp = 1 = zc is
+φα
+̃ = 1 and t ̃ = 1 ( = 1)
+c c (93)
+These two limits are sketched in Figure 21a. Therefore, the Coulomb critical temperature is reduced by a factor of 6 in comparison with the critical temperature for uncharged polymer solutions, which are usually around 300 K or above, but not 1800 K. As a result, it is impossible to observe macrophase separation in salt-free aqueous polyelectrolyte solutions.
+The calculation114 of phase diagrams using eq 86−89 shows that the two limits of critical points (corresponding to hydrophobicity criticality and Coulomb criticality) do not meet at an intermediate point but stop as critical end points
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9545
+
+
+with a narrow range of the parameter aχ with triple points as sketched in Figure 21b,c. The theoretically predicted emergence of triple points for intermediate values of the χ parameter is yet to be verified either by simulations or by experiments using low dielectric constant solvents.
+Effect of Low Molecular Salt on Phase Diagrams. The presence of added salt to polyelectrolyte solutions raises the critical temperature essentially by promoting the hydrophobicity criticality and by screening the electrostatic interactions. The constraint that the chemical potential of the salt must be the same in the coexisting phases, in addition to the same constraint for the polyelectrolyte and solvent, results in rich phase behavior. As an example, the calculated
+coexistence curves114 and critical points from eqs 42−47 with added monovalent salt are given in Figure 22 for representative values of the hydrophobicity parameter aχ (1/5, 4/9, and 1) for
+α = 1 and N = 100. Here Cp = φ + φc, cs = φ+ + φ−, and the dissociated salt ions and the counterions of the polyelectrolyte are taken as distinct species. For relatively lower values of aχ =
+1/5 (corresponding to χ of about 0.1 at room temperature), the phase demixing region grows out from the left side of the plot and leans toward the bottom right side. For each temperature, the coexistence curve consists of two branches which are linked by tie lines and a critical point exists at the point where the two branches meet. For a relatively larger value of the hydrophobicity parameter, aχ = 1, the coexistence curves move up from lower cs, and the region of homogeneity is reduced as the temperature is lowered. For intermediate values of aχ (=4/9), two sets of coexistence curves are predicted at higher temperatures (say t = 0.004 944), each with its own critical point (Figure 22b). As the temperature is lowered, the two demixing regions become broader and eventually merge into one demixing region. As in the salt-free case, triple points are predicted at lower temperatures. The above predicted phase behavior is yet to be explored experimentally with temperature as the key variable. It must be cautioned that the above theoretical predictions are based on the assumption that all monovalent salts are equivalent, which is not the case. In making comparison between experiments and theory, one can only hope for discovering the generic feature of multicritical phenomena and not concern with quantitative numbers until the specificity of ions is fully addressable by the theory. When the added salt ion is trivalent, as in the case of LaCl3,
+the predicted phase diagrams from eqs 42−47 (with the mandatory accounting of the Donnan equilibrium between the coexisting phases) are given in Figures 23a and 23b for t = 0.02
+and 0.03, respectively.114 In Figure 23a, each blue dot represents an initial set of polymer and salt volume fractions that leads to liquid−liquid phase separation. The outer envelope of all blue points is the coexistence curve. The spinodal curve is shown as the boundary of thermodynamic instability. As the temperature is increased (Figure 23b), the demixing region becomes narrower to the extent that there is no region of spinodal decomposition. The predicted liquid− liquid phase separation is analogous to the experimental observations at room temperature given in Figure 19d, although this effect was marked as re-entrant precipitation. It is desirable to revisit the experiments by varying the temperature to fully understand the critical phenomena of polyelectrolyte solutions with multivalent salt. Coacervates. The phase behavior of a mixture of polycations and polyanions leading to liquid−liquid phase separation has recently attracted considerable attention, mainly driven by potential applications of the polymer-dense phase known as the coacervate phase. Starting from the initial experimental
+observation1 eight decades ago, the phenomenon of coacervate
+complexation has a long history.1,4,6,8,10,12,16,20,29,41,45−49,52−61
+Figure 21. Interference between Coulomb criticality and hydrophobicity criticality resulting in critical end points and lines of triple points (red). (a) The Coulomb critical temperature is about a factor of 6 lower than the hydrophobic critical point, and the question is how these two critical points meet at intermediate strengths of hydrophobicity. (b) and (c) sketch the variations of these critical points as solvent quality is made progressively poorer and the emergence of lines of triple points corresponding to coexistence of three phases.
+Figure 22. Calculated phase diagrams for a ternary system of polyelectrolyte, monovalent salt, and water. The χ parameter increases from (a) to (c). Reproduced with permission from ref 114. Copyright 2009 American Institute of Physics.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9546
+
+
+There are many reviews on this subject providing compendia of various experimental results, theoretical approaches, and
+simulation studies.61,132 The earliest theory of coacervate
+complexation is the Voorn−Overbeek (VO) theory,66,67 which is found to be in good agreement with some experiments, despite its well-known approximations. Considerable efforts have been made to rectify the approximations in the VO theory and to understand why the VO theory even
+works.61,132
+In order to bring a perspective on the nature of assumptions of the VO theory, let us discuss one of the simple examples of this theory. Consider a salt-free solution of a symmetric mixture of a polycation and a polyanion, each with the same volume fraction φ/2 (φ is the total volume fraction of both polymers) and the same number of segments N. Let σ be the charge density on the backbone for both polymers. The VO theory combines the Flory−Huggins theory (for entropy of mixing and later appended to include the energy of mixing via the Flory−Huggins χ parameter) and the Debye−Hückel theory of electrolytes. The contribution to the free energy density f S,VO from the entropy of mixing (with each of the whole chains exploring all space in the volume) follows from the Flory− Huggins theory as
+f = Nφ ln φ + (1 − φ) ln(1 − φ)
+S,VO (94)
+where the first term on the right-hand side corresponds to the translational entropy of polycations and polyanions (with
+irrelevant linear terms in φ ignored) and the second term corresponds to the translational entropy of solvent molecules (assuming the usual incompressibility condition). For the Debye−Hückel contribution, f DH,VO, the VO theory assumes that the polymer chains are broken into individual single charges which are distributed throughout the solution, independent of chain connectivity. According to the Debye− Hückel theory, κ2 for this assumed model is
+κ l = πl φ = π σ φ
+lz l
+l
+4( ) 4( )
+p
+22 B 2 B 2
+(95)
+where zp is the valency of each polymer segment, which is the
+charge density σ of the polymer, namely the total charge number divided by N. Instead of the above expression, the VO theory uses
+κ l = πl σφ
+l
+( ) 4 ()
+22 VO
+B
+(96)
+The discrepancy between eqs 95 and 96 goes away if each segment of the polymer carries a unit charge. Using eq 46 in the limit of κl → 0
+π σφ
+π
+f = − (4 l /l) ( )
+12
+DH,VO
+B
+3/2 3/2
+(97)
+Combining eqs 94 and 97, and further assuming that the solvent−polymer interactions are negligible compared to electrostatic interactions (χ = 0), the free energy density of the VO theory is
+φφ φ φ
+π σφ
+π
+= +− −
+−
+fN
+ll
+ln (1 ) ln(1 )
+(4 / ) ( )
+12
+VO
+B
+3/2 3/2
+(98)
+In the presence of monovalent salt of 1:1 type, (κ2l2)VO =
+4πlB(σφ + φs)/l, where φs is the total volume fraction of both cations and anions of the added salt and the contribution from their translational entropy is φs ln(φs/2). Ignoring terms linear
+in φ and φs, f VO of solutions containing added salt is
+φ φφφ φφ φφ
+π σφ φ
+π
+= + + −− −−
+−+
+fN
+ll
+ln ln (1 ) ln(1 )
+(4 / ) ( )
+12
+ss s s
+s
+VO
+B
+3/2 3/2
+(99)
+For the salt-free case, the first term on the right-hand side of eq 98 is insignificant for large values of N, the second term is negative but nonmonotonic in φ, and the third term is continuously decreasing negatively valued function as φ increases. As a result, the combination of the second and third terms (solvent entropy and the Debye−Hückel correlation of ions of fully decomposed polymers) leads to coexistence of two phases. It is therefore obvious from the assumptions of the VO theory that all aspects of polymer connectivity are ignored. Furthermore, what did happen to the counterions when a polycation electrolyte and a polyanion electrolyte are dispersed into the solvent? The free energy density for the present situation where all chains, their counterions, and ions from the added monovalent salt are present in a homogeneous solution can be expressed by generalizing eqs 42−47. Let there be n1 chains of polyanions of N1 segments of unit charge, n2 polycations of N2 segments of unit charge, n+ cations and n− anions from the added salt, and
+Figure 23. Calculated phase diagram for trivalent salt showing liquid− liquid phase separation. The reduced temperature increases from (a) to (b). At higher temperatures, the spinodal region does not occur. Reproduced with permission from ref 114. Copyright 2009 American Institute of Physics.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9547
+
+
+n0 solvent molecules. If α is the degree of ionization for both polycations and polyanions, the number of monovalent counterions n+c from the polyanion is αn1N1 and the number
+of monovalent counterions n−c from the polycation is αn2N2. The total volume of the solution is V = (n1N1 + n2N2 + n+c +
+n−c + n+ + n− + n0)l3 by assuming that the volumes of segments,
+solvent, and dissociated ions are the same (l3). The free energy density from the translational entropy of all species in the solution follows from a generalization of eq 43 as
+φ φ φ φ φ φ φφ φ
+φφφ
+=++ + + +
+×+
++ + − − ++ −
+−
+f N N ln ln ln
+ln ln
+S cccc
+1
+1
+2
+2
+0 0 (100)
+where φ1 = n1N1l3/V, φ2 = n2N2l3/V, φ+c = αφ1, φ−c = αφ2, φ+
+= n+l3/V, φ− = n−l3/V, and the counterions and salt ions are distinguishable. If the counterions and salt ions are indistinguishable, (φ+c ln φ+c + φ−c ln φ−c + φ+ ln φ+ + φ− ln φ−) is
+replaced by (φ+c + φ+) ln (φ+c + φ+) + (φ−c + φ−) ln (φ−c +
+φ−). The expression for the inverse Debye length κ for the present situation is given by
+κ πφ φ φ φ
+π αφ φ φ φ
+= + ++
+= + ++
++ − +−
++−
+ll
+l l
+l
+4( )
+4 [( ) ]
+cc
+22 B
+B
+1 2 (101)
+The total free energy density is given by eq 42
+f=f +f +f +f
+S H fl,i fl,p (102)
+where f S and f fl,i are given by eqs 100 and 46 with the use of eq 101. f H and Ffl,p are the usual contributions from enthalpy due to interactions among the various constituent molecules and the concentration fluctuations in the solution. In order to compare with the VO theory, the free energy density of a solution of symmetric mixture of polycations and polyanions, each with the same volume fraction (φ1 = φ2 = φ/ 2) and the same number of segments (N1 = N2 = N), and 1:1
+type salt (φ+ = φ− = φs/2) follows from eq 102 as (after
+ignoring irrelevant linear terms in φ and φs)
+α φ φ φ φ φ φ χφ
+π κκ κ
+=+ + + −
+− + −+ +
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+⎡
+⎣⎢ ⎤
+⎦⎥
+fN
+ll lf
+1 ln ln ln 2
+1
+4 ln(1 ) 1
+2
+ss
+fl p
+00
+2
+22
+, (103)
+with
+κ l = πl αφ + φ φ = − + α φ − φ
+l
+4 ( ) and 1 (1 )
+ss
+22 B
+0
+(104)
+Here χ is the interaction strength between polymer segments and solvent with the assumption that all other polymer− polymer and solvent−solvent interaction strengths are zero. For the salt-free case (φs = 0)
+αφ φ αφ
+α φ χφ π κ κ
+κ
+= + +−+
+−+ − − + −
+++
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+⎡
+⎣⎢
+⎤
+⎦⎥
+fN
+ll
+lf
+1 ln [1 (1 ) ]
+ln[1 (1 ) ] 2 1
+4 ln(1 )
+1
+2 fl p
+2
+22
+, (105)
+with κ2l2 = 4πlBαφ/l. Corresponding to the example of the VO
+theory for φs = 0, χ = 0, and κl → 0, and ignoring Ffl,p, eq 103 reduces to
+αφ φ αφ
+α φ π αφ
+π
+= + +−+
+× −+ −
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+fN
+ll
+1 ln [1 (1 ) ]
+ln[1 (1 ) ] (4 / ) ( )
+12
+B
+3/2 3/2
+(106)
+This expression is to be compared with f VO given by eq 98.
+Serendipitously, the Debye−Hückel term is the same for the present derivation and the VO theory, although the origins are different. In the present case, it arises from the dissociated counterions and in the VO theory it arises from broken-up segments of polymer chains. The key deficiency of the VO theory is the neglect of the translational entropy of counterions. The prefactor of φ ln φ term should be α + 1/N, dominated by the degree of ionization of order unity in comparison with the negligible term 1/N. Therefore, the VO theory artificially suppresses the entropic contribution from the polymer with a factor of 1/N instead of α + 1/N. Hence, the liquid−liquid phase separation is artificially promoted in the VO theory due only to solvent entropy and the Debye−Hückel term. It is to be noted that eq 106 is identical to eqs 86−89 with the identification of φ as the total polymer volume fraction (from both polycations and polyanions). The critical point for the coacervate complexation is given by eq 90 as
+φπ π
+=+ =+
+t
+1 64
+1
+1 and 1
+64
+1
+1
+c N
+c N
+11
+(107)
+where the reduced temperature t is l/(4πlB) (eq 84). As in the case of salt-free polyelectrolyte solutions, the chain length does not play a significant role in determining the critical point for coacervate complexation, and the result is approximately close to that of the restricted primitive model of solutions of simple electrolytes. Ignoring Ffl,p, the predicted critical temperature for salt-free symmetric mixture of polyanions and polycations (with N = 100) is
+T = 52 K!
+c (108)
+where uniform dielectric constant of 80 and l = 0.25nm are used. Clearly this result, based on correct mean-field theory, is unphysical and in contradiction with experimental facts where the coacervates form rather readily at room temperatures in many mixtures of polycations and polyanions. In the presence of added salt, the predicted phase diagram for coacervate complexation is qualitatively similar to Figure 22, in view of the same structure of eqs 102−106 (for coacervates) and eqs 86−89 (for polyelectrolyte solutions). Rich phase diagrams can merge depending on the interplay between hydrophobic and electrostatic interactions. In general, the predicted critical temperature from the mean-field theory (with f fl,p = 0) is lower than what is observed experimentally. During the past two decades, there have been numerous attempts based on theory, computation, and simulations, further stoked by fresh experimental investigations. The current status of coacervate complexation is recently summarized in two excellent reviews, and the interested reader should consult
+with these reviews and the exhaustive references therein.61,132 Here, we mention only the styles of the key theoretical, computational, and simulation results instead of a detailed critique of this extensive literature.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9548
+
+
+A creative idea was presented by Borue and Erukhimovich in their theoretical work, where the polyelectrolyte complex is assumed to be a globule of uniform density and the coacervate
+complexation is a precipitation of polymer globules.80 Using density functional arguments, the equilibrium density and structure of surface layer of polyelectrolyte complexes were calculated as a function of salt concentration cs. Castelnovo and
+Joanny98 addressed the role of charge density by calculating structure factors within the general framework of RPA. Using RPA, and accounting for impenetrability of ions, Kudlay and de
+la Cruz105 addressed the role of χ parameter on the phase
+diagram. In addition, Kudlay et al.104 addressed the role of ionpair formation within the framework of RPA. The role of stoichiometry between the polycation and polyanion was
+addressed by Zhang and Shklovskii107 based on electrostatics, but without consideration of counterions. Building on the
+PRISM-type liquid-state theory, Perry and Sing125 focused on the effects of chain connectivity and excluded volume (which are ignored in the VO theory) and hypothesized that the apparent success of the VO theory is due to cancellation of chain connectivity and excluded volume effects. The role of molecular compactness in terms of the fractal dimension of the
+polymer was addressed by Qin and De Pablo,129 by including charge connectivity, although counterion entropy is not included. Combining the VO and Cahn−Hilliard theories, the interfacial tension between the liquid-like coacervate phase and
+the coexisting supernatant phase was calculated by Qin et al.53
+and found to be in agreement with experiments,45 despite the well-known inadequacies of the VO theory. The primary computational protocol used for coacervate complexation is the field-theoretic simulation (FTS). Popov et
+al.112 used FTS at the one-loop level and showed that charged diblock polyelectrolytes stabilize disconnected mesoscopic structures, in contrast to uniformly charged polyelectrolytes which form macroscopic phases. Going beyond RPA, FTS was
+used by Lee and Fredrickson113 to compute structure factor and phase diagrams without salt or counterion entropy.
+Riggleman et al.121 computed the interfacial tension between a coacervate phase and its supernatant in terms of χ, cs, and electrostatic interaction strength. More recently, Delany and
+Fredrickson131 used FTS to show that coacervation of diblock polyampholytes occurs at much lower electrostatic strength compared to blends, without consideration of counterions or salt. The FTS results are shown to be significantly different from RPA results. Computer simulations of polyelectrolyte complexation in dilute solutions have been carried out by many researchers. However, simulations of coacervate phase diagrams are rare. In
+the recent Monte Carlo simulation, Radhakrishna et al.60 show that the fortuitous agreement between the VO theory and experiments is due to a cancellation of errors arising from the neglect of charge connectivity and excluded volume effects, as was initially deduced from their liquid-state theory. These simulations are in good quantitative agreement with experiments reported in their study. The above-mentioned theoretical and computational works are obviously diverse and separately address several different aspects of coacervate complexation. To date, there is no comprehensive theory of this phenomenon, although it is not uncommon in the literature of claims such as having produced a comprehensive theory of coacervate complexation while its system does not have counterions and salt. There still remains considerable challenges to properly treat non-RPA and polymer
+conformational fluctuations in multicomponent solutions pertinent to coacervate formation. Yet, even the perfect theoretical treatments of polycations and polyanions uniformly distributed in the solution might not capture the phenomenon, independent of the rigor in the calculations. As recognized over
+more than five decades by experimentalists6,16,20 and more
+recently by theorists and simulators,104,107 the reality in a mixture of oppositely charged polymers is their spontaneous tendency to form chain pairs. As discussed in section V, a pair of oppositely charged polyelectrolyte chains form polyelectrolyte complexes spontaneously in water at room temperature and above and even in very dilute solutions. A complex between two oppositely charged polyelectrolyte chains is a dipolar chain if the complexation is complete (Figure 16), or it can in general be a multiblock chain with positive charges, negative charges, and dipoles distributed in random sequences, as depicted in Figure 24a. When the polymer
+concentration is not very low, many chains can aggregate as cartooned in Figure 24b. Therefore, a solution consisting of oppositely charged polyelectrolytes is made of a population of diverse architectures even in the so-called “homogeneous” phase. The replacement of charged portions of the polyelectrolyte chains by dipolar portions due to complexation is expected to have a dramatic effect on the phase diagram. As an elementary example, consider a collection of n2 polycations of N2 segments
+and n1 polyanions of N1 segments, let N2 ≥ N1 and n2 > n1, and allow complete two-chain pairwise complexation as shown in Figure 25. In this model, the solution is made of n1 complexed
+chains each with N1 dipoles and N2 − N1 positive charges and
+n2 − n1 chains of N2 positive charges. In addition, there are counterions and solvent in the system. The free energy density f for this model is
+f=f +f +f +f +f +f +f
+Sp Sc Ss el ex fl,i fl,p (109)
+where f Sp is from the translational entropy of the entities in Figure 25
+Figure 24. Examples of numerous branched structures that form in a solution of polycations and polyanions. (a) Only two chains form the complex. (b) Several chains participate in the complexation.
+Figure 25. A simple model for constructing coacervate phase diagram, emphasizing the role of dipoles.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9549
+
+
+= φ φ + + φ − φ φ −φ
+⎡
+⎣⎢⎢
+⎛
+⎝⎜ ⎞
+⎠⎟
+⎤
+⎦⎥⎥
+⎛
+⎝⎜ ⎞
+⎠⎟ ⎛
+⎝⎜ ⎞
+⎠⎟
+fN
+N
+N NN
+N
+N
+ln 1 ln
+Sp
+1
+1
+1
+2
+1
+2
+2
+1
+1
+21
+2
+1
+(110)
+where φ1 = n1N1l3/V and φ2 = n2N2l3/V. f Sc is from entropy of
+counterions (with α = 1)
+f = φ ln φ + φ ln φ
+Sc 1 1 2 2 (111)
+and f Ss is the corresponding term for the solvent, f Ss = φ0 ln φ0. The electrostatic contribution from charges (excluding dipoles) is
+π
+f = 2κ l (φ − φ )
+el
+B
+22 1
+2
+(112)
+where
+κ = 4πl (φ + φ )
+2
+B 1 2 (113)
+The excluded volume contribution is fex
+φ φ φ φφ
+φφ φ φφ φ
+= + −+
++ −+ −
+−
+fv v v
+vv
+1 2
+1
+2( )
+() ()
+ex pp dp s
+ps dp el
+dipole dipole 1
+2
+21
+2
+, 01
+0 2 1 , 1 2 1 (114)
+where vdipole−dipole, vdp,s, and vdp,el are respectively the contact interaction energies between two dipoles (eq 8), one dipole and solvent, and one dipole and a charge. f fl,i is given by eq 46.
+Ffl,p for a solution containing two different kinds of polymers is not known yet but expected to be negligible in comparison with other contributions in eq 109. Calculations based on eqs 109−114 are expected to yield phase diagrams more pertinent to experimentally relevant temperatures and compositions in comparison with previous theories, as complexation is definitely unavoidable among oppositely charged polyelectrolytes. The shift from Coulomb interaction among charged segments (promoting polymer dispersion) into dipolar parts (promoting phase separation) is equivalent to an increase in the effective value of the χ parameter, and hence the phase separation occurs even at higher temperatures much more than predicted by say the Voorn−Overbeek theory. Indeed, it is necessary to address all possible associations among the various oppositely charged polymers in accurately composing the full phase diagram for coacervates. Only with a proper accounting of such highly branched structures with differently decorated with charges and dipoles, which change with temperature, added salt concentration, and stoichiometry, combined with a self-consistent computation of phase diagrams, can reasonable comparison between experiments and theory be made. As in the even simpler situation of associating polymers, the expected phase diagram is cartooned in Figure 26. The construction of coacervate phase diagram mediated by electrostatically driven polyelectrolyte association is totally an open problem in the current status of theory of coacervates.
+Daughter Phases Have Different Charge Densities. The omnipresent charge regularization of the effective charge of polyelectrolyte chains accompanying changes in polyelectrolyte concentration, temperature, etc., is expected to lead to an additional order parameter as the effective degree of ionization,
+unseen in uncharged systems.118 As an example, consider a saltfree solution of a flexible polyelectrolyte and let the degree of ionization change when temperature and polyelectrolyte concentration are changed in a self-consistent manner. This charge regularization is accounted for by changing the
+temperature through the Bjerrum length lB, the hydrophobicity
+parameter aχ, and the dielectric mismatch parameter δ (to account for the local ionization equilibrium, eq 22). The significant role played by charge regularization on phase
+behavior is illustrated in Figure 27.118 In Figure 27a, the data in
+blue correspond to δ = 2 with filled circles and diamonds denoting the higher concentration φb phase and lower
+concentration φa phase, respectively. The dashed, solid, and dotted vertical lines denote the polyelectrolyte concentration in the homogeneous phase. As the temperature is reduced, the degree of ionization α decreases due to counterion adsorption. Also, α is higher at lower polyelectrolyte concentrations. As a result, in the homogeneous phase, the dependencies of α for the dashed, solid, and dotted lines on temperature are as shown in Figure 27b. Once the phase separation takes place, α would increase as the polymer-poor phase becomes more and more
+Figure 26. Expected phase diagram for coacervate systems based on the role of branched polyelectrolyte complexes.
+Figure 27. (a) Calculated phase diagram for a salt-free solution, with charge regularization. (b) Degree of ionization of the daughter phases are different. Reproduced with permission from ref 118. Copyright 2010 American Institute of Physics.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9550
+
+
+diluted when the temperature is reduced. This is shown by the blue diamond symbol (αa) in Figure 27b. On the other hand, α would decrease in the polymer-rich phase as the temperature is decreased as shown by the blue circle symbol (αb) in Figure 2b.
+The corresponding results for δ = 1.5 and 1 are given in red and black colors, respectively, in Figure 27. Clearly, as the dielectric mismatch parameter δ is decreased, there are increasingly more unabsorbed counterions stabilizing the homogeneous phase due to their increased translational entropy. If charge regularization is absent, then the coexistence curve for δ = 1 is given in green in Figure 27a. A comparison between the black and green curves illustrates the significant modification in phase behavior (substantially higher critical temperature and wider demixing region) by charge regularization. It therefore appears that there is an additional order parameter (in addition to the polyelectrolyte concentration) through α which self-consistently affects the onset of the critical phenomenon. The difference in α between the daughter phases (Δα) is plotted in Figure 28 as the critical temperature is approached from below. The disparity in the charge of the daughter phases depends on the dielectric mismatch parameter δ (Figure 28a) and the hydrophobicity parameter aχ (Figure
+28b). The corresponding difference in the polymer concentration Δφ between the polymer-poor and polymer-rich phases is also given in Figure 28. As expected from mean field theories, Δφ vanishes as
+Δφ ∼ |t − tc|
+1/2 (115)
+as the critical point is approached. On the other hand, whether any critical exponent βc exists for Δα
+Δα ∼ | − |β
+t tc c (116)
+is unclear. A neat value for this exponent βc is difficult to identify based on calculations performed so far. This novel feature of additional cooperativity from charge regularization must be general in all polyelectrolyte phase diagrams and must be addressed in quantitative comparisons between experiments and theory.
+VII. DYNAMICS AND KINETICS IN POLYELECTROLYTE SOLUTIONS
+The electrostatic coupling between the charged macromolecules and their surrounding counterion clouds leads to various transport properties of these molecules very much unlike uncharged macromolecules. In fact, the way charged molecules move around in solutions can be controlled completely by the counterions, and the structural characteristics of the macromolecule are made relatively insignificant except for its electric charge, which in turn results in the counterion cloud. As a result, large macromolecules can move around fast in salt-free solutions as if they are tiny. When electrostatic correlations between the macromolecule and its counterion cloud is broken by adding sufficient amounts of low molecular weight salt, the behavior of polyelectrolyte chains becomes analogous to that of uncharged macromolecules, and their transport properties depend significantly on their molar mass. Here, we illustrate the dramatic properties of polyelectrolyte dynamics only in the context of diffusion and electrophoretic mobility of polyelectrolyte chains.
+Polyelectrolytes of All Sizes Move with the Same Speed. The electrophoretic mobility μ of a polyelectrolyte chain in dilute solutions containing added salt at concentration cs under a constant external electric field E, as defined through
+v = μE
+p (117)
+Figure 28. Differences in polymer concentration and degree of ionization approach zero differently as the critical point is approached. (a) Effect of dielectric mismatch parameter. (b) Effect of hydrophobicity parameter. Reproduced with permission from ref 118. Copyright 2010 American Institute of Physics.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9551
+
+
+where vp is the velocity of the polyelectrolyte chain, is independent of its molecular weight (proportional to the
+degree of polymerization N) at all salt concentrations.33,39
+μ ∼ N 0 (118)
+This remarkable result is in contradiction with the standard expectation, based on isolated ions, that
+μ = QD/kBT (119)
+where Q and D are the charge and the diffusion coefficient of the molecule. Equation 119 is obtained by balancing the frictional force (kBT/D)vp and the electrical force QE. The discrepancy between the observed molecular weight independence of μ and the Einstein law of eq 119 arises from the fact that the polyelectrolyte chain is not an independent entity, but it is always coupled to its counterion cloud. As the polyelectrolyte molecule moves toward its favorite electrode, its counterion cloud (being oppositely charged) tries to drag the chain in the opposite direction, resulting in a compromise (Figure 29a). A self-consistent hydrodynamic treatment of the
+counterion cloud dynamics along with the Zimm dynamics of the polyelectrolyte chain results in the following prediction for
+μ:82
+μ = DQ[1 − (κR )]/k T
+gB
+4 (120)
+Here, the second term is the contribution from the counterion cloud. As a final result from this theory (the details are given in the original ref 82)
+μ = A(κ)N 0 (121)
+with the prefactor A(κ) decreasing with cs as cs
+−1/3 for higher salt concentrations (Figure 29b). While the molecular weight independence of μ is in agreement with experiments, the predicted salt concentration dependence is only in qualitative agreement. There still remains theoretical challenges to enable quantitative comparison between experimental value of μ and theory. One of the primary challenges is the treatment of anisotropic relaxation of the counterion cloud during the mobility of the polyelectrolyte chain.
+Collective Diffusion Coefficient of Million Molecular Weight Polymer Is Comparable to That of a Sodium Ion. In salt-free polyelectrolyte solutions, we expect the hydrodynamic radius Rh of a chain to be proportional to N, and hence
+the diffusion coefficient DSE according to the Stokes−Einstein (SE) law is expected to obey
+D ∼R ∼N
+11
+h
+SE (122)
+This is not observed in dynamic light scattering (DLS)
+experiments on salt-free polyelectrolyte solutions.25 The measured value, labeled as the “fast” diffusion coefficient Df, is several orders of magnitude higher than the expected value DSE. Remarkably, Df for polyelectrolyte concentrations C above a threshold value is independent of C and N over several orders of magnitude
+D ∼CN
+f
+0 0 (123)
+as shown in Figure 30, where a compilation of DLS data from
+several laboratories is presented.128 Even more remarkably, Df
+of say 106Da sodium poly(styrenesulfonate) is only a factor of 4 smaller than the diffusion coefficient of a small ion such as K+,
+Na+, Cl−, etc.; upon addition of small molecular salt, Df decreases continuously with salt concentration cs, eventually attaining the value of DSE appropriate for high salt
+concentrations. These dramatic properties21,22 of Df must arise from electrostatic correlations in the system.
+Using the standard theory of polymer dynamics,183 the time evolution of the local monomer density at time t, resolved at the scattering wave vector k, is given by
+ρρ
+∂
+∂ = −Γ
+t
+t
+()
+k
+k k (124)
+Figure 29. (a) Counterion cloud contributes to the electrophoretic mobility of polyelectrolytes resulting in the molecular weight independence of the mobility in solutions. (b) Presence of salt decreases the mobility, but still maintaining the molecular weight independence.
+Figure 30. Collected data on diffusion coefficient for the “fast” (ordinary) mode, Df, and the “slow” (extraordinary) mode, Ds. The fast and slow modes emerge for polymer concentrations above a threshold value. For fully developed two-mode regime, Df is independent of polymer concentration c and degree of polymerization N over several orders of magnitude and is only about a factor of 4 smaller than the diffusion coefficient of a metallic ion such as Na+ in water. Ds is smaller than Df by 3 orders of magnitude, and it depends on c and N, suggesting formation of aggregates by similarly charged polymers. Upon addition of electrolytes, slow mode disappears and Df
+progressively becomes smaller approaching eventually the diffusion coefficient DSE expected from the Stokes−Einstein law. Blue triangle, green diamond, red square, black circle, and green triangle are from
+Förster et al.21 for quarternized poly(2-vinylpyridine) with molecular weight M = 1.09 × 105, 2 × 105, 7.8 × 105, 5.8 × 105, and 2.26 × 106 g/mol and degree of quarternization q = 0.65, 0.98, 0.75, 0.4, and 1.0, respectively. Purple plus, aqua cross, purple star, and gold circle are
+from Sedlak and Amis22 for sodium poly(styrenesulfonate) with M = 5 × 103, 3.82 × 104, 1.0 × 105, and 1.2 × 106 g/mol, respectively. Reproduced with permission from ref 128. Copyright 2016 National Academy of Sciences.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9552
+
+
+where the rate of monomer density fluctuations is
+∫πη ξ
+Γ= · − ̂̂·
++
++
+−
+kT q
+q
+g
+g
+k 1 qq k k q
+k
+d
+(2 )
+()
+()
+()
+()
+k h
+B
+3
+3 0
+2 2 (125)
+Here η0 is the viscosity of the solution, ξh is the hydrodynamic screening length proportional to the correlation length of composition fluctuations, q̂ is the unit vector, and g(k) is the scattering function per segment discussed in section V (g(k) = I(k)/C). For salt-free conditions (see eq 67)
+ξ
+=+
+g Cw
+k
+k
+(k) 1
+(1 )
+c
+2
+4 2
+4 (126)
+exhibiting the polyelectrolyte peak, with ξ2 ∼ C−1/2. For small values of the scattering wave vector pertinent to DLS experiments, eqs 125 and 126 yield
+Γ = Γ + Dk + O(k )
+k0c
+2 4 (127)
+where Γ0 ∼ ξ2−3 and Dc ∼ ξ2−1. Dc is the usual cooperative
+diffusion coefficient proportional to 1/Rh in dilute solutions and
+C1/2 in semidilute solutions. The observed Df is not simply the cooperative diffusion
+coefficient. For charged macromolecules, the local motion of a monomer is coupled to the dynamics of the counterions in the neighborhood of the monomer. The counterion cloud generates a local electric field El on the monomer, and as a
+result, there is an additional convective contribution to the flux ρμ0El, where μ0 is the monomer electrophoretic mobility eα/ζ0
+(ζ0 is the monomer friction coefficient). It is important to recognize that the molecular weight independence of the electrophoretic mobility of a macromolecule must be used. Inclusion of this coupling, to leading order in monomer density, into the continuity equation of eq 124 gives
+ρ ρμ
+∂
+∂ = −Γ − ·
+t
+t z c ik E
+() ( )
+kp
+k
+k 0 (128)
+Now, according to Poisson’s equation
+ik·E = ε1ε (αρ + z ρ )
+k cck 0
+, (129)
+for salt-free solutions, where ρc is the local concentration of
+counterions (of valency zc). Therefore, the time evolution of ρk
+is coupled to ρc. Analogous to eq 129, the time evolution of ρc,k can be written as
+ρ
+ρ μ αρ ρ
+∂
+∂ =− ′ − ′
+εε +
+t Dk c( z )
+c c
+c
+cc
+k
+k kk
+,2 , 0
+, (130)
+where cc = αc/zc, and D′ and μ′ = zcD′/(kBT) are the diffusion
+coefficient and electrophoretic mobility of the counterion, respectively. Because of the coupling of ρk and ρc,k, there are two decay rates, which we shall label as superfast and fast modes. If there are additional charged species, there will be additional modes. As we anticipate that the fluctuation in the counterion distribution would come to equilibrium more rapidly than the
+macromolecule,184 we can approximate ∂ρc,k/∂t ∼ 0. This
+enables an analytical expression for ∂ρk/∂t as
+ρ ρρ
+μα κρ
+∂
+∂ = −Γ − − ε ε +
+t Dk c z e
+kk
+()
+c
+p
+k
+kk k
+0
+20
+0
+22
+2
+(131)
+For small k < κ, this becomes
+ρρρ
+∂
+∂ = −Γ −
+t Df k
+k
+kk
+0
+2
+(132)
+where the fast diffusion coefficient is given as
+μα
+κ
+= + εε
+D D c ze
+fc
+p
+0
+0
+2 (133)
+Noting that μ0 = eα/ζ0, κ2 = e2αzpczc2/(ε0εkBT), and zc = 1 for monovalent counterions
+D = D + αD
+f c 0 (134)
+where D0 = kBT/ζ0 is the monomer diffusion coefficient. Since Dc of a macromolecule is orders of magnitude smaller than the
+monomer diffusion coefficient (if the monomer were to be alone and not a part of the chain), the fast diffusion coefficient
+is predicted as128
+D ≃ αD , independent of N and c
+f 0 (135)
+As the effective degree of ionization is about 0.25−0.3 due to counterion adsorption, and taking D0 as that of a metallic ion,
+the fast diffusion coefficient is about 5 × 10−6 cm2/s as seen in Figure 30. Upon addition of salt, the electrostatic correlation between the monomer and counterions is broken. Now, κ2 in eq 133 increases, and as a result Df approaches Dc, leading to the limit
+of the cooperative diffusion coefficient expected for uncharged systems. These results suggest that gradients in small molecular salt concentrations can be used to modulate the diffusion coefficient of density waves of charged macromolecules. For polymer concentrations higher than a threshold value, a second branch of diffusion coefficient emerges, as seen in
+Figure 30.25 This is known as the “slow mode”, and the corresponding diffusion coefficient Ds is several orders of magnitude smaller than Df or DSE. Ds decreases with an increase in either C or N. This slow mode is attributed to the spontaneous formation of aggregates due to the formation of quadrupoles from adsorbed counterions, as discussed in section V. The predicted concentration dependence of Rg,agg ∼ C1/6 is
+in qualitative agreement with the experimental data Ds ∼ C−1/6,
+as indicated in Figure 30.128 The emergence of the slow mode in DLS and the enhanced scattering intensity at near zero scattering angles are expected to occur simultaneously for polyelectrolyte concentrations above a threshold value and at low enough salt concentrations.
+Interlude of Slow Mode in Phase Separation Kinetics. The study of kinetics of liquid−liquid phase separation in polyelectrolyte solutions remains largely as an unchartered area of research. From the theoretical point of view, electrostatic and topological correlations controlling the penalty to create an interface and the Onsager coefficient describing the transport of polyelectrolytes across chemical potential gradients need to be addressed. From the experimental point of view, the main challenge is to identify a convenient experimental system where the phase separation kinetics is not too fast, and it has minimum number of experimental variables. Nevertheless,
+some preliminary experimental investigations42 suggest novel features unseen in uncharged polymer solutions undergoing phase separation. Consider an aqueous solution of NaPSS (molecular weight of 110 000 g/mol) at C = 0.5 g/L, containing 0.015 M BaCl2. At
+60 °C, the solution is homogeneous in the sense that there is no macroscopic demixing. The DLS on this system exhibits two
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9553
+
+
+modes (fast and slow) as shown in Figure 31a where the distribution function of correlation time f(τ) at different scattering angles is given. As discussed above, the slow mode presumably corresponds to aggregates, and the fast mode corresponds to unaggregated chains. When this solution is quenched to 2 °C below the cloud point temperature of 41 °C, the time evolution of DLS data is given in Figure 31b. At 2 min after the quench, the histogram is similar to that in the homogeneous phase (Figure 31a) with essentially the same fast and slow modes. Remarkably, up until 115 min, these two modes persist, and the average decay rates of these modes remain unchanged. While the average decay rate remains unchanged, the population of the fast mode decreases continuously, and the population of the slow mode increases continuously. This suggests that the population of aggregates increases by converting unaggregated chains into aggregates. After 115 min, the average decay time of the slow mode shifts to longer times, and domains of bigger sizes form as
+corroborated by small-angle light scattering studies.42 These observations suggest a novel mechanism of phase separation, where an enrichment of polymer aggregates of welldefined size distribution occurs in the very early stage of liquid−liquid phase separation. This first step is then followed by a growth process in the formation of the legitimate new phases dictated by the phase diagram. It appears that the polymer aggregates formed in the early stage act as templating nuclei for the latter stage. When and how the daughter phases with their equilibrium polymer concentrations form remain as a mystery. Understanding the mechanism of phase separation in polyelectrolyte solutions and coacervate systems is one of the challenging problems in polyelectrolyte physics.
+Translocation of Polyelectrolytes between Compartments. The transport of polyelectrolyte chains from one region to another is a significant phenomenon in gel electrophoresis and other separation protocols. A fundamental understanding of this phenomenon at single molecule level has attracted continued efforts from both experiments and theory. The question is how a single molecule penetrates through an entropic barrier presented by a physical constriction in the presence of a driving force. One simple example is how a single charged macromolecule such as ssDNA is transported across a single nanopore in salty aqueous environments under an
+external electric field.178 The pioneering work of Kasianowicz et
+al.178 has opened a gateway for sensing polynucleotides in the
+context of DNA sequencing.179,180 More importantly for polymer community, single molecule electrophoresis experiments can be used to gain insight into polyelectrolyte physics at the level of single macromolecule under nonequilibrium conditions. The experimental literature on this subject is vast,
+and the interested reader should consult the references contained in ref 181. A cartoon of the experimental setup is
+given in Figure 32.182 A single protein pore (from α-hemolysin)
+is inserted into a thin membrane which separates the donor (cis) compartment and the receiver compartment (trans) with both compartments containing an electrolyte. Under an externally imposed voltage gradient, the electrolyte ions pass through the pore resulting in an ionic current. When a polyelectrolyte such as poly(styrenesulfonate) (PSS) is dispersed in the cis, individual molecules of PSS move from cis to trans (with positive electrode), causing temporal blockades of the ionic current flowing through the pore, as shown in the inset of Figure 32. Durations and depths of the ionic current blockades are collected from the recorded ionic current traces, and the mechanism of polymer transport is discerned. For the simplest situation of voltage gradient without any other external forces acting on the polymer undergoing translocation, substantial progress has been made in understanding the translocation mechanism, based on entropic barrier for penetration of the chain into the pore, pore− polymer electrostatic and hydrophobic interactions, and
+hydrodynamics.181 The progress made so far opens up excellent opportunities to explore the response of single macromolecules in non equilibrium under several simultaneous force fields. Such studies are expected to facilitate a fundamental understanding of how simultaneous forces interfere with each other, either synergistically or antagonistically, in ultimately determin
+Figure 31. (a) Fast and slow modes in the homogeneous phase. (b) The slow mode templates the phase separation kinetics upon quench into liquid−liquid phase separation region. Reproduced with permission from ref 42. Copyright 2007 American Institute of Physics.
+Figure 32. Experimental setup to follow the kinetics of translocation of a single polyelectrolyte through a nanopore using ionic current measurements.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9554
+
+
+ing the single macromolecule behavior in nonequilibrium conditions. As an example, the single molecule electrophoresis experiment (Figure 32) can be conducted in the simultaneous presence of gradients in voltage, pH, and salt concentration across the pore and determine how these gradients affect the translocation speed. To be specific, consider the role of gradient in salt concentration in the cis and trans compartments on the translation time (τpeak) of PSS at two different pH values and
+fixed voltage differences.182 As shown in Figure 33a,b, a decrease in cs,cis (salt concentration in cis) makes the translocation speed faster, at both pH = 7.5 and 4.5. On the other hand, as shown in Figure 33c,d, a decrease in cs,trans (salt concentration in trans) has no effect on the translocation speed at pH = 7.5 but makes the translocation speed slower at pH = 4.5. This is opposite to the behavior with cs,cis gradient. Although these data in Figure 33 can be qualitatively interpreted using the charge regularization of PSS and pHdependent electrostatic interaction between PSS and the protein pore, robust quantitative theory is still unavailable. The experimental scenario described here and its extensions, accompanied by sound theory, are likely to offer an excellent opportunity for formulating general rules for how large charged macromolecules transport themselves under several nonequilibrium force fields. This in turn would facilitate means to deliberately navigate charged macromolecules in desirable pathways.
+VIII. CONCLUSIONS
+So, what has the polyelectrolyte community learnt based on the multitude of difficult expeditions (both experimentally and theoretically) over the past six decades? I believe that tremendous progress has indeed been made in understanding many of the complex behaviors of polyelectrolytes, as summarized in the previous sections. The polyelectrolyte community has recognized the various fundamental concepts
+Figure 33. Effect of salt concentration gradients in the donor compartment (a, b) and the receiver compartment (c, d) on the speed of translocation at pH = 7.5 (a, c) and pH = 4.5 (b, d).
+Figure 34. A biological cell is a “Coulomb soup”. Concepts based on physics of charged macromolecules are vital in understanding the transport of macromolecules in compartmentalized cellular environments.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9555
+
+
+of polyelectrolyte physics such as the dominance of counterions in almost all aspects of polyelectrolyte behavior, charge regularization, concomitant competition between hydrophobicity and electrostatic interaction, key forces behind liquid− liquid phase separation, dynamics of polyelectrolytes, and transport kinetics across compartments. The intuition that can readily be cultivated from these conceptual advances has been instrumental in formulating water-based smart materials such as hydrogels with superabsorbency of water, virus-like particles with tunable capabilities for gene/drug delivery, etc. Yet, we still have a long way to go in making quantitative predictions for polyelectrolyte systems. More experimentation is desirable in order to facilitate the validation of good theories. Specifically, experiments and theory are needed to address the role of nonlinear Poisson−Boltzmann effects (when the electric fields are not sufficiently weak), the polarizability effects around polyelectrolyte chains, the structure of water in crowded polyelectrolyte solutions, and the role of sequences of the charged macromolecules. Returning to the premise of primordial form of life alluded to in section I, I believe that the polyelectrolyte community has gained enough understanding of fundamental forces operative in solutions of charged macromolecules and how they couple synergistically or antagonistically among themselves. We are well poised to make progress in two significant directions. The first is to implement the concepts of polyelectrolyte physics to understand biological systems from a nanoscopic point of view. The second is to amplify the basic concepts into making synthetic machines reminiscent of those which must have existed in the early form of life. As an example of the first direction, the physics of polyelectrolytes is central to a fundamental understanding of how biological charged macromolecules such as DNA, RNA, and proteins are transported from one location to another in biological environments. A mammalian cell, cartooned in Figure 31, is a thick “Coulomb soup”, and various charged macromolecules must navigate through restricted spaces before reaching their destinations to exhibit their functional properties. These transport mechanisms and various structural reorganizations take place over a vary narrow range of temperature (specific to a particular species). Therefore, the temperature is not the key variable in controlling these biological processes. Instead, the conformational entropy of polymers, electrostatic forces which can be modulated by local gradients in salt concentration and pH, entropy and specificity of dissociated ions, and entropy associated with the constantly reorganizing structure of water all contribute to the collective behavior of biological systems. The basic concepts discussed in the preceding sections are totally pertinent to a quantitative description of various biologically pertinent transport processes. In general, the biological processes as we know today are extremely complex involving many forces acting simultaneously. Nevertheless, our progress made in understanding of the physics of synthetic polyelectrolytes provides an opportunity to identify key concepts behind the complex behavior of biological macromolecules in highly crowded Coulomb soup environments. Regarding the second direction we are poised to embark, there are boundless opportunities. As an example, deliberate preparation of long-lived metastable conformations of polyelectrolyte complexes are excellent candidates for designing macromolecular devices capable of storing memory. The present time is perhaps ripe to begin to synthesize water
+based molecular engines to recognize other charged macromolecules and process them enzymatically using electrostatic, conformational, van der Waals, and hydrodynamic forces. Would these molecular engines mimic the first polymers of life with capabilities to memorize and to reproduce themselves?
+How soon can we achieve these goals? Only time will tell!
+■
+AUTHOR INFORMATION
+Corresponding Author
+*E-mail: muthu@polysci.umass.edu. ORCID
+M. Muthukumar: 0000-0001-7872-4883 Notes
+The author declares no competing financial interest. Biography
+Murugappan Muthukumar is the Wilmer D. Barrett Distinguished Professor of Polymer Science and Engineering at the University of Massachusetts, Amherst, where he has been a faculty member since 1983. Muthu earned his B.Sc. (1970) and M. Sc. (1972) degrees in Chemistry from University of Madras, India, and a Ph.D. (1979) in Chemical Physics working with Karl Freed at the University of Chicago. After working with Sir Sam Edwards of the Cavendish Laboratory, University of Cambridge, UK, he was a faculty member at the Illinois Institute of Technology from 1981 to 1983. He has received several awards from the American Physical Society and the American Chemical Society. His research interests include fundamental aspects of physics of charged macromolecules, polymer crystallization, virus assembly, and macromolecular basis of human
+vision.
+■
+ACKNOWLEDGMENTS
+Acknowledgment is made to the National Science Foundation (Grants DMR 1713696 and DMR 1504265), National Institutes of Health (Grant R01HG002776-12), and AFOSR
+(Grant FA9550-14-1-0164).
+■
+REFERENCES
+(1) Bungenberg de Jong, H. G.; Kruyt, H. R. Coacervation (Partial miscibility in colloid systems). Proc. K. Ned. Akad. Wet. 1929, 32, 849− 855. (2) Katchalsky, A. Properties of Polyelectrolytes. J. Polym. Sci. 1954, 12, 159−184. (3) Eisenberg, H.; Mohan, G. R. Aqueous solutions of polyvinylsulfonic acid: Phase separation and specific interaction with ions, viscosity, conductance and potentiometry. J. Phys. Chem. 1959, 63, 671−680. (4) Veis, A.; Aranyi, C. Phase separation in polyelectrolyte systems. I. Complex coacervates of gelatin. J. Phys. Chem. 1960, 64, 1203−1210.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9556
+
+
+(5) Rice, S. A.; Nagasawa, M. Polyelectrolyte Solutions; Academic Press: New York, 1961. (6) Michaels, A. S. Polyelectrolyte complexes. Ind. Eng. Chem. 1965, 57, 32−40. (7) Katchalsky, A.; Alexandrowicz, Z.; Kedem, O. Polyelectrolyte Solutions. In Chemical Physics of Ionic Solutions; Conway, B. E., Barradas, R. G., Eds.; John Wiley & Sons: New York, 1966. (8) Veis, A. Phase equilibria in systems of interacting polyelectrolytes. In Biological Polyelectrolytes; Veis, A., Ed.; Marcel Dekker: New York, 1970. (9) Oosawa, F. Polyelectrolytes; Marcel Dekker: New York, 1971. (10) Nakajima, A.; Sato, H. Phase relationships of an equivalent mixture of sulfated polyvinyl alcohol and aminoacetalyzed polyvinyl alcohol in microsalt aqueous solution. Biopolymers 1972, 11, 1345− 1355. (11) Nierlich, M.; Williams, C. E.; Boue, F.; Cotton, J. P.; Daoud, M.; Famoux, B.; Jannink, G.; Picot, C.; Moan, M.; Wolff, C.; Rinaudo, M.; de Gennes, P. G. Small angle neutron scattering by semi-dilute solutions of polyelectrolyte. J. Phys. (Paris) 1979, 40, 701−704. (12) Tsuchida, E.; Osada, Y.; Ohno, H. Formation of interpolymer complexes. J. Macromol. Sci., Part B: Phys. 1980, 17, 683−714.
+(13) Nallet, F.; Jannink, G.; Hayter, J. B.; Oberthür, R.; Picot, C. Observation of the dynamics of polyelectrolyte strong solutions by quasi-elastic neutron scattering. J. Phys. (Paris) 1983, 44, 87−99. (14) Drifford, M.; Dalbiez, J.-P. Light scattering by dilute solutions of salt-free polyelectrolytes. J. Phys. Chem. 1984, 88, 5368−5375. (15) Drifford, M.; Dalbiez, J.-P. Effect of Salt on Sodium Polystyrene Sulfonate Measured by Light Scattering. Biopolymers 1985, 24, 1501− 1514. (16) Kabanov, V. A.; Zezin, A. B.; Izumrudov, V. A.; Bronich, T. K.; Bakeev, K. N. Cooperative interpolyelectrolyte reactions. Makromol. Chem. 1985, 13, 137−155. (17) Jannink, G. Structures factors of polyelectrolyte solutions revealed by neutron scattering. Makromol. Chem., Macromol. Symp. 1986, 1, 67−90. (18) Kaji, K.; Urakawa, H.; Kanaya, T.; Kitamaru, R. Phase diagram of polyelectrolyte solutions. J. Phys. (Paris) 1988, 49, 993−1000. (19) Krause, R.; Maier, E. E.; Deggelmann, M.; Hagenbüchle, M.; Schulz, S. F.; Weber, R. Static light scattering by solutions of salt-free polyelectrolytes. Phys. A 1989, 160, 135−147. (20) Philipp, B.; Dautzenberg, H.; Linow, K.-J.; Kötz, J.; Dawydoff, W. Polyelectrolyte complexes-Recent developments and open problems. Prog. Polym. Sci. 1989, 14, 91−172.
+(21) Förster, S.; Schmidt, M.; Antonietti, M. Static and dynamic light scattering by aqueous polyelectrolyte solutions: effect of molecular weight, charge density and added salt. Polymer 1990, 31, 781−792. (22) Sedlak, M.; Amis, E. J. Dynamics of moderately concentrated salt-free polyelectrolyte solutions: Molecular weight dependence. J. Chem. Phys. 1992, 96, 817−825.
+(23) Dautzenberg, H.; Jaeger, W.; Kötz, J.; Philipp, B.; Seidel, Ch.; Stscherbina, D. Polyelectrolytes; Hanser Publishers: New York, 1994. (24) Johner, C.; Kramer, H.; Batzill, S.; Graf, C.; Hagenbüchle, M.; Martin, C.; Weber, R. Static light scattering and electric birefringence experiments on saltfree solutions of poly(styrenesulfonate). J. Phys. II 1994, 4, 1571−1584. (25) Förster, S.; Schmidt, M. Polyelectrolytes in Solution. Adv. Polym. Sci. 1995, 120, 51−133.
+(26) Nishida, K.; Kaji, K.; Kanaya, T. Charge density dependence of correlation length due to electrostatic repulsion in polyelectrolyte solutions. Macromolecules 1995, 28, 2472−2475. (27) Wissenburg, P.; Odijk, T.; Cirkel, P.; Mandel, M. Multimolecular aggregation of mononucleosomal DNA in concentrated isotropic solutions. Macromolecules 1995, 28, 2315−2328. (28) de la Cruz, M. O.; Belloni, L.; Delsanti, M.; Dalbiez, J. P.; Spalla, O.; Drifford, M. Precipitation of Highly-Charged Polyelectrolyte Solutions in the Presence of Multivalent Salts. J. Chem. Phys. 1995, 103, 5781−5791. (29) Kötz, J. Polyelectrolyte complexes. Polymeric Materials Encyclopedia 1996, 8, 5762−5770.
+(30) Beer, M.; Schmidt, M.; Muthukumar, M. The Electrostatic Expansion of Linear Polyelectrolytes: Effects of Gegeions, Co-ions, and Hydrophobicity. Macromolecules 1997, 30, 8375−8385. (31) Ermi, B. D.; Amis, E. J. Influence of backbone solvation on small angle neutron scattering from polyelectrolyte solution. Macromolecules 1997, 30, 6937−6942. (32) Raspaud, E.; Olvera de la Cruz, M.; Sikorav, J. L.; Livolant, F. Precipitation of DNA by Polyamines: A Polyelectrolyte Behavior. Biophys. J. 1998, 74, 381−393.
+(33) Hoagland, D.; Arvanitidou, E.; Welch, C. Capillary electrophoresis measurements of the free solution mobility for several model polyelectrolyte systems. Macromolecules 1999, 32, 6180−6190. (34) Sabbagh, I.; Delsanti, M. Solubility of highly charged anionic polyelectrolytes in presence of multivalent cations: Specific interaction effect. Eur. Phys. J. E: Soft Matter Biol. Phys. 2000, 1, 75−86.
+(35) Nishida, K.; Kaji, K.; Kanaya, T. High concentration crossovers of polyelectrolyte solutions. J. Chem. Phys. 2001, 114, 8671−8677. (36) Prabhu, V. M.; Muthukumar, M.; Wignall, G. D.; Melnichenko, Y. B. Dimensions of polyelectrolyte chains and concentration fluctuations in semidilute solutions of sodium-poly(styrene sulfonate) as measured by small-angle neutron scattering. Polymer 2001, 42, 8935−8946. (37) Nishida, K.; Kaji, K.; Kanaya, T.; Shibano, T. Added salt effect on the intermolecular correlation in flexible polyelectrolyte solutions: Small-angle scattering study. Macromolecules 2002, 35, 4084−4089. (38) Prabhu, V. M.; Muthukumar, M.; Wignall, G. D.; Melnichenko, Y. B. Polyelectrolyte chain dimensions and concentration fluctuations near phase boundaries. J. Chem. Phys. 2003, 119, 4085−4098. (39) Stellwagen, E.; Lu, Y.; Stellwagen, N. Unified description of electrophoresis and diffusion for DNA and other polyions. Biochemistry 2003, 42, 11745−11750.
+(40) Bordi, F.; Cametti, C.; Colby, R. H. Dielectric spectroscopy and conductivity of polyelectrolyte solutions. J. Phys.: Condens. Matter 2004, 16, R1423−R1463. (41) Kabanov, V. A. Polyelectrolyte complexes in solution and in bulk. Russ. Chem. Rev. 2005, 74, 3−20.
+(42) Kanai, S.; Muthukumar, M. Phase separation kinetics of polyelectrolyte solutions. J. Chem. Phys. 2007, 127, 244908. (43) Störkle, D.; Duschner, S.; Heimann, N.; Maskos, M.; Schmidt, M. Complex formation of DNA with oppositely charged polyelectrolytes of different chain topology: Cylindrical brushes and dendrimers. Macromolecules 2007, 40, 7998−8006. (44) Loh, P.; Deen, G. R.; Vollmer, D.; Fischer, K.; Schmidt, M.; Kundagrami, A.; Muthukumar, M. Collapse of linear polyelectrolyte chains in a poor solvent: When does a collapsing polyelectrolyte collect its counterions? Macromolecules 2008, 41, 9352−9258. (45) Spruijt, E.; Westphal, A. H.; Borst, J. W.; Cohen Stuart, M. A.; van der Gucht, J. Binodal Compositions of Polyelectrolyte Complexes. Macromolecules 2010, 43, 6476−6484.
+(46) Kizilay, E.; Kayitmazer, A. B.; Dubin, P. L. Complexation and coacervation of polyelectrolytes with oppositely charged colloids. Adv. Colloid Interface Sci. 2011, 167, 24−37.
+(47) van der Gucht, J.; Spruijt, E.; Lemmers, M.; Cohen Stuart, M. A. Polyelectrolyte complexes: Bulk phases and colloidal systems. J. Colloid Interface Sci. 2011, 361, 407−422.
+(48) Priftis, D.; Laugel, N.; Tirrell, M. Thermodynamic Characterization of Polypeptide Complex Coacervation. Langmuir 2012, 28, 15947−15957. (49) Spruijt, E.; Leermakers, F. A. M.; Fokkink, R.; Schweins, R.; Van Well, A. A.; Cohen Stuart, M. A.; Van Der Gucht, J. Structure and Dynamics of Polyelectrolyte Complex Coacervates Studied by Scattering of Neutrons, X-Rays, and Light. Macromolecules 2013, 46, 4596−4605. (50) Saha, S.; Fischer, K.; Muthukumar, M.; Schmidt, M. Apparent Molar Mass of a Polyelectrolyte in an Organic Solvent in the Low Ionic Strength Limit As Revealed by Light Scattering. Macromolecules 2013, 46, 8296−8303.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9557
+
+
+(51) Luo, S.; Jiang, X.; Zou, L.; Wang, F.; Yang, J.; Chen, Y.; Zhao, J. Resolving the difference in electric potential within charged macromolecule. Macromolecules 2013, 46, 3132−3136. (52) Chollakup, R.; Beck, J. B.; Dirnberger, K.; Tirrell, M.; Eisenbach, C. D. Polyelectrolyte molecular weight and salt effects on the phase behavior and coacervation of aqueous solutions of poly(acrylic acid) sodium salt and poly(allylamine) hydrochloride. Macromolecules 2013, 46, 2376−2390. (53) Qin, J.; Priftis, D.; Farina, R.; Perry, S. L.; Leon, L.; Whitmer, J.; Hoffmann, K.; Tirrell, M.; De Pablo, J. J. Interfacial Tension of Polyelectrolyte Complex Coacervate Phases. ACS Macro Lett. 2014, 3, 565−568. (54) Perry, S. L.; Li, Y.; Priftis, D.; Leon, L.; Tirrell, M. The Effect of Salt on the Complex Coacervation of Vinyl Polyelectrolytes. Polymers 2014, 6, 1756−1772. (55) Wang, Q.; Schlenoff, J. B. The Polyelectrolyte Complex/ Coacervate Continuum. Macromolecules 2014, 47, 3108−3116. (56) Jha, P. K.; Desai, P. S.; Li, J.; Larson, R. G. pH and Salt Effects on the Associative Phase Separation of Oppositely Charged Polyelectrolytes. Polymers 2014, 6, 1414−1436. (57) Perry, S. L.; Leon, L.; Hoffmann, K. Q.; Kade, M. J.; Priftis, D.; Black, K. A.; Wong, D.; Klein, R. A.; Pierce, C. F.; Margossian, K. O.; et al. Chirality-Selected Phase Behaviour in Ionic Polypeptide Complexes. Nat. Commun. 2015, 6, 6052. (58) Salehi, A.; Desai, P. S.; Li, J.; Steele, C. A.; Larson, R. G. Relationship between polyelectrolyte bulk complexation and kinetics of their layer-by-layer assembly. Macromolecules 2015, 48, 400−409. (59) Fu, J.; Schlenoff, J. B. Driving Forces for Oppositely Charged Polyion Association in Aqueous Solutions: Enthalpic, Entropic, but Not Electrostatic. J. Am. Chem. Soc. 2016, 138, 980−990. (60) Radhakrishna, M.; Basu, K.; Liu, Y.; Shamsi, R.; Perry, S. L.; Sing, C. E. Molecular Connectivity and Correlation Effects on Polymer Coacervation. Macromolecules 2017, 50, 3030−3037. (61) Srivastava, S.; Tirrell, M. V. Polyelectrolyte Complexation. Adv. Chem. Phys. 2016, 161, 499−543.
+(62) Katchalsky, A.; Künzle, O.; Kuhn, W. Behavior of polyvalent polymeric ions in solution. J. Polym. Sci. 1950, 5, 283−300. (63) Alfrey, T.; Berg, P. W.; Morawetz, H. The counterion distribution in solutions of rod-shaped polyelectrolytes. J. Polym. Sci. 1951, 7, 543−547. (64) Fuoss, R. M.; Katchalsky, A.; Lifson, S. The potential of an infinite rod-like molecule and the distribution of the counter ions. Proc. Natl. Acad. Sci. U. S. A. 1951, 37, 579−589.
+(65) Flory, P. J. Molecular Configuration of Polyelectrolytes. J. Chem. Phys. 1953, 21, 162−163. (66) Voorn, M. J. Complex Coacervation. Rec. Trav. Chim. 1956, 75, Part I (337−330); Part II (405−426); Part III (427−446); Part IV (925−937); Part V (1021−1030). (67) Overbeek, J. T. G.; Voorn, M. J. Phase separation in polyelectrolyte solutions. Theory of complex coacervation. J. Cell. Comp. Physiol. 1957, 49, 7−26.
+(68) Edwards, S. F. The statistical mechanics of polymers with excluded volume. Proc. Phys. Soc., London 1965, 85, 613−624. (69) Edwards, S. F. The theory of polymer solutions at intermediate concentration. Proc. Phys. Soc., London 1966, 88, 265−280.
+(70) Manning, G. S. Limiting laws and counterion condensation in polyelectrolyte solutions, I: Colligative properties. J. Chem. Phys. 1969, 51, 924−933. (71) de Gennes, P. G.; Pincus, P.; Velasco, R. M.; Brochard, F. Remarks on polyelectrolyte conformation. J. Phys. (Paris) 1976, 37, 1461−1473. (72) Odijk, T. Polyelectrolytes near the rod limit. J. Polym. Sci., Polym. Phys. Ed. 1977, 15, 477−483.
+(73) Skolnick, J.; Fixman, M. Electrostatic persistence length of a wormlike polyelectrolyte. Macromolecules 1977, 10, 944−948. (74) Manning, G. S. The molecular theory of polyelectrolyte solutions with application to the electrostatic properties of polynucleotides. Q. Rev. Biophys. 1978, 11, 179−246.
+(75) Khokhlov, A. R. On the collapse of weakly charged polyelectrolytes. J. Phys. A: Math. Gen. 1980, 13, 979−987. (76) Muthukumar, M.; Edwards, S. F. Extrapolation formulas for polymer solution properties. J. Chem. Phys. 1982, 76, 2720−2730. (77) Muthukumar, M. Adsorption of a polyelectrolyte chain to a charged surface. J. Chem. Phys. 1987, 86, 7230−7235. (78) Borue, V. Y.; Erukhimovich, I. Y. A Statistical Theory ofWeakly Charged Polyelectrolytes: Fluctuations, Equation of State, and Microphase Separation. Macromolecules 1988, 21, 3240−3249. (79) Joanny, J. F.; Leibler, L. Weakly charged polyelectrolytes in a poor solvent. J. Phys. (Paris) 1990, 51, 545−557. (80) Borue, V. Y.; Erukhimovich, I. Y. A Statistical-Theory of Globular Polyelectrolyte Complexes. Macromolecules 1990, 23, 3625− 3632. (81) Muthukumar, M. Double screening in polyelectrolyte solutions: Limiting laws and crossover formulas. J. Chem. Phys. 1996, 105, 5183− 5199. (82) Muthukumar, M. Dynamics of polyelectrolyte solutions. J. Chem. Phys. 1997, 107, 2619−2635.
+(83) Yethiraj, A.; Shew, C.-Y. Structure of polyelectrolyte solutions. Phys. Rev. Lett. 1996, 77, 3937−3940.
+(84) Shew, C.-Y.; Yethiraj, A. Integral equation theory of solutions of rigid polyelectrolytes. J. Chem. Phys. 1997, 106, 5706−5719. (85) Lamm, G.; Pack, G. R. Calculation of dielectric constants near polyelectrolytes in solution. J. Phys. Chem. B 1997, 101, 959−965. (86) Schiessel, H.; Pincus, P. Counterion-condensation-induced collapse of highly charged polyelectrolytes. Macromolecules 1998, 31, 7953−7959. (87) Yethiraj, A. Theory for chain conformations and static structure of dilute and semidilute polyelectrolyte solutions. J. Chem. Phys. 1998, 108, 1184−1192. (88) Shew, C.-Y.; Yethiraj, A. Monte Carlo simulations and selfconsistent integral equation theory for polyelectrolyte solutions. J. Chem. Phys. 1999, 110, 5437−5443.
+(89) Nyquist, R. M.; Ha, B.-Y.; Liu, A. J. Counterion condensation in solutions of rigid polyelectrolytes. Macromolecules 1999, 32, 3481− 3487. (90) Schiessel, H. Counterion condensation on flexible polyelectrolytes: Dependence on ionic strength and chain concentration. Macromolecules 1999, 32, 5673−5680.
+(91) Shew, C.-Y.; Yethiraj, A. Self-consistent integral equation theory for semiflexible chain polyelectrolyte solutions. J. Chem. Phys. 2000, 113, 8841−8847. (92) Kramarenko, E. Y.; Khokhlov, A. R.; Yoshikawa, K. A three-state model for counterions in a dilute solution of weakly charged polyelectrolytes. Macromol. Theory Simul. 2000, 9, 249−256. (93) Mahdi, K. A.; Olvera de la Cruz, M. Phase Diagrams of Salt-Free Polyelectrolyte Semidilute Solutions. Macromolecules 2000, 33, 7649− 7654. (94) Solis, F. J.; de la Cruz, M. O. Collapse of Flexible Polyelectrolytes in Multivalent Salt Solutions. J. Chem. Phys. 2000, 112, 2030−2035. (95) Solis, F. J.; de la Cruz, M. O. Flexible Linear Polyelectrolytes in Multivalent Salt Solutions: Solubility Conditions. EPJdirect 2000, 2, 1− 18. (96) Shew, C.-Y.; Yethiraj, A. The effect of acid-base equilibria on the fractional charge and conformational properties of polyelectrolyte solutions. J. Chem. Phys. 2001, 114, 2830−2838. (97) Dobrynin, A. V.; Rubinstein, M. Counterion Condensation and Phase Separation in Solutions of Hydrophobic Polyelectrolytes. Macromolecules 2001, 34, 1964−1972.
+(98) Castelnovo, M.; Joanny, J. F. Complexation between Oppositely Charged Polyelectrolytes: Beyond the Random Phase Approximation. Eur. Phys. J. E: Soft Matter Biol. Phys. 2001, 6, 377−386.
+(99) Hansen, P. L.; Podgornik, R.; Parsegian, V. A. Osmotic properties of DNA: Critical evaluation of counterion condensation theory. Phys. Rev. E: Stat. Phys., Plasmas, Fluids, Relat. Interdiscip. Top. 2001, 64, 021907.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9558
+
+
+(100) Muthukumar, M. Phase Diagram of Polyelectrolyte Solutions: Weak Polymer Effect. Macromolecules 2002, 35, 9142−9145. (101) Ermoshkin, A. V.; Olvera De La Cruz, M. Polyelectrolytes in the Presence of Multivalent Ions: Gelation versus Segregation. Phys. Rev. Lett. 2003, 90, 125504.
+(102) Ermoshkin, A. V.; Olvera de la Cruz, M. A Modified Random Phase Approximation of Polyelectrolyte Solutions. Macromolecules 2003, 36, 7824−7832. (103) Muthukumar, M. Theory of counterion condensation on flexible polyelectrolytes: Adsorption mechanism. J. Chem. Phys. 2004, 120, 9343−9350. (104) Kudlay, A.; Ermoshkin, A. V.; Olvera de la Cruz, M. Complexation of Oppositely Charged Polyelectrolytes:Effect of Ion Pair Formation. Macromolecules 2004, 37, 9231−9241. (105) Kudlay, A.; Olvera de la Cruz, M. Precipitation of Oppositely Charged Polyelectrolytes in Salt Solutions. J. Chem. Phys. 2004, 120, 404−412. (106) O’Shaughnessy, B.; Yang, Q. Manning-Oosawa counterion condensation. Phys. Rev. Lett. 2005, 94, 048302. (107) Zhang, R.; Shklovskii, B. I. Phase Diagram of Solution of Oppositely Charged Polyelectrolytes. Phys. A 2005, 352, 216−238. (108) Dobrynin, A. V.; Rubinstein, M. Theory of Polyelectrolytes in Solutions and at Surfaces. Prog. Polym. Sci. 2005, 30, 1049−1118. (109) Naji, A.; Netz, R. R. Scaling and universality in the counterioncondensation transition at charged cylinders. Phys. Rev. E 2006, 73, 056105. (110) Liao, Q.; Dobrynin, A. V.; Rubinstein, M. Counterioncorrelation-induced attraction and necklace formation in polyelectrolyte solutions: Theory and simulations. Macromolecules 2006, 39, 1920−1938. (111) de Vries, R.; Cohen Stuart, M. Theory and Simulations of Macroion Complexation. Curr. Opin. Colloid Interface Sci. 2006, 11, 295−301. (112) Popov, Y. O.; Lee, J.; Fredrickson, G. H. Field-Theoretic Simulations of Polyelectrolyte Complexation. J. Polym. Sci., Part B: Polym. Phys. 2007, 45, 3223−3230.
+(113) Lee, J.; Popov, Y. O.; Fredrickson, G. H. Complex Coacervation: A Field Theoretic Simulation Study of Polyelectrolyte Complexation. J. Chem. Phys. 2008, 128, 224908. (114) Lee, C.-L.; Muthukumar, M. Phase behavior of polyelectrolyte solutions with salt. J. Chem. Phys. 2009, 130, 024904. (115) Yethiraj, A. Liquid state theory of polyelectrolyte solutions. J. Phys. Chem. B 2009, 113, 1539−1551.
+(116) Wang, Z.-G. Fluctuation in electrolyte solutions: The self energy. Phys. Rev. E 2010, 81, 021501. (117) Kundagrami, A.; Muthukumar, M. Effective Charge and CoilGlobule Transition of a Polyelectrolyte Chain. Macromolecules 2010, 43, 2574−2581. (118) Muthukumar, M.; Hua, J.; Kundagrami, A. Charge regularization in phase separating polyelectrolyte solutions. J. Chem. Phys. 2010, 132, 084901.
+(119) Muthukumar, M. Counterion adsorption theory of dilute polyelectrolyte solutions: Apparent molecular weight, second virial coefficient, and intermolecular structure factor. J. Chem. Phys. 2012, 137, 034902. (120) Levy, A.; Andelman, D.; Orland, H. Dielectric constant of ionic solutions: A field-theory approach. Phys. Rev. Lett. 2012, 108, 227801. (121) Riggleman, R. A.; Kumar, R.; Fredrickson, G. H. Investigation of the Interfacial Tension of Complex Coacervates Using FieldTheoretic Simulations. J. Chem. Phys. 2012, 136, 024903. (122) Naji, A.; Kanduc, M.; Forsman, J.; Podgornik, R. Coulomb fluids - Weak coupling, strong coupling, in between and beyond. J. Chem. Phys. 2013, 139, 150901.
+(123) Sing, C. E.; Olvera de la Cruz, M. Polyelectrolyte Blends and Nontrivial Behavior in Effective Flory-Huggins Parameters. ACS Macro Lett. 2014, 3, 698−702. (124) Audus, D. J.; Gopez, J. D.; Krogstad, D. V.; Lynd, N. A.; Kramer, E. J.; Hawker, C. J.; Fredrickson, G. H. Phase behavior of
+electrostatically complexed polyelectrolyte gels using an embedded fluctuation model. Soft Matter 2015, 11, 1214−1225. (125) Perry, S. L.; Sing, C. E. PRISM-Based theory of complex coacervation: Excluded volume versus chain correlation. Macromolecules 2015, 48, 5040−5053.
+(126) Budkov, Y. A.; Kolesnikov, A. L.; Georgi, N.; Nogovitsyn, E. A.; Kiselev, M. G. A new equation of state of a flexible-chain polyelectrolyte solution: Phase equilibria and osmotic pressure in the salt-free case. J. Chem. Phys. 2015, 142, 174901. (127) Muthukumar, M. Electrostatic Correlations in Polyelectrolyte Solutions. Polym. Sci., Ser. A 2016, 58, 852−863. (128) Muthukumar, M. Ordinary-extraordinary transition in dynamics of solutions of charged macromolecules. Proc. Natl. Acad. Sci. U. S. A. 2016, 113, 12627−12632.
+(129) Qin, J.; De Pablo, J. J. Criticality and Connectivity in Macromolecular Charge Complexation. Macromolecules 2016, 49 (22), 8789−8800. (130) Shen, K.; Wang, Z. G. Electrostatic Correlations and the Polyelectrolyte Self Energy. J. Chem. Phys. 2017, 146, 084901. (131) Delaney, K. T.; Fredrickson, G. H. Theory of Polyelectrolyte Complexation - Complex Coacervates Are Self-Coacervates. J. Chem. Phys. 2017, 146, 224902.
+(132) Sing, C. E. Development of the modern theory of polymeric complex coacervation. Adv. Colloid Interface Sci. 2017, 239, 2−16.
+(133) Severin, M. Thermal maximum in the size of short polyelectrolyte chains. A Monte Carlo study. J. Chem. Phys. 1993, 99, 628−633. (134) Stevens, M. J.; Kremer, K. Form factor of salt-free linear polyelectrolytes. Macromolecules 1993, 26, 4717−4719. (135) Stevens, M. J.; Kremer, K. Structure of salt-free linear polyelectrolytes. Phys. Rev. Lett. 1993, 71, 2228−2231. (136) Stevens, M. J.; Kremer, K. The nature of flexible linear polyelectrolytes in salt-free solution: A molecular dynamics study. J. Chem. Phys. 1995, 103, 1669−1690.
+(137) Winkler, R. G.; Gold, M.; Reineker, P. Collapse of polyelectrolyte macromolecules by counterion condensation and ion pair formation: A molecular dynamics simulation study. Phys. Rev. Lett. 1998, 80, 3731−3734. (138) Micka, U.; Holm, C.; Kremer, K. Strongly charged, flexible polyelectrolytes in poor solvents: Molecular dynamics simulations. Langmuir 1999, 15, 4033−4044.
+(139) Liu, S.; Muthukumar, M. Langevin dynamics simulation of counterion distribution around isolated flexible polyelectrolyte chains. J. Chem. Phys. 2002, 116, 9975−9982.
+(140) Liu, S.; Ghosh, K.; Muthukumar, M. Polyelectrolyte solutions with added salt: A simulation study. J. Chem. Phys. 2003, 119, 1813− 1823. (141) Jeon, J.; Dobrynin, A. V. Monte Carlo simulations of polyampholyte-polyelectrolyte complexes: Effect of charge sequence and strength of electrostatic interactions. Phys. Rev. E: Stat. Phys., Plasmas, Fluids, Relat. Interdiscip. Top. 2003, 67, 061803.
+(142) Liao, Q.; Dobrynin, A. V.; Rubinstein, M. Molecular dynamics simulations of polyelectrolyte solutions: Osmotic coefficient and counterion condensation. Macromolecules 2003, 36, 3399−3410. (143) Orkoulas, G.; Kumar, S. K.; Panagiotopoulos, A. Z. Monte Carlo Study of Coulombic Criticality in Polyelectrolytes. Phys. Rev. Lett. 2003, 90, 048303. (144) Hayashi, Y.; Ullner, M.; Linse, P. Complex formation in solutions of oppositely charged polyelectrolytes at different polyion compositions and salt content. J. Phys. Chem. B 2003, 107, 8198−8207. (145) Jeon, J.; Dobrynin, A. V. Molecular dynamics simulations of polyampholyte-polyelectrolyte complexes in solutions. Macromolecules 2005, 38, 5300−5312. (146) Jeon, J.; Dobrynin, A. V. Molecular dynamics simulations of polyelectrolyte-polyampholyte complexes. Effect of solvent quality and salt concentration. J. Phys. Chem. B 2006, 110, 24652−24665. (147) Ou, Z.; Muthukumar, M. Entropy and enthalpy of polyelectrolyte complexation: Langevin dynamics simulations. J. Chem. Phys. 2006, 124, 154902.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9559
+
+
+(148) Hsiao, P.-Y.; Luijten, E. Salt-induced collapse and reexpansion of highly charged flexible polyelectrolytes. Phys. Rev. Lett. 2006, 97, 148301. (149) Guáqueta, C.; Luijten, E. Polyelectrolyte condensation induced by linear cations. Phys. Rev. Lett. 2007, 99, 138302. (150) Hsiao, P.-Y. Overcharging, charge inversion, and reentrant condensation: Using highly charged polyelectrolytes in tetravalent salt solutions as an example of study. J. Phys. Chem. B 2008, 112, 7347− 7350. (151) Carrillo, J.-M. Y.; Dobrynin, A. V. Polyelectrolytes in salt solutions: Molecular dynamics simulations. Macromolecules 2011, 44, 5798−5816. (152) Dias, R. S.; Linse, P.; Pais, A. A. C. C. Stepwise Disproportionation in Polyelectrolyte Complexes. J. Comput. Chem. 2011, 32, 2697−2707. (153) Elder, R. M.; Emrick, T.; Jayaraman, A. Understanding the Effect of Polylysine Architecture on DNA Binding Using Molecular Dynamics Simulations. Biomacromolecules 2011, 12, 3870−3879. (154) Elder, R. M.; Jayaraman, A. Molecular Simulations of Polycation-DNA Binding Exploring the Effect ofPeptide Chemistry and Sequence in Nuclear Localization Sequence Based Polycations. J. Phys. Chem. B 2013, 117, 11988−11999.
+(155) Peng, B.; Muthukumar, M. Modeling competitive substitution in a polyelectrolyte complex. J. Chem. Phys. 2015, 143, 243133. (156) Hoffmann, K. Q.; Perry, S. L.; Leon, L.; Priftis, D.; Tirrell, M.; de Pablo, J. J. A molecular view of the role of chirality in charge-driven polypeptide complexation. Soft Matter 2015, 11, 1525−1538. (157) Chremos, A.; Douglas, J. F. Influence of higher valence ions on flexible polyelectrolyte stiffness and counter-ion distribution. J. Chem. Phys. 2016, 144, 164904.
+(158) Chremos, A.; Douglas, J. F. Counter-ion distribution around flexible polyelectrolytes having different molecular architecture. Soft Matter 2016, 12, 2932−2941. (159) Chremos, A.; Douglas, J. F. Solution properties of star polyelectrolytes having a moderate number of arms. J. Chem. Phys. 2017, 147, 044906.
+(160) de Gennes, P.-G. Scaling Concepts in Polymer Physics; Cornell University Press: Ithaca, NY, 1979. (161) Robinson, R. A.; Stokes, R. H. Electrolyte Solutions; Dover: New York, 1959. (162) Flory, P. J. Principles of Polymer Chemistry; Cornell University Press: Ithaca, NY, 1953. (163) Israelachvili, J. N. Intermolecular and Surface Forces; Academic Press: Waltham, MA, 2011. (164) Belyi, V. A.; Muthukumar, M. Electrostatic origin of the genome packing in viruses. Proc. Natl. Acad. Sci. U. S. A. 2006, 103, 17174−17178. (165) Hu, Y.; Zandi, R.; Anavitarte, A.; Knobler, C. M.; Gelbart, W. M. Packaging of a polymer by a viral capsid: The interplay between polymer length and capsid size. Biophys. J. 2008, 94, 1428−1436. (166) Siber, A.; Podgornik, R. Nonspecific interactions in spontaneous assembly of empty versus functional single-stranded RNA viruses. Phys. Rev. E 2008, 78, 051915. (167) Forrey, C.; Muthukumar, M. Electrostatics of capsid-induced viral RNA organization. J. Chem. Phys. 2009, 131, 105101. (168) Devkota, B.; Petrov, A. S.; Lemieux, S. L.; Boz, M. B.; Tang, L.; Schneemann, A.; Johnson, J. E.; Harvey, S. C. Structural and electrostatic characterization of pariacoto virus: Implications for viral assembly. Biopolymers 2009, 91, 530−538. (169) Ting, C. L.; Wu, J.; Wang, Z.-G. Thermodynamic basis for the genome to capsid charge relationship in viral encapsidation. Proc. Natl. Acad. Sci. U. S. A. 2011, 108, 16986−16991.
+(170) Mahalik, J. P.; Muthukumar, M. Langevin dynamics simulation of polymer-assisted virus-like assembly. J. Chem. Phys. 2012, 136, 135101. (171) Siber, A.; Bozic, A. L.; Podgornik, R. Energies and pressures in viruses: contribution of nonspecific electrostatic interactions. Phys. Chem. Chem. Phys. 2012, 14, 3746−3765.
+(172) Routh, A.; Domitrovic, T.; Johnson, J. E. Host RNAs, including transposons, are encapsidated by a eukaryotic single-stranded RNA virus. Proc. Natl. Acad. Sci. U. S. A. 2012, 109, 1907−1912.
+(173) Cadena-Nava, R. D.; Comas-Garcia, M.; Garmann, R. F.; Rao, A. L. N.; Knobler, C. M.; Gelbart, W. M. Self-assembly of viral capsid protein and RNA molecules of different sizes: Requirement for a specific high protein/RNA mass ratio. J. Virol. 2012, 86, 3318−3326. (174) Borodavka, A.; Tuma, R.; Stockley, P. G. Evidence that viral RNAs have evolved for efficient, two-stage packaging. Proc. Natl. Acad. Sci. U. S. A. 2012, 109, 15769−15774.
+(175) Kler, S.; Asor, R.; Li, C.; Ginsburg, A.; Harries, D.; Oppenheim, A.; Zlotnick, A.; Raviv, U. RNA encapsidation by SV40-derived nanoparticle follows a rapid two-state mechanism. J. Am. Chem. Soc. 2012, 134, 8823−8830.
+(176) Stockley, P. G.; Twarock, R.; Bakker, S. E.; Barker, A. M.; Borodavka, A.; Dykeman, E.; Ford, R. J.; Pearson, A. M.; Phillips, S. E. V.; Ranson, N. A.; Tuma, R. Packaging signals in single-stranded RNA viruses: nature’s alternative to a purely electrostatic assembly mechanism. J. Biol. Phys. 2013, 39, 277−287. (177) Robertson, A. S. Statistical Thermophysics; Prentice Hall: Englewood Cliffs, NJ, 1993. (178) Kasianowicz, J. J.; Brandin, E.; Branton, D.; Deamer, D. W. Characterization of Individual Polynucleotide Molecules Using a Membrane Channel. Proc. Natl. Acad. Sci. U. S. A. 1996, 93, 13770− 13773. (179) Branton, D.; Deamer, D. W.; Marziali, A.; Bayley, H.; Benner, S. A.; Butler, T.; Di Ventra, M.; Garaj, S.; Hibbs, A.; Huang, X.; et al. The Potential and Challenges of Nanopore Sequencing. Nat. Biotechnol. 2008, 26, 1146−1153.
+(180) Wanunu, M. Nanopores: A journey towards DNA sequencing. Phys. Life. Rev. 2012, 9, 125−158.
+(181) Muthukumar, M. Polymer Translocation; CRC Press: Boca Raton, FL, 2011. (182) Jeon, B.; Muthukumar, M. Electrostatic Control of Polymer Translocation Speed through α-Hemolysin Protein Pore. Macromolecules 2016, 49, 9132−9138. (183) Doi, M.; Edwards, S. F. The Theory of Polymer Dynamics; Clarendon Press: Oxford, 1986. (184) Berne, B. J.; Pecora, R. Dynamic Light Scattering; Dover: New York.
+Macromolecules Perspective
+DOI: 10.1021/acs.macromol.7b01929 Macromolecules 2017, 50, 9528−9560
+9560

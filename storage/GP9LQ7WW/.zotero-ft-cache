@@ -1,0 +1,346 @@
+Article
+Processivity, Velocity, and Universal Characteristics of Nucleic Acid Unwinding by Helicases
+Shaon Chakrabarti,1,2,3,* Christopher Jarzynski,4 and D. Thirumalai5 1Department of Data Sciences, Dana-Farber Cancer Institute, Boston, Massachusetts; 2Department of Biostatistics, Harvard T.H. Chan
+School of Public Health, Boston, Massachusetts; 3Department of Stem Cell and Regenerative Biology, Harvard University, Cambridge,
+Massachusetts; 4Department of Chemistry and Biochemistry, Institute for Physical Sciences and Technology, Department of Physics,
+University of Maryland, College Park, Maryland; and 5Department of Chemistry, The University of Texas at Austin, Austin, Texas
+ABSTRACT Helicases are components of the cellular replisome that are essential for unwinding double-strand nucleic acids during the process of replication. Intriguingly, most helicases are inefficient and require either oligomerization or assistance from other partner proteins to increase the processivity of unwinding in the presence of the replication fork, which acts as a barrier to progress. Single-molecule force spectroscopy has emerged as a promising experimental technique to probe how relieving this barrier on the helicase can allow for increased efficiency of unwinding. However, there exists no comprehensive theoretical framework to provide unique interpretations of the underlying helicase kinetics from the force spectroscopy data. This remains a major confounding issue in the field. Here, we develop a mathematical framework and derive analytic expressions for the velocity and run length of a general model of finitely processive helicases, the two most commonly measured experimental quantities. We show that in contrast to the unwinding velocity, the processivity exhibits a universal increase in response to external force, irrespective of the underlying architecture and unwinding kinetics of the helicase. Our work provides the first, to our knowledge, explanation to a wide array of experiments and suggests that helicases may have evolved to maximize processivity rather than speed. To demonstrate the use of our theory on experimental data, we analyze velocity and processivity data on the T7 helicase and provide unique inferences on the kinetics of the helicase. Our results show that T7 is a weakly active helicase that destabilizes the fork ahead by less than 1 kBT and back steps very frequently while unwinding DNA. Our work generates fundamental insights into the force response of helicases and provides a widely applicable method for inferring the underlying helicase kinetics from force spectroscopy data.
+INTRODUCTION
+Helicases are enzymes that play an important role in almost every aspect of RNA and DNA metabolism (1–7). This class of molecular motors utilizes free energy from ATP or dTTP hydrolysis to translocate directionally over single-strand (ss) nucleic acids (8–10). In this respect, they are similar to other motors like kinesin and myosin, which also predom
+inantly exhibit directional motion on microtubules and actin filaments, respectively (11,12). In addition, some helicases can also couple ss translocation with unwinding of double-strand (ds) nucleic acids, thus playing a crucial role in cellular functions like replication, recombination, and DNA repair. The ‘‘processive, zipper-like’’ ds unwinding activity was first demonstrated by Abdel-Monem et al. (13) in Escherichia-coli-based DNA helicase in 1976. Interestingly however, most helicases cannot unwind double strands of nucleic acids by themselves and require either oligomerization or assistance from other partner proteins to increase the efficiency of processive unwinding (14–16).
+Submitted April 3, 2019, and accepted for publication July 12, 2019.
+*Correspondence: shaon@jimmy.harvard.edu
+Editor: Anatoly Kolomeisky.
+SIGNIFICANCE How helicases effectively unwind double-stranded nucleic acids is not well understood. The dynamics of helicases is often probed by varying the barrier to nucleic acid unwinding in force spectroscopy experiments. To analyze such experimental data, here, we develop a general model of finitely processive helicases with arbitrary step size and interaction range and predict a universal response of processivity to force. We demonstrate the utility of our model by analyzing experiments on the T7 helicase and uniquely identifying T7 as a weakly active helicase that back steps frequently in the presence of the replication fork. Our results suggest that by mimicking force effects, oligomerization or interaction with partner proteins lead to increased helicase processivity, but not necessarily the unwinding velocity.
+Biophysical Journal 117, 867–879, September 3, 2019 867
+https://doi.org/10.1016/j.bpj.2019.07.021
+
+
+The fundamental principles governing this collaborative improvement of unwinding efficiency have not been fully elucidated. A helicase that uses energy from ATP or dTTP hydrolysis to destabilize the ss-ds nucleic acid junction is considered to be ‘‘active.’’ On the other hand, a helicase that utilizes the thermal fraying of the ds and opportunistically steps ahead when the downstream site is open is referred to as ‘‘passive’’ (2). Considerable effort has been devoted to classifying various helicases into these two categories because this description provides an intuitive idea of the mechanism of nucleic acid unwinding and could explain why many helicases are inefficient at unwinding nucleic acids by themselves (17–27). Earlier work used bulk kinetic assays or analysis of crystal structures to classify the activity of helicases (18–20), whereas more recent studies have primarily resorted to single-molecule experiments coupled with theoretical frameworks to establish the mode of unwinding of various helicases (23–26,28–30). Although ascertaining whether a helicase is active or passive is difficult and remains a controversial question for a number of helicases, we recently used this description in a quantitative framework to predict some surprisingly universal characteristics, which are independent of the dsDNA sequence (31). By generalizing the original mathematical framework introduced by Betterton and J€ulicher (32–34), we predicted that the processivity of active and passive helicases should always increase in response to external forces applied equally to the two complementary single strands of dsDNA or dsRNA in the hairpin geometry (31). This intriguing prediction was later validated in the Pif1 and RecQ helicases (35,36). Unlike the processivity, the velocity of unwinding, however, shows no such universal behavior and exhibits a variety of responses to external force depending on whether the helicase is active or passive (31). In our earlier work, we solved for the velocity and processivity of a helicase (with both the step size and interaction range equal to one basepair) taking the sequence of DNA into account using numerically precise solutions. Here, we use a physically motivated approximation scheme to derive analytical expressions for both the velocity and processivity of a model that also accounts for a general step size and interaction range. Similar models accounting for a nonzero step size and interaction range have been used to study the velocity of unwinding using numerical simulations, without the benefit of easy to use analytical expressions (26,37). These expressions allow us to demonstrate the universality of the nature of the response of processivity to force, enabling us to draw far-reaching conclusions on the evolution of helicases to optimize the number of basepairs that are unwound. The analytic results derived here also allow us to analyze single-molecule experimental data on helicases more precisely than attempted before by simultaneously
+analyzing the velocity and processivity of a particular helicase instead of merely the velocity. As in our earlier work (31), our focus here remains on the hairpin geometry of the dsDNA or dsRNA in which equal amounts of force are applied in opposite directions on the complementary strands. In the framework introduced by Betterton and J€ulicher (32–34) (and its variants), force or sequence dependence of the unwinding velocity had previously been fit to experimental data to determine the nature of T7, T4, and NS3 helicases (23–26). However, Manosas et al. (37) pointed out that the multiparameter fit of the Betterton and J€ulicher (32–34) model to velocity data is not robust, with different parameter sets fitting the data equally well. More disturbingly, the various best-fit parameter sets suggest completely different unwinding mechanisms and fail to provide any conclusive results for the fitting parameters. This is especially problematic when parameters like the step size and the potential backstepping rate have not been characterized experimentally for a particular helicase and need to be estimated from fits of the theory to data. As a consequence, the literature on helicases is rife with contradictory claims about the mechanism of action of a specific helicase. For instance, steady-state and pre-steady-state kinetic assays (38) as well as studies of crystal structures (18) determined that NS3 helicase is passive, whereas a single-molecule experiment coupled with a mathematical analysis suggested that NS3 is active (23). Similarly, the T7 helicase was deemed to be an active helicase in two previous works (24,26), whereas simple physical arguments suggested that T7 is passive (37). Here, we show that our theory, which is used to simultaneously analyze velocity and processivity data, can be used to robustly obtain the values of all the parameters associated with the unwinding activity of a helicase. Using data on the T7 helicase as a case study, we use our theory to explain both the force response of velocity and processivity, and in the process, we quantitatively show that T7 is very weakly active. Further, we recapitulate a number of independent experimental results on T7, thus confirming that the model is a good description of the helicase. Our theory also shows that an externally applied force, which in vivo could be generated by binding of ss partner proteins, results in an increase in processivity in all helicases, regardless of whether they are active or passive. This important finding prompts us to propose that helicases may have evolved to optimize processivity rather than speed.
+MATERIALS AND METHODS
+Theoretical model for nucleic acid unwinding helicases
+The model, shown in Fig. 1, is a generalization of the one introduced by Betteron and J€ulicher (32,34) that accounts for the finite processivity of
+Chakrabarti et al.
+868 Biophysical Journal 117, 867–879, September 3, 2019
+
+
+the helicase and allows for an arbitrary step size and a general interaction range between the helicase and the ds. Fig. 1 a shows the helicase (red solid circles) as it translocates on the ss nucleic acid strand (depicted as a bold black line). The position of the helicase on the nucleic acid track is denoted by n. The helicase can exhibit pure diffusion and hence can step to the right or left with equal rate kþ 1⁄4 k 1⁄4 k. When the NTP hydrolyzes, the helicase moves forward at a rate h where h > k, thus resulting in a net forward rate h þ k, whereas the backward rate is k. If the mechanical step size of the helicase is s, then every time the motor steps forward or backward it does so by s nucleotides, resulting in an average velocity along the ss given by Vss 1⁄4 sh. The helicase could also disengage from the nucleic acid track with a dissociation rate, g. Fig. 1 b represents the ss-ds junction at position m. The basepair at the junction can rupture at a rate a (increasing m to m þ 1), whereas a new basepair can form (decreasing m to m  1) at rate b such that a/b 1⁄4 exp(DG), where DG is the stability of the particular ds basepair. All energies in this article are in units of kBT. Fig. 1 c shows how the rates change when the helicase and the junction approach each other. Modifications of the original rates occur because of the interaction potential U (j), a particular example of which is shown in
+Fig. 1 d. As the helicase and junction approach each other, they interact. As a result, the helicase has to perform extra work, which is U0 per basepair to step forward. This energy is provided from the hydrolysis of ATP. We follow the description in (33) and definej hm  n to be the difference in the positions of the junction and the helicase. The rates are modified depending on j, and this is indicated by the value of j as a subscript. For example, h2 denotes the modified forward-stepping rate when j 1⁄4 2 (Fig. 1 c). The motivation for allowing negative values of j and hence a potential as shown in Fig. 1 c comes from helicases like PcrA and NS3 (see Fig. 2 b). These helicases seem to physically interact with downstream basepairs of the ds (19,23), possibly distorting and destabilizing a number of bases beyond the junction. Therefore, for a general scenario, we let the helicase interact with the ds over a range r of basepairs, after which a hard wall exists at j 1⁄4 r. For ring helicases like T7, which encircle one strand of the DNA while excluding the other (39,40), destabilization is not likely to happen by physical overlap with bases downstream of the junction (see Fig. 2 a) but might occur because of electrostatic interactions (41). For such helicases, j would always be positive with a hard wall at j 1⁄4 0. Note that the exact position of the potential does not matter: a shifted potential with the first step at j 1⁄4 4 and hard wall at j 1⁄4 0 (Fig. 2 a) would give
+ab
+c
+d
+FIGURE 1 Model of nucleic acid unwinding by a helicase. (a) Single-strand (ss) stepping kinetics of the helicase are shown. (b) Double-strand (ds) thermal ‘‘breathing’’ is shown. (c) Modification of stepping kinetics of the helicase and breathing rates of the ds are shown. (d) The interaction potential that causes the modification of rates in (c) is shown. To see this figure in color, go online.
+Universal Characteristics of Helicases
+Biophysical Journal 117, 867–879, September 3, 2019 869
+
+
+identical results for the velocity and processivity as the potential shown in Fig. 2 b. Hence, this model for the interaction range of the helicase is general. The short-range potential is chosen to have a constant step height U0 and is defined as follows:
+UðjÞ 1⁄4
+8<
+:
+N j%  r
+ð1  jÞ U0 r < j%0 0 j > 0:
+(1)
+The unwinding process in reality is likely governed by a number of additional energy scales besides U0, for example, the interaction of the helicase with its partner proteins. However, our primary aim in this work is to model the interaction of the helicase with the ds-ss junction, which we assume to be most simply described by one energy scale. The validity of this simple assumption can of course only be tested after analyzing a variety of experimental data and verifying that inferred parameters are physically realistic. The results, as discussed below, show that this simple model is indeed sufficient to explain many aspects of force spectroscopy data on helicases. The nucleic acid breathing rates are modified because of this interaction as follows:
+aj 1⁄4 a eðf 1ÞðUðjÞUðjþ1ÞÞ;
+bjþ1 1⁄4 b ef ðUðjÞUðjþ1ÞÞ; (2)
+such that ðaj=bjþ1Þ 1⁄4 eðDGU0Þ for all values of j. In Eq. 2, f is a number between 0 and 1, representing the fractional position of the free-energy barrier between basepair open and basepair closed states from the open state. Nucleic acid opening takes the system from state j to state j þ 1, whereas closing takes the system from j þ 1 to j. Hence, the exponents in Eq. 2 involve the term U(j)  U(j þ 1). The rates of the helicase also get modified because of the interaction and change as follows:
+kþ
+j 1⁄4 k ef ðUðjsÞUðjÞÞ
+hj 1⁄4 hef ðUðjsÞUðjÞÞ
+k
+js 1⁄4 k eðf 1ÞðUðjsÞUðjÞÞ
+gj 1⁄4 geUðjÞ:
+(3)
+With a step size s, the helicase cannot move to the right if j % s  r, and hence kjþ 1⁄4 hj 1⁄4 0 for all j % s  r. Equation 3 shows that as long as the helicase and the ss-ds junction are separated by a distance j > s, the forward rates are independent of U0: kjþ 1⁄4 k and hj 1⁄4 h. For the back
+ward rate, kj 1⁄4 k as long as j > 0. Notice that the exponents in Eq. 3 contain the term U(j  s)  U(j) because the helicase jumps s nucleotides every time it steps forward or backward.
+Force effects on transition rates
+To model the effect of a constant external force F applied directly to the ds junction in the unzipping direction, the ds opening and closing rates change from aj, bj to ajF, bjF such that
+aF
+j
+bF
+jþ1
+1⁄4 aj
+bjþ1
+eDGF
+1⁄4 eðDGU0DGFÞ
+hb eU0 ;
+(4)
+where we defined bheðDGDGFÞ, and DGF is the destabilizing free energy of the basepair at the junction because of the constant external force F. Assuming a freely jointed chain (FJC) model for the ssDNA segments, the expression for DGF is given as follows (42):
+DGF 1⁄4 2 L
+l log
+1
+Fl sinhðFlÞ
+
+; (5)
+where L is the contour length per base and l is the Kuhn length. In writing Eq. 4, we assume that all of the external force F is transmitted through the single strands and destabilizes the basepair at the junction. For ring-shaped helicases like T7, which encircle one strand while excluding the other (39,40), this model is a very good description. However, this may not be an accurate description of other helicases like the NS3 in which the domains surround both the strands of the nucleic acid, and the junction may be protected to some extent from external forces (5). For such helicases, a more careful analysis is needed and is left for future work. With the model thus defined, we need to solve for the velocity and the processivity of the helicase as it unwinds the ds nucleic acid. The velocity is defined as the average number of bases per unit time that the helicase moves to the right in a binding event. For the processivity, multiple definitions have been proposed (34). The mean binding time hti, the translocation processivity hdni, which gives the average distance moved by the helicase in a binding event, and the unwinding processivity hdmi, which gives the distance moved by the ss-ds junction during a single binding event of the helicase, are used as measures of helicase processivity. As shown numerically in (34), the latter two definitions of processivity are almost identical when the helicase attaches close to the ss-ds junction. Because this is the physically relevant situation, as we argued previously (31), we will not differentiate between hdni and hdmi in this work and refer to both as the run length or processivity.
+a b FIGURE 2 Different scenarios for the interaction potential between the helicase and double strand (ds). (a) Crystal structure of T7 helicase (Protein Data Bank (PDB): 1E0J) and a cartoon of dsDNA are shown. The helicase encircles one strand and excludes the other, suggesting that the interaction with the junction must happen from a distance, presumably because of electrostatic forces. (b) Shown is the crystal structure of the PcrA helicase bound to dsDNA (PDB: 3PJR), showing the overlap of the helicase domains with bases beyond the junction. Shown below both the figures are the corresponding interaction potentials U(j). Identical expressions for the unwinding velocity and run-length result for both the potentials. To see this figure in color, go online.
+Chakrabarti et al.
+870 Biophysical Journal 117, 867–879, September 3, 2019
+
+
+RESULTS
+Unwinding velocity and run length: solution of the model
+To solve for the velocity and run length of a finitely processive helicase, we first note that a and b are larger by orders of magnitude (43–45) than any rate describing the kinetics of the helicase. Therefore, even before the helicase takes a single step (backward, forward, or detach), the ss-ds junction would have opened and closed multiple times. As a result, the probability Pj of observing the helicase and junction at a separation j would have reached a steady-state distribution long before the helicase moves. Because there is a hard wall at j 1⁄4 r, there is no probability current between j and j þ 1 in this steady state for any value of j. This, along
+with the normalization condition, P
+jPj 1⁄4 1, allows us to solve for Pj as follows:
+Pj 1⁄4
+8<
+:
+0 j%  r
+brþj1 eðrþj1ÞU0 Prþ1 r < j%1
+brþj1 er U0 Prþ1 j > 1
+; (6)
+where
+Prþ1 1⁄4
+"
+b1þr erU0
+1  b þ ðbeU0 Þ1þr  1
+beU0  1
+#1
+; (7)
+where b, as defined before, is given by ða=bÞ eDGF. The twobody problem of the helicase and junction can now be recast in terms of a one-body problem involving only the helicase, moving with renormalized rates that we denote with a tilde
+(k~þ, k~, ~h and ~g); k~þ is given by k~þ 1⁄4 P
+jkjþPj, and similar expressions describe all the other renormalized rates. Per
+forming the sums, the final lengthy expressions for k~þ, ~h,
+k~, and ~g are given in Appendix A. Notice that although kþ 1⁄4 k 1⁄4 k, the helicase-junction interaction causes the
+renormalized rates to become different, hence k~þs k~. The unwinding velocity is given as follows:
+vunw 1⁄4 s ~h þ k~þ  k~: (8)
+For s 1⁄4 1 and r 1⁄4 1, vunw reduces to
+v1;1
+unw 1⁄4 eðf 1ÞU0 ð1 þ bðefU0  1ÞÞðbðh þ kÞ  kÞ
+1 þ bðeU0  1Þ : (9)
+The expression for one-step active unwinding derived by Betterton and J€ulicher (Eq. 27 in (33)) reduces to our expression in Eq. 9 when all the rates associated with the helicase are neglected compared to a and b. The mean attachment time of the helicase hti is given by the inverse of the renormalized detachment rate as follows:
+hti 1⁄4 1
+~g: (10)
+The processivity is given by hdmi 1⁄4 vunwhti. Using Eqs. 8 and 10, we obtain the equation as follows:
+hdmi 1⁄4 s ~h þ k~þ  k~
+g~ : (11)
+For s 1⁄4 1 and r 1⁄4 1, hdmi reduces to the expression as follows:
+hdmi1;1 1⁄4 efU0 ð1 þ bðefU0  1ÞÞðbðh þ kÞ  kÞ
+g : (12)
+Equations 8, 10, and 11 along with Eq. 16 are the important results in this article. Note that by defining khk and kþ hk þ h in Eqs. 9 and 12, we obtain the same model used in our previous work (31).
+Universal force response of the unwinding processivity
+In our earlier work (31), we showed numerically that the unwinding velocity and processivity show contrasting responses to external force. We analyzed a model with a step size of one basepair and an interaction potential with a one-basepair range. Below, we first revisit the earlier model to highlight the basic results and show quantitatively the differences between the responses of velocity and processivity to force. We then point out the effects of increasing the step size and the interaction range of the helicase. For s 1⁄4 1 and r 1⁄4 1, the expressions for velocity and processivity are given by Eqs. 9 and 12, respectively. As in our previous work, we choose DGF 1⁄4 FDX for illustrative purposes. Choosing this simple form instead of the more accurate model based on the FJC (Eq. 5) does not qualitatively change any of the results (31). We will look at the limit k 1⁄4 0 to simplify all the analytic expressions. For the more general case of nonzero k, as long as k  h, all the results are valid. Helicases are believed to satisfy this criterion (37), which is supported by our fitted values (discussed below) from data on the T7 DNA helicase. Setting DGF 1⁄4 FDX and differentiating Eq. 9 with respect to F, we obtain the following expressions for passive (U0 1⁄4 0) and optimally active (f 1⁄4 0, U0 1⁄4 DG) helicases. Note that optimally active helicases are ones in which f /0 and U0 R DG.
+dv1;1
+unw
+dF 1⁄4
+8><
+>:
+eDGþFDX h DX ðpassiveÞ
+e2DGþFDX h DX
+eDG þ eFDX1 þ eDG2 ðoptimally activeÞ:
+(13)
+Universal Characteristics of Helicases
+Biophysical Journal 117, 867–879, September 3, 2019 871
+
+
+The equation above shows that for a passive helicase, the slope of the velocity-force curve is not only always positive; it increases exponentially with F (Fig. 3 a, orange curve). On the other hand, for an optimally active helicase, the expression for the slope has the term eFDX both in the numerator as well as the denominator, with a higher power of F in the denominator, implying that the increase in velocity with force will be much less rapid than an exponential. As can be seen from Fig. 3 a, the curves (red and blue) have the opposite curvature compared to the passive helicase (orange curve). In contrast, the force-dependent behavior of the processivity shows a universal increase, which can be seen as follows:
+dhdmi1;1
+dF 1⁄4
+8>>><
+>>>:
+eDGþFDX h DX
+g ðpassiveÞ
+eDGþFDX h DX
+g ðoptimally activeÞ:
+(14)
+Equation 14 shows that the slopes are identical for both passive and optimally active helicases and increase exponentially with force. This is very clearly illustrated in Fig. 3 b in which all the curves almost superpose. For a general step size and interaction range of the helicase, the full expressions for unwinding velocity (Eq. 8) and processivity (Eq. 11) are complicated; hence, we only show a few representative plots in Figs. 4 and 5 for a variety of step sizes and interaction ranges. Fig. 4 shows that increasing the range of interaction (keeping the step size fixed) affects the velocity and processivity in different ways. At a given force, while the velocity of unwinding increases when the range is increased (Fig. 4, a and b), the processivity decreases (Fig. 4, c and d). However, the universal behavior obtained in our previous work (31) remains valid: the unwinding velocity can increase or remain almost constant with force depending on whether the helicase is active or passive. The processivity on the other hand always increases with external force. Fig. 5 shows the effect of increasing the step size while keeping the interaction range fixed for optimally active (Fig. 5, a and c) as well as very weakly active (Fig. 5, b and d) helicases. At a given value
+of force, both the velocity and processivity decrease with increase in the step size. For an optimally active helicase, the decrease in velocity is rapid, becoming strongly negative at low forces (Fig. 5 a). The reason for this phenomenon is that the backstepping rate increases with U0 (more active helicase). The helicase-junction interaction leads to the helicase imparting a force on the junction (1⁄4U0 divided by the basepair distance). This in turn causes an opposite force from the junction on the helicase. This opposing force is larger for larger U0, thereby leading to larger effective backstepping rates as U0 increases. For larger step sizes (3 bp for the green line in Fig. 5 a), the helicase needs more bases open downstream simultaneously and hence is less likely to step forward. Coupled with a larger backstepping rate, the net effect is negative unwinding velocities of the helicase. To summarize, our analysis in this section shows that irrespective of the step size, interaction range, active or passive nature of the helicase, the unwinding processivity should always increase with force. The unwinding velocity however does not exhibit the same universal increase with external force.
+Unwinding mechanism of the T7 helicase
+Simultaneous fitting of DNA unwinding velocity and runlength data
+Because fitting only the expression for the unwinding velocity to experimental data proves to be insufficient for estimating physically reasonable parameters, we reasoned that fitting the theory to the available data to the two observables simultaneously should significantly limit the parameter space and allow for better extraction of the important parameters of the system. Using the velocity given in Eq. 8 and the processivity given in Eq. 11, we use our theory to analyze data from the T7 helicase. We first observe that the velocity as a function of force has the following parameters: U0, k, f, s, r, and h. It follows from Eq. 11 that the processivity has one extra parameter, the dissociation rate g associated with the mean binding time of the helicase (31,46). However, g is a quantity that is measured in bulk experiments (47,48), whereas the
+a b FIGURE 3 Response of (a) velocity and (b) processivity to external force for a helicase with a 1-bp step size and a 1-bp interaction range. h 1⁄4 322s1 and DG 1⁄4 2.25 kBT for all curves in both panels. The interaction potential U0 decreases from the top to the bottom curve as follows: 5 kBT (red), 3 kBT (blue), 2 kBT (green), 1 kBT (pink), and 0 kBT (orange). The bottommost curve (orange) therefore corresponds to a passive helicase, whereas the top two (red and blue) curves correspond to optimally active helicases. The velocity curves are plots of Eq. 9, whereas the processivity curves are plots of Eq. 12. To see this figure in color, go online.
+Chakrabarti et al.
+872 Biophysical Journal 117, 867–879, September 3, 2019
+
+
+relation Vss 1⁄4 sh allows us to use the experimentally determined value of Vss to eliminate another free parameter. Thus, the number of free parameters left to be determined from fitting to experimental data is five: U0, k, f, s, and r. To test our method, we fitted velocity and processivity data from single-molecule experiments on the T7 helicase (Figs. 6B and S6, respectively, of (26)). Kim et al. (47) reported g 1⁄4 0.002 s1 at 18C. Because the single-molecule experiment was performed at 25C, we used the rough estimate that around room temperature, a number of chemical rates increase by about a factor of 2–3 for every 10C increase (49) to estimate g at 25C. We therefore used g 1⁄4 0.003, 0.004, and 0.005 s1. We used h 1⁄4 322/s (s is
+the step size) because the ss velocity was measured to be 322 bp/s (26), which seems not inconsistent with the bulk result of 132 bp/s at 18C (47). We took DG 1⁄4 2.25 because the DNA sequence had 48% GC content (supporting material of (25)). Both the bulk- and single-molecule experiments were performed at 2 mM dTTP concentration. For the force-dependent destabilization of the ds given in Eq. 5, the parameters L and l need to be chosen carefully to reproduce the critical force Fc observed in the experiment. Fc (the force where DG 1⁄4 DGF) was observed to be around 13.6–13.7 pN for the dsDNA sequence we have analyzed in this work (Fig. 6B of (26)). The usual values chosen for L and l are 0.56 and 1.5 nm, respectively (42). However, Fc
+ab
+cd
+FIGURE 4 Effect of increasing the interaction range of the helicase on the unwinding velocity and processivity at a fixed step size. The step size in all panels is fixed at 1 bp, DG 1⁄4 2.25 kBT for all curves and h 1⁄4 322s1; thus Vss 1⁄4 322 bp/s. The interaction ranges going from the top to the bottom curves are 1 bp (red), 2 bp (blue), 3 bp (green), 4 bp (pink), and 5 bp (orange). (a and c) Optimally active helicase with U0 1⁄4 5 kBT and f 1⁄4 0.01 is shown. (b and d) Very weakly active helicase with U0 1⁄4 0.3 kBT and f 1⁄4 0.01 is shown. To see this figure in color, go online.
+ab
+cd
+FIGURE 5 Effect of increasing the step size of the helicase on the unwinding velocity and processivity while keeping the interaction range fixed. The interaction range in all panels is fixed at 3 bp, DG 1⁄4 2.25 kBT for all curves and h 1⁄4 322
+s s1, thus
+Vss 1⁄4 322 bp/s. The step sizes going from the top to bottom curves are 1 bp (red), 2 bp (blue), and 3 bp (green). (a and c) Optimally active helicase with U0 1⁄4 5 kBT and f 1⁄4 0.01 is shown. (b and d) Very weakly active helicase with U0 1⁄4 0.3 kBT and f 1⁄4 0.01 is shown. To see this figure in color, go online.
+Universal Characteristics of Helicases
+Biophysical Journal 117, 867–879, September 3, 2019 873
+
+
+for this choice of parameters (and DG 1⁄4 2.25) is 15 pN, so we chose L 1⁄4 0.63 nm and l 1⁄4 1.5 nm to reproduce the observed critical force. To check the robustness of our results, we also tried a different parametrization L 1⁄4 0.56 and l 1⁄4 1.95 nm, which results in Fc 1⁄4 13.6 pN. Both these parametrizations produce nearly identical results; thus, we show results with only the first one (Tables 1 and 2).
+Quality of fits
+The simultaneous fitting of velocity and processivity data was performed by fixing the step size s and the interaction range r (because these parameters can only be discrete numbers) and using Eqs. 8 and 11 to compute the c2 metric (weighted sum of the squared deviations between the model result and data). Minimization of the c2 metric to obtain the best-fit parameter values for U0, f, and k was performed using the FindMinimum function in Wolfram Mathematica 11.2. This procedure was repeated for many combinations of s and r values. The results of the simultaneous fitting procedure are shown in Fig. 6. Tables 1 and 2 show the quality of fits (c2) for a variety of parameter sets with ‘‘similar’’ fits. To quantitatively define similarity of fits, we used the Akaike Information Criterion (AICc) (50) defined as follows:
+AICc 1⁄4 c2 þ 2p þ 2pðp þ 1Þ
+N  p  1; (15)
+where N is the number of data points and p the number of free parameters. The usefulness of this criterion is that the quality of the two sets of fits can be quantitatively compared: if two model fits have AICc values of a1 and a2, respectively, with a1 < a2, then model 2 has a likelihood expðða1  a2Þ=2Þ of being the true interpretation of the data relative to model 1. Using this interpretation, we show in Tables 1 and 2 all fits that are at least 0.5 times as likely as the best fit among that set. Table 1 shows the result of fitting to only velocity data; multiple parameter regions can fit the velocity data with similar quality of fits. Table 2 shows results of our simultaneous fitting procedure. Clearly, Table 2 shows that the simultaneous procedure allows a much narrower range of parameters to produce similar fits. In addition, the errors on the parameters are small, allowing all parameters to
+be extracted with great robustness. The best-fit parameters are U0 1⁄4 0.69 5 0.02 kBT, f 1⁄4 0.19 5 0.04, k 1⁄4 0.6 5
+0.4 s1, s 1⁄4 2 bp, and r 1⁄4 5 bp.
+Comparison with experiments on T7 unwinding of DNA under zero-force conditions
+An earlier bulk experiment (51) and a more recent singlemolecule experiment based on fluorescence resonance energy transfer (52) on T7 DNA were carried out under conditions of zero external force. Using an ‘‘all-or-none’’ assay at 18C, five DNA sequences (average GC content of 37%) were unwound with T7 in (51), resulting in an average unwinding velocity of 15 bp/s. Approximately consistent with these results, the unwinding velocity at 23C of T7 on a 35% GC sequence was found to be 8 bp/s (52). Fig. 6 a shows our model prediction for the unwinding velocity at zero force: vunw 1⁄4 7.1 bp/s. Keeping all the parameters fixed at the values shown in Table 2 but reducing DG to 1.9 to correspond to a DNA sequence comprising roughly 37% GC basepairs, our model predicts an unwinding velocity of 18 bp/s at zero force. Taking into account that our analysis is based on an experiment performed at a slightly higher temperature (25C) compared to either of these two zero-force experiments, our results are consistent with the two previous works.
+Predictions for sequence dependence of detachment and backstepping rates of T7 while unwinding dsDNA at zero force
+The sequence dependence of the detachment rate of a helicase is an aspect that can be directly measured in experiments (23,53) and can be an indicator of whether the helicase is active or passive. By fixing the parameters in our model to the best-fit values of Table 2 and changing only DG, we can predict how the detachment and backstepping rate of T7 will depend on the sequence composition while unwinding DNA. The results of this analysis are shown in Fig. 7. As is evident, neither the detachment rate nor the backstepping rate are very sensitive to DG, because the helicase is only very weakly active. Interestingly, this is akin to the observations made in a previous experiment on the DnaB helicase (53) for which it was shown that for sequences with 50–100% GC composition, the detachment rate was almost constant. Because both DnaB and T7 are very similar in structure and sequence, belonging to the superfamily-4 group of helicases, our results suggest that the ring helicases of the superfamily-4 group might all use a similar weakly active mechanism for unwinding DNA.
+DISCUSSION
+T7 is weakly active
+From the best-fit parameters in Table 2, we infer that the T7 helicase is a weakly active helicase, destabilizing the ds
+TABLE 1 Fitting to Only Velocity Data
+Step Size s (bp) Interaction Range r (bp) c2
+1 20 3.04 2 10 1.65 2 20 1.72 2 50 1.74 3 3 2.3 3 4 2.8
+Shown are just a few fits, obtained by varying s and r, from all those that are similar. The definition of similar is that the worst fit should be 0.5 times as likely as the best fit according to the AICc (see text for details).
+Chakrabarti et al.
+874 Biophysical Journal 117, 867–879, September 3, 2019
+
+
+junction by about 0.69 kBT per base. The value of U0 obtained here is different from the ð1  2Þ kBT estimate reported earlier in (24,26). Both these works analyzed only velocity data; the former looked at sequence dependence, whereas the latter examined the force dependence of velocity. It was originally pointed out (37) and verified by us specifically for T7 in this work (Table 1), that analyzing only the velocity data using the multiparameter Betterton and J€ulicher (32–34) model is not sufficient for robust parameter estimates. There are other differences as well between our model and the ones used previously (24,26). The parameter f was fixed to 0.05 in both those earlier studies, whereas we allow it to vary, given that f is a physical quantity, which could take on any value between 0 and 1. We also have the extra parameter k, which gives the rate of pure diffusion. The presence of this parameter allows for back steps, which was neglected in the previous studies. It is important to include this parameter, especially in light of recent experiments that directly observed back stepping (27,52). Interestingly, in a previous work analyzing DnaB kinetics in the hairpin geometry (54), the interaction potential was estimated to be 0.5 5 0.1 kBT, which is almost identical to our finding for the T7 helicase. Although this result on DnaB was obtained by fixing the step size to 1 bp (see more on the DnaB step size later) and suffered from a number of the parameter estimation issues discussed above, the overall conclusion from our work as well as (54) seems to be that ring helicases like T7 and DnaB are weakly active.
+Step size of T7
+Our prediction of a step size of 2 bp (two bases advanced for each dTTP hydrolyzed) is in agreement with certain previous experimental results. Using a pre-steady-state analysis, it was found that one dTTP molecule is consumed for every 2–3 basepairs translocated by T7 on an ssDNA (47). A crystal structure of the DnaB helicase bound to ssDNA showed that the step size of DnaB is 2 bp (55). DnaB and T7 are both members of the superfamily-4 group of helicases, with very similar sequence and structure in the C-terminal domains (22,56). These results suggest that the step size of T7 while unwinding dsDNA may also be 2–3 bp, under the assumption that ss translocation and ds unwinding occur with the same step size. A recent single-molecule FRET-based unwinding assay using T7 observed stochastic pauses after every 2–3 bp of G-C-rich DNA unwound (52). However, the waiting times of these pauses were g-distributed rather than exponentially distributed, suggesting the presence of hidden steps within those pauses. Although the results do not prove a direct association of these hidden steps with dTTP consumption, it would not be surprising if the helicase has a distribution of step sizes with shorter steps of 1 bp while unwinding G-C bases. Because our model does not distinguish between the step size during translocation, unwinding, or for different sequences, it is likely that our result of 2 bp per dTTP consumed is a reflection of the average step size over the entire ds sequence of the DNA being unwound. Further experiments, including determination of crystal structures, would be able to shed more light on this
+ab
+FIGURE 6 Simultaneous fitting of velocity and run-length data. The filled circles with error bars are experimental data for the T7 helicase from (26). The line in (a) is Eq. 8 fitted to velocity data, whereas the line in (b) is Eq. 11 fitted to processivity data. The best-fit parameters are given in Table 2. To see this figure in color, go online.
+a b FIGURE 7 Predictions for sequence dependence of T7 detachment and backstepping rates while unwinding dsDNA. (a) The backstepping rate while unwinding ðk0
+Þ hardly changes as a function of the sequence stability as a result of the helicase being only weakly active. (b) Similarly, the detachment rate while unwinding ðk0
+dÞ changes by only a factor of 1.5 with change in DG. The insets in both figures show the hypothetical situation of a highly active T7, with U0 1⁄4 2.0 kBT. Both the backstepping and detachment rate show much more sensitivity to DG under highly active circumstances. To see this figure in color, go online.
+Universal Characteristics of Helicases
+Biophysical Journal 117, 867–879, September 3, 2019 875
+
+
+interesting conundrum. Indeed, recent cryogenic electron microscopy structures of the T7 replisome clearly suggest that the helicase advances by two nucleotides per step as it encircles a DNA strand in a spiral ‘‘lock washer’’ form (57), thereby providing strong support for our model prediction.
+Interaction range of T7
+The interaction range of 5 bases that we obtain from our fits is physically reasonable given the structure of the T7 ring helicase and its mode of binding to dsDNA. While the DNA strand excluded from the T7 ring is negatively charged, the C-terminal face of T7 is also negatively charged (41). Replacement of the charged residues on the C-terminal by uncharged ones leads to a reduction in efficiency of complementary strand displacement (58). These results strongly suggest that the moderately weak (0.69 kBT per base) interactions between the helicase and DNA that we predict are electrostatic in nature. Given that the Debye-H€uckel screening length is 1 nm in physiological salt concentrations (59), the range of electrostatic interaction of the helicase should be a few nanometers. Our prediction of five bases (1.7 nm) therefore is physically reasonable. Notice that fitting to only velocity data would predict an interaction range greater than 20 bp, which would be unphysically large. The 5 bp interaction range that emerges from fitting the data also serves as postpriori justification of the FJC model used to describe force effects on the nucleic acid strands. The persistence length of ssDNA is in the same range, 1–3 nm depending on the salt concentration. Because our interest here was in analyzing the hairpin geometry where the force applied acts on the two complementary single strands of the hairpin, an FJC model with a Kuhn length of 1.5 nm is a reasonable model to use.
+Backstepping rate of T7 while unwinding or translocating
+The backstepping rate of helicases is usually very difficult to measure directly because of the lack of sufficient resolution in single-molecule experiments. Hence, the backstepping rate is usually assumed to be negligible compared to the forward-stepping rate or neglected completely (37). Using the parameters extracted from our fits to T7 data (given in Table 2), we now show that although this assumption is valid when the helicase translocates on ssDNA, the backstepping probability is orders of magnitude larger while unwinding dsDNA. Note that in this discussion and throughout this article, we set the ATP concentration at 1 mM, which is roughly the physiological concentration of ATP. Experiments are usually performed at ATP concentrations of 1 mM or higher. If the ATP concentration is made very low in an experiment, naturally the backstepping probability
+will be substantially larger (27) until it approaches 50% at 0 ATP, implying no directionality associated with the motion of the helicase. The ratio of forward- to backward-stepping rates while translocating is (h þ k)/k, hence using k 1⁄4 0.6 and h 1⁄4 Vss/s 1⁄4 161, this ratio turns out to be 269. This result is interesting and suggests that T7 back steps approximately as frequently as some of the other processive molecular motors like kinesin, which also has similar values for this ratio in the absence of external force (60). The backstepping probability at every step is given by k/(k þ (h þ k)), which is a mere 0:3% for the T7 parameters given in Table 2. However, when the helicase unwinds dsDNA, the rates change, and the modified backstepping probability is given by
+kf =ðkf þ ð~h þ kf ÞÞ. For the same parameter set, this works out to be 26%, almost two orders of magnitude larger than the backstepping probability while translocating. Our prediction regarding this enhanced backstepping probability while unwinding is similar to the observations in a recent experiment on the XPD helicase in which it was shown that at 1 mM ATP, the backstepping probability is about 10% (27). Our analysis therefore suggests that XPD, which belongs to superfamily 2, may not be unique in this respect; the superfamily-4 helicase T7 also seems to back step with relatively large probability while unwinding dsDNA. Further experiments on helicases belonging to the same superfamily are needed to probe the extent of back stepping.
+Universal nature of force response of helicase processivity, oligomerization, and partner proteins
+Helicases often cannot unwind ds nucleic acids by themselves but require partner proteins like ss binding proteins or oligomerization to increase the efficiency (14–16). We use efficiency to mean that the helicase is highly processive. Although the mechanistic reasons for the increase in efficiency is likely to vary for individual helicases, our work suggests the possibility of a single physical principle underlying this effect. Our theory shows that the increase in processivity in response to external force should hold for all helicases. In particular, unlike the unwinding velocity, the processivity increases with external force irrespective of
+TABLE 2 Fitting Simultaneously to Velocity and Run-Length Data
+Step Size s (bp) Interaction Range r (bp) c2
+2 5 4.69a 2 6 5.23
+Compared to Table 1, the parameter space with similar fits to the data has been drastically reduced. The definition of similar is exactly the same as that used in Table 1. aThis is the best fit among all the similar fits. The parameters for this fit along with errors are U0 1⁄4 0.69 5 0.02, f 1⁄4 0.19 5 0.04, k 1⁄4 0.6 5 0.4. Clearly, each parameter can be robustly estimated.
+Chakrabarti et al.
+876 Biophysical Journal 117, 867–879, September 3, 2019
+
+
+the active or passive nature of the helicase. This prediction has recently been validated in two different helicases Pif1 and RecQ (35,36). Because the external force destabilizes the ds and decreases the free energy of the basepairs at the junction, we predict that any perturbation that results in reduction of basepair stability should result in universal effects, similar to the force response of helicases. There is strong evidence that partner proteins, like ss binding proteins, melt nucleic acids by reducing the stability of basepairs (see a more detailed discussion in (31)). Similar effects may be achieved by oligomerization of helicase monomers. A recent study on the UvrD helicase showed that dimerization leads to a closed conformation of the 2B subdomain of the leading UvrD monomer (16), a conformation that contacts the junction duplex and presumably destabilizes it (61,62). This implies the possibility that a universal underlying principle governs the response of helicases in the presence of force, partner proteins as well as oligomerization. An immediate prediction of this theory is that a weakly active helicase like T7 should exhibit increased velocity and processivity in the presence of partner proteins. This phenomenon has indeed been observed previously, but not explained (63,64). On the other hand, partner proteins should increase only the processivity of an active helicase like NS3. This prediction is borne out as well in experiments (65). It is rare to find universal behavior, especially on the nanometer scale representing motors including helicases. That this seems to be the case for helicases is remarkable. The universal increase of processivity with force, regardless of the nature of the helicase also suggests that this class of motors may have evolved to optimize processivity rather than speed.
+CONCLUSIONS
+Whether a particular helicase unwinds ds nucleic acids using an active or passive mechanism has been a subject of much debate. Here, we derived analytic expressions for both the velocity and processivity of generic unwinding helicases and showed that only by simultaneously using velocity and runlength data can the active/passive nature of a helicase, and thus the unwinding mechanism, be discerned. Simple expressions for the processivity or run length of helicases were previously unavailable; thus, our work should prove useful in the future analysis of helicase unwinding trajectories. Our results also quantitatively predict that the processivity should show a universal increase with force unlike the velocity, which has implications for in vivo unwinding of nucleic acids by the replisomal complex. This result seems to be borne out in a variety of experiments, and further work will help in verifying these predictions. Finally, we have also quantitatively shown that the backstepping rate of the T7 helicase while unwinding double strands is orders of magnitude larger than the backstepping rate while translocating on ss nucleic acid. Although we analyze only average velocities here, analyzing and interpreting helicase unwinding velocity distributions will be important in the future by combining our work here with results we have derived earlier on the stochastic effects of motor velocities (60). The full distributions could reveal interesting details of helicase heterogeneity that remain inaccessible to models analyzing just averages.
+APPENDIX A
+The full expressions for k~þ, ~h, k~, and ~g are given as follows:
+where yhbeU0 and zhbefU0 .
+k~þ
+kþ 1⁄4
+brþs erU0
+1  b þ efsU0 y1þr  ys
+y  1 þ breðrfsÞU0 ðzs  zÞ
+z1
+b1þr erU0
+1  b þ y1þr  1
+y1
+;
+~h
+h1⁄4
+brþs erU0
+1  b þ efsU0 y1þr  ys
+y  1 þ breðrfsÞU0 ðzs  zÞ
+z1
+b1þr erU0
+1  b þ y1þr  1
+y1
+;
+k~
+k 1⁄4
+br erU0
+1  b þ eð1f ÞsU0 y1þrs  1
+y  1 þ eð1f Þðs1ÞU0 y1þrszs1  1
+z1
+b1þr erU0
+1  b þ y1þr  1
+y1
+;
+~g
+g 1⁄4 erU0 ðy  1Þ
+bð1 þ brerU0 ðy  1Þ  ðb  1ÞeU0 yr  1;
+(16)
+Universal Characteristics of Helicases
+Biophysical Journal 117, 867–879, September 3, 2019 877
+
+
+AUTHOR CONTRIBUTIONS
+S.C., C.J., and D.T. designed and performed research and wrote the manuscript.
+ACKNOWLEDGMENTS
+This work was completed while S.C. was a graduate student at the Institute for Physical Sciences and Technology, University of Maryland, College Park.
+We acknowledge the National Science Foundation (CHE 19-00033 and DMR-1506969) and the Welch Foundation (F-0019) for supporting this work.
+REFERENCES
+1. Lohman, T. M. 1992. Escherichia coli DNA helicases: mechanisms of DNA unwinding. Mol. Microbiol. 6:5–14.
+2. Lohman, T. M., and K. P. Bjornson. 1996. Mechanisms of helicasecatalyzed DNA unwinding. Annu. Rev. Biochem. 65:169–214.
+3. Rocak, S., and P. Linder. 2004. DEAD-box proteins: the driving forces behind RNA metabolism. Nat. Rev. Mol. Cell Biol. 5:232–241.
+4. Pyle, A. M. 2008. Translocation and unwinding mechanisms of RNA and DNA helicases. Annu. Rev. Biophys. 37:317–336.
+5. Bustamante, C., W. Cheng, and Y. X. Mejia. 2011. Revisiting the central dogma one molecule at a time. Cell. 144:480–497.
+6. Rad, B., and S. C. Kowalczykowski. 2012. Efficient coupling of ATP hydrolysis to translocation by RecQ helicase. Proc. Natl. Acad. Sci. USA. 109:1443–1448.
+7. Rad, B., A. L. Forget, ., S. C. Kowalczykowski. 2015. Single-molecule visualization of RecQ helicase reveals DNA melting, nucleation, and assembly are required for processive DNA unwinding. Proc. Natl. Acad. Sci. USA. 112:E6852–E6861.
+8. Jankowsky, E. 2011. RNA helicases at work: binding and rearranging. Trends Biochem. Sci. 36:19–29.
+9. Chakrabarti, S., C. Hyeon, ., D. Thirumalai. 2017. Molecular chaperones maximize the native state yield on biological times by driving substrates out of equilibrium. Proceedings of the National Academy of Sciences. 114:E10919–E10927.
+10. Craig, J. M., A. H. Laszlo, ., J. H. Gundlach. 2017. Revealing dynamics of helicase translocation on single-stranded DNA using high-resolution nanopore tweezers. Proc. Natl. Acad. Sci. USA. 114:11932–11937.
+11. Block, S. M. 2007. Kinesin motor mechanics: binding, stepping, tracking, gating, and limping. Biophys. J. 92:2986–2995.
+12. Hammer, J. A., III, and J. R. Sellers. 2011. Walking to work: roles for class V myosins as cargo transporters. Nat. Rev. Mol. Cell Biol. 13:13–26.
+13. Abdel-Monem, M., H. D€urwald, and H. Hoffmann-Berling. 1976. Enzymic unwinding of DNA. 2. Chain separation by an ATP-dependent DNA unwinding enzyme. Eur. J. Biochem. 65:441–449.
+14. von Hippel, P. H., and E. Delagoutte. 2001. A general model for nucleic acid helicases and their ‘‘coupling’’ within macromolecular machines. Cell. 104:177–190.
+15. Lohman, T. M., E. J. Tomko, and C. G. Wu. 2008. Non-hexameric DNA helicases and translocases: mechanisms and regulation. Nat. Rev. Mol. Cell Biol. 9:391–401.
+16. Nguyen, B., Y. Ordabayev, ., T. M. Lohman. 2017. Large domain movements upon UvrD dimerization and helicase activation. Proc. Natl. Acad. Sci. USA. 114:12178–12183.
+17. Amaratunga, M., and T. M. Lohman. 1993. Escherichia coli rep helicase unwinds DNA by an active mechanism. Biochemistry. 32:68156820.
+18. Kim, J. L., K. A. Morgenstern, ., P. R. Caron. 1998. Hepatitis C virus NS3 RNA helicase domain with a bound oligonucleotide: the crystal structure provides insights into the mode of unwinding. Structure. 6:89–100.
+19. Velankar, S. S., P. Soultanas, ., D. B. Wigley. 1999. Crystal structures of complexes of PcrA DNA helicase with a DNA substrate indicate an inchworm mechanism. Cell. 97:75–84.
+20. Soultanas, P., M. S. Dillingham, ., D. B. Wigley. 2000. Uncoupling DNA translocation and helicase activity in PcrA: direct evidence for an active mechanism. EMBO J. 19:3799–3810.
+21. Singleton, M. R., and D. B. Wigley. 2002. Modularity and specialization in superfamily 1 and 2 helicases. J. Bacteriol. 184:1819–1826.
+22. Singleton, M. R., M. S. Dillingham, and D. B. Wigley. 2007. Structure and mechanism of helicases and nucleic acid translocases. Annu. Rev. Biochem. 76:23–50.
+23. Cheng, W., S. Dumont, ., C. Bustamante. 2007. NS3 helicase actively separates RNA strands and senses sequence barriers ahead of the opening fork. Proc. Natl. Acad. Sci. USA. 104:13954–13959.
+24. Donmez, I., V. Rajagopal, ., S. S. Patel. 2007. Nucleic acid unwinding by hepatitis C virus and bacteriophage t7 helicases is sensitive to base pair stability. J. Biol. Chem. 282:21116–21123.
+25. Lionnet, T., M. M. Spiering, ., V. Croquette. 2007. Real-time observation of bacteriophage T4 gp41 helicase reveals an unwinding mechanism. Proc. Natl. Acad. Sci. USA. 104:19790–19795.
+26. Johnson, D. S., L. Bai, ., M. D. Wang. 2007. Single-molecule studies reveal dynamics of DNA unwinding by the ring-shaped T7 helicase. Cell. 129:1299–1309.
+27. Qi, Z., R. A. Pugh, ., Y. R. Chemla. 2013. Sequence-dependent base pair stepping dynamics in XPD helicase unwinding. eLife. 2:e00334.
+28. Garai, A., D. Chowdhury, and M. D. Betterton. 2008. Two-state model for helicase translocation and unwinding of nucleic acids. Phys. Rev. E Stat. Nonlin. Soft Matter Phys. 77:061910.
+29. Xie, P. 2016. Dynamics of monomeric and hexameric helicases. Biophys. Chem. 211:49–58.
+30. Xie, P. 2017. Dynamics of DNA unwinding by helicases with frequent backward steps. Math. Biosci. 294:33–45.
+31. Pincus, D. L., S. Chakrabarti, and D. Thirumalai. 2015. Helicase processivity and not the unwinding velocity exhibits universal increase with force. Biophys. J. 109:220–230.
+32. Betterton, M. D., and F. J€ulicher. 2003. A motor that makes its own track: helicase unwinding of DNA. Phys. Rev. Lett. 91:258103.
+33. Betterton, M. D., and F. J€ulicher. 2005. Opening of nucleic-acid double strands by helicases: active versus passive opening. Phys. Rev. E Stat. Nonlin. Soft Matter Phys. 71:011904.
+34. Betterton, M. D., and F. J€ulicher. 2005. Velocity and processivity of helicase unwinding of double-stranded nucleic acids. J. Phys. Condens. Matter. 17:S3851–S3869.
+35. Li, J. H., W. X. Lin, ., S. X. Dou. 2016. Pif1 is a force-regulated helicase. Nucleic Acids Res. 44:4330–4339.
+36. Bagchi, D., M. Manosas, ., V. Croquette. 2018. Single molecule kinetics uncover roles for E. coli RecQ DNA helicase domains and interaction with SSB. Nucleic Acids Res. 46:8500–8515.
+37. Manosas, M., X. G. Xi, ., V. Croquette. 2010. Active and passive mechanisms of helicases. Nucleic Acids Res. 38:5518–5526.
+38. Porter, D. J., S. A. Short, ., T. G. Consler. 1998. Product release is the major contributor to kcat for the hepatitis C virus helicase-catalyzed strand separation of short duplex DNA. J. Biol. Chem. 273:1890618914.
+39. Hacker, K. J., and K. A. Johnson. 1997. A hexameric helicase encircles one DNA strand and excludes the other during DNA unwinding. Biochemistry. 36:14080–14087.
+40. Patel, S. S., and K. M. Picha. 2000. Structure and function of hexameric helicases. Annu. Rev. Biochem. 69:651–697.
+Chakrabarti et al.
+878 Biophysical Journal 117, 867–879, September 3, 2019
+
+
+41. Sawaya, M. R., S. Guo, ., T. Ellenberger. 1999. Crystal structure of the helicase domain from the replicative helicase-primase of bacteriophage T7. Cell. 99:167–177.
+42. Cocco, S., R. Monasson, and J. F. Marko. 2001. Force and kinetic barriers to unzipping of the DNA double helix. Proc. Natl. Acad. Sci. USA. 98:8608–8613.
+43. Chen, Y. Z., W. Zhuang, and E. W. Prohofsky. 1992. Energy flow considerations and thermal fluctuational opening of DNA base pairs at a replicating fork: unwinding consistent with observed replication rates. J. Biomol. Struct. Dyn. 10:415–427.
+44. Guron, M., and J.-L. Leroy. 1995. Nuclear magnetic resonance and nucleic acids. In Methods in Enzymology. T. L. James, ed. Academic Press, pp. 383–413.
+45. Bonnet, G., O. Krichevsky, and A. Libchaber. 1998. Kinetics of conformational fluctuations in DNA hairpin-loops. Proc. Natl. Acad. Sci. USA. 95:8602–8606.
+46. Kanaan, J., S. Raj, ., H. Le Hir. 2018. UPF1-like helicase grip on nucleic acids dictates processivity. Nat. Commun. 9:3752.
+47. Kim, D. E., M. Narayan, and S. S. Patel. 2002. T7 DNA helicase: a molecular motor that processively and unidirectionally translocates along single-stranded DNA. J. Mol. Biol. 321:807–819.
+48. Sarl ́os, K., M. Gyimesi, and M. Kova ́cs. 2012. RecQ helicase translocates along single-stranded DNA with a moderate processivity and tight mechanochemical coupling. Proc. Natl. Acad. Sci. USA. 109:98049809.
+49. Hegarty, T. W. 1973. Temperature coefficient (Q10), seed germination and other biological processes. Nature. 243:305–306.
+50. Burnham, K. P., and D. R. Anderson. 2002. Model Selection and Multimodel Inference: A Practical Information-Theoretic Approach. SpringVerlag, New York.
+51. Jeong, Y. J., M. K. Levin, and S. S. Patel. 2004. The DNA-unwinding mechanism of the ring helicase of bacteriophage T7. Proc. Natl. Acad. Sci. USA. 101:7264–7269.
+52. Syed, S., M. Pandey, ., T. Ha. 2014. Single-molecule fluorescence reveals the unwinding stepping mechanism of replicative helicase. Cell Rep. 6:1037–1045.
+53. Galletto, R., M. J. Jezewska, and W. Bujalowski. 2004. Unzipping mechanism of the double-stranded DNA unwinding by a hexameric
+helicase: the effect of the 30 arm and the stability of the dsDNA on the unwinding activity of the Escherichia coli DnaB helicase. J. Mol. Biol. 343:101–114.
+54. Ribeck, N., D. L. Kaplan, ., O. A. Saleh. 2010. DnaB helicase activity is modulated by DNA geometry and force. Biophys. J. 99:2170–2179.
+55. Itsathitphaisarn, O., R. A. Wing, ., T. A. Steitz. 2012. The hexameric helicase DnaB adopts a nonplanar conformation during translocation. Cell. 151:267–277.
+56. Ilyina, T. V., A. E. Gorbalenya, and E. V. Koonin. 1992. Organization and evolution of bacterial and bacteriophage primase-helicase systems. J. Mol. Evol. 34:351–357.
+57. Gao, Y., Y. Cui, ., W. Yang. 2019. Structures and operating principles of the replisome. Science. 363:eaav7003.
+58. Lee, S. J., B. Marintcheva, ., C. C. Richardson. 2006. The C-terminal residues of bacteriophage T7 gene 4 helicase-primase coordinate helicase and DNA polymerase activities. J. Biol. Chem. 281:25841–25849.
+59. Israelachvili, J. N. 2011. Intermolecular and Surface Forces, Third Edition. Academic Press, Waltham, MA.
+60. Vu, H. T., S. Chakrabarti, ., D. Thirumalai. 2016. Discrete step sizes of molecular motors lead to bimodal non-Gaussian velocity distributions under force. Phys. Rev. Lett. 117:078101.
+61. Lee, J. Y., and W. Yang. 2006. UvrD helicase unwinds DNA one base pair at a time by a two-part power stroke. Cell. 127:1349–1360.
+62. Comstock, M. J., K. D. Whitley, ., Y. R. Chemla. 2015. Protein structure. Direct observation of structure-function relationship in a nucleic acid-processing enzyme. Science. 348:352–354.
+63. Stano, N. M., Y. J. Jeong, ., S. S. Patel. 2005. DNA synthesis provides the driving force to accelerate DNA unwinding by a helicase. Nature. 435:370–373.
+64. Notarnicola, S. M., H. L. Mulcahy, ., C. C. Richardson. 1997. The acidic carboxyl terminus of the bacteriophage T7 gene 4 helicase/primase interacts with T7 DNA polymerase. J. Biol. Chem. 272:1842518433.
+65. Rajagopal, V., and S. S. Patel. 2008. Single strand binding proteins increase the processivity of DNA unwinding by the hepatitis C virus helicase. J. Mol. Biol. 376:69–79.
+Universal Characteristics of Helicases
+Biophysical Journal 117, 867–879, September 3, 2019 879

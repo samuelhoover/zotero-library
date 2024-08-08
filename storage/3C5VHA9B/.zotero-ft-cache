@@ -1,0 +1,267 @@
+Machine Learning Prediction on Properties of Nanoporous Materials Utilizing Pore Geometry Barcodes
+Xiangyu Zhang, Jing Cui, Kexin Zhang, Jiasheng Wu, and Yongjin Lee*
+School of Physical Science and Technology, ShanghaiTech University, Shanghai 201210, China
+*
+S Supporting Information
+ABSTRACT: In this work, we propose a computational framework for machine learning prediction on structural and performance properties of nanoporous materials for methane storage application. For our machine learning prediction, two descriptors based on pore geometry barcodes were developed; one descriptor is a set of distances from a structure to the most diverse set in barcode space, and the second descriptor extracts and uses the most important features from the barcodes. First, to identify the optimal condition for machine learning prediction, the effects of training set preparation method, training set size, and machine learning models were investigated. Our analysis showed that kernel ridge regression provides the highest prediction accuracy, and randomly selected 5% structures of the entire set would work well as a training set. Our results showed that both descriptors accurately predicted performance and even structural properties of zeolites. Furthermore, we demonstrated that our approach predicts accurately properties of metal−organic frameworks, which might indicate the possibility of this approach to be easily applied to predict the properties of other types of nanoporous materials.
+■
+INTRODUCTION
+Nanoporous materials are defined as porous materials having pores smaller than 100 nm which is often comparable to the size
+of a molecule.1 According to chemical constituents, nanoporous materials are categorized into many types including regular organic and inorganic frameworks. Traditionally, nanoporous materials were mainly zeolite and porous carbon but recently have been expanded to include metal−organic frameworks (MOFs), zeolitic imidazolate frameworks (ZIFs), and covalent organic frameworks (COFs). Nanoporous materials are perceived as the next-generation technology for a range of applications because of their chemical and geometrical tunability, world record-breaking surface areas, and void fractions. For instance, Mg-MOF-74 showed high CO2 loading
+at low pressure under dry condition,2 which indicates that this MOF would be a promising candidate for postcombustion CO2 capture. Liao et al. reported a highly performing Zn2(BTM)2 MOF for separation and purification of 1,3-butadiene molecules
+at room temperature and pressure.3 Besides gas storage and separation applications, nanoporous materials also have shown great potential in many fields including catalysis, sensing, drug delivery, water capture, and so on. As an example of sensing, Zhang et al. designed a series of Ln(III) MOFs which exhibit
+high selectivity and efficiency for Fe3+ or Ce3+.4 ZIF-8 has been
+studied as a drug delivery vehicle in antitumor therapy.5 One of the biggest challenges in nanoporous materials research is the fact that an infinite number of structures can, in principle, be synthesized by combining different molecular
+building blocks in varying topologies, which makes the lack of efficient computational tools as a bottleneck for the discovery of novel materials. One conventional computational approach to tackle this issue is based on generating possible MOF databases and screening them by molecular simulations to generate thermodynamic data needed to predict the performance of these
+materials in different applications.6−9 But due to the required computational costs in molecular simulations, this approach is often limited to tens of thousands of structures. Therefore, we recently more rely on utilizing machine learning techniques for efficient prediction of properties of nanoporous materials. For successful machine learning, it is essential to develop a
+suitable descriptor.10 For nanoporous materials, descriptors need to be enabled to immediately classify porous materials by structural characteristics and recognize even its performance properties such as adsorption properties for gas storage and separation. Because pore structure is a factor closely related to structural and performance properties of nanoporous materials, different descriptors have been developed based on information about pore structure. Fernandez et al.11 used a descriptor based on a void fraction, dominant pore diameter, and gravimetric surface area to predict methane uptake of MOFs. Thornton et al. utilized five pore structural properties including void fraction, density, pore diameter gravimetric surface area, and volumetric surface area together with adsorption energy, as a descriptor to
+Received: July 29, 2019 Published: October 29, 2019
+Article
+pubs.acs.org/jcim
+Cite This: J. Chem. Inf. Model. 2019, 59, 4636−4644
+© 2019 American Chemical Society 4636 DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 21, 2024 at 16:34:48 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+train the neural network and improve the efficiency of finding
+promising MOFs for hydrogen storage.7 While these descriptors are based on a group of coefficients about pore topology, the possibility might not be completely ignored that collections of coefficients do not encode enough information to characterize pore structure because each coefficient contains partial information about the pore and there would be no clear rule about how to combine them as a descriptor.
+Recently, Lee et al.12 developed a new method to characterize pore structure based on its topological shape using persistence homology. In the method, full information on pore shape is encoded in a form of barcode which works as a unique fingerprint of the pore structure of the materials. Furthermore, this barcode was successfully used to screen the nanoporous
+materials database to identify high performing structures.13 Therefore, it would be interesting to utilize the barcodes in predicting efficiently properties of nanoporous materials using a machine learning algorithm. In this work, we proposed a computational framework for an efficient machine learning prediction of structural and performance properties for methane storage application of nanoporous materials, utilizing the topological barcode. For machine learning, we developed two approaches to define descriptors based on the barcodes; one approach is representing each structure as a point having coordinates in barcode space with its distances to structures in the most diverse set, and the other is based on the most important features extracted from barcodes. Using both approaches, we first investigated the effects of the training set and machine learning model on the prediction accuracy of methane deliverable capacity of zeolites as a test case. Then, with the optimized condition for machine learning prediction, we also performed a prediction of 5 most commonly used structural properties for zeolites. Furthermore, our computational framework was applied to predict the structural and performance properties of MOFs.
+■
+MATERIALS AND METHODS
+Materials Database. For constructing the materials database in this study, we collected the performance properties of zeolites and metal−organic frameworks (MOF) from available sources. For methane storage applications, we use deliverable capacity (DC) as our reference performance parameter. Deliverable capacity is a metric for evaluating the performance of an adsorbent in a vehicular application, defined as the difference in loading (an amount of methane adsorbed in nanoporous materials) at high pressure where we charge with methane and low pressure at which we discharge; we adopt 65 and 5.8 pressure range. For a total of 137998 zeolite structures, DC estimated using grand canonical Monte Carlo simulation
+(GCMC) was adapted from Simon et al.’s work.14 For 41495 MOFs, we collected DC calculated using GCMC in the previous
+theoretical work.6 The corresponding zeolite (or MOF) structures are obtained from the IZA (international zeolite
+association) database15 and Deem’s hypothetical database16 (or
+CoRE (Computation-Ready, Experimental) MOF database17
+deposited in the Cambridge Structural Database18 and hypo
+thetical MOF database19). Structural properties for zeolites and
+MOFs were estimated using Zeo++;20,21 the diameter of the largest included sphere (Di) and of the free sphere (Df), the
+density of a zeolite (ρ), the accessible surface area (ASA) and accessible volume (AV) to a gas probe molecule with radius of
+1.625 Å which corresponds to methane.22,23 The list of all
+structures and their properties is provided as Supporting Information.
+Procedures for Machine Learning Prediction. To perform machine learning prediction, first, we divide the total data set into a training set and out-of-bag set (or prediction set). Then, we construct a relationship between descriptor and performance/structural property for a training set. Next, based on the relationship, we performed predictions of performance or structural properties for the out-of-bag structures. Because prediction accuracy would be dependent on a training set, effects of selection method and size of the training set on the prediction will be discussed in the Results and Discussion. To evaluate performances of machine learning models, R2, root-mean-square error (RMSE), and the mean absolute percentage error (MAPE) were calculated as follows.
+= −∑ −
+∑ −̅
+=
+=
+R yu
+yu
+1 ()
+()
+i
+n
+ii
+i
+n i
+21
+2
+1
+2 (1)
+=∑ −
+=y u
+n
+RMSE ( )
+i
+n
+ii
+1
+2
+(2)
+∑
+= −×
+=
+yu
+yn
+MAPE 100
+i
+n
+ii
+i
+1 (3)
+where n, yi, ui, and u̅ are the number of structures, reference
+values from GCMC or Zeo++, machine learning predicted values, and average machine learning predicted values, respectively.
+Development of Descriptors for Machine Learning. Descriptors which are the structural inputs for the machine learning (ML) algorithms play a central role in constructing structure−property relationships for property prediction. It is of utmost importance that descriptors contain sufficient information about materials and should be specific to hold a one-to-one correspondence between structures and descriptors. To develop a descriptor, in our work, we utilize topological data analysis
+based barcodes developed by Lee et al.12 These barcodes capture full information on pore structure in nanoporous
+materials based on topological data analysis.24 Topological data analysis (TDA) is a type of statistical technique based on algebraic topology. The main argument of TDA is that the shape of the data, encoded by a mathematical “signature”, should reveal important information such as
+relations among the data points.25 Over the past decade, TDA has been intensively applied to investigate large and highdimensional data sets in various applications including materials
+science.26−28 One of the best-known TDA techniques is persistent homology
+which is a sophisticated topological methodology.25,29 In persistent homology analysis, we construct a filtration of complexes from a point cloud representing an object, and the shape of a complex is captured by its homology groups Hn, where n is a non-negative integer. The nonzero elements of Hn are the homology classes in dimension n, which implies the ndimensional “holes” in the complex. The homology groups of its complexes are varied according to the position of the points in space. This information is stored in persistence barcodes by tracking the changes of homology classes through the filtration. A persistence barcode is a set of intervals where each nontrivial homology class is represented by a bar. The starting point (or birth time) of a bar denotes the interval where the homology
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4637
+
+
+class appears in the homology of the associated complex, while the end point (or death time) indicates the interval where the homology class disappears. The lifetime of a homology class is defined as the difference between its death and birth times. In persistent homology analysis, homology classes with longer lifetimes are regarded as more important characteristics of a point cloud over a range of spatial resolutions, while homology classes that appear and die out quickly are treated as noises. Homology classes (or barcodes) are in many dimensions, and in each dimension, the following types of features are detected: 0dimensional classes detect the number of connected components, 1-dimensional classes correspond to circles, and 2dimensional classes contain information about voids, and so
+on.30 To generate barcodes for each structure, first we identify pore structure inside frameworks using the software package Zeo++ and prepare a set of points representing pore structure. In constructing barcodes that identify pore structures, in order to avoid possible errors due to unit cell volume differences among structures, we used supercells prepared by expanding each unit cell repeatedly to a set-volume in periodic boundary conditions (see ref 12 for details). Then using the set of points as input for persistent homology analysis, we gradually increase a distance criterion (i.e., persistence interval) making connections between different points and observe when connections and accompanying geometrical structures appear (i.e., birth time) and disappear (i.e., death time). And pairs of birth and death times are encoded in forms of barcodes which are distinctive for each structure. More details about generating barcodes are found in the work of
+Lee et al.12 Figure 1 shows the fingerprints for IZA zeolite AEI.
+The pore structure of AEI is a 3-dimensional network. The 0-D barcodes start with as many bars as there are points sampled on the pore surfaces. The existence of the single long interval in its 0-D barcode shows that the pore system of AEI is connected to one. The 1-D or 2-D barcode contains information on pore channels or cavities, respectively (see Figure S2). For instance, the long-lasting 48 bar in the 2-D barcode implies the existence of 48 distinct cavities. For each structure, barcodes are made up of a number of pairs of birth and death times. To define descriptors utilizing these
+barcodes, it might be possible to simply use set two-dimensional arrays of birth and death times. However, considering the fact that birth or death time is ranged from 0 to several hundred (see barcodes in Figure 1), using all pairs directly would be inefficient in practical aspects. Furthermore, because the number of bars varies widely from a few to several thousand, effective descriptors having nonzero values would be significantly different structure by structure. Therefore, in this work, we developed two alternative approaches to define descriptors utilizing barcodes. The first approach is based on the most diverse set of structures. The most diverse set is a small subset but sufficiently represents the most prominent features of the entire set. Considering structures in the most diverse set as landmarks of the entire set, each structure can be regarded as a point having coordinates defined as its distances from landmarks. A distance dij between different structures i and j is obtained as
+dij = α0δ0 + α Λ + α Λ
+2
+11
+2
+22
+2 (4)
+where Λ1 or Λ2 is second order persistence landscape
+distance12,31 between barcodes at dimension 1 or 2, respectively. δ0 is a Euclidean distance for 0-dimensional barcode which is
+calculated as δ0 = |ni/Vi − nj/Vj| where ni (or nj) and Vi (or Vj) are the number of sampled points and the volume of structure i (or j). α0, α1, or α2 is the weight factor for each dimensional distance and set as 0.1, 0.45, or 0.45, respectively (see ref 12 for details). The most diverse set of zeolites was prepared using a diversity
+selection (min-max) algorithm.32 In the selection procedure, the number of structures in the diverse set was increased gradually until the diversity of the set is sufficiently saturated. The degree of diversity saturation is measured by the change of minimum barcode distance dij upon adding a new structure. The convergence criterion is set as the following.
+−{ }
+{}
+<−
+1 the minimum distance of a new structure
+average minimum distance of previous 5 structures
+10 3 (5)
+We selected 600 structures as the most diverse set of zeolites and estimated barcode distances from 600 structures for each structure in the entire set. It would be certified that our selection of the most diverse set is appropriate from the analysis of the variation of prediction accuracy according to the set size, as shown in Figure S3. The list of 600 structures is provided as Table S1 in the Supporting Information. Finally, vectors with 600 coordinates (or barcode distance dij) (hereinafter referred
+to as “D_mds (Most diverse set -based descriptor)”) are used as inputs for machine learning models to build barcode and property relationships. As the second approach, we extracted important features from the materials’ barcodes and used them as input data for machine learning training. As an initial step, we first extracted a total of 25 features from barcodes. The 0-D barcode provided one feature which is the number of sampled points per unit volume. And for both the 1-D barcode and 2-D barcode, we defined the following 12 features: (1) the number of birth-death pair types, (2) the number of birth-death pairs, (3) the latest death time, (4) mean death time, (5) the latest birth time, (6) mean birth time, (7) the maximum survival time, (8) total survival time, (9) mean survival time, (10) the maximum gap between birth times, (11) the minimum gap between birth times, and (12) the average gap between birth times (see Figure S4 for more details about the features). All features were normalized to be in a range between
+Figure 1. Example of pore geometry barcodes for zeolite AEI. In the left three pictures, zeolite AEI (ball and stick model) and pore structure (blue colored shape) are shown in three different orientations. On the right side, 0-, 1-, and 2-dimensional barcodes are shown. In each barcode plot, one persistent interval corresponds to 0.025 Å.
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4638
+
+
+0 and 1. For these features, we used the random forest model33,34
+to perform the Gini importance analysis35 on methane deliverable capacity. When nodes of a decision tree of random forest are split based on a feature, the Gini impurity criterion decreases. If the Gini impurity criterion for a feature decreases fast, it means that the feature has high importance. For each feature, the feature importance ranged from 0 to 1 and the sum of all features is set equal to 1. Based on the estimated importance of 25 features shown in Table 1, the top 10 features
+which are listed in Table 2 were selected and used as a descriptor (hereinafter referred to as “D_mif (Most important featuresbased descriptor)”) in the machine learning prediction. To check the validity of selectively choosing 10 features, we reperformed an importance analysis using the random forest model with 10 features, and we confirmed that the R2 value (=0.7086) is comparable with that (=0.7096) of 25 features. It is worth noting that the selected 10 features contain important information about pore structures. For example, the number of
+sampled points per unit volume would have a linear relationship with an accessible surface because the resolution for sampling points from Zeo++ in generating barcodes was kept uniform by setting the same minimum distance (rmin) of 0.8 Å between two
+different points sampled. And latest death time from the 2-D barcode is closely related with the diameter (Di) of the largest included sphere in the pore structure as 2-D barcodes detect voids.
+■
+RESULTS AND DISCUSSION
+Effect of the Training Set on Machine Learning Prediction. In the prediction of properties based on machine learning (ML), it is essential to prepare a good training set which is a fraction of the entire set. One requisite for a good training set is containing enough information about the entire set. Here we compare two approaches of selecting a training set; one is random selection, and the other is based on a diversity selection
+using a min-max algorithm.32 For both approaches, the sizes of training sets are 600 structures. For this test, we chose the kernel
+ridge regression (KRR)36 and random forest (RF) models which are representative models supervised ML prediction based on classification and regression. We performed prediction of deliverable capacity (DC) using KRR and RF models with D_mif or D_mds as input data for two different approaches to selecting a training set. As summarized in Table 3, our results
+show that prediction accuracy is similar for all cases. This result indicates that both random and diverse selection methods would work sufficiently well. Considering the computational cost to generate a training set using a diversity selection algorithm, we use a random selection method for the remaining analysis. In selecting a training set, another important factor is a size which should be sufficiently large to contain enough information about the entire set and yet reasonable in terms of computational cost. To determine an appropriate set size, we tested four different sized train sets ranging from 0.5, 1, 5, to 10% of the entire zeolite database. Prediction on DC using KRR and RF models with the training sets is summarized in Figure 2. We observe that prediction accuracy increases as the training set size
+Table 1. 25 Features Extracted from Barcodes and Their
+Importancea
+Dimension Features Importance
+0 the number of sampled points/volume 0.5515 1 the number of birth-death pair types 0.0198 the number of birth-death pair 0.0135 the latest death time 0.0000 mean death time 0.0268 the latest birth time 0.0178 mean birth time 0.0193 the maximum survival time 0.0177 total survival time 0.0214 mean survival time 0.0248 the maximum gap between birth times 0.0100 the minimum gap between birth times 0.0000 the average gap between birth times 0.0184 2 the number of birth-death pair types 0.0056 the number of birth-death pair 0.0145 the latest death time 0.1272 mean death time 0.0158 the latest birth time 0.0087 mean birth time 0.0122 the maximum survival time 0.0170 total survival time 0.0266 mean survival time 0.0130 the maximum gap between birth times 0.0083 the minimum gap between birth times 0.0000 the average gap between birth times 0.0101
+aThe descriptions about features are as follows. The number of birthdeath pairs equals the number of bars. In counting the number of birth-death pair types, bars having the same birth and death times are regarded as one pair type. The latest birth or death time is the persistent interval value at the starting or closing point of a bar, respectively. Mean birth or death time is defined as {sum of birth or death time}/{the number of birth-death pair}, respectively. Maximum survival time is the largest lifetime among all bars. Total survival time is a summation of lifetimes of all bars, and mean survival time is estimated by dividing total survival time with the number of birthdeath pair. The maximum or minimum gap between birth times is magnitude of largest or smallest interval range where no bar appears, respectively. The average gap between birth times is obtained as {sum of all birth time gaps}/{total number of gaps}, where a total number of gaps is {the number of birth-death pair −1}.
+Table 2. 10 Important Features Selected Based on Gini Importance Analysis
+Dimension Features Importance
+0 the number of sampled points/volume 0.5646 1 the number of birth-death pair types 0.0304 mean death time 0.0380 the latest birth time 0.0279 mean birth time 0.0276 total survival time 0.0343 mean survival time 0.0356 the average gap between birth times 0.0291 2 the latest death time 0.1606 total survival time 0.0520
+Table 3. Effect of Training Set Selection Method on Deliverable Capacity Prediction Accuracy (RMSE) for Outof-Bag Structures
+D_mif D_mds
+Random Diverse Random Diverse
+KRR 11.24 11.66 11.66 12.35 RF 11.48 12.33 12.21 12.82
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4639
+
+
+becomes larger. Considering an insignificant increase in prediction accuracy between 5 and 10% and computational cost to train machine algorithms with a larger set, we chose 5% of the entire set as a training set in our study.
+Comparison of Prediction Performance on Properties of Zeolites among Machine Learning Models. Because it is not explicitly identified how properties of zeolites are related to descriptors, we tested five different machine learning (ML) models to identify which algorithm provides the highest prediction accuracies. The following five ML models were investigated: random forest, decision tree with AdaBoost, kernel ridge regression, and two support vector machines. Both random forest (RF) and decision tree with AdaBoost (DT_AB) are a family of decision tree methods which learn some regulation
+based on a series of if-then-else decisions rules.37 While RF constructs many decision trees to reduce the chance of overfitting via averaging different trees, DT_AB is an iterative algorithm and has a core idea of training different classifiers (weak classifiers) for the same training set and then assembling these weak classifiers to form a stronger final classifier (strong classifier). Kernel ridge regression (KRR) is a type of ridge regression model and introduces kernel to overcome underfitting. Support vector machines (SVM) learn the importance of each point to the decision boundary, and the points on the
+decision boundary are called as support vectors.38 Here, we used two types of SVM: SVM with the linear kernel (SVM_L) and SVM with radial basis function (SVM_RBF). Predictions for methane deliverable capacity (DC) of zeolite in the out-of-bag set were performed after training ML models with randomly selecting 5% of the entire set. In Table 4, prediction results are summarized. Our results for both descriptors indicate that the KRR model gives the best prediction accuracy among the five models we studied. It is worth noting that RMSE for all cases is similar and prediction of DC is not significantly sensitive to a selection of the ML model. This might indicate the capability of our descriptor in capturing sufficient information about samples so that various ML models
+are well trained to predict DC. In Figure 3, predictions for the out-of-bag set using KRR are shown as parity plots between DC
+from ML and GCMC, for both D_mif and D_mds (parity plots for the training set are shown in Figure S5 of the Supporting Information). It is clearly observed that the prediction of DC using KRR (DCML) based on both descriptors is well consistent with DC(DCGCMC) obtained from GCMC simulations. The good agreement between DCML and DCGCMC indicates that our
+approach using descriptors can reasonably predict DC efficiently instead of performing molecular simulations. Because GCMC time varies structure by structure and our method requires a preceding step of preparing barcodes for the training set, an accurate comparison of computation costs might not be difficult to be made. Nonetheless, the fact that our method predicts DC for the entire set of zeolite within a few minutes would address its
+Figure 2. Influence of train set size on deliverable capacity prediction accuracy for out-of-bag structures. The top (or bottom) plot shows the variation of R2 (or RMSE) as a function of training set size.
+Table 4. Comparison of Five Machine Learning Models in Predicting the Deliverable Capacity of Zeolites in Out-of-Bag Set
+D_mif D_mds
+Models R2 RMSE R2 RMSE
+RF 0.73 10.57 0.68 11.36 DT_AB 0.72 10.61 0.67 11.58 KRR 0.72 10.63 0.71 10.92 SVM_L 0.63 12.34 0.7 11.13 SVM_RBF 0.70 11.03 0.69 11.31
+Figure 3. Prediction of deliverable capacity (DC) for out-of-bag structures using the kernel ridge regression model with (a) D_mif and (b) D_mds. DCGCMC is DC from grand canonical Monte Carlo simulation, and DCML is the prediction with machine learning. The red diagonal line indicates perfect correspondence between DCGCMC and DCML. The color bar denotes the number of counts or the number of structures that correspond to DCGCMC and DCML.
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4640
+
+
+high efficiency, considering that a GCMC simulation performed in the same system (Intel Core i7-7700 CPU) often requires several hours or even a day to obtain sufficiently converged output for one structure. While no significant difference in performance was observed, it would be instructive to discuss the relative merits between two descriptors. In terms of computational cost, D_mif would have a comparative advantage considering the time required for preparing the most diverse set for D_mds. However, D_mds also has its competitiveness due to the fact that it generates the most diverse set which can be useful for performing highthroughput screening and analyzing a database. In Figure 3, a point that needs to be discussed is that prediction accuracy for DC of zeolites does not seem uniform over the entire range of DCGCMC. Table 5 summarizes the
+variations of prediction accuracies of DC using KRR with D_mif by section of DCGCMC. It is shown that RMSE values for the high DCGCMC region were relatively large compared to those for the low DCGCMC region, although the prediction for the best
+structure (in DCGCMC = 150∼160) was reasonably good. These results might be interpreted as the incapacity of our approach. However, we would like to propose the possibility that relatively low prediction accuracy for the high DCGCMC region would be originated from the distribution of DC for zeolites in the database, considering that the accuracy of ML prediction is closely dependent on the training set. The zeolite database has a dominant population in the low DCGCMC region, as shown in Table 5. Therefore, a training set is prone to have a small portion of high performing structures although we prepare a good training set that contains enough information about the entire set. Especially, zeolites having DCGCMC larger than 110 cc/cc are rarely included in the training set because their proportion is only 0.1%. In addition, regarding the relatively low prediction accuracy for the high DCGCMC region, we would also like to mention that RMSE is one way of evaluating the prediction
+accuracy and different ways of error estimation would draw different conclusions about the variation of prediction accuracy. Indeed, from Table 5, MAPE values for the high DCGCMC region are comparable to those for the low DCGCMC region.
+While our approach is capable of efficiently predicting DC in good agreement with DCGCMC, it needs to be pointed out that the prediction accuracy (RMSE of about 10 cc/cc as shown in Figure 2) would not be high enough to completely supersede a GCMC simulation. Nonetheless, our method predicted DC of top structures to be larger than 90 cc/cc (which is a criterion of identifying top 1% structure) with high probability; for example, DC of the top 0.1% structures was predicted to be larger than 90 cc/cc with 77.5% probability, and DC of the top 0.3% structure with 67.4% probability. Therefore, in the aspect that our ML prediction allows us to reduce the chance of missing out top structures significantly, we would like to emphasize the sufficient usefulness of our method in the development of high performing nanoporous materials. Barcodes that were used to prepare our descriptors for ML are based on pore structures and contain information closely related to geometric features of pores as stated in the Materials and Methods section. It would be therefore interesting to see whether we can predict accurately the following conventional structural properties using our approach: Di, Df, ρ, ASA, and AV. Di and Df represent the diameter of the largest included sphere
+and of the free sphere. ρ is a density of zeolite, and ASA and AV denote the accessible surface area and volume to a gas probe molecule. Prediction of structural properties was performed using the KRR model with 5% randomly selected training set. As summarized in Table 6, we observe that our descriptors are also
+capable of predicting structural properties successfully. Especially for Di, ASA, and AV, our ML presented significantly high prediction accuracy.
+Machine Learning Prediction of Performance and Structural Properties of MOFs. We also applied our approach to predict the performance and structural properties of metal−organic frameworks (MOF). Among the entire MOF database of 41,495 structures given with methane deliverable capacities (DC), 5% of structures were chosen randomly as a training set, and the rest was defined as the out-of-bag set. Figure 4 shows comparative parity plots between ML prediction and molecular simulation results for MOF in the out-of-bag set using D_mif as a descriptor (parity plots for the training set are shown in Figure S6 of the Supporting Information). As shown in Figure 4(a), prediction by KRR with D_mif leads to a good correlation between DCGCMC and DCML with R2 and RMSE being 0.88 and 9.70 (cc/cc) over the entire DCGCMC range, respectively, while
+our ML prediction for the top five MOFs having DCGCMC larger than 190 cc/cc was less accurate and gave RMSE as 31.64 cc/cc, as shown in Table 7 that summarizes the variations of prediction
+Table 5. Variation of RMSE and MAPE Values According to DCGCMC of Zeolites
+DCGCMC
+(cc/cc)
+# of zeolites (Proportion%)
+RMSE (cc/ cc) MAPE (%) Note
+0∼10 5934 (4.5%) 14.59 603174.56 MAPE is extremely large because some DCGCMC are
+close to 0 10∼20 21659 (16.5%) 9.19 48.76 20∼30 25828 (19.7%) 7.73 24.23 30∼40 24459 (18.6%) 7.35 16.26 40∼50 19553 (14.9%) 8.85 14.74 50∼60 14341 (10.9%) 11.59 15.25 60∼70 9503 (7.2%) 13.72 14.67 70∼80 5543 (4.2%) 16.74 14.57 80∼90 2875 (2.2%) 19.91 15.03
+90∼100 960 (0.7%) 25.31 18.53 Top 1% Structures
+100∼110 319 (0.2%) 25.34 17.37 Top 0.3% Structures
+110∼120 76 (0.06%) 22.59 16.39 Top 0.1% Structures 120∼130 32 (0.025%) 27.77 18.16 130∼140 11 (0.008%) 47.75 33.66 140∼150 4 (0.003%) 37.09 25.60 150∼160 1 (0.0007%) 24.15 15.79
+Table 6. Prediction of Structural Properties of Zeolites in the Out-of-Bag Set Using Kernel Ridge Regression with Two Descriptors
+D_mif D_mds
+R2 MAPE R2 MAPE
+Di (Å) 0.96 3.36 0.96 4.94 Df (Å) 0.85 9.21 0.91 8.35 ρ (g/cm3) 0.75 3.62 0.74 3.89 ASA (m2/g) 0.99 3.78 0.98 4.39 AV 0.96 16.59 0.96 17.35
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4641
+
+
+accuracies of DC by section of DCGCMC. It is instructive to discuss why we think our predictions for top MOFs are not as accurate as for the others. DC is a property that is affected by both structural and chemical features of a material. Therefore, our current barcode based on pore topology might be incomplete for ML prediction of MOFs, especially topperformers in which unique chemical features significantly contribute to their high DC. Despite this flaw, an overall good correlation between DCGCMC and DCML would suggest that our current method with the level of detail only describing pore topology usefully works for predicting DC of MOFs. Prediction of structural properties is also significantly accurate, as shown in Figure 4(b), (c), (d), and (e); R2 is 0.88, 0.69, 0.98, and 0.91 and MAPE is 2.98, 15.10, 1.94, and 12.96% for Di, ρ, ASA, and AV, respectively. This result indicates that our descriptor is also highly capable of predicting structural and performance properties for MOF. It would be informative to check the capability of our approach to detect the high-performing structures from a MOF database. To check this, we first defined the set of the top materials in the out-of-bag set according to their DCGCMC. For each structure in the set, we predicted DCML. The capability was measured as the probability that the DCML is larger than a
+threshold value which is set as {DCGCMC − 10 cc/cc}. As summarized in Table 8, our ML prediction was highly capable of detecting high-performing materials in a MOF database. For
+instance, with our ML, it was possible to predict DC within the threshold value at 60.9% success rate for top MOFs having DCGCMC larger than 170 cc/cc, which states that top materials can be successfully detected using our ML without performing molecular simulations for all structures.
+■
+CONCLUSION
+In this article, we proposed an efficient approach to predict structural properties and performance for methane storage application of nanoporous materials using a machine learning (ML) algorithm. To describe structures in ML, we developed two types of descriptors utilizing topological data analysis-based barcode which recognizes pore topology accurately. The first descriptor (D_mds) is based on the idea that each structure can be described as a point in barcode space. To develop this descriptor, we first prepared the most diverse set which consists of 600 structures, using a min-max diversity selection algorithm. And for each zeolite in the entire set, its distance to 600 structures in the most diverse set was estimated in barcode space. The second descriptor (D_mif) was prepared by extracting the most important features from the barcodes of each structure. We first identified 25 features from barcodes and
+Figure 4. Prediction results on properties of metal−organic frameworks in the out-of-bag set using the kernel ridge regression model with D_mif: (a) deliverable capacity (DC), (b) Di, (c) ρ, (d) ASA, (e) AV. In each graph, the x-axis represents properties calculated by grand canonical Monte Carlo (for DCGCMC) or Zeo++ (for the other properties). The y-axis shows properties predicted by machine learning (ML). The red diagonal line indicates perfect correspondence between ML prediction and DCGCMC or Zeo++ estimation. The color bar denotes the number of counts or the number of structures that corresponds to ML prediction and GCMC or Zeo++ result.
+Table 7. Variation of RMSE and MAPE Values According to DCGCMC of Metal−Organic Frameworks (MOF)
+DCGCMC
+range (cc/ cc)
+# of MOFs (Proportion%)
+RMSE (cc/ cc) MAPE (%) Note
+0∼10 54 (0.13%) 22.45 737964.68 MAPE is extremely large because some DCGCMC
+are close to 0 10∼20 148 (0.37%) 16.59 91.37 20∼30 253 (0.64%) 14.92 45.98 30∼40 279 (0.70%) 17.36 35.85 40∼50 437 (1.1%) 19.28 32.05 50∼60 384 (0.97%) 17.19 24.00 60∼70 456 (1.15%) 17.18 20.14 70∼80 500 (1.2%) 16.26 17.08 80∼90 442 (1.1%) 16.76 15.42 90∼100 491 (1.25%) 17.02 13.90 100∼110 574 (1.45%) 15.97 11.70 110∼120 727 (1.84%) 13.31 9.07 120∼130 1787 (4.53%) 12.33 7.95 130∼140 5311 (13.4%) 10.04 6.05 140∼150 10087 (25.5%) 6.79 3.70 150∼160 10566 (26.8%) 6.13 3.10 160∼170 5495 (13.9%) 9.33 4.80 170∼180 1314 (3.33%) 13.41 6.66 Top 3% Structures
+180∼190 110 (0.25%) 17.17 8.78 Top 0.3% Structures 190∼200 5 (0.01%) 31.65 16.26
+Table 8. Capability of ML Prediction in Detecting Top
+MOFsa
+>DCGCMC # of MOF # of DCML > Threshold Percentage (%)
+>180 115 27 23.5 >170 1429 870 60.9 >160 6924 6281 90.71
+aData is based on a prediction by KRR with D_mif. The last column in each table (i.e. Percentage) is {# of DCML > Threshold value}/{# of MOF}.
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4642
+
+
+then determined the 10 most important features through Gini importance analysis. Using the two descriptors, we first investigated the effect of possible variables such as training set size and preparation method, and types of ML models on prediction accuracy for methane deliverable capacity (DC) of zeolite. In our analysis, Kernel ridge regression (KRR) showed the highest accuracy. And considering both prediction accuracy and computational cost, it was proposed that randomly selected 5% structures of the entire set would be a good choice as a training set. Our results also showed that both descriptors accurately predicted performance and even structural properties of zeolites; for KRR with D_mif, RMSE is 10.63 cc/cc for DC, and MAPE is 3.36, 9.21, 3.62, 3.78, and 16.59% for Di, Df, ρ, ASA, or AV, respectively. Furthermore, we successfully applied our approach to predict properties of metal−organic framework (RMSE of 9.71 cc/cc for DC, MAPE of 2.98, 15.10, 1.94, and 12.96% for Di, ρ, ASA, or AV, respectively), which suggests that our methodology might
+effectively be extended to other applications and frameworks.
+■
+ASSOCIATED CONTENT
+*
+S Supporting Information
+The Supporting Information is available free of charge on the ACS Publications website at DOI: 10.1021/acs.jcim.9b00623.
+Example of pore geometry barcode, example of persistence barcodes, details about most diverse set selection, explanation about barcode features, parity plots of properties for the training set, and the most diverse set of zeolites (PDF) D_mif (10 most important information) descriptors for zeolites and MOFs (XLSX) Structural and methane deliverable capacities for zeolites and MOFs (XLSX)
+■
+AUTHOR INFORMATION
+Corresponding Author
+*E-mail: leeyj@shanghaitech.edu.cn. ORCID
+Yongjin Lee: 0000-0001-8166-2935 Notes
+The authors declare no competing financial interest.
+■
+ACKNOWLEDGMENTS
+This research was supported by the ShanghaiTech University Research Startup Fund. We thank the high-performance
+computing platform of ShanghaiTech University for support.
+■
+REFERENCES
+(1) Li, H.; Wang, K.; Sun, Y.; Lollar, C. T.; Li, J.; Zhou, H. C. Recent Advances in Gas Storage and Separation Using Metal−Organic Frameworks. Mater. Today 2018, 21, 108−121. (2) Mason, J. A.; Sumida, K.; Herm, Z. R.; Krishna, R.; Long, J. R. Evaluating Metal−Organic Frameworks for Post-Combustion Carbon Dioxide Capture via Temperature Swing Adsorption. Energy Environ. Sci. 2011, 4, 3030. (3) Liao, P.-Q.; Huang, N.-Y.; Zhang, W.-X.; Zhang, J.-P.; Chen, X.-M. Controlling Guest Conformation for Efficient Purification of Butadiene. Science 2017, 356, 1193−1196. (4) Zhang, Q.; Wang, J.; Kirillov, A. M.; Dou, W.; Xu, C.; Xu, C.; Yang, L.; Fang, R.; Liu, W. Multifunctional Ln-MOF Luminescent Probe for Efficient Sensing of Fe 3+, Ce 3+, and Acetone. ACS Appl. Mater. Interfaces 2018, 10, 23976−23986.
+(5) Chen, X.; Tong, R.; Shi, Z.; Yang, B.; Liu, H.; Ding, S.; Wang, X.; Lei, Q.; Wu, J.; Fang, W. MOF Nanoparticles with Encapsulated Autophagy Inhibitor in Controlled Drug Delivery System for Antitumor. ACS Appl. Mater. Interfaces 2018, 10, 2328−2337.
+(6) Simon, C. M.; Kim, J.; Gomez-Gualdron, D. A.; Camp, J. S.; Chung, Y. G.; Martin, R. L.; Mercado, R.; Deem, M. W.; Gunter, D.; Haranczyk, M.; Sholl, D. S.; Snurr, R. Q.; Smit, B. The Materials Genome in Action: Identifying the Performance Limits for Methane Storage. Energy Environ. Sci. 2015, 8, 1190−1199.
+(7) Thornton, A. W.; Simon, C. M.; Kim, J.; Kwon, O.; Deeg, K. S.; Konstas, K.; Pas, S. J.; Hill, M. R.; Winkler, D. A.; Haranczyk, M.; Smit, B. Materials Genome in Action: Identifying the Performance Limits of Physical Hydrogen Storage. Chem. Mater. 2017, 29, 2844−2854. (8) Lin, L.-C.; Berger, A. H.; Martin, R. L.; Kim, J.; Swisher, J. A.; Jariwala, K.; Rycroft, C. H.; Bhown, A. S.; Deem, M. W.; Haranczyk, M.; Smit, B. In Silico Screening of Carbon-Capture Materials. Nat. Mater. 2012, 11, 633−641. DOI: 10.1038/NMAT3336. (9) Ahmed, A.; Seth, S.; Purewal, J.; Wong-Foy, A. G.; Veenstra, M.; Matzger, A. J.; Siegel, D. J. Exceptional Hydrogen Storage Achieved by Screening Nearly Half a Million Metal-Organic Frameworks. Nat. Commun. 2019, 10, 1568.
+(10) Behler, J. Perspective: Machine Learning Potentials for Atomistic Simulations. J. Chem. Phys. 2016, 145, 170901. (11) Fernandez, M.; Woo, T. K.; Wilmer, C. E.; Snurr, R. Q. LargeScale Quantitative Structure-Property Relationship (QSPR) Analysis of Methane Storage in Metal-Organic Frameworks. J. Phys. Chem. C 2013, 117, 7681−7689. (12) Lee, Y.; Barthel, S. D.; Dłotko, P.; Moosavi, S. M.; Hess, K.; Smit, B. Quantifying Similarity of Pore-Geometry in Nanoporous Materials. Nat. Commun. 2017, 8, 15396.
+(13) Lee, Y.; Barthel, S. D.; Dłotko, P.; Moosavi, S. M.; Hess, K.; Smit, B. High-Throughput Screening Approach for Nanoporous Materials Genome Using Topological Data Analysis: Application to Zeolites. J. Chem. Theory Comput. 2018, 14, 4427−4437.
+(14) Simon, C. M.; Kim, J.; Lin, L.-C.; Martin, R. L.; Haranczyk, M.; Smit, B. Optimizing Nanoporous Materials for Gas Storage. Phys. Chem. Chem. Phys. 2014, 16, 5499.
+(15) Baerlocher, C.; McCusker, L. B.; Olson, D. H. Atlas of Zeolite Framework Types; Elsevier, 2001.
+(16) Pophale, R.; Cheeseman, P. A.; Deem, M. W. A Database of New Zeolite-like Materials. Phys. Chem. Chem. Phys. 2011, 13, 12407. (17) Chung, Y. G.; Camp, J.; Haranczyk, M.; Sikora, B. J.; Bury, W.; Krungleviciute, V.; Yildirim, T.; Farha, O. K.; Sholl, D. S.; Snurr, R. Q. Computation-Ready, Experimental Metal−Organic Frameworks: A Tool To Enable High-Throughput Screening of Nanoporous Crystals. Chem. Mater. 2014, 26, 6185−6192.
+(18) Groom, C. R.; Bruno, I. J.; Lightfoot, M. P.; Ward, S. C. The Cambridge Structural Database. Acta Crystallogr., Sect. B: Struct. Sci., Cryst. Eng. Mater. 2016, 72, 171−179.
+(19) Wilmer, C. E.; Leaf, M.; Lee, C. Y.; Farha, O. K.; Hauser, B. G.; Hupp, J. T.; Snurr, R. Q. Large-Scale Screening of Hypothetical Metal− Organic Frameworks. Nat. Chem. 2012, 4, 83−89. (20) Martin, R. L.; Smit, B.; Haranczyk, M. Addressing Challenges of Identifying Geometrically Diverse Sets of Crystalline Porous Materials. J. Chem. Inf. Model. 2012, 52, 308−318.
+(21) Willems, T. F.; Rycroft, C. H.; Kazi, M.; Meza, J. C.; Haranczyk, M. Algorithms and Tools for High-Throughput Geometry-Based Analysis of Crystalline Porous Materials. Microporous Mesoporous Mater. 2012, 149, 134−141.
+(22) Bondi, A. Van Der Waals Volumes and Radii. J. Phys. Chem. 1964, 68, 441−451. (23) Rowland, S. R.; Taylor, R. Intermolecular Nonbonded Contact Distances in Organic Crystal Structures: Comparison with Distances Expected from van Der Waals Radii. J. Phys. Chem. 1996, 100, 7384− 7391. (24) Carlsson, G. TOPOLOGY AND DATA. Bull. New. Ser. Am. Math. Soc. 2009, 46, 255−308.
+(25) Carlsson, G. Topological Pattern Recognition for Point Cloud Data. Acta Numer. 2014, 23, 289−368.
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4643
+
+
+(26) Ushizima, D.; Morozov, D.; Weber, G. H.; Bianchi, A. G. C.; Sethian, J. A.; Bethel, E. W. Augmented Topological Descriptors of Pore Networks for Material Science. IEEE Trans. Vis. Comput. Graph. 2012, 18, 2041−2050. (27) Nakamura, T.; Hiraoka, Y.; Hirata, A.; Escolar, E. G.; Nishiura, Y. Persistent Homology and Many-Body Atomic Structure for MediumRange Order in the Glass. Nanotechnology 2015, 26, 304001. (28) Kramar, M.; Goullet, A.; Kondic, L.; Mischaikow, K. Persistence of Force Networks in Compressed Granular Media. Phys. Rev. E 2013, 87, No. 042207. (29) Edelsbrunner, H.; Harer, J. L. Computational Topology an Introduction; American Mathematical Society, 2010. (30) Munkres, J. R. Elements of Algebraic Topology; Perseus Books, 1984. (31) Bubenik, P.; Dłotko, P. A Persistence Landscapes Toolbox for Topological Statistics. J. Symb. Comput. 2017, 78, 91−114. (32) Kennard, R. W.; Stone, L. A. Computer Aided Design of Experiments. Technometrics 1969, 11, 137−148. (33) Svetnik, V.; Liaw, A.; Tong, C.; Christopher Culberson, J.; Sheridan, R. P.; Feuston, B. P. Random Forest: A Classification and Regression Tool for Compound Classification and QSAR Modeling. J. Chem. Inf. Comput. Sci. 2003, 43, 1947−1958.
+(34) Breiman, L. Random Forests. Mach. Learn. 2001, 45, 5−32. (35) Nembrini, S.; König, I. R.; Wright, M. N. The Revival of the Gini Importance? Bioinformatics 2018, 34, 3711−3718. (36) Maalouf, M.; Homouz, D. Kernel Ridge Regression Using Truncated Newton Method. Knowledge-Based Syst. 2014, 71, 339−344. (37) Delisle, R. K.; Dixon, S. L. Induction of Decision Trees via Evolutionary Programming. J. Chem. Inf. Comput. Sci. 2004, 44, 862− 870. (38) Burges, C. J. C.; Burges, C. J. C. A Tutorial on Support Vector Machines for Pattern Recognition. Data Min. Knowl. Discovery 1998, 2, 121−167.
+Journal of Chemical Information and Modeling Article
+DOI: 10.1021/acs.jcim.9b00623 J. Chem. Inf. Model. 2019, 59, 4636−4644
+4644

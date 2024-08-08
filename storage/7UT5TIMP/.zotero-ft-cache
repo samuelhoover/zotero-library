@@ -1,0 +1,954 @@
+Repurposing Templates for Zeolite Synthesis
+from Simulations and Data Mining
+Daniel Schwalbe-Koda,† Omar A. Santiago-Reyes,† Avelino Corma,‡ Yuriy
+Roma ́n-Leshkov,¶ Manuel Moliner,‡ and Rafael Go ́mez-Bombarelli∗,†
+†Department of Materials Science and Engineering, Massachusetts Institute of Technology,
+Cambridge, MA 02139, United States
+‡Instituto de Tecnologı ́a Qu ́ımica, Universitat Polit`ecnica de Val`encia-Consejo Superior de
+Investigaciones Cient ́ıficas, Avenida de los Naranjos s/n, 46022 Valencia, Spain
+¶Department of Chemical Engineering, Massachusetts Institute of Technology, Cambridge,
+MA 02139, United States
+E-mail: rafagb@mit.edu
+1
+2 Abstract
+3 Zeolites span a large variety of microporous crystal structures, making them use
+4 ful materials for catalysis and separations. However, controlling phase competition in
+5 their synthesis often requires organic structure-directing agents (OSDAs) to selectively
+6 crystallize the desired topologies. Whereas computational design of OSDAs can help
+7 selecting adequate candidates for zeolite synthesis, machine-generated templates are
+8 often complex or expensive. In this work, we use shape and binding metrics to propose
+9 templates for over 100 zeolites, and to rationalize dual-OSDA approaches. Starting
+10 from OSDAs from the literature, promising templates were selected for zeolites rang
+11 ing from clathrasil frameworks to extra large-pore structures. Selectivity maps derived
+12 from phase competition metrics show that small- and medium-pore zeolites tend to
+1
+
+
+13 be more shape-selective towards their templates than their large-pore counterparts.
+14 Finally, shape and volume descriptors allow identifying OSDAs that may act as syn
+15 ergistic pore-fillers for different cavities of zeolites. The application of this theory is
+16 demonstrated for the case of KFI zeolite, which may be synthesized using tetraethy
+17 lammonium and OSDAs repurposed from high-silica LTA synthesis as dual OSDAs.
+18 This work may help discovering new synthesis routes for known zeolites using shape
+19 descriptors and repurposed OSDAs.
+20 Introduction
+21 Zeolites are nanoporous materials with a myriad of applications in industrial catalysis and
+22 separations,1–3 and hold promise for sustainable processes.4 The variety of synthetically
+23 accessible zeolite polymorphs enables confinement and transport effects to be tuned.5 This
+24 topological diversity derives from strong phase competition between metastable zeolite struc
+25 tures and it must be be controlled to tailor shape selectivity towards molecular recognition
+26 or catalysis.6–8 However, designing synthesis routes towards a target zeolite topology is a
+27 labor-intensive task. Zeolites are typically crystallized in hydrothermal conditions, where
+28 inorganic precursors and organic templates cooperate to synthesize a topology.9,10 Due to
+29 this high-dimensional synthetic parameter space, finding cost-effective and selective routes to
+30 synthesize zeolites has been the focus of research works for decades. Within the hydrother
+31 mal synthesis of zeolites, organic structure-directing agents (OSDAs) play an important role
+32 in crystallizing certain topologies.5,11 A combination of electrostatic and dispersion inter
+33 actions drive the nucleation of topologies that act as good hosts for that template,10 with
+34 the dispersion interaction often determining the outcome topology.11 Although OSDA-free
+35 synthesis routes are possible,12–16 they are often limited in terms of selectivity or in the com
+36 positions of the final product. On the other hand, OSDA-based routes can yield high-silica
+zeolites with a variety of topologies upon the adequate choice of an OSDA.17
+37
+38 Computational methods can aid the design of organic templates prior to experimen
+2
+
+
+39 tation.18–25 However, since most computational methods usually predict molecules for one
+40 framework at a time, they are unable to predict competing phases that could also be crys
+41 tallized by the given molecule. We recently tackled this problem by quantifying phase se
+42 lectivity in zeolite synthesis using over half a million simulations, literature mining,25,26 and
+43 experimental validation.27 It was demonstrated that selectivity metrics based on binding
+44 energies and on shape-matching are important in template-based zeolite synthesis, enabling
+45 a computational screening of OSDAs for zeolites. Nevertheless, selectivity is not the only
+46 design metric for OSDAs. In order to be practically useful, computer-designed OSDAs must
+47 be simultaneously selective and chemically realizable. Although strategies like rule-based
+48 molecular enumeration28,29 and computational retrosynthesis20,24 can aid the exploration
+49 of synthesizable chemical spaces or automatically suggest synthesis routes for novel OSDAs,
+inventing novel molecules in silico may require expensive synthesis routes for production.24,30
+50
+51 To disentangle these issues of “chemical feasibility” of generated molecules from the com
+52 putational templating metrics, we focus on proposing known templates from the literature to
+53 obtain zeolites that have not been realized with those OSDAs. In the pharmaceutical field,
+54 this strategy of employing known drugs towards new applications is known as drug repurpos
+55 ing or repositioning, and is used as a way to reduce the time-to-market of new drugs, since
+56 molecules are already validated to be safe and have good physicochemical and toxicological
+57 profiles.31 This analogue strategy for OSDA design may offer several advantages, including:
+58 (i) bypassing the need to design new OSDAs that are simultaneously stable and soluble in
+59 hydrothermal conditions, (ii) avoiding the design of new synthesis routes for the molecules,
+60 and (iii) enabling a faster adoption of new zeolite synthesis routes in industrial applications
+61 by relying on known templates. In this work, we combine descriptor analysis and data min
+62 ing to repurpose known OSDAs for zeolites. Studying from clathrasils to extra large-pore
+63 zeolites, we analyze how OSDA volume and shape control phase competition metrics in over
+64 one hundred zeolites. In particular, the following contributions are put forward:
+65 1. Introducing shape selectivity maps from computational metrics, providing insights on
+3
+
+
+66 how molecular shape influences binding energies in zeolites.
+67 2. Repurposing OSDAs for over one hundred known zeolites using shape and binding
+68 metrics
+69 3. Rationalizing the design of dual-OSDA routes for zeolites using shape metrics, as ex
+70 emplified by the LTA and KFI zeolites.
+71 This work provides a comprehensive theoretical analysis on shape selectivity for zeo
+72 lites. The multiple opportunities shown here may guide future experiments towards zeolite
+73 discovery and OSDA repurposing.
+74 Methods
+75 Binding energy data
+76 The simulation data was obtained from Ref. 27, where all simulation details are discussed in
+77 depth. Initial zeolite structures were downloaded from the International Zeolite Association
+78 (IZA) database32 and pre-optimized using the Sanders-Leslie-Catlow (SLC) parametriza
+79 tion.33 The pre-optimization is useful to systematize the structures according to a level of
+80 theory that can be extended towards non-experimental zeolites.34 Conformers for OSDAs
+were generated using RDKit35 with the MMFF94 force field.36,37
+81
+82 OSDA-zeolite poses were generated using Voronoi and Monte Carlo docking algorithms
+83 in the VOID package.38 Up to 5 different conformers for each OSDA were used as input
+84 geometries for VOID. As the occluded molecular conformation can change depending on
+85 the outcome zeolite,39,40 the use of different rigid conformers during docking increases the
+86 diversity of poses obtained by the algorithm. The Voronoi docking algorithm used the default
+87 parameters descibed in Ref. 38, with threshold fitness function with minimum distance of
+88 1.25  ̊A, 5 k-means clusters of Voronoi nodes generated with at least 3  ̊A of radius and probe
+89 radius of 0.1  ̊A. The Monte Carlo docker algorithm uses 1,000 Monte Carlo steps with a
+4
+
+
+90 normalized temperature of 0.1 for the first 500 steps and 0.0 for the last 500 steps. Although
+91 the docking algorithms are run until the loading of OSDAs in zeolites is maximized, the
+92 three largest OSDA loadings are simulated downstream using force field calculations. The
+93 final pose is the one that minimizes the overall energy of the system among the simulated
+94 structures, including guest-guest interactions. This “variational” approach to binding energy
+was successful in recalling the outcomes of zeolite synthesis from the literature.27
+95
+96 Force field calculations were performed using the General Utility Lattice Program (GULP)
+97 version 5.1.141,42 through the GULPy package.34 The Dreiding force field43 was used to model
+98 dispersion interactions between pure-silica zeolites and OSDAs. Despite the absence of elec
+99 trostatic interactions, this approach has demonstrated good agreement when quantifying
+100 phase competition from the literature27 and reasonable correlation with density functional
+101 theory calculations.34 Binding energies between zeolites and OSDAs were computed using
+102 the frozen pose method, where the host-guest interaction energy is obtained after optimizing
+the systems at constant volume.34
+103
+104 The binding energy between a zeolite and an OSDA can be quantified using different
+105 normalizations, such as normalization per SiO2 or OSDA. The normalizations provide differ
+106 ent interpretations towards OSDA design and can help comparing frameworks with distinct
+107 building units.27 When binding energies are compared for a single OSDA across different ze
+108 olites, a new metric called “competition energy” is defined. This metric ranks different hosts
+109 towards a certain template according to their strength of binding. We adopt the convention
+110 that lower competition energies indicate a more preferential binding towards a particular
+111 framework using the second-best host as the zero reference for this competition energy.
+112 Volume and shape descriptors
+113 The volume of the OSDA was calculated using a voxel-based approach. The lowest-energy
+114 conformer, as calculated by the MMFF94 force field (see section above), is chosen as the
+115 reference geometry. Then, the molecular volume is quantified using a grid of 0.2  ̊A and a
+5
+
+
+margin of 2.0  ̊A for the boxes enclosing the conformer, as implemented in RDKit.35
+116
+117 In volume-energy visualizations, each OSDA was represented with a marker. If the
+118 OSDA was known to synthesize a particular framework, the data point was depicted with a
+119 triangle. Otherwise, the data point was depicted with a circle. OSDAs selected as promising
+120 candidates for repurposing (see OSDA selection section below) were highlighted with squares
+121 whenever they have not been used, to our knowledge, to synthesize the framework under
+122 study.
+123 OSDA shape descriptors were calculated by reducing the dimensionality of the nuclear
+124 coordinates into a 2D space based on a principal component analysis (PCA) of the molecular
+125 conformer.27 The procedure for calculating the shape metric is the following (see also Fig.
+126 1a):
+127 1. The 3D molecular conformer is calculated using simulation methods.
+128 2. A 2D plane is fitted to the 3D molecular coordinates in order to maximize the ex
+129 plained variance of this distribution of 3D points into the projected 2D space. This
+130 is equivalent to performing a PCA-based dimensionality reduction of the 3D atomic
+131 positions towards a 2D space.
+132 3. Onto the projected plane, the range of projected coordinates are computed.
+133 Thus, the shape descriptor enables a 3D geometry to be mapped to two principal axes,
+134 with Axis 1 being the larger component. Despite the simplicity of this representation, it has
+been shown to correlate with synthetic accessibility of zeolites in OSDA design.27
+135
+136 In shape-energy visualizations, the shape space of OSDAs — as described by the two
+137 principal axes of the molecule — is discretized in hexagonal bins. Each bin is colored using
+138 the average binding or competition energy of all OSDAs falling within that region. Brighter
+139 colors indicate that OSDAs sharing that shape are, on average, stronger binders to the
+140 framework than regions with darker colors. Although changing the parameters of hexagonal
+6
+
+
+141 binning affect the final visualization, features such as energy minima are preserved in this
+142 shape selectivity graphs, enabling their qualitative interpretation.
+Figure 1: a, Diagram to calculate the shape of an OSDA using two principal axes. The 3D coordinates of the conformer are projected onto a two-dimensional plane, from which the axes are obtained. b, Construction of a shape selectivity map. Regions of the OSDA shape space are colored according to the strongest binding host towards each template within the systems under analysis.
+143 Selectivity map
+144 A selectivity map for a family of zeolites is created by first plotting all OSDAs onto the shape
+145 space using the two-dimensional metric described above (Fig. 1b). Then, for each OSDA,
+146 zeolites are ranked according to their binding energy. The zeolite with the lowest binding
+147 energy (most competitive phase) towards each OSDA is highlighted in the shape space of
+148 templates with a different color. Finally, a map is then obtained by binning the number of
+149 OSDAs in a given region of the shape space, and discretizing these bins according to the most
+150 representative zeolite in that region. In some cases where more than one zeolite dominates
+151 a given region, both frameworks are shown with overlapping bins. In other cases, outliers in
+7
+
+
+152 the shape space are omitted to improve the clarity of the visualization (see Fig. 1b). Due to
+153 the qualitative nature of this plot, selectivity maps should be interpreted as a tool to build
+154 intuition on how molecular shape affects zeolite selectivity. Whereas the overall appearance
+155 of the plot would change with different binning parameters, the outcome remains helpful
+156 not only for repurposing strategies, but also for identifying regions of OSDA biselectivity for
+intergrowths. 44
+157
+158 The selectivity map is performed within families of zeolites, i.e., groups of frameworks
+159 sharing the same maximum ring size. Although phase competition is not limited to zeolites
+160 with similar ring sizes — that is, a large-pore zeolite such as Beta can be the outcome of a
+161 synthesis targeting a small-pore framework — the shape space of similar structures can be
+162 best interpreted when families are compared. In addition, the selectivity map is a qualitative
+163 assessment of the shape space of the zeolites, and is limited by the representation power of
+164 the two-dimensional descriptor. Nevertheless, it is a useful tool to visualize shape selectivity
+165 in zeolites, aiding interpretability to the simulation results.
+166 OSDA selection
+167 OSDAs were downselected according to their volume, shape, synthetic complexity, and bind
+168 ing metrics using OSDB.27 In particular, the data available at OSDB was explored using
+169 expert knowledge to select OSDAs for the synthesis of each zeolite. Whereas synthetic com
+170 plexity metrics can be used for OSDA design,27 the interactive visualizations further aid
+171 expert-based selection of molecules with higher potential and/or lower cost.
+172 In addition to expert-based synthetic complexity, the following heuristic rules for downs
+173 election were imposed to restrict the search space:
+174 • Positively charged OSDAs were preferred over neutral ones, motivated by the synthesis
+175 of aluminosilicate zeolite structures over zeotypes.
+176 • Phosphonium-based OSDAs were avoided due to restrictions related to the industrial
+8
+
+
+177 application of such templates.
+178 • Templates with hydroxide groups were avoided due to their reduced hydrothermal
+179 stability.
+180 Despite these requirements, no OSDAs were removed from the volume-energy plots for
+181 compatibility with the public interface implemented in OSDB.
+182 OSDA selection was performed by first identifying preferential volumes of OSDAs to
+183 wards a particular zeolite by exploring the regions near energy minima in volume-energy
+184 plots. Whenever zeolites have more than one energy minimum, OSDAs in all minima were
+185 investigated. Although molecules with volumes smaller than 175  ̊A can seemingly lead to
+186 strong binding energies, particularly in large- and extra large-pore zeolites, they often re
+187 quire higher loadings to achieve such low energies. Smaller sizes and higher loadings may
+188 increase the competition energy of the templates, thus making them less selective for larger
+189 structures.27 Therefore, promising OSDAs were identified by simultaneously maximizing the
+190 binding strength and volume within the constraints described above.
+191 After OSDAs with volumes of interest were downselected, the molecules were compared
+192 according to their shapes. If the shape space of the zeolite exhibits regions of higher selec
+193 tivity, i.e., shapes that lead to lower average energies, OSDAs exhibiting shapes leading to
+194 these energy minima were preferred over templates with distinct shapes. This shape-driven
+195 downselection of molecules has demonstrated to increase the synthetic accessibility of zeo
+196 lites.27 On the other hand, if the zeolite framework does not exhibit local minima in the
+197 energy-shape landscape, molecules with diverse shapes are proposed.
+9
+
+
+198 Results and Discussion
+199 Six-membered rings zeolites
+200 Zero-dimensional zeolites are examples of systems where, at a constant gel composition, the
+201 choice of the OSDA often determines the outcome of the synthesis.11 Six-membered frame
+202 works are considered inaccessible for the diffusion of molecules and thus are rarely sought
+203 to be synthesized with OSDAs. However, their constituent building units are sometimes
+204 observed in other zeolites. Thus, analyzing structure-directing effects in zero-dimensional
+205 zeolites is essential not only to control phase competition effects, but also to understand how
+206 to direct the formation of particular building units shared between these and other zeolites.
+207 Figures S1-S12 show examples of OSDAs that are known to lead to the synthesis of zero
+208 dimensional zeolite structures. In many cases, the templates are small, such as the ones for
+209 SOD zeolite (Fig. S9). The sod building unit is selectively synthesized using tetramethylam
+210 monium or similar small molecules. Although synthesizing the SOD framework is typically
+211 undesirable, understanding the shape selectivity of its components can guide the synthe
+212 sis of zeolites with more interesting applications such as LTA. In other cases, zeolites with
+213 larger volumes such as NON (Fig. S6) or SGT (Fig. S8) may compete with the synthesis
+214 of small-pore frameworks. In particular, spiro-type OSDAs show similar binding patterns
+215 between NON and CHA zeolites, and synthesis routes involving these OSDAs may result
+216 in NON or LOS (Fig. S4) frameworks rather than the more commercially interesting CHA
+217 framework.27 Finally, longer or wider OSDAs may crystallize zero-dimensional zeolites with
+218 large cavities such as LIO (Fig. S3), MSO (Fig. S5), TOL (Fig. S11), or UOZ (Fig. S12).
+219 As directing the crystallization of substructures in these frameworks is often undesirable,
+220 the phase competition analysis allows avoiding templates which may lead to these zeolites
+221 rather than targeted ones.
+10
+
+
+222 Small-pore zeolites
+223 Small-pore zeolites are characterized by cavities with eight-membered rings. The confine
+224 ment effects due to the cavity sizes and shapes are responsible for altering catalyst stability
+and selectivity for many chemical processes, including selective catalytic reduction of NOx
+225
+226 or methanol-to-olefin reactions.45,46 Modulating the shapes of OSDAs while keeping the re
+227 action conditions constant may lead to the crystallization of different small-pore zeolites
+228 or intergrowths.27 In some cases, however, frameworks such as ITE and RTH exhibit stark
+229 structural similarities,44 which may hinder the control of phase competition.
+230 Figure 2 shows a selectivity map of OSDA shapes in small-pore zeolites. The selectivity
+231 map was created by selecting the best small-pore framework towards each of the OSDAs in
+232 the database, and outlining the regions of the shape space that favor each framework. The
+233 shape and binding energy metrics recover intuitive building schemes from the zeolites. For
+234 example, LEV zeolite has the smallest cavity, and its OSDA selectivity region is found in
+235 the lower left of the shape space. On the other hand, SFW and SWY have long cages, but
+236 their ABC-6 stacking pattern limits their diameters, which leads to a long axis 1 in Fig.
+237 2, but an axis 2 comparable to those of AEI or RTH zeolites. In addition, the CHA/AEI
+238 regions intersect in terms of selectivity, as expected by the crystallization of these intergrown
+239 structures with bi-selective OSDAs. In the central region of Fig. 2, ERI zeolite has a slightly
+240 longer cage than CHA, but still smaller than AFX. LTA zeolite is an exception to these
+241 zeolites, as its large lta cage requires molecules that can effectively occupy its volume in
+242 both axes.
+243 As an example of how novel molecules can be proposed towards the synthesis of zeolites
+244 with few examples of templates in the literature, Fig. 3 shows OSDAs predicted to be
+245 favorable towards SWY zeolite. According to the selectivity map of Fig. 2, OSDAs favorable
+246 towards SWY should have a shape characterized by an axis 1 between 14-16  ̊A and an axis 2
+247 of about 5  ̊A. Indeed, the two OSDAs known to synthesize SWY, shown in Fig. 3a (OSDAs
+248 1, 2), fall within this region of the shape space. Two repurposed OSDAs (OSDAs 3 and 4
+11
+
+
+6 8 10 12 14
+SWY
+SFW
+AFX
+LTA
+ERI
+RTH AEI
+LEV CHA
+16 Axis 1 (Å)
+34
+4
+5
+6
+7
+8
+9
+Axis 2 (Å)
+Figure 2: Selectivity map of OSDAs towards small-pore zeolites. Hexagons are regions of the shape space dominated by one of the frameworks, as shown in Fig. 1.
+249 in Fig. 3a) have similar shapes (Fig. 3c), with cyclohexyl groups that could lower the cost
+250 of the OSDA compared to more expensive radicals such as DABCO or quinuclidine. Both
+251 OSDAs are also close to the ideal volume of ∼ 350  ̊A3 of the large cavity characteristic to
+252 SWY (Fig. 3b). However, the binding energy and volume metrics suggest the possibility of
+253 synthesizing this zeolite with smaller OSDAs, which could assemble in pairs to fill the cavity,
+254 similarly to what is carried out in the SFW zeolite.47 OSDA 5 in Fig. 3a has approximately
+255 half of the volume of the cavity, and is also evidenced by a minimum of binding energy
+256 in the binding-volume plots (Fig. 3b). Additionally, OSDA 5 has an axis 2 comparable to
+257 those from known OSDAs, indicating its adequate diameter towards the characteristic cavity
+258 of SFW, and approximately half of their length (Fig. 3c). These results suggest that the
+259 proposed OSDA is an interesting candidate to attempt the synthesis of SWY.
+260 Figures S13-39 show other examples of OSDAs from the literature predicted to be fa
+261 vorable towards small-pore zeolites. In addition to well-known frameworks, the figures show
+262 opportunities to attempt the crystallization of known small-pore zeolites, but with broader
+263 compositions, including the AVL (Fig. S17) or SAV (Fig. S36) frameworks. The figures also
+264 highlight the shape matching landscape of: small-cage frameworks such as ITE (Fig. S25)
+265 or RTH (Fig. S33); 1D channel zeolites such as AWW (Fig. S18), IRN (Fig. S24), or SAS
+266 (Fig. S34); or structures with larger cavities such as AFX (Fig. S15), EEI (Fig. S20), or
+12
+
+
+1
+2
+3
+45
+b
+a
+c
+100 200 300 400
+Volume (Å3)
+-15.0
+-12.5
+-10.0
+-7.5
+-5.0
+-2.5
+0.0
+Binding (SiO2)
+1
+2 43
+5
+SWY
+5.0 7.5 10.0 12.5 15.0
+Axis 1 (Å)
+3
+4
+5
+6
+7
+8
+9
+Axis 2 (Å)
+14
+3
+5
+SWY -15.0
+-12.5
+-10.0
+-7.5
+-5.0
+-2.5
+Binding (SiO2)
+2
+N+
+N+
+N
++
+N
+N
++
+N
+N+ N+
+N+ N+
+N+
+Figure 3: a, Known and proposed OSDAs for the synthesis of small-pore zeolite SWY. These molecules have favorable b, volumes, and c, shape for the synthesis of SWY. Triangles indicate OSDAs known to synthesize SWY, squares are OSDAs proposed to synthesize SWY, and circles are others.
+13
+
+
+267 SAT (Fig. S35).
+268 Medium-pore zeolites
+269 Medium-pore zeolites are widely used in petrochemical and fine-chemical applications. Zeo
+270 lite ZSM-5 (MFI), for example, is a versatile material used in a variety of catalytic applica
+271 tions such as oil refining or xylene isomerization.48–50 As another example, Theta-1 (TON)
+272 is used in paraffin isomerizations.51 While ten-membered channels enable longer templates
+273 to be used in the synthesis of medium-pore zeolites, matching medium pores with molecular
+274 sizes/shapes is paramount to achieve high selectivity in the synthesis of these materials. Fur
+275 thermore, although templates for the synthesis of some of these materials are well-known,
+276 synthesizing uncommon medium-pore frameworks with known templates can enable novel
+277 uses in catalytic applications.
+278 Figure 4 shows the shape selectivity of OSDAs towards selected frameworks, created
+279 using the methodology described in the previous section. Differently from small-pore zeolites,
+280 however, the pores of medium-pore zeolites enable templates of different sizes to be occluded
+281 within the structure, thus exhibiting lower shape selectivity. Nevertheless, frameworks such
+282 as STI, CSV, or MWW (Fig. 4a) exhibit cavities that favor certain templates over others. In
+283 cases such as SFF or EUO (Fig. 4a), the undulated pores or side pockets, respectively, may
+284 be responsible for the shape selectivity of some zeolites within templated synthesis. Finally,
+285 zeolites with intersecting pores such as SFG may be favored by larger molecules, which better
+286 occupy the large space in the pore intersection and give it higher shape selectivity compared
+287 to other medium-pore frameworks. Similarly to Fig. 2b, combining the plots from Fig. 4a
+288 leads to the selectivity maps for some medium-pore zeolites in Fig. 4b. This map allows
+289 interpreting the results of the binding metrics using the molecular shape descriptor. For
+290 instance, STI can be synthesized either with small molecules such as tetraethylammonium
+291 or with diquaternary molecules twice as long as these templates, indicating its appearance
+292 both at values of axis 1 close to 6 and 12 A ̊. Similarly, selectivity towards MWW and SFG
+14
+
+
+293 increases as the size of the molecule also increases. The wide, yet short cavities of CSV favor
+294 templates with larger values of axis 2, while the side pockets of EUO favor molecules with
+295 more elongated shapes.
+Figure 4: a, Selectivity map of OSDAs towards medium-pore zeolites. b, OSDAs known and proposed for the synthesis of CSV. These molecules exhibit favorable c, volume, and d, shape towards this framework.
+296 Figures S40-S65 show examples of OSDAs from the literature whose volumes and shapes
+297 approach ideal values for medium-pore zeolites, as derived from simulation results. In addi
+298 tion to the structures shown in Fig. 4b, other “cage-like” zeolite structures that display
+299 clear shape selectivity towards OSDAs, as evidenced by volumes and shapes that opti
+300 mize the binding energy, include EWS (Fig. S45) or IFW (Fig. S47). One-dimensional,
+15
+
+
+301 medium-pore zeolites such as MTT (Fig. S55) or STF (Fig. S60) also exhibit binding
+302 curves with shape selectivity due to the commensurability of the OSDAs with respect to
+303 the unit cell44 or the undulation of the pore. To exemplify how OSDAs can be repurposed
+304 for the synthesis of zeolites recently discovered, thus with few known synthesis routes, we
+305 selected the example of CSV zeolite. This framework has been discovered with the use of a
+306 diquarternary imidazolium-based OSDA, and can also be synthesized using the 2-ethyl-1,3
+307 dimethylimidazolium (Fig. 4c).52 The selectivity of OSDAs for this zeolite is demonstrated
+308 by the minimum of binding energy for molecules with about 140  ̊A3 of volume, when two
+309 OSDAs occupy the main CSV cage, and around 280  ̊A3, when only one OSDA can occupy
+310 this same cavity. Figure 4c shows three repurposed OSDAs with volumes close to the ideal
+311 280  ̊A3 per cavity (Fig. 4d). In particular, the sparteinium-based molecules can be prepared
+312 with one or two quaternary nitrogens, which can be an advantage if two positive charges per
+313 cage are necessary to stabilize the CSV framework. In addition, these molecules lie around a
+314 minimum of binding energy in the shape space, as evidenced by the appearance of a brighter
+315 area in Fig. 4e. Therefore, the data-driven analysis proposes OSDAs 2-4 from Fig. 4c as
+316 novel candidates for the synthesis of CSV zeolites.
+317 Large-pore zeolites
+318 Large-pore zeolites make the most of the synthetic zeolite market, and are dominated mostly
+319 by frameworks such as FAU, Beta or MOR. The large cavities and pores enable these materi
+320 als to be used not only for cracking or catalytic upgrading of larger hydrocarbons, but also to
+321 process biomass-based chemicals.49 One of the main challenges in the synthesis of large-pore
+322 zeolites is obtaining high Si/Al ratios required in several catalytic processes. While OSDAs
+323 can help achieving high quality zeolites, designing templates that selectively direct the crys
+324 tallization of large-pore zeolites can be challenging. Figures 5a,b show the shape selectivity
+325 diagram for a few zeolites. Contrary to small- and medium-pore zeolites, large-pore frame
+326 works do not exhibit the same distinct shape selectivity. Although the confinement effects
+16
+
+
+327 of each framework are system-specific, binding energies may vary substantially according to
+328 the template, and may not always be ascribed to its shape. As a result, domains of shape
+329 selectivity are not as clearly observed as in Figs. 2 or 4.
+Figure 5: a, Selectivity map of OSDAs colored according to the best host among large-pore zeolites. Only a subset of large-pore zeolites is shown for clarity. b, OSDAs known and proposed for the synthesis of CON. These molecules exhibit c, favorable volume towards this framework. As with other large-pore zeolites, the d shape selectivity of CON is not as distinguishable as that from small- or medium-pore zeolites.
+330 Despite the absence of well-defined domains where OSDAs are selective towards mostly
+331 one large-pore framework, the design of templates based on shape and volume can still be
+332 performed for these zeolites. Figure 5c shows an example of OSDAs repurposed for the CIT
+333 1 (CON) zeolite. This framework contains 12-ring channels intersecting 10-ring channels at
+334 non-perpendicular angles. Due to this unique structure, the crystallization of this framework
+335 has been realized mostly with complex OSDAs, some of which may form molecular aggregates
+336 to fill the intersections accordingly. Nevertheless, Fig. 5d shows that other OSDAs may be
+337 effective towards the synthesis of this framework. In particular, the trisquaternary OSDA
+17
+
+
+338 1 in Fig. 5c fits well into the angled pore intersection due to its flexibility and distinct
+339 shape. OSDA 2 has volume and binding energy similar to OSDA 1, yet exhibit no rotatable
+340 bonds. Instead of occupying both channels in the intersection, OSDA 2 achieves high binding
+341 strength by occupying the 10-ring channel. Similarly, OSDA 3 fills this channel with a larger
+342 loading due to its smaller volume yet shape comparable to OSDA 2 (Fig. 5e), decreasing
+343 the binding energy even more. This template is similar to the OSDA proposed by Okubo
+344 et al. when cost-aware molecular generation algorithms are employed,24 but has a higher
+345 volume and thus may have a better pore-filling ability. Nevertheless, despite the local binding
+346 energy minimum around OSDA volumes of 200 A ̊3 for CON zeolite, it is unclear whether
+347 the framework can be synthesized using smaller molecules such as OSDA 3.
+348 Figures S66-S99 showcase selected OSDAs with favorable volumes and shapes for the
+349 synthesis of large-pore zeolites. Frameworks of interest which could be synthesized using
+350 repurposed OSDAs include BEA (Fig. S70), BEC (Fig. S71), BOG (Fig. S72), GME (Fig.
+351 S78), ISV (Fig. S79), or LTL (Fig. S84). Given the nature of the large pores and cavities, all
+352 these zeolites could require rather large OSDAs to achieve high silicon to aluminum ratios.
+353 Frameworks with cavity-like substructures such as IWS (Fig. S82), MEI (Fig. S86), or MOZ
+354 (Fig. S88) generally display higher shape selectivity, as supported by the binding patterns
+355 emerging from volumes and shapes of OSDAs docked in the frameworks. Structures for which
+356 few OSDAs are known, such as SSF (Fig. S70), could find new practical applications if lower
+357 cost synthesis routes were enabled by new templates. Furthermore, structures synthesized
+358 only as zeotypes such as SFO (Fig. S95) may be realized with selective OSDAs that could
+359 enable their synthesis as aluminosilicates. In summary, although large-pore zeolites are not
+360 as shape-selective as their small- or medium-pore counterparts, OSDAs may still be proposed
+361 for them using binding energies, volume and shape as interpretable design metrics.
+18
+
+
+362 Extra large-pore zeolites
+363 Beyond large-pore zeolites, structures containing rings of size larger than 12 framework
+364 sites are called extra large-pore zeolites. Their well-defined crystallinity and active site
+365 distributions contrasts with mesoporous materials, making extra large-pore zeolites potential
+366 candidates for shape-selective catalysis.53,54 However, synthesizing extra large-pore zeolites
+367 exhibiting thermal stability, adequate acidity, and low cost is challenging.55,56 Often, extra
+368 large-pore frameworks are synthesized as zeotypes or germanosilicates, or require expensive
+OSDAs to be produced.54
+369
+370 Given the aperture sizes in these structures and the lead from large-pore zeolites, shape
+371 selectivity in these frameworks may not be achieved in the same way as small- or medium
+372 pore zeolites. Rather, the tendency to form molecular aggregates to occupy the void space
+373 in zeolites may not be fully predicted by simulations.27 Nevertheless, a few selected zeolites
+374 exhibit binding energy minima in volume plots, suggesting that certain molecular volumes
+375 and shapes can increase the binding strength by maximizing the pore-filling effects through
+376 control of loading. Figures S100-S109 show a few examples of binding energy plots and
+377 OSDAs selected for extra large-pore frameworks. Zeolites such as OSO (Fig. S105) exhibit
+378 distinct shape selectivity, with a narrow range of OSDA volumes leading to low binding
+379 energies, although it may require beryllium to be synthesized. Structures such as CFI (Fig.
+380 S101), SFH (Fig. S106), and SFN (Fig. S107) show a minimum in energy for a given
+381 volume, although this may be related to the short lengths of the unit cell parameter in the
+382 pore direction. Frameworks such as IRR (Fig. S103), ITT (Fig. S104), or VFI (Fig. S109)
+383 have broad pores and cavities, enabling higher loadings of small molecules that minimize the
+384 overall binding energy per SiO2, although the structure-directing role of heteroatoms may
+385 play a more important role in these frameworks than the OSDA alone.54 In zeolites such as
+386 VFI, large templates such as OSDA 2 in Fig. S109 can have low phase competition towards
+387 the extra-large pore zeolite despite not forming molecular aggregates. This stems from the
+388 impossibility of docking larger templates into zeolites with smaller cavities or pores, thus
+19
+
+
+389 reducing phase competition effects in OSDA-based synthesis. Finally, frameworks such as
+390 CTH (Fig. S102) and UTL (Fig. S108) show two distinct energy minima, corresponding
+391 to the different sizes of intersecting two-dimensional pores. Although the synthesis of extra
+392 large-pore zeolites may depend on factors beyond OSDAs, the design principles from volume
+393 matching may help choosing adequate pore-fillers to realize these frameworks, whose diversity
+394 is still limited in the field.
+395 Dual-OSDA design
+396 In addition to designing single OSDAs to one framework as before, the shape-based OSDA
+397 descriptors can aid the selection of templates for dual-OSDA approaches. While in several
+398 cases the use of multiple templates to synthesize a particular zeolite is undesirable due to
+399 added synthesis costs, as in the case of intergrowth structures,27,44 in many other examples
+400 the approach can enable synthesizing structures with previously unattainable compositions.
+401 One of the most common cases in the literature is the synthesis of high-silica LTA framework
+402 with two OSDAs.57–59 In this framework, one of the OSDAs directs the formation of the sod
+403 cage, whereas the other crystallizes the lta cavity. In general, tetramethylammonium is used
+404 to crystallize the former, and another template is used to crystallize the latter. Although the
+dual-OSDA approach does not always lead to product frameworks matching this intuition,60
+405
+406 the analogy may be combined with the shape descriptors to rationalize the selection of other
+407 synthesis routes.
+408 One zeolite that could be of commercial interest in its high-silica form is the KFI frame
+409 work. The synthetic form of this material is usually synthesized with methylated diquat
+410 ernized DABCO or the 18-crown-6-ether, but only in low Si/Al ratios.46 This has hindered
+411 a broader application of KFI for catalysis, and, to our knowledge, no synthesis route for
+412 KFI with high Si/Al ratio has yet been reported. To propose a route for crystallization of
+413 KFI zeolite with a dual-OSDA approach, we analyzed the binding energies of OSDAs from
+414 the literature towards this material. Figure 6 shows how the use of two distinct OSDAs for
+20
+
+
+415 the synthesis of KFI can be derived from the binding and shape metrics. In particular, we
+416 propose that in addition to selecting an OSDA for crystallizing the lta cage, tetraethylam
+417 monium may help directing the formation of the KFI zeolite. This is evidenced by the two
+418 binding energy minima in Fig. 6b, and by the two low-competition regions in the shape
+419 space of Fig. 6c. Similar to the dual OSDA approach of LTA (Fig. S110c), tetraethylam
+420 monium is a low-cost template that is selective towards the pau cavity present in KFI (Fig.
+421 S110a,b). This is further supported by the binding energy curve of MER zeolite, which is
+422 formed mostly by the pau building unit and has tetraethylammonium as one of its ideal
+423 molecules in terms of volume and shape (Fig. S110d). Experimental results have also shown
+424 that tetraethylammonium OSDAs are located in these pau cavities in the synthesis of KFI
+425 with multi-inorganic cations, although only with low Si/Al ratios.61 Although quantifying
+426 phase competition within dual-OSDA scenarios with a single figure of metric for OSDA
+427 combinations has not been demonstrated yet, decomposing the OSDA design into steps, as
+428 allowed by the shape and volume metrics, may help achieving zeolites with a diversity of
+429 cavities and functions.
+Binding (SiO2)
+Competition (SiO2)
+N+
+O
+N
+O
+O
+N
+OO
+O
+ab c
+100 200 300 400 Volume (Å3)
+-14
+-12
+-10
+-8
+-6
+-4
+-2
+0
+2
+1
+KFI
+4 6 8 10 12 14 Axis 1 (Å)
+3
+4
+5
+6
+7
+8
+9
+10
+Axis 2 (Å)
+2
+1
+KFI 2
+4
+6
+8
+10
+12
+14
+1
+2
+Figure 6: a, OSDAs proposed to crystallize KFI zeolite in a dual-OSDA approach. Each of the OSDAs targets one cavity in the KFI framework, and have different b, volumes and c, shapes.
+21
+
+
+430 Discussion
+431 This work shows how existing OSDAs may be applied to the synthesis of diverse zeolites
+432 not previously associated with them, based on binding, volume, and shape arguments. This
+433 “repurposing” strategy has been empirically used in the field for decades, as best exemplified
+434 by templates such as tetraethylammonium. This OSDA is known to yield a variety of
+435 frameworks in numerous conditions, making these syntheses attractive due to smaller costs
+436 of the template.62 Another example of this computational repurposing strategy is the use of
+437 6-azaspiro[5.6]dodecan-6-ium in the synthesis of CHA. Although the low selectivity of this
+438 template had been taken as a drawback in the past,63 its ability to direct the formation of
+439 more than one framework was used as a feature to direct the synthesis of SSZ-13 while also
+controlling its aluminum distribution.27
+440
+441 The strategy in this work is backed by retrospective analysis of literature data, and has
+442 supported experimental validation in recent works.27 Nevertheless, improving some of the
+443 approximations may lead to even more accurate and predictive models. For instance, it
+444 is still unclear whether a small set of simple molecular descriptors can predict all phases
+445 arising from zeolite synthesis. “True negative” data points in zeolite synthesis are rarely
+446 established due to the dimensionality of synthesis conditions beyond organic templates. For
+447 example, combinations of inorganic structure-directing agents have a major influence in the
+448 crystallized zeolites,64 and may enable the control of new topologies or compositions.65 Sim
+449 ilarly, residual inorganic cations from the OSDA synthesis can also drive the formation of
+450 competing phases.66 Differences in the intrinsic stability of zeolite frameworks can also play
+451 a role during nucleation and growth of zeolites, potentially influencing the outcome of the
+452 synthesis. Future predictions may benefit from the simulation of phase selectivity during
+453 these kinetic processes,67,68 enabling a better understanding of the crystallization mecha
+454 nism beyond host-guest interactions. Finally, heteroatom distributions and concentration
+455 can also change the free energy of frameworks69,70 and affect the final phase selectivity of
+456 templates.71 Therefore, the limits of repurposing approaches have still to be determined both
+22
+
+
+457 from experimental and theoretical investigations.
+458 From the computational side, the lack of electrostatics, heteroatoms, or inorganic structure
+459 directing agents in the methods from this work only enable a first selection of OSDAs accord
+460 ing to their templating effects from shape-matching. Once good templates are selected, more
+461 expensive calculations can be performed to understand heteroatom distributions, kinetics of
+462 crystallization, or framework stability. Because this work relies on classical force fields as a
+463 first layer of simulation, limitations in the force field parametrization may result in errors,
+464 such as poor estimates of guest-guest interactions or zeolite formation enthalpies.34 These
+465 may bias the predicted OSDA loadings and host stabilization energies. Although correlations
+466 between zeolite synthetic accessibility and OSDA descriptors have been derived using the
+467 approximations shown in this work,27 new computational methods are required to accelerate
+468 predictions of electrostatic effects in templated zeolite synthesis at scale.
+469 Even with qualitative design rules, however, computational modeling can provide flexi
+470 bility in the selection of templates for zeolite synthesis. The dual-OSDA rationalization from
+471 shape and volume descriptors show how the geometric metrics enable OSDA design even in
+472 the absence of simulations. Similarly, the selectivity maps can show how phase competition
+473 can be controlled by designing templates with different shapes, which is also useful for the
+474 synthesis of intergrown frameworks,44 or for rationalizing low shape selectivity in synthesis
+475 of large- and extra-large pore zeolites. By abstracting away the complexity of molecular
+476 conformation, aggregation, and docking in zeolite synthesis, it is possible to bypass compu
+477 tational simulations when designing templates without sacrificing the intuition behind each
+478 descriptor.
+479 Conclusion
+480 In summary, we analyzed a dataset of binding energies to repurpose known OSDAs for the
+481 synthesis of over one hundred zeolites. The data-driven analysis shows that a combination
+23
+
+
+482 of binding metrics and geometric descriptors of templates may help the selection of OSDAs
+483 that are good binders towards the structures of interest. The data also shows that selectivity
+484 maps can be constructed for selected small- and medium-pore zeolites, where frameworks
+485 exhibit higher shape selectivity in the templated synthesis. On the other hand, large-pore
+486 frameworks seem to have lower shape selectivity due to larger openings. Furthermore, the
+487 binding-volume plots may help the selection of OSDAs for zeolites in a dual-template ap
+488 proach. Using the case of LTA zeolite as a reference, we propose the use of tetraethylam
+489 monium for the synthesis of KFI, aiding the crystallization of its pau cages. This work
+490 provides examples of alternative OSDAs for several zeolites in the literature, and may be
+491 a comprehensive reference for future experimental attempts in the synthesis of frameworks
+492 with different compositions or synthesis routes.
+493 Supporting Information Available
+494 Repurposed OSDAs, binding energies, and shape space for 109 zeolites; illustration of the
+495 dual-OSDA approach.
+496 Acknowledgement
+497 This work was supported by the MIT Energy Initiative (MITEI) and MIT International
+498 Science and Technology Initiatives (MISTI) Seed Funds. D.S.-K. was additionally funded
+499 by the MIT Energy Fellowship. The authors acknowledge CSIC for the support through the
+500 I-link+ Program (LINKA20381). Computer calculations were executed at the Massachusetts
+501 Green High-Performance Computing Center with support from MIT Research Computing.
+24
+
+
+502 Data and Code Availability
+503 The simulation data used in this work is available in Ref. 27. All templates, zeolites, and
+504 metrics are available as interactive figures at https://zeodb.mit.edu. The code used to
+505 reproduce the plots in this work is available at https://github.com/learningmatter-mit/
+506 Zeolite-Repurposing-Templates (persistent link at Ref. 72).
+507 References
+508 (1) Davis, M. E. Ordered porous materials for emerging applications. Nature 2002, 417,
+509 813–821.
+510 (2) Vermeiren, W.; Gilson, J.-P. Impact of Zeolites on the Petroleum and Petrochemical
+511 Industry. Topics in Catalysis 2009, 52, 1131–1161.
+512 (3) Li, Y.; Yu, J. Emerging applications of zeolites in catalysis, separation and host–guest
+513 assembly. Nature Reviews Materials 2021, 6, 1156–1174.
+514 (4) Li, Y.; Li, L.; Yu, J. Applications of Zeolites in Sustainable Chemistry. Chem 2017, 3,
+515 928–949.
+516 (5) Moliner, M.; Rey, F.; Corma, A. Towards the Rational Design of Efficient Organic
+517 Structure-Directing Agents for Zeolite Synthesis. Angewandte Chemie International
+518 Edition 2013, 52, 13880–13889.
+519 (6) Lin, L.-C.; Berger, A. H.; Martin, R. L.; Kim, J.; Swisher, J. A.; Jariwala, K.;
+520 Rycroft, C. H.; Bhown, A. S.; Deem, M. W.; Haranczyk, M.; Smit, B. In silico screening
+521 of carbon-capture materials. Nature Materials 2012, 11, 633–641.
+522 (7) Bai, P.; Jeon, M. Y.; Ren, L.; Knight, C.; Deem, M. W.; Tsapatsis, M.; Siepmann, J. I.
+523 Discovery of optimal zeolites for challenging separations and chemical transformations
+524 using predictive materials modeling. Nature Communications 2015, 6, 5912.
+25
+
+
+525 (8) Gallego, E. M.; Portilla, M. T.; Paris, C.; Leo ́n-Escamilla, A.; Boronat, M.; Moliner, M.;
+526 Corma, A. ”Ab initio” synthesis of zeolites for preestablished catalytic reactions. Science
+527 2017, 355, 1051–1054.
+528 (9) Cundy, C. S.; Cox, P. A. The hydrothermal synthesis of zeolites: History and develop
+529 ment from the earliest days to the present time. Chemical Reviews 2003, 103, 663–701.
+530 (10) Cundy, C. S.; Cox, P. A. The hydrothermal synthesis of zeolites: Precursors, inter
+531 mediates and reaction mechanism. Microporous and Mesoporous Materials 2005, 82,
+532 1–78.
+533 (11) Lobo, R. F.; Zones, S. I.; Davis, M. E. Structure-direction in zeolite synthesis. Journal
+534 of Inclusion Phenomena and Molecular Recognition in Chemistry 1995, 21, 47–78.
+535 (12) Xie, B.; Song, J.; Ren, L.; Ji, Y.; Li, J.; Xiao, F.-S. Organotemplate-Free and Fast
+536 Route for Synthesizing Beta Zeolite. Chemistry of Materials 2008, 20, 4533–4535.
+537 (13) Maldonado, M.; Oleksiak, M. D.; Chinta, S.; Rimer, J. D. Controlling crystal poly
+538 morphism in organic-free synthesis of Na-zeolites. Journal of the American Chemical
+539 Society 2013, 135, 2641–2652.
+540 (14) Goel, S.; Zones, S. I.; Iglesia, E. Synthesis of Zeolites via Interzeolite Transformations
+541 without Organic Structure-Directing Agents. Chemistry of Materials 2015, 27, 2056
+542 2066.
+543 (15) Itabashi, K.; Kamimura, Y.; Iyoki, K.; Shimojima, A.; Okubo, T. A Working Hypoth
+544 esis for Broadening Framework Types of Zeolites in Seed-Assisted Synthesis without
+545 Organic Structure-Directing Agent. Journal of the American Chemical Society 2012,
+546 134, 11542–11549.
+547 (16) Schwalbe-Koda, D.; Jensen, Z.; Olivetti, E.; Go ́mez-Bombarelli, R. Graph similarity
+26
+
+
+548 drives zeolite diffusionless transformations and intergrowth. Nature Materials 2019,
+549 18, 1177–1181.
+550 (17) Li, J.; Corma, A.; Yu, J. Synthesis of new zeolite structures. Chemical Society Reviews
+551 2015, 44, 7112–7127.
+552 (18) Lewis, D. W.; Freeman, C. M.; Catlow, C. R. A. Predicting the templating ability
+553 of organic additives for the synthesis of microporous materials. Journal of Physical
+554 Chemistry 1995, 99, 11194–11202.
+555 (19) Sastre, G.; Cantin, A.; Diaz-Caban ̃as, M. J.; Corma, A. Searching Organic Structure
+556 Directing Agents for the Synthesis of Specific Zeolitic Structures: An Experimentally
+557 Tested Computational Study. Chemistry of Materials 2005, 17, 545–552.
+558 (20) Pophale, R.; Daeyaert, F.; Deem, M. W. Computational prediction of chemically syn
+559 thesizable organic structure directing agents for zeolites. Journal of Materials Chemistry
+560 A 2013, 1, 6750–6760.
+561 (21) Schmidt, J. E.; Deem, M. W.; Lew, C.; Davis, T. M. Computationally-Guided Synthesis
+562 of the 8-Ring Zeolite AEI. Topics in Catalysis 2015, 58, 410–415.
+563 (22) Brand, S. K.; Schmidt, J. E.; Deem, M. W.; Daeyaert, F.; Ma, Y.; Terasaki, O.;
+564 Orazov, M.; Davis, M. E. Enantiomerically enriched, polycrystalline molecular sieves.
+565 Proceedings of the National Academy of Sciences of the United States of America 2017,
+566 114, 5101–5106.
+567 (23) Le ́on, S.; Sastre, G. Computational Screening of Structure-Directing Agents for the
+568 Synthesis of Pure Silica ITE Zeolite. Journal of Physical Chemistry Letters 2020, 11,
+569 6164–6167.
+570 (24) Muraoka, K.; Chaikittisilp, W.; Okubo, T. Multi-objective de novo molecular design
+27
+
+
+571 of organic structure-directing agents for zeolites using nature-inspired ant colony opti
+572 mization. Chemical Science 2020, 11, 8214–8223.
+573 (25) Jensen, Z.; Kwon, S.; Schwalbe-Koda, D.; Paris, C.; G ́omez-Bombarelli, R.; Roma ́n
+574 Leshkov, Y.; Corma, A.; Moliner, M.; Olivetti, E. A. Discovering Relationships between
+575 OSDAs and Zeolites through Data Mining and Generative Neural Networks. ACS Cen
+576 tral Science 2021, 7, 858–867.
+577 (26) Jensen, Z.; Kim, E.; Kwon, S.; Gani, T. Z. H.; Roma ́n-Leshkov, Y.; Moliner, M.;
+578 Corma, A.; Olivetti, E. A Machine Learning Approach to Zeolite Synthesis Enabled by
+579 Automatic Literature Data Extraction. ACS Central Science 2019, 5, 892–899.
+580 (27) Schwalbe-Koda, D. et al. A priori control of zeolite phase competition and intergrowth
+581 with high-throughput simulations. Science 2021, 374, 308–315.
+582 (28) Burton, A. W.; Lee, G. S.; Zones, S. I. Phase selectivity in the syntheses of cage-based
+583 zeolite structures: An investigation of thermodynamic interactions between zeolite hosts
+584 and structure directing agents by molecular modeling. Microporous and Mesoporous
+585 Materials 2006, 90, 129–144.
+586 (29) Zones, S. I.; Burton, A. W.; Lee, G. S.; Olmstead, M. M. A study of piperidinium
+587 structure-directing agents in the synthesis of silica molecular sieves under fluoride-based
+588 conditions. Journal of the American Chemical Society 2007, 129, 9066–9079.
+589 (30) Schmidt, J. E.; Deem, M. W.; Davis, M. E. Synthesis of a Specified, Silica Molec
+590 ular Sieve by Using Computationally Predicted Organic Structure-Directing Agents.
+591 Angewandte Chemie International Edition 2014, 53, 8372–8374.
+592 (31) Pushpakom, S.; Iorio, F.; Eyers, P. A.; Escott, K. J.; Hopper, S.; Wells, A.; Doig, A.;
+593 Guilliams, T.; Latimer, J.; McNamee, C.; Norris, A.; Sanseau, P.; Cavalla, D.; Pir
+594 mohamed, M. Drug repurposing: progress, challenges and recommendations. Nature
+595 Reviews Drug Discovery 2019, 18, 41–58.
+28
+
+
+596 (32) Ch. Baerlocher and L.B. McCusker. Database of Zeolite Structures. URL http://www.
+597 iza-structure.org/databases/ (accessed 2022-01-07).
+598 (33) Sanders, M. J.; Leslie, M.; Catlow, C. R. A. Interatomic potentials for SiO2. Journal
+599 of the Chemical Society, Chemical Communications 1984, 1271–1273.
+600 (34) Schwalbe-Koda, D.; Gomez-Bombarelli, R. Benchmarking binding energy calculations
+601 for organic structure-directing agents in pure-silica zeolites. Journal of Chemical Physics
+602 2021, 154, 174109.
+603 (35) Landrum, G. RDKit: Open-source cheminformatics. URL www.rdkit.org (accessed
+604 2022-01-07).
+605 (36) Halgren, T. A. Merck molecular force field. I. Basis, form, scope, parameterization, and
+606 performance of MMFF94. Journal of Computational Chemistry 1996, 17, 490–519.
+607 (37) Tosco, P.; Stiefl, N.; Landrum, G. Bringing the MMFF force field to the RDKit: im
+608 plementation and validation. Journal of Cheminformatics 2014, 6, 37.
+609 (38) Schwalbe-Koda, D.; Gomez-Bombarelli, R. Supramolecular Recognition in Crystalline
+610 Nanocavities Through Monte Carlo and Voronoi Network Algorithms. Journal of Phys
+611 ical Chemistry C 2021, 125, 3009–3017.
+612 (39) Bae, J.; Hong, S. B. Conformation of intrazeolitic choline ions and the framework
+613 topology of zeolite hosts. Chemical Science 2018, 9, 7787–7796.
+614 (40) Ke, Q.; Khalil, I.; Smeyers, B.; Li, Z.; de Oliveira-Silva, R.; Sels, B.; Sakellariou, D.;
+615 Dusselier, M. A Cooperative OSDA Blueprint for Highly Siliceous Faujasite Zeolite Cat
+616 alysts with Enhanced Acidity Accessibility. Angewandte Chemie International Edition
+617 2021, 133, 24391–24399.
+618 (41) Gale, J. D. GULP: A computer program for the symmetry-adapted simulation of solids.
+619 Journal of the Chemical Society-Faraday Transactions 1997, 93, 629–637.
+29
+
+
+620 (42) Gale, J. D.; Rohl, A. L. The General Utility Lattice Program (GULP). Molecular
+621 Simulation 2003, 29, 291–341.
+622 (43) Mayo, S. L.; Olafson, B. D.; Goddard, W. A. DREIDING: A generic force field for
+623 molecular simulations. Journal of Physical Chemistry 1990, 94, 8897–8909.
+624 (44) Schwalbe-Koda, D.; Corma, A.; Roma ́n-Leshkov, Y.; Moliner, M.; Go ́mez
+625 Bombarelli, R. Data-Driven Design of Biselective Templates for Intergrowth Zeolites.
+626 The Journal of Physical Chemistry Letters 2021, 12, 10689–10694.
+627 (45) Moliner, M.; Martı ́nez, C.; Corma, A. Synthesis Strategies for Preparing Useful Small
+628 Pore Zeolites and Zeotypes for Gas Separations and Catalysis. Chemistry of Materials
+629 2014, 26, 246–258.
+630 (46) Dusselier, M.; Davis, M. E. Small-Pore Zeolites: Synthesis and Catalysis. Chemical
+631 Reviews 2018, 118, 5265–5329.
+632 (47) Davis, T. M.; Liu, A. T.; Lew, C. M.; Xie, D.; Benin, A. I.; Elomari, S.; Zones, S. I.;
+633 Deem, M. W. Computationally Guided Synthesis of SSZ-52: A Zeolite for Engine Ex
+634 haust Clean-up. Chemistry of Materials 2016, 28, 708–711.
+635 (48) Rahimi, N.; Karimzadeh, R. Catalytic cracking of hydrocarbons over modified ZSM-5
+636 zeolites to produce light olefins: A review. Applied Catalysis A: General 2011, 398,
+637 1–17.
+638 (49) Martı ́nez, C.; Corma, A. Inorganic molecular sieves: Preparation, modification and
+639 industrial application in catalytic processes. Coordination Chemistry Reviews 2011,
+640 255, 1558–1580.
+641 (50) Bellussi, G.; Millini, R.; Pollesel, P.; Perego, C. Zeolite science and technology at Eni.
+642 New Journal of Chemistry 2016, 40, 4061–4077.
+30
+
+
+643 (51) Maesen, T. L. M.; Schenk, M.; Vlugt, T. J. H.; De Jonge, J. P.; Smit, B. The shape
+644 selectivity of paraffin hydroconversion on TON-, MTT-, and AEL-type sieves. Journal
+645 of Catalysis 1999, 188, 403–412.
+646 (52) Schmidt, J. E.; Xie, D.; Rea, T.; Davis, M. E. CIT-7, a crystalline, molecular sieve with
+647 pores bounded by 8 and 10-membered rings. Chemical Science 2015, 6, 1728–1734.
+648 (53) Corma, A.; D ́ıaz-Caban ̃as, M. J.; Jorda ́, J. L.; Mart ́ınez, C.; Moliner, M. High
+649 throughput synthesis and catalytic properties of a molecular sieve with 18- and 10
+650 member rings. Nature 2006, 443, 842–845.
+651 (54) Jiang, J.; Yu, J.; Corma, A. Extra-Large-Pore Zeolites: Bridging the Gap between
+652 Micro and Mesoporous Structures. Angewandte Chemie International Edition 2010,
+653 49, 3120–3145.
+654 (55) Burton, A.; Elomari, S.; Chen, C.-Y.; Medrud, R. C.; Chan, I. Y.; Bull, L. M.; Kibby, C.;
+655 Harris, T. V.; Zones, S. I.; Vittoratos, E. S. SSZ-53 and SSZ-59: Two Novel Extra-Large
+656 Pore Zeolites. Chemistry – A European Journal 2003, 9, 5737–5748.
+657 (56) Jiang, J.; Xu, Y.; Cheng, P.; Sun, Q.; Yu, J.; Corma, A.; Xu, R. Investigation of Extra
+658 Large Pore Zeolite Synthesis by a High-Throughput Approach. Chemistry of Materials
+659 2011, 23, 4709–4715.
+660 (57) Corma, A.; Rey, F.; Rius, J.; Sabater, M. J.; Valencia, S. Supramolecular self-assembled
+661 molecules as organic directing agent for synthesis of zeolites. Nature 2004, 431, 287
+662 290.
+663 (58) Boal, B. W.; Schmidt, J. E.; Deimund, M. A.; Deem, M. W.; Henling, L. M.;
+664 Brand, S. K.; Zones, S. I.; Davis, M. E. Facile Synthesis and Catalysis of Pure-Silica
+665 and Heteroatom LTA. Chemistry of Materials 2015, 27, 7774–7779.
+31
+
+
+666 (59) Ryu, T.; Ahn, N. H.; Seo, S.; Cho, J.; Kim, H.; Jo, D.; Park, G. T.; Kim, P. S.;
+667 Kim, C. H.; Bruce, E. L.; Wright, P. A.; Nam, I.-S.; Hong, S. B. Fully Copper
+668 Exchanged High-Silica LTA Zeolites as Unrivaled Hydrothermally Stable NH3-SCR
+669 Catalysts. Angewandte Chemie International Edition 2017, 56, 3256–3260.
+670 (60) Kumar, M.; Berkson, Z. J.; Clark, R. J.; Shen, Y.; Prisco, N. A.; Zheng, Q.; Zeng, Z.;
+671 Zheng, H.; McCusker, L. B.; Palmer, J. C.; Chmelka, B. F.; Rimer, J. D. Crystallization
+672 of Mordenite Platelets using Cooperative Organic Structure-Directing Agents. Journal
+673 of the American Chemical Society 2019, 141, 20155–20165.
+674 (61) Lee, H.; Shin, J.; Hong, S. B. Tetraethylammonium-mediated zeolite synthesis via a
+675 multiple inorganic cation approach. ACS Materials Letters 2021, 3, 308–312.
+676 (62) Bello, E.; Ferri, P.; Nero, M.; Willhammar, T.; Millet, I.; Schu ̈tze, F. W.; van Tende
+677 loo, L.; Vennestrøm, P. N.; Boronat, M.; Corma, A.; Moliner, M. NH3-SCR catalysts for
+678 heavy-duty diesel vehicles: Preparation of CHA-type zeolites with low-cost templates.
+679 Applied Catalysis B: Environmental 2022, 303, 120928.
+680 (63) Millini, R.; Carluccio, L.; Frigerio, F.; O’Neil Parker, W.; Bellussi, G. Zeolite synthesis
+681 in the presence of azonia-spiro compounds as structure-directing agents. Microporous
+682 and Mesoporous Materials 1998, 24, 199–211.
+683 (64) Shin, J.; Jo, D.; Hong, S. B. Rediscovery of the Importance of Inorganic Synthesis
+684 Parameters in the Search for New Zeolites. Accounts of Chemical Research 2019, 52,
+685 1419–1427.
+686 (65) Lee, H.; Shin, J.; Lee, K.; Choi, H. J.; Mayoral, A.; Kang, N. Y.; Hong, S. B. Synthesis
+687 of thermally stable SBT and SBS/SBT intergrowth zeolites. Science 2021, 373, 104
+688 LP – 107.
+689 (66) Du, J.; Yuan, R.; Lin, F.; Liao, L.; Yang, G.; Tao, F.; Cui, Y.; Kirschhock, C. E. Impact
+32
+
+
+690 of residual sodium cations in azonia-spiro templates on the formation of large and extra
+691 large pore zeolites. Microporous and Mesoporous Materials 2022, 336, 111891.
+692 (67) Bertolazzo, A. A.; Dhabal, D.; Molinero, V. Polymorph Selection in Zeolite Synthesis
+693 Occurs after Nucleation. The Journal of Physical Chemistry Letters 2022, 13, 977–981.
+694 (68) Bertolazzo, A. A.; Dhabal, D.; Lopes, L. J.; Walker, S. K.; Molinero, V. Unstable and
+695 Metastable Mesophases Can Assist in the Nucleation of Porous Crystals. The Journal
+696 of Physical Chemistry C 2022, 126, 3776–3786.
+697 (69) Muraoka, K.; Chaikittisilp, W.; Okubo, T. Energy Analysis of Aluminosilicate Zeolites
+698 with Comprehensive Ranges of Framework Topologies, Chemical Compositions, and
+699 Aluminum Distributions. Journal of the American Chemical Society 2016, 138, 6184
+700 6193.
+701 (70) Muraoka, K.; Sada, Y.; Miyazaki, D.; Chaikittisilp, W.; Okubo, T. Linking synthesis
+702 and structure descriptors from a large collection of synthetic records of zeolite materials.
+703 Nature Communications 2019, 10, 4459.
+704 (71) Schmidt, J. E.; Fu, D.; Deem, M. W.; Weckhuysen, B. M. Template–Framework Inter
+705 actions in Tetraethylammonium-Directed Zeolite Synthesis. Angewandte Chemie Inter
+706 national Edition 2016, 55, 16044–16048.
+707 (72) Schwalbe-Koda, D. learningmatter-mit/Zeolite-Repurposing-Templates: Code for:
+708 ”Repurposing Templates for Zeolite Synthesis from Simulations and Data Mining”
+709 (v1.0). Zenodo 2022, 10.5281/zenodo.6334746.
+33
+
+
+710 Graphical TOC Entry
+711
+34

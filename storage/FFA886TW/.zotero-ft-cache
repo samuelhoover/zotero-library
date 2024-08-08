@@ -1,0 +1,265 @@
+Gas-Phase and Liquid-State Properties of Esters, Nitriles, and Nitro Compounds with the OPLS-AA Force Field
+MELISSA L. P. PRICE, DENNIS OSTROVSKY, WILLIAM L. JORGENSEN Department of Chemistry, Yale University, New Haven, Connecticut 06520–8107
+Received 18 August 2000; revised 25 January 2001; accepted 9 February 2001
+Dedicated to Professor Paul von R. Schleyer
+ABSTRACT: Nonbonded and torsional parameters for carboxylate esters, nitriles, and nitro compounds have been developed for the OPLS-AA force field. In addition, torsional parameters for alkanes have been updated. These parameters were fit to reproduce ab initio gas-phase structures and conformational energetics, experimental condensed-phase structural and thermodynamic properties, and experimental free energies of hydration. The computed densities, heats of vaporization, and heat capacities for fifteen liquids are in excellent agreement with experimental values. The new parameters permit accurate molecular modeling of compounds containing a wider variety of functional groups, which are common in organic molecules and drugs. c© 2001 John Wiley & Sons, Inc. J Comput Chem 22: 1340–1352, 2001
+Keywords: OPLS force field; esters; nitriles; nitroalkanes; liquid state
+Introduction
+C
+omputer simulations of organic and biomolecular systems most commonly represent the intra- and intermolecular energetics with classical force fields.1 To this end, the OPLS-AA (optimized potentials for liquid simulations allatom) force field has been developed, with emphasis on simultaneously obtaining accurate descriptions of gas-phase conformational energetics
+Correspondence to: W. L. Jorgensen; e-mail: william.jorgensen@ yale.edu Contract/grant sponsor: National Institutes of Health; contract/grant number: GM32136
+and liquid-state properties.2 – 8 Parameters have previously been reported for alkanes,2, 3 alkenes,3 alcohols,3 ethers,3 acetals,3 thiols,3 sulfides,3 disulfides,3 aldehydes,3 ketones,3 amides,3 carboxylic acids,3, 4 carbohydrates,5 numerous heterocycles,6, 7 and amines.8 The present study extends the treatment to carboxylate esters, nitriles, and nitroalkanes, which represent additional common organic functional groups, and updated torsional parameters for alkanes are also provided. The parameters have been fit to reproduce structural data from experiment or HF/6-31G∗ calculations as well as experimental thermochemical properties of the pure liquids and dilute aqueous solutions. The liquidstate properties were calculated via Monte Carlo (MC) statistical mechanics simulations. Although
+Journal of Computational Chemistry, Vol. 22, No. 13, 1340–1352 (2001) ©c 2001 John Wiley & Sons, Inc.
+
+
+PROPERTIES OF ESTERS, NITRILES, AND NITRO COMPOUNDS
+OPLS united-atom (OPLS-UA) parameters were previously reported for acetonitrile and methyl acetate,9, 10 the coverage is broader with OPLS-AA, multiple nitriles and esters are treated here, and AA models are generally more accurate, including improved charge distributions and conformational energetics.2, 3
+Computational Details
+FORCE FIELD
+The molecules are represented by atom-centered interaction sites. The nonbonded energy between two molecules is determined by Coulomb and Lennard-Jones terms between all intermolecular pairs of sites, i and j, separated by a distance rij [eq. (1)]. The A and C parameters in eq. (1) are a function of the Lennard-Jones parameters, σ and ε, where Aii = 4εiσ 12
+i and Cii = 4εiσ 6
+i , and standard
+combining rules apply such that Aij = (AiiAjj)1/2 and Cij = (CiiCjj)1/2. The nonbonded energy term is also computed for all intramolecular interactions between sites separated by more than two bonds. The scaling factor fij is 1.0 except for intramolecular 1,4-interactions, where fij = 0.5. This permits use of the same charges and Lennard-Jones parameters for both the inter- and intramolecular nonbonded energies.3
+Enb = ∑
+i
+∑
+j>i
+( qiqje2
+rij
++ Aij
+r12
+ij
+− Cij
+r6
+ij
+)
+fij (1)
+For individual molecules, terms representing bond stretching, angle bending, and torsional energetics are also included [eq. (2)]. The bond stretching and angle bending energies are represented by harmonic terms [eqs. (3) and (4)], where many of the force constants K and the equilibrium positions, req and θeq, have been adopted from the AMBER all-atom force field.11, 12 The remaining parameters were chosen to reproduce vibrational frequencies from experimental data or HF/6-31G∗ calculations.
+Ebat = Ebond + Eangle + Etorsion (2)
+Ebond = ∑ bonds
+Kr(r − req)2 (3)
+Eangle = ∑ angles
+Kθ (θ − θeq)2 (4)
+Etorsion = ∑ i
+Vi
+1
+2
+[1 + cos(φi)] + Vi
+2
+2
+[1 − cos(2φi)]
++ Vi
+3
+2
+[1 + cos(3φi)] (5)
+The torsional energy is described by the Fourier series in eq. (5), where the sum is over all dihedral angles i, φi is the value of the dihedral angle, and the Vs are the Fourier coefficients, which are fit to reproduce experimental conformational data or torsional energetics from HF/6-31G∗ calculations. The total potential energy for a liquid, Etot, is then Enb plus the sum of the Ebats for all molecules.
+FITTING PROCEDURES
+Initial guesses for the partial charges were obtained by fitting to electrostatic potential surfaces from HF/6-31G∗ calculations,13 and most LennardJones parameters were assigned standard values.3 The charges and some Lennard-Jones parameters were then fine tuned in an iterative fashion to yield acceptable conformational energetics and pure liquid properties. Specifically, the nonbonded parameters were optimized by consideration of the gasphase torsional energetics and Monte Carlo results usually for only one low member of each series, i.e., methyl acetate, nitroethane, and acetonitrile. The nonbonded parameters for the larger members of the series were assigned by analogy and to maintain charge neutrality. Thus, the computed properties for the higher liquids are predictive. Rotational energy profiles for esters, nitriles, and nitro compounds were obtained at the HF/631G∗//HF/6-31G∗ level.14 The ab initio energies and structures were input into the program fitpar,15 and the Fourier coefficients for the specified dihedral angles were fit to reproduce the energy profiles, as previously described.3 HF/6-31G∗ calculations usually yield correct trends in barrier heights for rotation about single bonds.16 Although the absolute magnitudes of barrier heights are not consistently reproduced, this method has proven to be a reasonable source for conformational data in the absence of experimental results.17 Torsional energy profiles for seven dihedral angles were fit for the series of esters, and their remaining torsional parameters were taken from those for aldehydes, ketones, and ethers.3 The torsional parameters common to all esters were fit to methyl acetate, and parameters for unique dihedrals for systems with larger alkyl substituents were fit to those compounds. A similar procedure was used for parameterization of the nitro compounds. There were no dihedrals to parameterize for nitriles, because dihedral angles are undefined in cases where three of the four atoms are linear. The torsional parameters describing rotation about the C2—C3 single bond in propionitrile were taken from the similar
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1341
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PRICE, OSTROVSKY AND JORGENSEN
+entry for alkenes.3 Torsional parameters for saturated hydrocarbons have been previously reported;3 however, the Fourier coefficients have been refit to better reproduce the experimental data summarized by Allinger et al.18
+GAS-PHASE AND PURE LIQUID SIMULATIONS
+Monte Carlo (MC) statistical mechanics simulations were performed for a single monomer in the gas phase as well as for pure liquids. All MC and molecular mechanics calculations were performed with the BOSS program.19 The MC simulations used Metropolis sampling and periodic boundary conditions.20, 21 The pure liquid systems consisted of 267 monomers in a cubic cell with box sizes ranging from 29–38 Å on an edge. Equilibration periods extended for 4–6 million (M) configurations, and the thermodynamic properties were averaged for an additional 6–10 M configurations. These lengths were chosen to guarantee convergence of the properties (they fluctuate about mean values by the ends of the equilibration periods) and to yield small statistical uncertainties in their final values. The simulations were carried out in the isothermal–isobaric (NPT) ensemble at 25◦C and 1 atm. The intermolecular interactions were spherically truncated at center-ofmass separations of 9–15 Å, which were somewhat less than half the length of an edge of the cubic cell. A correction was made to the total energy for the Lennard-Jones interactions neglected beyond the cutoff.21 All internal degrees of freedom were allowed to vary in the molecules. Attempts to change the volume of the system (volume moves) were made every 600 configurations for the pure liquids. The ranges for intramolecular and intermolecular movements were adjusted to give overall accep
+tance rates of ca. 40% for new configurations. The uncertainties reported for the computed energies, volumes, and heat capacities (±1σ ) were calculated via the batch means procedure,20 with batch sizes of ca. 0.2 M configurations. All calculations were run on Silicon Graphics workstations or Pentium-based personal computers.
+Results and Discussion
+OPTIMIZED PARAMETERS
+The OPLS-AA nonbonded parameters developed in this study are reported in Tables I–II. Previously reported parameters for benzonitrile are included in Table II.22 The bond-stretching and angle-bending parameters for nitriles and nitro compounds are shown in Table III; the corresponding parameters for esters were taken from Charifson et al.12 The optimized Fourier coefficients for esters, nitriles, nitro compounds, and alkanes are shown in Table IV.
+GAS-PHASE STRUCTURES AND TORSIONAL ENERGETICS
+Relative energies from the OPLS-AA and HF/631G∗ calculations are compared for rotations about various dihedrals in esters and nitro compounds in Tables V and VI. In addition, conformational results for alkanes determined with the previous OPLS-AA torsional parameters3 and with the new parameters are compared to the best available experimental or ab intitio values in Table VII. The small changes in the torsional parameters for alkanes have negligible effect on the computed properties of lower alkane
+TABLE I. OPLS-AA Nonbonded Parameters and Atom Types for Carboxylate Esters.
+Atom Type Description q (e) σ (Å) ε (kcal/mol)
+C carbonyl C in aliphatic ester 0.510 3.75 0.105 O carbonyl O in ester −0.430 2.96 0.210 OS alkoxy O in aliphatic ester −0.330 3.00 0.170 CT methoxy carbon 0.160 3.50 0.066 CT ethoxy carbon 0.190 3.50 0.066 CT isopropoxy carbon 0.220 3.50 0.066 CT t-butoxy carbon 0.250 3.50 0.066 HC α-alkoxy hydrogen 0.030 2.42 0.015 C carbonyl C in benzoate 0.625 3.75 0.105 CA ipso C in benzoate 0.135 3.55 0.070 OS alkoxy O in benzoate −0.215 3.00 0.170
+1342 VOL. 22, NO. 13
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PROPERTIES OF ESTERS, NITRILES, AND NITRO COMPOUNDS
+TABLE II. OPLS-AA Nonbonded Parameters and Atom Types for Nitro Compounds and Nitriles.
+Atom Type Description q (e) σ (Å) ε (kcal/mol)
+NO N in nitroalkane 0.54 3.25 0.120 ON O in nitro group −0.37 2.96 0.170 CT α-C in nitromethane 0.02 3.50 0.066 CT α-C in nitroethane 0.08 3.50 0.066 CT α-C in 2-nitropropane 0.14 3.50 0.066 CT α-C in 2-methyl-2-nitropropane 0.20 3.50 0.066 HC α-H in nitroalkane 0.06 2.50 0.015 NO N in nitroarene 0.65 3.25 0.120 CA ipso C in nitroarene 0.09 3.55 0.070 NZ sp-N in alkylnitrile −0.56 3.20 0.170 CZ sp-C in alkylnitrile 0.46 3.30 0.066 CT α-C in acetonitrile −0.08 3.30 0.066 CT α-C in propionitrile −0.02 3.30 0.066 CT α-C in 2-cyanopropane 0.04 3.30 0.066 CT α-C in 2-cyano-2-methylpropane 0.10 3.30 0.066 HC α-H in nitrile 0.06 2.50 0.015 NZ NZ in arylnitrilea −0.43 3.20 0.170 CZ CZ in arylnitrilea 0.395 3.65 0.150 CA ipso C in arylnitrilea 0.035 3.55 0.070
+a Parameters from ref. 22.
+liquids. The average difference in relative energies between the OPLS-AA results and the experimental or ab initio values is ca. 0.1 kcal/mol. In addition, the relative energies for low-energy conformers are reproduced most accurately. Accurate representation of low-energy conformers is more crucial, because they are more highly populated. The correct prediction of the similar energies for the conformers at 90◦ and 150◦ for isopropyl acetate and for trans
+and gauche 1-nitropropane are particularly notable (Table V). The computed E/Z energy difference of 9.0 kcal/mol for methyl acetate is about 1 kcal/mol higher than the best available ab initio results and the experimental range of 7.5–8.5 kcal/mol.29 Gas-phase structures for six representative molecules are presented in Figures 1–3. The ab initio structures were fully optimized at the HF/631G∗//HF/6-31G∗ level,14 and the OPLS-AA struc
+TABLE III. Bond Stretching and Angle Bending Parameters for Nitro Compounds and Nitriles.
+Bond Stretching Angle Bending
+Kr Kθ
+Bond r0 (Å) (kcal/mol−1 Å2) Angle θ0 (deg) (kcal/mol−1 Å2)
+NO–ON 1.225 550.0 CT–NO–ON 117.5 80.0 CT–NO 1.490 375.0 CA–NO–ON 117.5 80.0 CA–NO 1.460 400.0 CT–CT–NO 111.1 63.0 HC–CT–NO 105.0 35.0 CA–CA–NO 120.0 85.0 ON–NO–ON 125.0 80.0 CZ–NZ 1.157 650.0 CT–CT–CZ 112.7 58.35 CT–CZ 1.458 385.0 HC–CT–CZ 108.5 35.00 CA–CZ 1.451 400.0 CA–CA–CZ 120.0 70.0 CT–CZ–NZ 180.0 150.0 CA–CZ–NZ 180.0 150.0
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1343
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PRICE, OSTROVSKY AND JORGENSEN
+TABLE IV. OPLS-AA Fourier Coefficients (kcal/mol) for Torsional Energy Functions.
+System Dihedral V1 V2 V3
+Ester HC–CT–C–OS 0.000 0.000 0.132 CT–C–OS–CT 4.669 5.124 0.000 HC–C–OS–CT 4.669 5.124 0.000 O–C–OS–CT 0.000 5.124 0.000 C–OS–CT–HC 0.000 0.000 0.198 CT–CT–C–OS 0.000 0.000 −0.553 CT–CT–OS–C −1.220 −0.126 0.422 Nitro HC–CT–NO–ON 0.000 0.000 0.000 HC–CT–CT–NO 0.000 0.000 −0.225 CT–CT–NO–ON 0.000 0.400 0.000 CA–CA–NO–ON 0.000 1.150 0.000 CT–CT–CT–NO −1.540 −0.214 0.000 Nitrile HC–CT–CT–CZ 0.000 0.000 0.366 Alkane HC–CT–CT–HC 0.000 0.000 0.300 HC–CT–CT–CT 0.000 0.000 0.300 CT–CT–CT–CT 1.300 −0.050 0.200
+tures were optimized with the BOSS program.19 The average differences are ca. 0.02 Å for bond lengths, 2◦ for angles, and 1◦ for dihedrals. In addition, the average differences between HF/6
+31G∗//HF/6-31G∗ and experimental bond lengths and angles are 0.02 Å and 1◦, respectively.16 HF/6-31G∗ results are known to overestimate dipole moments relative to gas-phase experimen
+TABLE V. Relative Energies (kcal/mol) for Conformations of Esters.
+Dihedral Molecule Conf. OPLS-AA HF/6-31G∗
+HC–CT–C–O methyl acetate 0 0 0 60 0.46 0.52 CT–OS–C–O 0 0 0 90 13.03 12.81 180 9.02 9.40 HC–CT–OS–C 0 1.31 1.35 90 0.60 0.69 180 0 0 CT–CT–C–O methyl propionate 0 0 0 60 1.04 1.13 120 0.87 0.97 180 1.60 1.65 HC–CT–CT–C 0 2.66 2.74 60 0 0 CT–CT–OS–C ethyl acetate 0 7.46 7.73 90 0.88 0.53 120 1.47 1.26 180 0 0 isopropyl acetate 0 6.90 7.30 90 0.03 0.05 120 0.61 0.65 150 0 0 240 6.73 7.19 300 2.29 2.69
+1344 VOL. 22, NO. 13
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PROPERTIES OF ESTERS, NITRILES, AND NITRO COMPOUNDS
+TABLE VI. Relative Energies (kcal/mol) for Conformations of Nitro Compounds.
+Dihedral Molecule Conf. OPLS-AA HF/6-31G∗
+HC–CT–NO–ON nitromethane 0 0.003 0.006 30 0 0 nitroethane 0 1.40 1.65 30 0 0 CT–CT–NO–ON 0 0.03 0.09 30 0.02 0.06 60 0 0 90 0.01 0.05 CT–CT–CT–NO 1-nitropropane 0 4.89 4.94 60 0 0 120 3.50 3.40 180 0 0.04
+tal values.16 OPLS-AA charges are also deliberately made to yield dipole moments that are higher than the experimental values,3 although the differences in the present cases are not too large (Table VIII). The enhanced charges are intended to account implicitly for polarization effects in solution in an average sense.3
+COMPLEXES WITH WATER
+Isolated complexes of representative molecules with water were fully optimized at the HF/631G∗//HF/6-31G∗ level. Although the resultant structures are in qualitative agreement with ab initio results at higher levels of theory,30 the interaction
+TABLE VII. Relative Energies (kcal/mol) for Conformations of Alkanes.
+OPLS-AA
+Dihedral Molecule Conf. Olda New “Best”
+HC–CT–CT–HC ethane eclipsed 3.01 2.84 2.88b staggered 0 0 0 HC–CT–CT–CT propane eclipsed 3.32 3.02 3.12c staggered 0 0 0 neopentane eclipsed 4.26 3.67 3.35d staggered 0 0 0 CT–CT–CT–CT butane cis 6.04 5.18 5.25e gauche 1.03 0.80 0.69f 120◦ 3.68 3.23 3.33e trans 0 0 0
+pentane trans/gauche 1.17 0.94 0.86g gauche+/gauche+ 2.36 1.89 1.62g gauche+/gauche− 3.83 3.30 3.51g trans/trans 0 0 0
+a Ref. 3. b Ref. 23. c Refs. 24, 25. d Ref. 18. e Ref. 26. f Ref. 27. g Ref. 28.
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1345
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PRICE, OSTROVSKY AND JORGENSEN
+FIGURE 1. Structural comparison of the lowest energy conformers of methyl acetate (top) and isopropyl acetate (bottom) from OPLS-AA and HF/6-31G∗ calculations (in parentheses).
+energies are ca. 20% too strong, owing to the enhanced polarization.16 The complexes were also optimized with the OPLS-AA force field using a rigid TIP4P water molecule.31 Comparisons of the results from the OPLS-AA and HF/6-31G∗ calculations are provided in Figures 4–5. Although the force field reproduces the ab initio results reasonably well, the OPLS in
+FIGURE 2. Structural comparison of the lowest energy conformers of nitromethane (top) and 2-nitropropane (bottom) from OPLS-AA and HF/6-31G∗ calculations (in parentheses).
+FIGURE 3. Structural comparison of the lowest energy conformers of acetonitrile (top) and 2-cyano-2-methyl-propane (bottom) from OPLS-AA and HF/6-31G∗ calculations (in parentheses).
+teraction energies are not intended to be identical with the HF/6-31G∗ ones, because adjustments are needed for the accurate reproduction of heats of vaporization and free energies of hydration. Similarly, the hydrogen bond lengths from OPLS-AA calculations generally need to be ca. 0.2 Å shorter than HF/6-31G∗ values to obtain correct liquid densities. The three complexes of methyl acetate–water with the strongest intermolecular interactions (Fig. 4) are similar to those determined in previous studies that used the OPLS united-atom force field.10, 32 Interestingly, the HF/6-31G∗ and OPLS-AA results both predict that an isolated water molecule prefers to hydrogen bond on the alkoxy side of the ester’s carbonyl oxygen (lower right in Fig. 4). On the other hand, a search of ester–water interactions in the Cambridge Crystallographic
+TABLE VIII. Dipole Moments.
+μ (D)
+Compound OPLS-AA Expta
+Methyl acetate 1.90 1.72 Nitromethane 3.81 3.56 Acetonitrile 4.12 3.53
+a Ref. 37.
+1346 VOL. 22, NO. 13
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PROPERTIES OF ESTERS, NITRILES, AND NITRO COMPOUNDS
+FIGURE 4. Optimized geometries of methyl acetate–water complexes from OPLS-AA and HF/6-31G∗ calculations (in parentheses).
+Data File reveals a higher frequency of occurrence of water molecules hydrogen bonded on the alkyl side of esters.33 Figure 5 shows the lowest energy complexes of nitromethane and acetonitrile with water. Although the former structure agrees well with the prior B3LYP/6–31+G(d(X+),p) optimized structure,30 the C—N· · ·O angle in the acetonitrile–water complex deviates significantly from the nearly linear geometry predicted by ab initio methods.30, 34 However, the OPLS-AA energy difference between the bent structure and one constrained
+FIGURE 5. Optimized geometries of hydrogen-bonded complexes of water with acetonitrile (top) and nitromethane (bottom) from OPLS-AA and HF/6-31G∗ calculations (in parentheses).
+to have the C—N· · ·O fragment linear is only 0.2 kcal/mol. Related to this, we do find that one must be careful with the choice of optimizers; for hydrogen-bonded complexes, nongradient methods often lead to the true minima more readily. In both cases, the OPLS-AA interaction energies are more favorable, as expected, than prior CBS-4 results of −3.7 and −4.3 kcal/mol for the complexes with nitromethane and acetonitrile, respectively.30
+LIQUID PROPERTIES
+Liquid densities and heats of vaporization are important measures of the size of the molecules and the strength of their interactions.21 The molecular volumes and densities determined from the MC simulations of the pure liquids are in good accord with the experimental data, as shown in Table IX, with an average difference of ca. 1.6%. The computed densities for esters tend to be slightly too high, while the opposite tendency is found for the nitro compounds and nitriles. The enthalpy of vaporization is calculated from eq. (6).3, 21 The energy of the molecule in
+Hvap = E(g) − Etot(l)/N + RT (6)
+the gas-phase, Eintra(g), was determined from an MC simulation of an isolated monomer. The total energy for the liquid, Etot(l), with N molecules in the periodic cell is the sum of the intramolecular and intermolecular terms computed from eqs. (1)–(5) during the MC simulation. As shown in Table X, the intramolecular energies for a molecule in the gas phase or in the pure liquid are nearly identical in all cases. The accord confirms the expected lack of significant condensed-phase effects on the conformational equilibria for these monofunctional molecules. The average difference for heats of vaporization calculated with the OPLS-AA force field vs. experimental values is 0.6, 0.3, and 0.2 kcal/mol for esters, nitro compounds, and nitriles. The largest deviation, 1.18 kcal/mol, is for isopropyl acetate. Although homologation of the acyl chain (i.e., methyl acetate → methyl propionate) is not problematic, elaboration of the alkoxy chain appears to cause overly favorable intermolecular interactions. Because the densities for esters are also high, an increase in the Lennard-Jones σ and/or decrease in ε for the carbon and its hydrogens attached to the alkoxy oxygen might be appropriate. However, we try to avoid such small adjustments of LennardJones parameters, for example, only two values of σ are used so far in OPLS-AA for hydrogens on saturated carbons, 2.50 and 2.42 Å.
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1347
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PRICE, OSTROVSKY AND JORGENSEN
+TABLE IX. Molecular Volumes and Densities of Liquids.a
+V (Å3 Molecule−1) d (g cm−3)
+Liquid Calcd Exptl Calcd Exptl
+Methyl acetate 132.4 ± 0.2 132.6 0.929 ± 0.001 0.928b Ethyl acetate 161.0 ± 0.2 163.5 0.909 ± 0.001 0.895c Isopropyl acetate 189.2 ± 0.2 195.0 0.896 ± 0.001 0.870c Methyl propionate 160.6 ± 0.2 163.5 0.911 ± 0.001 0.895b Methyl benzoate 206.7 ± 0.2 207.7 1.094 ± 0.001 1.089d,e
+Nitromethane 91.6 ± 0.1 88.9 1.106 ± 0.001 1.14c Nitroethane 121.1 ± 0.2 119.9 1.029 ± 0.001 1.04c 1-Nitropropane 150.3 ± 0.1 148.6 0.984 ± 0.001 0.996c 2-Nitropropane 150.9 ± 0.1 150.6 0.981 ± 0.001 0.983c Nitrobenzene 176.8 ± 0.1 170.4 1.157 ± 0.001 1.20c
+Acetonitrile 89.1 ± 0.2 87.9 0.765 ± 0.002 0.776c Propionitrile 120.6 ± 0.3 117.8 0.759 ± 0.002 0.777c 2-Cyanopropane 150.5 ± 0.3 149.1 0.763 ± 0.001 0.770e 2-Cyano-2-methylpropane 181.4 ± 0.3 181.9 0.761 ± 0.001 0.759c Benzonitrilef 172.0 ± 0.3 171.1 0.995 ± 0.002 1.001e
+a All calculations performed at 25◦C unless otherwise noted. b Ref. 35. c Ref. 36. d Data at 20◦C. e Ref. 37. f Ref. 22.
+The liquid’s heat capacity is determined by adding an intermolecular component, Cinter
+p (l), to an ideal gas C◦p less R according to eq. (7).21 The intermolecular contribution is computed from the fluctuations in the total intermolecular energy during the course of the liquid simulation. C◦p was either taken from experimental data or computed from HF/631G∗ vibrational frequencies, which were scaled by a factor of 0.9.14 The results for the liquids
+Cp(l) = Cinter
+p (l) + C◦
+p − R (7)
+are listed in Table XI, along with the experimental values. The accord is good, particularly in view of the statistical uncertainties, ca. ±2 cal/mol-K, in the computed heat capacities, which are known to converge more slowly than the energies and densities.21
+LIQUID STRUCTURE
+Radial distribution functions (RDFs) reflect the probability of finding two atoms at a distance r and, thus, can provide insight into the presence of specific interactions in liquids. These functions were calculated between most unique pairs of heavy atoms, and results are presented for the parent
+molecules for the three functional groups. In each case, the RDFs are similar to those obtained in previous computational studies for liquid acetonitrile,9, 41, 42 methyl acetate,10 and nitromethane.43 Figure 6 shows several RDFs for methyl acetate. Each peak is relatively broad and featureless, indicating the absence of pronounced structure in the pure liquid.10 Liquid nitromethane shows somewhat more structure with distinct first peaks for O—C and N—O contacts (Fig. 7). The former peak is suggestive of some C—H· · ·O hydrogen bonding.44 Figure 8 shows a snapshot of a representative Monte Carlo configuration for liquid nitromethane. The darkened molecules provide a typical example with a short C—H· · ·O distance of 2.2 Å, which is well within the normal H· · ·O hydrogen-bonding limit of 2.5 Å.21 The O—C distance of 3.3 Å and the N—C distance of 4.5 Å fall in the first peaks for their RDFs in Figure 7. For liquid acetonitrile (Fig. 9), the pronounced first peak for the N-methyl C (NZ–CT) RDF reflects a further increase in order and the existence of headto-tail chains in the liquid.9, 41, 42 Furthermore, the NZ–NZ the CZ–NZ RDFs show two distinct peaks,
+1348 VOL. 22, NO. 13
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PROPERTIES OF ESTERS, NITRILES, AND NITRO COMPOUNDS
+TABLE X. Energetic Results for Liquids.a
+Hvap
+Liquid −Einter(l) Eintra(g) Eintra(l) Calcd Exptl
+Methyl acetate 7.20 ± 0.03 −3.42 ± 0.01 −3.36 ± 0.01 7.74 ± 0.03 7.72b Ethyl acetate 8.45 ± 0.03 0.16 ± 0.02 0.20 ± 0.01 9.01 ± 0.04 8.51c Isopropyl acetate 9.43 ± 0.04 3.48 ± 0.04 3.43 ± 0.02 10.07 ± 0.06 8.89c Methyl propionate 8.42 ± 0.04 1.88 ± 0.02 1.91 ± 0.02 8.98 ± 0.04 8.57b Methyl benzoate 13.63 ± 0.04 19.61 ± 0.04 19.66 ± 0.02 14.17 ± 0.06 13.28c
+Nitromethane 8.56 ± 0.04 −2.97 ± 0.02 −3.29 ± 0.01 9.47 ± 0.05 9.15c Nitroethane 9.15 ± 0.03 3.66 ± 0.02 3.41 ± 0.01 9.99 ± 0.04 9.94c 1-Nitropropane 9.83 ± 0.04 12.85 ± 0.03 12.72 ± 0.02 10.55 ± 0.05 10.37c 2-Nitropropane 9.55 ± 0.04 9.20 ± 0.03 9.00 ± 0.02 10.34 ± 0.05 9.88c Nitrobenzene 12.17 ± 0.03 22.71 ± 0.02 22.72 ± 0.01 12.75 ± 0.04 13.15c
+Acetonitrile 7.04 ± 0.03 −2.02 ± 0.01 −1.98 ± 0.01 7.59 ± 0.03 8.01d Propionitrile 7.61 ± 0.03 4.36 ± 0.01 4.08 ± 0.01 8.48 ± 0.03 8.61c 2-Cyanopropane 8.06 ± 0.04 9.49 ± 0.02 9.25 ± 0.01 8.89 ± 0.04 8.87d 2-Cyano-2-methylpropane 8.30 ± 0.05 13.76 ± 0.03 13.47 ± 0.02 9.18 ± 0.06 8.92d Benzonitrilee 11.96±0.003 0.00 ± 0.00 0.00 ± 0.00 12.55 ± 0.03 12.54c
+a Energies and enthalpies in kcal/mol. b Ref. 35. c Ref. 36. d Ref. 38. e Ref. 22.
+which can be attributed to antiparallel arrangement of the chains (Fig. 10a).9, 42 The antiparallel dimer was optimized with the OPLS-AA force field; the NZ–NZ, CZ–NZ, and NZ–CT distances are 3.57, 3.20, and 3.30 Å , which coincide with the first peaks in the corresponding RDFs in Figure 9. Shorter NZCT distances can arise from the head-to-tail dimer (Fig. 10b). It also has optimal NZ–NZ and CZ–NZ separations of 5.80 and 4.63 Å, which fall in the centers of the second peaks for the corresponding RDFS (Fig. 9).
+FREE ENERGIES OF HYDRATION
+Calculations of the difference in free energies of hydration between two molecules A and B are based on the following thermodynamic cycle.
+A(g)
+GA
+Ggas B(g)
+GB
+A(sol) Gsol B(sol)
+The relative change in free energy, ( G(A → B)), is given by eq. (8), where the individual free energy changes, Ggas and Gsol, are calculated via the sta
+tistical perturbation theory.45, 46
+ G(A → B) = GB − GA = Gsol − Ggas (8)
+Convergence of the free energy changes is enhanced by performing a series of simulations to mutate molecule A to B using a coupling parameter λ, which ranges from 0 for A to 1 for B. A mutation is run in the gas phase in order to determine Ggas, and another is performed in solution to yield Gsol. In this study, standard protocols8 were used to perturb methyl acetate to acetone, nitroethane to propanal, and acetonitrile to methane in the gas phase and in a periodic cube containing 507 TIP4P water molecules.31 As shown in Table XII, the computed relative free energies of hydration are in reasonable agreement with experimental data with an average error of 0.8 kcal/mol. Furthermore, to characterize the hydration of the solutes, RDFs, energy pair distributions, and snapshots from the simulations were analyzed for methyl acetate, nitroethane, and acetonitrile. The key results can be summarized as follows. As expected from Figures 4 and 5, each solute forms hydrogen bonds with water molecules, which are reflected in distinct first peaks in the RDFs between the oxygen atoms for the ester and ni
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1349
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PRICE, OSTROVSKY AND JORGENSEN
+TABLE XI. Heat Capacities of Liquids.a
+Cp (Liquid)
+Cp◦ (Gas) Liquid Calcd Calcd Exptl
+Methyl acetate 20.4b 33.3 ± 1.2 34.4b Ethyl acetate 26.4c 44.8 ± 2.0 40.1b Isopropyl acetate 32.0c 51.5 ± 2.1 47.0b Methyl propionate 26.3c 45.8 ± 1.7 Methyl benzoate 34.7c 51.0 ± 1.8 52.9b
+Nitromethane 13.7b 23.7 ± 1.3 25.3b Nitroethane 17.3c 34.2 ± 1.7 33.1b 1-Nitropropane 24.1c 41.2 ± 1.8 41.9b 2-Nitropropane 24.8c 40.2 ± 1.3 40.7d Nitrobenzene 27.8c 46.1 ± 2.0 44.4d
+Acetonitrile 12.5b 26.7 ± 1.6 21.9b Propionitrile 17.1c 32.8 ± 2.0 28.6e 2-Cyanopropane 22.6c 39.1 ± 2.3 37.3f 2-Cyano-2-methylpropane 28.4c 45.4 ± 2.3 42.8f Benzonitrileg 26.1 45.4 ± 3.3 45.5b
+a Cp in cal mol−1 K−1. b Ref. 36. c Computed with RHF/6-31G∗ vibrational frequencies scaled by 0.9. d Ref. 37. e Ref. 39. f Ref. 40. g Ref. 22.
+tro compound and the nitrogen of the nitrile with water hydrogens (HW). For methyl acetate, there are on average 1.4 hydrogen bonds to the carbonyl oxygen and 0.2 for the alkoxy oxygen, while an
+FIGURE 6. Computed radial distribution functions for liquid methyl acetate.
+FIGURE 7. Computed radial distribution functions for liquid nitromethane.
+earlier study that used 6-31G∗ CHELPG charges gave values of 1.4 and 0.6 hydrogen bonds.13 For nitroethane, the nitro group accepts 2.0 hydrogen bonds from water, one on each oxygen. For acetonitrile, the solute–water energy pair distribution begins at −6.2 kcal/mol, and shows a weak minimum at −4.1 kcal/mol; integration to that point indicates 1.1 strong hydrogen bonds. However, integration to the first minima in the N–HW rdf at 2.5 Å or the N–OW RDF at 3.1 Å indicates that there are 2.1 water molecules in the hydrogen-bonding range. In the prior study,13 1.4 hydrogen bonds were
+FIGURE 8. (a) Snapshot of a representative Monte Carlo configuration of liquid nitromethane. (b) Relative orientation of two monomers of nitromethane. The dotted line represents a C—H· · ·O interaction. The NO–CT distance is 4.47 Å and the ON–CT distance is 3.33 Å.
+1350 VOL. 22, NO. 13
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PROPERTIES OF ESTERS, NITRILES, AND NITRO COMPOUNDS
+FIGURE 9. Computed radial distribution functions for liquid acetonitrile.
+assigned for acetonitrile in water. Somewhat too favorable hydration with the present model is also reflected in the 0.9 kcal/mol overestimate of the difference in free energy of hydration between acetonitrile and methane (Table XII).
+Summary
+In an important extension of the applicability of the OPLS-AA force field, parameters were derived for carboxylate esters, nitriles, and nitro compounds. These functional groups are commonplace in drug candidates, and the parameters are consequently needed, for example, in MC or molecular dynamics simulations of such functionalized molecules binding to proteins. The development and testing included consideration of gas-phase structures, interaction energies, and structures for complexes with a water molecule, and thermodynamic and structural properties of pure liquids and aqueous solutions. No substantial flaws are apparent, and the quality of the computed results is in the normal range for the OPLS-AA model.
+TABLE XII. Computed OPLS-AA and Experimental Relative Free Energies of Hydration.
+ Ghyd
+Ggas Gsol Calc Expta
+Methyl acetate → acetone −0.6 ± 0.1 −1.8 ± 0.1 −1.2 ± 0.1 −0.5 Acetonitrile → methane −5.3 ± 0.1 1.4 ± 0.1 6.7 ± 0.1 5.8 Nitroethane → propanal 2.5 ± 0.1 3.5 ± 0.1 1.0 ± 0.1 0.3
+a Ref. 47.
+FIGURE 10. (a) Optimized antiparallel and (b) head-to-tail alignment of acetonitrile dimers.
+Acknowledgment
+Dedicated to Prof. Paul v. R. Schleyer on the occasion of his 70th birthday.
+References
+1. Allinger, N. L. In The Encyclopedia of Computational Chemistry; Schleyer, P. v. R.; Allinger, N. L.; Clark, T.; Gasteiger, J.; Kollman, P. A.; Schaefer, H. F., Eds.; John Wiley & Sons Ltd.: Chichester, 1998, p. 1013. 2. Kaminski, G.; Duffy, E. M.; Matsui, T.; Jorgensen, W. L. J Phys Chem 1994, 98, 13077.
+3. Jorgensen, W. L.; Maxwell, D. S.; Tirado-Rives, J. J Am Chem Soc 1996, 118, 11225.
+4. Price, D. J.; Roberts, J. D.; Jorgensen, W. L. J Am Chem Soc 1998, 120, 9672. 5. Damm, W.; Frontera, A.; Tirado-Rives, J.; Jorgensen, W. L. J Comput Chem 1997, 18, 1955. 6. Jorgensen, W. L.; McDonald, N. A. Theochem 1998, 424, 145.
+7. McDonald, N. A.; Jorgensen, W. L. J Phys Chem B 1998, 102, 8049. 8. Rizzo, R. C.; Jorgensen, W. L. J Am Chem Soc 1999, 121, 4827.
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1351
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+PRICE, OSTROVSKY AND JORGENSEN
+9. Jorgensen, W. L.; Briggs, J. M. Mol Phys 1988, 4, 547.
+10. Briggs, J. M.; Nguyen, T. B.; Jorgensen, W. L.; J Phys Chem 1991, 95, 3315.
+11. (a) Weiner, S. J.; Kollman, P. A.; Nguyen, D. T.; Case, D. A. J Comput Chem 1986, 7, 230. (b) Cornell, W. D.; Cieplak, P.; Bayly, C. I.; Gould, I. R.; Merz, K. M. J.; Ferguson, D. M.; Spellmeyer, D. C.; Fox, T.; Caldwell, J. W.; Kollman, P. A. J Am Chem Soc 1995, 117, 5179.
+12. Charifson, P. S.; Hiskey, R. G.; Pedersen, L. G. J Comput Chem 1990, 11, 1181.
+13. Carlson, H. A.; Nguyen, T. B.; Orozco, M.; Jorgensen, W. L. J Comput Chem 1993, 14, 1240.
+14. Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Gill, P. M. W.; Johnson, B. G.; Robb, M. A.; Cheeseman, J. R.; Keith, T.; Petersson, G. A.; Montgomery, J. A.; Raghavachari, K.; Al-Laham, M. A.; Zakrzewski, V. G.; Ortiz, J. V.; Foresman, J. B.; Cioslowski, J.; Stefanov, B. B.; Nanayakkara, A.; Challacombe, M.; Peng, C. Y.; Ayala, P. A.; Chen, W.; Wong, M.; Anders, J. L.; Replogle, E. S.; Gomperts, R.; Martin, R. L.; Fox, D. J.; Defrees, D. J.; Baker, J.; Stewart, J. P.; Head-Gordon, M.; Gonzales, C.; Pople, J. A. Gaussian 94 (Revision B.2); Gaussian, Inc.: Pittsburgh, 1995.
+15. Maxwell, D. S.; Tirado-Rives, J. Fitpar 1.1.2; Yale University: New Haven, CT, 1995.
+16. Hehre, W. J.; Radom, L.; Schleyer, P. v. R.; Pople, J. A. Ab Initio Molecular Orbital Theory; Wiley: New York, 1986.
+17. Maxwell, D. S.; Tirado-Rives, J.; Jorgensen, W. L. J Comput Chem 1995, 16, 984.
+18. Allinger, N. L.; Chen, K.; Lii, J.-H. J Comput Chem 1996, 17, 642.
+19. Jorgensen, W. L. BOSS 4.2; Yale University: New Haven, CT, 1999.
+20. Allen, M. P.; Tildesley, D. J. Computer Simulations of Liquids; Clarendon: Oxford, England, 1987.
+21. Jorgensen, W. L. In The Encyclopedia of Computational Chemistry; Schleyer, P. v. R.; Allinger, N. L.; Clark, T.; Gasteiger, J.; Kollman, P. A.; Schaefer, H. F., Eds.; John Wiley & Sons Ltd.: Chichester, 1998, p. 1754.
+22. Jorgensen, W. L.; Nguyen, T. B. J Comput Chem 1993, 14, 195.
+23. Hirota, E.; Endo, Y.; Saito, S.; Duncan, J. L. J Mol Spec 1981, 89, 285.
+24. Hirota, E.; Matsumura, C.; Morino, Y. Bull Chem Soc Jpn 1967, 40, 1124. 25. Hoyland, J. R. J Chem Phys 1968, 49, 1908.
+26. Allinger, N. L.; Grev, R. S.; Yates, B. F.; Schaefer, III, H. F. J Am Chem Soc 1990, 112, 114. 27. Murphy, W. F.; Fernandez-Sanchez, J. M.; Raghavachari, K. J Phys Chem 1991, 95, 1124.
+28. Allinger, N. L.; Yuh, Y. H.; Lii, J. H. J Am Chem Soc 1989, 111, 8551.
+29. Murphy, R. B.; Beachy, M. D.; Friesner, R. A.; Ringnalda, M. N. J Chem Phys 1995, 103, 1481. 30. Rablen, P. R.; Lockman, J. W.; Jorgensen, W. L. J Phys Chem A 1998, 102, 3782.
+31. Jorgensen, W. L.; Chandrasekhar, J.; Madura, J. D.; Impey, R. W.; Klein, M. L. J Chem Phys 1983, 79, 926.
+32. Evanseck, J. D.; Houk, K. N.; Briggs, J. M. Jorgensen, W. L. J Am Chem Soc 1994, 116, 10630. 33. Murray-Rust, P.; Glusker, J. P. J Am Chem Soc 1984, 106, 1018. 34. Damewood, J. R. J Phys Chem 1987, 91, 3449.
+35. Svoboda, V.; Uchytilova, V.; Majer, V.; Pick, J. Collect Czech Chem Commun 1980, 45, 3233. 36. Riddick, J. A.; Bunger, W. B.; Sakano, T. K. Techniques of Chemistry, Organic Solvents, Physical Properties and Methods of Purification; Wiley: New York, 1986, 4th ed.
+37. Lide, D. R. Handbook of Chemistry and Physics; CRC Press: Boca Raton, FL, 1998, 79th ed. 38. Howard, P. B.; Wadso, I. Acta Chem Scand 1970, 24, 145. 39. Putnam, W. E.; McEachern, D. M. J.; Kilpatrick, J. E. J Chem Phys 1965, 42, 749. 40. Weber, L. A.; Kilpatrick, J. E. J Chem Phys 1962, 36, 829.
+41. Bohm, H. J.; McDonald, I. R.; Madden, P. A. Mol Phys 1983, 49, 347. 42. Grabuleda, X.; Jaime, C. Kollman, P. A. J Comput Chem 2000, 21, 901.
+43. Alper, H. A.; Abu-Awwad, F.; Politzer, P. J Phys Chem B 1999, 103, 9738. 44. Gu, Y.; Kar, T.; Scheiner, S. J Am Chem Soc 1999, 121, 9411. 45. Zwanzig, R. W. J Chem Phys 1954, 22, 1420.
+46. Jorgensen, W. L. In The Encyclopedia of Computational Chemistry; Schleyer, P. v. R.; Allinger, N. L.; Clark, T.; Gasteiger, J.; Kollman, P. A.; Schaefer, H. F., Eds.; John Wiley & Sons Ltd.: Chichester, 1998, p. 1061. 47. Hine, J.; Mookerjee, P. K. J Org Chem 1975, 40, 292.
+1352 VOL. 22, NO. 13
+1096987x, 2001, 13, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.1092 by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

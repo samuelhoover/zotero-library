@@ -1,0 +1,198 @@
+Ion effects on hydrogen-bonding hydration of polymer an approach
+by ‘induced force model’
+Hajime Mutaa, Susumu Kawauchib, Mitsuru Satoha,*
+aDepartment of Chemistry and Materials Science, Tokyo Institute of Technology, Ookayama, Meguro-ku, Tokyo 152-0033, Japan bDepartment of Organic and Polymeric Materials, Tokyo Institute of Technology, Ookayama, Meguro-ku, Tokyo 152-0033, Japan
+Received 12 June 2002; accepted 11 August 2002
+Abstract
+Forces induced for several hydrogen-bonding complexes (water dimer, water – methanol, water – methylamine and water phenol) on interaction with several different cations and anions were calculated with HF/6-31þ þG(d,p) and higher fullMP2/6-311þþ G(2d,2p) levels. By approaching cations or anions to the hydrogen-donating molecule in the complexes, attractive or repulsive forces were induced, respectively. On the other hand, anions also induced attractive forces when approached to hydrogen-accepting molecule in the complexes. The magnitude of the induced forces was consistent with the socalled Hofmeister series, except for non-spherical ions. The forces were also well correlated with charges of the atoms, especially of water proton and oxygen, involving the hydrogen bonds. These facts suggest that the changes in water’s abilities for electron-pair acceptance and electron-pair donation through ionic hydration are essential for (de)stabilization of hydrogenbonding hydration. q 2002 Elsevier Science B.V. All rights reserved.
+Keywords: Ion specificity; Polymer gel; Hydrogen-bonding hydration; Ab initio calculation; Hofmeister series
+1. Introduction
+Ion-specific phenomena are ubiquitous in aqueous systems of polymer; ion-effects on denaturation of biological polymers such as proteins [1] and DNA [2], phase separation of biological and synthetic polymers [3], and hydrogel swelling [4 – 9]. These phenomena have been commonly known as Hofmeister Series. A typical one for anions is SCN2 , ClO4
+2 , I2 , NO3
+2 , Br2 , Cl2 , F2 , SO4
+22, with this order DNA’s double helix is stabilized, salting-out of polymer solutions easily occurs, and deswelling of
+polymer hydrogels is more enhanced. These classically known phenomena may be understood as a complex fusion of direct and indirect effects of ions to different kinds of polymer hydrations, i.e. ionic, hydrophobic and hydrogen-bonding hydrations. However, the detailed mechanism seems to be far from complete elucidation. We have been studying ion-specific swelling behavior of hydrophilic polymer gels and proposed a model mechanism for ion-effects on the stability of hydrogen-bonding hydration of polar side-chains of polymers [6 – 9]; the ion effects come from the changes in water electron-pair donation (EPD) and electron-pair acceptance (EPA) abilities through hydration to ions [10]. In terms of EPA and EPD,
+0166-1280/03/$ - see front matter q 2002 Elsevier Science B.V. All rights reserved. PII: S 0 1 6 6 - 1 2 8 0 ( 0 2 ) 0 0 5 8 5 - 7
+Journal of Molecular Structure (Theochem) 620 (2003) 65–76 www.elsevier.com/locate/theochem
+* Corresponding author. Fax: þ 81-3-5734-2133. E-mail address: msatoh@polymer.titech.ac.jp (M. Satoh).
+
+
+ion-specific swelling behavior of hydrogels, e.g. poly(N-vinylpyrrolidone) (PVP), has been successfully explained; In such systems, hydration of anions of high charge density, e.g. F2 and SO4
+22, reduces water EPA due to electron donation from the anions, resulting in destabilization of the hydrogen-bonding hydration to the hydrogen-accepting atoms, e.g. O and N. On the contrary, hydration of cations of high charge density, e.g. Liþ and Mg2þ, enhances water EPA due to electron subtraction by the cations, resulting in stabilization of such hydrogen-bonding hydrations. This mechanism explained, at least partly, the ion-specific swelling behaviors observed for hydrogels. However, it is rather difficult to obtain a direct proof for the supposed ion-specific hydration of polar groups. As a tool to solve such a problem, molecular orbital (MO) calculations seem to be promising. MO calculation, when applied to model systems of small molecules, may give much information on hydrogen-bonding hydration in actual polymer systems. In our previous studies, ab initio calculations for some model complexes of organic molecules and hydrated ion clusters were reported [11,12]. These studies showed that relative stability of hydrogen bond between an organic molecule and water in an ion cluster was well correlated with changes in atomic charges on hydrogen and oxygen atom of the water molecule, namely, by changes of water EPA and EPD. Hydrogen-bond lengths and energies also showed good correlation with water EPA and EPD. However, these types of calculation using model complexes are rather difficult since they include many weak interactions, and many local minima. Moreover, geometries of hydrated ion clusters largely change upon hydrogen-bonding hydration to organic molecules. Calculated properties, especially interaction energies, may be affected depending on the types of local minima and changes in geometric parameter of hydrated ion clusters. In this paper, we report the above problem was successfully avoided by using a simpler method; ‘induced force model.’ This model is similar to that of Mayer et al. [13], who used ‘point-like positive charge’ as a model of cations. In the present treatment, ions were explicitly used for improved reality. Influences of many kinds of ions on the stability of
+hydrogen bond in a water dimer or some hydrogenbonded dimers of water and organic molecule were estimated with this model.
+2. Induced force model
+Basic idea of induced force model is quite simple. Consider an isolated water dimer. The dimer is assumed to be in a stable geometry. When an ion approaches to this stable dimer (Fig. 1(a)), some interaction between the dimer and the ion will occur, and electronic state of the dimer will change due to the interaction (Fig. 1(b)). Then, the geometry of the dimer is no longer stable, and forces would emerge or be induced among the atoms of the dimer to move to a more stable geometry (Fig. 1(c)). The ‘induced forces’ can be attractive or repulsive depending on the ion species and the interaction sites, i.e. O or H atom. For evaluating changes in the hydrogen bond stability by this model, we simply inspect the induced force, i.e. gradient of energy (2›E/›r ), on the hydrogen bond. If the force is attractive, the hydrogen bond is stabilized by the ion. If the force is repulsive, the hydrogen bond is destabilized by the ion. The magnitude of the force is used as a measure of degree of stabilization or destabilization. The merit of this model resides in the simplicity of the system. For above analysis, only a water dimer and an approaching ion are required. The total system can be easily handled by an ab initio method of higher levels. The process of calculation with this model is as follows;
+1. Geometry optimization of a desired dimer is performed. 2. An ion is placed near the geometry-optimized dimer, typically near a polar atom of the dimer.
+Fig. 1. Schematic representation of the induced force model.
+66 H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76
+
+
+Then, only the position and orientation of the ion is optimized to determine the appropriate position for the ion. Note that the dimer geometry must be fixed during the optimization, which is necessary for emerging forces on the dimer. 3. After optimization, induced force on the hydrogen bond is obtained.
+3. Calculations
+As typical hydrogen-bonded systems, water dimer and some hydrogen-bonded dimers of water and organic molecule (methanol, methylamine, phenol) were employed. Various ions (Liþ, Naþ, Kþ, Mg2þ, Ca2þ, NH4
+þ, F2, Cl2, Br2, SCN2, SO4
+22, ClO3
+2,
+ClO4
+2, and NO3
+2) available in conventional Pople-type basis sets, i.e. 6-31G and 6-311G series, were selected. Geometry optimization, vibrational analysis, and force calculations were performed at the restricted Hartree –Fock level with the 6-31þ þ G(d,p) basis sets, [14 – 20] and at the restricted second-order Møller – Plesset perturbation (MP2) theory with the 6-311þ þ G(2d,2p) basis sets [20 – 24]. The cartesian d-type polarization function for 6-31þ þ G(d,p) or pure one for 6-311þ þ G(2d,2p) was used for heavy atoms, and s-type and sp-type diffuse function for hydrogen atom and heavy atoms, respectively. All calculations were performed with GAUSSIAN98 program [25]. Keyword ‘scf 1⁄4 tight’ was used to achieve tight convergence of self-consistent field (SCF) calculation. Geometry optimization was performed with tighter convergence in GAUSSIAN98 with the ‘tight’ option for accurate calculation of forces. In some cases, the tight optimizations were not converged due to large displacements, which may come from very low forces, (order of 1026 a.u.), i.e. very shallow potential surface. Therefore, it was assumed that the optimization was ‘converged’ when the forces on geometry-optimized ions become sufficiently small compared with induced forces between hydrogen-bonding atoms (order of 1023 or 1022 a.u.). In such cases, in fact, the calculated force between the hydrogen-bonding atoms was essentially converged. Natural population analysis [26] with GAUSSIANNBO 3.1 program, which is implemented in GAUSSIAN98, was used for calculation of atomic charges.
+4. Results and discussion
+4.1. Induced force on water dimer calculated at the HF level
+Fig. 2 shows possible positions of ions approaching to a water dimer. There are three systems depending on the type of ions and sites approached by ions, as shown in the figure. The first one is ‘cation’ system, where a cation is bound to the hydrogen-donating water (HD-water). In this case, EPA of HD-water will be enhanced by the approaching cation. Therefore, attractive force will emerge on the hydrogen bond of the water dimer, leading to some stabilization of the hydrogen bond in the water dimer. The second one is ‘anion I’ system, where an anion is bound to the HDwater. (For SCN2 system, two geometries were possible; one is SCN2(S) with S atom bound to HDwater, and the other is SCN2(N) with N atom bound to HD-water.) In this case, EPA of HD-water will be reduced by the approaching anion. Therefore, repulsive force will emerge on the hydrogen bond leading to some destabilization of the water hydrogen bond. The third one is ‘anion II’ system, where an anion is bound to the hydrogen-accepting water (HA-water). (SCN2 and ClO3
+2 systems had two geometries; In
+Fig. 2. Geometries considered for the respective water dimer/ion systems.
+H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76 67
+
+
+the former, SCN2(N) is of the halogen type (Fig. 2), and SCN2(SN) is of the oxoanion type (Fig. 2). In the latter, ClO3
+2(a) and ClO3
+2(b) are different in a relative orientation between the free oxygen atom of ClO3
+2
+and free hydrogen atom of the HD water. The geometry of ClO3
+2(a) is shown in Fig. 2 as a typical oxoanion type.) In this case, EPD of HA-water will be enhanced by the approaching anion. Therefore, attractive force will emerge on the hydrogen bond, i.e. stabilization will occur. Table 1 shows the induced forces between hydrogen-bonding oxygen and hydrogen of the two
+water molecules calculated at the HF/6-31þ þ G(d,p) level. Except for water – oxoanion complexes in the anion I system, stable structures were obtained. In the cation systems, as expected, attractive force was induced between the hydrogen-bonding atoms by every cations considered. The attractive force increased as Kþ , NH4
+þ , Naþ , Liþ , Ca2þ , Mg2þ, which is in a good agreement with the experimentally observed Hofmeister series [3]. In the anion I systems, repulsive force was induced between the hydrogen-bonding atoms by all anions considered. The repulsive force increased as ClO4
+2,
+Table 1 Induced force and natural charge for water dimer/ion systems calculated at HF/6-31þ þG(d,p) (Forces are in Hartree/Bohr and distances are in A ̊ )
+Ion Force Ion–water distance Natural charge
+Ion H1 O4
+(i) Cations
+Mg2þ 2 0.01093 1.909 1.973 0.606 2 1.031 Ca2þ 2 0.00770 2.301 1.992 0.586 2 1.026 Liþ 20.00524 1.819 0.992 0.568 21.017 Naþ 20.00381 2.198 0.997 0.556 21.014 NH4
+þ 20.00347 1.683 0.950 0.556 21.012 Kþ 20.00280 2.632 0.999 0.547 21.011 Water – – – 0.515 20.999
+(ii) Anions type I
+F2 0.00413 1.647 20.957 0.485 20.972 SO4
+22 0.00320 1.843 21.975 0.494 2 0.961 Cl2 0.00242 2.485 20.986 0.501 20.978 NO3
+2 0.00231 2.033 20.986 0.500 20.980 Br2 0.00218 2.662 20.987 0.502 20.979 SCN2(N) 0.00211 2.121 20.990 0.501 20.982 ClO3
+2 0.00197 1.996 20.986 0.503 20.981 SCN2(S) 0.00168 2.766 20.992 0.505 20.983 ClO4
+2 0.00150 2.102 20.992 0.506 20.982 Water – – – 0.515 20.999
+(iii) Anions type II SO4
+22 2 0.00437 1.995 21.968 0.545 2 1.102 F2 20.00336 1.541 20.940 0.539 21.083 ClO3
+2(a) 20.00241 2.165 20.984 0.533 21.059 NO3
+2 20.00238 2.182 20.983 0.532 21.060 ClO3
+2(b) 20.00228 2.170 20.985 0.532 21.059 Cl2 20.00198 2.309 20.974 0.532 21.051 ClO4
+2 20.00193 2.231 20.989 0.530 21.048 Br2 20.00189 2.503 20.977 0.531 21.046 SCN2(N) 20.00179 1.971 20.981 0.530 21.045 SCN2(SN) 2 0.00167 2.476(N), 2.980(S)
+20.992 0.530 21.040
+Water – – – 0.515 20.999
+68 H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76
+
+
+SCN2(S) , ClO3
+2 , SCN2(N) , Br2 , NO3
+2,
+Cl2 , SO4
+22 , F2, which is not fully consistent with the Hofmeister series. Here one should note that complexes of water – oxoanion with one hydrogen bond were not stable according to the vibrational analysis, i.e. in a transition state. In the anion II systems, attractive force was induced between the hydrogen-bonding atoms by all anions considered. The attractive force increased as SCN2(SN) , SCN2(N) , Br2 , ClO4
+2 , Cl2 , ClO3
+2(b) , NO3
+2 , ClO3
+2(a) , F2 , SO4
+22. In this case, hydrogen-bonded complexes of water – oxoanion had two hydrogen bonds and such complexes were stable. To consider the orders for the anion systems in detail, the anions may be classified into two groups; non-oxoanions (halogens and SCN2) and oxoanions. Then, it becomes apparent that the relative positions of the respective groups are the same in the systems I and II; F2 . Cl2 . Br2 . SCN2(N) . SCN2(S) or SCN2(SN) and SO4
+22 . NO3
+2 . ClO3
+2 . ClO4
+2, and the positions of oxoanions in system II are relatively higher than in system I. The latter note may be explained by considering the number of hydrogen bonds of oxoanions; only one hydrogen bond exists between oxoanion and HD-water in anion I systems, while two in anion II systems. Thus, the results of the induced force calculations for oxoanions include some conformational effect originating from their non-spherical structures. Of course, this may also be the case in the non-spherical NH4
+þ and SCN2. In other words, only the results for spherical ions are free from such problems. Table 1 also contains ion – water distances and atomic charges on the ions calculated at the HF/631þ þ G(d,p) level. One can see that the induced force has no definite correlations with ion –water distance and charges transferred from ion to water molecules. However, if compared within a given type of ions, e.g. halogen or alkali metal, reasonable correlations can be seen.
+4.2. Relationship of induced force and atomic charge
+Table 1 also shows atomic charges on the two hydrogen-bonding atoms of the water dimer (H1 and O4 in Fig. 2) calculated at the HF/6-31þ þ G(d,p) level. The orders of atomic charges of H1 and O4 for
+the cation systems were well correlated with the induced forces, as shown in Fig. 3. In the case of cation, positive and negative charges on H1 and O4 were both enhanced compared with the isolated water dimer, and the enhancement of the positive charge on H1 was more significant. Thus, the enhancement of EPA of HD-water seems to be responsible for the attractive induced force. The situation is the same in the case of anion II; enhancement of the negative charge on O4, hence of EPD of HA-water seems to be responsible for the attractive force. On the other hand, the charges on H1 and O4 in the case of anion I were reduced to a same extent compared with the isolated water dimer. Thus, the repulsive induced force must be resulted from the reduced atomic charges.
+4.3. Calculation on induced force model of water dimer at the Full-MP2 level
+Table 2 shows the induced force between hydrogen-bonding oxygen and hydrogen of the two water molecules, ion – water distance and atomic charges on the H1, O4 and ions calculated at the electroncorrelated full-MP2/6-311þ þG(2d,2p) level.
+Fig. 3. Correlations between induced forces and natural charges on H1 and O4. ‘Water’ means a reference point in the absence of ions. Squares; charge on H1, triangles; charge on O4. Open symbols; cation system, filled symbols; anion I system, half-tone symbols; anion II system.
+H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76 69
+
+
+The calculated forces at the MP2 level were enhanced compared with those at the HF level. One reason for the stronger forces may be traced to the shortening of hydrogen bond length of water dimer; at the HF/631þ þ G(d,p) level, the hydrogen bond length of water dimer was 2.040 A ̊ , whereas it was 1.951 A ̊ at the full-MP2/6-31þ þ G(2d,2p) level. Thus, the correlation effect, which was previously reported by Frisch et al. [27], can also be clearly seen in the present system. Another important effect from using MP2 calculation was shortening of ion – water distances.
+Although in Mg2þ and Liþ cases the ion – water distances were hardly affected by electron correlation as suggested by several authors [28], in the cases of loosely bound anions having long ion –water distance, it was remarkable. For example, in the case of Cl2 and Br2, the distance was reduced by ca. 0.2 – 0.3 A ̊ , which is much larger than that in the hydrogen bond length of water dimer; ca. , 0.1 A ̊ . Similar effects caused from the calculation level have been reported by several authors [29]. This correlation effect was also reflected in the calculated atomic charges; positive charge on
+Table 2 Induced force and natural charge of water dimer/ion systems calculated at full-MP2/6-311þ þG(2d,2p) (Forces are in Hartree/Bohr and distances are in A ̊ )
+Ion Force Ion–water distance Natural charge
+Ion H1 O4
+(i) Cations
+Mg2þ 2 0.01280 1.905 1.962 0.570 2 0.943 Ca2þ 2 0.00987 2.218 1.973 0.557 2 0.941 Liþ 20.00609 1.818 0.988 0.534 20.938 NH4
+þ 20.00458 1.591 0.925 0.526 20.936 Naþ 20.00444 2.207 0.994 0.522 20.936 Kþ 20.00344 2.587 0.997 0.515 20.934 Water – – – 0.481 20.928
+(ii) Anions type I
+F2 0.00484 1.578 20.931 0.450 20.903 SO4
+22 0.00393 1.719 21.952 0.460 2 0.886 Cl2 0.00329 2.200 20.960 0.463 20.906 NO3
+2 0.00297 1.887 20.973 0.463 20.909 Br2 0.00285 2.429 20.971 0.466 20.907 SCN2(N) 0.00282 1.922 20.976 0.464 20.910 ClO3
+2 0.00246 1.864 20.971 0.467 20.909 SCN2(S) 0.00240 2.413 20.974 0.467 20.912 ClO4
+2 0.00193 1.941 20.982 0.471 20.907 Water – – – 0.481 20.928
+(iii) Anions type II SO4
+22 2 0.00590 1.862 21.940 0.510 2 1.043 F2 20.00445 1.486 20.906 0.505 21.015 NO3
+2 20.00341 2.030 20.968 0.499 21.000 ClO3
+2(a) 20.00334 2.031 20.970 0.499 20.994 ClO3
+2(b) 20.00316 2.035 20.973 0.498 20.993 Cl2 20.00299 2.069 20.933 0.499 20.998 ClO4
+2 20.00280 2.076 20.981 0.497 20.984 SCN2(N) 20.00264 1.793 20.957 0.497 20.985 SCN2(SN) 2 0.00263 2.355(N); 2.560(S)
+20.979 0.497 20.980
+Br2 20.00262 2.281 20.947 0.498 20.990 Water – – – 0.481 20.928
+70 H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76
+
+
+cation or negative charge on anion was reduced more significantly with MP2 than with HF. Charges on hydrogen-bonding H1 and O4 atoms were reduced than those at the HF level. Despite of such differences, there was still a good correlation between the calculated induced force and the charges on H1 and O4 at the MP2 level.
+4.4. Calculation on water-organic molecule systems
+Tables 3 –5 show the results obtained at the HF/631þ þ G(d,p) and full-MP2/6-311þ þ G(2d,2p) levels for methanol, methylamine and phenol systems; induced forces, ion – water distance and atomic charges on the hydrogen-bonding atoms and ions.
+Table 3 Induced force and natural charge of water–methanol complex/ion systems calculated at HF/6-31þ þG(d,p) and full-MP2/6-311þþ G(2d,2p) (Forces are in Hartree/Bohr and distances are in A ̊ )
+Ion Force Ion–water distance Natural charge
+Ion H O
+(a) HF/6-31þ þG(d,p) (i) Cations
+Mg2þ 2 0.01277 1.906 1.972 0.602 2 0.870 Ca2þ 2 0.00903 2.295 1.991 0.583 2 0.863 Liþ 20.00597 1.816 0.992 0.566 20.852 Naþ 20.00434 2.195 0.997 0.554 20.848 Kþ 20.00320 2.628 0.999 0.546 20.845 Water – – – 0.515 20.831
+(ii) Anions type I
+F2 0.00434 1.648 20.957 0.485 20.800 Cl2 0.00254 2.488 20.987 0.500 20.807 Br2 0.00227 2.662 20.987 0.502 20.808 Water – – – 0.515 20.831
+(iii) Anions type II
+F2 20.00376 1.539 20.939 0.543 21.081 Cl2 20.00225 2.304 20.973 0.536 21.049 Br2 20.00219 2.497 20.977 0.535 21.045 Water – – – 0.519 20.998
+(b) Full-MP2/6-311þ þG(2d,2p) (i) Cations
+Mg2þ 2 0.01493 1.899 1.960 0.562 2 0.764 Ca2þ 2 0.01150 2.209 1.971 0.549 2 0.761 Liþ 20.00681 1.814 0.987 0.529 20.761 Naþ 20.00491 2.203 0.993 0.518 20.758 Kþ 20.00379 2.581 0.996 0.511 20.756 Water – – – 0.478 20.751
+(ii) Anions type I
+F2 0.00529 1.576 20.930 0.448 20.724 Cl2 0.00363 2.195 20.959 0.460 20.728 Br2 0.00317 2.423 20.970 0.463 20.729 Water – – – 0.478 20.751
+(iii) Anions type II
+F2 20.00522 1.482 20.905 0.505 21.013 Cl2 20.00359 2.062 20.931 0.499 20.997 Br2 20.00315 2.271 20.945 0.498 20.989 Water – – – 0.480 20.927
+H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76 71
+
+
+Approaching positions of ions to those complexes are shown in Fig. 4. For simplicity’s sake, only spherical ions were considered in these cases. In the case of water– methanol complex, the induced forces calculated at the two levels were both larger than those in the case of water dimer, while the ion –water distances and charges on ions were almost unchanged from those of water dimer. The induced forces were well correlated with the calculated atomic charges on the hydrogen-bonding hydrogen and oxygen atoms. The use of MP2 method resulted a similar tendency for the changes of ion water distance and atomic charges as those in the water dimer. In the case of water – methylamine complex, hydration to hydrogen of methylamine was not stable in both HF and MP2 cases and the water
+molecule moved to the nitrogen of methylamine during the optimization. This may be attributed to the low ability of methylamine to accept lone pairs of water, i.e. weak Lewis acid. Therefore, only cation and anion I types could be considered. In these cases, induced forces were larger than in the case of water dimer and water – methanol complex. Moreover, the above-mentioned effects of utilizing MP2 method for anion systems were more significant than in the case of water dimer and methanol –water complex. Since methylamine is a stronger electron-donor, i.e. stronger base, than methanol and water, EPA (or EPD) of the hydrogen-bonding water of water – methylamine complex may also be reduced (or enhanced) through hydration to methylamine compared with that in water dimer and methanol –water complex
+Table 4 Induced force and natural charge of water–methylamine complex/ion systems calculated at HF/6-31þ þG(d,p) and full-MP2/6311þ þG(2d,2p) (Forces are in Hartree/Bohr and distances are in A ̊ )
+Ion Force Ion–water distance Natural charge
+Ion H N
+(a) HF/6-31þ þG(d,p) (i) Cations
+Mg2þ 2 0.01467 1.897 1.969 0.590 2 0.994 Ca2þ 2 0.01019 2.283 1.990 0.574 2 0.988 Liþ 20.00651 1.809 0.991 0.563 20.974 Naþ 20.00463 2.188 0.997 0.553 20.970 Kþ 20.00333 2.618 0.999 0.546 20.966 Water – – – 0.517 20.947 (ii) Anions type I
+F2 0.00402 1.669 20.960 0.491 20.914 Cl2 0.00169 2.571 20.990 0.509 20.923 Br2 (Improper position of Br2) Water – – – 0.517 20.947 (b) Full-MP2/6-311þþ G(2d,2p) (i) Cations
+Mg2þ (Improper position of Mg2þ) Ca2þ 2 0.01415 2.187 1.957 0.524 2 0.883 Liþ 20.00814 1.802 0.985 0.525 20.878 Naþ 20.00575 2.188 0.992 0.516 20.875 Kþ 20.00444 2.560 0.995 0.510 20.872 Water – – – 0.504 20.872
+(ii) Anions type I
+F2 0.00542 1.599 20.935 0.456 20.830 Cl2 0.00323 2.244 20.966 0.469 20.835 Br2 0.00252 2.495 20.977 0.473 20.837 Water – – – 0.504 20.872
+72 H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76
+
+
+in a same manner as in the hydration of anions. Therefore, interaction of the hydrogen-bonding water, which has a reduced EPA, with anion will become more unfavorable compared with the other two cases, which results in the elongation of ion water distance. In the HF calculation the elongation was considerably overestimated, especially in Br2 case, where Br2 was unable to interact with the water at all. This was improved by the use of MP2 method. At the MP2 level, the elongation was ca. 0.1 –0.2 A ̊ , which is significantly larger than those in methanol. Slight shortening of ion – water distance (, 0.01 A ̊ ) was observed in the cation case, which may be ascribed to the enhancement of water EPD through hydration to methylamine. Apart from this, the same discussion as for the water – methanol complex seems to be adequate. In the case of water – phenol complex, calculations only at HF/6-31 þ G(d) level were made due to the relatively large system size. Mg2þ system was not calculated because of a failure of SCF procedure during geometry optimization. In the cases of cation and anion II systems, induced forces were larger than water dimer case, while smaller in the anion I system. This trend was
+observed only for water –phenol complex. This point will be discussed later. In contrast to the water –methylamine case, slight shortening of ion water distance (0.02 –0.05 A ̊ ) was observed in the anion systems. Since phenol is a weaker electrondonor, i.e. weaker base, or stronger acid, than methylamine, methanol and water, EPD and EPA of the hydrogen-bonding water must be relatively reduced or enhanced, respectively, through hydration to phenol. Then, interaction of the hydrogen-bonding water with enhanced EPA with anions will become more favorable, which results in the shortening of ion – water distance. For the other points, a same discussion can also be made as the water – methanol complex.
+4.5. Comparison of induced attractive and repulsive forces in anion systems
+In the case of water –methanol complex, the repulsive force of anion I system at the MP2 level only appreciably overwhelms the attractive one of anion II system. In the case of water dimer, the repulsive force of anion I system slightly overwhelms the attractive one of anion I system.
+Table 5 Induced force and natural charge of water– phenol complex/ion systems calculated at HF/6-31þþ G(d,p) (Forces are in Hartree/Bohr and distances are in A ̊ )
+Ion Force Ion–water distance Natural charge
+Ion H O
+(i) Cations
+Mg2þ (SCF failed during optimization) Ca2þ 2 0.00970 2.296 1.991 0.577 2 0.826 Liþ 20.00544 1.821 0.992 0.563 20.809 Naþ 20.00404 2.201 0.997 0.550 20.805 Kþ 20.00304 2.636 0.999 0.541 20.802 Water – – – 0.511 20.781
+(ii) Anions type I
+F2 0.00285 1.626 20.954 0.478 20.749 Cl2 0.00163 2.448 20.985 0.496 20.757 Br2 0.00119 2.632 20.986 0.500 20.757 Water – – – 0.511 20.781
+(iii) Anions type II
+F2 20.00579 1.514 20.934 0.559 21.086 Cl2 20.00364 2.260 20.968 0.552 21.056 Br2 20.00349 2.473 20.974 0.551 21.052 Water – – – 0.535 21.003
+H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76 73
+
+
+In the case of water – methylamine complex, hydration to the polar hydrogen of amino group is basically unfavorable than that to the nitrogen and in fact, induced force in the anion II system could not be calculated as stated above. Therefore, if any attractive force were estimated, it would be least among the systems studied. On the other hand, significantly larger repulsive forces were estimated at MP2 level for the anion I system of water methylamine complex than those for water dimer and water – methanol complex. Significant destabilization effect by anions may be commonly observed in amino-containing systems.
+Here it is very interesting to note that in the case of water – phenol complex the induced forces of anion I system are appreciably small compared with other complexes. As a result, the attractive force of anion II system significantly overwhelms the repulsive one of anion I system. This is complete opposite to water – methanol and water dimers, suggesting that anions may play a different role in the case of water –phenol systems, i.e. hydration of anion causes stabilization of the hydrogen-bonding hydration. This is ascribed to the acidity of phenol hydroxyl group, where hydration to acidic hydrogen is more favorable than
+Fig. 4. Geometries considered for (a) water–methanol, (b) water–methyl amine, (c) water–phenol/ion systems.
+74 H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76
+
+
+that to hydroxyl oxygen, as suggested above. Thus, the present induced force model, in addition to our previous studies, deduces that phenol-containing polymer gels may show an opposite ion specificity; swelling in the presence of small and strongly hydrated anions.
+5. Conclusion
+Forces induced in hydrogen bonds of several complexes (water dimer, water – methanol, water methylamine and water – phenol) through interaction with several different cations and anions were calculated. Three types of systems depending on the geometry of ions and binding sites were considered; cation, anion I and anion II. In the case of cation and anion II systems, attractive forces were induced by approaching ions, whereas in the case of anion I, repulsive forces immerged. Orders of the induced forces were consistent with the experimentally observed Hofmeister series, except for non-spherical ions. The calculated induced forces were well correlated with atomic charges of the hydrogen-bonding atoms. These trends seem to have relationship with the changes in water EPA and EPD, which is considered to have an important role for (de)stabilization of hydrogenbonding hydration through ionic hydration. Electron-correlation effect considered in the MP2 calculation proved to be significant, especially in the water – methylamine case. Very interestingly, in the case of water –phenol complex, the forces of anion I system were found to be appreciably lower compared with the other complexes. As a result, the attractive force for the anion II system overwhelmed the repulsive one for the anion I case. This suggests that anions stabilize the hydrogen-bonding hydration in phenol systems through the ionic hydration. The induced force model has again suggested a singular ion-specificity expected for phenol-containing polymer gels.
+Acknowledgements
+The molecular orbital calculations were carried out at the Computer Center of Tokyo Institute of
+Technology and we thank them for their generous permission to use the Compaq AlphaServer 8400 and SGI Origin 2000.
+References
+[1] D.R. Robinson, W.P. Jencks, J. Am. Chem. Soc. 87 (1965) 2470. [2] K. Hamaguchi, E.P. Geiduschek, J. Am. Chem. Soc. 84 (1962) 1329. [3] T. Schleich, P.H. von Hippel, Biopolymers 7 (1969) 861. [4] H. Inomata, S. Goto, K. Otake, S. Saito, Langmuir 8 (1992) 687. [5] A. Suzuki, Adv. Polym. Sci. 110 (1993) 199. [6] Y. Okazaki, K. Ishizuki, S. Kawauchi, M. Satoh, J. Komiyama, Macromolecules 29 (1996) 8391. [7] M. Takano, K. Ogata, S. Kawauchi, M. Satoh, J. Komiyama, Polym. Gels Networks 6 (1998) 217. [8] H. Muta, M. Miwa, M. Satoh, Polymer 42 (2001) 6313. [9] H. Muta, K. Ishida, E. Tamaki, M. Satoh, Polymer 43 (2002) 103. [10] V. Gutmann, R. Schmid, Coord. Chem. Rev. 12 (1974) 263. [11] H. Muta, R. Kojima, S. Kawauchi, A. Tachibana, M. Satoh, J. Mol. Struct. (Theochem) 536 (2001) 219. [12] H. Muta, T. Sin, A. Yamanaka, S. Kawauchi, M. Satoh, J. Mol. Struct. (Theochem) 574 (2001) 195. [13] I. Mayer, I. Lukovits, T. Radnai, Chem. Phys. Lett. 188 (1992) 595. [14] R. Dichfield, W.J. Hehre, J.A. Pople, J. Chem. Phys. 54 (1971) 724. [15] W.J. Hehre, R. Dichfield, J.A. Pople, J. Chem. Phys. 56 (1972) 2257. [16] J.D. Dill, J.A. Pople, J. Chem. Phys. 62 (1975) 2921. [17] M.M. Francl, W.J. Petro, W.J. Hehre, J.S. Binkley, M.S. Gordon, D.J. DeFrees, J.A. Pople, J. Chem. Phys. 77 (1982) 3654. [18] P.C. Hariharan, J.A. Pople, Theor. Chim. Acta 28 (1973) 213. [19] T. Clark, J. Chandrasekhar, P.V.R. Schleyer, J. Comput. Chem. 4 (1983) 294. [20] R.C. Binning Jr., L.A. Curtiss, J. Comput. Chem. 11 (1990) 1206. [21] A.D. McLean, G.S. Chandler, J. Chem. Phys. 72 (1980) 5639. [22] R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople, J. Chem. Phys. 72 (1980) 650. [23] L.A. Curtiss, M.P. McGrath, J.-P. Blaudeau, N.E. Davis, R.C. Binning Jr., L. Radom, J. Chem. Phys. 103 (1995) 6104. [24] M.P. McGrath, L. Radom, J. Chem. Phys. 94 (1991) 511. [25] M.J. Frisch, G.W. Trucks, H.B. Schlegel, G.E. Scuseria, M.A. Robb, J.R. Cheeseman, V.G. Zakrzewski, J.A. Montgomery Jr., R.E. Stratmann, J.C. Burant, S. Dapprich, J.M. Millam, A.D. Daniels, K.N. Kudin, M.C. Strain, O. Farkas, J. Tomasi, V. Barone, M. Cossi, R. Cammi, B. Mennucci, C. Pomelli, C. Adamo, S. Clifford, J. Ochterski, G.A. Petersson, P.Y. Ayala, Q. Cui, K. Morokuma, D.K. Malick, A.D. Rabuck, K. Raghavachari, J.B. Foresman, J. Cioslowski, J.V. Ortiz, A.G. Baboul, B.B. Stefanov,
+H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76 75
+
+
+G. Liu, A. Liashenko, P. Piskorz, I. Komaromi, R. Gomperts, R.L. Martin, D.J. Fox, T. Keith, M.A. AlLaham, C.Y. Peng, A. Nanayakkara, C. Gonzalez, M. Challacombe, P.M.W. Gill, B. Johnson, W. Chen, M.W. Wong, J.L. Andres, C. Gonzalez, M. Head-Gordon, E.S. Replogle, J.A. Pople, GAUSSIAN98, Revision A.7, Gaussian Inc., Pittsburgh, PA, 1998.
+[26] A.E. Reed, R.B. Weinstock, F. Weinhold, J. Chem. Phys. 83 (1985) 735. [27] M.J. Frisch, J.E. Del Bene, J.S. Binkley, H.F. Schaefer III, J. Chem. Phys. 84 (1986) 2279. [28] C.C. Pye, Int. J. Quantum Chem. 76 (2000) 62. [29] S.S. Xantheas, T.H. Dunning Jr., J. Phys. Chem. 98 (1994) 13489.
+76 H. Muta et al. / Journal of Molecular Structure (Theochem) 620 (2003) 65–76

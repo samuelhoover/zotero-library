@@ -1,0 +1,766 @@
+FULL PAPER
+New parallel computing algorithm of molecular dynamics for
+extremely huge scale biological systems
+Jaewoon Jung1,2 | Chigusa Kobayashi1 | Kento Kasahara3 | Cheng Tan1 |
+Akiyoshi Kuroda4 | Kazuo Minami4 | Shigeru Ishiduki5 | Tatsuo Nishiki5 |
+Hikaru Inoue5 | Yutaka Ishikawa6 | Michael Feig7 | Yuji Sugita1,2,3
+1Computational Biophysics Research Team, RIKEN Center for Computational Science, Kobe, Hyogo, Japan
+2Theoretical Molecular Science Laboratory, RIKEN Cluster for Pioneering Research, Wako, Saitama, Japan
+3Laboratory for Biomolecular Function Simulation, RIKEN Center for Biosystems Dynamics Research, Kobe, Hyogo, Japan
+4Operations and Computer Technologies Division, RIKEN Center for Computational Science, Kobe, Hyogo, Japan
+5Fujitsu Company, Kobe, Hyogo, Japan
+6System Software Research Team, RIKEN Center for Computational Science, Kobe, Hyogo, Japan
+7Biochemistry & Molecular Biology Department, Michigan State University, East Lansing, Michigan, USA
+Correspondence
+Yuji Sugita, Computational Biophysics Research Team, RIKEN Center for Computational Science, 7-1-26 Minatojimaminamimachi, Chuo-ku, Kobe, Hyogo 650-0047, Japan. Email: sugita@riken.jp
+Funding information
+United States National Institutes of Health, Grant/Award Number: R35 GM126948; MEXT/KAKENHI, Grant/Award Number: 19H05645
+Abstract
+In this paper, we address high performance extreme-scale molecular dynamics
+(MD) algorithm in the GENESIS software to perform cellular-scale molecular dynam
+ics (MD) simulations with more than 100,000 CPU cores. It includes (1) the new algo
+rithm of real-space nonbonded interactions maximizing the performance on ARM
+CPU architecture, (2) reciprocal-space nonbonded interactions minimizing communi
+cational cost, (3) accurate temperature/pressure evaluations that allows a large time
+step, and (4) effective parallel file inputs/outputs (I/O) for MD simulations of
+extremely huge systems. The largest system that contains 1.6 billion atoms was simu
+lated using MD with a performance of 8.30 ns/day on Fugaku supercomputer. It
+extends the available size and time of MD simulations to answer unresolved ques
+tions of biomacromolecules in a living cell.
+KEYWORDS
+ARM CPU architecture, fast Fourier transform, Fugaku supercomputer, molecular dynamics
+simulation, parallel input/output setup
+1 | INTRODUCTION
+All living matter consists of cells, in which a large number of proteins,
+DNAs, RNAs, and other biomacromolecules are interacting with each
+other. Many human diseases such as cancer and Alzheimer's disease are
+caused by disruptions of such biomolecular interactions in living cells.
+For the treatment of such diseases, effective, and safe drugs are neces
+sary. The time and costs for developing novel drugs continue to
+increase, limiting progress in drug discovery. Computer-aided drug
+discovery is expected to greatly reduce the time and cost in drug devel
+opment. Rigid-body docking of a large number of drug candidates to a
+target protein is carried out in the earliest stage of in-silico drug discov
+ery. Flexible docking utilizing molecular dynamics (MD) simulations has
+become a popular method to predict binding modes and affinities for
+protein-drug complexes. Although MD simulations of proteins or other
+biomolecules have a history of more than 40 years,1 further develop
+ments of computational methods are still necessary to accelerate the
+simulations and expand the target system sizes.2–5
+Received: 27 July 2020 Revised: 12 September 2020 Accepted: 11 October 2020
+DOI: 10.1002/jcc.26450
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided the original work is properly cited. © 2020 The Authors. Journal of Computational Chemistry published by Wiley Periodicals LLC.
+J Comput Chem. 2021;42:231–241. wileyonlinelibrary.com/journal/jcc 231
+
+
+In most biological MD simulations, the basic theory is based on
+classical mechanics. Forces acting on all atoms in a given system are
+evaluated using an empirical energy function, the so-called “force
+field.”6 This energy function consists of bonded and nonbonded inter
+actions. The bonded interactions are applied to atoms within three
+covalent bonds, while the nonbonded interactions are applied to all
+pairs separated by more than three covalent bonds or in different mol
+ecules. The computational cost required for the bonded interactions is
+O(N), while that of the nonbonded terms, such as van der Waals and
+electrostatic interactions, is, at most, O(N2). Van der Waals interaction
+energy and forces decay rapidly with increasing pairwise distances.
+The computational cost becomes O(N) when a cutoff is applied
+beyond which the interaction is not calculated. Electrostatic interac
+tion energy and forces do not decay as fast with distance, so a cutoff
+cannot be applied in the same way as for van der Waals interactions.
+The smooth particle mesh Ewald method or other Ewald-based
+schemes decomposes the electrostatic interactions into real-space
+and reciprocal-space calculations to reduce the computational cost. In
+this scheme, the charge points in the real space are converted to
+charge grid data on grid points depending on spline orders. The long
+range interactions are calculated from the charge grid data in recipro
+cal space via fast Fourier transformation (FFT).7 These methods can
+reduce the computational cost to O(NlogN), but they require a greater
+amount of communication between CPUs.
+Simulating the long-time dynamics of a single protein in solution or in
+a membrane has been one of the major goals of cutting-edge MD simula
+tions to date. Specialized computer architectures for MD simulations, for
+instance, MDGRAPE or ANTON, provide 100–1000 times faster speed
+than parallel supercomputers.8,9 Efficient usage of GPUs is an alternative
+approach for small or medium-size systems.10,11 Other innovative MD
+studies have targeted large biological systems, namely, protein/DNA com
+plexes like the ribosome, viruses, nucleosomes, chromatins, and multiple
+proteins in crowded cellular environments. Massively parallel supercom
+puters are used with optimized algorithms and reduced communication
+costs for a better weak-scaling performance.12–16 Simulating a large bio
+logical system including more than 100 million (M) or 1 billion (B) atoms is
+still very challenging. However, with better MD software and efficient
+parallel computing algorithms, realistic cellular effects on proteins or
+DNAs, which are neglected in most of the current MD simulations, can
+be taken into account. This might be important for in-silico drug discovery
+to better predict undesirable side effects and/or toxicity of drug candi
+dates, which are now recognized only in the most costly later stages of
+drug discovery.
+In this paper, we address a big challenge in atomistic MD simula
+tions with explicit water molecules, namely, high-performance
+extreme-scale MD simulations. We already developed efficient para
+llelization schemes for enabling cellular-scale MD simulations on K or
+other supercomputers. Here we suggest a new algorithm that
+enhances the performance on the Fugaku supercomputer. The new
+algorithms here extend the available time-scale and system sizes by
+performing 8.30 ns/day for 1.6 B atoms system. This approach over
+comes many existing problems in large-scale MD simulations and
+opens new possibilities in next-generation in-silico drug discovery.
+2 | METHODS
+2.1 | Outline of Fugaku supercomputer
+The Supercomputer Fugaku has been developed for top priority
+research and to continue the legacy of the K computer. The system is
+composed of more than 150,000 nodes. Each node is equipped with
+an A64FXTM CPU17 that is organized into 4 core memory groups
+(CMG). Each CMG has 12 cores, each of which has a 2.0 GHz clock
+speed. The memory of each node amounts to 32 GiB HBM2 (the sec
+ond generation of high bandwidth memory). Tofu interconnect D
+(28 Gbps × 2 lanes × 10 ports) is used for communication between
+nodes.
+2.2 | Characteristics of parallelization schemes in GENESIS MD software
+GENESIS has been developed to extend maximal system sizes in MD
+simulations to 1 B atoms and beyond with efficient parallelization and
+enhanced sampling algorithms. The source code is written in modern
+Fortran and the software is released to the community under the
+LGPLv3 license.18 Based on the parallelization scheme of GENESIS,
+the simulation space S is divided into subdomains, and each sub
+domain is again divided into cells. Interactions between particles in
+different subdomain are computed based on the midpoint cell
+scheme.19 The k-th MPI process has the data of the corresponding
+subdomain Dk and its margin Bk. Figure 1 shows the two-dimensional
+(2D) case with 16 MPI processes. Process id 7 has the data of four
+cells in D7 (colored in red) and its adjacent cells: B7 (from C9 to C16 col
+ored in blue). The charge grid data in D~7 is obtained from the charge
+data of atoms in D7 and B7. MPI_alltoall communications among four
+subdomains are done to obtain the global data in the FFT direction.
+For the reciprocal-space interaction, we developed two parallelization
+schemes of FFT; 1d_alltoall and 2d_alltoall.20 In the 1d_alltoall
+scheme, five one-dimensional (1D) MPI_alltoall are applied in forward
+and backward FFTs. In the 2d_alltoall scheme, there are two 1D
+MPI_alltoall and one 2D MPI_alltoall communications. Therefore, the
+2d_alltoall scheme has less frequent MPI_alltoall communications, but
+the number of processes involved in the communications could be
+larger.
+2.3 | Performance optimization of the real-space nonbonded interaction
+In MD, one of the main bottlenecks is the evaluation of nonbonded
+van der Waals and electrostatic interactions. We optimized the real
+space nonbonded force calculations and the neighbor list searches,
+individually. First, we applied the “CONTIGUOUS” attribute to arrays
+in the force calculations. Second, we applied L1 cache prefetch for the
+neighbor list, coordinate, atom class number, charge, and force arrays
+(Figure 2). The prefetch point and size are 128 and 64, respectively.
+232 JUNG ET AL.
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+If the trigger point is within 64 from the endpoint of the neighbor list
+in each atom index, the prefetch point is changed to the next atom
+index. We also changed the loop structure of the nonbonded interac
+tion evaluation. The main reason of this change is to minimize oper
+and/cache waiting by increasing the most inner do loop length. Third,
+we applied different types of array structures for coordinates in the
+neighbor list search and force calculations. All atom pairs are needed
+for the neighbor list search so that contiguous memory access is
+applied in the innermost loop. Thus, the Structure of Array (SoA) types
+are used for the coordinates. In the force evaluations, memory is not
+accessed in a contiguous way, and the Array of Structure (AoS) types
+are used for coordinates and forces. We also changed the coordinate
+and force array types from 3D to 2D by combining the atom and cell
+indexes together (Figure 2). The force evaluation algorithm for K in
+GENESIS 1.0–1.4 and the new one for Fugaku are given in
+Appendix A, as Algorithms 2 and 3, respectively.
+2.4 | Optimization of the reciprocal-space interaction
+The reciprocal-space calculation consists of five steps: (i) charge grid
+calculation, (ii) forward FFT of charge grid data, (iii) energy calculation
+and convolution of charge data, (iv) backward FFT, and (v) force calcu
+lation. In GENESIS 1.0–1.4, we made use of the same domain decom
+position by applying the midpoint cell method for the real space and
+the volumetric decomposition FFT for the reciprocal space. The k-th
+process first generates charge grid data from Dk and Bk. From the gen
+erated charge grid data, only the data in ~Dk are saved and followed by
+forward FFT. This avoids communication before the FFT (Figure 1).
+However, this scheme prevents the usage of a large grid spacing with
+a larger spline order because of the limited size of Bk. Subsequently,
+this scheme is called “PME_DB,” where DB means that the grid data is
+obtained from the union of domain Dk and boundary Bk. To improve
+the performance and enable a large grid spacing with a larger spline
+order, we devised a new scheme. First, the k-th process generates the
+charge grid data only from Dk. The charge grid data can be in D~ k and
+its margin (the amount of margin depends on the spline order in PME).
+The data in the margin is sent to the neighboring subdomain sequen
+tially, and we can obtain the charge grid data in D~k by accumulating
+the transferred data (Figure 3). This is referred to as “PME_D” where
+D means that the grid data is only obtained from Dk. In this way, the
+computational cost is reduced greatly, and global communications are
+not required. In addition, we can assign a large PME grid spacing with
+a large spline order to reduce the communication cost for the FFT.
+Based on these developments, we further make a tool inside the pro
+gram to choose the best scheme of the reciprocal-space calculation,
+by performing numerical tests of different algorithms for a given tar
+get system before starting production runs. Because there are two
+PME schemes (PME_DB and PME_D) and two parallelization schemes
+of the FFT itself (1d_alltoall and 2d_alltoall), there are four combina
+tions in total:
+(i) PME_DB_1d (PME_DB with 1d_alltoall),
+(ii) PME_DB_2d (PME_DB with 2d_alltoall),
+F I G U R E 1 Domain decomposition of GENESIS in real- (first left) and reciprocal-space (second left)
+F I G U R E 2 The prefetch scheme used in nonbonded interaction (left) and changed coordinate array on Fugaku (right)
+JUNG ET AL. 233
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+(iii) PME_D_1d (PME_D with 1d_alltoall),
+(iv) PME_D_2d (PME_D with 2d_alltoall).
+Timing statistics are recoded for each scheme before starting the
+MD, and the best is chosen for the production run.
+2.5 | Improvements of MD integration
+For biological problems, we performed MD simulation under isother
+mal (NVT) or isothermal-isobaric (NPT) conditions. In NVT, a thermo
+stat is applied so that the temperature of the simulation system is
+kept constant. In NPT, a thermostat and barostat are applied to main
+tain target temperature and pressure values. Therefore, accurate esti
+mates of temperature and pressure are critical to obtain reliable
+results from the MD. In the conventional integration algorithm, such
+as the velocity Verlet or leapfrog methods, the instantaneous temper
+ature at time t is usually evaluated in two ways:
+fkBTfull = KðtÞ ð1Þ
+fkBThalf = 1
+2K t+ 1
+2 Δt
+
++1
+2K t− 1
+2 Δt
+
+ð2Þ
+where kB is the Boltzmann factor, f is the degree of freedom, Δt is the
+time step length, and KðtÞ is the kinetic energy at time t. These tem
+peratures are accurate up to the first order of Δt with the following
+relationship:
+kBTexact = kBTfull + Δt2
+6f
+X
+ij
+pi ðtÞ mi
+r2U pjðtÞ
+mj
+
++ O Δt4
+  ð3Þ
+kBTexact = kBThalf − Δt2
+12f
+X
+ij
+piðtÞ mi
+r2U pjðtÞ
+mj
+
++ O Δt4
+  ð4Þ
+where U are the potential energy and pi is the momentum of i-th par
+ticle.21 The Δt2 term in Equation (3) is generally positive definite, so
+temperature is underestimated by Tfull and overestimated by Thalf . In
+the NVT condition, it changes physical properties with a large time
+step due to overheating or overcooling in thermostat process to
+assign the system in the target temperature. Using such an inaccurate
+estimation, we usually assign Δt = 2 – 2:5 fs to keep accuracy. We
+recently developed more accurate estimations of temperature and
+pressure up to O Δt3
+  without any modification of the integration.
+Temperature is estimated as a combination of Tfull and Thalf to cancel
+out the Δt2 term in Equations (3) and (4):
+Topt = 2
+3 Thalf + 1
+3 Tfull ð5Þ
+Similarly, pressure is estimated using K t − 1
+2 Δt
+  and K t + 1
+2 Δt
+  at
+time t.22 It allows the time step to be extended to 3.5 fs when the
+reciprocal-space interaction is performed every other step. Using such
+a scheme, the performance improves about 1.3 times compared to
+the case of Δt = 2.5 fs with the same working conditions. To avoid
+constraint error using Δt=3.5 fs, hydrogen mass repartitioning scheme
+is used.23,24
+2.6 | Parallel file input/output (I/O) for extremelyscale MD
+In MD simulations, information about particles between runs is
+exchanged via a so called” restart file.” Conventionally, each MPI pro
+cess with the domain decomposition scheme saves all the information
+to a restart file and selects the information only from particles in the
+corresponding subdomain (Algorithm 1 in Appendix A). The procedure
+requires large memory usage and significant CPU time, especially for
+large-scale systems that contain more than 1 M atoms. To avoid these
+problems, each MPI process can read/write a set of restart and trajec
+tory files in GENESIS 1.0–1.4. A tool named “prst_setup” generates
+multiple restart files for an MD simulation. The number of files is
+decided by the number of MPI processes in the MD simulation. Once
+the number of MPI processes is changed in the next run, parallel
+restart files need to be regenerated by prst_setup. LAMMPS supports
+parallel I/O restart files using the MPI-IO library.25 NAMD developed
+parallel I/O via dedicated input/output processes that are separate
+from the MPI processes and smaller in number.26
+The parallel I/O scheme in GENESIS 1.0–1.4 requires reg
+enerating multiple I/O files when the working condition is changed.
+However, the regeneration of the restart files is time-consuming and
+F I G U R E 3 The charge grid data before forward FFT in new development
+234 JUNG ET AL.
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+should be done just once for large-scale MD. Here, we changed the
+scheme to generate multiple restart files based on the fixed cell size
+condition. Let us assume that we perform an MD simulation with (Px,
+Py, Pz) subdomains from restart files with (Px,prev, Py,prev, Pz,prev). For
+each component α, one requirement is that Pα is a multiple or divisor
+of Pα,prev. If Pα is a multiple of Pα,prev (the case which the number of
+MPI tasks is less than the number of restart files), each MPI rank reads
+multiple restart files and obtains the parameters in the corresponding
+subdomain. If Pα is a divisor of Pα,prev, each MPI rank reads one restart
+file that contains information of the subdomain. This parallel I/O pro
+cedure does not require any additional time and is efficient. Simple
+examples are shown in Figure 4.
+2.7 | Performance measurement
+We performed benchmark tests of MD simulations based on the
+elapsed time of the main loop. The elapsed time (ELAPSE) is measured
+using a Time Stamp Counter (TSC) of the CPU. We also measured
+floating-point operations per one integration step (FLOP/step), the
+SIMD instruction rate (SIMD IR), memory throughput (MEMORY TP),
+floating-point operation wait per step (FLOP_WT/step), and floating
+point load L1D cache access wait per step (L1D_WT/step) for the
+real-space nonbonded interaction using an event counter provided by
+Fujitsu. The wait time is measured by the number of cycles (cycle is
+the unit time interval) in which no instructions are completed. In the
+cycle, the oldest instruction type decides the wait type: for example, if
+it is floating-point operation, the cycle is considered as FLOP_WT.
+Everything was measured based on 1200 integration steps except
+FLOP/step. To obtain FLOP/step in an exact way, MD simulations
+with 120 integration steps were carried out without any optimization
+options in the compiler. The performance of the neighbor list genera
+tion was measured based on one cycle of six integration steps
+because the neighbor list is generated at every sixth integration step.
+Therefore, we used FLOP/cycle, FLOP_WT/cycle, and L1D_WT/
+cycle. Because the neighbor list is written as an integer array, the inte
+ger operation wait time per cycle (INT_WT/cycle) is also recorded.
+The benchmark tests were carried out by simulating 1200 MD inte
+grations steps. The parallel efficiency (PE(Nk)) of weak scaling is
+defined as
+PEðNkÞ = T16
+Tk
+ð6Þ
+where Tk and T16 are the elapsed time using Nk and 16 nodes.
+2.8 | Performance condition
+The performance of MD using GENESIS was evaluated for cellular
+crowded systems with different sizes. We prepared a crowding sys
+tem consisting of 1,578,958 atoms (CR1.58M). We also created larger
+systems by multiplying CR1.58M (CR1.58M × n, n = 1, 2, ... 1024) for
+measuring weak scaling in MD. The time step in the MD was set to
+3.5 fs. Long-range interactions were evaluated every other step. In all
+benchmark tests, the cutoff and the neighbor list cutoff distances
+were 12 and 13.5 Å, respectively. The neighbor list and atoms in each
+domain were updated every six steps. The PME grids was assigned as
+256 × 256 × 256. In the case of spline order 8 with a grid spacing of
+2 Å, the grid numbers was reduced to 128 × 128 × 128. In
+CR1.58M × n, we multiplied the grid numbers using the same ratio of
+the system size. For all cases, the NVT condition with the thermostat
+F I G U R E 4 The parallel I/O in GENESIS 1.0–1.4 (upper) and in the currently developed version (lower). In the new development, we can easily make use of parallel I/O with changed working conditions
+JUNG ET AL. 235
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+scheme to control temperature as suggested by Bussi et al. was
+used.27 The thermostat was applied every six steps.
+3 | RESULTS AND DISCUSSION
+3.1 | Performance improvements of the real-space nonbonded interactions on Fugaku
+We first compared the performance of the new nonbonded interac
+tion scheme (Algorithm 3) with the old one for K (Algorithm 2). The
+target system here is CR1.58M, and 16 nodes of Fugaku were used.
+On each node, we assigned four MPI processes with 12 OpenMP
+threads. We measured the performance of the CMG corresponding to
+MPI rank 0. The MD integration steps are 240 and the total number
+of neighbor list generation is 41 (one cycle of the neighbor list genera
+tion is identical to six steps of MD integration). Table 1 compares the
+performance of the real-space nonbonded force evaluation between
+the algorithm used on K (Algorithm 2) and the new one (Algorithm 3).
+Algorithm 3 improved the performance more than twice over Algo
+rithm 2 while the number of floating-point operations was similar.
+Algorithm 2 was slower mainly due to the longer waiting times before
+starting floating-point operations and accesses to the L1D cache.
+Since the length of the inner loop with the cell pairs was shorter in
+Algorithm 2, it appears that software pipelining did not work well. In
+Algorithm 3, the waiting time before the floating-point operations was
+reduced significantly. The SIMD instruction rate and memory through
+put were also increased significantly, meaning that the new algorithm
+used the Fugaku hardware much more efficiently.
+For the neighbor list generation, Algorithm 3 performed twice
+better than Algorithm 2 (Table 2). In Algorithm 2, no SIMD instruction
+is applied and the waiting time for the floating-point was the main
+bottleneck that prevented high performance. By changing the data
+layout and algorithm, the waiting time for one neighbor list generation
+cycle was reduced from 16.46 to 3.98 ms and the SIMD instruction
+rate was increased up to 37%. There are several different ways of
+lookup tables,28,29 and in this test, we used an inverse lookup table29
+for van der Waals interactions with the CHARMM force switching
+function30 and the real-space electrostatic interactions. The use of
+the lookup table increased the speed of MD based on the elapsed
+time, but it decreased FLOPS. When we performed the same
+simulation without using the lookup table, we found that the elapsed
+time per step is nine times longer. This increased elapsed time is
+mainly due to the evaluation of the complementary error function in
+the calculation of electrostatic interactions. If the PME scheme is not
+used in the electrostatic interactions, the total FLOPS without using
+the lookup table is increased by a factor of 1.5. However, there is not
+so much difference in the total elapsed time (Table 3). In this sense,
+the use of a lookup table plays an important role in accelerating MD
+speed despite a decrease in FLOPS.
+3.2 | Performance improvements of the reciprocalspace nonbonded interactions on Fugaku
+We compared the elapsed times with four different schemes for the
+reciprocal-space nonbonded interactions. The performance results
+strongly depend on the system size. We selected CR1.58M × 64 as a
+benchmark system. Two PME grids and spline order conditions were
+applied: 1024 × 1024 × 1024 grids with spline order 4 and
+512 × 512 × 512 grids with spline order 8. We compared the perfor
+mance just based on the CPU times for the reciprocal-space calcula
+tions, which include the computation of grid charges, forward/
+backward FFTs, energy and force calculations (Table 4). Our new
+scheme, named PME_D, reduces the reciprocal-space calculation time
+as long as the number of nodes is not too large. In addition, by reduc
+ing the PME grids with PME_D, we could further increase the compu
+tation speed of the reciprocal-space interaction. The 2d_alltoall
+scheme could provide good performance if the number of nodes is
+less than 512. We also benchmarked the FFT performance with GEN
+ESIS on Fugaku using the same grids. The torus network in Fugaku
+and our FFT parallelization scheme enabled us to perform the sum of
+forward and backward FFTs within 5 ms.
+3.3 | Effect of new parallel I/O in MD simulation
+To understand the effect of the new parallel I/O, we first measured
+the wall time for the setup procedure that involves reading files and
+assigning information to subdomains. Because of the large memory
+requirement for generating parallel restart files, we used a computer
+T A B L E 1 Performance measurements (force evaluation)
+Algorithm 2 Algorithm 3
+ELAPSE/step 26.99 ms 10.08 ms
+FLOPS 18.91 × 109 46.16 × 109
+FLOP/step 0.51 × 109 0.46 × 109
+SIMD IR 59.43% 86.75%
+MEMORY TP 7.70 GB/s 12.48 GB/s
+FLOP_WT/step 12.37 ms 1.44 ms
+L1D_WT/step 6.06 ms 4.79 ms
+T A B L E 2 Performance measurements (neighbor list)
+Algorithm 2 Algorithm 3
+ELAPSE/cycle 41.46 ms 17.56 ms
+FLOPS 14.32 × 109 33.58 × 109
+FLOP/cycle 0.60 × 109 0.59 × 109
+SIMD IR 0.00% 31.74%
+MEMORY TP 8.23 GB/s 17.98 GB/s
+FLOP_WT/cycle 16.46 ms 3.98 ms
+INT_WT/cycle 0.58 ms 0.35 ms
+L1D_WT/cycle 1.56 ms 4.32 ms
+236 JUNG ET AL.
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+with Intel Xeon Gold 5215 CPUs (2.5 GHz clock speed) and 1.5 TB
+memory. Although the same task can be done without such a large
+memory, the execution using a hard disk would be at least tenfold
+slower. For CR1.58M × 64 (101.05 M atoms) and CR1.58M × 512
+(0.8 B atoms), it takes 1208 and 6042 s for preparing the coordinates
+and topology information, respectively. We used a Protein Data Bank
+(PDB) file for coordinates and a CHARMM Protein Structure File
+(PSF) file to provide topology information. If we use the previous par
+allel I/O procedure, the setup should be done at every time when MD
+runs restart in different computational conditions.
+3.4 | Performance of conventional MD using GENESIS on Fugaku
+To examine the strong scaling of GENESIS on Fugaku, we performed
+MD simulations of the three systems: CR1.58M × 64 (101.05 M
+atoms), CR1.58M × 512 (808.43 M atoms), and CR1.58M × 729
+(1.1511 B atoms). For all systems, two grid spacing conditions (1 or
+2 Å) were tested. As shown in Figure 5, we found good scalability for
+all systems despite communication-intensive FFTs for reciprocal
+space nonbonded interactions. The best performance of GENESIS on
+Fugaku is significantly improved compared to that on K. For example,
+we obtained 33 ns/day using 8192 nodes on Fugaku for
+CR1.58M × 64 (101.5 M atoms) while the performance for a similar
+size system on 32,768 nodes of K was 8 ns/day. GENESIS on Fugaku
+also outperforms Trinity at Los Alamos national Laboratory and
+Oakforest-PACS that consist of Intel Xeon Phi (KNL) processors: We
+recorded 11.9 ns/day for 1.15 B atoms on Fugaku compared to
+slightly less than 1 ns/day for the system containing about 1 B atoms
+on Oakforest-PACS.3 The performance of GENESIS on Fugaku is also
+better than efforts using other MD software for simulating a 1B atoms
+system. In our understanding, the previous best performance for 1B
+atoms system so far is 5 ns/day using NAMD on 16,384 nodes of Oak
+Ridge Titan GPUs.31 Our performance results extend the time scale
+by about a factor of two.
+To examine the weak scaling of GENESIS on Fugaku, we carried
+out MD simulations where we increased the number of processes and
+system sizes at the same ratio using CR1.58M on 16 nodes as a refer
+ence (Table 5). Conventionally, due to the extensive communication in
+FFTs for reciprocal-space calculations, MD simulations using PME
+was not expected to maintain good weak scaling for a large number of
+nodes. However, Table 5 shows that GENESIS can achieve 80% weak
+scaling up to 1024 nodes of Fugaku with 1 Å grid spacing and up to
+8192 nodes with a 2 Å grid. Even using 16,384 nodes, the weak scal
+ing values were kept at 53% and 74% for 1 or 2 Å grid spacings. We
+could simulate up to 1.62 B atoms with 8.30 ns/day, which increases
+both the target system size and the available time scales by a factor of
+T A B L E 3 Effect Of lookup table in PME and no PME calculations (force evaluation)
+Lookup (PME) No lookup (PME) No lookup (NO PME)
+ELAPSE/step 10.08 ms 96.82 ms 9.36 ms
+FLOPS 46.16 × 109 13.21 × 109 73.20 × 109
+FLOP/step 0.46 × 109 1.28 × 109 0.68 × 109
+T A B L E 4 CPU time for one reciprocal space interaction (SYSTEM: CR1.5m × 64, unit: ms) Number of nodes
+PME_D_1d PME_DB_1d PME_D_2d PME_DB_2d
+1 Åa 2 Åb 1 Åa 1 Åa 2 Åb 1 Åa
+256 57.3 38.4 61.7 46.6 38.1 52.6
+512 27.6 20.2 29.5 29.4 20.8 32.3
+1024 18.7 11.7 18.8 19.0 12.2 19.5
+2048 13.9 6.9 13.5 17.5 7.4 17.1
+4096 9.5 4.8 8.7 14.5 N/A 13.6
+a10243 PME grids with PME spline order 4. b5123 PME grids with PME spline order 8.
+F I G U R E 5 Performance of MD simulations using GENESIS on Fugaku (strong scaling). The number in parentheses reflect the grid spacing
+JUNG ET AL. 237
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+1.5 compared to the best performance of the largest system described
+until now (5 ns/day for a 1 B atom system31). For a system with 1.62
+B atoms, we obtained 1.20 PFLOPS despite the communication
+intensive FFT implications. The required MD time scale for such a
+large system would be greater than microseconds, and we expect our
+MD performance enables the MD simulations from the help of
+enhanced sampling schemes.
+4 | CONCLUSIONS
+In this study, we developed a new version of GENESIS that integrates
+a number of innovations and performed benchmark calculations of
+MD on Fugaku. The new features of GENESIS include improved real
+space and reciprocal-space nonbonded interactions that maximize the
+performance on Fugaku and a new parallel I/O scheme that is capable
+of handling huge numbers of atoms in MD for large cellular-scale sys
+tems. In addition to the computational approach, we have also devel
+oped a novel MD integration scheme that allows a large time step and
+an efficient sampling method to examine slow biological processes.
+Conventional MD simulations of a 1.6 B atoms system achieved a per
+formance of 8.30 ns/day on 16,384 nodes of Fugaku. Based on the
+innovations realized in the work, we are able to study structure
+dynamics-function relationships of proteins, DNAs, and other bio
+macromolecules in a living cell. In addition to macromolecular
+crowding effects, there are a number of unresolved cellular effects on
+these biomolecules, which are difficult to explore via conventional
+MD or experiments. High-performance computing of large-scale MD
+simulations promises to contribute greatly to a better understanding
+of molecular and cellular biology. The developments in this study are
+also expected to significantly advance cellular-scale computer-aided
+drug discovery.
+ACKNOWLEDGMENTS
+This research used computer resources of Fugaku in RIKEN Center
+for Computational Science. The computer resources of Oakforest
+PACS were also provided through HPCI System Research project.
+(Project ID: hp190097, hp190181, hp200129, and hp200135) The
+research was supported in part by MEXT as “FLAGSHIP 2020
+project,” “Priority Issue on Post-K computer” (Building Innovative
+Drug Discovery Infrastructure Through Functional Control of Biomo
+lecular Systems), “Program for Promoting Researches on the Super
+computer Fugaku” (Biomolecular dynamics in a living cell/MD-driven
+Precision Medicine), and MEXT/KAKENHI Grant Number 19H05645)
+(to Yuji Sugita). MF acknowledges support from the United States
+National Institutes of Health (R35 GM126948). The results obtained
+on the evaluation environment in the trial phase do not guarantee the
+performance, power, and other attributes of the supercomputer
+Fugaku at the start of its operation.
+DATA AVAILABILITY STATEMENT
+The data that support the findings of this study are available from the
+corresponding author upon reasonable request.
+ORCID
+Jaewoon Jung https://orcid.org/0000-0002-2285-4432
+Chigusa Kobayashi https://orcid.org/0000-0002-5603-4619
+Yuji Sugita https://orcid.org/0000-0001-9738-9216
+REFERENCES
+[1] J. A. Mccammon, B. R. Gelin, M. Karplus, Nature 1977, 267, 585. http://dx.doi.org/10.1038/267585a0. [2] I. Yu, T. Mori, T. Ando, R. Harada, J. Jung, Y. Sugita, M. Feig, Elife 2016, 5. http://dx.doi.org/10.7554/elife.19274. [3] J. Jung, W. Nishima, M. Daniels, G. Bascom, C. Kobayashi, A. Adedoyin, M. Wall, A. Lappala, D. Phillips, W. Fischer, C. S. Tung, T. Schlick, Y. Sugita, K. Y. Sanbonmatsu, J. Comput. Chem. 2019, 40, 1919. http://dx.doi.org/10.1002/jcc.25840. [4] G. P. Zhao, J. R. Perilla, E. L. Yufenyuy, X. Meng, B. Chen, J. Y. Ning, J. Ahn, A. M. Gronenborn, K. Schulten, C. Aiken, P. J. Zhang, Nature 2013, 497, 643. http://dx.doi.org/10.1038/nature12162. [5] A. Singharoy, C. Maffeo, K. H. Delgado-Magnero, D. J. K. Swainsbury, M. Sener, U. Kleinekathofer, J. W. Vant, J. Nguyen, A. Hitchcock, B. Isralewitz, I. Teo, D. E. Chandler, J. E. Stone, J. C. Phillips, T. V. Pogorelov, M. I. Mallus, C. Chipot, Z. Luthey-Schulten, D. P. Tieleman, C. N. Hunter, E. Tajkhorshid, A. Aksimentiev, K. Schulten, Cell 2019, 179, 1098. http://dx.doi.org/10.1016/j.cell.2019.10.021. [6] B. R. Brooks, C. L. Brooks 3rd., A. D. Mackerell Jr., L. Nilsson, R. J. Petrella, B. Roux, Y. Won, G. Archontis, C. Bartels, S. Boresch, A.
+T A B L E 5 Weak-scaling performance (numbers in parentheses are parallel efficiencies)
+Number of nodes System size Grid spacing = 1 Å Grid spacing = 2 Å
+16 1.58 M 11.62 (1.00) 11.29 (1.00)
+32 3.16 M 11.12 (0.96) 11.11 (0.98)
+64 6.32 M 11.07 (0.95) 11.10 (0.98)
+128 12.63 M 10.82 (0.93) 10.99 (0.97)
+256 25.26 M 10.01 (0.86) 10.72 (0.95)
+512 50.53 M 10.27 (0.88) 10.82 (0.96)
+1024 101.05 M 9.26 (0.80) 10.43 (0.92)
+2048 202.11 M 8.53 (0.73) 10.26 (0.91)
+4096 404.21 M 7.54 (0.65) 9.92 (0.88)
+8192 808.43 M 7.23 (0.62) 9.13 (0.81)
+16,384 1.62 B 6.19 (0.53) 8.30 (0.74)
+238 JUNG ET AL.
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+Caflisch, L. Caves, Q. Cui, A. R. Dinner, M. Feig, S. Fischer, J. Gao, M. Hodoscek, W. Im, K. Kuczera, T. Lazaridis, J. Ma, V. Ovchinnikov, E. Paci, R. W. Pastor, C. B. Post, J. Z. Pu, M. Schaefer, B. Tidor, R. M. Venable, H. L. Woodcock, X. Wu, W. Yang, D. M. York, M. Karplus, J. Comput. Chem. 2009, 30, 1545. http://dx.doi.org/10.1002/jcc. 21287. [7] U. Essmann, L. Perera, M. L. Berkowitz, T. Darden, H. Lee, L. G. Pedersen, J. Chem. Phys. 1995, 103, 8577. http://dx.doi.org/10. 1063/1.470117. [8] Narumi, T.; Ohno, Y.; Okimoto, N.; Koishi, T.; Suenaga, A.; Futatsugi, N.; Yanai, R.; Himeno, R.; Fujikawa, S.; Taiji, M. Proc. 2006 ACM/IEEE Conf. Supercomputing 2006, pp 49. https://doi.org/10. 1145/1188455.1188506. [9] Shaw, D. E.; Grossman, J. P.; Bank, J. A.; Batson, B.; Butts, J. A.; Chao, J. C.; Deneroff, M. M.; Dror, R. O.; Even, A.; Fenton, C. H.; Forte, A.; Gagliardo, J.; Gill, G.; Greskamp, B.; Ho, C. R.; Ierardi, D. J.; Iserovich, L.; Kuskin, J. S.; Larson, R. H.; Layman, T.; Lee, L.; Lerer, A. K.; Li, C.; Killebrew, D.; Mackenzie, K. M.; Mok, S. Y. M.; Moraes, M. A.; Mueller, R.; Nociolo, L. J.; Peticolas, J. L.; Quan, T.; Ramot, D.; Salmon, J. K.; Scarpazza, D. P.; Schafer, U. B.; Siddique, N.; Snyder, C. W.; Spengler, J.; Tang, P. T. P.; Theobald, M.; Toma, H.; Towles, B.; Vitale, B.; Wang, S. C.; Young, C. Proc. Int. Conf. High Performance Computing, Networking, Storage and Analysis (SC14) 2014, pp. 41–53. https://doi.org/10.1109/SC.2014.9. [10] R. Salomon-Ferrer, A. W. Gotz, D. Poole, S. Le Grand, R. C. Walker, J. Chem. Theory Comput. 2013, 9, 3878. http://dx.doi.org/10.1021/ ct400314y. [11] P. Eastman, J. Swails, J. D. Chodera, R. T. McGibbon, Y. T. Zhao, K. A. Beauchamp, L. P. Wang, A. C. Simmonett, M. P. Harrigan, C. D. Stern, R. P. Wiewiora, B. R. Brooks, V. S. Pande, PLoS Comput. Biol. 2017, 13, e1005659. http://dx.doi.org/10.1371/journal.pcbi.1005659. [12] J. Jung, T. Mori, C. Kobayashi, Y. Matsunaga, T. Yoda, M. Feig, Y. Sugita, Wiley Interdiscip. Rev.: Comput. Mol. Sci. 2015, 5, 310. http:// dx.doi.org/10.1002/wcms.1220. [13] C. Kobayashi, J. Jung, Y. Matsunaga, T. Mori, T. Ando, K. Tamura, M. Kamiya, Y. Sugita, J. Comput. Chem. 2017, 38, 2193. http://dx.doi. org/10.1002/jcc.24874. [14] J. Jung, A. Naurse, C. Kobayashi, Y. Sugita, J. Chem. Theory Comput. 2016, 12, 4947. http://dx.doi.org/10.1021/acs.jctc.6b00241. [15] J. Jung, Y. Suguita, J. Comput. Chem. 2016, 38, 1410. http://dx.doi. org/10.1002/jcc.24511.
+[16] Mei, C.; Sun, Y.; Zheng, G.; Bohm, E. J.; Kale, L. V.; Phillips, J. C.; Harrison, C. Proc. Int. Conf. High Performance Computing, Networking, Storage and Analysis (SC11) 2011, pp. 1–11. https://doi.org/10. 1145/2063384.2063466. [17] https://github.com/fujitsu/A64FX.git [18] https://www.r-ccs.riken.jp/labs/cbrt [19] J. Jung, T. Mori, Y. Sugita, J. Comput. Chem. 2014, 35, 1064. http:// dx.doi.org/10.1002/jcc.23591. [20] J. Jung, C. Kobayashi, T. Imamura, Y. Sugita, Comput. Phys. Commun. 2016, 200, 57. http://dx.doi.org/10.1016/j.cpc.2015.10.024. [21] J. Jung, C. Kobayashi, Y. Sugita, J. Chem. Theory Comput. 2019, 15, 84. http://dx.doi.org/10.1021/acs.jctc.8b00874. [22] J. Jung, C. Kobayashi, Y. Sugita, J. Chem. Phys. 2018, 148, 164109. http://dx.doi.org/10.1063/1.5008438. [23] K. A. Feenstra, B. Hess, H. J. C. Berendsen, J. Comput. Chem. 1999, 20, 786. http://dx.doi.org/10.1002/(sici)1096-987x(199906)20:8<786:: aid-jcc5>3.0.co;2-b. [24] Hopkins, C. W.; Le Grand, S.; Walker, R. C.; Roitberg, A. E. J. Chem. Theory Comput. 2015, 11, 1864–1874. http://dx.doi.org/10.1021/ct5010406. [25] https://lammps.sandia.gov [26] J. C. Phillips, K. Schulten, A. Bhatele, C. Mei, Y. Sun, E. J. Bohm, L. V. Kale, in Parallel Science and Engineering Applications: The CHARMM++ Approach (Eds: L. V. Kale, A. Bhatele), CRC Press, Boca Raton 2019. [27] G. Bussi, D. Donadio, M. Parrinello, J. Chem. Phys. 2007, 126, 014101. http://dx.doi.org/10.1063/1.2408420. [28] L. Nilsson, J. Comput. Chem. 2009, 30, 1490. http://dx.doi.org/10. 1002/jcc.21169. [29] J. Jung, T. Mori, Y. Sugita, J. Comput. Chem. 2013, 34, 2412. http:// dx.doi.org/10.1002/jcc.23404. [30] P. J. Steinbach, B. R. Brooks, J. Comput. Chem. 1994, 15, 667. http:// dx.doi.org/10.1002/jcc.540150702. [31] http://www.ks.uiuc.edu/Research/namd/benchmarks/
+How to cite this article: Jung J, Kobayashi C, Kasahara K, et al.
+New parallel computing algorithm of molecular dynamics for
+extremely huge scale biological systems. J Comput Chem.
+2021;42:231–241. https://doi.org/10.1002/jcc.26450
+JUNG ET AL. 239
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+APPENDIX
+Algorithms 1–3
+Algorithm 1
+Setup procedure with domain decomposition (k-th process id)
+1: Read parameter and topology files
+2: Read atom information and save
+3: Read bond information and save
+4: Read angle information and save
+5: Read dihedral angle information and save
+6: Separate water molecules from other molecules
+7: Search for hydrogen atoms and make hydrogen groups
+8: Define {Dk} and {Bk} ▷ subdomain and boundary
+9: Define {Cα} in each Dk and {Bk}
+10: for (Cα, Cβ) ∈ cell pairs do
+11: Define M(Cα, Cβ) ▷ midpoint cell of the cell pair
+12: iα 0 for all cell index α ▷ local atom index in each cell
+13: for i ∈ atoms do
+14: if i ∈ Cα ∈ Dk then
+15: iα iα + 1
+16: r!
+iα , v!
+iα , q!
+iα ,    r!
+i, v!
+i, q!
+i,  ▷ subdomain information
+17: else if i ∈ Cα ∈ Bk then
+18: iα iα + 1
+19: r!
+iα , v!
+iα , q!
+iα ,    r!
+i, v!
+i, q!
+i,  ▷ boundary information
+20: else
+21: Skip
+22: iγ 0 ▷ local bond index in each cell
+23: for (i1, i2) ∈ bonds do
+24: Find i1 ∈ Cα ∈ Dk [ Bk and i2 ∈ Cβ ∈ Dk [ Bk
+25: if M(Cα, Cβ) = Cγ ∈ Dk then
+26: iγ iγ + 1
+27: !b
+iγ !b
+ði1,i2Þ ▷ local bond information
+28: iγ 0 ▷ local angle index in each cell
+29: for (i1, i2, i3) ∈ angles do
+30: Find i1 ∈ Cα ∈ Dk [ Bk and i3 ∈ Cβ ∈ Dk [ Bk
+31: if M(Cα, Cβ) = Cγ ∈ Dk then
+32: iγ iγ + 1
+33: !a
+iγ !a
+i1 ,i2 ,i3
+ð Þ ▷ local angle information
+34: iγ 0 ▷ local dihedral angle index in each cell
+35: for (i1, i2, i3, i4) ∈ dihedral angles do
+36: Find i1 ∈ Cα ∈ Dk [ Bk and i4 ∈ Cβ ∈ Dk [ Bk
+37: if M(Cα, Cβ) = Cγ ∈ Dk then
+38: iγ iγ + 1
+39: !d
+iγ !d
+i1 ,i2 ,i3 ,i4
+ð Þ ▷ local dihedral angle information
+240 JUNG ET AL.
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+Algorithm 2
+Nonbonded interaction for K computer
+1: for cell pairs (Cα, Cβ) with M(Cα, Cβ) ∈ Dk do
+2: for iα ∈ Cα do
+3: F!
+temp 0
+4: qiα , aiα ▷ charge and atom type number
+5: for jβ ∈ neighbor(iα) and jβ ∈ Cβ do
+6: qiβ , aiβ
+7: lj12 aiα , aiβ
+  and lj6 aiα , aiβ
+  ▷ LJ parameters
+8: r!
+iαjβ , riαjβ
+2 ▷ pairwise distance
+9: L 1⁄4 Drv2=riαjβ
+2
+10: F!
+elec Table elecðLÞqiα qiβ r!
+ij ▷ electrostatic force
+11: F!
+LJ12 Table lj12ðLÞlj12 aiα , aiβ
+  r!
+ij ▷ force from LJ repulsion
+12: F!
+LJ6 rij
+  Table lj6ðLÞlj6 aiα , aiβ
+  r!
+ij ▷ force from LJ dispersion
+13: F! F!
+elec þ F!
+LJ12 þ F!
+LJ6 ▷ sum of force values
+14: F!
+temp F!
+temp − F
+15: F!
+jβ F!
+jβ þ F! ▷ update j-th force
+16: F!
+iα F!
+iα þ F!
+temp ▷ update i-th force
+Algorithm 3
+Nonbonded interaction for Fugaku
+1: for Cα ∈ Dk [ Bk do
+2: for iα ∈ Cα do
+3: F!
+temp 0
+4: qiα , aiα ▷ charge and atom type number
+5: for jβ ∈ neighbor(iα) do
+6: prefetch read of neighbor list
+7: prefetch read of r!
+jβ , qiβ , aiβ
+8: prefetch write of F!
+jβ
+9: qiβ , aiβ
+10: lj12 aiα , aiβ
+  and lj6 aiα , aiβ
+  ▷ LJ parameters
+11: r!
+iαjβ , riαjβ
+2 ▷ pairwise distance
+12: L = Drv2=riαjβ
+2
+13: F!
+elec Table elecðLÞqiα qiβ r!
+ij ▷ electrostatic force
+14: F!
+LJ12 Table lj12ðLÞlj12 aiα , aiβ
+  r!
+ij ▷ force from LJ repulsion
+15: F!
+LJ6 rij
+  Table lj6ðLÞlj6 aiα , aiβ
+  r!
+ij ▷ force from LJ dispersion
+16: F! F!
+elec + F!
+LJ12 + F!
+LJ6 ▷ sum of force values
+17: F!
+temp F!
+temp − F
+18: F!
+jβ F!
+jβ + F! ▷ update j-th force
+19: F!
+iα F!
+iα + F!
+temp ▷ update i-th force
+JUNG ET AL. 241
+1096987x, 2021, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jcc.26450 by University Of Massachusetts, Wiley Online Library on [24/07/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

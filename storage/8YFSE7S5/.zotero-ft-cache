@@ -1,0 +1,1545 @@
+International Journal of Solids and Structures 110–111 (2017) 192–208
+Contents lists available at ScienceDirect
+International Journal of Solids and Structures
+journal homepage: www.elsevier.com/locate/ijsolstr
+The effects of pH and ionic strength on equilibrium swelling of polyampholyte gels
+A.D. Drozdov∗, J. deClaville Christiansen
+Department of Mechanical and Manufacturing Engineering, Aalborg University, Fibigerstraede 16, Aalborg 9220, Denmark
+article info
+Article history:
+Received 3 March 2016 Revised 31 October 2016 Available online 21 January 2017
+Keywords:
+PH-responsive gel Polyelectrolyte Polyampholyte Swelling
+abstract
+A model is developed for the elastic response of a charge-balanced polyampholyte gel subjected to swelling in an aqueous solution of a monovalent salt with arbitrary pH. A gel is treated as a three-phase continuum composed of a solid phase (polymer network formed by chains with acidic and basic functional groups), solvent (water), and solute (mobile ions). Transport of solvent and solute is thought of as their diffusion through the network accelerated by an electric field formed by mobile ions and bound charges and accompanied by chemical reactions (self-ionization of water, ionization of functional groups, formation of ion pairs between bound charges and mobile counter-ions, and formation of physical crosslinks between fixed ions with opposite charges). Constitutive equations are derived by means of the free energy imbalance inequality for three-dimensional deformation with finite strains. The governing equations are applied to study equilibrium water uptake by polyampholyte and polyelectrolyte gels. Numerical analysis demonstrates that the model reproduces all characteristic features of swelling diagrams qualitatively. The ability of the model to describe swelling curves quantitatively is confirmed by comparison of results of simulation with experimental data on three polyampholyte gels.
+© 2017 Elsevier Ltd. All rights reserved.
+1. Introduction
+Hydrogels are three-dimensional networks of polymer chains connected by covalent bonds and physical cross-links (van Vlierberghe et al., 2011). When a dry gel is immersed into a water bath, it swells retaining structural integrity and the ability to withstand large deformations. Stimuli-sensitive gels form an important class of hydrogels whose equilibrium degree of swelling and kinetics of water uptake are strongly affected by temperature, pH, ionic strength, electric field, and light (Stuart et al., 2010; Koetting et al., 2015). These materials demonstrate potential for a wide range of “smart” applications including biomedical devices, targeted drug delivery systems, scaffolds for tissue engineering, filters and membranes for selective diffusion and water treatment, sensors for on-line process monitoring, and soft actuators (Deligkaris et al., 2010; Messing and Schmidt, 2011; Kang et al., 2013). The influence of pH on swelling of polyelectrolyte (PE) gels is explained by ionization of functional groups attached to main and side chains of the polymer network due to proton exchange reactions with mobile ions. Depending on the charge of these groups, anionic and cationic PE gels are distinguished.
+∗ Corresponding author. E-mail address: aleksey@m-tech.aau.dk (A.D. Drozdov).
+A polyampholyte (amphoteric) gel is a gel whose polymer network contains both anionic and cationic functional groups (Ciferri and Kudaibergenov, 2007; Shao and Jiang, 2015). Bearing in mind that study of polyampholyte gels is a rapidly growing area of research, where the terminology has not yet been fixed, a copolymer gel whose network is formed by chains with anionic and cationic moieties is referred to as a polyampholyte (PA) gel, and a homopolymer gel whose chains contain alternating negative and positive bound charges is called a zwitterionic gel. Typical examples of polyampholytes are native and denatured proteins and synthetic copolymers containing monomers with acidic and basic groups (Dobrynin et al., 2004). Industrial and biomedical applications of PA gels were discussed by Kudaibergenov et al. (2012), Bernards and He (2014), Zurick and Bernards (2014) and Shao and Jiang (2015), to mention a few. Observations in swelling tests on PE gels in water with moderate pH (3 < pH < 9) demonstrate that an increase in pH leads to a monotonic growth of degree of swelling Q for anionic gels and a monotonic decay in Q for cationic gels (Koetting et al., 2015). The shape of swelling diagrams for PA gels is determined by molar fractions of weak acidic and basic groups. When molar fraction of acidic (basic) groups exceeds strongly that of basic (acidic) groups (unbalanced PA gels), the swelling curve of a PA gel resembles that of an anionic (cationic) PE gel. When concentrations of functional groups that form positive and negative bound charges are
+http://dx.doi.org/10.1016/j.ijsolstr.2017.01.028 0020-7683/© 2017 Elsevier Ltd. All rights reserved.
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 193
+comparable (equi-molar or balanced gels), the swelling diagram of a PA gel becomes non-monotonic: degree of swelling Q reaches its minimum at a particular pH value (the so-called isoelectric point pHiep where the numbers of negative and positive bound charges coincide), and increases with the difference |pH − pHiep| (Takeoka et al., 1999; Nisato et al., 1999). When molar fraction of functional groups becomes sufficiently high, an interval is formed near the isoelectric point, where degree of swelling accepts its minimum value, and this interval grows with concentration of ionized functional groups (Dogu et al., 2009). Another difference between the responses of PE and PA gels is observed when equilibrium swelling tests are performed in aqueous solutions with a fixed pH and altered molar fraction θ of a monovalent salt. When θ varies between 1 μM and 1 M, degrees of swelling of anionic and cationic PE gels decay monotonically with molar fraction of salt. On the contrary, PA gels reveal the so-called anti-polyelectrolyte effect (Gao et al., 2014): a nonmonotonic dependency Q(θ ) for an unbalanced gel, and a monotonic increase in degree of swelling with θ for a balanced gel (English et al., 1996; Okazaki et al., 1996; Ninni et al., 2014). The objective of this study is threefold: (i) to develop a constitutive model for the elastic response of a PA gel under a threedimensional deformation accompanied by swelling, (ii) to analyze the effect of adjustable parameters in the governing equations on equilibrium water uptake by a PA gel, and (iii) to verify the model by comparison with experimental data in swelling tests. We focus on the response of charge-balanced PA gels prepared by crosslinking polymerization of monomers with equal molar fractions of anionic and cationic functional groups. Equilibrium swelling of an ionic gel was first studied by Tanaka et al. (1980) by means of the Flory theory of swelling (Flory, 1953). A shortcoming of this approach is that it disregards the energy of electrostatic interaction between bound charges. Several phenomenological approaches were suggested to describe this energy (Ilavsky, 1981; Vasilevskaya and Khokhlov, 1986; Baker et al., 1995; English et al., 1996; Mafe et al., 1997; English et al., 1998; Nisato et al., 1999). In particular, a concept of screened Coulombic potential on a quasi-lattice with the nearest-neighbor interactions was developed by English et al. (1996, 1998) and Mafe et al. (1997). An advantage of this theory is that it takes into account attractive interactions between fixed ions with the opposite charges and repulsive interactions between fixed ions with the same charge in a unified manner. Its shortcoming is that the governing equations disregard formation of ion pairs between bound charges and mobile ions and between fixed ions with opposite charges (Ogawa et al., 2004; Masaki and Kokufuta, 2013). Simplified models for formation of physical cross-links between bound charges with opposite signs were proposed by Deiber et al. (2009) and Ninni et al. (2014) (permanent cross-links,) and Sun et al. (2015) (temporary cross-links). These models focused on water uptake by PA gels under unconstrained swelling. The elastic response of PA gels under non-hydrostatic loading (three-dimensional deformation accompanied by swelling) was studied by Yan and Jin (2012); 2013) and Yan et al. (2014) with reference to the theory of constrained swelling of PE gels (Marcombe et al., 2010). The novelty of the present work consists in the following: (i) Constitutive equations are developed for the mechanical behavior of PA gels subjected to swelling in aqueous solutions with various pH and ionic strengths with reference to the free energy imbalance inequality for an arbitrary three-dimensional deformation with finite strains. (ii) Numerical analysis reveals a pronounced difference between equilibrium swelling diagrams on PA gels on the one hand, and anionic and cationic PE gels, on the other. In particular, the model predicts adequately the anti-polyelectrolyte response of PA gels, a phenomenon that has previously been described only qualitatively, and allows equilibrium swelling diagrams on PA gels
+with low and high concentrations of functional groups to be distinguished. (iii) Good agreement is demonstrated between results of simulation and observations in water uptake tests on several PA gels. The following features distinguish our constitutive model from the models proposed in previous studies: (i) A covalently crosslinked PA gel is treated as a three-phase continuum consisting of a partially ionized polymer network, solvent, and solute (mobile ions). The reference state of the network differs from the initial state of a dry undeformed gel. Evolution of the reference state is thought of as volume deformation of the network with a coefficient of expansion proportional to concentration of unbalanced fixed ions in the actual configuration. (ii) The number of crosslinks in the network is altered under water uptake due to formation of physical cross-links (ion pairs) between positively and negatively charged fixed ions. Keeping in mind that the elastic modulus is proportional to concentration of cross-links, we take into account an increase in modulus with fraction of ion pairs between bound charges. (iii) Each functional group attached to a polymer chain can be in four different states: (a) screened from interaction with solvent and solute by surrounding hydrophobic segments, (b) neutral, (c) ionized, (d) forming a complex (ion pair) with a mobile ion or a fixed ion with the opposite charge. Fraction of functional groups in each state is determined from the laws of thermodynamics. (iv) Transport of solvent and solute through the polymer network is described with account for chemical reactions (selfionization of water molecules, ionization of functional groups, and formation of ion pairs between mobile and fixed ions). The exposition is organized as follows. A constitutive model for the mechanical response of a PA gel is derived in Section 2. Governing equations for unconstrained swelling of PA and PE gels are developed in Section 3. Results of simulation are reported in Section 4, where it is demonstrated how equilibrium swelling diagrams are affected by material parameters. The model is validated in Section 5 by comparison with experimental data for three PA gels. Concluding remarks are formulated in Section 6.
+2. Constitutive model
+2.1. Chemical reactions
+We consider an aqueous solution with four types of mobile ions: protons H+, sodium ions Na+, hydroxide ions OH−, and
+chloride ions Cl−. Protons and hydroxide ions arise due to selfionization of water
+2H2O  H3O+ + OH−. (1)
+Reaction (1) produces positively charged hydronium ions H3O+ (protons H+ associated with neutral water molecules) and negatively charged hydroxide ions OH−. Concentrations of positive and negative ions are characterized by pH = − log[H+] and pOH = − log[OH−], where log = log10, and [H+], [OH−] stand for molar
+fractions of H+, OH− ions. In thermodynamic equilibrium, pH and pOH obey the equality
+pH + pOH = pKw, (2)
+where Kw denotes water ionization constant, and pKw = − log Kw with pKw = 14 at room temperature. To alter pH, hydrochloric acid HCl and sodium hydroxide NaOH are added to the water bath. To produce acidic conditions (pH < 7), HCl is immersed which dissociates entirely into protons (associated with water molecules) and chloride ions
+H2O + HCl  H3O+ + Cl−.
+
+
+194 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+To produce basic conditions (pH > 7), NaOH is immersed which dissociates into Na+ ions (associated with water molecules) and OH− ions
+H2O + NaOH  Na+H2O + OH−.
+To change ionic strength, a monovalent salt is immersed into the aqueous solution whose molar fraction θ lies below its solubility threshold. For definiteness, we suppose that sodium chloride NaCl is dissolved and dissociated into Na+ ions (associated with water molecules) and Cl− ions
+H2O + NaCl  Na+H2O + Cl−.
+Denote by Cbath, Cbath
+H+ , Cbath
+Na+ , Cbath
+OH− , Cbath
+Cl− concentrations (number of species per unit volume) of water molecules, protons, sodium ions, hydroxide ions, and chloride ions in the bath. Molar fractions of the ions are expressed in terms of their concentrations as
+[H+] = κ Cbath
+H+
+Cbath , [Na+] = κ Cbath
+Na+
+Cbath , [OH−] = κ Cbath
+OH−
+Cbath ,
+[Cl−] = κ Cbath
+Cl−
+Cbath , (3)
+where κ = 1000/18 stands for molarity of water. In a PA gel, the network is composed of two types of polymer chains whose functional groups form negative and positive bound charges due to ionization reactions. In a charge-balanced gel, chains contain equal numbers of functional groups that form monovalent positive and negative fixed ions. When an anionic chain is immersed into a bath, ionization of its functional groups results in formation of negative bound charges and positive mobile ions. The ionization process is modeled as dissociation of carboxyl groups
+H2O + COOH  H3O+ + COO−. (4)
+In an aqueous solution containing sodium ions, dissociation of functional groups is accompanied by the complexation reaction in which bound anions form ion pairs with Na+ ions
+Na+H2O + COO−  Na+COO− + H2O. (5)
+When a cationic chain is immersed into a bath, proton exchange reaction occurs between functional groups and mobile protons, which leads to formation of positively charged bound groups. This reaction is modeled as protonation of imidazole rings (Im=C3H4N2),
+Im + H3O+  ImH+ + H2O. (6)
+In an aqueous solution containing chloride ions, protonation of functional groups is accompanied by the complexation reaction in which bound cations form ion pairs with Cl− ions
+ImH+ + Cl−  ImH+Cl−. (7)
+When anionic and cationic chains are immersed into an aqueous solution, reactions (4)–(7) are accompanied by formation of ion pairs between fixed anions and cations
+ImH+ + COO−  ImH+COO−. (8)
+For an anionic chain, n−
+1 denotes the number of non-ionized
+functional groups COOH, n−
+2 denotes the number of ionized groups
+COO−, n−
+3 denotes the number of ion pairs Na+COO−, n−
+4 denotes
+the number of ion pairs ImH+COO−, and
+n−max = n−
+1 + n−
+2 + n−
+3 + n−
+4 (9)
+is the number of functional groups being in contact with water. For an isolated chain in a water bath, n−max coincides with the total
+number of functional groups per chain n−. When the chain belongs to a polymer network in a gel, n−max can be lower than n− as some functional groups are screened from contact with water molecules
+due to formation of dehydrated clusters by surrounding hydrophobic segments. To account for this restriction, we denote by n−
+0 the number of functional groups per chain that are screened from contact with water molecules and write
+n− = n−
+0 + n−max. (10)
+It follows from Eqs. (9) and (10) that
+β−
+0 + β−
+1 + β−
+2 + β−
+3 + β−
+4 = 1, (11)
+where
+βm− = n−m
+n− (m = 0, . . . , 4). (12)
+Transformation of one type of functional groups into the other is governed by the equations
+β ̇ −
+0 = −R−
+01, β ̇ −
+1 = R−
+01 − R−
+12, β ̇ −
+2 = R−
+12 − R−
+23 − R−
+24 , β ̇ −
+3 = R−
+23, β ̇ −
+4 = R−
+24, (13)
+where the superscript dot stands for the derivative with respect to time t, R−
+01 is the rate of hydration of functional groups, R−
+12 is the
+rate of their ionization, R−
+23 is the rate of formation of ion pairs
+Na+COO−, and R−
+24 is the rate of formation of ion pairs ImH+COO− (the rates are defined per unit functional group). Degree of ionization of anionic chains α− equals the ratio of the number of ionized functional groups to the total number of functional groups per chain. Keeping in mind that α− = β−
+2 , we find from Eqs. (11) and (12) that
+α− = α−max − β−
+1 − β−
+3 − β−
+4 , α−max = 1 − β−
+0 , (14)
+where α−max stands for the number of functional groups per anionic chain being in contact with water molecules. It follows from Eqs. (13) and (14) that
+R−
+01 = α ̇ −max, R−
+12 = α ̇ −max − β ̇ −
+1 , R−
+23 = β ̇ −
+3 , R−
+24 = β ̇ −
+4. (15)
+Our notation for a cationic chain are similar to those for an anionic chain (with the natural replacement of sign “ - ” with “+ ”). In particular, n+
+1 denotes the number of non-ionized functional
+groups Im, n+
+2 denotes the number of ionized groups ImH+, n+
+3
+denotes the number of ion pairs ImH+Cl−, n+
+4 denotes the number
+of ion pairs ImH+COO−,
+n+max = n+
+1 + n+
+2 + n+
+3 + n+
+4 (16)
+stands for the entire number of functional groups being in contact with water, and
+n+
+0 = n+ − n+max. (17)
+is the number of functional groups per chain that are screened from contact with water molecules. Coefficients βm+ (m = 0, . . . , 4) are introduced with reference to Eq. (12), degree of ionization of cationic chains is calculated by analogy with Eq. (14),
+α+ = α+max − β+
+1 − β+
+3 − β+
+4 , α+max = 1 − β+
+0 , (18)
+and the rates R+
+01, R+
+12, R+
+23, R+
+24 are determined by the equations
+R+
+01 = α ̇ +max, R+
+12 = α ̇ +max − β ̇ +
+1 , R+
+23 = β ̇ +
+3 , R+
+24 = β ̇ +
+4
+(19)
+similar to Eq. (15). It is worth noting that for a balanced PA gel,
+n+ = n− = n, β+
+4 = β−
+4 = β, (20)
+where n is the total number of functional groups, and β is the
+number of ion pairs ImH+COO− per chain. In what follows, we presume HCl, NaOH, and NaCl to be dissociated entirely in water and disregard association of mobile cations with water molecules in reactions (1), (4)–(6).
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 195
+2.2. Macro-deformation of a gel
+A gel is treated as an interpenetrating three-phase continuum composed of a solid phase (polymer network), water, and solute (mobile ions). The initial state of the network is chosen to coincide with that of the dry undeformed specimen. Transformation of the initial state into the actual state is determined by the deformation gradient F. The Cauchy–Green tensors for macro-deformation read
+B = F · F, C = F · F, (21)
+where the dot stands for inner product, and  denotes transpose. The volume element in the actual configuration dv is expressed by means of the volume element in the initial configuration dV as
+dv = JdV, J = det F. (22)
+The surface element nda with unit normal n in the actual configuration is connected with the surface element NdA with unit normal N in the initial configuration by the equation
+nda = JF− · NdA = JN · F−1dA. (23)
+Denote by C concentration of water molecules (number of molecules per unit volume in the initial configuration). Presuming macro-deformation of the gel to coincide with macro-deformation of its polymer network, disregarding volume changes driven by the presence of ions, and adopting the molecular incompressibility condition, we write
+J = 1 + Cv, (24)
+where the characteristic volume of a water molecule v is determined from the condition
+Cbathv = 1.
+Volume fractions of solid, φs, and fluid, φf, phases of the gel are given by
+φs = 1
+1 + Cv , φf = Cv
+1 + Cv . (25)
+Concentrations of H+, Na+, OH−, Cl− ions per unit volume in the initial configuration are denoted as CH+ , CNa+ , COH− , CCl− . According to Eq. (22), concentrations of water molecules and mobile ions per unit volume in the actual configuration read
+c= C
+J , cH+ = CH+
+J , cNa+ = CNa+
+J,
+cOH− = COH−
+J , cCl− = CCl−
+J . (26)
+Denote by M the number of anionic and cationic chains in the network per unit volume in the initial configuration. Concentration of functional groups attached to chains is given by Cb = nM. Concentrations of bound charges are given by
+Cb− = α−Cb, Cb+ = α+Cb,
+where α−, α+ are determined by Eqs. (14) and (18), respectively.
+2.3. Electric field
+Denote by  the electrostatic potential and by e, E the electric field vectors in the actual and initial states,
+e = −∇, E = −∇0, (27)
+where ∇, ∇0 are the gradient operators in the actual and initial configurations. A gel is modeled as a linear dielectric material whose electric displacement vector in the actual state is given by
+h = e (28)
+with a constant electric permittivity . It follows from Eqs. (27) and (28) and the chain rule for differentiation
+∇0 = ∇ · F = F · ∇ (29)
+that
+E = e · F = F · e, h = E · F−1 = F− · E. (30)
+The nominal electric displacement reads
+H = JF−1 · h = Jh · F−. (31)
+It follows from Eqs. (21), (30), (31) that
+H = JC−1 · E = JE · C−1. (32)
+According to the Gauss law, the vector H obeys the equation
+∇0 · H = e
+(
+CH+ + CNa+ − COH− − CCl− + (α+ − α− )Cb
+) ,
+whose right-hand side determines charge density in the initial state, and e denotes charge of an electron. Insertion of Eqs. (14), (18), (20), (27), (32) into this relation results in the Poisson equation
+∇0 · (JC−1 · ∇0)
+= −e
+[
+CH+ + CNa+ − COH− − CCl−
++
+(
+(α+max − β+
+1 − β+
+3 ) − (α−max − β−
+1 − β−
+3)
+)
+Cb
+]
+. (33)
+For an ideal dielectric, the energy density of the electric field per unit volume in the initial configuration is given by (Drozdov and Christiansen, 2015a, 2015b)
+Wel = 1
+2J H · C · H, (34)
+and the work performed by the electric field (per unit volume in the initial configuration and unit time) reads
+uel = E ·  ̇H − e
+[
+C ̇H+ + C ̇Na+ − C ̇OH− − C ̇Cl−
++
+(
+(α ̇ +max − β ̇ +
+1 − β ̇ +
+3 ) − (α ̇ −max − β ̇ −
+1 − β ̇ −
+3 ))Cb
+]
+. (35)
+2.4. Kinetic relations
+Transport of solvent and solutes is modeled as their diffusion through the polymer network. Denote by J, JH+ , JNa+ , JOH− , JCl− the flux vectors for water molecules and mobile ions in the initial configuration (numbers of species moving through unit area per unit time). Their counterparts in the actual configuration read j, jH+ , jNa+ , jOH− , jCl− . Keeping in mind that n · jda = N · JdA, we find from Eq. (23) that
+J = JF−1 · j, JH+ = JF−1 · jH+ , JNa+ = JF−1 · jNa+ ,
+JOH− = JF−1 · jOH− , JCl− = JF−1 · jCl− . (36)
+The flux of water molecules is given by
+j = − Dc
+kBT ∇μ, (37)
+where T is the absolute temperature, kB is Boltzmann’s constant, D stands for the diffusivity, and μ denotes chemical potential of water molecules. It follows from Eqs. (26), (29), (36), (37) that
+J = − DC
+kBT F−1 · ∇0μ · F−1. (38)
+The mass conservation law for solvent reads
+C ̇ = −∇0 · J + , (39)
+
+
+196 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+where is the rate of production of water molecules (per unit volume in the initial configuration and unit time) due to selfionization reaction (1). Denote by μH+ , μNa+ , μOH− , μCl− chemical potentials of mobile ions. Their flux vectors in the actual state are determined by analogy with Eq. (38),
+jH+ = − DH+ cH+
+kBT ∇μH+ , jNa+ = − DNa+ cNa+
+kBT ∇μNa+ ,
+jOH− = − DOH− cOH−
+kBT ∇μOH− , jCl− = − DCl− cCl−
+kBT ∇μCl− , (40)
+where DH+ , DNa+ , DOH− , DCl− stand for the corresponding diffusivities. Presuming, for simplicity, the diffusivities to coincide
+D = DH+ = DNa+ = DOH− = DCl− ,
+we find from Eqs. (36) and (40) that
+JH+ = − DCH+
+kBT F−1 · ∇μH+ · F−1, JNa+ = − DCNa+
+kBT F−1 · ∇μNa+ · F−1,
+JOH− = − DCOH−
+kBT F−1 · ∇μOH− · F−1, JCl− = − DCCl−
+kBT F−1 · ∇μCl− · F−1.
+(41)
+The mass conservation laws for mobile ions are given by
+C ̇H+ = −∇0 · JH+ + H+ , C ̇Na+ = −∇0 · JNa+ + Na+ ,
+C ̇OH− = −∇0 · JOH− + OH− , C ̇Cl− = −∇0 · JCl− + Cl− , (42)
+where H+ is the rate of production of H+ ions induced by selfionization of water (1), dissociation of anionic functional groups (4), and protonation of cationic functional groups (6), Na+ is the
+rate of production of Na+ ions due to formation of ion pairs between COO− bound charges and mobile sodium ions (5), OH− is
+the rate of production of OH− ions driven by self-ionization of water (1), and Cl− is the rate of production of Cl− ions due to forma
+tion of ion pairs between ImH+ bound charges and mobile chloride ions (7). These rates are given by
+= 2 0, H+ = − 0 + (R−
+12 − R+
+12 )Cb, OH− = − 0,
+Na+ = −R−
+23Cb, Cl− = −R+
+23Cb, (43)
+where 0 is the rate of association of H+ and OH− ions in the self-ionization reaction (per unit volume in the initial configuration), R−
+12Cb is the rate of production of H+ ions driven by ioniza
+tion of carboxyl groups, R+
+12Cb is the rate of consumption of H+
+ions induced by protonation of imidazole rings, R−
+13Cb is the rate
+of consumption of Na+ ions caused by formation of ion pairs between bound anions and mobile sodium ions, and R+
+13Cb is the rate
+of consumption of Cl− ions induced by formation of ion pairs between bound cations and mobile chloride ions. Combination of Eqs. (15), (19), (38), (39), (41)–(43) implies that
+C ̇ = ∇0 ·
+( DC
+kBT F−1 · ∇0μ · F−1
+)
++ 2 0,
+C ̇H+ = ∇0 ·
+( DCH+
+kBT F−1 · ∇0μH+ · F−1
+)
+− 0+
+[
+(α ̇ −max − β ̇ −
+1 ) − (α ̇ +max − β ̇ +
+1)
+]
+Cb,
+C ̇OH− = ∇0 ·
+( DCOH−
+kBT F−1 · ∇0μOH− · F−1
+)
+− 0,
+C ̇Na+ = ∇0 ·
+( DCNa+
+kBT F−1 · ∇0μNa+ · F−1
+)
+− β ̇ −
+3 Cb,
+C ̇Cl− = ∇0 ·
+( DCCl−
+kBT F−1 · ∇0μCl− · F−1
+)
+− β ̇ +
+3 Cb. (44)
+The work produced by transport of solvent and solutes (per unit volume in the initial state and unit time) reads (Drozdov and
+Christiansen, 2015a, 2015b)
+udif = μ(C ̇ − ) + μH+ (C ̇H+ − H+ ) + μNa+ (C ̇Na+ − Na+ )
++μOH− (C ̇OH− − OH− ) + μCl− (C ̇Cl− − Cl− ) + u ̄dif (45)
+with
+u ̄dif ≥ 0. (46)
+Substitution of Eqs. (15), (19), (43) into Eq. (45) yields
+udif = μ(C ̇ − 2 0 ) + μH+
+(
+C ̇H+ + 0 +
+(
+(α ̇ +max − β ̇ +
+1)
+−(α ̇ −max − β ̇ −
+1)
+)
+Cb
+)
++ μNa+ (C ̇Na+ + β ̇ −
+3 Cb )
++μOH− (C ̇OH− + 0 ) + μCl− (C ̇Cl− + β ̇ +
+3 Cb ) + u ̄dif. (47)
+2.5. Kinematic relations
+The reference configuration of the polymer network (in which stresses in chains vanish) differs from the initial configuration. Transformation of the initial state into the reference state driven by ionization of functional groups is described by the deformation gradient f. For an isotropic polymer network, we set
+f= f1
+3 I, (48)
+where f stands for a coefficient of volume expansion of polymer network, and I is the unit tensor. The deformation gradient for elastic deformation Fe describes transformation of the reference configuration into the actual configuration. This tensor is connected with the deformation gradient for macro-deformation F by the multiplicative decomposition formula F = Fe · f. It follows from this relation and Eq. (48) that
+F= f1
+3 Fe. (49)
+The Cauchy–Green tensors for elastic deformation are given by
+Be = Fe · Fe, Ce = Fe · Fe. (50)
+The derivatives of the principal invariants Je1, Je2, Je3 of these tensors with respect to time read (Drozdov and Christiansen, 2015a, 2015b)
+J ̇e1 = 2Be : D − 2 f ̇
+3 f Je1, J ̇e2 = −2B−1
+e : DJe3 + 2
+(
+I : D − 2 f ̇
+3f
+)
+Je2,
+J ̇e3 = 2
+(
+I : D − f ̇
+f
+)
+Je3, (51)
+where the colon stands for convolution of tensors, and L = F ̇ · F−1, D= 1
+2 (L + L ) are the velocity gradient and the rate-of-strain tensor, respectively.
+2.6. Free energy density
+The Helmholtz free energy (per unit volume in the initial configuration) of a PA gel treated as a three-phase medium equals the sum of seven components: (i) the energy of solvent and solutes not interacting with each other or with the solid phase 1, (ii) the energy of the solid phase not interacting with solvent or solute 2, (iii) the energy of polymer-water mixing 3, (iv) the energy of mixing of water molecules and mobile ions 4, (v) the energy of mixing of charged and non-charged functional groups along anionic and cationic chains 5, (vi) the energy of hydrophobic interaction between polymer segments that prevents direct contact of functional groups with water 6, and (vii) the energy of the electric field formed by mobile ions and bound charges,
+= 1 + 2 + 3 + 4 + 5 + 6 + Wel. (52)
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 197
+The specific energy density 1 is given by
+1 = μ0C + μ0
+H+CH+ + μ0
+Na+CNa+ + μ0
+OH−COH− + μ0
+Cl−CCl− , (53)
+where μ0, μ0
+H+ , μ0
+Na+ , μ0
+OH− , μ0
+Cl− denote chemical potentials of non-interacting water molecules and ions. The free energy density of the polymer network not interacting with solvent or solute reads
+2 = W (Je1, Je2, Je3, α−, α+, β, f ), (54)
+where W stands for the specific mechanical energy stored in chains. This quantity is treated as a function of the principal invariants of the Cauchy–Green tensor for elastic deformation (in accord with the conventional approach in thermo-elasticity), fractions of negative α−Cb and positive α+Cb bound charges per unit volume in the initial configuration (these quantities account for mutual repulsion of fixed ions), number of ion pairs βCb formed by positive and negative bound charges per unit volume in the initial configuration (this parameter characterizes extra physical cross-links between anionic and cationic chains), and coefficient of volume expansion of the network f (that accounts for mutual displacement of bound charges induced by swelling). With reference to the Flory–Huggins theory (Flory, 1953), the specific energy of mixing of water molecules and segments of chains is determined by
+3
+J = kBT
+v (φf ln φf + χ φsφf),
+where χ stands for the Flory–Huggins interaction parameter. It follows from this relation and Eqs. (24) and (25) that
+3 = kBTC
+(
+ln Cv
+1 + Cv + χ
+1 + Cv
+)
+. (55)
+For a dilute solution of ions in water, the specific energy of mixing reads
+4 = kBT
+[
+CH+
+(
+ln CH+
+C −1
+)
++ CNa+
+(
+ln CNa+
+C −1
+)
++COH−
+(
+ln COH−
+C −1
+)
++ CCl−
+(
+ln CCl−
+C −1
+)]
+. (56)
+The specific energy of mixing of ionized and non-ionized functional groups is given by
+5 = kBTCb
+[(
+β−
+1 ln β−
+1
+α−max
++β−
+2 ln β−
+2
+α−max
++β−
+3 ln β−
+3
+α−max
++ β ln β
+α−max
+)
++
+(
+β+
+1 ln β+
+1
+α+max
++ β+
+2 ln β+
+2
+α+max
++ β+
+3 ln β+
+3
+α+max
++ β ln β
+α+max
+)] ,
+where α−max, α+max are numbers of sites (per chain) occupied by non-ionized functional groups, ionized groups, and ion pairs. Combination of this equality with Eqs. (14) and (18) implies that
+5 = kBTCb
+[(
+β−
+1 ln β−
+1
+α−max
++ β−
+3 ln β−
+3
+α−max
++ β ln β
+α−max
++(α−max − β−
+1 − β−
+3 − β ) ln α−max − β−
+1 − β−
+3 −β
+α−max
+)
++
+(
+β+
+1 ln β+
+1
+α+max
++ β+
+3 ln β+
+3
+α+max
++ β ln β
+α+max
++(α+max − β+
+1 − β+
+3 − β ) ln α+max − β+
+1 − β+
+3 −β
+α+max
+)]
+. (57)
+The specific energy of hydrophobic interaction between polymer segments is treated as a quadratic function of maximum degrees of ionization α−max and α+max of anionic and cationic chains
+6= 1
+2 kBTCb
+[
+λ−(α−max )2 + λ+(α+max )2
+]
+, (58)
+where λ−, λ+ are dimensionless constants. Eq. (58) provides the simplest expression which ensures that all functional groups are non-ionized when these groups are screened from contact with water molecules in dehydrated clusters formed by hydrophobic segments.
+2.7. Free energy imbalance inequality
+Constitutive equations for the mechanical response of a gel under isothermal deformation are derived by means of the free energy imbalance inequality
+ ̇ − umec − uel − udif − uch − uhyd ≤ 0, (59)
+where umec, uel, udif, uch, uhyd denote works (per unit volume in the initial state and unit time) produced by stresses, electric field, transport of solvent and solutes, induced by chemical reactions (ionization of functional groups and formation of ion pairs), and caused by breakage of hydrogen bonds between segments. The mechanical work is determined by the formula
+umec = JT : D, (60)
+where T is the Cauchy stress tensor. The works performed by the electric field and induced by diffusion of solvent and solutes are given by Eqs. (35) and (47). The work performed by chemical reactions reads
+uch = uch 1 + uch 2,
+where uch 1 is the work induced by interactions between functional groups and mobile ions, and uch 2 is the work caused by formation of ion pairs between positive and negative bound charges. The specific work uch 1 is given by
+uch 1 =
+[
+(R−
+12 μ−
+1 + R−
+23 μ−
+3 ) + (R+
+12 μ+
+1 + R−
+23 μ+
+3)
+]
+Cb,
+where μ−
+1 , μ−
+3 and μ+
+1 , μ+
+3 stand for the excess chemical potentials of non-ionized anionic and cationic functional groups and their ion pairs with mobile ions with respect to chemical potential of the corresponding ionized functional groups. Insertion of Eqs. (15) and (19) into this relation yields
+uch 1 =
+[
+(α ̇ −max − β ̇ −
+1 )μ−
+1 + β ̇ −
+3 μ−
+3 + (α ̇ +max − β ̇ +
+1 )μ+
+1 + β ̇ +
+3 μ+
+3
+]
+Cb.
+(61)
+The specific work produced by formation of ion pairs between positive and negative bound charges reads
+uch 2 = 2β ̇ μ4Cb, (62)
+where 2μ4 is the excess chemical potential of an ion pair with respect to the corresponding ionized groups. The work produced by breakage of hydrogen bonds is determined by
+uhyd = (α ̇ −maxμ−
+2 + α ̇ +maxμ+
+2 )Cb, (63)
+where μ−
+2 and μ+
+2 characterize energy losses (per unit functional group) driven by the corresponding breakage processes. In what follows, coefficients μ−
+2 , μ+
+2 are presumed to be proportional to concentration of water molecules,
+μ−
+2 = μ0−
+2 Q, μ+
+2 = μ0+
+2 Q, Q = Cv, (64)
+where μ0−
+2 , μ0+
+2 are material constants, and Q stands for degree of swelling. Eq. (59) is satisfied when functions C and F are connected by Eq. (24). To account for the molecular incompressibility condition, we differentiate Eq. (24) with respect to time, use the equality J ̇ = JI : D, and find that
+C ̇ v − JI : D = 0.
+
+
+198 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+Multiplying this equality by an arbitrary function and summing the result with Eq. (59), we obtain
+ ̇ + (C ̇ v − JI : D) − umech − uel − udif − uch − uhyd ≤ 0. (65)
+Substitution of Eqs. (35), (47), (51)–(58), (60)–(63) into Eq. (65) implies that
+[2(Kmech + Kpol ) − J(T + I)] : D
++
+[
+W,α− α ̇ − + W,α+ α ̇ + + W,β β ̇ −
+( 2K
+3 f − W, f
+) f ̇
+]
++(C + v − μ)C ̇ + (H+ + e − μH+ )C ̇H+ +(Na+ + e − μNa+ )C ̇Na+
++(OH− − e − μOH− )C ̇OH− + (Cl− − e − μCl− )C ̇Cl−
++(−
+1 − μH+ + e + μ−
+1 )β ̇ −
+1 Cb + (+
+1 + μH+ − e + μ+
+1 )β ̇ +
+1 Cb
++(−
+3 − μNa+ + e − μ−
+3 )β ̇ −
+3 Cb +(+
+3 − μCl− − e − μ+
+3 )β ̇ +
+3 Cb
++(−max + μH+ − e − μ−
+1 − μ−
+2 )α ̇ −maxCb +(+max − μH+ + e − μ+
+1 − μ+
+2 )α ̇ +maxCb
++(−
+4 + +
+4 − 2μ4 )β ̇ Cb + (2μ − μH+ − μOH− ) 0 − u ̄dif ≤ 0. (66)
+The coefficients in Eq. (66) are determined by the formulas
+W,m = ∂W
+∂ Jem
+, W,α− = ∂W
+∂ α− , W,α+ = ∂W
+∂α+ , W,β = ∂W
+∂β , (67)
+W, f = ∂W
+∂ f , K = Je1W,1 + 2Je2W,2 + 3Je3W,3, (67)
+Kel = J
+2
+[
+(h  h) − 1
+2 (h · h)I
+] ,
+Kmec = W,1Be − Je3W,2B−1
+e + (Je2W,2 + Je3W,3 )I,
+C = μ0 + kBT
+[
+ln Cv
+1 + Cv + 1
+1 + Cv + χ
+(1 + Cv)2
+− CH+ + CNa+ + COH− + CCl−
+C
+] ,
+H+ = μ0
+H+ + kBT ln CH+
+C , Na+ = μ0
+Na+ + kBT ln CNa+
+C,
+OH− = μ0
+OH− + kBT ln COH−
+C , Cl− = μ0
+Cl− + kBT ln CCl−
+C,
+−
+1 = kBT ln β−
+1
+α−max − β−
+1 − β−
+3 −β,
++
+1 = kBT ln β+
+1
+α+max − β+
+1 − β+
+3 −β,
+−
+3 = kBT ln β−
+3
+α−max − β−
+1 − β−
+3 −β,
++
+3 = kBT ln β+
+3
+α+max − β+
+1 − β+
+3 −β,
+−
+4 = kBT ln β
+α−max − β−
+1 − β−
+3 −β,
++
+4 = kBT ln β
+α+max − β+
+1 − β+
+3 −β,
+−max = kBT
+(
+ln α−max − β−
+1 − β−
+3 −β
+α−max
++ λ−α−max
+) ,
++max = kBT
+(
+ln α+max − β+
+1 − β+
+3 −β
+α+max
++ λ+α+max
+)
+, (67)
+where  denotes the tensor product of vectors. Keeping in mind that D, C, CH+ , CNa+ , COH− , CCl− , β−
+1 , β+
+1 , β−
+3 , β+
+3 , β, α−max, α+max are arbitrary functions, we conclude that Eq. (66) is fulfilled, provided that
+(i) the Cauchy stress tensor reads
+T =  + M, (68)
+where
+=− I+ 2
+1 + Cv
+[
+W,1Be − Je3W,2B−1
+e + (Je2W,2 + Je3W,3 )I
+]
+(69)
+is the mechanical stress tensor, and
+M = 1
+
+[
+(h  h) − 1
+2 (h · h)I
+]
+(70)
+stands for the Maxwell stress tensor, (ii) chemical potential of water molecules and mobile ions are determined by
+μ = μ0 + kBT μ ̃ ,
+μ ̃ = ln Cv
+1 + Cv + 1
+1 + Cv + χ
+(1 + Cv)2 + v
+kBT
+−(nH+ + nNa+ + nOH− + nCl− ),
+μH+ = μ0
+H+ + kBT ln nH+ + e, μNa+ = μ0
+Na+ + kBT ln nNa+ + e,
+μOH− = μ0
+OH− + kBT ln nOH− − e, μCl− = μ0
+Cl− + kBT ln nCl− − e,
+(71)
+where
+nH+ = CH+
+C , nNa+ = CNa+
+C , nOH− = COH−
+C , nCl− = CCl−
+C,
+(72)
+(iii) concentrations of non-ionized functional groups and ion-pairs satisfy the equations
+β−
+1
+α−max − β−
+1 − β−
+3 − β = K−
+1 nH+ , β−
+3
+α−max − β−
+1 − β−
+3 − β = K−
+3 nNa+ ,
+(73)
+β+
+1
+α+max − β+
+1 − β+
+3 − β = K+
+1 nH+
+, β+
+3
+α+max − β+
+1 − β+
+3 − β = K+
+3 nCl− ,
+(74)
+where
+K−
+1 = exp
+( μ0
+H+ − μ−
+1
+kBT
+)
+, K−
+3 = exp
+( μ0
+Na+ + μ−
+3
+kBT
+) ,
+K+
+1 = exp
+(
+− μ0
+H+ + μ+
+1
+kBT
+)
+, K+
+3 = exp
+( μ0
+Cl− + μ+
+3
+kBT
+)
+, (75)
+(iv) concentration of ion pairs between negative and positive bound charges obeys the equation
+β
+√(α−max − β−
+1 − β−
+3 − β )(α+max − β+
+1 − β+
+3 − β ) = S (76)
+with
+S = exp
+( μ4
+kBT
+) .
+(v) concentrations of functional groups (belonging to anionic and cationic chains) that are in contact with water are determined by
+λ−α−max + ln
+( α−max − β−
+1 − β−
+3 −β
+α−max
+nH+
+)
+= μ−
+1 + μ−
+2 − μ0
+H+
+kBT ,
+λ+α+max + ln
+( α+max − β+
+1 − β+
+3 −β
+α+max
+1
+nH+
+)
+= μ+
+1 + μ+
+2 + μ0
+H+
+kBT . (77)
+(vi) volume expansion for the polymer network is governed by the equation
+( 2K
+3 f − W, f
+) f ̇ = W,α− α ̇ − + W,α+ α ̇ + + W,β β ̇ . (78)
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 199
+The terms in the right-hand side are included into Eq. (78) based on the assumption that the energy of electrostatic interaction of bound changes is too weak to affect the ionization process, but is sufficiently strong to change the reference state of the polymer network. Under conditions (68)–(78), Eq. (66) reads
+(2μ − μH+ − μOH− ) 0 − u ̄dif ≤ 0.
+According to Eq. (46), this inequality is satisfied provided that (vii) the rate of association of H+, OH− ions is given by
+0 = −γ (2μ − μH+ − μOH− ), (79)
+where γ is a positive function. Constitutive equations for the mechanical response of a PA gel involve (i) stress–strain relations (68)–(70), (ii) Eq. (78) for the coefficient of volume expansion, (iii) Eqs. (73), (74), (76) for concentrations of non-ionized functional groups and ion-pairs, (iv) Eq. (77) for maximum degrees of ionization of anionic and cationic chains, (v) Eq. (79) for the kinetics of self-ionization reaction in water, (vi) Eq. (33) for the electrostatic potential, and (vii) reactiondiffusion Eq. (44) with chemical potentials of solvent and solute given by Eq. (71).
+2.8. Simplification of the constitutive equations
+Our aim now is to transform the governing relations and to simplify them by disregarding small terms. We begin with Eq. (73) which are presented in the form
+β−
+1
+a−max − β −
+1 − β−
+3
+= K−
+1 nH+ , β−
+3
+a−max − β −
+1 − β−
+3
+= K−
+3 nNa+ , (80)
+where
+a−max = α−max − β. (81)
+It follows from Eq. (80) that
+β−
+1 = K−
+1 nH+ a−max
+1 + K−
+1 nH+ + K−
+3 nNa+
+, β−
+3 = K−
+3 nNa+ a−max
+1 + K−
+1 nH+ + K−
+3 nNa+
+. (82)
+Combination of Eqs. (14), (81), (82) implies that
+α− = α−max − β
+1 + K−
+1 nH+ + K−
+3 nNa+
+. (83)
+Introducing the notation
+K′a = 1
+K−
+1
+, S− = K−
+3
+K−
+1
+(84)
+with K′a = Ka/κ, where Ka = 10−pKa stands for the acide dissociation constant, we find from Eq. (83) that
+α− = K′a(α−max − β )
+K′a + nH+ + S−nNa+
+. (85)
+When S− = 0, which means that formation of ion pairs between bound anions and mobile cations is unfavorable, Eq. (85) reads
+α− = K′a
+K′a + nH+
+(α−max − β ).
+This relation differs from the Henderson–Hasselbach (HH) equation for anionic chains by the presence of the multiplier in parentheses only. We proceed with presenting Eq. (74) in the form
+β+
+1
+a+max − β +
+1 − β+
+3
+= K+
+1 nH+
+, β+
+3
+a+max − β +
+1 − β+
+3
+= K+
+3 nCl− , (86)
+where
+a+max = α+max − β. (87)
+It follows from Eq. (86) that
+β+
+1 = K+
+1 a+max K+
+1 + nH+ (1 + K+
+3 nCl− ) , β+
+3 = K+
+3 a+maxnH+ nCl− K+
+1 + nH+ (1 + K+
+3 nCl− ) .
+(88)
+Eqs. (18), (87), (88) imply that
+α+ = nH+ (α+max − β )
+K+
+1 + nH+ (1 + K+
+3 nCl− ) .
+It is convenient to re-write this relation as follows:
+α+ = nH+ (α+max − β )
+K′
+b + nH+ (1 + S+nCl− ) (89)
+with
+K′
+b = K+
+1 , S+ = K+
+3 (90)
+where K′b = Kb/κ, and Kb = 10−pKb stands for the base associa
+tion constant. When S+ = 0, which means that formation of ion pairs between bound cations and mobile anions is unfavorable, Eq. (89) reads
+α+ = nH+
+K′
+b + nH+
+(α+max − β ).
+This formula differs from the HH equation for cationic chains by the presence of the multiplier in parentheses only. We now determine β from Eq. (76). Keeping in mind Eqs. (14) and (18), we find that
+β = Sζ0, ζ0 = √α−α+. (91)
+Substitution of Eq. (91) into Eqs. (85) and (89) implies that
+α− = K′a(α−max − Sζ0 )
+K′a + nH+ + S−nNa+
+, α+ = nH+ (α+max − Sζ0 )
+K′
+b + nH+ (1 + S+nCl− ) . (92)
+Multiplying Eq. (92), we arrive at the equation
+ζ2
+0 = A(α−max − Sζ0 )(α+max − Sζ0 ) (93)
+with
+A = K′anH+
+(K′a + nH+ + S−nNa+ )(K′
+b + nH+ (1 + S+nCl− )) . (94)
+Presenting Eq. (93) in the form
+(1 − AS2)ζ 2
+0 + AS(α−max + α+max )ζ0 − Aα−maxα+max = 0,
+we conclude that its non-negative solution reads
+ζ0 =
+√A2S2(α−max − α+max )2 + 4Aα−maxα+max − AS(α−max + α+max )
+2(1 − AS2) . (95)
+The coefficients α−max, α+max are determined from Eq. (77). Combination of these equations with Eqs. (14) and (18) yields
+λ−α−max + ln
+( α−nH+
+α−max
+)
+= μ−
+1 + μ−
+2 − μ0
+H+
+kBT ,
+λ+α+max + ln
+( α+
+α +max nH+
+)
+= μ+
+1 + μ+
+2 + μ0
+H+
+kBT .
+Insertion of Eqs. (85) and (89) into these relations implies that
+λ−α−max + ln K′anH+
+K′a + nH+ + S−nNa+
++ ln α−max − β
+α−max
+= μ−
+1 + μ−
+2 − μ0
+H+
+kBT ,
+λ+α+max +ln 1
+K′
+b + nH+ (1 + S+nCl− ) +ln α+max − β
+α+max
+= μ+
+1 + μ+
+2 + μ0
+H+
+kBT .
+It follows from Eqs. (75), (84), (90) that
+μ−
+1 − μ0
+H+
+kBT = ln K′a, μ+
+1 + μ0
+H+
+kBT = − ln K′
+b.
+
+
+200 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+Combination of these equations yields
+λ−α−max = μ−
+2
+kBT − ln nH+
+K′a + nH+ + S−nNa+
+− ln α−max − β
+α−max
+,
+λ+α+max = μ+
+2
+kBT − ln K′
+b K′
+b + nH+ (1 + S+nCl− ) − ln α+max − β
+α+max
+. (96)
+Presuming dissipation of energy induced by breakage of hydrogen bonds to be sufficiently large, which implies the logarithmic terms in the right-hand sides of Eq. (96) can be disregarded compared with the first terms, we obtain
+α−max = μ−
+2
+kBT λ− , α+max = μ+
+2
+kBT λ+ .
+Substitution of Eq. (64) into these relations implies that
+α−max = α−
+0 Q , α+max = α+
+0 Q (97)
+with
+α−
+0 = μ0−
+2
+kBT λ− , α+
+0 = μ0+
+2
+kBT λ+ .
+Inserting expressions (97) into Eq. (95), we find that
+ζ0 = ζ Q, (98)
+where ζ is given by
+ζ=
+√A2 S2 (α −
+0 − α+
+0 )2 + 4Aα−
+0 α+
+0 − AS(α−
+0 + α+
+0)
+2(1 − AS2) . (99)
+Substitution of Eqs. (97), (98) into Eq. (92) yields
+α− = K′a(α−
+0 − Sζ )Q K′a + nH+ + S−nNa+
+, α+ = nH+ (α+
+0 − Sζ )Q K′
+b + nH+ (1 + S+nCl− ) . (100)
+Presuming the rate of self-ionization of water γ in Eq. (79) to exceed strongly the rates of diffusion of solvent and solutes, we replace differential Eq. (79) with the nonlinear equation
+2μ − μH+ − μOH− = 0.
+Substitution of Eq. (71) into this relation implies that
+nH+ nOH− = K′w exp(2μ ̃ ), (101)
+where K′w = Kw/κ2, and
+Kw = κ 2 exp
+( 2μ0 − μ0
+H+ − μ0
+OH−
+kBT
+)
+denotes the water ionization constant. The right-hand side of Eq. (101) reads exp[ln(K′w ) + 2μ ̃ ]. Taking into account that |μ ̃ | 
+1
+2 | ln(K′w )| (μ ̃ is of order of 10−1, while 1
+2 | ln(K′w )| = 20.135), we conclude that with the required level of accuracy,
+nH+ nOH− = K′w, (102)
+which is equivalent to Eq. (2).
+3. Equilibrium swelling
+We now apply the constitutive equations to develop explicit conditions for equilibrium swelling of a PA gel in a water bath with an arbitrary pH and molar fraction θ of monovalent salt.
+3.1. The Donnan conditions
+According to the Donnan conditions (Ricka and Tanaka, 1984), in a swollen gel,
+1. Electrostatic potential adopts constant values,  and bath, inside a gel specimen and in a water bath. Changes in  occur in a thin diffusive layer at the boundary of the specimen, whose characteristic thickness is negligible compared with the characteristic dimension of the sample.
+2. The Maxwell stress tensor M is disregarded: according to Eq. (70), this tensor accepts nonzero values in the thin diffusive layer only. The stress tensor  satisfies the equilibrium condition
+∇ ·  = 0, ∇ · bath = 0, (103)
+inside and outside the sample together with the condition
+n ·  = n · bath (104)
+at its boundary (n stands for the unit normal vector in the actual state). 3. Chemical potentials of water molecules and mobile ions inside the gel and in the bath are independent of spatial coordinates and coincide
+μ = μbath,
+μH+ = μbath
+H+ , μNa+ = μbath
+Na+ ,
+μOH− = μbath
+OH− , μCl− = μbath
+Cl− . (105)
+We begin with the analysis of electrostatic potential . It follows from Eqs. (14), (18), (33) that this function obeys the equation
+∇0 · (JC−1 · ∇0) = −e
+[
+CH+ + CNa+ − COH− − CCl− + (α+ −α− )Cb
+] .
+Substitution of Eqs. (72) and (100) into this equality results in
+∇0 · (JC−1 · ∇0)
+= −eQ
+[
+nH+ + nNa+ − nOH− − nCl−
++
+( nH+ (α+
+0 − Sζ ) K′
+b + nH+ (1 + S+nCl− ) − K′a(α−
+0 − Sζ ) K′a + nH+ + S−nNa+
+)
+Qb
+]
+, (106)
+where
+Qb = Cbv.
+According to Eq. (106),  remains constant inside a gel when the local electro-neutrality condition is fulfilled
+nH+ + nNa+ − nOH− − nCl−
++
+( nH+ (α+
+0 − Sζ ) K′
+b + nH+ (1 + S+nCl− ) − K′a(α−
+0 − Sζ ) K′a + nH+ + S−nNa+
+)
+Qb = 0. (107)
+In the aqueous solution outside the gel, the expression in parentheses vanishes, and the electro-neutrality condition reads
+nbath
+H+ + nbath
+Na+ − nbath
+OH− − nbath
+Cl− = 0. (108)
+Insertion of Eq. (71) into Eq. (105) implies that
+ln nH+ + φ = ln nbath
+H+ + φbath, ln nNa+ + φ = ln nbath
+Na+ + φbath,
+ln nCl− − φ = ln nbath
+Cl− − φbath, (109)
+where
+φ = e
+kBT , φbath = ebath
+kBT .
+According to Eq. (102), the equality of chemical potentials of OH− ions in Eq. (105) is a consequence of Eq. (109). It follows from Eq. (109) that
+nH+ nCl− = nbath
+H+ nbath
+Cl− , nNa+ nCl− = nbath
+Na+ nbath
+Cl− . (110)
+Eq. (110) implies that
+nNa+ = ZbathnH+ , n+ = nH+ + nNa+ = nH+ (1 + Zbath ),
+Zbath = nbath
+Na+ nbath
+H+
+. (111)
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 201
+Eq. (110) and (111) together with electro-neutrality conditions (107), (108) yield
+nH+ (1 + Zbath ) +
+( nH+ (α+
+0 − Sζ ) K′
+b + nH+ + S+Y bath − K′a(α−
+0 − Sζ ) K′a + nH+ (1 + S−Zbath )
+)
+×Qb = nOH− + nCl− , nbath
+H+ (1 + Zbath ) = nbath
+OH− + nbath
+Cl− , (112)
+where
+Y bath = nbath
+H+ nbath
+Cl− . (113)
+Multiplying the first equality in Eq. (112) by nH+ , the other equality
+by nbath
+H+ , and using Eq. (102), we obtain
+nH+
+[
+nH+ (1 + Zbath ) +
+( nH+ (α+
+0 − Sζ ) K′
+b + nH+ + S+Y bath
+− K′a(α−
+0 − Sζ ) K′a + nH+ (1 + S−Zbath )
+)
+Qb
+]
+= K′w + nH+ nCl− ,
+(nbath
+H+ )2(1 + Zbath ) = K′w + nbath
+H+ nbath
+Cl− .
+These equations together with Eq. (110) imply that
+nH+
+[
+nH+ +
+( nH+ (α+
+0 − Sζ ) K′
+b + nH+ + S+Y bath
+− K′a(α−
+0 − Sζ ) K′a + nH+ (1 + S−Zbath )
+) Qb
+1 + Zbath
+]
+= (nbath
+H+ )2. (114)
+It follows from Eqs. (111)–(114) that
+nbath
+H+ + nbath
+Na+ + nbath
+OH− + nbath
+Cl− = 2(1 + Zbath )nbath
+H+ ,
+nH+ + nNa+ + nOH− + nCl− = (1 + Zbath ) n2
+H+ + (nbath
+H+ )2
+nH+
+. (115)
+Inserting Eq. (115) into Eq. (71), we calculate the extra chemical potential of water molecules in the gel
+μ ̃ = ln Q
+1+Q + 1
+1+Q + χ
+(1 + Q )2 + v
+kBT
+−(1 + Zbath ) n2
+H+ + (nbath
+H+ )2
+nH+
+. (116)
+The extra chemical potential of water molecules in the bath is determined by Eq. (116) where the first three terms (that describe interaction between water molecules and the polymer network) are disregarded
+μ ̃ bath =
+bath v
+kBT − 2(1 + Zbath )nbath
+H+ .
+When the zero external pressure is applied to the aqueous solution, which means that
+bath = 0, bath = 0, (117)
+this equation is simplified
+μ ̃ bath = −2(1 + Zbath )nbath
+H+ . (118)
+Insertion of Eqs. (71), (116), (118) into Eq. (105) yields
+ln Q
+1+Q + 1
+1+Q + χ
+(1 + Q )2 + v
+kBT = 1 + Zbath
+nH+
+(nH+ − nbath
+H+ )2.
+(119)
+According to Eq. (3), concentrations of H+, Na+, and Cl− ions in the bath are given by
+nbath
+H+ = 1
+κ [H+] = 1
+κ 10−pH, nbath
+Na+ = 1
+κ [Na+], nbath
+Cl− = 1
+κ [Cl−].
+(120)
+Substitution of Eq. (120) into Eqs. (111) and (113) results in
+Y bath = 1
+κ 2 10−pH[Cl−], Zbath = 10pH[Na+]. (121)
+It follows from Eqs. (102) and (108) that for fixed pH and molar fraction of salt θ ,
+[Na+] = θ , [Cl−] = θ +
+(
+10−pH − 10pH−pKw
+)
+(pH ≤ 7),
+[Na+] = θ +
+(
+10pH−pKw − 10−pH
+)
+, [Cl−] = θ (pH > 7).
+(122)
+Pressure in a PA gel is determined from Eq. (103) together with boundary conditions (104), (117),
+n ·  = 0. (123)
+When this quantity is known, degree of swelling Q is calculated from nonlinear Eq. (119) that involves the unknown concentration of protons nH+ . This quantity is found from Eq. (114), where the coefficient ζ is determined from Eq. (99), and A is given by Eq. (94). By using Eqs. (110), (111), (113), the latter equality is presented in the form
+A = K′anH+
+(K′a + nH+ (1 + S−Zbath ))(K′
+b + nH+ + S+Y bath ) . (124)
+3.2. Stress–strain relations
+Given a specific mechanical energy W, the stress tensor  is determined by Eq. (69), and the coefficient of volume expansion f is given by Eq. (78). These equations are, however, overly complicated for practical applications as Eq. (54) treats W as a function of seven variables. To simplify the model, a principle of electromechanical equivalence is adopted. According to this concept, an equivalent neutral polymer network exists with coefficient of volume expansion feq and strain energy density Weq(Je1, Je2, Je3) that depends on the principal invariants of the Cauchy–Green tensor for elastic deformation only such that the stress tensor  in the real (partially ionized) network coincides with the stress tensor eq in the equivalent network
+eq = − I+ 2
+1+Q
+[
+Weq,1Be − Je3Weq,2B−1
+e +(Je2Weq,2 + Je3Weq,3 )I
+] .
+(125)
+An advantage of this approach is that it allows differential Eq. (78) to be replaced with a phenomenological relation for the function feq. With reference to English et al. (1996)), we presume f to increase linearly with concentration of unbalanced fixed ions in the actual state,
+f = 1 + r0 + r|α− − α+|Cbv
+J . (126)
+Here r0 stands for degree of swelling of an as-prepared gel (we suppose that all functional groups were neutral when the gel was synthesized), r is a material constant that accounts for repulsive interactions between bound charges, |α− − α+|Cb is the number of unbalanced fixed ions per unit volume in the initial state, and |α− − α+|Cb/J denotes their concentration in the actual state. Keeping in mind Eq. (24) and using Eq. (100), we re-write Eq. (126) in the form
+f = 1 + r0 + r1
+Q 1+Q
+∣∣∣ K′a(α−
+0 − Sζ ) K′a + nH+ + S−nNa+
+− nH+ (α+
+0 − Sζ )
+K′
+b + nH+ (1 + S+nCl− )
+∣∣∣,
+where
+r1 = rQb.
+
+
+202 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+Applying Eqs. (110), (111), (113), we find that
+f = 1 + r0 + r1
+Q 1+Q
+∣∣∣ K′a(α−
+0 − Sζ )
+K′a + nH+ (1 + S−Zbath ) − nH+ (α+
+0 − Sζ ) K′
+b + nH+ + S+Y bath
+∣∣∣.
+(127)
+For definiteness, we adopt the neo–Hookean formula for the strain energy density of the equivalent network
+Weq = 1
+2G
+[
+(Je1 − 3) − ln Je3
+]
+, (128)
+where the shear modulus G is thought of as a function of concentration of ion pairs between negative and positive bound charges. The physical meaning of Eq. (128) with Weq depending on Je1 and Je3, was discussed by Drozdov (2014) where this formula was “re-derived” within the concept of entropic elasticity. More sophisticated expressions for the strain energy density were developed by Drozdov and Christiansen (2013a, 2013b). Insertion of Eq. (128) into Eq. (125) implies that
+=− I+ G
+1 + Q (Be − I). (129)
+Presuming G to increase linearly with the number of physical cross-links (ion pairs between negative and positive bound charges), we write
+G = G0(1 + 0βCbv),
+where G0 and 0 are material constants. Substitution of Eqs. (91) and (98) into this equality yields
+G = G0(1 + Qζ ),  = 0SQb. (130)
+Eqs. (127), (129), (130) provide stress–strain relations for the mechanical response of a PA gel subjected to swelling.
+3.3. Unconstrained swelling of PA gels
+Under unconstrained swelling of a gel, the deformation gradient for macro-deformation reads
+F = (1 + Q ) 1
+3 I.
+It follows from this equality and Eq. (50) that
+Be =
+(1 + Q f
+)
+2
+3 I.
+Inserting this expression into Eq. (129), we find that
+ = I,  = − + G
+1+Q
+[( 1 + Q f
+)
+2
+3 −1
+] .
+According to equilibrium equations (103), (123),  = 0. These equalities imply that
+=G
+1+Q
+[( 1 + Q f
+)
+2
+3 −1
+]
+. (131)
+Substitution of Eq. (131) into Eq. (119) results in
+ln Q
+1+Q + 1
+1+Q + χ
+(1 + Q )2 (132)
++g 1 + Qζ
+1+Q
+[( 1 + Q f
+)
+2
+3 −1
+]
+= 1 + Zbath
+nH+
+(nH+ − nbath
+H+ )2,
+where
+g = G0v
+kBT .
+Unconstrained equilibrium swelling of a PA gel in an aqueous solution of salt is described by Eqs. (99), (114), (132), where coefficients A, f are given by Eqs. (124) and (127), nbath
+H+ is determined
+by Eq. (120), Ybath, Zbath are determined by Eq. (121), and molar fractions of Na+, Cl− ions are given by Eq. (122). The governing equations involve 13 material constants: (i) Qb denotes volume fraction of acidic and basic functional groups in the dry state, (ii) Ka, Kb stand for the corresponding dissociation constants, (iii) α−
+0,
+α+
+0 characterize water-induced breakage of clusters of hydrophobic
+segments, (iv) S, S+, S− describe formation of ion pairs between fixed and mobile ions, (v) r0, r1 describe evolution of the reference state of the polymer network driven by repulsive interaction between bound charges, (vi) g is the dimensionless elastic modulus of a covalently cross-linked network, (vii)  characterizes the growth of elastic modulus induced by formation of physical crosslinks between oppositely charged fixed ions, and (viii) χ stands for the Flory–Huggins parameter. Although the number of material constants is not small, it is quite comparable with that in other models for equilibrium swelling of PA gels.
+3.4. Unconstrained swelling of PE gels
+The above governing equations are simplified noticeably for anionic and cationic PE gels.
+3.4.1. Anionic gels
+The polymer network in an anionic PE gel involves acidic functional groups only, which implies that parameters Kb, α+
+0 are disregarded, and
+S = 0, S+ = 0,  = 0.
+Degree of swelling Q is governed by Eq. (132) with f given by Eq. (127),
+f = 1 + r0 + r1
+α−
+1 + Q , (133)
+degree of ionization of chains α− determined by
+α− = K′aα−
+0Q
+K′a + nH+ (1 + S−Zbath ) , (134)
+and fraction of protons obeys Eq. (114),
+nH+
+[
+nH+ − K′aα−
+0
+K′a + nH+ (1 + S−Zbath )
+Qb
+1 + Zbath
+]
+= (nbath
+H+ )2. (135)
+Eqs. (132), (133)–(135) with 8 material constants (Qb, Ka, α−
+0 , S−,
+r0, r1, g, χ ) were developed in Drozdov and Christiansen (2015a, 2015b).
+3.4.2. Cationic gels
+The polymer network in a cationic PE gel involves basic functional groups only, which implies that parameters Ka, α−
+0 are disregarded, and
+S = 0, S− = 0,  = 0.
+Degree of swelling Q obeys Eq. (132), where f is determined by Eq. (127),
+f = 1 + r0 + r1
+α+
+1 + Q , (136)
+degree of ionization of chains α+ reads
+α+ = nH+ α+
+0Q K′
+b + nH+ + S+Y bath , (137)
+and fraction of protons satisfies Eq. (114),
+n2
+H+
+(
+1 + α+
+0 K′
+b + nH+ + S+Y bath
+Qb
+1 + Zbath
+)
+= (nbath
+H+ )2. (138)
+Eqs. (132), (136)–(138) with 8 material constants (Qb, Kb, α+
+0 , S+,
+r0, r1, g, χ ) were derived in Drozdov (2015).
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 203
+Fig. 1. Degree of swelling Q and degree of ionization α− versus pH at θ = 0 M. Solid lines: results of simulation for an anionic gel with Qb = 1.0 · 10−7.
+4. Numerical analysis
+To demonstrate the ability of the model to describe observations and to evaluate the effect of material constants on equilibrium swelling diagrams, simulation is performed of the governing equations for PE and PA gels. As the number of material constants is not small, numerical analysis is performed with χ = 0.4 (water is treated as a poor solvent for polymer chains), r0 = 0 (the reference state for an as-prepared gel coincides with its initial state), g = 5.0 · 10−3 (the conventional value of the elastic modulus for hydrogels), pKa = 4.3 and pKb = 8.5 (the dissociation constants for carboxylic acid and imidazole). Two cases are considered separately: Qb = 1.0 · 10−7 (concentration of functional groups is low),
+and Qb = 1.0 · 10−2 (concentration of functional groups is high).
+4.1. Gels with low concentration of functional groups
+We begin with the analysis of swelling of anionic PE gels. Given pH and molar fraction of salt θ , Eq. (135) is solved by the NewtonRaphson algorithm to find nH+ . Then Eq. (132) with f and α− given by Eqs. (133) and (134) is solved by the Newton–Raphson technique to determine degree of swelling Q. Calculations are performed with r1 = 8.4 · 102, S− = 1.0 · 10−3, α−
+0 = 2.5 · 10−2 (the latter quantity is found from the condition that degree of ionization equals unity at pH = 7). Results of simulation are reported in Figs. 1 and 2. Fig. 1, where degree of swelling Q and degree of ionization of chains α− are plotted versus pH at θ = 0, demonstrates a typical swelling diagram for anionic gels (Koetting et al., 2015): Q equals its minimum value at pH < pKa (where all functional groups remain neutral), increases strongly with pH in the vicinity of pKa (due to ionization of chains), reaches its maximum value at pH ≥ 6 (in this region all functional groups are ionized), and decreases at large pH values (due to formation of ion pairs between fixed anions and mobile cations). Fig. 2, where Q and α− are depicted versus molar fraction of salt θ at pH = 7, presents a typical swelling curve for anionic gels: Q equals its maximum value at low molar fractions of salt θ ≤ 1 mM (in this region, all functional groups are ionized) and decreases monotonically at higher values of θ (due to formation of ion pairs between bound charges and mobile Na+ ions). We proceed with simulation of swelling of cationic PE gels. Given pH and molar fraction of salt θ , we find nH+ by solving Eq. (138) by means of the Newton–Raphson algorithm. Afterwards, we solve Eq. (132) for Q with f and α+ given by Eqs. (136) and
+Fig. 2. Degree of swelling Q and degree of ionization α− versus molar fraction of salt θ at pH = 7. Solid lines: results of simulation for an anionic gel with Qb = 1.0 · 10−7 .
+Fig. 3. Degree of swelling Q and degree of ionization α+ versus pH at θ = 0 M. Solid lines: results of simulation for a cationic gel with Qb = 1.0 · 10−7.
+(137) with the help of the same technique. Numerical analysis is conducted with r1 = 8.4 · 102, α+
+0 = 2.5 · 10−2 (the same values as
+for the anionic gel), and S+ = 5.0 · 102. Results of simulation are presented in Figs. 3 and 4. Degree of swelling Q and degree of ionization of chains α+ are plotted versus pH at θ = 0 in Fig. 3, which provides a typical swelling diagram for cationic gels (Koetting et al., 2015). This figure shows that Q equals its minimum value at high pH values (where all functional groups are neutral), decreases strongly with pH in the vicinity of pKb, reaches its maximum value at pH < pKb (where all functional groups are protonated), and increase with pH at very low pH values (this growth is driven by breakage of ion pairs between fixed cations and mobile anions). Fig. 4, where Q and α+ are plotted versus θ at pH = 7, reveals a typical dependence of degree of swelling of cationic gels on molar fraction of salt: at low concentrations of salt θ < 1 mM, Q reaches its maximum value corresponding to the totally ionized gel, while Q decays at higher values of θ due to formation of ion pairs be
+tween bound charges and mobile Cl− ions. To study swelling of a PA gel, Eqs. (99), (100), (114), (124), (127), (132) are solved numerically by means of the Newton–Raphson method with the above material constants. The response of a PA gel under equilibrium water uptake is characterized by two extra parameters: S (it accounts for formation of ion pairs between fixed
+
+
+204 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+Fig. 4. Degree of swelling Q and degree of ionization α+ versus molar fraction of salt θ at pH = 7. Solid lines: results of simulation for a cationic gel with Qb = 1.0 · 10−7 .
+Fig. 5. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH at θ = 0 M. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−7, S = 0.0,  = 0.0.
+anions and cations), and  (this quantity characterizes formation of permanent physical cross-links between anionic and cationic chains). To assess how ion pairs between bound charges affect swelling diagrams in the absence of salt (θ = 0), we set  = 0 and solve the governing equations numerically with various S ranging from 0 to 10. Results of simulation are reported in Figs. 5–7, where Q, α−, α+, and β are plotted versus pH. The following conclusions are drawn from these figures: (i) At each S value, two peaks are clearly observed on a swelling diagram. The first peak (at low pH values) corresponds to the maximum degree of swelling of the corresponding cationic gel, whereas the other peak (at high pH values) corresponds to the maximum degree of swelling of the corresponding anionic gel. These peaks are separated by a valley where degrees of ionization of anionic and cationic chains adopt similar values. (ii) An increase in S results in shifts of positions of the peaks on the swelling curve, widening of the valley, a pronounced reduction in degree of swelling in the valley, and a strong growth in concentration of physical cross-links between chains at moderate pH values. (iii) The growth of S leads to a substantial asymmetry of the ionization process. When S = 0, maximum degrees of ionization for anionic and cationic chains are close to unity, i.e.,
+Fig. 6. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH at θ = 0 M. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−7, S = 1.0,  = 0.0.
+Fig. 7. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH at θ = 0 M. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−7, S = 10.0,  = 0.0.
+their maximum values for anionic and cationic gels. With an increase in S, maximum degrees of ionization decrease strongly, and adopt different values. (iv) At positive S values, concentration β of ion-pairs between bound charges demonstrates a non-monotonic dependence on pH with two pronounced peaks. The positions of these peaks differ, however, from the positions of the peaks on the corresponding swelling diagram. To evaluate the effect of permanent physical cross-links between anionic and cationic chains on swelling of a PA gel, simulation of the governing equations is performed with S = 1.0 and various  randing from 0 to 100. Results of numerical analysis are presented in Figs. 8 and 9, where Q, α−, α+, and β are plotted versus pH at θ = 0. Comparison of Figs. 6, 8, and 9 leads to the following conclusions: (i) An increase in  results in a noticeable reduction in maximum degrees of swelling (near the peaks on the swelling curves) and maximum degrees of ionization of chains. At the same time, changes in Q observed in the valley between the peaks and the corresponding shifts of the peaks on swelling diagrams remain rather modest. (ii) The growth of  induces a pronounced decrease in concentration of ion pairs between bound charges β at all pH values.
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 205
+Fig. 8. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH at θ = 0 M. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−7, S = 1.0,  = 10.0.
+Fig. 9. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH at θ = 0 M. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−7, S = 1.0,  = 100.0.
+To analyze the influence of ion pairs between bound charges on swelling of PA gels in the presence of salt, the governing equations are solved numerically with  = 100.0 and various S values. Results of simulation are presented in Fig. 10, where Q is plotted versus molar fraction of salt θ at pH = 2, 6, and 12 (pH = 2 and 12 correspond to the peaks on the curve Q(pH) depicted in Fig. 9, and pH = 6 corresponds to the valley on this curve). The following conclusions are drawn from Fig. 10: (i) At pH values corresponding to the peaks in the swelling diagram Q(pH), degree of swelling is independent of θ at low molar fractions of salt, and decay with θ at θ > 1 mM (the same behavior is observed in Figs. 2 and 4 for PE gels). (ii) On the contrary, at pH = 6, which corresponds to the valley on the curve Q(pH), degree of swelling remains independent of θ at low molar fractions of salt and increases monotonically with θ at relatively high concentrations of salt (the anti-polyelectrolyte response). (iii) The growth of S induces a decrease in Q at pH = 2 and 12 and an increase in degree of swelling at pH = 6. In particular, the anti-polyelectrolyte effect weakens (the growth of Q with θ becomes less pronounced) with an increase in S.
+Fig. 10. Degree of swelling Q versus molar fraction of salt θ at various pH. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−7 and  = 100.0. A: S = 1.0, B: S = 10.0.
+Fig. 11. Degree of swelling Q and degree of ionization α− versus pH at θ = 0 M. Solid lines: results of simulation for an anionic gel with Qb = 1.0 · 10−2.
+4.2. Gels with high concentration of functional groups
+To analyze the effect of fraction of functional groups Qb on equilibrium swelling curves of PE and PA gels, the governing equations are solved numerically with Qb = 1.0 · 10−2. We begin with the study of an anionic PE gel with r1 = 3.4 ·
+102, S− = 1.0 · 10−3, and α−
+0 = 2.5 · 10−2 (S− and α−
+0 adopt the same values as in Fig. 1, while the value of r1 was reduced to ensure that the maximum degree of ionization of chains equals unity). Results of simulation are reported in Fig. 11, where Q and α− are plotted versus pH at θ = 0. The swelling diagram presented in this figure is in qualitative agreement with the experimental swelling curve on poly(acrylamide–acrylic acid) gel with the total monomer concentration 0.7 M and molar fraction of acrylic acid 36.5 mM (Ricka and Tanaka, 1984). Comparison of Figs. 1 and 11 implies that an increase in molar fraction of acidic functional groups results in (i) a pronounced growth of the apparent dissociation constant pKapp
+a, (ii) shortening of the interval where degree of swelling Q adopts its maximum value, and (iii) a weak increase in the maximum degree of swelling. We proceed with the analysis of swelling of a cationic PE gel with r1 = 3.4 · 102 (the same value as in Fig. 11), S+ = 5.0 · 102
+(the same value as in Fig. 3), and α+
+0 = 2.26 · 10−2 (this values
+
+
+206 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+Fig. 12. Degree of swelling Q and degree of ionization α+ versus pH at θ = 0 M. Solid lines: results of simulation for a cationic gel with Qb = 1.0 · 10−2.
+Fig. 13. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH at θ = 0 M. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−2, S = 1.0,  = 10.0.
+was found from the condition that the maximum degree of ionization of chains equals unity). Results of simulation are presented in Fig. 12, where Q and α+ are depicted versus pH at θ = 0. The swelling diagram in this figure is in qualitative agreement with experimental data on poly(N-vinylimidazole) gel with molar fraction of monomers 4.25 M (Molina et al., 2002). Comparison of Figs. 3 and 12 leads to the conclusions similar to those for anionic PE gels. In particular, it shows that the growth of molar fraction of basic monomers induces (i) a strong decay in the apparent association constant pKapp
+b , (ii) substantial narrowing of the interval
+where Q reaches its maximum value, and (iii) a weak increase in the maximum degree of swelling. To evaluate the swelling capacity of a PA gel, simulation is conducted of the governing equations with the above parameters for acidic and basic chains and S = 1.0,  = 10.0. Results of numerical analysis are reported in Figs. 13 and 14. In Fig. 13, Q, α−, α+, and β are plotted versus pH at θ = 0. Comparison of Figs. 8 and 13 implies that an increase in Qb (i) results in a pronounced decay in degree of swelling Q and degrees of ionization of chains α−, α+, (ii) induces noticeable shifts of peaks on the swelling curve and substantial widening of the valley between the peaks (where Q becomes practically independent of pH), (iii) leads to a decay in concentration of ion pairs formed by fixed ions with opposite charges.
+Fig. 14. Degree of swelling Q versus molar fraction of salt θ at various pH. Symbols: results of simulation for a PA gel with Qb = 1.0 · 10−2, S = 1.0,  = 10.0.
+Table 1
+Material constants for PA gels.
+Parameter DEAEMA–AA VAEE–SA NIPA–VI–AA
+g 1.6 · 10−3 1.0 · 10−2 6.0 · 10−3  0.0 60.0 60.0 r0 0.0 0.0 0.0 r1 1.9 · 102 1.5 · 104 3.25 · 104 S 4.0 10.0 2.5 S− 4.0 · 10−2 2.8 · 10−4 6.0 · 10−2 S+ 3.5 · 104 40.0 1.2 · 104 α−
+0 2.5 · 10−2 7.2 · 10−3 7.0 · 10−3
+α+
+0 2.5 · 10−2 6.0 · 10−3 7.0 · 10−3
+Qb 1.0 · 10−7 1.0 · 10−7 1.2 · 10−3 pKa 5.3 6.75 4.25 pKb 8.0 3.0 6.2 χ 0.4 0.4 0.4
+Fig. 14, where degree of swelling Q is plotted versus molar fraction of salt θ , demonstrates qualitative changes in the shape of swelling diagram caused by evolution of pH. At pH = 2 and 11.5 (these values correspond to the peaks on the graph Q(pH) depicted in Fig. 13), degree of swelling decreases monotonically with θ (the polyelectrolyte behavior). At pH = 6 and 7 (inside the valley where Q is weakly affected by pH in Fig. 13), degree of swelling increases monotonically with θ (the anti-polyelectrolyte response). At pH = 5 and 10 (along the decreasing and increasing branches of the swelling curve in Fig. 13, where bound charges are unbalanced), degree of swelling changes non-monotonically with θ (in accord with observations reported in (English et al., 1996, 1998)).
+5. Comparison with observations
+We begin with the analysis of poly(2-(diethylamino)ethyl methacrylate-co-acrylic acid) DEAEMA–AA copolymer gel prepared by cross-linking polymerization of equal amounts (0.005 mol) of anionic (AA) and cationic (DEAEMA) monomers in an aqueous solution by using N, N′-methylene-bis-acrylamide (MBA) as a crosslinker (0.5% of total monomer mole), and potassium bisulfide (1% of total monomer mole) as an initiator (Dalaran et al., 2011). Experimental data in water uptake tests at various pH (θ = 0) are presented in Fig. 15. This figure demonstrates excellent agreement between the observations and the results of simulation for the model with the adjustable parameters listed in Table 1. According to Fig. 15, two peaks are clearly visible on the swelling diagram at pH = 3.4 and 9.6. These peaks correspond to the maximum degrees of ionization of basic (35%) and acidic (29%)
+
+
+A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208 207
+Fig. 15. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH. A–Symbols: experimental data on DEAEMA–AA gel (Dalaran et al., 2011). Solid line: results of simulation. B, CSymbols: results of simulation.
+Fig. 16. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH. A–Symbols: experimental data on VAEESA gel (Kudaibergenov and Sigitov, 1999). Solid line: results of simulation. B, CSymbols: results of simulation.
+functional groups. The fraction of fixed ions forming ion pairs (physical cross-links) β is negligible at low and high pH values, but remains practically constant (about 29%) at moderate pH values (4 ≤ pH ≤ 9). We proceed with study of poly(vinyl 2-aminoethyl etherco-sodium acrylate) VAEE–SA copolymer gel prepared by γ irradiation polymerization of anionic (SA, 58 mol.%) and cationic (VAEE, 40 mol.%) monomers in a water-ethanol mixture by using divinyl ether of diethylene glycol (DVEDEG, 2 mol.%) as a crosslinker (Kudaibergenov and Sigitov, 1999). Experimental data in water uptake tests at various pH (θ = 0) are reported in Fig. 16, which reveals good agreement between the observations and the results of simulation for the model with the adjustable parameters listed in Table 1. The swelling diagram presented in Fig. 16 demonstrates two peaks at pH = 1.3 and 8.9. These peaks correspond to the maximum degrees of ionization of basic (43%) and acidic (82%) functional groups. Unlike the DEAEMA–AA gel with a relatively high concentration of physical cross-links between fixed ions with opposite charges, concentration of ion pairs between bound charges β in VAEE–SA gel is low.
+Fig. 17. Degree of swelling Q, degrees of ionization α+, α−, and fraction of ion pairs between bound charges β versus pH. A–Symbols: experimental data on NIPA–VIAA gel (Masaki and Kokufuta, 2013). Solid line: results of simulation. B, C–Symbols: results of simulation.
+Finally, we approximate observations on poly(Nisopropylacrylamide-co-1-vinylimidazole-co-acrylic acid) NIPAVI–AA copolymer gel prepared by cross-linking polymerization of neutral (NIPA, 0.7 M), anionic (AA, 0.15 M), and cationic (VI, 0.15 M) monomers in water by using MBA (0.01 M) as a cross-linker, ammonium persulfate as an initiator, and TEMED as an accelerator (Masaki and Kokufuta, 2013). Experimental data in water uptake tests at various pH (θ = 0) are reported in Fig. 17, which reveals an acceptable agreement between the experimental data and their description by the model with the adjustable parameters collected in Table 1. The swelling diagram depicted in Fig. 17 shows two peaks at pH = 2.8 and 10.2, which correspond to the maximum degrees of ionization of basic (42%) and acidic (85%) functional groups. Fraction of ion pairs between bound charges β plotted as a function of pH shows two peaks with similar maximum values (about 27%): the first (pH = 3.2) is close to the cationic peak on the swelling diagram (pH = 2.8), while the other (pH = 8.6) is located at pH substantially lower than the anionic peak with pH = 10.2.
+6. Concluding remarks
+A model is developed for the elastic response of a covalently cross-linked, charge-balanced polyampholyte gel subjected to swelling in aqueous solutions of a monovalent salt with arbitrary pH. A PA gel is treated as a three-phase medium composed of a solid phase (polymer network formed by chains with acidic and basic functional groups), solvent (water), and solute (mobile ions). Transport of solvent and solute is thought of as their diffusion through the network accelerated by an electric field formed by mobile ions and bound charges and accompanied by chemical reactions (self-ionization of water, ionization of functional groups attached to polymer chains, and formation of ion pairs between bound charges and mobile counter-ions and between fixed ions with opposite charges). Constitutive equations are derived by means of the free energy imbalance inequality for three-dimensional deformation with finite strains. In the analysis of swelling, both ionic pressure and electrostatic interaction of bound charges are taken into account. To describe the latter phenomenon in a tractable way, the reference (stressfree) state of the network is presumed to differ from the initial state of a dry undeformed gel, and the coefficient of volume expansion is treated as a function of concentration of unbalanced fixed ions in the actual state. The elastic behavior of the network is de
+
+
+208 A.D. Drozdov, J. deClaville Christiansen / International Journal of Solids and Structures 110–111 (2017) 192–208
+termined by means of the concept of electro-mechanical equivalence with the shear modulus of the equivalent network growing with concentration of physical cross-links (ion pairs between fixed ions with opposite charges). A novel version is developed of the Henderson–Hasselbach equations for degrees of ionization of anionic and cationic chains that accounts for formation of ion pairs between mobile and fixed ions. Governing equations for equilibrium swelling are derived with reference to the Donnan equilibrium conditions. The model is applied to study equilibrium water uptake by polyampholyte and polyelectrolyte gels. Numerical analysis reveals that in the absence of salt, swelling diagrams Q(pH) of PE gels are characterized by one peak located at low (cationic) or high (anionic) pH values (Figs. 1 and 3). The growth of molar fraction of ionized functional groups results in narrowing of the intervals where degree of swelling reaches its maximum value and shifts of their centers (Figs. 1, 11 and 3, 12). The characteristic feature of a charge-balanced PA gel is the presence of two (cationic and anionic) peaks on the Q(pH) curve separated by a valley where degrees of ionization of cationic and anionic chains coincide (Figs. 5 and 13). An increase in the rate of formation of physical cross-links (ion pairs between fixed ions with opposite charges) results in shifts of the peaks, widening of the valley, and reduction in degree of swelling (Figs. 5–7). When swelling tests are conducted in a water bath with fixed pH and varied molar fraction of salt θ , results of simulation show that degree of swelling of anionic and cationic PE gels decays monotonically with θ (the polyelectrolyte response, Figs. 2 and 4). A PA gel reveals the polyelectrolyte response when experiments are performed at pH corresponding to peaks on the diagram Q(pH), and the anti-polyelectrolyte response (an increase in degree of swelling with molar fraction of salt) when tests are conducted at pH corresponding to the valley on the swelling curve (Figs. 10 and 13). To validate the model, experimental data on three PA gels are fitted. Figs. 15–17 demonstrate good agreement between the observations in equilibrium swelling tests and results of simulation.
+Acknowledgement
+Financial support by the Danish Innovation Fund (project 515200002B) is gratefully acknowledged.
+References
+Baker, J.P., Blanch, H.W., Prausnitz, J.M., 1995. Swelling properties of acrylamide-based ampholytic hydrogels: comparison of experiment with theory. Polymer 36, 1061–1069. Bernards, M., He, Y., 2014. Polyampholyte polymers as a versatile zwitterionic biomaterial platform. J. Biomater. Sci. Polym. Ed. 25, 1479–1488. Ciferri, A., Kudaibergenov, S., 2007. Natural and synthetic polyampholytes, 1. theory and basic structures. Macromol. Rapid Commun. 28, 1953–1968. Dalaran, M., Emik, S., Guçlu, G., Iyim, T.B., Ozgumus, S., 2011. Study on a novel polyampholyte nanocomposite superabsorbent hydrogels: synthesis, characterization and investigation of removal of indigo carmine from aqueous solution. Desalination 279, 170–182. Deiber, J.A., Ottone, M.L., Piaggio, M.V., Peirotti, M.B., 2009. Characterization of cross-linked polyampholytic gelatin hydrogels through the rubber elasticity and thermodynamic swelling theories. Polymer 50, 6065–6075. Deligkaris, K., Tadele, T.S., Olthuis, W., van den Berg, A., 2010. Hydrogel-based devices for biomedical applications. Sens. Actuators B 147, 765–774. Dobrynin, A.V., Colby, R.H., Rubinstein, M., 2004. Polyampholytes. J. Polym. Sci. Part B 42, 3513–3538. Dogu, S., Kilic, M., Okay, O., 2009. Collapse of acrylamide-based polyampholyte hydrogels in water. J. Appl. Polym. Sci. 113, 1375–1382. Drozdov, A.D., 2014. Self-oscillations of hydrogels driven by chemical reactions. Int. J. Appl. Mech. 6, 1450023. Drozdov, A.D., 2015. Swelling of pH-responsive cationic gels: constitutive modeling and structure–property relations. Int. J. Solids Struct. 64–65, 176–190.
+Drozdov, A.D., Christiansen, J., 2013a. Constitutive equations in finite elasticity of swollen elastomers. Int. J. Solids Struct. 50, 1494–1504. Drozdov, A.D., Christiansen, J., 2013b. Stress–strain relations for hydrogels under multiaxial deformation. Int. J. Solids Struct. 50, 3570–3585. Drozdov, A.D., Christiansen, J., 2015a. Swelling of pH-sensitive hydrogels. Phys. Rev. E 91, 022305. Drozdov, A.D., Christiansen, J., 2015b. Modeling the effects of pH and ionic strength on swelling of polyelectrolyte gels. J. Chem. Phys. 142, 114904. English, A.E., Mafe, S., Manzanares, J.A., Yu, X., Grosberg, A.Y., Tanaka, T., 1996. Equilibrium swelling properties of polyampholytic hydrogels. J. Chem. Phys. 104, 8713–8720. English, A.E., Tanaka, T., Edelman, E.R., 1998. Polyampholytic hydrogel swelling transitions: limitations of the debye-huckel law. Macromolecules 31, 1989–1995. Flory, P.J., 1953. Principles of Polymer Chemistry. Cornell Univ. Press, Ithaca. Gao, M., Gawel, K., Torger Stokke, B., 2014. Polyelectrolyte and antipolyelectrolyte effects in swelling of polyampholyte and polyzwitterionic charge balanced and charge offset hydrogels. Eur. Polym. J. 53, 65–74. Ilavsky, M., 1981. Effect of electrostatic interactions on phase transition in the swollen polymeric network. Polymer 22, 1687–1691. Kang, D.H., Kim, S.M., Lee, B., Yoon, H., Suh, K.-Y., 2013. Stimuli-responsive hydrogel patterns for smart microfluidics and microarrays. Analyst 138, 6230–6242. Koetting, M.C., Peters, J.T., Steichen, S.D., Peppas, N.A., 2015. Stimulus-responsive hydrogels: theory, modern advances, and applications. Mater. Sci. Eng. R 93, 1–49. Kudaibergenov, S.E., Nurajec, N., Khutoryanskiy, V.V., 2012. Amphoteric nano-, micro-, and macrogels, membranes, and thin films. Soft Matter 8, 9302–9321. Kudaibergenov, S.E., Sigitov, V.B., 1999. Swelling, shrinking, deformation, and oscillation of polyampholyte gels based on vinyl 2-aminoethyl ether and sodium acrylate. Langmuir 15, 4230–4235. Mafe, S., Manzanares, J.A., English, A.E., Tanaka, T., 1997. Multiple phases in ionic copolymer gels. Phys. Rev. Lett. 79, 3086–3089. Marcombe, R., Cai, S.Q., Hong, W., Zhao, X.H., Lapusta, Y., Suo, Z.G., 2010. A theory of constrained swelling of a pH-sensitive hydrogel. Soft Matter 6, 784–793. Masaki, M., Kokufuta, E., 2013. Polyampholyte gels of a cross-linked polyanion or polycation network into which an oppositely charged polyion was immobilized. Colloid Polym. Sci. 291, 669–681. Messing, R., Schmidt, A.M., 2011. Perspectives for the mechanical manipulation of hybrid hydrogels. Polym. Chem. 2, 18–32. Molina, M.J., Gomez-Anton, M.R., Pierola, I.F., 2002. pH-dependence of the swelling capacity of poly(n-vinylimidazole) hydrogels. Macromol. Chem. Phys. 203, 2075–2082. Ninni, L., Ermatchkov, V., Hasse, H., Maurer, G., 2014. Equilibrium swelling of some poly(n-IPAAm-sulfobetaine) hydrogels in water and in aqueous solutions of a single salt. Fluid Phase Equilib. 367, 194–203. Nisato, G., Munch, J.P., Candau, S.J., 1999. Swelling, structure, and elasticity of polyampholyte hydrogels. Langmuir 15, 4236–4244. Ogawa, Y., Ogawa, K., Kokufuta, E., 2004. Swelling-shrinking behavior of a polyampholyte gel composed of positively charged networks with immobilized polyanions. Langmuir 20, 2546–2552. Okazaki, Y., Ishizuki, K., Kawauchi, S., Satoh, M., Komiyama, J., 1996. Ion-specific swelling and deswelling behaviors of ampholytic polymer gels. Macromolecules 29, 8391–8397. Ricka, J., Tanaka, T., 1984. Swelling of ionic gels: quantitative performance of the Donnan theory. Macromolecules 17, 2916–2921. Shao, Q., Jiang, S., 2015. Molecular understanding and design of zwitterionic materials. Adv. Mater. 27, 15–26. Stuart, M.A.C., Huck, W.T.S., Genzer, J., Muller, M., Ober, C., Stamm, M., Sukhorukov, G.B., Szleifer, I., Tsukruk, V.V., Urban, M., Winnik, F., Zauscher, S., Luzinov, I., Minko, S., 2010. Emerging applications of stimuli-responsive polymer materials. Nat. Mater. 9, 101–113. Sun, T.L., Luo, F., Kurokawa, T., Karobi, S.N., Nakajima, T., Gong, J.P., 2015. Molecular structure of self-healing polyampholyte hydrogels analyzed from tensile behaviors. Soft Matter 11, 9355–9366. Takeoka, Y., Berker, A.N., Du, R., Enoki, T., Grosberg, A., Kardar, M., Oya, T., Tanaka, K., Wang, G., Yu, X., Tanaka, T., 1999. First order phase transition and evidence for frustrations in polyampholytic gels. Phys. Rev. Lett. 82, 4863–4865. Tanaka, T., Fillmore, D., Sun, S.-T., Nishio, I., Swislow, G., Shah, A., 1980. Phase transitions in ionic gels. Phys. Rev. Lett. 45, 1636–1639. 1980 Vasilevskaya, V.V., Khokhlov, A.R., 1986. The effect of low-molecular weight salts on the collapse of charged polymeric networks. Polym. Sci. USSR 28, 348–353. van Vlierberghe, S., Dubruel, P., Schacht, E., 2011. Biopolymer-based hydrogels as scaffolds for tissue engineering applications: a review. Biomacromolecules 12, 1387–1408. Yan, H., Jin, B., 2012. Influence of environmental solution pH and microstructural parameters on mechanical behavior of amphoteric pH-sensitive hydrogels. Eur. Phys. J. E 35, 36. Yan, H., Jin, B., 2013. Equilibrium swelling of a polyampholytic pH-sensitive hydrogel. Eur. Phys. J. E 36, 27. Yan, H., Jin, B., Gao, S., Chen, L., 2014. Equilibrium swelling and electrochemistry of polyampholytic pH-sensitive hydrogel. Int. J. Solids Struct. 51, 4149–4156. Zurick, K.M., Bernards, M., 2014. Recent biomedical advances with polyampholyte polymers. J. Appl. Polym. Sci. 131, 40069.

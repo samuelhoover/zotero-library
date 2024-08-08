@@ -1,0 +1,99 @@
+HAL Id: jpa-00231153
+https://hal.science/jpa-00231153
+Submitted on 4 Feb 2008
+HAL is a multi-disciplinary open access archive for the deposit and dissemination of scientific research documents, whether they are published or not. The documents may come from teaching and research institutions in France or abroad, or from public or private research centers.
+L’archive ouverte pluridisciplinaire HAL, est destinée au dépôt et à la diffusion de documents scientifiques de niveau recherche, publiés ou non, émanant des établissements d’enseignement et de recherche français ou étrangers, des laboratoires publics ou privés.
+Collapse of a polymer chain in poor solvents
+P.-G. de Gennes
+To cite this version:
+P.-G. de Gennes. Collapse of a polymer chain in poor solvents. Journal de Physique Lettres, 1975, 36 (3), pp.55-57. ￿10.1051/jphyslet:0197500360305500￿. ￿jpa-00231153￿
+
+
+L-55
+COLLAPSE OF A POLYMER CHAIN IN POOR SOLVENTS
+P. G. DE GENNES
+Collège de France, 75231 Paris Cedex 05, France
+Résumé. 2014 Le comportement d’une chaine flexible unique, près de la température 0398 de Flory, est analysé à partir d’une analogie avec un problème magnétique. La transition vers un état globulaire compact est relié aux propriétés d’un point tricritique dans le problème magnétique.
+Abstract. 2014 The behavior of a single, flexible polymer chain near the Flory temperature 0398 is analysed in analogy with a magnetic phase transition. The transition to a collapsed state is related to a tricritical point for the magnetic problem.
+A solute polymer chain expands in a good solvent, and collapses in a poor solvent [1]. By suitable changes in temperature, or in solvent composition, it is possible to cross over from one behavior to the
+other. In experiments on solutions, a demixing process replaces the collapse [1]. However, the transition from an extended shape to a globular form, for a single coil, may be of some interest for studies on protein folding [2] ; it is also of theoretical interest as a first step towards the understanding of micellar
+structures. The collapse has been studied by numerical methods on lattice models, where the polymer chain is described as a self avoiding walk, and attractive interac
+tions between neighboring monomers are added :
+the results have been reinterpreted recently by Domb [3]. In the present note, we present a slightly different approach, based on an analogy with the
+phase transitions of a magnetic system, which is already known to be useful for the simple excluded
+volume problem [4].
+1. Self consistent field approximation. - As usual,
+it is helpful to start by a simple calculation of the
+Flory type [1] suitably extended to cover collapsed situations. This is based on the following free energy
+Here a = R/Ro is the expansion factor, and
+Ro = N 1/2a
+is the r.m.s. radius of an ideal coil. N is the number
+of monomers along the chain. The average monomer
+concentration in the coil is
+p = kN/R d = ka - d N’ - ~l2 (2)
+where d is the dimensionality and k a numerical
+constant. The parameters Wl, W2, ... are essentially the successive virial coefficients of the monomer interaction. Wt (T) is the excluded volume coefficient and has the form
+Here e is the Flory compensation temperature.
+(To be specific we assume v &#x3E; 0.) The second coeffi
+cient W2 may be taken as positive and temperature independent in the range of interest. It is important to realise that both WI and W2 are relevant for a discussion of the region T= 0 in three space dimensions. For T N e, a ~ 1 and the W2 term is of order N 3 -d : this is to be compared with the extensional term 2 a2 - In a which is of order unity. Thus W2 is relevant for d 3. The higher terms
+( W3, W4, ...) are irrelevant for d = 3.
+Specializing now to d = 3, retaining only WI and W2 in eq. (1) inserting the form (2) for p, and minimizing the free energy, one arrives at the follow
+ing amended form of the Flory equation [1] :
+where y = k2 WZ a- ~ is a dimensionless parameter. [Physically, y can be increased by adding side groups to the chain; it can be decreased by choosing chains
+which are somewhat rigid.] A plot of a(x) for various
+’"
+Article published online by EDP Sciences and available at http://dx.doi.org/10.1051/jphyslet:0197500360305500
+
+
+L-56
+values of y is shown on figure 1. For good solvents (x &#x3E; 1) the Flory curve is maintained and R ~ N3/5.
+For poor solvents (x 0) we have a strong collapse and
+FIG. 1. - Size of a polymer chain as a function of reduced temperature in an extended Flory approximation (eq. (4)). The curves are shown for various values of a parameter y, which is large if the chain has some side groups, and small if the chain is slightly stiff.
+ForI x 1 (crossover region) we find two regimes
+depending on the value of the constant y. If y &#x3E; 0.038
+the coil contracts smoothly upon cooling. But if y 0.038 eq. (4) predicts an unstable branch; if this were taken literally, it would imply an abrupt transition to the collapsed state, at a certain critical value of x for which the free energies on the two (locally) stable branches become equal. In fact, since we are dealing with a finite system, the sharp transition may be an artefact of the self consistent field method : but it is probably indicative of a very
+steep slope, as is indeed confirmed by numerical experiments [3]. The main weakness of the latter
+is that they are usually performed at one single value of y, depending on the particular model chosen. A more elaborate (local) version of this self consistent field method has been considered by Edwards [5]
+(without the W2 term) and by Lifschitz [6] (with a saturation term); the Lifschitz results are very similar to those deduced from eq. (4).
+2. Relation between collapse and a tricritical point. The interaction terms in eq. (1) can be used as a
+starting point for a rigorous theory of chain conformations, just as the Landau free energy FL [7] can be used as a weight function for calculations on critical
+points [8]. Let us consider in fact a magnetic system with magnetisation M, temperature T and Landau
+free energy :
+[Where r 0 ’" (z - 1: 0)’ To being the mean field transition point.]
+There is a correspondence between the diagrams for the correlation function M(O) M(r) &#x3E; of the
+magnetic problem (in zero field, and above the transition point, T &#x3E; rj and the statistical weight for a
+chain extending from 0 to r [4]. The bare vertex
+coefficients Ul, U2, ... are essentially identical (apartI from normalization coefficients) to the virial coef
+ficients ~, W2 ... The polymer length N is related to T by a Laplace transform, but from dimensional considerations on a single chain it suffices to say that N - (r 2013 1:c)-l. We are interested here in the
+limit N -+ oo (r -+ 1:c).
+The diagrams for the two problems coincide provided that certain closed loops, present in the
+magnetic case but absent for the single chain, are eliminated : this is achieved formally by setting the
+number n of components of the vector M equal to
+zero [4]. The standard excluded volume problem corres
+ponds to a strongly positive Wl (or Ul) : in this regime U2, U3,... are irrelevant. The problem discussed here corresponds to WI small : i.e. to a tri
+critical point [8]. An assumption of generalised scaling then leads to a coil radius (or correlation length) of the form
+Here 17V, is defined as in eq. (3), but with a shifted 0
+point : 0 = 0~1 - g(y) ~V’~].
+vt is a tricritical exponent defined as in reference [8].
+The constant Ot is a cross-over exponent. For
+!~!~1
+the function f remains finite and R - Nvt. For
+x &#x3E; 1, f becomes independent of y and proportional to a power of x ; then R - Nv where v is the excluded
+volume exponent. For x - 1, f is strongly depen
+dent on y and again behaves like a power ofI x I:
+Eq. (1) suggests that the exponent Vc in the collapsed state is equal to 1/~ : for fixed (negative) WI the density p is finite and the interaction terms (of order N)
+
+
+L-57
+dominate the free energy : the extensional term (of order 1) can be omitted. This conclusion for Vc
+is probably valid even beyond the self consistent
+field approximation.
+For d = 3 the tricritical exponents have the mean
+field values vt = qJt = t. However, this is a marginal case (confluence of two fixed points in the renormali
+sation group approach) and corrections involving (In N) are expected [9]. For d = 2 an approximate value of vt may be extracted from the results of an
+References
+[1] See for instance FLORY, P. J., Principles of polymer chemistry, (Cornell University Press, NY), 5th ed. 1966. STOCKMAYER, W. A., Makromol. Chemie 35 (1960) 54. [2] See for instance LIQUORI, A. M., Quartely Reviews of Biophys. 2 (1969) 1. [3] DOMB, C., Polymer 15 (1974) 259. See also RAPAPORT, D. C., Phys. Lett. 48A (1974) 339. [4] DE GENNES, P. G., Phys. Lett. 38A (1972) 339. See also DES CLOIZEAUX, J., J. Physique 36 (1975) n° 4 (to be published). [5] EDWARDS, S. F., in Critical phenomena eds. M. S. Green and
+J. V. Sengers (Nat. Bur. Stand. Miscell. Pub.) 273 (1966) p. 225. [6] LIFSHITZ, I. M., Sov. Phys. JETP 28 (1969) 1280. See also EIZNER, Polymer Science USSR 11 (1969) 409 ; 14 (1972) 1965. [7] LANDAU, L., LIFSHITZ, I. M., Statistical Physics, Chap. 14 (Pergamon Press London) 1958. [8] GRIFFITHS, R. B., Phys. Rev. B 7 (1973) 545. [9] RIEDEL, E., WEGNER, F., Phys. Rev. Lett. 29 (1972) 349. [10] STEPHEN, M., MCCAULEY, J., Phys. Lett. 44A (1973) 89.
+expansion in powers of s = 3 - d, carried to order
+s’[10]:1
+The exponent ~t has not been calculated for n = 0. ’ But the trend is clear : even for two dimensions, the tricritical exponents are very close to the mean field values.

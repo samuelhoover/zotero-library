@@ -1,0 +1,577 @@
+Nucleic Acid Helix Stability: Effects of Salt Concentration, Cation Valence and Size, and Chain Length
+Zhi-Jie Tan and Shi-Jie Chen Department of Physics and Astronomy and Department of Biochemistry, University of Missouri, Columbia, Missouri 65211
+ABSTRACT Metal ions play crucial roles in thermal stability and folding kinetics of nucleic acids. For ions (especially multivalent ions) in the close vicinity of nucleic acid surface, interion correlations and ion-binding mode fluctuations may be important. PoissonBoltzmann theory ignores these effects whereas the recently developed tightly bound ion (TBI) theory explicitly accounts for these effects. Extensive experimental data demonstrate that the TBI theory gives improved predictions for multivalent ions (e.g., Mg21) than the Poisson-Boltzmann theory. In this study, we use the TBI theory to investigate how the metal ions affect the folding stability of B-DNA helices. We quantitatively evaluate the effects of ion concentration, ion size and valence, and helix length on the helix stability. Moreover, we derive practically useful analytical formulas for the thermodynamic parameters as functions of finite helix length, ion type, and ion concentration. We find that the helix stability is additive for high ion concentration and long helix and nonadditive for low ion concentration and short helix. All these results are tested against and supported by extensive experimental data.
+INTRODUCTION
+Nucleic acid molecules are highly charged polyanion. In the folding of nucleic acids, the cations, such as sodium and magnesium ions, are required to neutralize the negative charges on the backbones to reduce the repulsive Coulombic interactions between the phosphates, so that the nucleic acid molecules can fold into the compact native structures. Ionic properties, such as ion concentration, charge, and size, play important roles in determining the stability and folding kinetics of nucleic acids (1–16). Helices, which are formed by a train of consecutive basepairs, constitute the most important components in nucleic acid structures. Much effort has been devoted to the study of the helix stability. Most experimental measurements for the helix thermal stability are for the 1 M Na1 salt condition (1623). Our understanding of the helix stability under other ion conditions, especially in multivalent ion conditions, is quite limited (24–32). For example, previous studies examined the Na1 or K1-dependence of the helix melting temperature (22,33–35), and the folding free energy for DNA helix formation was extrapolated from the standard 1 M Na1 condition to other Na1 concentration ($0.1 M) (22). These empirically fitted extrapolations were mainly focused on the NaCl solution, not for the Mg21 or other multivalent ion solutions (36–39). On the other hand, extensive experiments have demonstrated the essential role of Mg21 in nucleic acids (3–5,10–14). For example, Mg21 ions are found to be much more effective than Na1 ions in stabilizing the DNA and RNA helices (36–39). Motivated by the desire to understand quantitatively the role of Mg21 and other ions in the stabilization of DNA and RNA helices (40), we investigate
+the folding stability of DNA helix of finite length in the Mg21 solution. There have been two successful polyelectrolyte theories: the counterion condensation (CC) theory (41–43) and the Poisson-Boltzmann (PB) theory (44–51). The CC theory assumes a two-state ion distribution, and assumes a mean uniform distribution of condensed ions along the polyelectrolyte. In addition, the original CC theory is a double-limit law, i.e., it is for dilute salt solution and for nucleic acids of infinite length (41,52–54). The PB theory is a mean-field theory and ignores the interion correlation, which can be important for multivalent ions (e.g., Mg21). Recently, to treat the correlations and fluctuations for bound ions, we developed a tightly bound ion (TBI) model (55). The basic idea of the model is to separate the tightly bound ions from the diffusive ions in solution. The model explicitly accounts for the discrete modes of ion binding and the correlation between the tightly bound ions, and treat the bulk solvent ions using the PB. The model has been validated through extensive comparisons with Monte Carlo simulations. The TBI model agrees with PB and CC for Na1 ions, of which the correlational effect is weak, and predicts improved results for Mg21 (55), which can involve strong correlations. In this study, the TBI theory is used to compute the helixcoil transition. The calculated results are validated through extensive tests against experiments. Based on the TBI model, we systematically investigate the thermodynamic stability of oligomeric DNA helices. We examine the dependence on the helix length and ion concentration for both NaCl and MgCl2 solutions. In addition, we obtain an analytical expression for the folding stability parameters as a function of the ion concentration and the helix length for the NaCl and the MgCl2 solutions.
+Submitted July 19, 2005, and accepted for publication November 1, 2005. Address reprint requests to Shi-Jie Chen, E-mail: chenshi@missouri.edu. Ó 2006 by the Biophysical Society 0006-3495/06/02/1175/16 $2.00 doi: 10.1529/biophysj.105.070904
+Biophysical Journal Volume 90 February 2006 1175–1190 1175
+
+
+THEORY
+Thermodynamics
+We model the helix as a double-stranded (ds) B-DNA helical structure and the coil as a single-stranded (ss) helical structure (see the ‘‘Structural models for dsDNA and ssDNA’’ section in Appendix A). The folding free energy (helix stability) DGT° for the helix-coil transition is calculated as the difference between the helix and the coil:
+DGT° 1⁄4 GT°ðhelixÞ ÿ GT°ðcoilÞ: (1)
+Here T is the temperature, GT°(helix) and GT°(coil) are the free energies for the helix and the coil, respectively. DGT° is dependent on the temperature, the structures of the ds helix and the ss helix, and the solvent conditions, such as the salt concentration and the cation properties. As an approximation, we decompose DGT° into two parts: a nonelectrostatic contribution DGnel
+T and an electrostatic contribution DGel
+T (32,33,56–60):
+DGT° 1⁄4 DGnel
+T 1 DGel
+T : (2)
+DGnel
+T ; which can be called the nonelectrostatic or ‘‘chemical’’ part of folding free energy, comes from the strong Watson-Crick basepairing and stacking interactions. We assume that DGnel
+T is salt-independent (32,33,56
+60) and evaluate DGnel
+T using the nearest neighbor model with the measured thermodynamic parameters for the base stacks (17–23,61). Considering 1 M NaCl as the standard salt solution for the measurement of the nearest neighbor interaction parameters, we can calculate DGnel
+T by subtracting DGel
+T
+from the total folding free energy
+DGnel
+T 1⁄4 DGT°ð1 M Na1 Þ ÿ DGel
+T ð1 M Na1 Þ: (3)
+Here the electrostatic free energy DGel
+T (1 M Na1) can be calculated from
+the polyelectrolyte theory. The total free energy DGT° (1 M Na1) can be obtained from the nearest neighbor model using the experimentally measured thermodynamic parameters (17–23,61):
+DGT°ð1 M Na 1 Þ 1⁄4 +
+basestacks
+ðDH° ð1 MNa1 Þ
+ÿ TDS°ð1 M Na1 ÞÞ; (4)
+where DH° (1 M Na1) and DS° (1 M Na1) are the enthalpy and entropy parameters for the base stacks in the helix at 1 M NaCl, respectively. As an approximation, we neglect DCp, the heat capacity difference between helix
+and coil (62–68), so we can treat DH° (1 M Na1) and DS° (1 M Na1) as temperature-independent constants. Such approximation is valid if the temperature is not too far away from 37°C (22,64–68). With DGel
+T calculated from the polyelectrolyte theory and DGnel
+T
+determined from Eq. 3, we can compute the folding free energy for any given NaCl or MgCl2 concentration and temperature T:
+DGT° 1⁄4 DGnel
+T 1 DGel
+T ðNa 1 jMg2 1 Þ 1⁄4 DGT°ð1 M Na 1 Þ
+1 1⁄2DGel
+T ðNa 1 jMg2 1 Þ ÿ DGel
+T ð1 M Na 1 Þ: (5)
+Here Na1jMg21 denotes a pure NaCl or MgCl2 solution. For a given strand concentration CS, the melting temperature Tm for helix-coil transition can also be obtained from the folding free energy DG°T (22,68):
+DGT° ÿ RT ln CS 1⁄4 0 at T 1⁄4 Tm; (6)
+where R is the gas constant (1⁄41.987 cal/K/mol) and CS is replaced by CS/4 for non-self-complementary sequence. Central to the calculation of the folding stability (free energy) is the computation of the electrostatic free energy DGel
+T : In this study, to account for the correlation and fluctuation effect for the bound ions, we use the recently developed TBI theory to compute DGel
+T : In the next section, we briefly summarize the TBI theory. Detailed discussion about the TBI theory can be found in Tan and Chen (55).
+Summary of the tightly bound ion model
+In the tightly bound ion (TBI) model, ions around a polyelectrolyte are classified into two types: the (strongly correlated) tightly bound ions and the (weakly correlated) diffusively bound ions, and the space around the nucleic acid can be correspondingly divided into the tightly bound region and the diffusively bound region, respectively. The rationale to distinguish the two types of ions (and the two types of spatial regions) is to treat them differently. For the diffusive ions, we can use PB. But for the tightly bound ions, we need a separate treatment to account for the correlations. The strong correlation between the ions are characterized by the following two conditions: a), Strong electrostatic correlation is characterized by a large Coulomb correlation parameter G(r) at position r:
+GðrÞ 1⁄4 ðzqÞ2
+eawsðrÞkBT $ Gc; (7)
+where G(r) is the local correlation parameter, zq is the charge of the counterion (z is the valency of counterions and q is the proton charge), e is the dielectric constant of the solvent, and aws(r) is the Wigner-Seitz radius given by the cation concentration c(r) in excess of the bulk concentration c0 (69):
+4p
+3 1⁄2awsðrÞ31⁄2cðrÞ ÿ c0 1⁄4 1: (8)
+We choose Gc to be 2.6, the critical value for the gas-liquid transition to occur in an ionic system. Physically, for G $ Gc, the Coulomb correlation is so strong that the charged system starts to exhibit liquid-like local order, whereas for G , Gc, the system is weakly correlated and is gaseous (70–72). b), Strong excluded volume correlation is characterized by a small interion distance d
+d 1⁄4 2aws # 2ðrc 1 DrÞ; (9)
+where rc is the ion radius, Dr is the mean displacement of ions fluctuated from their equilibrium positions, and 2(aws ÿ Dr) is the closest distance between two ions before they overlap. According to Lindemann’s melting theory, we choose Dr=d ’ 0:1 as the melting point for the correlated structure (73–75). In the above analysis, we have implicitly assumed two types of distinguishable correlational effects: the ion-ion correlations that exist in bulk solvent (without the polyanionic nucleic acid) and the nucleic acid-induced correlations between the (bound) ions. The TBI model treats the second type correlational effects. Therefore, in the above equations, we use the excess ion concentration c(r) ÿ c0 rather than the local concentration c(r) in an attempt to account for the ‘‘excess’’ correlational effect induced by the nucleic acid for the bound ions. It is important to note that the use of the excess ion concentration is a rather crude approximation because, rigorously speaking, the above two types correlational effects are inseparable. Ions that satisfy either of the above two correlation criteria (Eqs. 7 and 9) are classified as the tightly bound ions. The key to determine the tightly bound region is to obtain the ion concentration c(r). As a crude approximation, we calculate c(r) through the nonlinear PB equation
+=  e0e=c 1⁄4 ÿ4p rf 1 +
+a
+zaqcaðrÞ
+
+; (10)
+caðrÞ 1⁄4 c0
+aeÿzaqcðrÞ=kBT: (11)
+Here, a denotes the ion species, zaq is the charge of the ion, ca0 is the bulk ion concentration. rf is the charge density of the fixed charges, e0 is the permittivity of free space, and c(r) is the electrostatic potential at r. We have developed a three-dimensional finite-difference algorithm to numerically solve nonlinear PB for c(r) and c(r) (55). From c(r), the tightly bound region is quantitatively and unambiguously defined. In Fig. 1, we show
+1176 Tan and Chen
+Biophysical Journal 90(4) 1175–1190
+
+
+examples of the tightly bound regions around a ssDNA and a dsDNA helix in a Mg21 solution. For a N-bp double-stranded nucleic acid molecule, there are 2N phosphates. We divide the whole tightly bound region into 2N cells, each around a phosphate. In a cell, say, the i-th cell, there can exist mi 1⁄4 0, 1, 2. . . tightly bound ions. Each possible set of the 2N numbers {m1, m2, . . . , m2N} defines a binding mode. There exist a large number of such binding modes. For example, if we allow at most two ions in each cell, there would be 32N modes for the tightly bound ions. The total partition function Z is given by the sum over all the possible binding modes M:
+Z1⁄4+
+M
+ZM; (12)
+where ZM is the partition function for a given binding mode M. How to compute ZM for a given binding mode M? For a mode of Nb tightly bound ions and Nd diffusively bound ions, we use Ri (i 1⁄4 1, 2, . . . , Nb) and rj(j 1⁄4 1, 2, . . . , Nd) to denote the coordinates of the i-th tightly bound ion and the j-th diffusive ion. The total interaction energy U(R, r) of the system for a given ion configuration ðR; rÞ 1⁄4 ðR1; R2; . . . ; RNb ; r1; r2; . . . ; rNd Þ can be decomposed as three parts:
+UðR; rÞ 1⁄4 UbðRÞ 1 UintðR; rÞ 1 UsðR; rÞ;
+UbðRÞ 1⁄4 the interaction between the charges
+inside the tightly bound region ðthe tightly
+bound ions and the phosphate chargesÞ;
+UsðR; rÞ 1⁄4 the interaction between the diffusive ions;
+UintðR; rÞ 1⁄4 the interaction between the diffusive ions and
+the charges inside the tightly bound region:
+Then, ZM can be given by the following configurational integral (55)
+ZM 1⁄4 1
+ðN 1 ÿ NbÞ!
+1 Nÿ!
+Z
+VR
+N Yb
+i1⁄41
+dRi
+Z
+Vr
+N Yd
+j1⁄41
+d rj eÿUðR;rÞ=kB T ;
+(13)
+where N1 and Nÿ are the total numbers of the cations and of the anions, respectively. In the above integral, for a given mode, Ri can distribute within the volume of the respective tightly bound cell whereas rj can distribute in the volume of the bulk solution. VR denotes the tightly bound region. The integration for Ri of the i-th tightly bound ion is over the respective tightly bound cell. Vr denotes the region for the diffusive ions. The integration for rj of the j-th diffusive ion is over the entire volume of the bulk solvent. Averaging over the possible ion distributions gives the free energies DGb and DGd for the tightly bound and for the diffusive ions, respectively (55):
+eÿDGb=kBT 1⁄4 ÆeÿUb=kBTæ 1⁄4
+R N Qb
+i1⁄41
+d Ri eÿUb =kB T
+R N Qb
+i1⁄41
+dRi
+; (14)
+eÿDGd=kBT 1⁄4 ÆeÿðUint 1 UsÞ=kBTæ 1⁄4
+Z N Yd
+j1⁄41
+drj
+V eÿðUint 1 UsÞ=kBT: (15)
+Strictly speaking, for a given mode M, the free energy DGd of diffusive ions is dependent on the spatial distribution R of the tightly bound ions in the tightly bound cells. However, assuming the dependence of DGd on the tightly bound ions is mainly through the net tightly bound charge, which is fixed for a given mode, we can ignore the R-dependence of DGd. In practice, we approximate DGd by DGdðRÞ, where R is the mean value of R. The decoupling of R and DGd causes the separation of the R and the r variables in the configurational integral for ZM, resulting in the following expression for ZM (55):
+ZM 1⁄4 ZðidÞ N1
+V
+ Nb Z N Yb
+i1⁄41
+dRi
+!
+eÿDGb=kBTeÿDGd=kBT: (16)
+Here, Z(id) is the partition function for the uniform solution without inserting
+the polyelectrolyte. The volume integral R QNb
+i1⁄41 dRi provides a measure for the free accessible space for the Nb tightly bound ions. To obtain ZM from Eq. 16, we need to calculate the free energies DGb and DGd. To calculate DGb, we note that the electrostatic interaction potential energy inside the tightly bound region Ub can be written as the sum of all the possible charge-charge interactions:
+Ub 1⁄4 +
+i
+uiiðRiÞ 1 +
+i
++
+j
+uijðRi; RjÞ:
+Here uii is the Coulomb interactions between the charges in cell i and uij is the Coulomb interactions between the charges in cell i and in cell j. We compute the potential of mean force F1(i) for uii and F2(i, j) for uij:
+F1ðiÞ 1⁄4 ÿkBT lnÆeÿuiiðRiÞ=kBTæ;
+F2ði; jÞ 1⁄4 ÿkBT lnÆeÿuijðRi;RjÞ=kBTæ: (17)
+Here, the averaging is over the possible positions (Ri, Rj) of the tightly bound ion(s) in the respective tightly bound cell(s). From F1(i) and F2(i, j), we have
+DGb ’ +
+i
+F1ðiÞ 1 +
+ij
+F2ði; jÞ; (18)
+For DGd, from the mean-field theory for the diffusive ions (76,77), we have (55):
+FIGURE 1 The tightly bound regions around (a) a 13-bp dsDNA and (b) a 13-nt ssDNA in Mg21 solutions at bulk concentration [MgCl2] 1⁄4 0.1 M. The red spheres represent the phosphate groups and the green dots represent the points on the boundaries of the tightly bound regions. The dsDNA and ssDNA are produced from the grooved primitive model (see Appendix A) (55,95).
+Salt-Dependence of Nucleic Acid Helix Stability 1177
+Biophysical Journal 90(4) 1175–1190
+
+
+DGd 1⁄4 1
+2
+Z +
+a
+caðrÞzae1⁄2cðrÞ 1 c9ðrÞd3r
+1 kBT
+Z +
+a
+caðrÞlncaðrÞ
+c0
+a
+ÿ caðrÞ 1 c0
+a
+
+d3r; (19)
+where the two integrals correspond to the enthalpic and entropic parts of the free energy, respectively. c9(r) is the electrostatic potential for the system without the diffusive salt ions. c9(r) is introduced because c(r) ÿ c9(r) gives the contribution of the diffusive ions. c(r) and c9(r) are obtained from the nonlinear PB (Eq. 10) and the Poisson equation (without ions), respectively. From the above equations, the electrostatic free energy can be computed as
+Gel
+T 1⁄4 ÿkBT lnðZ=ZðidÞÞ 1⁄4 ÿkBT ln +
+M
+ðZM=ZðidÞÞ: (20)
+From Eq. 3 for the nonelectrostatic part (DGnel
+T ) and Eq. 20 for the
+electrostatic part (DGel
+T ), we can compute the free energy of a nucleic acid in the ds helix and the ss helix (coil) state, respectively. The free energy difference gives the stability of the ds helix structure, or, the folding free energy for the helix-coil transition. In summary, the computation of the helix stability with the TBI theory involves the following steps (55): First, for a polyanion molecule in salt solution, we solve the nonlinear PB (NLPB) to obtain the ion distribution c(r) around the molecule, from which we determine the tightly bound region from Eqs. 7–9. In the nonlinear PB, we use dielectric constants e 1⁄4 2 and 78 for the regions inside and outside the helix. We assign Debye-Huckel parameter kD 1⁄4 0 for the ioninaccessible region for the ions (helix plus a charge-free layer with the thickness equal to the cation radius) and a nonzero kD determined by the ion concentration for the ion-accessible region (55). Second, using Eq. 17, we compute the pairwise potential of mean force F1(i) and F2(i, j) for different cells (i and j’s). F1 and F2 are calculated by averaging over all the possible positions of the tightly bound ions inside the respective tightly bound cells. The excluded volume effect is accounted for in the averaging (integration) process. Third, we enumerate the possible binding modes. For each binding mode M: a), we solve the NLPB to obtain the distribution of the diffusive ions; b), from Eq. 19, we calculate the free energy for the diffusive ions and the interaction between the diffusive ions and the tightly bound ions DGd; c), with the precalculated F1 and F2, we calculate the free energy of the tightly bound ions from Eq. 18; d), from Eq. 16, we compute the partition function ZM for the mode. Summing over the different binding modes gives the total partition function Z, from which we can calculate the free energy of the structure (ds or ss helix).
+RESULTS
+We investigate the ion-dependence of the folding thermodynamics for the helix-coil transition for a series of oligomeric DNAs of different lengths and sequences. In Table 1, we list the sequences, the thermodynamic parameters (DH°, DS°, DG°) in 1 M NaCl calculated from the nearest neighbor model, and the nonelectric part of the folding free energy
+DGnel
+T at T 1⁄4 37°C. To calculate DGnel
+T ; we calculate DGel
+T
+using the PB theory and the TBI model, respectively. From DGel
+T ; we obtain DGnel
+T from Eq. 3. In the following section, we will discuss the ion-dependence of the thermal stability of oligomeric DNA helices. Throughout the discussion, we focus on the comparisons with the available experimental data as well as with the results from the PB theory.
+Salt concentration-dependence of the helix stability at 37°C
+Electrostatic free energies G3el7 and DG3el7
+The electrostatic contribution to helix stability is quantified by the electrostatic folding free energy
+DGel
+37 1⁄4 Gel
+37ðhelixÞ ÿ Gel
+37ðcoilÞ: (21)
+First, we calculate the electrostatic part of free energy Gel
+37
+for the helix (dsDNA) and for the coil (ssDNA), respectively, as a function of the NaCl or MgCl2 concentration. We show the results in Fig. 2, a and b, from which we make the following observations. Higher ion concentration leads to lower electrostatic free energy Gel
+37: This is because higher concentration corresponds to less entropy loss upon binding of the ion and thus enhances ion-binding. Moreover, the stabilization by higher ion concentration is more pronounced for ds helix than for ss helix (coil). As shown in Fig. 2, a and b, Gel
+37ðhelixÞ of dsDNA
+decreases more rapidly than Gel
+37ðcoilÞ of ssDNA (the curves of black lines are steeper than the ones of gray lines in the
+TABLE 1 The DNA sequences used in the calculations
+Sequence N (bp)
+Experiment reference
+ÿDH° (kcal/mol)*
+ÿDS°
+(cal/mol.K)*
+ÿDG°37 (kcal/mol)*
+ÿDGnel
+37 ðPBÞ
+ðkcal=molÞy
+ÿDGnel
+37 ðTBIÞ
+ðkcal=molÞz
+GCAGC 5 – 35.7 98.1 5.3 3.9 4.0 GCATGC 6 (36) 43.6 121.6 5.9 4.3 4.5 CCAAACA 7 (78) 46.8 130.8 6.2 4.2 4.5 GGAATTCC 8 (79–81) 55.2 156.0 6.8 4.5 4.8 GCCAGTTAA 9 (37) 63.1 174.8 8.9 6.3 6.7 ATCGTCTGGA 10 (35,82) 70.5 192.0 11.0 8.0 8.5 CCATTGCTACC 11 (35) 81.1 222.5 12.1 8.8 9.4 CAAAGATTCCTC 12 (83) 87.4 243.8 11.8 8.2 9.0 AGAAAGAGAAGA 12 (84,85) 83.1 231.2 11.4 7.8 8.6 CCAAAGATTCCTC 13 – 95.4 263.7 13.6 9.6 10.4
+*The thermodynamic data are calculated at standard state (1 M NaCl) through the nearest-neighbor model with the thermodynamic parameters of SantaLucia (22).
+yDGnel
+37 ðPBÞ is computed from Eq. 3 with DGel
+37 calculated from the Poisson-Boltzmann theory.
+zDGnel
+37 ðTBIÞ is calculated from Eq. 3 with DGel
+37 calculated through the tightly bound ion model. For each of the listed sequences, we have performed the thermodynamic calculations for both the NaCl and the MgCl2 solutions of different ion concentrations.
+1178 Tan and Chen
+Biophysical Journal 90(4) 1175–1190
+
+
+figure). This is because dsDNA is more negatively charged than ssDNA (see Appendix A for the structures of the dsDNA and the ssDNA) and the stronger electrostatic effect leads to more pronounced increase of bound ions for higher salt concentration. As a result, higher salt concentration leads to a lower DGel
+37 1⁄4 Gel
+37ðhelixÞ ÿ Gel
+37ðcoilÞ (see Eq. 1), i.e., higher salt concentration tends to stabilize the helix. From Fig. 2 a, we find that PB and TBI give nearly the same results for the NaCl solution. This is because the interion correlations are negligible for the NaCl solution considered here (55). However, for MgCl2 solution, as shown in Fig. 2 b, we find that the TBI model gives lower free energy than the PB. This is because the low-energy correlated states of the bound Mg21 ions, which are explicitly considered in TBI, are neglected in the PB. The average mean-field states
+considered in PB have higher energies than the low-energy correlated states, causing the PB to underestimate the helix stability in the MgCl2 solution.
+Folding free energy DG3°7
+Combining the electrostatic free energy Gel
+37 and the chemical
+free energy Gnel
+37 ; we obtain the total free energy DG3°7(1⁄4 the ds helix stability). We investigate the dependence of the helix stability as a function of the NaCl and the MgCl2 concentrations for different DNA sequences and different helix lengths. Fig. 2, c and d, show our computed results as well as the experimental results. As we expected, both Fig. 2, c and d, show that higher ion concentration supports higher helix stability (lower DG3°7).
+FIGURE 2 (a,b) The electrostatic free energy Gel
+37 for dsDNA (black lines) and the respective ssDNA (gray lines) as functions of (a) NaCl and (b) MgCl2 concentrations. (Dotted lines) Poisson-Boltzmann theory; (solid lines) the TBI theory. (a) DNA length N are 10, 9, 8, and 6 bp (from the top to bottom), respectively; (b) DNA length N are 12, 9, and 6 bp (from the top to bottom), respectively. (c,d) The folding free energies DG°37 due to dsDNA helix formation for different sequences of various lengths in (c) NaCl and (d) MgCl2 solutions. (Dotted lines) Poisson-Boltzmann theory; (solid lines) the TBI theory; (dashed lines) SantaLucia’s salt extrapolation formula for NaCl (22,40). (c) The sequences used for NaCl solution are: GCATGC, GGAATTCC, GCCAGTTAA, and ATCGTCTGGA (from the top to bottom). The symbols are the experimental data. 1 GCATGC (36); h GGAATTCC (79); 3 GGAATTCC (80); n GCCAGTTAA (37); ) ATCGTCTGGA (82); ¤ are calculated from the nearest neighbor model with the thermodynamic parameters of SantaLucia at 1 M NaCl (22). (d) The sequences used for MgCl2 are: GCATGC, GCCAGTTAA, and AGAAAGAGAAGA (from the top to bottom). The symbols are the experimental data: n GCCAGTTAA in MgCl2 (37); h AGAAAGAGAAGA in MgCl2 (84); : AGAAAGAGAAGA in MgCl2 (85); ¤ GCATGC in NaCl/ MgCl2 mixed solution with 0.012 M NaCl (36). The experimental data in NaCl/MgCl2 mixed solutions for GCATGC are used for semiquantitative comparison because NaCl is at very low concentration (36). For the MgCl2 solutions, the values of DGnel
+37 ðTBIÞ from the TBI theory are used in the calculations of DG3°7.
+Salt-Dependence of Nucleic Acid Helix Stability 1179
+Biophysical Journal 90(4) 1175–1190
+
+
+This is because, as we discussed above, higher ion concentration gives lower electrostatic folding free energy DGel
+37:
+In both the NaCl (Fig. 2 c) and the MgCl2 (Fig. 2 d) solutions, longer helices have lower DGel
+37 and thus are more stable than shorter ones. This is because longer helix means stronger attractive electric field for bound ions, and this effect is stronger for ds helix, which is more negatively charged, than for coil. Besides the PB and TBI computational results, also plotted in Fig. 2 c for the NaCl solution are the experimental data and the results from SantaLucia’s empirical extrapolated [Na1]-dependence of DG3°7 (22,40). As we discussed above, PB and TBI give the same results for NaCl solution. From Fig. 2 c, we find that, as tested against experiments, both theories give good results. Moreover, we find that SantaLucia’s salt-dependence gives good results for [Na1] between 0.1 and 1 M NaCl, and overestimates the helix stability for [Na1] , 0.1 M. Shown in Fig. 2 d is the MgCl2 concentration-dependence of the electrostatic free energy DG3°7. We find that both PB and TBI predict the same qualitative dependence of DG3°7 in MgCl2 concentration. However, compared with the experimental data for the three tested sequences GCATGC (36), GCCAGTTAA (37), and AGAAAGAGAAGA (84,85), TBI gives improved predictions than PB. As we discussed above, PB underestimates the helix stability owing to the neglected correlations between the bound Mg21 ions. Fig. 2 d shows that the helix stability saturates at high MgCl2 concentration (.0.03 M).
+Temperature-dependence of helix stability
+Temperature-dependence of the total stability DGT°
+We calculate the folding free energy DGT° from Eq. 5 for NaCl and MgCl2 solutions for different temperatures. We use the temperature-dependent dielectric constant of water in Eq. 33 (86). For both the Na1 and Mg21 salt solutions, as shown in Fig. 3, a and b, helix is more stable (i.e., is more negative DGT° 1⁄4 DH° ÿ TDS°) for lower temperatures. Also, we find that for all the tested sequences and ion concentrations, the TBI theory gives good predictions for the helix stability as tested against experiments. To understand the electrostatic contribution to the helix stability, we further investigate the temperature-dependence of the electrostatic part of the folding free energy DGel
+T (see Eq. 21).
+Temperature-dependence of the electrostatic folding free energy DGTel
+As shown in Fig. 4, in both the NaCl and the MgCl2 solutions, the temperature-dependence of the electrostatic folding free energy DGel
+T is much weaker than that of the total free energy (net stability) DGT°. So the strong temperaturedependence of helix stability predominantly comes from the temperature-dependence of the nonelectrostatic part DGnel
+T:
+In the Na1 salt solution. Plotted in Fig. 4 c is the temperature-dependence of DGel
+T for different NaCl concen
+trations for a 10-bp dsDNA. We find that DGel
+T is weakly
+dependent on temperature. As temperature is increased, DGel
+T
+decreases at high NaCl concentration and increases at low NaCl concentration. Such temperature-dependence is predicted by both PB and TBI. The temperature-dependence of electrostatic free energy can be understood from the temperature-dependence of the dielectric constant e of the solvent (see Eq. 33): At higher temperature, e is smaller, resulting in stronger Coulomb interactions. As explained below, the Coulomb interactions can be strengthened differently in dsDNA and ssDNA, resulting in the temperaturedependence of DGel
+T 1⁄4 DGel
+T ðdsÞ ÿ DGel
+T ðssÞ:
+For low [Na1], ion binding is accompanied by a large entropic decrease and thus there are only few bound ions and
+FIGURE 3 The temperature-dependence of the folding free energy DG°T for (a) NaCl and (b) MgCl2 solutions. (Solid lines) The TBI theory; (dotted lines) experimental data with the use of the equation DGT° 1⁄4 DH° ÿ TDS°, where DH° and DS° are taken from experiments. (a) The upper three lines are for sequence GGAATTCC at 0.046, 0.1, and 0.267 M NaCl (from the top to bottom) (79,80), and the bottom three lines are for sequence ATCGTCTGGA at 0.069, 0.22, and 0.62 M NaCl (from the top to bottom) (82). (b) The three lines are for sequence GCCAGTTAA at 1, 10, and 100 mM MgCl2 (from the top to bottom) (37).
+1180 Tan and Chen
+Biophysical Journal 90(4) 1175–1190
+
+
+weak charge neutralization. In such a case, the repulsive interactions between the phosphates dominate. dsDNA has higher phosphate charge density and thus the increase of the repulsive Coulomb interactions (due to the smaller e at higher temperature) is stronger than ssDNA, causing an increase of DGel
+T as the temperature is increased. For high NaCl concentration, more ions are bound, causing strong charge neutralization. Because the ds helix has much greater charge neutralization than ss helix (coil), as temperature is increased, the increase in the electrostatic interaction in ssDNA is more significant than in dsDNA (see Fig. 4 a), causing a decrease in DGel
+T:
+In the Mg21 salt solution. As shown in Fig. 4 d for a 9-bp dsDNA immersed in a MgCl2 solution, DGel
+T decreases slightly with increasing temperature over a wide range of MgCl2 concentration ( *0.1 mM MgCl2). dsDNA has more bound ions and stronger charge neutralization than ssDNA, e.g., for 0.1 mM [MgCl2], our TBI theory predicts that at
+37°C, the tightly bound Mg21 ions can neutralize 35% of the phosphate charge for a 9-bp dsDNA as compared to only 5% for the corresponding 9-nt ssDNA. So the Coulomb interaction in ssDNA is strengthened more significantly with the increase of temperature than that in dsDNA, resulting in a decrease in DGel
+T 1⁄4 Gel
+T ðdsÞ ÿ Gel
+T ðssÞ with the increase of temperature. The PB theory can predict the same trend but as we discussed above, PB underestimates the stability of ions because of the neglected correlation and fluctuation effects for the Mg21 ions.
+Salt-dependence of the melting temperature Tm
+In the above section, we found that the predicted temperaturedependence of DGT° from TBI agrees with the experiments for both the NaCl and the MgCl2 solutions. Here, we calculate the melting temperature Tm (through Eq. 6) and compare the calculated results with the experimental data.
+FIGURE 4 The temperature-dependence of the electrostatic part of the free energy. (a,b) The electrostatic free energy Gel
+37 of dsDNA (solid lines) and ssDNA (dashed lines) as functions of temperature: (a) for a 10-bp dsDNA and the respective ssDNA at 3 mM, 10 mM, 30 mM, 69 mM, 220 mM, and 1 M NaCl (from the top to bottom); (b) for a 9-bp dsDNA and the respective ssDNA at 0.1, 0.3, 1, 10, and 100 mM MgCl2 (from the top to bottom). (c,d) The temperaturedependence of electrostatic contribution DGel
+37 to folding free energy for dsDNA helix formation in (c) NaCl and (d) MgCl2 solutions. (Dotted lines) PoissonBoltzmann theory; (solid lines) the TBI theory. (c) Sequence ATCGTCTGGA at 3 mM, 10 mM, 30 mM, 69 mM, 220 mM, and 1 M NaCl (from the top to bottom); (d) sequence GCCAGTTAA at 0.1, 0.3, 1, 10, and 100 mM MgCl2 (from the top to bottom).
+Salt-Dependence of Nucleic Acid Helix Stability 1181
+Biophysical Journal 90(4) 1175–1190
+
+
+In the NaCl solution
+Shown in Fig. 5 a is the calculated melting temperatures Tm of dsDNA as functions of the NaCl concentration for different sequences and lengths. Also shown in the figure is the experimental data for the sequences GGAATTCC (79,80), GCCAGTTAA (37), ATCGTCTGGA (35), and CCATTGCTACC (35). From the figure we find that the predicted Tm’s are in agreement with the experimental results. The increase of the NaCl concentration leads to a higher Tm (higher stability of dsDNA helix). As a comparison, we also show SantaLucia’s
+empirical salt extension (fitted from experimental data) for the NaCl solution (22,40):
+1=Tm 1⁄4 1=Tm° 1 0:000368 3 ðN ÿ 1Þln1⁄2Na1 =DH°; (22)
+where T°m and DH° are the melting temperature and the enthalpy change in 1 M NaCl solution. The above SantaLucia’s empirical extension provides a good approximation for NaCl concentration between 0.1 and 1 M (22,40). We also calculate the Tm’s for the experimental sequences GCATGC (36), CCAAACA (78), CAAAGATTCCTC (83). Again our calculated results agree with the experimental data.
+In the MgCl2 solution
+Fig. 5 b shows the melting temperatures Tm of dsDNA helix in the MgCl2 solution as a function of the ion concentration for two sequences. In contrast to the folding free energy DG37° in Fig. 2 d, which has very limited experimental data, more experimental data for Tm in pure MgCl2 solutions are available. We find that the Tm’s predicted from the TBI model agree with the available experimental data over a wide MgCl2 concentration range from 0.3 mM to 0.3 M. Again we
+find that PB theory can predict the trend in the [Mg21]dependence of Tm but it underestimates the helix stability and the Tm due to the neglected correlation and fluctuation effects, as discussed in the previous sections.
+Helix length-dependence of the electrostatic folding free energy DG37el
+In this section, we investigate the dependence of DGel
+37; the electrostatic component of the helix stability, on the helix length. We use the number of basepairs N to define the helix length. We will also examine how the electrostatics affects the validity of the additive nearest neighbor model for the nucleic acid helix stability (17–23). To focus on the lengthdependence and the additivity effect, we study the electrostatic free energy ‘‘per base stack’’ gel
+37 1⁄4 Gel
+37=ðN ÿ 1Þ and
+Dgel
+37 1⁄4 DGel
+37=ðN ÿ 1Þ:
+Fig. 6, a and b, show the length-dependence of gel
+37 for the dsDNA and the ssDNA. We find that for both ssDNA and dsDNA, gel
+37 increases rapidly with N at low salt (NaCl or MgCl2) concentrations and is only weakly dependent on N at high salt concentrations. The change in the lengthdependence with the salt concentrations comes from the ion concentration-dependence of the charge neutralization (screening) effect. At low salt concentration, the neutralization is weak (the amount of bound ions is small), and the increase of helix length enhances the repulsive interactions between the charges (phosphate plus bound ion) in the backbone, causing an increased gel
+37 with increased helix length (for both the ds- and the ss-helices). For high salt concentration, charge neutralization and ionic screening are strong (Debye length is short), so the increase in gel
+37 is
+FIGURE 5 The melting temperature Tm for dsDNA of different sequences in (a) NaCl and (b) MgCl2 solutions. (Solid lines) The TBI theory; (dotted lines) Poisson-Boltzmann theory; (dashed lines) SantaLucia’s salt extension for NaCl (22,40); (symbols) the experimental data. (a) The sequences and total strand concentrations CS are (from the top to bottom): 1 GGAATTCC at CS 1⁄4 3 mM (79); n CCATTGCTACC at CS 1⁄4 2 mM (35); n ATCGTCTGGA at CS 1⁄4 2 mM (35); 3 GCCAGTTAA at CS 1⁄4 8 mM (37); and h GGAATTCC at CS 1⁄4 18.8 mM (81). (b) The sequences and CS are (from the top to bottom): h AGAAAGAGAAGA at CS 1⁄4 6 mM (84); and n GCCAGTTAA at CS 1⁄4 8 mM (37). Here, the data for AGAAAGAGAAGA are taken from the duplex melting in the study of the triplex melting in MgCl2 and CS 1⁄4 6 mM is the total strand concentration for triplex formation. Tm is calculated from DG°T ÿ RTlnCS/6 1⁄4 0 (84).
+1182 Tan and Chen
+Biophysical Journal 90(4) 1175–1190
+
+
+retarded. As explained in the following, the difference between
+gel
+37 of ssDNA and that of dsDNA determines electrostatic
+contribution to the helix stability per base stack Dgel
+37 1⁄4
+gel
+37ðdsÞ ÿ gel
+37ðssÞ:
+In the NaCl solution
+Shown in Fig. 6 c is the Dgel
+37 calculated from both the PB theory and the TBI theory for different helix length N (-bp). As expected from the behavior of gel
+37 in Fig. 6 a, Dgel
+37
+is weakly dependent on N for high NaCl concentration (.0.1 M). For low NaCl concentration, the relationship between Dgel
+37 and N becomes more complex: Dgel
+37 increases with N when N is small, and decreases when N is large. Such nonmonotonic behavior can be explained as follows. At low NaCl concentration and for short DNA (small N), Na1 ion binding is weak and the repulsive phosphate-phosphate repulsion dominates Gel
+37: Due to the long-range nature of the
+repulsive Coulomb interactions, Gel
+37 would increase nonlinearly with length N. Furthermore, such destabilizing effect is stronger for ds helix than for ss helix (coil). As a result, the ds helix is less stable than the ss helix. With the increase of N, the ds helix becomes increasingly less stable (i.e., an increasing Dgel
+37); see Fig. 6, a and c. If N continues to increase, the electric field near the negatively charged DNA surface will become stronger and will attract more bound Na1 ions to neutralize the phosphate charges. This would retard the increase of the electrostatic free energy Gel
+37;
+especially for the ds helix, which involves stronger electrostatic interactions. As a result, Dgel
+37 decreases.
+For high [NaCl], as shown in Fig. 6 c, Dgel
+37 is approx
+imately independent of N. So DGel
+37 is additive for high
+NaCl concentrations (17–23). But for low NaCl, Dgel
+37 is N-dependent. As a result, the additivity may fail. Also shown in the figure is that PB and the TBI theory give nearly identical results for short DNA at low NaCl concentration. With the increase of DNA length and increase
+FIGURE 6 The length-dependence of the electrostatic part of the free energy. gel
+37 1⁄4 Gel
+37=ðN ÿ 1Þ and Dgel
+37 1⁄4 DGel
+37=ðN ÿ 1Þ are the electrostatic free
+energies per base stack. N ÿ 1 is the number of base stacks for a N-bp helix. (a,b) The electrostatic free energy gel
+37 (per base stack) for dsDNA (solid lines) and the respective ssDNA (dashed lines) as functions of sequence length N in NaCl (a) and MgCl2 (b) solutions. (a) [NaCl] 1⁄4 3 mM, 10 mM, 30 mM, 100 mM, 300 mM, and 1 M (from the top to bottom); (b) [MgCl2] 1⁄4 0.1, 0.3, 1, 3, 10, and 30 mM (from the top to bottom). (c,d) The length N-dependence of electrostatic contribution Dgel
+37 1⁄4 gel
+37ðdsDNAÞ ÿ gel
+37ðssDNAÞ (per base stack) to folding free energy for dsDNA helix formation in NaCl (c) and MgCl2 (d) solutions. (Dotted lines) Poisson-Boltzmann theory; (solid lines) the TBI theory. [NaCl] 1⁄4 3 mM, 10 mM, 30 mM, 100 mM, 300 mM, and 1 M (from the top to bottom); [MgCl2] 1⁄4 0.1, 0.3, 1, 3, 10, and 30 mM (from the top to bottom).
+Salt-Dependence of Nucleic Acid Helix Stability 1183
+Biophysical Journal 90(4) 1175–1190
+
+
+of NaCl concentration, there exist very small differences between the two theories owing to the increased number of the (strongly correlated) ions in the tightly bound region. For example, for a 13-bp DNA at 1 M NaCl, the difference between the two theories is ;0.07 kcal/mol per base stack.
+In the MgCl2 solution
+For the MgCl2 solutions, the helix length N-dependence of Dgel
+37 is shown in Fig. 6 d. For high MgCl2 concentration, the dependence is rather weak due to the large charge neutralization. For low MgCl2 concentration, ds helix is electrostatically unstable (Dgel
+37 . 0), and Dgel
+37 decreases rapidly with the increase of N when N is small, and become saturated when N is large. This is because as N is increased, the strong negative electric field near DNA surface causes an increased tendency of ion binding and charge neutralization, and such effect is stronger for ds helix than for ss helix, causing a decrease in Dgel
+37: When N becomes sufficiently large, both ds and ss helix can have strong charge neutralization, so the decrease of Dgel
+37 with longer length would slow down (saturate). In addition, it can be seen that PB and TBI give similar results for short N and low MgCl2 concentration because of the smaller number of bound ions and hence the weaker correlational effect. For large N and high [MgCl2],
+more Mg21 ions are bound near the DNA and these ions become strongly correlated. In such cases, the TBI model gives improved predictions (55).
+Effect of the cation size on DNA stability
+To investigate the effect of the cation size on the helix stability, we choose different radii for the (hydrated) monovalent and divalent cations. Specifically, we use 3, 3.5, and 4  ̊A for monovalent ions and 4, 4.5, and 5  ̊A for the divalent ions. Fig. 7 shows the folding free energy DG37° as a function of ion concentration and ion size for sequence ATCGTCTGGA. We find that smaller cations support higher stability of dsDNA. We also find that different cation sizes give almost the same trend of the salt concentration-dependence of DG37°. Through experimental comparisons, we find that ion radius of 3.5  ̊A for Na1 and 4.5  ̊A for Mg21 can give the best fit for the experimental results for the helix stability and the melting temperature. Small cations are more effective in stabilizing dsDNA because they can approach the phosphates and the grooves at a closer distance and can thus interact with DNA more strongly. Because dsDNA is more negatively charged than the corresponding ssDNA, the ion size-induced enhancement of the ion binding is stronger for dsDNA than for ssDNA. Thus, dsDNA becomes more stable in smaller cation solutions. The predictions are in accordance with the experiments on dsDNA helix melting in various salt solutions (37). Recent experiments on RNA folding have also shown that smaller cations can stabilize RNA tertiary structure more effectively than larger ions (13). For more complex nucleic acid struc
+ture, the ion size can affect the ion-binding affinity through the compatibility with the geometry of binding site.
+Thermodynamic parameters as functions of the ion concentration and the helix length
+The availability of the (empirical) thermodynamic parameters for nucleic acids is limited by the availability of the experimental data. For example, for nucleic acids in NaCl solution, most experimental studies have been focused on high NaCl concentrations (e.g., 1 M), and thus the empirical saltdependence fitted from the experiments are valid only for relatively high [Na1] ( *0.1 M NaCl) (22,40). Moreover, there are very limited experimental data on the Mg21-dependence for different helix lengths. Therefore, it is desirable to have analytical formulas for the thermodynamic parameters as a function of [Na1], [Mg21], and the helix length N (-bp). Such formulas would be practically valuable for thermodynamic
+FIGURE 7 The folding free energies DG°37 for dsDNA helix formation as functions of (a) 1:1 and (b) 2:1 salt concentrations for sequence ATCGTCTGGA. (Solid lines) The TBI theory; (dotted lines) PoissonBoltzmann theory. (a) The radii of monovalent cations are: 3, 3.5, and 4  ̊A (from the bottom to top). (b) The radii of divalent cations are: 4, 4.5, and 5  ̊A (from the bottom to top), respectively.
+1184 Tan and Chen
+Biophysical Journal 90(4) 1175–1190
+
+
+studies of nucleic acid stability. In this section, based on the TBI model and the comparisons with the available experimental data for DNA helix melting (22,32–35,40,87), we derive such empirical formulas.
+NaCl solutions
+By computing DG°37 for a wide range of DNA helix length
+and Na1 concentrations using the TBI theory, we obtain the following (fitted) analytical expression for DG°37 as a
+function of [Na1] and N (number of basepairs in the helix):
+DG3°71⁄2Na 1  1⁄4 DG3°7ð1 MÞ 1 ðN ÿ 1ÞDg1: (23)
+Here (N ÿ 1) is the number of base stacks in the helix and Dg1 is a function associated with the electrostatic folding free energy per base stack:
+Dg1 1⁄4 a1 1 b1=N; (24)
+a1 ’ ÿ0:07 ln1⁄2Na1  1 0:012 ln21⁄2Na1 ;
+b1 ’ 0:013 ln21⁄2Na1 : (25)
+The above empirical expression for the folding free energy gives good fit with the TBI results for NaCl concentration from 1 mM to 1 M (shown in Fig. 8 a). Assuming that the salt-dependence of DGT° is mainly entropic, i.e., enthalpy change DH° is mainly independent of NaCl concentration (22,25,30,40,41), we obtain the following expression for the entropy change DS° (in cal/mol/K) for the helix / coil transition.
+DS°1⁄2Na 1  1⁄4 DS°ð1 MÞ ÿ 3:22ðN ÿ 1ÞDg1: (26)
+From Eqs. 23 and 26, neglecting the temperaturedependence of the enthalpy and entropy parameters, we obtain the following expression for the folding free energy DG°T for any given temperature T and Na1 concentration:
+DG°T([Na1]) 1⁄4 DH°(1 M) ÿ TDS°[Na1], where DH°(1 M) and DS°(1 M) can both be calculated from the nearest neighbor model with the use of the measured thermodynamic parameters (17–22,40,61). Furthermore, from Eqs. 23 and 26, we obtain the following empirical expression for the melting temperature Tm:
+1=Tm1⁄2Na1  1⁄4 1=Tm°ð1 MÞÿ 0:00322ðN ÿ1ÞDg1=DH°ð1 MÞ:
+(27)
+As shown in Fig. 9 a, the above expression for Tm agrees with the experimental results, even for very long DNA (Escherichia coli) (33).
+In the MgCl2 solution
+Similarly, from Eqs. 3 and 5, we obtain the following expression for the thermodynamic parameters in MgCl2 solution:
+DG3°71⁄2Mg21  1⁄4 DG3°7ð1 MÞ 1 ðN ÿ 1ÞDg2; (28)
+DS°1⁄2Mg21  1⁄4 DS°ð1 MÞ ÿ 3:22ðN ÿ 1ÞDg2; (29)
+1=Tm1⁄2Mg21  1⁄4 1=Tm°ð1 MÞÿ0:00322ðN ÿ1ÞDg2=DH°ð1 MÞ;
+(30)
+where Dg2 is a function associated to the electrostatic folding free energy per base stack, Dg2 is a function of helix length
+N and the Mg21 ion concentration:
+Dg2 1⁄4 a2 1 b2=N2; (31)
+a2 1⁄4 0:02 ln1⁄2Mg21  1 0:0068 ln21⁄2Mg21 ;
+b2 1⁄4 1:18 ln1⁄2Mg21  1 0:344 ln21⁄2Mg21 : (32)
+The above analytical expressions are valid for N *6 (see Fig. 8 b for the comparison with the TBI calculations). Fig. 9 b shows the comparison between the above formulas and the experimental data for Tm for a wide range of Mg21 concentration and DNA length. We find good agreements between Eq. 30 and the available experimental data.
+FIGURE 8 The free energy change DG°37 for dsDNA helix formation as functions of (a) NaCl and (b) MgCl2 concentrations for the sequences: GCATGC, GGAATTCC, GCCAGTTAA, ATCGTCTGGA, CCATTGCTACC, and CCAAAGATTCCTC (from the top to bottom). (a) (Solid lines) The empirical relation Eq. 23; (symbols) calculated from the TBI theory. (b) (Solid lines) The empirical relation Eq. 28; (symbols) calculated from the TBI theory.
+Salt-Dependence of Nucleic Acid Helix Stability 1185
+Biophysical Journal 90(4) 1175–1190
+
+
+Nonadditivity for the helix stability
+The analytical formulas for the thermodynamic parameters account for the chain length-dependence of the folding stability. The 1/N expansion clearly shows the saturation effect as 1/N / 0 for large helix length N (52). The stability is additive if it can be computed as the sum of the stability of each base stack. Mathematically, the additivity corresponds to a linear-dependence of the folding free energy on the helix length (1⁄4 N ÿ 1 stacks), i.e., Dgz in Eqs.
+23 and 28 (z 1⁄4 valence of the ion 1⁄4 1 for Na1 and 2 for Mg21) is N-independent or weakly dependent on N, which,
+according to Eqs. 24 and 31, occurs if the following condition is satisfied:
+Nz  bz=az;
+where az and bz are given by Eqs. 25 and 32 for z 1⁄4 1 (Na1)
+and 2 (Mg21), respectively. The above additivity condition depends on the ion concentration. For example, bz/az is not very sensitive to the ion concentration at high salt region ( *0:1 M for NaCl and *10 mM for MgCl2). But for lower ion concentration, the additivity condition becomes more sensitive to the ion concentration. bz/az and hence the required chain length N would increase rapidly in order for the additivity condition to be satisfied.
+Na1 versus Mg21
+Previous experiments for a specific sequence have shown that the 1 M NaCl solution has effectively the equivalent ionic effect on the helix stability as the 10 mM MgCl2/150 mM NaCl mixed solution (36). Similar relation has also been experimentally found for RNA folding: 1 M NaCl has the similar effect as 10 mM MgCl2/50 mM NaCl mixed solution for stabilizing a ribosomal RNA secondary structure (90), and 1 M NaCl is similar to 10 mM MgCl2/100 mM NaCl mixed salt for a hammerhead ribozyme folding (91). With the TBI theory, which can treat the Mg21 ions, we can now evaluate and compare the role of Na1 and Mg21 ion in the stabilization of nucleic acid helix. Because the current form of the TBI theory does not treat the Na1/Mg21 mixture solution, we examine the ds helix stability in 1 M NaCl and in 10 mM MgCl2 solution. We compare the melting temperatures Tm in these two different solutions (see Eqs. 27 and 30). We choose thermodynamic parameters of each base stack in 1 M NaCl (DH°, DS°) 1⁄4 (ÿ8.36 kcal/mol, ÿ22.37 cal/mol/K), as determined from the average parameters over different sequences (22). So for a N-bp helix, DH+ ’ ÿðN ÿ 1Þ8:36 kcal=mol. Eqs. 27 and 30 predict that DTm 1⁄4
+Tm1⁄21 M Na1 ÿ TM1⁄210 mM Mg21 ’ 3:5+ for N 1⁄4 9. So the helix is only slightly less stable in 10 mM MgCl2 than in 1 M NaCl. In addition, we find that the melting temperature difference DTm decreases as the helix length is increased and eventually becomes saturated for very long helix. Such length-dependence can be understood from the enthalpy-entropy competition in the ion-binding process. The ion-binding entropic penalty for [Mg21] 1⁄4 10 mM is much larger than that for [Na1] 1⁄4 1 M. Therefore, entropically, Mg21 binding is less favorable than Na1 binding. However, enthalpically, the binding of Mg21, which carries higher charge and can cause more efficient charge neutralization, is more favorable than that of Na1. Therefore, the enthalpic effect becomes more important for a longer helix, which has stronger electric field near DNA surface. As a result, as the helix length is increased, Mg21 would stabilize the helix more effectively than Na1, causing DTm to decrease.
+FIGURE 9 Comparisons between the empirical formulas (solid lines) for Tm (Eqs. 27 and 30) and experimental data (symbols) for (a) NaCl and (b) MgCl2 solutions. (a) The DNA sequences for NaCl solutions are (59-39): GGAATTCC (81), GCCAGTTAA (37), ATCGTCTGGA (82), CCATTGCTACC (35), ATCGTCTCGGTATAA (35), CCATCATTGTGTCTACCTCA (35), AATATCTCTCATGCGCCAAGCTACA (35), GTTATTCCGCAGT-CCGATGGCAGCAGGCTC (35), and E. coli (33) (from the bottom to top). (b) The sequences for MgCl2 solutions are (59-39): GCCAGTTAA (37), AGAAAGAGAAGA (84), TTTTTTTGTTTTTTT (38), TAATTTAAAATTTTTAAAAAA (88), TTTTTTTTTTATTAAAATTTATAAA (89), and AAAAAAAAAATAATTTTAAATATTT (89) (from the bottom to top). Tm(1 M Na1) is calculated from the nearest neighbor model with the thermodynamic parameters of SantaLucia (20) except for E. coli. For E. coli, Tm(1 M Na1) is taken as 96.5°C.
+1186 Tan and Chen
+Biophysical Journal 90(4) 1175–1190
+
+
+CONCLUSIONS AND DISCUSSION
+The tightly bound ion theory can explicitly account for the correlation and fluctuation of the bound ions (55). Based on the TBI theory, we investigate the thermal stability of DNA helix in Na1 and Mg21 solutions for different helix lengths (5–13 bps) and different salt concentrations (1 mM to 1 M for NaCl and 0.1 mM to 1 M for MgCl2). The predicted folding free energy and melting temperature for the helixcoil transition agree with the available experimental data. The following is a brief summary for our major findings in this study.
+1. For NaCl solution, both PB and the TBI theory can successfully predict the thermodynamics of helix-coil transition up to 1 M NaCl, as compared with experimental data. 2. For MgCl2, the TBI theory can predict the experimental data, whereas PB underestimates the helix stability and melting temperature due to the neglected correlation and fluctuation effects. 3. Helix is stabilized by ions. However, for high ion concentrations, the helix stability becomes saturated and further enhancement of the stability is small. 4. The electrostatic part of the helix-coil folding free energy appears only weakly temperature-dependent for both NaCl and MgCl2 solutions. Thus, the strong temperaturedependence of the total folding free energy mainly comes from the nonelectrostatic contribution. 5. The nearest neighbor model works well for high NaCl concentration (and long helix), in which case the electrostatic part of the folding free energy for each base stack is only weakly dependent on the helix length N. 6. Based on our calculated results, we obtain analytical formulas for the folding free energy and the melting temperature as functions of helix length and salt concentration. These empirical formulas account for the nonadditivity of the helix stability and are tested against extensive experimental results. These analytical expressions can be useful for practical use in predicting nucleic acid helix stability.
+This work for the helix stability involves several simplified assumptions, as explained in the following. The stability calculation is based on the assumption about the separable electric and the nonelectric contributions. Moreover, the helix-coil transition is assumed to be two-state between the mean structures of dsDNA and ssDNA. However, ssDNA is a denatured structure that, depending on the sequence and ionic condition, can adopt an ensemble of different conformations. The uncertainty of the ssDNA structure may contribute to some of the theory-experiment differences. In this form of the TBI theory, we do not treat: a), the mixed ion solutions, e.g., Na1/Mg21 mixture, and b), the possible existence of the anions in the tightly bound region.
+The generalization of the current TBI framework to treat the mixed solution and the tightly bound anions is straightforward but technically challenging. Specifically, the multiple species (Na1/Mg21 or cation/anion) of the tightly bound ions can result in: 1), the significantly larger number of the binding modes, and 2), the much more complicated interactions and the associated potential of mean force functions. In the TBI theory, we neglect the possible dehydration effect (92) for the bound ions. We also neglect the binding of ions (including anions) to specific functional groups of nucleotides (93) in the tightly bound region. The site-specific binding of dehydrated cations can contribute significantly to the nucleic acid tertiary structure folding stability. For the simple helical structure studied here, however, the binding to specific sites and the associated dehydration may not play a dominant role in the folding stability. Nevertheless, this TBI theory may provide a framework for further inclusion of the dehydration effects and ion binding to specific sites. A possible approach would be to place ion(s) to the predetermined specific binding site(s), and to determine the tightly bound region with the existence of the prefixed site-bound ion(s). To account for the desolvation effect for the tightly bound ions, we need to include the desolvation free energy DGsol in the electrostatic free energy DGb for the tightly bound ions. To compute the stability for more complex nucleotide folds, we must consider the conformational ensemble of the molecule, including the possible stable intermediate states. For the high resolution full-atomic structure, the TBI calculation, in particular, the potential of mean force calculation for the tightly bound ions, would be more time-consuming because of the atomic details involved. Moreover, for a compact three-dimensional structure, different parts of the chain (and the associated tightly bound region) are brought together through the long-range tertiary contacts. As a result, a), the pairwise potential of mean force used in the helix-coil calculation should be replaced by the multiion potential of mean force to account for the correlation between the spatially nearby tightly bound ions, and b), in this case, the division of the tightly bound region into the tightly bound cells centered around the phosphates can become ambiguous.
+APPENDIX A: STRUCTURAL MODELS FOR DSDNA AND SSDNA
+We adopt B-DNA structure for dsDNA because B-form DNA is the most common and stable form over a wide range of salt conditions and sequences (16,94). The grooved primitive model is used instead of the all-atom DNA model (55,95); see Fig. 1 a. The model has been shown to be able to give detailed ion distribution that agrees well with the all-atomic simulations (95). In the grooved model, we represent a N-bp B-form DNA structure as two helical strands, each with N nucleotide units, around a central cylindrical rod of radius rcore 1⁄4 3.9  ̊A. Two hard spheres are used to represent a nucleotide unit. A charged sphere with a point charge ÿe at the center is used to represent the phosphate group and an electrically neutral sphere to represent the rest of the atoms. The phosphate sphere is placed at the center of the phosphate group of the nucleotide and the neutral sphere lies between the phosphate sphere and the cylindrical rod. Both spheres have radius of
+Salt-Dependence of Nucleic Acid Helix Stability 1187
+Biophysical Journal 90(4) 1175–1190
+
+
+r0 1⁄4 2.1  ̊A (95). For a canonical B-DNA, the phosphate charge positions (1⁄4 the center of the charged sphere) (rs
+i ; us
+i ; zs
+i ) are given by the following
+equations (96): rs
+i 1⁄4 8:9ðA ̊ Þ; us
+i 1⁄4 us
+01i36°; zs
+i 1⁄4 zs
+01i3:4ð  ̊AÞ; where s 1⁄4 1, 2 denotes the two strands and i 1⁄4 1, 2, . . .N denotes the nucleotides on each strand. The parameters (us
+0; zs
+0) for the initial position are (0°, 0  ̊A) for the
+first strand and (154.4°, 0.78  ̊A) for the second strand, respectively. The ssDNA structure is not as well-characterized as the dsDNA. The structure of ssDNA, which is an ‘‘unfolded’’ state of the dsDNA, can be dependent on the helix and the ionic condition (94,97–103). Previous experiments indicated that ssDNA (RNA) structure is neither a maximally stretched ‘‘rod’’ nor a completely random conformation. Instead, the ssDNA structure exhibits some single helical order due to self-stacking (94,97–103). This suggests that the single-strand structure can be modeled as an ordered helix (58,60). In this work, instead of considering the ensemble of all ssDNA conformations (104), we model ssDNA using a mean structure averaged over the previously measured ssDNA structures (32,58,60,100–102). We use the grooved primitive (55,95) model to describe the ssDNA structure; see Fig. 1 b. There are three structure parameters to be determined: radial coordinate of phosphates rp, twist angle per residue Du, and rise per basepair Dz. The experiments show that, compared with dsDNA, the single-stranded helices shrink (i.e., rp and Dz decrease) because of the absence of the interstrand electrostatic repulsion (94,97–99). Previous theoretical modeling on ssDNA structure suggests that the radial radius of phosphate charges (rp) is between 5 and 7  ̊A (32,58,60,100–102). Here, we use rp 1⁄4 7  ̊A We also use Dz 1⁄4 2.2  ̊A and keep Du 1⁄4 36°, which is the same as that of dsDNA. Thus, for ssDNA, the phosphate charge position (ri, ui, zi) can be given by the following equations: ri 1⁄4 7 (  ̊A); ui 1⁄4 i 36°; zi 1⁄4 i 2.2 (  ̊A). As a control, we also perform calculations with the other two different sets of structure parameters for ssDNA: (Du, rp, Dz) 1⁄4 (36°, 7.5  ̊A, 1.8  ̊A) and (Du, rp, Dz) 1⁄4 (36°, 6.4  ̊A, 2.6  ̊A) and found negligible changes in the predicted results for both NaCl and MgCl2 solutions.
+APPENDIX B: PARAMETER SETS AND NUMERICAL DETAILS
+In this study, the ions are assumed to be hydrated (55). The radii of hydrated Na1 and Mg21 ions are taken as 3.5 and 4.5  ̊A (105), respectively. In addition, the cation sizes can be changed (3, 3.5, and 4  ̊A for monovalent and 4, 4.5, and 5  ̊A for divalent ions) to investigate the cation size effects on the DNA stability. In the computation with PB, the dielectric constant e of DNA interior is set to be 2, and e of solvent is set as the value of bulk water. At 25°C, the dielectric constant of water is ;78. The dielectric constant of water decreases with the increase of temperature. We use the following empirical formula for the temperature-dependence of e (86)
+eðtÞ 1⁄4 87:740 ÿ 0:4008 3 t 1 9:398 3 10ÿ4 3 t2
+ÿ 1:41 3 10ÿ6 3 t3; (33)
+where t is the temperature in Celsius. Both the TBI model and the PB calculation require numerical solution of the nonlinear PB. We have developed a three-dimensional finite-difference algorithm to numerically solve nonlinear PB equation (55), by following the existed algorithms (44–51). A thin layer of thickness equal to one cation radius is added to the molecular surface to account for the excluded volume layer of cations (8,9,55). We use the three-step focusing process to obtain the detailed ion distribution near the molecules (45,55). The grid size of the first run depends on the salt concentration used. Generally, we keep it larger than six times of Debye length of salt solution to include all salt effects in solution. The resolution of the first run varies with the grid size to make the iterative process viable within a reasonable computational time (55). The grid sizes for the second run and the third run are kept at 102 and 51  ̊A, respectively, and the corresponding resolutions are 0.85  ̊A per grid and 0.425  ̊A per grid, respectively. Then the number of the grid points is 1213 for the second and third run. We use high resolution grid system near the DNA
+surface because the ions near the DNA surface make the most important electrostatic contribution to DNA stability. We have examined our results against different grid sizes, and the results are quite stable.
+We are grateful to Dirk Stigter and Gerald Manning for the stimulating communications on the development of the TBI theory.
+This research was supported by National Institutes of Health/National Institute of General Medical Sciences through grant No. GM063732 (to S-J.C.) and by the Molecular Biology Program at the University of Missouri-Columbia.
+REFERENCES
+1. Tinoco, I., and C. Bustamante. 1999. How RNA folds. J. Mol. Biol. 293:271–281.
+2. Rook, M. S., D. K. Treiber, and J. R. Williamson. 1999. An optimal
+Mg21 concentration for kinetic folding of the Tetrahymena ribozyme. Proc. Natl. Acad. Sci. USA. 96:12471–12476.
+3. Woodson, S. A. 2005. Metal ions and RNA folding: a highly charged topic with a dynamic future. Curr. Opin. Chem. Biol. 9:104–109.
+4. Draper, D. E., D. Grilley, and A. M. Soto. 2005. Ions and RNA folding. Annu. Rev. Biophys. Biomol. Struct. 34:221–243.
+5. Sosnick, T. R., and T. Pan. 2003. RNA folding: models and perspectives. Curr. Opin. Struct. Biol. 13:309–316.
+6. Auffinger, P., L. Bielecki, and E. Westhof. 2004. Symmetric K1 and
+Mg21 ion-binding sites in the 5S rRNA loop E inferred from molecular dynamics simulations. J. Mol. Biol. 335:555–571.
+7. Auffinger, P., and E. Westhof. 2001. Water and ion binding around r(UpA)12 and d(TpA)12 oligomers: comparison with RNA and DNA (CpG)12 duplexes. J. Mol. Biol. 305:1057–1072.
+8. Misra, V. K., and D. E. Draper. 2000. Mg21 binding to tRNA revisited: the nonlinear Poisson-Boltzmann model. J. Mol. Biol. 299: 813–825.
+9. Misra, V. K., and D. E. Draper. 2001. A thermodynamic framework
+for Mg21 binding to RNA. Proc. Natl. Acad. Sci. USA. 98:1245612461.
+10. Heilman-Miller, S. L., D. Thirumalai, and S. A. Woodson. 2001. Role of counterion condensation in folding of the Tetrahymena ribozyme. I. Equilibrium stabilization by cations. J. Mol. Biol. 306:1157–1166.
+11. Heilman-Miller, S. L., J. Pan, D. Thirumalai, and S. A. Woodson. 2001. Role of counterion condensation in folding of the Tetrahymena ribozyme. II. Counterion-dependence of folding kinetics. J. Mol. Biol. 309:57–68.
+12. Das, R., L. W. Kwok, I. S. Millett, Y. Bai, T. T. Mills, J. Jacob, G. S. Maskel, S. Seifert, S. G. J. Mochrie, P. Thiyagarajan, S. Doniach, L. Pollack, et al. 2003. The fastest global events in RNA folding: electrostatic relaxation and tertiary collapse of the Tetrahymena ribozyme. J. Mol. Biol. 332:311–319.
+13. Koculi, E., N. K. Lee, D. Thirumalai, and S. A. Woodson. 2004. Folding of the Tetrahymena ribozyme by polyamines: importance of counterion valence and size. J. Mol. Biol. 341:27–36.
+14. Fang, X., T. Pan, and T. R. Sosnick. 1999. A thermodynamic
+framework and cooperativity in the tertiary folding of a Mg21dependent ribozyme. Biochemistry. 38:16840–16846.
+15. Bloomfield, V. A. 1997. DNA condensation by multivalent cations. Biopolymers. 44:269–282.
+16. Bloomfield, V. A., D. M. Crothers, and I. Tinoco Jr. 2000. Nucleic Acids: Structure, Properties and Functions. University Science Books, Sausalito, CA.
+17. Freier, S. M., R. Kierzek, J. A. Jaeger, N. Sugimoto, M. H. Caruthers, T. Neilson, and D. H. Turner. 1986. Improved free-energy parameters for predictions of RNA duplex stability. Proc. Natl. Acad. Sci. USA. 83:9373–9377.
+1188 Tan and Chen
+Biophysical Journal 90(4) 1175–1190
+
+
+18. Breslauer, K. J., R. Frank, H. Blocker, and L. A. Marky. 1986. Predicting DNA duplex stability from the base sequence. Proc. Natl. Acad. Sci. USA. 83:3746–3750.
+19. Turner, D. H., and N. Sugimoto. 1988. RNA structure prediction. Annu. Rev. Biophys. Biophys. Chem. 17:167–192.
+20. SantaLucia, J., H. T. Allawi, and P. A. Seneviratne. 1996. Improved nearest-neighbor parameters for predicting DNA duplex stability. Biochemistry. 35:3555–3562.
+21. Sugimoto, N., S. I. Nakano, M. Yoneyama, and K. I. Honda. 1996. Improved thermodynamic parameters and helix initiation factor to predict stability of DNA duplexes. Nucleic Acids Res. 24:4501–4505.
+22. SantaLucia, J., Jr. 1998. A unified view of polymer, dumbbell, and oligonucleotide DNA nearest-neighbor thermodynamics. Proc. Natl. Acad. Sci. USA. 95:1460–1465.
+23. Owczarzy, R., P. M. Callone, F. J. Gallo, T. M. Paner, M. J. Lane, and A. S. Benight. 1997. Predicting sequence-dependent melting stability of short duplex DNA oligomers. Biopolymers. 44:217–239.
+24. Elson, E. L., I. E. Scheffler, and R. L. Baldwin. 1970. Helix formation by (TA) oligomers. III. Electrostatic effects. J. Mol. Biol. 54:401–415.
+25. Record, M. T., Jr. 1975. Effects of Na1 and Mg21 ions on the helixcoil transition of DNA. Biopolymers. 14:2137–2158.
+26. Patel, D. J., S. A. Kozlowski, L. A. Marky, C. Broka, J. A. Rice, K. Itakura, and K. J. Breslauer. 1982. Premelting and melting transition in the d(CGCGAATTCGCG) self-complementary duplex in solution. Biochemistry. 21:428–436.
+27. Hickey, D. R., and D. H. Turner. 1985. Solvent effects on the stability of A7U7p. Biochemistry. 24:2086–2094.
+28. Erie, D., N. Sinha, W. Olson, R. Jones, and K. Breslauer. 1987. A dumbbell-shaped, double-hairpin structure of DNA: a thermodynamic investigation. Biochemistry. 26:7150–7159.
+29. Delcourt, S. G., and R. D. Blake. 1991. Stacking energies in DNA. J. Biol. Chem. 266:15160–15169.
+30. Anderson, C. F., and T. M. Record. 1995. Salt-nucleic acid interactions. Annu. Rev. Phys. Chem. 46:657–700.
+31. Rentzeperis, D., J. Ho, and L. A. Marky. 1993. Contribution of loops and nicks to the formation of DNA dumbbells: melting behavior and ligand binding. Biochemistry. 32:2564–2572.
+32. Shkel, I., and M. T. Record. 2004. Effect of the number of nucleic acid oligomer charges on the salt dependence of stability (DG°37) and melting temperature (Tm): NLPB analysis of experimental data. Biochemistry. 43:7090–7101.
+33. Schildkraut, C., and S. Lifson. 1965. Dependence of the melting temperature of DNA on salt concentration. Biopolymers. 3:195–208.
+34. Blake, R. D., and S. G. Delcourt. 1998. Thermal stability of DNA. Nucleic Acids Res. 26:3323–3332.
+35. Owczarzy, R., Y. You, B. G. Moreira, J. A. Manthey, L. Huang, M. A. Behlke, and J. A. Walder. 2004. Effects of sodium ions on DNA duplex oligomers: improved predictions of melting temperatures. Biochemistry. 43:3537–3554.
+36. Williams, A. P., C. E. Longfellow, S. M. Freier, R. Kierzek, and D. H. Turner. 1989. Laser temperature-jump, spectroscopic, and thermodynamic study of salt effects on duplex formation by dGCATGC. Biochemistry. 28:4283–4291.
+37. Nakano, S., M. Fujimoto, H. Hara, and N. Sugimoto. 1999. Nucleic acid duplex stability: influence of base composition on cation effects. Nucleic Acids Res. 27:2957–2965.
+38. Hou, M. H., S. B. Lin, J. M. Yuann, W. C. Lin, A. H. J. Wang, and L. S. Kan. 2001. Effects of polyamines on the thermal stability and formation kinetics of DNA duplex with abnormal structure. Nucleic Acids Res. 29:5121–5128.
+39. Serra, M. J., J. D. Baird, T. Dale, B. L. Fey, K. Retatagos, and E. Westhof. 2002. Effects of magnesium ions on the stabilization of RNA oligomers of defined structures. RNA. 8:307–323.
+40. SantaLucia, J., Jr., and D. Hicks. 2004. The thermodynamics of DNA structural motifs. Annu. Rev. Biophys. Biomol. Struct. 33:415–440.
+41. Manning, G. S. 1978. The molecular theory of polyelectrolyte solutions with applications to the electrostatic properties of polynucleotides. Q. Rev. Biophys. 11:179–246.
+42. Oosawa, F. 1971. Polyelectrolytes. Marcel Dekker, New York.
+43. Manning, G. S. 2001. Counterion condensation on a helical charge lattice. Macromolecules. 34:4650–4655.
+44. Klapper, I., R. Hagstrom, R. Fine, K. Sharp, and B. Honig. 1986. Focusing of electric fields in the active site of Cu-Zn superoxide dismutase: effects of ionic strength and amino-acid modification. Proteins. 1:47–59.
+45. Gilson, M. K., K. A. Sharp, and B. Honig. 1987. Calculating the electrostatic potential of molecules in solution: method and error assessment. J. Comput. Chem. 9:327–335.
+46. Sharp, K. A., and B. Honig. 1990. Calculating total electrostatic energies with the nonlinear Poisson-Boltzmann equation. J. Phys. Chem. 94:7684–7692.
+47. Nicholls, A., and B. Honig. 1991. A rapid finite-difference algorithm, utilizing successive over-relaxation to solve the Poisson-Boltzmann equation. J. Comput. Chem. 12:435–445.
+48. You, T. J., and S. C. Harvey. 1993. Finite element approach to the electrostatics of macromolecules with arbitrary geometries. J. Comput. Chem. 14:484–501.
+49. Baker, N. A., D. Sept, S. Joseph, M. J. Holst, and J. A. McCammon. 2000. Electrostatics of nanosystems: application to microtubules and the ribosome. Proc. Natl. Acad. Sci. USA. 98:10037–10041.
+50. Grant, J. A., B. T. Pickup, and A. Nicholls. 2001. A smooth permittivity function for Poisson-Boltzmann solvation methods. J. Comput. Chem. 22:608–640.
+51. Sept, D., N. A. Baker, and J. A. McCammon. 2003. The physical basis of microtubule structure and stability. Protein Sci. 12:22572261.
+52. Record, M. T., Jr., and T. M. Lohman. 1978. A semiempirical extension of polyelectrolyte theory to the treatment of oligoelectrolytes: application to oligonucleotide helix-coil transitions. Biopolymers. 17:159–166.
+53. Fenley, M. O., G. S. Manning, and W. K. Olson. 1990. Approach to the limit of counterion condensation. Biopolymers. 30:1191–1203.
+54. Manning, G. S., and U. Mohanty. 1997. Counterion condensation on ionic oligomers. Physica A. 247:196–204.
+55. Tan, Z. J., and S. J. Chen. 2005. Electrostatic correlations and fluctuations for ion binding to a finite length polyelectrolyte. J. Chem. Phys. 122:044903.
+56. Kotin, L. 1963. On the effect of ionic strength on the melting temperature of DNA. J. Mol. Biol. 7:309–311.
+57. Baldwin, R. L. 1971. Experimental tests of the theory of deoxyribonucleic acid melting with d(T-A) oligomers. Acc. Chem. Res. 4: 265–272.
+58. Korolev, N., A. P. Lyubartsev, and L. Nordenski ̈old. 1998. Application of polyelectrolyte theories for analysis of DNA melting in the
+presence of Na1 and Mg21 ions. Biophys. J. 75:3041–3056.
+59. Friedman, R. A., and B. Honig. 1995. A free energy analysis of nucleic acid base stacking in aqueous solution. Biophys. J. 69:15281535.
+60. Korolev, N., A. P. Lyubartsev, and L. Nordenski ̈old. 2002. Application of the Poisson-Boltzmann polyelectrolyte model for analysis of
+thermal denaturation of DNA melting in the presence of Na1 and polyamine cations. Biophys. Chem. 104:55–66.
+61. Xia, T., J. SantaLucia, M. E. Burkard, R. Kierzek, S. J. Schroeder, X. Jiao, C. Cox, and D. H. Turner. 1998. Thermodynamic parameters for an expanded nearest-neighbor model for formation of RNA duplexes with Watson-Crick base pairs. Biochemistry. 37:14719–14735.
+62. Holbrook, J. A., M. W. Capp, R. M. Saecker, and M. T. Record, Jr. 1999. Enthalpy and heat capacity changes for formation of an oligomeric DNA duplex: interpretation in terms of coupled processes of formation and association of single-stranded helices. Biochemistry. 38: 8409–8422.
+Salt-Dependence of Nucleic Acid Helix Stability 1189
+Biophysical Journal 90(4) 1175–1190
+
+
+63. Takach, J. C., P. J. Mikulecky, and A. L. Feig. 2004. Salt-dependent heat capacity changes for RNA duplex formation. J. Am. Chem. Soc. 126:6530–6531.
+64. Petruska, J., and M. F. Goodman. 1995. Enthalpy-entropy compensation in DNA melting thermodynamics. J. Biol. Chem. 270:746–750.
+65. Rouzina, I., and V. A. Bloomfield. 1999. Heat capacity effects on the melting of DNA. 1. General aspects. Biophys. J. 77:3242–3251.
+66. Rouzina, I., and V. A. Bloomfield. 1999. Heat capacity effects on the melting of DNA. 2. Analysis of nearest-neighbor base pair effects. Biophys. J. 77:3252–3255.
+67. Wu, P., S. I. Nakano, and N. Sugimoto. 2002. Temperature dependence of thermodynamic properties for DNA/DNA and RNA/DNA duplex formation. Eur. J. Biochem. 269:2821–2830.
+68. SantaLucia, J., Jr., and D. H. Turner. 1998. Measuring the thermodynamics of RNA secondary structure formation. Biopolymers. 44: 309–319.
+69. Rouzina, I., and V. A. Bloomfield. 1996. Macroion attraction due to electrostatic correlation between screening counterions.1. Mobile surface-adsorbed ions and diffuse ion cloud. J. Phys. Chem. 100: 9977–9989.
+70. Pollock, E., and J. Hansen. 1973. Statistical mechanics of dense ionized matter. II. Equilibrium properties and melting transition of the crystallized one-component plasma. Phys. Rev. A. 8:3110–3122.
+71. Slattery, W., G. Doolen, and H. Dewitt. 1980. Improved equation of state for the classical one-component plasma. Phys. Rev. A. 21:20872095.
+72. Ichimaru, S., H. Iyetomi, and S. Tanaka. 1987. Statistical physics of dense plasmas: thermodynamics, transport coefficients and dynamic correlations. Phys. Rep. 149:91–205.
+73. Lindemann, F. A. 1910. The calculation of molecular vibration frequencies. Z. Phys. 11:609–612.
+74. Zhou, Y., M. Karplus, K. D. Ball, and R. S. Berry. 2002. The distance fluctuation criterion for melting: comparison of square-well and Morse potential models for clusters and homopolymers. J. Chem. Phys. 116:2323–2329.
+75. Truskett, T. M., S. Torquato, S. Sastry, P. G. Debenedetti, and F. H. Stillinger. 1998. Structural precursor to freezing in the hard-disk and hard sphere systems. Phys. Rev. E. 58:3083–3088.
+76. Overbeek, J. Th. G. 1990. The role of energy and entropy in the electrical double layer. Colloids Surf. 51:61–75.
+77. Stigter, D. 1995. Evaluation of the counterion condensation theory of polyelectrolytes. Biophys. J. 69:380–388.
+78. Vyazovkina, E. V., E. V. Savchenko, S. G. Lokhov, J. W. Engels, E. Wickstrom, and A. V. Lebedev. 1994. Synthesis of specific diastereomers of a DNA methylphosphonate heptamer, d(CpCpApApApCpA), and stability of base pairing with the normal DNA octamer d(TpGpTpTpTpGpGpC). Nucleic Acids Res. 22:2404–2409.
+79. Braunlin, W. H., and V. A. Bloomfield. 1991. 1H NMR study of the base pairing reaction of the d(GGAATTCC): salt effects on the equilibria and kinetics of strand association. Biochemistry. 30:754758.
+80. Patel, D. J., and L. L. Canuel. 1979. Helix-coil transition of the selfcomplementary dG-dG-dA-dA-dT-dT-dC-dC duplex. Eur. J. Biochem. 96:267–276.
+81. Bower, M., M. F. Summers, B. Kell, J. Hoskins, G. Zon, and W. D. Wilson. 1987. Synthesis and characterization of oligodeoxyribonucleotides containing terminal phosphates. NMR, UV spectroscopic and thermodynamic analysis of duplex formation of [d(pGGAATTCC)]2, [d(GGAATTCCp)]2, and [d(pGGAATTCCp)]2. Nucleic Acids Res. 15: 3531–3547.
+82. Owczarzy, R., I. Dunietz, M. A. Behlke, I. M. Klotz, and J. A. Walder. 2003. Thermodynamic treatment of oligonucleotide duplexsimplex equilibria. Proc. Natl. Acad. Sci. USA. 100:14840–14845.
+83. Soto, A. M., W. H. Gmeiner, and L. A. Marky. 2002. Energetic and conformational contributions to the stability of Okazaki fragments. Biochemistry. 41:6842–6849.
+84. Sugimoto, N., P. Wu, H. Hara, and Y. Kawamoto. 2001. pH and cation effects on the properties of parallel pyrimidine motif DNA triplexes. Biochemistry. 40:9396–9405.
+85. Wu, P., Y. Kawamoto, H. Hara, and N. Sugimoto. 2002. Effect of divalent cations and cytosine protonation of thermodynamic properties of intermolecular DNA double and triple helices. J. Inorg. Biochem. 91:277–285.
+86. Eisenberg, D., and W. Kauzmann. 1969. The Structure and Properties of Water. Oxford University Press, Oxford, UK.
+87. von Ahsen, N., M. Oellerich, V. W. Armstrong, and E. Schutz. 1999. Application of a thermodynamic nearest-neighbor model to estimate nucleic acid stability and optimize probe design: prediction of melting points of multiple mutations of apolipoprotein B-3500 and factor V with a hybridization probe genotyping assay on the lightcycle. Clin. Chem. 45:2094–2101.
+88. Ramsing, N. B., K. Rippe, and T. M. Jovin. 1989. Helix-coil transition of parallel-stranded DNA. Thermodynamics of hairpin and linear duplex oligonucleotides. Biochemistry. 28:9528–9535.
+89. Rippe, K., N. B. Ramsing, and T. M. Jovin. 1989. Spectroscopic properties and helical stabilities of 25-nt parallel-stranded linear DNA duplexes. Biochemistry. 28:9536–9541.
+90. Jaeger, J. A., M. Zuker, and D. H. Turner. 1990. Melting and chemical modification of a cyclized self-splicing group I intron:
+similarity of structures in 1 M Na1, in 10 mM Mg21, and in the presence of substrate. Biochemistry. 29:10147–10158.
+91. Mikulecky, P. J., J. C. Takach, and A. L. Feig. 2004. Entropy-driven folding of an RNA helical junction: an isothermal titration calorimetric analysis of the hammerhead ribozyme. Biochemistry. 43:5870–5881.
+92. Misra, V. K., and D. E. Draper. 1998. On the role of magnesium ions in RNA stability. Biopolymers. 48:113–135.
+93. Auffinger, P., L. Bielecki, and E. Westhof. 2004. Anion binding to nucleic acids. Structure. 12:379–388.
+94. Saenger, W. 1984. Principles of Nucleic Acid Structure. SpringerVerlag, New York.
+95. Montoro, J. C. G., and J. L. F. Abascal. 1995. Ionic distribution around simple DNA models. I. Cylindrically averaged properties. J. Chem. Phys. 103:8273–8284.
+96. Arnott, S., and D. W. L. Hukins. 1972. Optimised parameters for A-DNA and B-DNA double-helices. Biochem. Biophys. Res. Commun. 47:1504–1509.
+97. Suck, D., P. C. Manor, and W. Saenger. 1976. The structure of a trinucleoside diphosphate: adenylyl-(39,59)-adenylyl(39,59)-adenosine hexahydrate. Acta Crystallogr. B. 32:1727–1737.
+98. Arnott, S., R. Chandrasekaran, and A. G. W. Leslie. 1976. Structure of the single-stranded polyribonucleotide polycytidylic acid. J. Mol. Biol. 106:735–748.
+99. Camerman, N., J. K. Fawcett, and A. Camerman. 1976. Molecular structure of a deoxyribose-dinucleotide, sodium thymidylyl-(59 yields to 39)-thymidylate-(59) hydrate (pTpT), and a possible structural model for polythymidylate. J. Mol. Biol. 107:601–621.
+100. Olmsted, M. C., C. F. Anderson, and M. T. Record, Jr. 1991. Importance of oligoelectrolyte end effects for the thermodynamics of conformational transitions of nucleic acid oligomers: a grand canonical Monte Carlo analysis. Biopolymers. 31:1593–1604.
+101. Duguid, J. G., and V. A. Bloomfield. 1996. Electrostatic effects on the stability of condensed DNA in the presence of divalent cations. Biophys. J. 70:2838–2846.
+102. Trend, B. L., D. A. Knoll, M. Ueno, D. F. Evans, and V. A. Bloomfield. 1990. Cation radius effects on the helix-coil transition of DNA. Biophys. J. 57:829–834.
+103. Vesnaver, G., and K. J. Breslauer. 1991. The contribution of DNA single-stranded order to the thermodynamics of duplex formation. Proc. Natl. Acad. Sci. USA. 88:3569–3573.
+104. Dimitrov, R. A., and M. Zuker. 2004. Prediction of hybridization and melting for double-stranded nucleic acids. Biophys. J. 87:215–226.
+105. Marcus, Y. 1985. Ion Solvation. John Wiley & Sons, Chichester, UK.
+1190 Tan and Chen
+Biophysical Journal 90(4) 1175–1190

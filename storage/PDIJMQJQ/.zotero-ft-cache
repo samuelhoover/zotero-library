@@ -1,0 +1,396 @@
+Fast, Efficient Generation of High-Quality Atomic Charges. AM1-BCC Model: I. Method
+ARAZ JAKALIAN,1 BRUCE L. BUSH,2 DAVID B. JACK,1 CHRISTOPHER I. BAYLY3
+1Department of Chemistry and Biochemistry, Concordia University, Montréal, Québec, Canada 2Merck Research Laboratories, Department of Molecular Design and Diversity, Rahway, New Jersey, USA 3Merck Frosst Canada, Inc., PO Box 1005, Pointe-Claire–Dorval, Québec H9R 4P8, Canada
+Received 16 February 1999; accepted 10 September 1999
+ABSTRACT: The AM1-BCC method quickly and efficiently generates high-quality atomic charges for use in condensed-phase simulations. The underlying features of the electron distribution including formal charge and delocalization are first captured by AM1 atomic charges for the individual molecule. Bond charge corrections (BCCs), which have been parameterized
+against the HF/6-31G∗ electrostatic potential (ESP) of a training set of compounds containing relevant functional groups, are then added using a formalism identical to the consensus BCI (bond charge increment) approach. As a proof of the concept, we fit BCCs simultaneously to 45 compounds including O-, N-, and S-containing functionalities, aromatics, and heteroaromatics, using only 41 BCC parameters. AM1-BCC yields charge sets of comparable quality to
+HF/6-31G∗ ESP-derived charges in a fraction of the time while reducing instabilities in the atomic charges compared to direct ESP-fit methods. We then apply the BCC parameters to a small “test set” consisting of aspirin, D-glucose, and eryodictyol; the AM1-BCC model again provides atomic charges of quality
+comparable with HF/6-31G∗ RESP charges, as judged by an increase of only 0.01 to 0.02 atomic units in the root-mean-square (RMS) error in ESP. Based on these encouraging results, we intend to parameterize the AM1-BCC model to provide a consistent charge model for any organic or biological molecule. c© 2000 John Wiley & Sons, Inc. J Comput Chem 21: 132–146, 2000
+Keywords: atomic charges; bond charge correction; electrostatic potential; force field; methodology
+Correspondence to: C. I. Bayly; e-mail: bayly@merck.com Contract/grant sponsors: Merck Frosst Canada; NSERC
+Journal of Computational Chemistry, Vol. 21, No. 2, 132–146 (2000) ©c 2000 John Wiley & Sons, Inc. CCC 0192-8651 / 00 / 020132-15
+
+
+AM1-BCC MODEL: I. METHOD
+Introduction
+O
+rganic/biological-based molecular modeling force fields (e.g., that of Cornell et al.,1 implemented in AMBER5.0,2 and the molecular modeling force field [MMFF] of Halgren3) commonly use an effective two-body additive potential energy function. The electrostatic contribution to the total energy is the dominant energy term for nonbonded interactions, and therefore its accurate representation is crucial in simulations of chemical and biochemical processes.4 A simple coulombic electrostatic model is commonly used in two-body additive force fields (FFs):
+Uelec = qaqb
+εrab
+(1)
+where qa and qb are “atomic charges” located on atoms a and b, ε is the dielectric constant of the medium, and rab is the distance between atoms a and b. An atomic charge condenses onto the atom’s nucleus the amount of charge associated with each atom in a molecule. Although “atomic charge” is a useful concept it is not a quantum-mechanical (QM) property in that an atomic charge QM operator does not exist. Atomic charges are constructs designed to mimic certain properties of the continuous electron distribution of a molecule; for instance, the electrostatic potential (ESP),5, 13 the molecular charge density,6 or the dipole and higher electric moments.7 ESP-fit charges from the HF/6-31G∗ level of theory have been shown to reproduce relative free energies of solvation of organic molecules8 and are therefore adequate for simulations of condensedphase systems. This level of theory overestimates the polarity of molecules by approximately 10% to 15%,9 which offers a fortuitous “implicit” polarization to compensate for the fact that a two-body additive FF, by construction, does not include polarization. Because the polarity of widely used water models (e.g., SPC,10 TIP3P,11 and TIP4P11) is also overestimated, solute molecules solvated by these water models must include implicit polarization to maintain a proper electrostatic balance between the solute and solvent molecules.1 The Merz–Singh–Kollman12, 13 and CHELPG14 ESP-fitting schemes fit atomic charges to reproduce the QM ESP calculated at grid points located around a molecule. These schemes differ only in the number and placement of the grid points around the molecule and therefore generally produce similar atomic charges. Although these methods produce charges suitable for condensed-phase simulations, they are
+subject to the problems inherent in current ESPfit methods: (i) charges are conformer-dependent15; (ii) charges on and near buried atoms (e.g., methyl carbon atoms) are numerically unstable, that is, their magnitude can vary widely while barely perturbing the quality of the fit16, 17; (iii) large molecules must be treated as a superposition of fragments due to computer resource limitations; and (iv) charges are not easily transferable between common functional groups in related molecules. In addition, the costs of the CPU-intensive calculation of the ESP at the ab initio level pose a significant barrier to the routine use of ESP charges, especially in pharmaceutical applications where high throughput has become a major issue. Several methods have been developed to reduce ESP-fit problems. For example, Reynolds et al.15b found that the conformational dependencies of ESPfit charges can be decreased by simultaneously fitting charges to the ESP of multiple conformations of a molecule. Bayly et al.16 found that numerical instabilities in the fitting process can be diminished by restraining unstable charges to lower magnitudes (the RESP16 model), which also reduces the transferability problem. Imposing symmetry on equivalent atomic centers during the fitting process improves the quality-of-fit relative to simply averaging those charges, but the error thus introduced into the polar areas of the electrostatic potential significantly decreases the performance of these charges in condensed-phase simulations.16 Francl et al.17 used singular value decomposition to determine the rank of the least-squares matrix, selecting a subset of atoms for which statistically valid charges can be assigned based on that rank estimate and then refitting the rest. This method assumes that instabilities are associated with particular atoms. Although these tactics address some problems in direct ESP fitting of atomic charges, the human effort increases; for example, multiple conformations of a molecule must be constructed and the ESP calculated for each one, and molecules must be treated individually to determine buried centers and assign atomic equivalencies. Scaling charges from semiempirical ESPs to mimic the HF/6-31G∗ ESP-fit charges have been proposed by Besler et al.12 and Alemán et al.18 These methods take advantage of the greater speed and capacity of semiempirical calculations to treat even large systems quickly and efficiently. The most obvious limitation, however, is that charged molecules become scaled to have non-integral charges. Furthermore, these methods were only developed by fitting to the numerically unstable ESP-fit charges;
+JOURNAL OF COMPUTATIONAL CHEMISTRY 133
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+JAKALIAN ET AL.
+the resulting ESPs generated by these scaled charges have not been validated by direct comparison to the ab initio ESPs.
+The bond charge increment (BCI) approach of Halgren3a is bond-topology-based and, consequently, can generate atomic charges from precalculated BCI parameters without even a semiempirical calculation. BCIs are classified according to the MMFF atom types forming the bond and fitted statistically to ESP-fit dipole moments, scaled QM interaction energies, and hydrogen bond geometries.19 Summing bond charge increments from connecting atoms that reflect the polarity of each bond type generates charge on an atom, while maintaining total molecular charge. The resulting BCIs can then be quickly transferred to any desired compound. A relatively large number of atom types is required to allow the BCIs to represent adequately the diverse spectrum of organic chemical functionalities.3b Because the BCI formalism is, by construction, incapable of introducing a net charge, molecules bearing a net charge pose a problem because the net charge must also be partitioned correctly among the various atoms. Keeping the speed, efficiency, and transferability of BCIs, Bush et al.20 developed a way to fit BCIs directly to the HF/6-31G∗ ESPs of a training set of molecules, an approach that forms the background for this work. The investigators found that, compared to the direct ESP fit of individual charges, BCIs greatly improved the stability of the matrix equations for each separate molecule. A further improvement in stability comes from fitting BCIs simultaneously across a training set of compounds, which greatly reduces the degrees of freedom from many charges down to fewer BCIs. However, Bush et al. concluded that the MMFF classification, even with a fairly large number of bond types, is not flexible enough to adequately describe π-delocalized systems. To address these issues, we present the AM1BCC bond charge correction model. This model marries complementary features of already existing and readily available methods, namely AM1 atomic charges, the BCI approach, and ESP methodologies. AM1 atomic charges21 are “population” quantities based directly on the occupancies of the atomic orbitals. They are not meant to reproduce the ESP or even the multipole moments of the subject molecule, and therefore they perform poorly in condensed-phase simulations13 vs. ESP-derived charges. On the other hand, they can be calculated very quickly and they capture underlying features of the electron distribution of a molecule, including net charge and π-delocalization. Bond charge
+corrections (BCCs), which have been parameterized using standard least-squares fitting procedures12 to reproduce the HF/6-31G∗ ESP of a training set of molecules, are then added in the same fashion as the BCI approach to emulate the HF/6-31G∗ ESP. The parameterization algorithm used here is formally identical to that developed by Bush et al.20 in the consensus fitting of BCIs to HF/6-31G∗ ESPs. The AM1-BCC model uses fewer atom types than the BCI method because it takes advantage of the AM1 atomic charges to express subtle chemical variations of electron distribution. This further reduces the degrees of freedom in the parameterization compared to the BCI consensus fitting, and thus we expect the same or even a greater increase in numerical stability. The philosophy adopted here is similar in spirit to that of the CM122 and more recent CM223 charge models; that is, correcting semiempirical charges to reproduce desired properties. As in these models, charge is partitioned across bonds to correct for deficiencies encountered in the simple atomic population charges derived from the AM1 wave function. In CM1 and CM2, however, bond-based corrections depend upon an analysis of the semiempirical wave function to generate bond orders, whereas AM1-BCC uses a simple formal bond order derived from the bond topology of the molecule. In CM1 and CM2, the parameterization scheme is directed toward reproducing the experimental molecular dipoles of the molecules in the training set; this emphasizes the far-field aspects of the ESP. In AM1-BCC, fitting directly to the short-range sampling of the ESP captures features of higher order electric multipoles important to characterize shortrange strong hydrogen bonding. Fitting directly to the HF/6-31G∗ ESP as in AM1-BCC uses much more information per molecule, as well as embedding the necessary overpolarization of the ab initio wave function. This also allows the bond charge corrections the opportunity to make up for any systematic intrinsic deficiency in the semiempirical wave function vis-à-vis the ab initio 6-31G∗ wave function. The AM1-BCC method thus combines the speed of a semiempirical calculation with the efficiency of the BCI approach. Its aim is to achieve the quality of HF/6-31G∗ ESP-fit charges. Can any precharging approach corrected by BCCs based on a simple, general, and parsimonious atom and bond typing scheme produce charges that emulate the high-level ab initio 6-31G∗ ESP? Whereas the ultimate goal is to parameterize a comprehensive, consistent set of BCCs suitable for charging any organic species, the
+134 VOL. 21, NO. 2
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+AM1-BCC MODEL: I. METHOD
+training set and parameterization presented here is directed toward proof of concept of the method.
+Theory
+The AM1-BCC methodology constructs the atomic charge, qj, on atom j from two terms:
+qj = qpre
+j + qcorr
+j (2)
+The first term, qpre
+j , is calculated from a fast precharge procedure that accounts for the brunt of the “chemistry,” but is not suitable alone to be used in eq. (1) for condensed-phase simulations. AM1 atomic charges21 averaged according to bond symmetry (e.g., all hydrogen atoms on a methyl group bear the same charge) are used for this purpose. The second term, qcorr
+j , in eq. (2) is a correction term that modifies the AM1 atomic charges to reproduce the HF/6-31G∗ ESP; it is defined as:
+qcorr
+j=
+γ ∑
+α=1
+Tjαpα (3)
+where the summation runs over the total number of bond types (γ ) in a molecule, and pα is the bond charge correction (BCC) for bond type α. The bond type α is determined by the atom types J and I of atoms j and i and the order of the bond connecting the two atoms, shown for methanol in Figure 1a and b. Conversion from a bond charge (pα) to an atom-centered charge (qcorr
+j ) is accomplished
+FIGURE 1. (a) The methanol 14 molecule. The atom type of each atom is shown in parentheses. (b) The bond charge corrections needed for methanol 14 (bond types shown in parentheses). (c) Definition of the T matrix for methanol 14. The rows in the matrix correspond to the atoms in the molecule; that is, row 1 represents the C1 atom, row 2 represents the H2 atom, and so forth. The columns in the matrix represent bond types (α); that is, column 1 represents a Csp3—single—H bond type, column 2 represents a Csp3—single—Osp3 bond type, and column 3 represents an Osp3—single—H bond type.
+through the use of the bond connectivity template matrix T (referred to as the T matrix hereafter). The indices j and α of the T matrix denote an atom and a bond type, respectively. The T matrix for methanol 14 is shown in Figure 1c. Rows correspond to the atoms in the molecule; that is, row 1 represents the C1 atom, row 2 represents the H2 atom, and so forth. Columns represent bond types; that is, column 1 represents bond type (Csp3—single—H), an sp3 carbon atom singlebonded to a hydrogen atom and column 2 represents bond type (Csp3—single—Osp3), an sp3 carbon atom single-bonded to an sp3 oxygen atom, and so forth. In this example, the bond charge correction for the carbon–oxygen bond type in methanol is p(Csp3—single—Osp3) = 0.0835. This means that 0.0835 charge units are added to the precharge on the sp3hybridized carbon atom and −0.0835 charge units to the precharge on the sp3-hybridized oxygen atom. As a general rule, the forward atom in a bond (Osp3 in this case) receives −pα and the backward atom (Csp3 in this case) receives pα. Consequently, the molecule is charged in a neutral manner; that is, pα(J,I) = −pα(I,J). Note that the bond charge correction is defined as zero when two atom types in a bond are identical [e.g., p(Csp3—single—Osp3) = 0]. Because the AM1 atomic charges capture much of the detail of the chemical context, a relatively simple and parsimonious atom- and bond-typing scheme can be used for the BCCs. In general, an atom type is given by the valency and hybridization of the element, and a bond type is formally designed as single, double, triple, or aromatic (in this work nonaromatic conjugated bonds are not examined in detail). One goal of this parsimony in atom and bond typing is to reduce the number of BCCs to be parameterized; a total of 41 parameters suffice for the 45 molecules in the three training sets. This reduction in degrees of freedom should improve the numerical stability of the parameterization. Another outcome of the simplicity in atom and bond typing is greater generality of the final parameter set; that is, a wider spectrum of chemistry will be accommodated by a given number of BCCs. Whether these goals are accomplished can only be examined in a limited way in the small preliminary training set used here; the real test will be in the global parameterization.
+Parameterization of BCCs
+The initial steps of BCC parameterization are similar to standard ESP-fitting protocols.12 Initially,
+JOURNAL OF COMPUTATIONAL CHEMISTRY 135
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+JAKALIAN ET AL.
+the QM ESP, VQM
+l , of a molecule is calculated at the
+HF/6-31G∗ level of theory at a set of grid points l around the molecule. The grid points are located outside the van der Waals (vdW) surface at 1.4 to 2.0 times the vdW radius of each atom.13 We use a facecentered cubic grid with 0.5 Å spacing. Using any set of atomic charges, the ESP may be calculated for the same set of grid points as for VQM
+l;
+this calculated ESP, Vcalc
+l , is given by the simple coulombic equation:
+Vcalc
+l=
+N ∑
+j=1
+qj
+rlj
+(4)
+where qj is the charge centered on atom j, rlj is the distance between grid point l and atom j and N is the total number of atoms. In our charge model, however, qj is a sum of two terms: the precharges and the BCCs (see Theory). Substituting qj in eq. (4) with the definitions found in eqs. (2) and (3) we rewrite
+Vcalc
+l as follows:
+Vcalc
+l=
+N ∑
+j=1
+qpre
+j
+rlj
++
+N ∑
+j=1
+γ ∑
+α=1
+Tjα pα
+rlj
+(5)
+We now define Vdiff
+l as the difference between the QM ESP and the ESP generated by the precharges:
+Vdiff
+l = VQM
+l−
+N ∑
+j=1
+qpre
+j
+rlj
+(6)
+and Vcorr
+l as the ESP generated by the BCCs:
+Vcorr
+l=
+N ∑
+j=1
+γ ∑
+α=1
+Tjα pα
+rlj
+(7)
+This potential difference, Vdiff
+l , can be thought of as an ESP correction at each grid point l. The BCC parameters are fit to an ESP difference and are therefore corrections to the AM1 precharges, not full atomic charges per se. We now construct the objective func
+tion, χ2, which summarizes the difference between
+Vdiff
+l and Vcorr
+l:
+χ2 =
+∑ M
+l=1
+(VQM
+l − Vcalc
+l
+)2 =
+∑ M
+l=1
+(Vdiff
+l − Vcorr
+l
+)2
+=
+∑ M
+l=1
+(
+Vdiff
+l−
+N ∑
+j=1
+γ ∑
+α=1
+Tjα pα
+rlj
+)2
+(8)
+The summation in eq. (8) runs over the grid points M. The derivative of the objective function with respect to each BCC parameter, pβ, is set to zero
+in order to produce the best overall fit to Vdiff
+l:
+∂χ2
+∂ pβ
+=
+∑ M
+l=1
+N ∑
+k,j = 1
+γ ∑
+α=1
+TβkTjα pα
+rkl rlj
+−
+∑ M
+l=1
+N ∑
+k=1
+TβkVdiff
+l
+rkl
+=0
+(9)
+Unlike fitting charges to an ESP, this method does not require a Lagrangian constraint to conserve net charge. The precharges take care of any formal charges and the pα has no effect on total molecular charge (see Theory). Eq. (9) can also be expressed in matrix form as:
+Ap = b (10)
+where:
+Aβα =
+M ∑
+l=1
+N ∑
+k,j = 1
+γ ∑
+β =1
+TβkTjα
+rkl rlj
+(11a)
+and:
+bβ =
+∑ M
+l=1
+N ∑
+k=1
+TβkVdiff
+l
+rkl
+(11b)
+These linear equations can be solved by standard methods (e.g., Gauss–Jordan elimination, LU decomposition, etc.).24 Simultaneously fitting the ESPs of multiple molecules or conformations can be accomplished by summing the Aβα matrices and bβ vectors of each molecule (or each conformation) according to parameter types. The parameterization process is qualitatively demonstrated in Figure 2. The QM (VQM
+l ) and AM1
+ESPs for imidazole 36 are shown in Figure 2a and b, respectively. The difference between them (Vdiff
+l ) is
+depicted in Figure 2c. The atom charges implied by the fitted pα are added to the AM1 atomic charges to give total atomic charges. These in turn give rise to the AM1-BCC ESP (Vcalc
+l ), which is very similar to
+the QM ESP (cf. Fig. 2a and d).
+Computational Details
+TRAINING SETS AND ATOM/BOND TYPES
+The atom-typing scheme used was: a single atom type for sp3- and sp-hybridized carbon and, for carbon sp2 centers, types aromatic, nonaromatic, and double-bonded to an electrophilic atom (as in carbonyl). Hydrogen was a single atom type. Oxygen had only sp3 and sp2 types, but nitrogen was found to require slightly more subtle distinctions and ultimately comprised of six types: sp3, sp3(+), and sp and, for sp2 types, aromatic with lone pair, aromatic
+136 VOL. 21, NO. 2
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+AM1-BCC MODEL: I. METHOD
+FIGURE 2. The ESP of imidazole (orientation shown in Fig. 6, 36) showing negative potentials in red and positive
+potentials in blue: (a) QM ESP (VQM
+l ); (b) the ESP generated by AM1 atomic charges; (c) Vdiff
+l , and (d) the ESP
+generated by the AM1-BCC charges (Vcalc
+l ). Note that the full-color spectrum has been mapped to the range of the ESP
+in each case. The actual range differs between the various ESPs shown.
+with substituent, and nonaromatic. A single sp3 sulfur atom type sufficed because only divalent sulfur was in the training set. Bond types were restricted to formal single, double, and triple, plus aromatic. The training set chosen to test the basic features of the charge model was limited to the relatively small set of 45 molecules shown in Figure 6, consisting of three subsets chosen to address specific issues. The first component, TS1, contained 15 common nonaromatic oxygen-, nitrogen-, and sulfur
+containing organic functionalities, in particular exercising the Csp3—single—Osp3, CC=O
+sp2 —double—Osp2, and O—H BCCs in a variety of chemical contexts to test their robustness. TS2, the second subset, contained 15 mono-, di-, and trisubstituted benzene molecules, and was used to test the ability of our charge model to express the delocalized charge density with electron-withdrawing and -donating groups. The third subset, TS3, was comprised of 15 principally heteroaromatic molecules representing
+JOURNAL OF COMPUTATIONAL CHEMISTRY 137
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+JAKALIAN ET AL.
+pharmaceutically relevant fragments. This training set is only a small subset of what will be required for global parameterization; whereas some BCCs are represented in only few contexts, others are sampled more widely and within many contexts. Overall, this set represents a diverse cross-section of organic functionalities and should suffice for proof of concept.
+PRECHARGES
+Several charge models were initially considered as precharges: charges from extended Hückel theory (EHT)25 and semiempirical (MNDO,26, 27 AM1,28 PM3,29, 30) atomic charges. Charges from EHT did not perform well in reproducing the QM ESP within a BCC model and were consequently abandoned. The performance of all semiempirical atomic charges was nearly identical; AM1 atomic charges were ultimately chosen for this work because of their availability, robustness, and their wide acceptance within the scientific community. AM1 atomic charges21 were calculated with MOPAC-6.31 The same charges can be obtained from GAUSSIAN-9432 using the Iop(4/24=3) keyword (note, however, that molecules containing sulfur or phosphorus will have incompatible charges with MOPAC-6 because GAUSSIAN-94 uses MNDO parameters for these atoms). All geometries were optimized with MMFF94 using the program OPTIMOL.3 AM1 atomic charges on symmetry equivalent centers (symmetry here relates to bond connectivity) were not made equivalent during the parameterization of the BCCs. The ESPs were generated at the HF level of theory with the 6-31G∗ basis set using GAUSSIAN-9233 [using prop=(grid,field) and nosymm keywords].
+QUALITY OF FIT
+For a given molecule, the ESPs arising from the various charge models were evaluated over the same set of grid points. The traditional “rms” metric34 is used as the basis of comparison between ESPs from various charge models:
+rms =
+√ ∑M
+l = 1(VQM
+l − Vcalc
+l )2
+N (12)
+Results and Discussion
+All molecules in the training set were used simultaneously to parameterize the BCCs. The per
+formance of the various charge models was evaluated by comparing the rms deviation of the atomic charge-derived ESP from the QM ESP. This is shown in Figures 3, 4, and 5 for TS1, TS2, and TS3, respectively. The same general trend was observed in all subsets: the ESP produced by the AM1 atomic charges gave the greatest deviation from the QM ESP, while the best fit was given by the ESP arising from the RESP charges. The RESP charges are by construction the charges that best fit the QM ESP for an individual molecule, whereas the AM1-BCC charges reflected a consensus over the entire training set. Nonetheless, we noted a dramatic overall improvement in the quality of fit when the bond charge corrections (BCCs) were added to the AM1 atomic charges. The greatest improvement was observed for the cyano-containing molecules 27–30 in TS2 (Fig. 4). The AM1 atomic charges performed poorly, giving rms deviations of >0.12 a.u., but these dropped to values below 0.03 a.u. for the AM1-BCC model. In some cases, the improvements were very small; for instance, diethylether 7, dimethylether 8, and cyclohexylethyne 9 in TS1; toluene 21 and pmethoxytoluene 24 in TS2; and methyl N-oxide 32 in TS3. The only molecule that did not benefit from the BCCs was anisole 25 in TS2, for which the AM1 atomic charges fortuitously performed very well and suffered very slightly when corrected. The average rms potential deviations for the molecules of each subset are shown in Table I. The rms deviation of the potential generated by AM1 atomic charges alone was lowered substantially when the BCCs were applied, to a value approaching that of the RESP model (0.0203). The overall behavior of the AM1-BCC model was consistently similar to the RESP model in terms of the rms deviation, compared to the erratic and occasionally pathological behavior of the uncorrected AM1 atomic charges (cf. Figs. 3, 4 and 5). Of the resulting BCCs, a subset is given in Table II; the first eight entries were the only ones required to generate charges for methanol 14, imidazole 36, and indole 41. Each of these BCCs occurred in multiple contexts in the training set, as shown in the fifth column of Table II, hence their performance addresses the generality of the atomand bond-typing methods. These BCCs along with those remaining in Table II were used to charge three test molecules not in the training set; the AM1BCC ESP was then compared to the 6-31G∗ ESP as well as that produced by RESP charges. Table III shows the charge comparison for methanol 14, a simple polar compound able to donate and accept hydrogen bonds. The methyl carbon
+138 VOL. 21, NO. 2
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+AM1-BCC MODEL: I. METHOD
+FIGURE 3. The rms deviations from the QM ESP of the ESPs generated by the RESP, AM1, and AM1-BCC charge models for molecules in TS1. The large rms deviation values for 13 (H2S) result because of the inability of an atom-centered charge model to account for the presence of lone pairs on the sulfur atom.
+FIGURE 4. The rms deviations from the QM ESP of the ESPs generated by the RESP, AM1, and AM1-BCC charge models for molecules in TS2. The large rms deviation values for 27, 28, 29, and 30 (the cyano-containing molecules) are completely corrected by the AM1-BCC charges.
+JOURNAL OF COMPUTATIONAL CHEMISTRY 139
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+JAKALIAN ET AL.
+FIGURE 5. The rms deviations from the QM ESP of the ESPs generated by the RESP, AM1, and AM1-BCC charge models for molecules in TS3. The large rms deviation value for thiophene 35 is due to the inability of an atom-centered charge model to account for the presence of lone pairs on the sulfur atom.
+charges differed even in sign between the AM1 and RESP models, and the AM1 oxygen charge was only half that of the RESP oxygen. Addition of the BCCs onto the AM1 atomic charges produced hydroxyl charges with RESP-like values; the methyl carbon atom adopted a lower magnitude charge. The rms deviation dropped by more than half and was comparable to the RESP value. The dipole moment increased from the AM1 value of 1.31 to 2.14 Debye, approaching the 2.22-Debye value of the RESP model.
+TABLE I. Average rms Deviation from QM ESPa for RESP, AM1, and AM1-BCC Charge Models.
+RMS Deviation from QM ESP (a.u.)
+Training Subset RESP AM1 AM1-BCC
+TS1 0.0277 0.0826 0.0339 TS2 0.0139 0.0618 0.0240 TS3 0.0195 0.0856 0.0345
+Average 0.0203 0.0766 0.0308
+a ESP calculated at the HF/6-31G∗ level of theory.
+In the case of imidazole 36 (Table IV), improvement in the RMS deviation was more pronounced than for methanol with the rms deviation decreasing fourfold compared with simple AM1 precharges. This improvement is demonstrated in Figure 2 where the AM1-BCC ESP (Fig. 2d) is nearly identical to the QM ESP (Fig. 2a). The dipole moment increased from 2.32 Debye for the AM1 model to 4.06 Debye for the AM1-BCC model, very close to the RESP value of 3.99 Debye. Interestingly, while the character of the C1 and C3 atoms changed from negative charges for the AM1 model to approximately neutral for the AM1-BCC model, they remained markedly different from the positive charges of the RESP model. That is, compared to the RESP charges optimized to this individual molecule, the consensus BCC parameters produced less charge separation along the bonds from C1 and C3; this might be expected of a consensus method, and may reflect the greater stability of the procedure. The decrease in accuracy of the ESP was minimal: the rms deviation for AM1-BCC was only 0.005 a.u. greater than for the optimal RESP model. In the case of indole 41 (Table V) the improvements were less pronounced than in the previous two cases; the rms error of fit is more than tripled
+140 VOL. 21, NO. 2
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+AM1-BCC MODEL: I. METHOD
+TABLE II. Bond Charge Corrections (BCCs) for Methanol, Imidazole, Indole, and Test Molecules.
+Bond Type αa
+Atom Bond Atom Number of Type J Order Type I pαb Occurrencesc
+Csp3 single H 0.0274 124
+Csp3 single Osp3 0.0835 18
+Osp3 single H −0.2142 6 Carom
+sp2 single H 0.0100 122 Carom
+sp2 aromatic Carom
+sp2 0.0000 144 NHarom
+sp2 single H −0.0882 4
+Csarpo2m aromatic NHarom
+sp2 −0.0110 8
+Csarpo2m aromatic Nsarpo2m 0.1707 12
+Csp3 single Csp3 0.0000 10
+Csp3 single CC=O
+sp2 −0.0799 6
+Csp3 single Carom
+sp2 −0.0164 4 CC=O
+sp2 single Csarpo2m 0.0405 2
+Csarpo2m single Osp3 0.0494 11 CC=O
+sp2 single Osp3 0.1176 4 CC=O
+sp2 double Osp2 0.2501 9
+a Each bond type is composed of atom type J, a bond order, and atom type I. b Value of pα is added to atom j and subtracted from atom i (see Theory). c Number of occurrences of a bond type in the training set.
+compared to RESP. Most carbon atoms were bonded to similar carbon atom types (Csarpo2m—arom—Csarpo2m), which have a zero correction term by definition. Consequently, most AM1 atomic charges were only
+TABLE III. Charges, rms Deviations from QM ESP, and Dipole Moments for Methanol for Various Charge Models.
+RESP Fit AM1 AM1-BCC Atoma Charges Charges Charges
+C1 0.1406 −0.0655 0.1003 H2,3,4 0.0314 0.0656 0.0382 O5 −0.6555 −0.3301 −0.6278 H6 0.4207 0.1987 0.4129
+rms (a.u.) 0.0418 0.0969 0.0407
+Dipole moment (D) 2.2174 1.3053 2.1395
+a Subscript refers to atom numbering for methanol (14) in Figure 6.
+TABLE IV. Charges, rms Deviations from QM ESP, and Dipole Moments for Imidazole for Various Charge Models.
+RESP Fit AM1 AM1-BCC Atoma Charges Charges Charges
+C1 0.1465 −0.1312 0.0385 N2 −0.5286 −0.1455 −0.4869 C3 0.1313 −0.1653 0.0154 C4 −0.3067 −0.2063 −0.2073 N5 −0.2366 −0.1551 −0.2214 H6 0.1183 0.1785 0.1685 H7 0.1976 0.1738 0.1638 H8 0.3377 0.2525 0.3407 H9 0.1405 0.1987 0.1887
+rms (a.u.) 0.0259 0.1227 0.0306
+Dipole moment (D) 3.9850 2.3237 4.0581
+a Subscripts refer to atom numbering for imidazole (36) in Figure 6.
+altered by Csarpo2m—arom—H BCCs. As a result, the C1 atom (see Fig. 6, 41 for the atom-numbering scheme) could not receive any correction terms be
+TABLE V. Charges, rms Deviations from QM ESP, and Dipole Moments for Indole for Various Charge Models.
+RESP Fit AM1 AM1-BCC Atoma Charges Charges Charges
+C1 0.3136 −0.0808 −0.0808 C2 0.2670 −0.0015 −0.0125 C3 −0.3535 −0.1478 −0.1378 C4 −0.1305 −0.1117 −0.1017 C5 −0.1995 −0.1592 −0.1492 C6 −0.3213 −0.0809 −0.0709 H7 0.1867 0.1299 0.1199 H8 0.1508 0.1278 0.1178 H9 0.1583 0.1288 0.1188 H10 0.1887 0.1315 0.1215 C11 −0.5415 −0.2081 −0.1981 H12 0.2309 0.1518 0.1418 C13 0.0024 −0.0820 −0.0830 H14 0.1822 0.1652 0.1552 N15 −0.5239 −0.2078 −0.2741 H16 0.3896 0.2448 0.3330
+rms (a.u.) 0.0079 0.0440 0.0280
+Dipole moment (D) 2.1245 1.3875 1.8997
+a Subscript refers to atom numbering for indole (41) in Figure 6.
+JOURNAL OF COMPUTATIONAL CHEMISTRY 141
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+JAKALIAN ET AL.
+cause it was bonded to three identical carbon atom types and therefore the AM1-BCC charge on this atom had the same value as in the AM1 model. In principle, this could be alleviated by differentiating subclasses of sp2-hybridized aromatic carbon atom types, but this would compromise the simplicity of our model. Although the improvement in the rms deviation from the QM ESP was moderate, because most charges were similar to the AM1 atomic charges, the overall quality of fit of the AM1BCC model for indole was good (cf. Fig. 5). The molecular dipole moment was underestimated, albeit markedly improved over the uncorrected AM1 model. Consistent behavior of the same functional group in different bonded contexts is important in parameterizing a force field, especially for minimizing problems with 1, 4 electrostatic torsional terms. Table VI compares this consistency between the AM1BCC and RESP models for the (Csp3—single—Osp3) bond type found in ether functional groups. Although RESP was developed to reduce numerical instabilities during the ESP-fitting process,16 examination of Table VI suggests that they were still present in the RESP model to some degree. The RESP-fit charges on the carbon atoms fluctuated between −0.0814 and 0.0706, whereas the AM1-BCC charges on the same atoms only varied between 0.0875 and 0.0984. Although the fluctuations in charge on the Osp3 atom types were larger (because of the different bonded contexts), the AM1-BCC charges were much more stable within each molecular grouping. The small variation in charge on the methyl carbon atom, one of the most unstable centers in ESP-fit methods, demonstrates the numerical stability of the AM1-BCC model over ESP-fit methodologies. Of particular interest are the chemically nonintuitive decreases in RESP charges on the oxygen and methyl carbon of the orthomethoxy-substituted toluene 22 and benzonitrile 28 compared to the related meta- and para-substitution patterns. The adjacent ortho substituents on the phenyl ring occluded the surface of the methoxy from the grid-point sampling for the QM ESP, burying the methoxy oxygen and carbon atoms even more than usual, thus exacerbating the numerical instability of the charges fitted to these centers. To confirm that the charge decreases could be attributed to numerical instability, the RESP charge fitting for 22 and 28 was repeated holding the oxygen charge constant at the meta-substitution values of −0.3355 and −0.3513, respectively (cf. Table VI); the rms deviation increased by only 0.0004 for 22 and 0.001 for 28. Therefore, the large variations in
+FIGURE 6. Structures for the molecules used in TS1, TS2, and TS3. Atom-numbering schemes are given for methanol 14, imidazole 36, and indole 41.
+142 VOL. 21, NO. 2
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+AM1-BCC MODEL: I. METHOD
+TABLE VI. Charges on Csp3 and Osp3 Atom Types in Csp3—single–Osp3 Bond Type in Methylether Functional Groups.
+Charge on Csp3 Charge on Osp3
+Molecule (cf. Fig. 6) RESP AM1-BCC RESP AM1-BCC
+Dimethylether 8 −0.0598 0.0947 −0.3376 −0.4386
+Methylacetate 10 −0.0164 0.0941 −0.4397 −0.4604 Methylformate 15 −0.0416 0.0879 −0.4157 −0.4615
+Anisole 25 0.0706 0.0956 −0.3627 −0.3373 o-MeO toluene 22 −0.0814 0.0984 −0.2556 −0.3407 m-MeO toluene 23 0.0350 0.0960 −0.3355 −0.3377 p-MeO toluene 24 0.0385 0.0957 −0.3590 −0.3378 o-MeO cyano ph 28 −0.0172 0.0947 −0.2847 −0.3276 m-MeO cyano ph 29 0.0509 0.0940 −0.3513 −0.3326 p-MeO cyano ph 30 0.0688 0.0875 −0.3553 −0.3360 1,4-diMeO ph 26 0.0329 0.0965 −0.3467 −0.3383
+Tri-sub ph 19 −0.0421 0.0950 −0.3264 −0.3366
+Minimum −0.0814 0.0875 −0.4397 −0.4615 Maximum 0.0706 0.0984 −0.2556 −0.3276
+FIGURE 7. Structure and atom-numbering schemes for the test-set molecules: (a) D-glucose; (b) aspirin; and (c) eriodictyol.
+JOURNAL OF COMPUTATIONAL CHEMISTRY 143
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+JAKALIAN ET AL.
+TABLE VII. Charges, rms Deviations from QM ESP, and Dipole Moments for D-Glucose for Various Charge Models.
+RESP Fit AM1 AM1-BCC Atoma Charges Charges Charges
+C1 −0.0312 0.0140 0.1249 C2 0.0580 −0.0295 0.0814 C3 0.0367 −0.0266 0.0843 C4 0.0605 −0.0120 0.0989 C5 0.1743 0.1224 0.3168 O6 −0.3237 −0.2948 −0.4617 H7 0.1028 0.0852 0.0578 H8 0.1345 0.0909 0.0634 H9 0.1873 0.1459 0.1185 H10 0.1793 0.1194 0.0920 H11 0.1691 0.1458 0.1184 C12 0.2253 −0.0399 0.0984 H13,14 0.0524 0.0948 0.0674 O15 −0.6970 −0.3264 −0.6240 H16 0.4431 0.2186 0.4328 O17 −0.6157 −0.3243 −0.6219 H18 0.4102 0.2104 0.4247 O19 −0.6784 −0.3212 −0.6188 H20 0.4345 0.2101 0.4243 O21 −0.6568 −0.3317 −0.6294 H22 0.4647 0.2327 0.4469 O23 −0.6400 −0.3007 −0.5984 H24 0.4589 0.2219 0.4361
+rms (a.u.) 0.0151 0.1109 0.0263
+Dipole moment (D) 5.5880 3.2202 5.2887
+a Subscript refers to atom numbering for D-glucose as shown in Figure 7a.
+charge were not needed to reproduce the ESP with high accuracy. This unnecessary variation of the RESP charges would degrade transferability of the ether torsion parameters due to the inconsistency of the 1, 4 electrostatic terms in different molecules. In contrast, the AM1-BCC charges showed no unusual behavior for these centers and yet gave a quality of fit comparable to the other isomer substitution patterns (cf. Table VI and Fig. 4). This consistent behavior of the AM1-BCC charges would benefit the torsion parameters of the ether functional groups. Three molecules not in the training set were selected to test the AM1-BCC charge model: Dglucose, aspirin, and eriodictyol (Fig. 7a, b, and c, respectively). These molecules were chosen because they are rich in the C—O, C=O, and O—H functionalities tested most diversely in the training set, and yet they were still tractable for the calculation
+TABLE VIII. Charges, rms Deviations from QM ESP, and Dipole Moments for Aspirin for Various Charge Models.
+RESP Fit AM1 AM1-BCC Atoma Charges Charges Charges
+C1 −0.0036 −0.1163 −0.1569 C2 0.2696 0.0988 0.1482 C3 −0.2128 −0.1425 −0.1325 C4 −0.1551 −0.0894 −0.0794 C5 −0.1238 −0.1442 −0.1342 C6 −0.2414 −0.0684 −0.0584 H7 0.1832 0.1488 0.1388 H8 0.1689 0.1404 0.1305 H9 0.1504 0.1412 0.1312 H10 0.1998 0.1553 0.1453 C11 0.7064 0.3671 0.7753 O12 −0.5755 −0.3440 −0.5941 O13 −0.5993 −0.2947 −0.6266 H14 0.4479 0.2402 0.4545 O15 −0.4214 −0.2102 −0.3773 C16 0.7796 0.3169 0.7646 O17 −0.5420 −0.3101 −0.5602 C18 −0.4466 −0.2262 −0.2238 H19,20,21 0.1386 0.1124 0.0850
+rms (a.u.) 0.0108 0.0652 0.0261
+Dipole moment (D) 1.9486 2.0204 2.1336
+a Subscript refers to atom numbering for aspirin as shown in Figure 7b.
+of the 6-31G∗ wave function and electrostatic potential. AM1 calculations were carried out and the BCCs in Table II were applied using eqs. (2) and (3) to arrive at a set of AM1-BCC charges for these molecules. This AM1-BCC procedure took only a few minutes. By contrast, many hours were needed for 6-31G∗ calculations required to generate the QM ESPs and then to fit RESP charges. Tables VII, VIII, and IX give the charges for D-glucose, aspirin, and eriodictyol, respectively, and compare the rms deviations from the QM ESP as in Tables III to V. As with the training set, the AM1-BCC charges produced ESPs and dipoles far more RESP-like than did the AM1 atomic charges (although the AM1BCC dipole for aspirin was slightly exaggerated). In particular, the improvements in the rms deviation were very similar to those observed for the training set (cf. Tables I, and III to V). Although this is not a comprehensive test of the AM1-BCC model, it demonstrates that the model can be applied to organic molecules to arrive at charges of quality com
+144 VOL. 21, NO. 2
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+AM1-BCC MODEL: I. METHOD
+TABLE IX. Charges, rms Deviations from QM ESP, and Dipole Moments for Eriodictyol for Varions Charge Models.
+RESP Fit AM1 AM1-BCC Atoma Charges Charges Charges
+C1 −0.3265 −0.3056 −0.2956 C2 0.2688 0.1767 0.2261 C3 −0.1891 −0.2398 −0.2298 C4 0.0084 0.1843 0.2337 C5 −0.0471 −0.3495 −0.3901 C6 0.2116 0.2239 0.2733 H7 0.1751 0.1679 0.1579 H8 0.1900 0.1547 0.1447 O9 −0.5587 −0.2556 −0.5193 H10 0.4624 0.2639 0.4781 O11 −0.5588 −0.2405 −0.5041 H12 0.4386 0.2607 0.4449 O13 −0.2666 −0.1867 −0.3196 C14 0.5201 0.2907 0.6612 O15 −0.5735 −0.3254 −0.5754 C16 −0.2822 −0.2270 −0.2521 H17,18 0.1366 0.1323 0.1049 C19 0.2264 0.0841 0.1786 H20 0.0963 0.1019 0.0744 C21 0.5928 −0.0886 −0.0722 C22 −0.5958 −0.1020 −0.0920 C23 0.4643 0.0665 0.1160 C24 −0.0232 0.0094 0.0589 C25 0.4643 −0.1814 −0.1714 C26 −0.5958 −0.1132 −0.1032 H27 −0.3494 0.1615 0.1515 H28 −0.0754 0.1384 0.1284 H29 0.2201 0.1357 0.1257 O30 −0.6483 −0.2694 −0.5330 H31 0.4710 0.2360 0.4502 O32 −0.6274 −0.2452 −0.5088 H33 0.4692 0.2389 0.4532
+rms (a.u.) 0.0252 0.0803 0.0338
+Dipole moment (D) 4.0337 2.2686 4.0399
+a Subscript refers to atom numbering for eriodictyol as shown in Figure 7c.
+parable with 6-31G∗ ESP-fit charges, and of greater transferability, with far less computational cost and human effort.
+Conclusion
+In this study, a new method has been proposed to generate, quickly and efficiently, high-quality atomic charges suitable for use in effective two
+body additive FF simulations of condensed-phase systems. This charge model (AM1-BCC) marries complementary features of the AM1 charge model and ESP-fit method within an approach formally identical to the BCI method. AM1 atomic charges21 are calculated very quickly and capture the essential “chemistry” of the electronic structure. Bond correction terms are then added in the same fashion as the BCI approach to reproduce the HF/6-31G∗ ESP. We found that AM1-BCC charges performed well in reproducing the QM ESP of a variety of polar, nonpolar, and aromatic molecules. Generally, they showed dramatic improvement over the AM1 atomic charges, approaching RESP quality, although, in some challenging cases (such as indole), the improvement was moderate. The new charge model also corrects the erratic behavior of the AM1 atomic charges in their fit to the QM ESP. Because an ab initio calculation is not necessary for the application of the AM1-BCC model, large molecules can be charged without fragmentation. This has two advantages: (i) a more complete environment of the molecule is included in the calculation, whereas fragmentation may lead to loss of information from nearby atoms or functional groups; and (ii) it is more efficient in both human and computational resources. The AM1-BCC model tends to produce charges of lower magnitude than the RESP model but similar molecular dipole moments; this may reflect a greater stability of the consensus fit. The problem of numerical instability on buried centers is greatly reduced provided that the training set includes sufficient examples of the same bond parameter types in well-exposed contexts, as previously discussed,20 and as demonstrated here with the ether bond type. With the ability of the AM1-BCC model to emulate the HF/631G∗ ESP, this method offers an effective alternative to human- and computer-resource-intensive HF/631G∗ ESP-fitting methods for generating atomic charges. Based on the encouraging results on this preliminary training set, we have begun global reparameterization of the AM1-BCC charge model.
+References
+1. Cornell, W. D.; Cieplak, P.; Bayly, C. I.; Gould, I. R.; Merz, K. M., Jr.; Ferguson, D. M.; Spellmeyer, D. C.; Fox, T.; Caldwell, J. W.; Kollman, P. A. J Am Chem Soc 1995, 117, 5179.
+2. Case, D. A.; Pearlman, D. A.; Caldwell, J. W.; Cheatham, T. E., III; Ross, W. S.; Simmerling, C. L.; Darden, T. A.; Merz, K. M.; Stanton, R. V.; Cheng, A. L.; Vincent, J. J.; Crowley, M.; Ferguson, D. M.; Radmer, R. J.; Seibel, G. L.; Singh, U. C.; Weiner, P. K.; Kollman, P. A. AMBER5, University of California, San Francisco, CA, 1997.
+JOURNAL OF COMPUTATIONAL CHEMISTRY 145
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+JAKALIAN ET AL.
+3. (a) Halgren, T. A. J Comput Chem 1996, 17, 490; (b) Halgren, T. A. J Comput Chem 1996, 17, 616. 4. Honig, B.; Nicholls, A. Science 1995, 268, 1144.
+5. (a) Momany, F. J Phys Chem 1978, 82, 592; (b) Cox, S. R.; Williams, D. E. J Comput Chem 1981, 2, 304; (c) Hinsen, K.; Roux, B. J Comput Chem 1997, 18, 368; (d) Su, Z. J Comput Chem 1993, 14, 1036; (e) Marynick, D. S. J Comput Chem 1997, 18, 955; (f) Chipot, C.; Maigret, B.; Rivail, J.-L.; Scheraga, H. A. J Phys Chem 1992, 96, 10276; (g) Woods, R. J.; Khalil, M.; Pell, W.; Moffat, S. H.; Smith, V. H., Jr. J Comput Chem 1990, 11, 297.
+6. (a) Gasteiger, J.; Marsili, M. Tetrahedron 1980, 36, 3219; (b) Tai No, K.; Grant, J. A.; Scheraga, H. A. J Phys Chem 1990, 94, 4732; (c) Grant, J. A.; Williams, R. L.; Scheraga, H. A. Biopolymers 1990, 30, 929; (d) Rappé, A. K.; Goddard, W. A., III J Phys Chem 1991, 95, 3358; (e) Mortier, W. J.; Van Genechten, K.; Gasteiger, J. J Am Chem Soc 1985, 107, 829; (f) Dinur, U. J Phys Chem 1993, 97, 7894.
+7. (a) Stone, A. J. Chem Phys Lett 1981, 83, 233; (b) Stone, A. J.; Alderton, M. Mol Phys 1985, 56, 1047; (c) Sigfridsson, E.; Ryde, U. J Comput Chem 1998, 19, 377; (d) Koch, U.; Egert, E. J Comput Chem 1995, 16, 937; (e) Chipot, C.; Ángyán, J. G.; Ferenczy, G. G.; Scheraga, H. A. J Phys Chem 1993, 97, 6628.
+8. Kuyper, L.; Ashton, D.; Merz, K. M., Jr.; Kollman, P. A. J Phys Chem 1991, 95, 6661. 9. Watanabe, K.; Klein, M. L. Chem Phys 1989, 131, 157.
+10. Berendsen, H. C.; Postma, J. P. M.; van Gunsteren, W. F.; Hermans, J. In: Pullman, B., ed. Intermolecular Forces; Elsevier: Dordrecht, 1981, p. 331.
+11. Jorgensen, W. L.; Chandrasekhar, J.; Madura, J. D.; Impey, R. W.; Klein, M. L. J Chem Phys 1983, 79, 926.
+12. Besler, B. H.; Merz, K. M., Jr.; Kollman, P. A. J Comput Chem 1990, 11, 431. 13. Singh, U. C.; Kollman, P. A. J Comput Chem 1984, 5, 129.
+14. Breneman, C. M.; Wiberg, K. B. J Comput Chem 1990, 11, 361.
+15. (a) Williams, D. E. Biopolymers 1990, 29, 1367; (b) Reynolds, C. A.; Essex, J. W.; Richards, W. G. J Am Chem Soc 1992, 114, 9075.
+16. Bayly, C. I.; Cieplak, P.; Cornell, W. D.; Kollman, P. A. J Phys Chem 1993, 97, 10269.
+17. Francl, M. M.; Carey, C.; Chirlian, L. E.; Gange, D. M. J Comput Chem 1996, 17, 367.
+18. Alemán, C.; Luque, F. J.; Orozco, M. J Comput Chem 1993, 14, 799.
+19. Halgren, T. A. J Comput Chem 1996, 17, 520.
+20. Bush, B. L.; Bayly, C. I.; Halgren, T. A. J Comput Chem 1999, 20, 1495.
+21. The AM1 atomic charges are the standard charges produced by default by MOPAC6 and are derived from the Coulson density matrix (see pp. 4–8, notes 18 and 20 of MOPAC6 manual). They are identical to the AM1 charges in ref. 22.
+22. Storer, J. W.; Giesen, D. J.; Cramer, C. J.; Truhlar, D. G. J Comput Aid Mol Des 1995, 9, 87.
+23. Li, J.; Zhu, T.; Cramer, C. J.; Truhlar, D. G. J Phys Chem A 1998, 102, 1820.
+24. Press, W. H.; Teukolsky, S. A.; Vetterling, W. T.; Flannery, B. P. Numerical Recipes in FORTRAN 77, 2nd Edition. The Art of Scientific Computing; Cambridge University Press: New York, 1996.
+25. Landrum, G. A. YAeHMOP: Yet Another extended Hückel Molecular Orbital Package. YAeHMOP is freely available on the World-Wide Web at http://overlap.chem.cornell. edu:8080/yaehmop.html. 26. Dewar, M. J. S.; Thiel, W. J Am Chem Soc 1977, 99, 4899. 27. Dewar, M. J. S.; Thiel, W. J Am Chem Soc 1977, 99, 4907.
+28. Dewar, M. J. S.; Zoebisch, E. G.; Healy, E. F.; Stewart, J. J. P. J Am Chem Soc 1985, 107, 3902. 29. Stewart, J. J. P. J Comput Chem 1989, 10, 209. 30. Stewart, J. J. P. J Comput Chem 1989, 10, 221.
+31. Stewart, J. J. P. MOPAC6.0, Frank J. Seiler Research Laboratory, United States Air Force Academy, CO 80840.
+32. Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Gill, P. M. W.; Johnson, B. G.; Robb, M. A.; Cheeseman, J. R.; Keith, T. A.; Petersson, G. A.; Montgomery, J. A.; Raghavachari, K.; AlLaham, M. A.; Zakrzewski, V. G.; Ortiz, J. V.; Foresman, J. B.; Cioslowski, J.; Stefanov, B. B.; Nanayakkara, A.; Challacombe, M.; Peng, C. Y.; Ayala, P. Y.; Chen, W.; Wong, M. W.; Andres, J. L.; Replogle, E. S.; Gomperts, R.; Martin, R. L.; Fox, D. J.; Binkley, J. S.; Defrees, D. J.; Baker, J.; Stewart, J. P.; Head-Gordon, M.; Gonzalez, C.; Pople, J. A. GAUSSIAN-94, Gaussian, Inc., Pittsburgh, PA, 1995.
+33. Frisch, M. J.; Trucks, G. W.; Head-Gordon, M.; Gill, P. M. W.; Wong, M. W.; Foresman, J. B.; Johnson, B. G.; Schlegel, H. B.; Robb, M. A.; Replogle, E. S.; Gomperts, R.; Andres, J. L.; Raghavachari, K.; Binkley, J. S.; Gonzalez, C.; Martin, R. L.; Fox, D. J.; Defrees, D. J.; Baker, J.; Stewart, J. J. P.; Pople, J. A. GAUSSIAN-92, Revision A, Gaussian, Inc., Pittsburgh, PA, 1992.
+34. Williams, D. E. In: Lipkowitz, K. B.; Boyd, D. B., eds. Reviews in Computational Chemistry, Vol. 2; VCH: New York, 1991, p. 239.
+146 VOL. 21, NO. 2
+1096987x, 2000, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(20000130)21:2<132::AID-JCC5>3.0.CO;2-P by University Of Massachusetts, Wiley Online Library on [21/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

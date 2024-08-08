@@ -1,0 +1,292 @@
+Interfacial tension in polyelectrolyte systems exhibiting associative liquid–liquid phase separation Vivek M. Prabhu
+Abstract
+A continued interest in polyelectrolyte phase diagrams guides the study of interfacial phenomena driven by polyelectrolyte complexation. The liquid–liquid interfaces formed by associative phase separation of oppositely charged synthetic and natural polyelectrolytes provide measurement challenges addressed by force-sensitive methods and deformed droplet retraction. The ultralow interfacial tension, typical of these systems, is sensitive to salt concentration and temperature and displays universal features described by mean-field theory. Several areas of fundamental development and novel applications of charge complexation for interfacial study and examples from membraneless organelles and biomolecular condensates are described.
+Addresses
+Material Measurement Laboratory, National Institute of Standards and Technology, 100 Bureau Drive, Gaithersburg, MD 20899, United States
+Corresponding author: Prabhu, Vivek M. (vprabhu@nist.gov)
+Current Opinion in Colloid & Interface Science 2021, 53:101422
+This review comes from a themed issue on Polyelectrolytes Coacervates and Membraneless Organelles
+Edited by Christine Keating, Nicolas Martin and Maria Santore
+For complete overview about the section, refer Polyelectrolytes Coacervates and Membraneless Organelles
+https://doi.org/10.1016/j.cocis.2021.101422
+1359-0294/Published by Elsevier Ltd.
+Keywords
+Polyelectrolyte, Interfacial tension, Phase separation, Critical salt concentration, Critical temperature, Deformed droplet retraction, Surface forces apparatus, Colloidal probe AFM, Biomolecular condensates.
+Introduction
+The dissociation equilibrium between counterions and polyelectrolytes in a solvent with high dielectric constant, such as water, solubilizes a nominally hydrophobic polymer. Introducing an oppositely charged polymer, instead of small-molecule salt, favors counterion dissociation and the formation of interpolyelectrolyte complexes. These soluble complexes may aggregate or coalesce into dense, highly hydrated coacervate
+materials derived from liquideliquid phase separation in combination with chain association. This macromolecular phase separation forms interfaces between the dilute phase and dense polyelectrolyte-rich phase. Such polyelectrolyte coacervates have been the subject of several reviews [1e7]. The selective partitioning of polyelectrolytes is of keen interest in the study of formation of organelles in cells [8e10], in situ formed adhesives [11,12], protein and pharmaceutical separations [13e16], and complexation and delivery of DNA and RNA [17,18]. Formulation modification of the surface and interfacial tension properties of such viscoelastic fluids are essential for printing, spraying, or dispensing applications [19].
+The interfacial tension between coexisting charged polymer-containing phases depends on the symmetry of polymer mixing, salt identity, linear polymer charge density, and degree of polymerization. Experimental data with these dependencies on interfacial tension would enable the development of a thermodynamic theory and comparison with simulations. Universal properties of neutral polymer solutions near the critical temperature, including the critical exponents, critical amplitudes and the dependence of interfacial tension, and interfacial width on the degree of polymerization, are already understood [20e23]. Studies on these properties are scarce for polyelectrolyte solutions and are only just beginning with polyelectrolyte mixtures and complex coacervates. There are basic questions about the physics of the intermolecular interactions in these systems and the reduced variables relevant to defining an equation of state; the significance of molecular parameters such as chain length, chain stiffness, and so on; and the role of ion and polymer solvation. The development of an equation of state description would provide a good start in making progress in characterizing these complex fluids. Measurements of critical exponents [24,25] are helpful in identifying the type of critical phenomena exhibited by these systems. The interfacial tension affords an opportunity to address the critical point scaling, and this property is particularly important in relation to applications of these materials.
+The interfacial tension (g) between coexisting phases near the critical point follows universal scaling described as
+Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States
+Available online at www.sciencedirect.com
+ScienceDirect Current Opinion in
+Colloid & Interface Science
+www.sciencedirect.com Current Opinion in Colloid & Interface Science 2021, 53:101422
+
+
+g 1⁄4 g+εm (1)
+with critical amplitude go and reduced temperature
+(ε = jT  Tcj/Tc), where Tc is the critical temperature and m is the exponent. The critical amplitude for neutral polymer solutions follows unique molecular mass (N) scaling [20]. Studying these basic properties of complex coacervates is complicated by the question of whether these systems are in thermodynamic equilibrium or are dominated by kinetics [26].
+We highlight recent reports on aqueous associative liquideliquid phase separation and formation of droplet domains. These droplet interfaces serve as opportunities for tensiometry measurements [27] and model systems for designing new formulations and separation science. The interfacial tension between the coexisting phases in polyelectrolyte coacervates is ultralow (1e 100 mN/m) (Table 1). By comparison, the surface tension of water is z70 mN/m, and the interfacial tension between silicone oil and water is z35 mN/m. The magnitude of the interfacial tension may be estimated in terms of the ratio of the thermal energy to the square of the characteristic length scale, which would be the radius of gyration of the polymer [28] or more appropriately the correlation length near the critical point [25]. In addition, the main results from the theory of Helfand and Tagami predict that the interfacial tension between immiscible polymer blends is proportional to the product of average monomer density and square root of the FloryeHuggins interaction parameter that characterizes the van der Waals interaction energy between the polymer and the solvent [29]. Therefore, miscibility of components that also influences the magnitude of the chain dimensions is the factor that leads to low (or high) interfacial tension. A number of techniques are available to measure surface and interfacial tension including the Wilhelmy plate, the Du Nou ̈y ring, maximum bubble pressure, capillary rise, pendant drop, and sessile drop methods [30]. To study ultralow interfacial tensions, methods such as colloidal probe atomic force microscopy (CP-AFM), surface forces apparatus (SFA), spinning drop method, and deformed drop retraction are necessary. Recent measurements of several different synthetic and natural associating liquideliquid polyelectrolyte coacervates provide connections between improvement in polymer fundamentals, measurement methods, and insight for applications.
+Associative liquid–liquid phase separation Phase diagrams for mixtures of oppositely charged polyelectrolytes and polyelectrolyte solutions are typically shown on a plot of added salt concentration (Cs) versus polyelectrolyte concentration (CP). Qualitative features of the phase boundaries are often characterized by turbidity [31], thermal analysis of each phase [32],
+fluorescence [33], and spectroscopy [34]. Analyses of each phase for Cs, polyanion, and polycation concentrations, especially with nonstoichiometric mixtures, are less frequently performed. Turbidity or cloud points in associating mixtures may not always represent the binodal curve as shown recently with polymers in ionic liquids [35], wherein concentration analysis of each
+phase was possible by 1H-nuclear magnetic resonance spectroscopy.
+Recently, a few studies compared the shape of the binodal with a theoretical model [33,36] or simulation [37] building upon the initial efforts of Spruijt et al. [38]. Spruijt et al [38] studied charge stoichiometric mixtures of the weak polyelectrolytes polyacrylic acid (PAA) and poly(dimethylamino ethyl methacrylate) at pH 6.5 and applied the VoorneOverbeek (VO) theory. Salehi and Larson [36] used an extended VO free energy model that includes counterion associationedissociation, cross-chain ion pairing, and charge regulation by treating each as a reversible chemical reaction for comparison with the measurements of Wang and Schlenoff [39]. Their model predictions deviated from the experimental binodal diagram of the strong polyelectrolyte system of poly(styrene sulfonate) and poly(diallyldimethylammonium chloride) (PDADMAC) at low salt concentrations with a constant Florye Huggins c parameter. Lou et al. [33] and Friedowitz et al. [40] similarly include ion binding equilibria between small ions and polyions and interchain ion pairs between polycations and polyanions with an extended VO model. They compared their revised model with a new system of homologous oppositely charged polyelectrolytes based on a poly(acrylamide) main chain. This model could fit the binodal shape with a single c parameter for each increasing polarity through addition of H2O2, as shown in Figure 1a. This advancement most likely was made possible by the homologous polymers versus the poly(styrene sulfonate)/PDADMAC or PAA/ poly(dimethylamino ethyl methacrylate) system that has different local main chain structures that could lead to differing interaction parameters (solvation) within a FloryeHuggins or VO theory. Molecular simulation offers insight into the most challenging aspects of hydration, solvation, and ion specificity beyond continuum theories [41,42].
+Validation of models for coacervation is challenging owing to the limited availability of quantitative phase diagrams [4]. Including ionepolymer and polymere polymer binding equilibria [43] in addition to charge correlation effects and chain connectivity is important to advance a thermodynamic theory. Additional contributions from dipolar interactions and effective interaction parameters are proposed [44]. The development of new linear polyelectrolytes with varied charge density by adding hydrophobic comonomers [45] and increasing the hydrophobic side chain length [46] provide
+2 Polyelectrolytes – Coacervates and Membraneless Organelles
+Current Opinion in Colloid & Interface Science 2021, 53:101422 www.sciencedirect.com
+
+
+opportunities for model development. A firm foundation for macrophase separation of linear polyelectrolyte mixtures [7] may guide the development of microphase separation based on alternate chain architectures [47].
+These synthetic polyelectrolyte systems offer opportunities to understand biological systems that exhibit macromolecular phase separation during formation of organelles. While biological systems cannot be manipulated to the extent of synthetic systems, polymer models provide insight into the phase behavior. For example, Nott et al. [48] observed electrostatically driven organelle formation of spher
+ical Ddx4N1 protein droplets, whereby heating cleared the phase-separated solution and increasing Cs lowered the transition temperature in live cells or in vitro. Notably, arginine methylation, which changes the charge density and increases hydrophobicity, dramatically lowers the phase transition temperature by 25 C, which equivalently was achieved by a 100mmol/L increase in Cs. Zhou et al. [49] reviewed systems of protein and ribonucleic acid associative phase separation that are controlled by intrinsically disordered regions in the protein, such that selective deletion of these regions suppresses the formation of organelles. The phase envelopes on the CseCp plane are described by an upper critical salt concentration [50] similar to synthetic polyelectrolyte complex coacervates (Figure 1a). This is illustrative of the process of electrostatic-driven phase separation that leads to droplet phase morphology. Recent theoretical developments have considered the effect of charged sequences as they apply to organelle formation and coacervation [51,52]. However, not all such natural and synthetic systems exhibit clearing by heating or addition of excess salt, and the type of salt also plays a role in solubility [31,53].
+A recent study showed lower critical solution temperature (LCST) behavior of a common polyelectrolyte complex coacervate. A one-phase mixture of potassium poly(styrene sulfonate) (KPSS)/poly(diallyldimethylammonium bromide) (PDADMAB) in KBr was heated to observe liquideliquid phase separation [34]. As shown in Figure 1b, the phase envelope appears symmetric and is dependent on salt concentration. An increase in salt concentration affects the critical temperature and offers an alternate approach to study mechanisms of associative phase separation. Subsequently, a theory for coacervation found that the phase behavior could be described by the temperature dependence of the dielectric constant of water and the c parameter [54]. The coexistence of the dilute solution with dense coacervate presents the classical approach to study the equilibrium interfacial tension. Such studies as a function of added salt and temperature require measurement methods sensitive to low interfacial tension values.
+Effect of salt concentration on interfacial tension
+As shown in Figure 1, the critical region may be approached by changing salt concentration, such that a reduced salt concentration may be defined εs = jCs  Cs,cj/Cs,c in addition to the reduced temperature (ε = jT  Tcj/Tc), where Tc is the critical temperature and Cs,c is the critical salt concentration.
+One expects a transition from the mean field (m = 3/2)
+to Ising (m = 1.26) universality class in the critical region as fluctuations become important [4]. In the context of CseCp phase diagrams, Qin et al. [55] derived a theoretical expression by applying VO theory and CahneHilliard theory for interfacial tension of symmetrically mixed polyelectrolyte coacervates near the Cs,c at fixed temperature (Tc), with the interfacial tension scaling as follows:
+gy
+kB Tc a n
+ 1  Cs
+Cs;c
+3=2
+N 1=4 (2)
+where v is the reference volume (typically water), a is the statistical segment length under theta conditions, N is the degree of polymerization, and kB is the Boltzmann constant [55]. This 3/2 scaling index of the reduced salt concentration was also recovered by selfconsistent field theory, Monte Carlo simulations, and field-theoretical simulations [28,56]. These predictions compare well with different polyelectrolyte systems and measurement methods [57e59].
+Spruijt et al. [57] studied aqueous solutions of poly(trimethylaminoethyl methacrylate) and poly(3sulfopropyl methacrylate) between 0.250 mol/L and 1.250 mol/L KCl by CP-AFM. Experimental conditions confirm the attractive force upon retraction of the colloidal probe was due to the capillary condensation of the dense coacervate phase in equilibrium with the dilute phase. This allowed for systematic measurements of the ensuing interfacial tension quantified by the Laplace pressure difference across the interface, where the interfacial tension acts to minimize the interfacial area:
+F 1⁄4 pr2
+1g
+1
+r1
+þ1
+r2
+
+ 2pr1g cos q (3)
+where r1 and r2 are the radii of curvature of the capillary bridge and F is the force measured using the calibrated CPAFM cantilever. In the sphere-plate geometry, the forcee distance curve provides the interfacial tension, and extrapolating the force to zero separation distance yields  2Rg cos q, where R is the radius of the colloidal probe and q is the contact angle at the three-phase contact line (substrate, coacervate, and supernatant). An average over scanning velocities provides the estimate for equilibrium interfacial tension. They observe a vanishing interfacial tension with increased Cs, with a scaling law consistent
+Interfacial tension in polyelectrolyte coacervates Prabhu 3
+www.sciencedirect.com Current Opinion in Colloid & Interface Science 2021, 53:101422
+
+
+with m = 3/2. The results were explained by mapping salt concentration dependence into an effective c parameter, which recovers the same scaling dependence of Eq. (2).
+Priftis et al. [58] studied stoichiometric mixtures by charge of poly(L-lysine hydrochloride) and poly(D,Lglutamic acid) sodium salt polypeptide complexes between 0.100 mol/L and 0.600 mol/L NaCl with the SFA. In this case, the crossed-cylinder geometry is achieved with mica and sensitive force measurement across the capillary bridge. The interfacial tension was determined using forceedistance curves, with sensitivity on the order of nano Newtons to pico Newtons. The interfacial
+tension was determined as follows: g 1⁄4 Fpulloff
+4pR cos q, where R is the geometric mean radius of curvature of the mica surfaces and Fpull-off was obtained from the maximum measured adhesion on separation of the surfaces. In these studies, the compression and separation speed of the probe surfaces between the capillary bridge were considered when evaluating the interfacial tension [58]. A vanishing interfacial tension between 0.98 mN/m and 0.35 mN/m was observed with 0.05% by mass polymer concentration, pH 7, and degree of polymerization z200. These results would later be interpreted by Qin et al. to show the mean-field scaling [55].
+Later, Ali and Prabhu [59] examined the interfacial tension scaling (Figure 2a) for charge stoichiometric mixtures of KPSS/poly(diallyldimethylammonium bromide). The system motivated the observed mean-field scaling efforts studied closer to Cs,c, while also using the available phase diagram data from Wang and Schlenoff
+[39] as replotted by Salehi and Larson [36] to guide the measurements. An initial polymer concentration based on 0.15 mol/L for each polymer leads to a volume fraction of fP z 0.037, which is comparable with the critical polymer concentration. The temperature was cycled to form dilute droplets within the coacervate matrix to study interfacial tension by the deformed droplet retraction (DDR) method [60] developed by the tensiometry field. After an applied shear deforms the drop into an ellipsoidal shape, the zero-applied shear shape-retraction kinetics are quantified by an exponential with characteristic shape retraction time, t,
+t 1⁄4 hcR0
+g
+ð2p þ 3Þð19p þ 16Þ
+40ðp þ 1Þ (4)
+governed by the force balance of interfacial tension and viscous drag. A separate study of the bulk viscosity of the coacervate (hc) and dilute phase (hd) with viscosity ratio,
+p = hd/hc, makes this a quantitative study. The interfacial tension was determined by studying many droplets of different initial radius (Ro). The results are shown along with the data by Spruijt et al. [57] and Priftis et al. [58] normalized by each system’s critical salt concentration and critical amplitude (go), as shown in Figure 2b. The three different techniques and three different polyelectrolyte systems show the mean-field scaling close to Cs,c. More data are needed at even smaller εs prepared at the critical composition to reveal a crossover.
+A shared experimental issue across these three methods is that the volume of the capillary bridge or probed droplet should remain constant. In DDR, this
+Table 1
+Summary of interfacial tension in synthetic polyelectrolyte coacervates, membraneless organelles, and biomolecular condensates.a
+System Interfacial tension range between the stated solution conditions Method Reference
+Poly(trimethylaminoethyl methacrylate)/poly(3sulfopropyl methacrylate)
+(1–400) mN/m (1500–350) mmol/L KCl Colloidal probe atomic force microscopy
+[57]
+Poly(L-lysine hydrochloride)/ poly(D,L-glutamic acid)
+(0.3–1) mN/m (100–600) mmol/L NaCl Surface forces apparatus [58]
+KPSS/PDADMAB (3–20) mN/m (1.85–1.55) mol/L KBr at 25 C Deformed droplet retraction [59] KPSS/PDADMAB (9–36) mN/m (283–318) K at 1.6 mol/L KBr Deformed droplet retraction [59] P-granule protein PGL-3 condensate
+(1–5) mN/m (75–180) mmol/L KCl, pH buffered Optical trapping [74]
+Nucleolus droplet coalescence (liquid-like droplets of RNA/proteins)
+10 mN/m Germinal vesicle (nucleus of amphibian oocytes) Microneedle positioning and fusing droplet shape analysis
+[76]
+Outer surface of the granular component and nucleoplasm interface
+(0.4 ± 0.1) mN/m In vivo study Droplet shape analysis [77]
+Purified granular component enriched in the protein nucleophosmin (NPM1) droplets
+(0.8 ± 0.2) mN/m In vitro study Droplet shape analysis [77]
+KPSS, potassium poly(styrene sulfonate); PDADMAB, poly(diallyldimethylammonium bromide). a In all cases, the original publications should be consulted with regard to uncertainty analysis.
+4 Polyelectrolytes – Coacervates and Membraneless Organelles
+Current Opinion in Colloid & Interface Science 2021, 53:101422 www.sciencedirect.com
+
+
+assumption may be validated optically through a kinetic study and through the statistics by analyzing numerous droplets. An additional challenge is the in situ measurement of the contact angle with silicon dioxide CP-AFM tip and SFA mica surfaces. In all cases, the ultralow interfacial tension measurements would be challenging by traditional means.
+Vis et al. [61] showed through analysis of the meniscus shape that the interfacial tension was lowered by electrostatic effects in the dextran/gelatin system, a neutral polymer/polyelectrolyte. Values of interfacial tension lower than 10 mN/m scaled with the tie line length, which is consistent with a mean-field model [61]. Mussel adhesive protein and hyaluronic acid, a proteine polysaccharide system, observed an increasing interfacial tension that followed a Hofmeister series with 0.250 mol/L NaHCOO, NaCl, and NaNO3, as measured by CP-AFM [62].
+A significant improvement in the quality and quantity of the phase diagrams [23] is necessary to evaluate the degree of polymerization dependence of the critical
+amplitude (go w N1/4), near the Cs,c with at least one decade in N at constant salt concentration. Far from the critical point, the interfacial tension also depends on N [58], but an explanation and systematic study with fixed salt concentration remains a challenge.
+Effect of temperature on the interfacial tension
+Close to the critical salt concentration, a variation in temperature should reveal insight into the more familiar temperatureecomposition phase diagram (Figure 1b).
+Using DDR, the KPSS/PDADMAB system was studied on approach to Tc.
+Figure 3 shows a mean-field plot by linearizing Eq. (1)
+on a plot of g2/3 versus T to estimate the mean-field critical temperature, Tc,mf = (254  8) K, and ampli
+tude, go = (260  80) mN/m, for a fixed Cs of 1.6 mol/L with uncertainty () that represents one standard deviation from the linear regression fit. Similar to the Cs
+scaling, g lowers upon reducing temperature, consistent with the LCST and ε = jT  Tcj/Tc. One of the advantages with this approach is that the critical point is at the minimum of the LCST (Figure 1b), whereas this need not be the case in the CseCp diagram (Figure 1a). Measurements with sensitivity to low interfacial tension measurements with accurate temperature control that can introduce droplets on demand would be advantageous.
+Charge asymmetric mixing and droplet coalescence
+Coalescence kinetics are strongly influenced by the coacervate droplet interfacial tension, interface structure, medium viscoelasticity, and excess surface charge. An elegant way to probe such effects is to study polyelectrolytes as a function of mixing ratios [63,64]. Liu et al. used stopped flow light scattering to observe three kinetic behaviors depending on Cs and mixing ratio (z) in the formation of coacervate phases and dispersed polyelectrolyte complexes (PEC) with PAA/PDADMAC. Three regimes were observed based on relaxation/reorganization of soluble PEC, aggregation or rearrangement of small soluble PEC into larger structures, and redistribution of excess charge to produce net
+Figure 1
+Associative liquid-liquid phase separation (a) Experimental phase diagrams (A) and theoretical predictions (—) using the charge binding model for N = 180 with varying extents of side chain oxidation. Reproduced from the study by Lou et al. [33] with permission from the American Chemical Society. (b) Coexistence curves of KPSS/PDADMAB mixture at Cs = 2.05 mol/L of KBr showing the two-phase (2-F) and one-phase (1-F) region. The initial PSS concentration of 0.15 mol/L phase separates into the supernatant (B) and concentrated phases (). Cloud point is indicated by (:) at CPSS = 0.15 mol/L. Polymer concentrations are with reference to its monomer molar concentration. Error bars represent one standard deviation estimated from the uncertainty in the sampling micropipette volumes. While error bars are shown, they may be smaller than the symbols used. Reproduced from the study by Ali et al [34] with permission from the American Chemical Society. KPSS, potassium poly(styrene sulfonate); PDADMAB, poly(diallyldimethylammonium bromide).
+Interfacial tension in polyelectrolyte coacervates Prabhu 5
+www.sciencedirect.com Current Opinion in Colloid & Interface Science 2021, 53:101422
+
+
+neutral coacervate droplets coexisting with PEC [63]. Net neutral coacervate droplets coexisting with soluble PEC under off-stoichiometric mixing ratios provide a method to form droplets and measure the interfacial tension, under different z. This may be a promising
+approach to compare with a liquid-state theory of concentration-asymmetric mixtures [65]. The effect of mixing stoichiometry with natural polyelectrolytes of hyaluronic acid and chitosan provides a method to form suspensions, aggregates, and coacervates [66] as well as stretchable hydrogels [67] and scaffolds [68].
+Well-defined layer-by-layer assembled polyelectrolyte microcapsules exhibit fusion illustrating the fluidity of polyelectrolyte exchange [69]. An interfacial modification by coacervation was achieved by aqueous two-phase system microcapsules that form microgel particles by polyelectrolytes that partition to different emulsion phases [70]. All aqueous cell-encapsulating compartments can be made using this interfacial polyelectrolyte complexation principle as well on a 100-mm scale [71].
+Shape characteristic measurements and examples from membraneless organelles and biomolecular condensates
+Dripping-on-substrate rheology allows for a kinetic analysis of the shape characteristics of a pulled droplet [19] developed to study the aireliquid interface with sensitivity to inertiocapillary, viscocapillary, and elastocapillary regimes. These regimes are characterized by a
+Rayleigh time tR 1⁄4
+
+rR3
+go
+1=2
+under inertiocapillary
+regimes and viscocapillary time tVC 1⁄4 h0R0
+g once
+viscous effects become relevant. Applications of this method to coacervates and polyelectrolyte solutions provide an interface-sensitive rheological tool complementing droplet tensiometry and DDR. A challenge with coacervates may be accessing a regime for ultralow interfacial tensions that are characteristic of high Bond
+Figure 2
+Effect of salt on interfacial tension (a) DDR measurements of the interfacial tension as a function of Cs for KPSS/PDADMAB at 25 C and Cs= Cs;c in the
+inset. The regression result to the power law model leads to g 1⁄4 ð204 ±36Þð1  Cs=Cs;c Þ1:5±0:1 mN/m with a fixed Cs,c of 1.977 mol/L (-) determined by turbidimetry. Reproduced from the study by Ali and Prabhu [59] with permission from the American Chemical Society. (b) Compilation of three different coacervate systems and techniques that study the interfacial tension via CP-AFM (,) from the study by Spruijt et al. [57], SFA (A) from the study by Priftis et al. [58], and DDR () from the study by Ali and Prabhu [59]. CP-AFM, colloidal probe atomic force microscopy; DDR, deformed droplet retraction; KPSS, potassium poly(styrene sulfonate); PDADMAB, poly(diallydimethylammonium bromide); SFA, surface forces apparatus.
+Figure 3
+Deformed droplet retraction measurement of the interfacial tension for KPSS/PDADMAB at Cs 1⁄4 1.6 mol/L with fit to mean field prediction. The uncertainties (error bar) shown are estimated by one standard deviation from the mean of at least 5 measurements for each T. Reproduced from Ali and Prabhu [59] with permission from the American Chemical Society. KPSS, potassium poly(styrene sulfonate); PDADMAB, poly(diallyldimethylammonium bromide).
+6 Polyelectrolytes – Coacervates and Membraneless Organelles
+Current Opinion in Colloid & Interface Science 2021, 53:101422 www.sciencedirect.com
+
+
+numbers (Bo) determined by the gravitational force:surface tension ratio, Bo 1⁄4 rgL2=g. Along these lines, Hann et al. [71] showed how the charge stoichiometry affects pendant droplet stability in an aqueous twophase system.
+Pendant drop tensiometry provides a sensitive approach to measure the surface and interfacial tension [27]. The method was extended to compound pendant drops formed when a spherical particle is attached to the primary pendant drop. This configuration enables interfacial tensions for Bond numbers as low as zero [72]. The standard pendant drop tensiometry fails if the interfacial tension force is too low to sustain a stable hanging drop, corresponding to Bond numbers, Bo [ 1. In such a case, DDR and the spinning drop method [73] are alternatives.
+Many characterization methods require quantities of material or sample environments that are not amenable to cellular and subcellular study in biological systems. Therefore, while analysis methods used in liquideliquid phase separation of polyelectrolytes are applicable to membraneless organelles and biomolecular condensates, the added constraints may require novel measurement adaptations. Jawerth et al. [74] developed an optical trap approach to study the frequency-dependent rheology and surface (interfacial) tension between the salt solution and protein condensate from the major component of P granules of the Caenorhabditis elegans nematode worm. In this method, two colloidal particles, under optical trap control, are adhered to the surface of the protein condensate. The droplet is deformed by displacing one of the colloids that lead to a force balance on the droplet that considers the opposing forces from the optical traps and the viscous drag of the droplet. The force sensitivity of optical traps and condensate radius between 5 mm and 9 mm uses a theoretical analysis of oscillatory deformation and response function to quantify the surface tension. The methods achieve mN/m surface tension resolution with salt concentration dependence that remarkably follows the scaling suggested by Eq. (2) and shown in Table 1 [74].
+The droplet shape fundamentals also apply to intracellular objects to characterize interfacial tension and macromolecular phase separation mechanisms as in vivo and in vitro studies using high-spatial-resolution optical and fluorescence imaging approaches [75]. For example, Brangwynne et al. [76] measured the inverse capillary viscosity (h/g) from the characteristic time for membraneless organelle droplet fusion for droplets positioned using a microneedle. These RNAeprotein droplets had interfacial tension in the mN/m scale (Table 1). In many cases, direct measurements of the viscosity may not be easily determined. However, local transport measurements
+via fluorescence recovery after photobleaching and fluorescence correlation spectroscopy with known sizes of dye-labeled probes could be used to estimate the viscosity via the StokeseEinstein relationship. Finally, Feric et al. [77] characterized the droplet shape of ribonucleoprotein bodies and their subcompartments under in vivo and in vitro conditions. These liquid-like bodies that contain noncoalescing internal droplets also exhibit ultralow interfacial tension (Table 1). Their studies show that liquideliquid phase separation and the further organization into subcompartments enables localization and processing of biomolecules. The ultralow interfacial tensions naturally imply that very little energy is required to deform, yet stable without the need for an encapsulating membrane.
+Opportunities in composition profilometry
+Simulations predict composition profiles with an interfacial width on the order of 5s to 10s, where s is the
+bead diameter of 4.75 A ̊ [56]. Therefore, methods with nanometer resolution and composition sensitivity such as neutron reflectivity may be useful. Model polyelectrolyte brushes with linear chain complexes may provide insight into the development of composition profilometry of coacervate interfaces and take advantage of thin film methods [78,79]. Interface-sensitive methods such as sum-frequency generation have a lot to offer for coacervate fundamentals [80].
+Summary
+This review summarizes recent measurement advancements with a focus on associative liquide liquid phase separation and the resulting ultralow interfacial tension. Recent observations on the effects of salt, salt type, temperature, and stoichiometry of mixing affect the chain association and phase diagram. While one transparent theory or equation of state may not address all these effects, the universal behavior with a mean field analysis provides a needed start to describe the phase diagrams and interfacial tension critical scaling and amplitudes. The validation of molecular simulation results and extension to molecular descriptions of the charge correlations and solvation characteristics would help guide the appropriate measurements. Measurement development and applications of such fundamentals for delivery of biomolecules, separation of charged macromolecules, stability, and coalescence behavior of nanoscale droplets are more important than ever.
+Declaration of competing interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Interfacial tension in polyelectrolyte coacervates Prabhu 7
+www.sciencedirect.com Current Opinion in Colloid & Interface Science 2021, 53:101422
+
+
+Acknowledgements
+This work was partially supported by the National Institute of Standards and Technology Materials Genome Initiative.
+References
+Papers of particular interest, published within the period of review, have been highlighted as:
+ of special interest  of outstanding interest
+1. Kabanov VA: Polyelectrolyte complexes in solution and in bulk. Russ Chem Rev 2005, 74:3, https://doi.org/10.1070/ RC2005v074n01ABEH001165.
+2. van der Gucht J, Spruijt E, Lemmers M, Stuart MAC: Poly
+electrolyte complexes: bulk phases and colloidal systems. J Colloid Interface Sci 2011, 361:407–422, https://doi.org/ 10.1016/j.jcis.2011.05.080.
+3. Srivastava S, Tirrell MV: Polyelectrolyte complexation. In
+Rice SA, Dinner AR. Adv. Chem. Phys., vol. 161. Malden: WileyBlackwell; 2016:499–544.
+4 
+. Muthukumar M: 50th anniversary perspective: a perspective on polyelectrolyte solutions. Macromolecules 2017, 50: 9528–9560, https://doi.org/10.1021/acs.macromol.7b01929. Perspectives article on fundamentals of polyelectrolytes with a attention to theoretical developments and appropriate references across many relevant topics.
+5. Horn JM, Kapelner RA, Obermeyer AC: Macro- and microphase separated protein-polyelectrolyte complexes: design parameters and current progress. Polymers 2019, 11, https://doi.org/ 10.3390/polym11040578.
+6. Gao S, Holkar A, Srivastava S: Protein-polyelectrolyte complexes and micellar assemblies. Polymers 2019, 11:1097, https://doi.org/10.3390/polym11071097.
+7 
+. Sing CE, Perry SL: Recent progress in the science of complex coacervation. Soft Matter 2020, 16:2885–2914, https://doi.org/ 10.1039/d0sm00001a. Review with more than 300 citation covering a wide-ranging topic in coacervation.
+8 
+. Brangwynne CP, Tompa P, Pappu RV: Polymer physics of intracellular phase transitions. Nat Phys 2015, 11:899–904, https://doi.org/10.1038/NPHYS3532. Good starting point for nonexpert on the topic of organelles with many examples
+9. Aumiller WM, Keating CD: Experimental models for dynamic compartmentalization of biomolecules in liquid organelles: reversible formation and partitioning in aqueous biphasic systems. Adv Colloid Interface Sci 2017, 239:75–87, https:// doi.org/10.1016/j.cis.2016.06.011.
+10. Berry J, Brangwynne CP, Haataja M: Physical principles of
+intracellular organization via active and passive phase transitions. Rep Prog Phys 2018, 80, 046601, https://doi.org/ 10.1088/1361-6633/aaa61e.
+11. Feldstein MM, Dormidontova EE, Khokhlov AR: Pressure sensitive adhesives based on interpolymer complexes. Prog Polym Sci 2015, 42:79–153, https://doi.org/10.1016/ j.progpolymsci.2014.10.006.
+12 
+. Stewart RJ, Wang CS, Song IT, Jones JP: The role of coacervation and phase transitions in the sandcastle worm adhesive system. Adv Colloid Interface Sci 2017, 239:88–96, https:// doi.org/10.1016/j.cis.2016.06.008. Illuminating research on how nature uses coacervates that motivates studied with synthetic polyelectrolytes to make advanced materials.
+13. Asenjo JA, Andrews BA: Aqueous two-phase systems for protein separation: a perspective. J Chromatogr, A 2011, 1218:8826–8835, https://doi.org/10.1016/ j.chroma.2011.06.051.
+14. Lee SY, Khoiroh I, Ooi CW, Ling TC, Show PL: Recent advances in protein extraction using ionic liquid-based aqueous twophase systems. Separ Purif Rev 2017, 46:291–304, https:// doi.org/10.1080/15422119.2017.1279628.
+15. McQueen L, Lai D: Ionic liquid aqueous two-phase systems from a pharmaceutical perspective. Front Chem 2019, 7:135, https://doi.org/10.3389/fchem.2019.00135.
+16. Mountain GA, Keating CD: formation of multiphase complex coacervates and partitioning of biomolecules within them. Biomacromolecules 2020, 21:630–640, https://doi.org/10.1021/ acs.biomac.9b01354.
+17. Mao S, Sun W, Kissel T: Chitosan-based formulations for delivery of DNA and siRNA. Adv Drug Deliv Rev 2010, 62:12–27, https://doi.org/10.1016/j.addr.2009.08.004.
+18 
+. Aumiller WM, Cakmak FP, Davis BW, Keating CD: RNA-based coacervates as a model for membraneless organelles: formation, properties, and interfacial liposome assembly. Langmuir 2016, 32:10042–10053, https://doi.org/10.1021/ acs.langmuir.6b02499. Deep study into RNA-based coacervates with emphasis on the thermal transitions and diffusivity of the liquid coacervate droplets via fluorescence recovery after photobleaching
+19. Dinic J, Sharma V: Macromolecular relaxation, strain, and extensibility determine elastocapillary thinning and extensional viscosity of polymer solutions. Proc Natl Acad Sci USA 2019, 116:8766–8774, https://doi.org/10.1073/pnas.1820277116.
+20. Shinozaki K, Vantan T, Saito Y, Nose T: Interfacial-tension of demixed polymer-solutions near the critical-temperature polystyrene+methylcyclohexane. Polymer 1982, 23:728–734, https://doi.org/10.1016/0032-3861(82)90059-3.
+21. Xia K-Q, Franck C, Widom B: Interfacial tensions of phaseseparated polymer solutions. J Chem Phys 1992, 97: 1446–1454, https://doi.org/10.1063/1.463220.
+22. Schwahn D, Pipich V: Aqueous solutions of poly(ethylene oxide): crossover from ordinary to tricritical behavior. Macromolecules 2016, 49:8228–8240, https://doi.org/10.1021/ acs.macromol.6b01466.
+23. Wu C, Li Y: Universal scaling of phase diagrams of polymer solutions. Macromolecules 2018, 51:5863–5866, https://doi.org/ 10.1021/acs.macromol.8b01234.
+24. Sengers JV, Shanks JG: Experimental critical-exponent values for fluids. J Stat Phys 2009, 137:857–877, https://doi.org/ 10.1007/s10955-009-9840-z.
+25. J.S. Rowlinson, B. Widom, Molecular theory of capillarity, Clarendon Press, Oxford, Oxfordshire, n.d.
+26. Hu Y, He Z, Hao Y, Gong L, Pang M, Howard GP, Ahn H-H, Brummet M, Chen K, Liu H, Ke X, Zhu J, Anderson CF, Cui H, Ullman CG, Carrington CA, Pomper MG, Seo J-H, Mitta R, Minn I, Mao H-Q: Kinetic control in assembly of plasmid DNA/polycation complex nanoparticles. ACS Nano 2019, 13: 10161–10178, https://doi.org/10.1021/acsnano.9b03334.
+27 
+. Berry JD, Neeson MJ, Dagastine RR, Chan DYC, Tabor RF: Measurement of surface and interfacial tension using pendant drop tensiometry. J Colloid Interface Sci 2015, 454: 226–237, https://doi.org/10.1016/j.jcis.2015.05.012. Review of interfacial tension analysis methods, theoretical requirements, errors and limitations, and introduction of Worthington number to characterize measurement precision.
+28 
+. Riggleman RA, Kumar R, Fredrickson GH: Investigation of the interfacial tension of complex coacervates using fieldtheoretic simulations. J Chem Phys 2012, 136, 024903, https:// doi.org/10.1063/1.3674305. Influential paper with theoretical framework for interfacial tension.
+29. Jones RAL, Richards RW: Polymers at surfaces and interfaces. United Kingdom: Cambridge University Press; 1999.
+30 
+. Drelich J, Fang C, White CL: Measurement of interfacial tension in fluid-fluid systems. In Encycl. Surf. Colloid Sci. Marcel Dekker, Inc; 2002:3152. Excellent review directly related to this opinion with a highlight of techniques and applicability to viscous liquids. They provide a classification of techniques as well as informative table of measurement limit across different methods, some described here.
+31. Perry SL, Li Y, Priftis D, Leon L, Tirrell M: The effect of salt on the complex coacervation of vinyl polyelectrolytes. Polymers 2014, 6:1756–1772, https://doi.org/10.3390/polym6061756.
+8 Polyelectrolytes – Coacervates and Membraneless Organelles
+Current Opinion in Colloid & Interface Science 2021, 53:101422 www.sciencedirect.com
+
+
+32 
+. Li L, Srivastava S, Andreev M, Marciel AB, de Pablo JJ, Tirrell MV: Phase behavior and salt partitioning in polyelectrolyte complex coacervates. Macromolecules 2018, 51: 2988–2995, https://doi.org/10.1021/acs.macromol.8b00238. Experimental study that illustrates salt partitioning and tie-lines on phase diagrams via thermal analysis.
+33 
+. Lou J, Friedowitz S, Qin J, Xia Y: Tunable coacervation of welldefined homologous polyanions and polycations by local
+polarity. ACS Cent Sci 2019, 5:549–557, https://doi.org/10.1021/ acscentsci.8b00964. Binodal determined by fluorescence intensity on a new system of low polydispersity with theoretical model.
+34 
+. Ali S, Bleuel M, Prabhu VM: Lower critical solution temperature in polyelectrolyte complex coacervates. ACS Macro Lett 2019, 8:289–293, https://doi.org/10.1021/acsmacrolett.8b00952. First demonstration of phase separation upon heating with characterization by ultraviolet spectroscopy and laser transmittance for cloud point.
+35. Xie S, Lodge TP: Phase behavior of binary polymer blends doped with salt. Macromolecules 2018, 51:266–274, https:// doi.org/10.1021/acs.macromol.7b02310.
+36 
+. Salehi A, Larson RG: A molecular thermodynamic model of complexation in mixtures of oppositely charged polyelectrolytes with explicit account of charge association/ dissociation. Macromolecules 2016, 49:9706–9719, https:// doi.org/10.1021/acs.macromol.6b01464. Theoretical study directly related to this opinion with appropriate references therein.
+37. Andreev M, Prabhu VM, Douglas JF, Tirrell M, de Pablo JJ: Complex coacervation in polyelectrolytes from a coarsegrained model. Macromolecules 2018, 51:6717–6723, https:// doi.org/10.1021/acs.macromol.8b00556.
+38 
+. Spruijt E, Westphal AH, Borst JW, Cohen Stuart MA, van der
+Gucht J: Binodal compositions of polyelectrolyte complexes. Macromolecules 2010, 43:6476–6484, https://doi.org/10.1021/ ma101031t. Quantitative phase diagrams with effects of molecular mass and salt
+39 
+. Wang Q, Schlenoff JB: The polyelectrolyte complex/coacervate continuum. Macromolecules 2014, 47:3108–3116, https:// doi.org/10.1021/ma500500q. Experimental study that considered coacervate liquids (as in this review) and solids
+40. Friedowitz S, Salehi A, Larson RG, Qin J: Role of electrostatic correlations in polyelectrolyte charge association. J Chem Phys 2018, 149:163335, https://doi.org/10.1063/1.5034454.
+41. Andreev M, de Pablo JJ, Chremos A, Douglas JF: Influence of ion solvation on the properties of electrolyte solutions.
+J Phys Chem B 2018, 122:4029–4034, https://doi.org/10.1021/ acs.jpcb.8b00518.
+42. Batys P, Kivisto S, Lalwani SM, Lutkenhaus JL, Sammalkorpi M: Comparing water-mediated hydrogen-bonding in different polyelectrolyte complexes. Soft Matter 2019, 15:7823–7831, https://doi.org/10.1039/c9sm01193e.
+43. Schlenoff JB: Site-specific perspective on interactions in polyelectrolyte complexes: toward quantitative understanding. J Chem Phys 2018, 149:163314, https://doi.org/10.1063/ 1.5035567.
+44 
+. Adhikari S, Leaf MA, Muthukumar M: Polyelectrolyte complex coacervation by electrostatic dipolar interactions. J Chem Phys 2018, 149:163308, https://doi.org/10.1063/1.5029268. Theory that considers additional effects of entropy of dissociated ions and electrostatic interactions among dipolar and charged segments of complexes and uncomplexed polyelectrolytes, and polymer–solvent hydrophobicity.
+45 
+. Huang J, Morin FJ, Laaser JE: Charge-density-dominated phase behavior and viscoelasticity of polyelectrolyte complex coacervates. Macromolecules 2019, 52:4957–4967, https:// doi.org/10.1021/acs.macromol.9b00036.
+New efforts to address charge density effects with polyelectrolytes that share the same main chain structure.
+46 
+. Sadman K, Wang Q, Chen Y, Keshavarz B, Jiang Z, Shull KR: Influence of hydrophobicity on polyelectrolyte complexation. Macromolecules 2017, 50:9417–9426, https://doi.org/10.1021/ acs.macromol.7b02031. Systematic change in polycation hydrophobicity with application to coacervate films.
+47. Ting JM, Wu H, Herzog-Arbeitman A, Srivastava S, Tirrell MV: Synthesis and assembly of designer styrenic diblock polyelectrolytes. ACS Macro Lett 2018, 7:726–733, https://doi.org/ 10.1021/acsmacrolett.8b00346.
+48. Nott TJ, Petsalaki E, Farber P, Jervis D, Fussner E, Plochowietz A, Craggs TD, Bazett-Jones DP, Pawson T, FormanKay JD, Baldwin AJ: Phase transition of a disordered nuage protein generates environmentally responsive membraneless organelles. Mol Cell 2015, 57:936–947, https://doi.org/ 10.1016/j.molcel.2015.01.013.
+49. Zhou H-X, Nguemaha V, Mazarakos K, Qin S: Why do disordered and structured proteins behave differently in phase separation? Trends Biochem Sci 2018, 43:499–516, https:// doi.org/10.1016/j.tibs.2018.03.007.
+50. Wei M-T, Elbaum-Garfinkle S, Holehouse AS, Chen CC-H, Feric M, Arnold CB, Priestley RD, Pappu RV, Brangwynne CP: Phase behaviour of disordered proteins underlying low density and high permeability of liquid organelles. Nat Chem 2017, 9:1118–1125, https://doi.org/10.1038/NCHEM.2803.
+51. Lin Y-H, Brady JP, Chan HS, Ghosh K: A unified analytical theory of heteropolymers for sequence-specific phase behaviors of polyelectrolytes and polyampholytes. J Chem Phys 2020, 152, 045102, https://doi.org/10.1063/1.5139661.
+52. Rumyantsev AM, Jackson NE, Yu B, Ting JM, Chen W, Tirrell MV, de Pablo JJ: Controlling complex coacervation via random polyelectrolyte sequences. ACS Macro Lett 2019, 8:
+1296–1302, https://doi.org/10.1021/acsmacrolett.9b00494.
+53. Yang M, Digby ZA, Schlenoff JB: Precision doping of polyelectrolyte complexes: insight on the role of ions. Macromolecules 2020, 53:5465–5474, https://doi.org/10.1021/ acs.macromol.0c00965.
+54. Adhikari S, Prabhu VM, Muthukumar M: Lower critical solution temperature behavior in polyelectrolyte complex co
+acervates. Macromolecules 2019, 52:6998–7004, https://doi.org/ 10.1021/acs.macromol.9b01201.
+55 
+. Qin J, Priftis D, Farina R, Perry SL, Leon L, Whitmer J, Hoffmann K, Tirrell M, de Pablo JJ: Interfacial tension of polyelectrolyte complex coacervate phases. ACS Macro Lett 2014, 3:565–568, https://doi.org/10.1021/mz500190w. Influential paper with theoretical framework for interfacial tension with and without added salts.
+56 
+. Lytle TK, Salazar AJ, Sing CE: Interfacial properties of polymeric complex coacervates from simulation and theory. J Chem Phys 2018, 149:163315, https://doi.org/10.1063/ 1.5029934. Theoretical study directly related to this opinion with appropriate references therein.
+57 
+. Spruijt E, Sprakel J, Stuart MAC, van der Gucht J: Interfacial tension between a complex coacervate phase and its coexisting aqueous phase. Soft Matter 2009, 6:172–178, https:// doi.org/10.1039/B911541B. Influential paper that provides a theoretical framework for interfacial tension with an dwithout added that with predictions that yet to be verified.
+58 
+. Priftis D, Farina R, Tirrell M: Interfacial energy of polypeptide complex coacervates measured via capillary adhesion. Langmuir 2012, 28:8721–8729, https://doi.org/10.1021/ la300769d. Influential paper that provides a measurement framework by SFA to study model polypeptide coacervates as a function of salt and molecular mass.
+Interfacial tension in polyelectrolyte coacervates Prabhu 9
+www.sciencedirect.com Current Opinion in Colloid & Interface Science 2021, 53:101422
+
+
+59 
+. Ali S, Prabhu VM: Characterization of the ultralow interfacial tension in liquid-liquid phase separated polyelectrolyte complex coacervates by the deformed drop retraction
+method. Macromolecules 2019, 52:7495–7502, https://doi.org/ 10.1021/acs.macromol.9b01491. Combines zero-shear rheology and droplet shape analysis on the effect of salt and temperature.
+60. Luciani A, Champagne MF, Utracki LA: Interfacial tension coefficient from the retraction of ellipsoidal drops. J Polym Sci Part B-Polym Phys 1997, 35:1393–1403.
+61. Vis M, Peters VFD, Blokhuis EM, Lekkerkerker HNW, Erne BH, Tromp RH: Effects of electric charge on the interfacial tension between coexisting aqueous mixtures of polyelectrolyte and neutral polymer. Macromolecules 2015, 48:7335–7345, https:// doi.org/10.1021/acs.macromol.5b01675.
+62. Lim S, Moon D, Kim HJ, Seo JH, Kang IS, Cha HJ: Interfacial tension of complex coacervated mussel adhesive protein according to the Hofmeister series. Langmuir 2014, 30: 1108–1115, https://doi.org/10.1021/la403680z.
+63. Liu X, Haddou M, Grillo I, Mana Z, Chapel J-P, Schatz C: Early stage kinetics of polyelectrolyte complex coacervation monitored through stopped-flow light scattering. Soft Matter 2016, 12:9030–9038, https://doi.org/10.1039/C6SM01979J.
+64. Takahashi R, Narayanan T, Sato T: Growth kinetics of polyelectrolyte complexes formed from oppositely-charged homopolymers studied by time-resolved ultra-small-angle X-ray scattering. J Phys Chem Lett 2017, 8:737–741, https://doi.org/ 10.1021/acs.jpclett.6b02957.
+65. Zhang P, Alsaifi NM, Wu J, Wang Z-G: Polyelectrolyte complex coacervation: effects of concentration asymmetry. J Chem Phys 2018, 149:163303, https://doi.org/10.1063/1.5028524.
+66. Lalevee G, Sudre G, Montembault A, Meadows J, Malaise S, Crepet A, David L, Delair T: Polyelectrolyte complexes via desalting mixtures of hyaluronic acid and chitosanPhysicochemical study and structural analysis. Carbohydr Polym 2016, 154:86–95, https://doi.org/10.1016/ j.carbpol.2016.08.007.
+67. Lalevee G, David L, Montembault A, Blanchard K, Meadows J, Malaise S, Crepet A, Grillo I, Morfin I, Delair T, Sudre G: Highly stretchable hydrogels from complex coacervation of natural polyelectrolytes. Soft Matter 2017, 13:6594–6605, https:// doi.org/10.1039/c7sm01215b.
+68. Acar OK, Kayitmazer AB, Kose GT: Hyaluronic acid/chitosan coacervate-based scaffolds. Biomacromolecules 2018, 19: 1198–1211, https://doi.org/10.1021/acs.biomac.8b00047.
+69. Pechenkin MA, Moehwald H, Volodkin DV: pH- and salt
+mediated response of layer-by-layer assembled PSS/PAH microcapsules: fusion and polymer exchange. Soft Matter 2012, 8:8659–8665, https://doi.org/10.1039/c2sm25971k.
+70. Ma Q, Yuan H, Song Y, Chao Y, Mak SY, Shum HC: Partitioning-dependent conversion of polyelectrolyte assemblies in
+an aqueous two-phase system. Soft Matter 2018, 14: 1552–1558, https://doi.org/10.1039/c7sm02275a.
+71. Hann SD, Niepa THR, Stebe KJ, Lee D: One-step generation of cell-encapsulating compartments via polyelectrolyte complexation in an aqueous two phase system. ACS Appl Mater Interfaces 2016, 8:25603–25611, https://doi.org/10.1021/ acsami.6b07939.
+72. Neeson MJ, Chan DYC, Tabor RF: Compound pendant drop tensiometry for interfacial tension measurement at zero Bond number. Langmuir 2014, 30:15388–15391, https://doi.org/ 10.1021/la504406m.
+73. Liu Y, Lipowsky R, Dimova R: Concentration dependence of the interfacial tension for aqueous two-phase polymer solutions of dextran and polyethylene glycol. Langmuir 2012, 28: 3831–3839, https://doi.org/10.1021/la204757z.
+74 
+. Jawerth LM, Ijavi M, Ruer M, Saha S, Jahnel M, Hyman AA, Jülicher F, Fischer-Friedrich E: Salt-dependent rheology and surface tension of protein condensates using optical traps. Phys Rev Lett 2018, 121:258101, https://doi.org/10.1103/ PhysRevLett.121.258101. Novel methodology readily applicable across different soft matter and colloid systems.
+75. Mitrea DM, Chandra B, Ferrolino MC, Gibbs EB, Tolbert M,
+White MR, Kriwacki RW: Methods for physical characterization of phase-separated bodies and membrane-less organelles. J Mol Biol 2018, 430:4773–4805, https://doi.org/10.1016/ j.jmb.2018.07.006.
+76. Brangwynne CP, Mitchison TJ, Hyman AA: Active liquid-like behavior of nucleoli determines their size and shape in Xenopus laevis oocytes. Proc Natl Acad Sci USA 2011, 108: 4334–4339, https://doi.org/10.1073/pnas.1017150108.
+77. Feric M, Vaidya N, Harmon TS, Mitrea DM, Zhu L, Richardson TM, Kriwacki RW, Pappu RV, Brangwynne CP: Coexisting liquid phases underlie nucleolar subcompartments. Cell 2016, 165:1686–1697, https://doi.org/10.1016/ j.cell.2016.04.047.
+78. Yu J, Jackson NE, Xu X, Morgenstern Y, Kaufman Y, Ruths M, de Pablo JJ, Tirrell M: Multivalent counterions diminish the lubricity of polyelectrolyte brushes. Science 2018, 360:1434, https://doi.org/10.1126/science.aar5877.
+79. Sethuraman V, McGovern M, Morse DC, Dorfman KD: Influence of charge sequence on the adsorption of polyelectrolytes to oppositely-charged polyelectrolyte brushes. Soft Matter 2019, 15:5431– 5442, https://doi.org/10.1039/ c9sm00581a.
+80. Wilson MC, Singla S, Stefin AJ, Kaur S, Brown JV, Dhinojwala A: Characterization of acid-base interactions using interfacesensitive sum frequency generation spectroscopy. J Phys Chem C 2019, 123:18495–18501, https://doi.org/10.1021/ acs.jpcc.9b06266.
+10 Polyelectrolytes – Coacervates and Membraneless Organelles
+Current Opinion in Colloid & Interface Science 2021, 53:101422 www.sciencedirect.com

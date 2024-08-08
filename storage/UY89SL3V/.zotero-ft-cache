@@ -1,0 +1,314 @@
+arXiv:0902.3009v5 [cond-mat.soft] 21 Mar 2009
+Non-mean-field screening by multivalent counterions
+M. S. Loth[*] and B. I. Shklovskii
+Department of Physics, University of Minnesota, Minneapolis, MN 55455 (Dated: October 28, 2018)
+Screening of a strongly charged macroion by its multivalent counterions can not be described in the framework of a mean-field Poisson-Boltzmann (PB) theory because multivalent counterions form a strongly correlated liquid (SCL) on the surface of the macroion. It was predicted that a distant counterion polarizes the SCL as if it were a metallic surface and creates an electrostatic image. The attractive potential energy of the image is the reason why the charge density of counterions decreases faster with distance from the charged surface than in PB theory. Using the Monte Carlo method to find the equilibrium distribution of counterions around the macroion, we confirm the existence of the image potential energy. It is also shown that due to the negative screening length of the SCL, −2ξ, the effective metallic surface is actually above the SCL by |ξ|.
+I. INTRODUCTION
+In this paper we deal with a problem in which one big and strongly charged ion, called a macroion, is screened by much smaller but still multivalent counterions, each with a large charge Ze (e is the proton charge); for brevity, we call them Z-ions. A variety of macroions are of importance in chemistry and biology, including charged lipid membranes, colloids, DNA, and viruses. Multivalent metal ions such as La+3, dendrimers, and short polyelectrolytes can play the role of the screening Z -ions. To illustrate the fundamental aspects of screening we use the simple geometry of a solid occupying the half space x ≤ 0, whose surface at x = 0 has a large uniform surface charge density −σ. The surface charge is screened by an aqueous solution of positive, spherical Z-ions with radius a, which occupies the rest of space x > 0 (see Fig. 1). Both the macroion and the aqueous solution have dielectric constant ǫ ≃ 80. If all of the Z-ions were to condense on the macroion’s surface, their total charge per unit area would equal σ. In such a neutral system, the concentration of Z-ions N (x) → 0 at x → ∞. The main goal of this paper is to discuss the behavior of N (x). The solution of the Poisson-Boltzmann (PB) equation for this problem has been known for nearly a century [1, 2]. The Gouy-Chapman solution is
+N (x) = 1
+2πZ 2 lB
+1
+(λ + x − a)2 , (1)
+where λ = e/2πσlBZ is the Gouy-Chapman length, and
+lB = e2/(ǫkBT ) ≃ 0.71 nm is the Bjerrum length. We have modified the standard Gouy-Chapman formula, taking into account the finite radius of the Z-ions, which can not approach the surface closer than x = a. It was shown [3, 4, 5, 6, 7, 8, 9, 10, 11] that the Gouy-Chapman solution fails when both σ and Z are large enough. The reason it fails is that, in addition to λ, there is a second length scale in the problem due to the discreteness of charge. When the condensed Z-ions neutralize the charge of the plane, the two-dimensional concentration of Z-ions is n = σ/Ze, and the surface
+2a x
++Ze +Ze +Ze +Ze
++Ze
+ÈΞÈ
+xmet xc
+-Ze
+x - 2xmet Λ
+FIG. 1: A stray positive Z-ion (elevated black sphere), at a distance x from the surface (thick line) of a negatively charged planar macroion (shaded region). Other Z-ions (black spheres), condensed at the surface, are on average a distance λ above the macroion’s surface. The dashed line indicates the average distance, xc = a + λ, from the macroion’s surface to the adsorbed Z-ions’ centers. The stray Z-ion and its negative image charge (white sphere), are equidistant from the effective metallic surface, which is shown by the thin line at xmet = xc + |ξ|.
+area per ion, the Wigner-Seitz cell, can be approximated as a disc of radius b such that πb2 = 1/n. Thus, b = (πn)−1/2 = (Ze/πσ)1/2 and 2b is approximately the distance between Z-ions. We can construct the dimensionless ratio
+b
+λ = 2Γ , Γ = Z2e2/ǫb
+kBT . (2)
+Here Γ is the dimensionless Coulomb coupling constant, or the inverse dimensionless temperature measured in the units of a typical interaction energy between Z-ions. For example, at Z = 3 and DNA like σ = 0.95e nm−2 used in this paper, we get Γ = 6.4, λ ≃ 0.79 nm and b ≃ 1.0 nm. Thus, the Coulomb repulsion energy of the Z-ions dominates the thermal energy. The result is a strongly correlated liquid, which has short-range order similar to a Wigner crystal [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] and is
+
+
+2
+located, practically, at the very surface of the macroion. This paper deals only with the strong coupling case: Γ ≫ 1. Another definition for a Coulomb coupling parameter, Ξ = 2Γ2, was introduced in Ref. [9], and of course, in the limit Γ ≫ 1, Ξ ≫ 1 as well. Mean-field treatments, along the lines of PB theory, fail at Γ ≫ 1, since when a Z-ion strays away from the plane to distances x − a ≪ b, the electric field of his neighbors has no significant ̂x projection. In this range, the stray Z-ion is only affected by the electric field of its Wigner-Seitz cell (a disc of radius b). Therefore, at x − a ≪ b, the surface charge of the macroion is unscreened, and the electric field is 2πσ/ǫ. Thus, for 0 < x − a ≪ b,
+N (x) = σ
+Zeλ exp[−(x − a)/λ]. (3)
+(Here following Ref. [5] we used an expression for N (a) that ignores the atomic structure of water, while Refs. [3, 4] tried to take this structure into account). Remarkably, the same length λ characterizes both this exponential decay and the Gouy-Chapman solution, Eq. (1). It is clear that the dramatic difference between the exponential decay of Eq. (3) and the power law decay of Eq. (1) is due to the effects of correlations. Eq. (3) was first obtained in Refs. [3, 4]. Then it was re-derived in Refs. [9, 10] and confirmed by Monte Carlo (MC) simulations in Ref. [11]. Below we again confirm Eq. (3) at 0 < x − a ≪ b by MC simulations. However, the focus of this paper is on the non-PB behavior of N (x) at larger distances x − a > b, which has been predicted in Refs. [3, 4] but to our knowledge has never been verified analytically or numerically. To bring this prediction to mind, let us focus on a single, stray Z-ion located above the macroion’s surface at x > a + b (Fig. 1). Refs. [3, 4] argue that the negative charge of the correlation hole, −Ze, will spread to a disc of size ∼ x as neighboring Z-ions move to occupy the Wigner-Seitz cell the stray Z-ion left behind. This is similar to what happens in a metallic surface under the influence of an external charge. In fact, this metal-like polarization of the SCL on the surface of the macroion can actually be described by an image charge that appears in the body of the macroion. Because the centers of the Z-ions which form the SCL are typically located at a distance xc = a + λ above the surface (see Fig. 1) it is natural to think that the effective metallic surface is at xmet = xc and therefore the image is located at −x + 2xmet. The attractive interaction energy between the stray Z-ion and its image is then [24], for x−xmet & b,
+Uim(x) = − Z2e2
+4ǫ(x − xmet) . (4)
+This attractive image interaction, of course, is a correlation effect. The goal of this paper is to verify, by a Monte Carlo (MC) simulation and an analytical calculation, that a SCL on the insulating surface of a macroion does be
+have as a metal, and a stray Z-ion has potential energy Uim(x). The plan of the paper is as follows. In Sec. II we describe our MC procedure. In Sec. III, we present our MC results for the screening of a spherical macroion by Z-ions. To a first approximation they confirm that a stray Z-ion at x > a + b has potential energy Uim(x). This is the most important result of our paper. At a more detailed level, we see in Sec. III that to more accurately fit Eq. (4) to our MC data the effective metallic surface must be lifted slightly above xc. We find that a shift of 0.21 nm provides the best fit. This shift is explained in Sec. IV where we analytically derive Eq. (4), showing that there is indeed an attractive interaction energy between the stray Z-ion and its image. We further prove that the effective metallic surface should be lifted slightly by −ξ = |ξ|, where 2ξ is the linear screening length of the SCL. In other words, xmet, in Eq. (4) should be replaced by xmet = xc − ξ = xc + |ξ|. We show that, theoretically, ξ = −0.20 nm, in reasonable agreement with the MC simulation. The fact that a Wigner-crystal-like SCL has a negative screening radius was predicted theoretically [15] and confirmed experimentally for a low-density two-dimensional electron gas in silicon MOSFETs and GaAs heterojunctions [16, 17] (see also a recent paper [18]). In Sec. V we add a small concentration of monovalent salt (for example, NaCl) to our system. We show that the attractive image interaction persists in this system; however, the attraction is weaker due to screening.
+II. MONTE CARLO SIMULATION
+Our setup is similar to the simulations found in Refs. [11, 19, 20, 21, 22, 23]. Our system is contained within a spherical cell with radius rmax = 10.0 nm. Centered within the cell is a spherical macroion with charge QM = −300e and radius RM = 5.0 nm (−σ = −0.95 e/nm2). The system is populated by 100 Z-ions of charge 3e and radius a = 0.4 nm. The mobile particles are initialized to random non-overlapping coordinates. The wall of the spherical cell has a distance of closest approach of 0 so that a Z-ion may be placed with its center at the wall. Therefore all Z-ions are found at a radial distance r within the range RM + a < r ≤ rmax. After initializing the system, the total electrostatic energy of the system is calculated as
+E = e2
+2ǫ
+10 ∑1
+i,j;i6=j
+qiqj
+dij
+, (5)
+where particle i has charge qi (q1 = QM , and for i > 1, qi = Ze) located at the center of a hard sphere with radius ηi (η1 = RM , and for i > 1, ηi = a). The distance between particles i and j is dij . The dielectric constant is set to ǫ = 80 everywhere and there are no interactions with anything outside of the cell.
+
+
+3
+Selecting a particle at random, the MC program attempts to reposition it randomly within a cubic volume of (3.2 nm)3 centered on the particle’s current position. The total electrostatic energy of the system, E, is calculated after each attempted move. Modeled as hard spheres, if any of the particles overlap after an attempted move, such that dij < ηi +ηj the move is rejected. Additionally, any attempted move that places a particle outside of the cell, r > rmax, is also rejected. Otherwise, moves are accepted or rejected based on the traditional Metropolis algorithm. Simulations attempt 52 billion moves, of which ∼ 4% are accepted, resulting in each particle being moved an average of 20 million times. This low acceptance rate is due to most of the Z-ions being condensed on the macroion surface where their average separation is b = 1.0 nm; one can increase the rate to ∼ 8% by shrinking the volume in which the Z-ion is randomly repositioned to (1.6 nm)3. To ensure thermalization, 5 million moves are attempted before beginning the analysis of N (r), the Z-ion’s radial distribution.
+Following thermalization, N (r) is computed after every 20,000 attempted moves by dividing the simulation space around the central macroion into bins that are concentric spherical shells of thickness 0.1 nm, counting the ion population within each bin, and then calculating the average Z-ion density of each bin. We now introduce the empiric mean field potential, φ(r), which corresponds to the MC N (r), and is calculated from the radial distributions of the ions in the following way. First, the electric field is determined at the outer edge of each spherical shell by applying Gauss’ Law to the integrated charge. Then, the potential φ(r) is calculated by discreetly integrating the electric field in the radial direction. The empiric mean-field potential, φ(r), has nothing to do with the PB potential obtained by a solution of the spherical PB equation because, due to correlation effects, the MC N (r) differs from Eq. (1). In the present case, Z-ions are strongly condensed at the surface of the macroion, and therefore the potential φ(r) decays so fast with r that the interaction energy of a stray Z-ion, Zeφ(r), becomes less than kBT already at r > 5.65 nm.
+The main point of this paper is that the concentration of Z-ions, N (r), at a distance r from the center of the macroion, is only weakly influenced by the empiric mean-field potential energy Zeφ(r) and is mostly determined by the attractive correlation energy Uc(r). We extract Uc(r) − Uc(rmax) from the simulation data assuming that Z-ions that stray from the macroion surface are Boltzmann distributed according to,
+N (r) = N (rmax) exp
+(
+− Zeφ(r)
+kB T − Uc(r) − Uc(rmax)
+kB T
+) ,
+(6) so that the change in the attractive correlation energy for a Z-ion moved from rmax to r is
+Uc(r) − Uc(rmax) = −kBT ln
+( N (r) N (rmax)
+)
+− Zeφ(r), (7)
+xc
+ÈΞÈ
+Rc
+Rmet
+RM
+r'
+r
+-Ze-q' q' Ze
+FIG. 2: The generalization of Fig. 1 to a spherical geometry. A stray Z-ion with charge Ze is shown in a cross-sectional view at a distance r from the center of a spherical macroion with charge QM , which is covered by condensed Z-ions (black spheres). The condensed Z-ions are located at an average distance of Rc ≡ RM + xc = RM + a + λ from the center of the macroion. The stray Z-ion makes a correlation hole with charge −Ze, where the concentration of Z-ions is depleted. The resulting correlation potential can be modeled as if the Z-ion were near a metallic sphere with effective radius Rmet = R
+c + |ξ|. The image charges, −Ze and −q′ located at the center, and q′ located at a distance r′ away from the center, are shown by white spheres.
+where we took into account that φ(rmax) = 0 because our system is neutral. We need to recalculate the theoretical form of Uim for a spherical macroion geometry (see Fig. 2), to test that, for r − Rmet & b,
+∆U (r) ≡
+[
+Uc (r)−Uc (rmax )
+]
+−
+[
+Uim (r)−Uim (rmax )
+]
+= 0.
+(8) It is known [24] that a charge Ze at a distance r > Rmet from the center of a conducting sphere with radius Rmet and a net charge of −Ze, induces two image charges within the sphere. The charge q′ = −ZeRmet/r is lo
+cated at a distance r′ = R2
+met/r from the sphere’s center,
+and the compensating charge −q′ is located at the center of the sphere. The net charge of the macroion and the SCL, −Ze, accounts for the departure of the stray Z-ion and is also fixed at the center of the sphere. In the presence of these three charges a stray Z-ion, located at r, has potential energy given by
+Uim(r) = − (Ze)2
+rǫ + Zeq′
+2(r − r′)ǫ − Zeq′
+2rǫ . (9)
+The net charge −Ze has fixed magnitude and position
+
+
+4
+because, unlike charges q′ and −q′, it is not created by the stray Z-ion polarizing the SCL; therefore, the interaction term that involves the net charge does not include a factor of 1/2. In the limit x = r − RM ≪ RM , we recover the planar Uim(x) of Eq. (4), because Uim(r) is
+dominated by the influence of charge q′ ≃ −Ze located at r′ ≃ Rmet − r.
+The first term within the parentheses of Eq. (9) is written for the case when all but one of the mobile charges (Zions) are located, as in metal, at the surface. This term then describes a stray Z-ion’s attraction to the fraction of QM left uncompensated due to its departure. In other words, this term is used to exclude the stray Z-ion’s self interaction with its contribution to the mean-field potential [25]. To compare Eq. (9) to the simulation in the next section, we take Rmet = RM + xc ≡ Rc, which aligns the metallic surface with the average position of the centers of the Z-ions that comprise the SCL (see Fig. 2). Because our macroion is a sphere and not a plane, the magnitude of its electric field drops as E ∝ 1/r2 at r > RM . Therefore, E = 2πσ/ǫ, used to calculate λ, should be modified slightly since the Z-ion’s centers are never closer than a to the macroion’s surface. We introduce σs = σ[RM /(RM + a)]2 to correct the electric
+field. This leads to, σs = 0.819 e/nm2, λs = 0.0913 nm, Γs = 5.9, and Rmet = 5.49 nm.
+III. RESULTS OF MC SIMULATION
+∆U (r) (Eq. (8)), the difference between the attractive correlation energy extracted from the MC simulation and the result of the image theory is plotted in Fig. 3 for Rmet = 5.49 nm (green circles). As expected, when r − Rmet . b, i.e. at r . 6.5 nm the difference is significantly less than zero since in this range the SCL does not function well as a metal due to its discreteness, and, therefore, the attractive correlation energy, Uc(r), saturates. However, there is also weaker disagreement for r & 6.5nm, which decreases with distance from the macroion. This suggests that we have improperly identified the radius of the effective metallic sphere used to calculate Uim(r). To allow for the adjustment of Rmet, we introduce the length |ξ| so that
+Rmet = Rc + |ξ|. (10)
+By minimizing the root-mean-square of ∆U (r) with respect to |ξ|, on the interval 6.4 nm ≤ r ≤ 7.4 nm, we determined that |ξ| ≃ 0.21 nm provides the best fit for ∆U (r) = 0. The quality of this fit is illustrated in Fig. 3 (red diamonds). This small correction |ξ| to Rc indicates that the foundation of Eq. (9), the attractive image interaction, is sound. In Sec. IV, we analytically calculate Uim(x) in order to find the necessary adjustment in Rmet by considering the response of a SCL, made up of adsorbed Z-ions on
+6.0 6.5 7.0 7.5
+-0.5
+0.0
+0.5
+1.0
+r HnmL
+DUHrL HkBTL
+Ξ=-0.42 nm
+Ξ=-0.21 nm
+Ξ= 0.00
+FIG. 3: The difference, ∆U (r) (Eq. (8)), between the correlation attraction energy extracted from the MC simulation and the result of the image theory, as a function of a stray Z-ion’s distance from the center of the macroion for three different values of the adsorbed Z-ion’s screening length, 2ξ. The length, |ξ|, determines the increased radius, R
+met = RM + a + λ + |ξ|, of the effective metallic sphere used to calculate Uim(r) (Eq (9)). The green circles correspond to ξ = 0, assumed in the original theory of Refs. [3, 4]. The red diamonds correspond to the best fit to zero, ξ = −0.21 nm. The blue squares correspond to, ξ = −0.42 nm and are shown for comparison.
+5.5 6.0 6.5 7.0 7.5
+-8
+-6
+-4
+-2
+0
+r HnmL
+Ln @NHrL ZeΛsΣsD
+Eq. H1L
+Eq. H12L
+Eq. H11L
+MC Data
+FIG. 4: Concentration of Z-ions, N (r), as a function of distance from the center of the macroion, starting at RM + a = 5.4 nm. The circles represent the data from the MC simulation. The result of the image theory, Eq. (11), is shown by short, blue dashes. The medium length, red dashes show Eq. (12). The long, green dashes show the Gouy-Chapman solution (Eq. (1)), with λs substituted for λ. The error bars for the MC data are smaller than the size of the symbols.
+a planar macroion, to the presence of a single stray Zion above the SCL. It is determined that the SCL screens the potential of the stray Z-ion with a negative screening length, 2ξ, where ξ = −0.20 nm. This moves the effective metallic surface further away from the macroion’s surface by |ξ| = 0.20 nm in reasonable agreement with the MC data (see Fig. 1 and Fig. 2).
+
+
+5
+In Fig. 4, the concentration N (r) obtained from the MC simulation is compared to
+N (r) = N (rmax) exp
+(
+− Zeφ(r)
+kBT − Uim(r) − Uim(rmax)
+kB T
+) ,
+(11) which uses ξ = −0.21 nm to calculate Uim(r) (both φ(r) and N (rmax) are obtained from the MC simulation). The agreement between the MC data and Eq. (11) is obvious when r & 6.5 nm. In Fig. 4, we also compare Eq. (3), modified for a spherical geometry,
+N (r) = σs
+Z eλs
+exp
+[
+− (r − RM − a)
+λs
+]
+, (12)
+to the MC concentration data. At small distances, r − RM + a . b, i.e. r . 5.8 nm, we find good agreement with the exponential decay predicted in Refs. [3, 4] and confirmed in Refs. [9, 10, 11].
+Let us now comment on what happens at larger distances from the macroion, which are not shown in Fig. 4 and can not be studied well with the small size of the simulation cell used in this paper. According to Refs. [3, 4], at distances larger than
+Λ=
+( eλ
+2πZ σlB
+)1/2
+exp
+( |μ| 2kB T
+)
+(13)
+from the planar macroion the PB approximation takes over and
+N (x) = 1
+2πZ 2 lB
+1
+(Λ + x − a)2 . (14)
+Here μ is the chemical potential of a Z-ion in a SCL. It has been shown that for a SCL on a charged background (onecomponent plasma), at 1 < Γ < 15, μ is approximated well by [4, 27],
+μ = −kBT (1.65Γ − 2.61Γ1/4 + 0.26 ln Γ + 1.95), (15)
+where the first term of this expansion corresponds to the chemical potential of a Wigner Crystal. For our parameters, Z = 3 and σ = σs = 0.819e nm−2, this leads to the length Λ = 5.18nm. Then, the approximate extension of Eq. (14) to the spherical geometry using x = r − RM at r = 7.55 nm gives ln[N (r)Zeλs/σs] = −8.65, very close to the MC result −8.77 (see Fig. 4). The idea behind the results of Eq. (13) and Eq. (14) is that the correlation physics at small distances x − xc ≪ Λ, produces a new boundary condition on the concentration of Z-ions for the long distance solution of the PB equation [3, 4].
+The authors of a recent paper [26] have already studied N (r) at large distances by MC simulation in a much a larger spherical cell and found that it is in agreement with the predictions of the PB approach based on the correlation driven boundary condition. They, however, did not identify the image domain of distances r which we concentrate here upon. Thus, all three asymptotic
+5.5 6.0 6.5 7.0 7.5
+-8
+-6
+-4
+-2
+0
+r HnmL
+Ln @NHrL ZeΛsΣsD
+Eq. H16L
+MC Data
+FIG. 5: Concentration of Z-ions, N (r), as a function of distance from the center of the macroion. The MC concentration (circles; the same data as in Fig. 4) differs strongly from the concentration of Z-ions (red triangles) obtained from Eq. (16) with the empiric mean-field potential potential φ(r).
+regimes, predicted in Refs. [3, 4], namely Eq. (3) at x − a < b, Eq. (4) at b < x − a ≪ Λ, and Eq. (14) at x − a > Λ are now confirmed by MC simulations. We have shown above that the standard mean-field theory [1, 2] fails to describe screening by multivalent counterions. Let us now show that another mean-field approximation, which we call the empiric mean-field, fails more dramatically. The empiric mean-field potential, φ(r), was introduced in Sec. II and is obtained using the distribution of charge realized in our MC simulation. In Fig. 5, we compare the Z-ion concentration obtained from the MC simulation to the Z-ion concentration predicted using the empiric mean-field potential,
+N (r) = N0 exp
+(
+− Zeφ(r)
+kB T
+)
+. (16)
+Here, N0 = 2.18 × 10−2 nm−3 is the concentration necessary to normalize the number of Z-ions, in the range 5.4 nm < r < 10.0 nm, to 100. Clearly, the empiric meanfield potential is not self-consistent; Eq. (16) predicts that there are many more Z-ions, at r > 6.0 nm, than are actually present in the distribution that produced φ(r). The distribution of the Z-ions, for r − Rmet & b, is strongly influenced by the attractive correlation interaction and, therefore, cannot be predicted by the empiric mean-field interaction alone.
+IV. THEORY OF IMAGE POTENTIAL AND EFFECTIVE METALLIC SURFACE
+In this section we return to the plane geometry of Fig. 1 and analytically derive Eq. (4) for Uim(x). In the process of this derivation, we find the theoretical location, xmet, of the effective metallic surface. The probe charge,
+
+
+6
+a stray Z-ion, is positioned far above the plane at x′ = x ≫ b and ̺ = 0, where x′ is the axis and ̺ is the radius of the cylindrical coordinate system (x′, ̺, θ ). A SCL of Z-ions is located in the (̺ ,θ) plane at x′ = xc, where the typical distance that separates adjacent Z-ions is b. The plan of this section consists of, (1) determining the analytic solution for the total potential of the system, ψ(̺, x ′), (2) presenting it as a sum of two potentials: one of the stray Z-ion and the other of the induced charge density of the SCL, ψind(̺, x ′) (the potential of a point like image) and (3) finding the position of the effective metallic plane, xmet, so that the attractive interaction
+energy 1
+2 Zeψind(0, x) = Uim(x). Below, we show that
+xmet = xc − ξ, where 2ξ is the screening length of the SCL, which we also calculate. To find the potential ψ(̺, x ′) we solve Poisson’s equation,
+∇2ψ (̺, x ′) = − 4π
+ǫ ρ(̺, x ′), (17)
+where ρ(̺, x ′) = ρext(̺, x ′) + ρind(̺, x ′), with ρext =
+Zeδ(̺ )δ(x′ − x)/(π̺ ), and the charge density that is induced within the SCL is given by
+ρind(̺, x ′) = Ze
+[
+n
+(
+ψ(̺, x c)
+)
+− n(0)
+]
+δ(x′ − xc)
+= Zeψ(̺, x c) dn
+dψ δ(x′ − xc)
+= −(Ze)2ψ(̺, x c) dn
+dμ δ(x′ − xc). (18)
+Here, n(ψ), is the number of Z-ions per unit area as a function of the local total potential, ψ(̺, x c), and μ is the chemical potential of the SCL. We consider the case, x − xc ≫ b, when the stray Z-ion produces a weak
+potential in the x′ = xc plane (Zeψ(̺, x c)/kBT ≪ 1). This allows us to linearize ̺ ind with respect to ψ, in Eq. (18). Rewriting Eq. (17) with the help of Eq. (18) results in
+∇2ψ (̺, x ′) = − 4π
+ǫ ρext(̺, x ′)+ 1
+ξ ψ(̺, x c)δ(x′ −xc), (19)
+where,
+ξ= ǫ
+4π(Z e)2
+dμ
+dn = 1
+2κ , (20)
+and κ is the inverse screening length of the SCL of adsorbed Z-ions [18, 28]. In order to calculate ξ we use μ(n) as given by Eq. (15) and the definition of Γ from Eq. (2) and b = (πn)−1/2. For Z = 3, σ = σs = 0.819 e/nm2 and ǫ = 80, we find that ξ = −0.20 nm. In order to solve Eq. (19) for ψ(̺, x ′), we substitute
+ψ(̺, x ′) =
+∫∞
+0
+kAk(x′)J0(k̺ )dk, (21)
+into Eq. (19), where Ak(x′) are the coefficients of the expansion and J0(k̺ ) is the zeroth order Bessel function. This yields [28]
+ψ(̺, x ′) = Ze
+ǫ
+1
+√
+(x − x′)2 + ̺ 2
+−
+Ze ǫ
+∫∞
+0
+1
+2kξ + 1 exp [−k(x′ + x − 2xc)]J0(k̺ )dk,
+(22)
+Because the screening length ξ < 0, the second term diverges. To obtain a solution despite this pole, following Ref. [18], we consider the contribution to ψ(̺, x ′) from k ≪ 1/|ξ|, only. Such an approach is valid if the stray Z-ion, and the observation point x′, are a large distance away from the SCL: (x − xc), (x′ − xc) ≫ |ξ|. This allows us to expand 1/(2kξ + 1) in Eq. (22) around k = 0, so that 1/(2kξ + 1) ≃ 1 − 2kξ, and we arrive at
+ψ(̺, x ′) = Ze ǫ
+√
+̺ 2 + (x − x′)2
+− Ze
+ǫ√̺ 2 + (x′ + x − 2xc)2 + 2(x′ + x − 2xc)Zeξ
+ǫ [̺ 2 + (x′ + x − 2xc)2]3/2 . (23)
+The first term of Eq. (23) is the potential created directly by the stray Z-ion. The other two terms are the first two terms of the expansion of the induced potential, ψind(̺, x ′), with respect to ξ. We are now in a position to recast ψind(0, x) at (x − xc) ≫ |ξ|, as being created by an image charge a distance s below the stray Z-ion,
+1
+2 Zeψind(0, x) = − (Ze)2
+4(x − xc)ǫ + ξ (Ze)2
+4(x − xc)2ǫ ≃ − (Ze)2
+2sǫ = Uim(x), (24)
+where, s = 2(x − xc + ξ). Specifying that the metallic plane must lie half way between the real charge and the image charge sets its position at xmet = x − s/2 = xc − ξ. Therefore the effective metallic plane is found a distance ξ above the plane of the adsorbed Z-ion’s centers (Fig. 1). This agrees with the statement of Ref. [18], that the potential created by the stray Z-ion is negative in the x′ = xc plane. The theoretical value ξ = −0.20 nm is in reasonable agreement with our MC result, ξ = −0.21 nm (Sec III). Moreover, we have demonstrated that the image attraction predicted in Ref. [3, 4] can be derived analytically in the limit x ≫ b.
+V. SCREENING THE IMAGE BY ADDING 1:1 SALT
+In this section we modify our system to include a small concentration of 1:1 salt molecules such as NaCl. By tak
+
+
+7
+ing into account the effect of screening on the attractive interaction energy between a stray Z-ion and its image, Uim, we obtain a new prediction for the concentration of Z-ions, N (r), which is in reasonable agreement with the new MC results. In calculating Uim we assume that the concentration c of 1:1 salt is so small that the total potential ψ at any point in the bulk solution (r & 6.0 nm) obeys the linearized Poisson-Boltzmann equation,
+∇2ψ = κ2
+bψ, (25)
+where 1/κb is the Debye-H ̈uckel (DH) screening length,
+1
+κb
+=
+√ ǫkBT
+8πe2c . (26)
+The exact solution of Eq. (25) for a point charge a distance r−Rmet away from the surface of a grounded metallic sphere in a weak electrolyte is known [29]; however, we will avoid the complexity of this solution and approximate the spherical macroion and its SCL as a grounded metallic plane. As seen in Fig. 6, where Eq. (4) is used to calculate N (r) (short blue dashes) for c = 0, one obtains reasonable agreement with the MC N (r) (circles) without using Eq. (9) as we did in Sec. III. This demonstrates that the influence of the total central charge, −Ze − q′, is very small. The reason for this is that when a stray Z-ion is close to the macroion surface, the total central charge is much smaller than the image charge q′. Additionally, the central charge is much farther from the stray Z-ion than the image charge q′. When the system includes 1:1 salt, the influence of the total central charge is further reduced due to screening.
+6.0 6.5 7.0 7.5
+-9
+-8
+-7
+-6
+-5
+r HnmL
+Ln @NHrL ZeΛsΣsD
+c=0
+c = 15.2 mM
+Eq. H28L
+c=0
+c = 15.2 mM
+MC Data
+FIG. 6: Concentration of Z-ions, N (r), in a weak electrolyte solution, as a function of distance from the center of the macroion. The shapes represent the data from the MC simulations for two different concentrations of 1:1 salt: 15.2 mM (triangles), and 0 (circles). The result of the screened image theory, Eq. (28) with x = r − Rmet + xmet, is shown by medium length red dashes for c=15.2 mM, and short blue dashes for c=0. The error bars for the MC data are smaller than the size of the symbols.
+Consider a Z-ion which is submerged in a weak electrolyte solution with dielectric constant ǫ, and is a distance x − xmet above a grounded metallic plane located at xmet (see Fig. 1). For this system, the solution to Eq. (25), subject to the boundary condition ψ(xmet) = 0, can be found using the method of images [29]. To satisfy the boundary condition, the image potential must exactly cancel the potential of our Z-ion in the metallic plane. Such an image potential is provided by the DH screened potential of a charge (−Ze) located at x′ = −x + 2xmet. The interaction energy of a stray Z-ion with its screened image is now readily calculated and is given by,
+Uim(x) = − Z2e2
+4ǫ(x − xmet) exp(−2κb[x − xmet]). (27)
+In the limit of infinite dilution c → 0 , or equivalently κb → 0, Eq. (27) is equal to Eq. (4), as expected. Onsager and Samaras [30] obtained the same result, but with the opposite sign, for an ion’s interaction with its image at an electrolyte-air interface resulting in a repulsive force. To compare Eq. (27) to the spherical geometry of our MC simulation, we take x = r + xmet − Rmet using Rmet = Rc + |ξ|.
+The MC simulation described in Sec. II was modified to include M 1:1 salt molecules, resulting in M ions of charge e and M ions of charge −e. All of the monovalent salt ions have their charge at the center of a hard sphere with radius η = 0.2 nm. We studied a 1:1 salt concentrations of 15.2 mM corresponding to the addition of M = 34 salt molecules to the solution. The following changes were made to the MC simulation to properly incorporate the new ions. The sum used to calculate the total electrostatic energy of the system (Eq. (5)) was changed to include the monovalent ions, and the monovalent ions were also incorporated into the calculation of the empiric mean-field potential φ(r). In Fig. 6, the concentration N(r) obtained from the MC simulations is compared to
+N (r) = N (r0) exp
+(
+− Ze[φ(r) − φ(r0)]
+kB T − Uim(r) − Uim(r0)
+kB T
+)
+, (28)
+which uses ξ = −0.21 nm to calculate Uim(x) (Eq. (27)) (both φ(r) and N (r0) are obtained from the MC simulations). Because there are no screening particles outside of the simulation cell, Z-ions near the wall of the cell are repelled from this interface [31] even though there is not a jump in the dielectric constant. To keep this effect separate from the image interaction of interest, we chose our reference point at r0 = 8.05 nm instead of rmax. Because the stray Z-ion’s attraction to the image is reduced by screening, we see that in Fig. 6 the concentration of Z-ions is higher at distances r > 60 nm when 1:1 salt is present in the solution. Even with the addition of 1:1 salt to the solution the agreement between the MC data
+
+
+8
+and Eq. (28) for r & 6.5 nm is reasonable, demonstrating that the metallic behavior of the SCL on the macroion surface survives, and that the image attraction is still important to determining the Z-ion’s concentration.
+VI. CONCLUSION
+To summarize, we have studied the role of correlations among adsorbed Z-ions in attracting stray Z-ions and influencing their distribution in the screening atmosphere. Adsorbed Z-ions on the surface of the macroion form a strongly correlated liquid (SCL). The SCL acts as an effective metallic surface for Z-ions that stray from the macroion surface to distances larger than the average distance between Z-ions of the SCL. Using Monte Carlo (MC) simulations, we verified the theoretical prediction [3, 4] that a stray Z-ion is attracted to its electrostatic image created behind the effective metallic surface. As a small correction to Refs. [3, 4], however, our MC simulation showed that the effective metallic surface is not aligned with the average position of the adsorbed Z-ion’s centers, but is slightly above the adsorbed Zion’s centers. This offset was calculated analytically to be |ξ|, where 2ξ is the screening length of the SCL. Our analytic theory is in reasonable agreement with the MC data. Extending the original image theory of Refs. [3, 4], we demonstrated that the attractive image interaction,
+while screened, persists in a weak electrolyte. In Ref. [5] the attractive image interaction, which we have studied here, was used to interpret the origin of the negative chemical potential of the condensed Z-ions (Eq. 15). As a stray Z-ion, attracted to its image, approaches the surface of the macroion it reaches a distance, r ∼ RM + b, where the SCL fails to act as a good metal and the correlation attraction Uc(r) saturates at μ ∼ −Z2e2/4ǫb; this saturation can be seen in Fig. 4 as the growth of ∆U (r) at r < 6.5 nm. It is this negative chemical potential, brought about by the attractive image interaction, at r & Rmet + b, which drives charge inversion (over compensation of the macroion’s bare charge with condensed Z-ions), a phenomenon that has generated much interest [3, 4, 5, 6, 7, 8, 9, 10, 11]. Thus, we believe that this paper helps to clarify the origin of charge inversion.
+Acknowledgments
+We are grateful to T. T. Nguyen for his help in writing the MC code, to A. L. Efros and Y. Levin for sharing their preprints [18, 26] and useful comments on the manuscript, to A. Yu. Grosberg for useful discussions, and to B. Skinner for proofreading the draft. M.S.L. wishes to thank FTPI of the University of Minnesota for financial support.
+[*] loth@physics.umn.edu [1] M. Gouy, J. Phys. Thor. Appl. 9, 457 (1910). [2] D. L. Chapman, Philos. Mag. 25, 475 (1913). [3] V. I. Perel and B. I. Shklovskii, Physica A 274, 466 (1999). [4] B. I. Shklovskii, Phys. Rev. E 60, 5802 (1999). [5] A. Yu. Grosberg, T. T. Nguyen, and B. I. Shklovskii, Rev. Mod. Phys. 74, 329 (2002). [6] Y. Levin, Rep. Prog. Phys. 65, 1577 (2002). [7] H. Boroudjerdi, Y. W. Kim, A. Naji, R. R. Netz, X. Schlagberger, and A. Serr, Physics Reports 416, 129 (2005). [8] R. Messina, J. Phys.: Condens. Matter 21, 113102 (2009) [9] A. G. Moreira and R. R. Netz, Europhys. Lett. 52, 705 (2000) [10] Y. Burak, D. Andelman, H. Orland Phys. Rev. E 70, 016102 (2004) [11] A. G. Moreira and R. R. Netz, Phys. Rev. Lett. 87, 078301 (2001). [12] I. Rouzina and V. A. Bloomfield, J. Phys. Chem. 100, 9977 (1996). [13] N. Gronbech-Jensen, R. J. Mashl, R. F. Bruinsma, and W. M. Gelbart, Phys. Rev. Lett. 78, 2477 (1997). [14] B. I. Shklovskii, Phys. Rev. Lett. 82, 3268 (1999). [15] M.S. Bello, E.I. Levin, B.I. Shklovskii, A.L. Efros, Sov. Phys.-JETP 53, 822 (1981) [16] S. V. Kravchenko, D. A. Rinberg, S. G. Semenchinsky, and V. Pudalov, Phys. Rev. B 42, 3741 (1990). [17] J. P. Eisenstein, L. N. Pfeifer, and K. W. West, Phys.
+Rev. Lett. 68, 674 (1992). [18] A. L. Efros, Phys. Rev. B, 78, 155130 (2008). [19] O. Lenz, and C. Holm, Euro. Phys. J.E. 26, 191 (2008). [20] A. Diehl, Y. Levin, J. Chem. Phys. 125, 054902 (2006). [21] A. Diehl and Y. Levin, J. Chem. Phys. 129 124506 (2008). [22] M. Quesada-Perez, A. Martin-Molina, R. HidalgoAlvarez, Langmuir, 21, 9231 (2005) [23] A. Martin-Molina, J. A. Maroto-Centeno, R. HidalgoAlvarez, M. Quesada-Perez, J. Chem. Phys. 125 124506 (2008). [24] L. D. Landau and E. M. Lifshitz, Electrodynamics of Continuous Media (Butterworth-Heinenann, 1984), chapter I. [25] Actually, N (r) has a tail at r > RM +a. As a result, when a stray Z-ion is located at r > RM + a, depletion of the mean distribution not only occurs at the surface of the macroion, but a small fraction, δ, of the total depletion also occurs at distances larger than r. For r = 6.1 nm this fraction is 0.02. As a result, the absolute value of this interaction energy is smaller than Z2e2/r by ∼ 2%. In Eq. (9) and below we neglect this small effect. [26] A.P. dos Santos, A. Diehl, and Y. Levin, J. Chem. Phys. [27] H. Totsuji, Phys. Rev. A, 17, 399 (1978). [28] T. Ando, A. B. Fowler, and F. Stern, Rev. Mod. Phys. 54, 437 (1982). [29] H. Ohshima, Adv. Colloid Interface Sci. 53, 77 (1994). [30] L. Onsager and N. N. T. Samaras, J. Chem. Phys. 2, 528 (1934).
+
+
+9
+[31] R. R. Netz, Phys. Rev. E, 60, 3174 (1999).

@@ -1,0 +1,533 @@
+J. Chem. SOC.,Faraday Trans. 2, 1984, 80, 1643-1667
+Electrokinetic Phenomena in a Dilute Suspension of Charged Mercury Drops
+BY HIROYUKIOHSHIMAAND THOMASW. HEALY
+Department of Physical Chemistry, University of Melbourne, Parkville, Victoria 3052, Australia
+AND LEE R. WHITE”
+Department of Mathematics, University of Melbourne, Parkville, Victoria 3052, Australia
+Received 20th June, 1984
+Fundamental equations are derived which govern the electrokinetic phenomena in a dilute suspension of charged spherical mercury drops in an electrolyte solution. General expressions for the electrophoretic mobility, the conductivity and the sedimentation velocity and potential in the suspension are derived. Numerical results are displayed as functions of the {-potential and K U (where K is the Debye-Huckel parameter and a is the drop radius). There are remarkable differences between the results for mercury drops and those for spherical rigid particles. In particular, the electrophoretic mobility and sedimentation potential (the same quantity when suitably scaled, a consequence of an Onsager relation) of mercury drops are much larger than those of rigid particles for large K Q , and their maxima (occurring when KU b 1 ) are shifted to low 5-potentials (ca.75 mV in a KCl solution). Some approximate analytic formulae are also derived. It is shown that the theory of Levich and Frumkin for
+the electrophoresis and sedimentation of mercury drops is valid only for very small 5 and K U >->1 and only when all the ionic species have the same drag coefficient.
+In this paper we develop a theory of the electrokinetic phenomena in a dilute suspension of charged mercury drops on the basis of the Henry-Overbeek-Booth theory’-3 of the electrophoresis of rigid ,particles. The first attempt of such an extension of the Henry-Overbeek-Booth theory to the electrophoresis of liquid drops was made by Booth.4 He derived expressions for the mobility of a liquid drop with a low 6-potential in an applied electric field for various possible charge distributions in the drop. One of Booth’s assumptions is that the electric field around the drop is given by superposition of the applied field and the equilibrium double-layer field of the drop; this assumption was
+originally employed by Henry’ and yields the mobility correct to order 6 in the case of insulating rigid particles. Levich and Frumkin proposed an entirely different theory of the electrokinetic phenomena of charged mercury drops with large KU (where K is the Debye-Huckel parameter and a is the drop radius), which is described in the treatise by Levich.’ This theory makes use of the Lippmann equation and some simplified boundary conditions on the drop surface. Surprisingly, however, the mobilities of mercury drops predicted by Booth’s theory4 and Levich’s and Frumkin’s theory’ show a significant difference in magnitude, i.e. Levich’s and Frumkin’s result is larger than Booth’s result by the order of
+This discrepancy between the two theories was examined by Levine and O’Brien,6 who found that Booth’s assumption of the superposition of the applied and equilibrium fields is invalid for mercury drops because of the large displacement of the
+Independently of Booth’s
+Ka.
+1643
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online / Journal Homepage / Table of Contents for this issue
+
+
+1644 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+charge on the drop surface. Levine and O’Brien6 tried to reproduce the theory of Levich and Frumkin’ by applying the approach of the Henry-Overbeek-Booth without recourse to the Lippmann equation and showed that these two approaches are equivalent for sufficiently small 6 and K a >> 1 (further, it must be assumed that all the ionic species have the same mobilities, as will be shown later).
+However, when applied to mercury drops with arbitrary values of ‘4 and K a , the Frumkin-Levich theory5 is still unsatisfactory, since it is based on some approximations valid only for K a >> 1 and an unjustified use of the Lippmann equation [see ref. ( 6 ) ] . In the present paper we develop a general theory of the electrophoresis
+of charged mercury drops without any restriction of the magnitude of K a and 6. We make exact numerical calculations using a modified computer program? first developed by O’Brien and White7for the calculation of the electrophoretic mobility of spherical rigid particles. We also obtain approximate mobility formulae for small
+6 and for large K a , using approximation methods described in previous In addition to the electrophoresis problem, the present paper treats the conductivity and sedimentation in a dilute suspension of charged mercury drops. These electrokinetic properties are closely related to electrophoresis and can be described by the same fundamental equations. We extend theories of the -conductivity given by O’Brien’ and of the sedimentation developed in our recent paper” for rigid particles to mercury drops.
+FUNDAMENTAL EQUATIONS
+Consider a charged spherical mercury drop of radius a, mass density Pd and viscosity v d in a liquid of mass density pm and viscosity 7 containing a general electrolyte. To solve the electrophoresis, conductivity and sedimentation problems, we need the solutions to the following two problems: (1) steady motion of a charged drop with velocity U , in an applied electric field E and (2) steady motion of a charged drop with velocity USEDin a gravitational field g. For a spherical drop, U , and USEDare, respectively, parallel to E and g. Problem (1) gives solutions to the electrophoresis and conductivity problems and problem (2) is the solution to the sedimentation problem. The main assumptions in our analysis are as follows. (i) The Reynold numbers of the liquid flows outside and inside the drop are small enough to ignore inertial terms in the Navier-Stokes equation and the liquids can be regarded as incompressible. (ii) The fields E and g are weak so that the drop velocities U , and USEDare, respectively, proportional to E and g, i.e. terms of higher order in the perturbing fields may be neglected. (iii) The drop remains spherical during motion under the field E or g. This assumption is satisfied if the surface tension at the drop surface is sufficiently large. (iv) No electrolyte ions can penetrate the drop surface, which implies that no electrochemical reactions occur on the drop surface, i.e. neither neutralization of ions nor ionization of atoms of the drop takes place. This assumption is equivalent to postulating that a mercury drop behaves like an ideally polarizable conductor. Consequently we may assume that neither electrostatic charge, nor field nor current exists inside the drop and that the drop surface is always equipotential. Let the electrolyte be composed of N ionic species of valence zi, bulk concentra
+tion n? and drag coefficient Ai ( i = 1,2,. ..,N ) . The origin of the spherical
+coordinate system (r, 8,4 i)s held fixed at the centre of the drop and the polar axis
+( 8 = 0) is put parallel to E or g. We denote the flow velocities of the liquids outside and inside the drop and that of the ith ionic species at position F by u ( F ) ,u , ( F )
+t A copy of the program in Fortran is available from the authors.
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY AND L. R. WHITE
+and v j (r ) , respectively. The fundamental equations for these velocities are
+[problem ( l ) ]
+:::I{ +p,g [problem (2)]
+qv xv x u +vp =
+0 [problem (l)]
+Pdg [problem (2)1
+qdV X V x UI + v p I =
+v*u=o
+v*uI=o
+1
+hi Pi
+v.= u --v
+v - (njvi)=0
+with
+N
+P,( r ) = C zieni (r )
+i= 1
+p i(r) = put,+zie$ (r) + kT In ni(r )
+1645
+where p and pI are, respectively, the pressure outside and inside the drop, pe is the charge density, $ is the electric potential,, p i ( r ) and n , ( r ) are, respectively, the electrochemical potential and concentration of the ith ionic species at position r, pt) is a constant term in p i ( r ) ,e is the elementary electric charge, k is Boltzmann’s constant and T is the absolute temperature. Eqn (1)-(4) are the Navier-Stokes equations under assumption (i) in the presence of body forces due to Vlc, and/or g. According to assumption (iv), no electric force acts on the liquid inside the drop. Eqn ( 5 ) expresses the fact that the ionic flow vi is caused by the liquid flow u and the gradient of pi. The drag coefficient hi is related to the limiting conductance 11: of that ionic species by7
+where N is Avogadro’s number. Eqn (6) is the continuity equation for the ith ionic species. The following boundary conditions for u and uIon the drop surface r = a, where r = Irl, must be satisfied. (1) u and u Iare equal and their normal components vanish, viz.
+ul,=u+= UIJr=a- (10)
+(11)
+u n*l,,,+ = UI iqr=u-= 0
+where n^ is the unit normal outward from the drop surface. (2) The tangential component of the stress tensor is continuous, viz.
+(a n^) x n A l r = u + = (a1* 6 )x 61r=u- (12)
+where u and aIare, respectively, equal to the hydrodynamic stresses of the liquids outside and inside the drop, since it follows from assumption (iv) that the electric stress is always zero inside the drop and the tangential electric stress component
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1646 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP S U S P E N S I O N
+outside the drop is also zero on the drop surface. Thus
+u = -PI+ T[VU +(Vu)T]
+0 1 = -PI1 -k Td[vuI +( vul>T1
+(13)
+(14)
+where I is the unit tensor.
+a rigid particle:*10 thus
+The boundary condition for u far from the drop takes the same form as that for
+- UE+B( F 2 ) [problem (1)J
+- USED + a (pd- pm) [ g + ( g - ); ?] [problem (2)]
+3 (15)
+6Tr
+where r^ = r/l r ( . The second term on the right-hand side of each of eqn ( 15) ensures the constraint that the net force acting on the drop must be zero in the stationary state. [See ref. (7) for problem (1) and ref. (10) for problem (2).] Finally, the boundary condition for the ionic flow vi is given by
+Di nAlr=a+ = 0 (16)
+which follows from assumption (iv).
+(5) and (6) can be linearized as follow^.^,^,'^ We put
+For weak fields E and g [assumption (ii)] the fundamental eqn (1)-(4) with eqn
+ni(r ) = np( r ) +6n,(r) (17)
+where the quantities with superscript" refer to those at equilibrium, i.e. in the absence of E and g ; pp is a constant, independent of r ; n o ( r ) and + " ( r ) are functions of r only and satisfy the Boltzmann equation and Poisson-Boltzmann equation, respectively: np = n y exp (- z i y ) (20)
+N
+with
+Here
+C nTzi exp ( - z i y )
+c
+nyz?
+1 d 2 i=l
+y2(; r2$) = - K N
+K=
+i= I
+)".
+NC n?zTe2
+E,EOkT
+i=l
+is the scaled electric potential, K is the Debye-Huckel parameter (in SI units), E, is the relative permittivity of the liquid outside the drop and E~ is the pemittivity
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY AND L. R. WHITE 1647
+of a vacuum. The boundary conditions for y are
+where 5 is the 5-potential of the drop. Further, symmetry considerations7 permit us to write
+2 Id r r dr
+u ( r )= --h(r)(F- r^)rA-- -[rh(r)][F-(F
+Id r r dr
+2 Id r r dr
+= (-2h1F1 cos 8,- -(rh)lFI sin 8 , O
+u,( r ) = --h,( r ) (F - r^) r^ -- -[ rh,( r ) ] [ F- ( F *
+= (-;h,2IFl cos 8, I- -d(rhI)IFI sin 8,0
+r dr
+where F denotes E for problem (1) and g for problem (2), and + i ( r ) , h(r) and h,(r) are functions of r only. Substituting eqn (17)-(19) with eqn (26)-(27) into the fundamental eqn (1)-(8) with the boundary conditions ( lo)-( 12), (15) and ( 16), and neglecting the products of the small quantities u, uI, S n , 6t,b and Su, we finally obtain after a little algebra
+e dy
+L(Lh) = -- - C nFzT exp ( - z ~ Y ) + ~
+vr d r i = l
+L(Lh,) = 0
+subject to the boundary conditions
+r [problem (l)] r-a 0 [problem (2)]
+#i - [ (33)
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1648 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+[ gr+o(!) [problem (l)]
+where L in eqn (29)-(31) is a differential operator defined by
+A solution of eqn (3 1) which does not have a singularity at r = 0 and satisfies eqn (35) is
+hI=A(r-$)
+where A is a constant. With the help of eqn (40), we can combine eqn (36) and (37) to give the boundary condition involving only h,
+The solutions of the coupled differential eqn (29) and (30) for +i and h subject to the boundary conditions (32)-(34), (38) and (41) completely determine the solutions to problems (1) and (2). We numerically solve these differential equations by using a computer program which modifies the corresponding programs for rigid particle^.^^'^ In order to obtain approximate analytic solutions, it is convenient to use integral forms of the above differential equations, which are found to be
+[problem ( l ) ]
+l o [problem (2)]
+and
+N
+X 1 nyzf exp (-ziy)cf+dx
+i= 1
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY A N D L. R. WHITE
++--- n?z: exp (- z ~ Y ) +d~x
+(0 [problem ( l ) ]
+1649
+GENERAL FORMULAE
+The electrophoretic mobility pE= I UEI/IEl, the conductivity K * and the
+sedimentation velocity U S E D and field EsEDin a dilute suspension of charged mercury drops can be expressed in terms of the functions &( r ) and h( r ) . The mobility and sedimentation velocity immediately follow from the boundary condition eqn (38). For the case of rigid particles, a general formula for the conductivity was given by O'Brien' and a sedimentation potential formula has recently been derived in our previous paper." Both formulae can equally be applied to liquid drops. and h"', we list below the above general formulae for pE,K " , USEDand &ED.
+Denoting +i and h for problems ( j ) ( j= 1,2) as
+( 1) Electrophoretic mobility:
+which can be written, by substituting eqn (43), as
+N
+x C nyz: exp (-ziy)+\'') dr.
+i= I
+(2) Conductivity K *:
+N1
+(45)
+where t$ is the drop volume fraction, K" is the conductivity of the electrolyte solution in the absence of the drops, viz.
+NI
+and Ci') is given by
+- a3 1 la(rm3 + -a3)d-y( zi-d--+-!') 2 A i h'") dr.
+2 3 2 dr dr e r
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1650 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+Eqn (48b) is obtained by substituting eqn (42) into eqn (48a). (3) Sedimentation velocity USED:
+or, substituting eqn (43) we find
+(494
+When [= 0 eqn (496) reduces to the well known result for an uncharged drop:
+where
+is the Stokes velocity of an uncharged rigid particle. (4) Sedimentation potential ESED:
+N1
+where
+ci”= lim r24i2)
+r-m
+= -:JI (r3 +”)*Zi(d+i2’ 2hi h ( 2 ) )d r.
+3 2 dr dr e r
+Eqn (536) is obtained by substituting eqn (42) into eqn (53a).
+(534
+ANALYTlC APPROXIMATIONS
+Before proceeding with numerical calculations, we derive below analytic approxi
+mate formulae for small 5 and for large KU.
+4.1. SMALL-A5PPROXIMATIONS
+We use the small-5 approximation for y , viz.
+y = - -exp[-K(r-u)]+6([2).
+(3; (54)
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY A N D L. R. WHITE 1651
+We express the functions 4!j)and h ( j ' ( j= 1,2) as a power series in the [-potential and substitute these expressions and eqn (54) into eqn (42) and (43). Then, equating like powers of 6 on both sides of the respective equations, we finally obtain, for problem (l),
+and for problem (2)
+i=l
+where cD exp ( - t )
+E,(x) =xn-' di
+t" (59)
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1652 ELECTROKINETIC PHENOMENA IN A MERCURY-DROP SUSPENSION
+is the exponential integral of order n [see ref. ( l l ) ] and we have introduced the scaled drag coefficient of the ith ionic species, mi,defined by
+The mobility formula correct to order 6 can be obtained by substituting eqn (55) into eqn (Ma):
+where we have introduced the scale electrophoretic mobility, defined by
+3 7)e
+Em=-2&,cOkTpE'
+For r]d - a,eqn (61) tends to Henry's formula' for rigid particles, viz.
+The leading term of eqn (61), which is linear in KLZ, agrees with the result of Levine and O'Brien.6
+The mobility formula correct to order C2 can be derived for the special case of a symmetrical electrolyte with any number of ionic types (e.g. a mixture of 1-1 and 2-2 electrolytes). In this case the small 6 expression for y [eqn (54)] loses terms of order f2. Substituting eqn (54)-(56) into eqn (48b) we calculate Cf')correct to order J2, and then using eqn (46) we find
+r
+(64) with
+111
+L( K U ) = -+ +y - exp (K U ) E K~~(Z )
+K a (Ka) 2
+11 1 1 2 ~ a6 2
+M(Ka)=--- exp ( K ~ ) E , ( K+-~e)xp ( K ~ ) E ~ ( K ~ )
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1653
+For qd + 00, the term involving the function P ( K u )becomes zero to yield O’Brien’s result’? for rigid particles. The formula for the sedimentation velocity correct to order l2can be obtained by substituting eqn (57) into eqn (49a):
+For qdlo- 00 eqn (69) reduces to the result for rigid particles derived in the previous paper.
+t The formulae for the functions M and N given in O’Brien’s paper,’ the latter of which contains an error, become identical with eqn (66) and (67), respectively, after rearrangement. The first term on the right-hand side of eqn (5.34) of ref. (9) should be
+111 x x2
+7+- +- exp ( x ) E ~ ( x )
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1654 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+Finally, substituting eqn (58) into eqn (53u) we obtain C:" correct to order 5. Then substituting this into eqn (52), we find the formula for E s E D correct to
+order l:
+Comparing with the mobility formula [eqn (61)], we see that the following Onsager relation13 between electrophoresis and sedimentation is satisfied:
+LARGE-KU APPROXIMATIONS
+For the case when the electrolyte is the z-z symmetrical type [ z , = -z2 = z ( > O ) and n y = n y = n"] but may have different ionic mobilities A , = A + and A2 = A _ , we can derive large-Ku approximate formulae by using the same mathematical method as that of our previous papers.8-'" A brief description of the derivation is given in the Appendix. The results are
+-3m[l -exp (f/2)]* In
+18mk [exp (5"/2)-exp (-5"/2)12
++${(=) -q+d -+2D
+r73
+m(l+3k)[l -exp (-f/2)]
++6m% In ( 1 +exp (+I)]}
+2 (731
+U::D
+r7
+USED =
+-'1+d -+D
+'13
+(74)
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY A N D L. R. WHITE 1655
+and
+where sgn ( 5 ) is +l(-1) if 5 is positive (negative), and rn and 6i arc the scaled
+ionic mobilities [eqn (60)] for counterions and coions, respectively; 5 and D are defined by
+D = m [ l - exp (f/2)12 +fi[l -exp (-[/2)l2. (77)
+We again find that eqn (72) and (75) satisfy the Onsager relation [eqn (71)].
+RESULTS AND DISCUSSION
+We have made computer calculations for a dilute suspension of mercury drops in a typical electrolyte KC1 at 25 "C. The following values14 were used: E , = 78.5, v(water) = 0.891 x lop3N s mP2, N s m-2, A , = A, = 73.5 X m20 - l mol-* (or rn, = rn, = 6 = 0.176 and m2= m- = rn = 0.169).
+qd(mercury)= 1.525 x
+m2n-' mol-' and A2 = A- = 76.3 x
+ELECTROPHORETIC MOBILITY
+In fig. 1-3 the computer results for the electrophoretic mobility Emof mercury drops in KCl are displayed as a function of 6 for various values of Ka, in comparison with those for spherical rigid particle^.^ A remarkable difference is seen between these two cases in that the mobility of mercury drops much exceeds that of rigid particles for large K a ; for example, when
+e { / k T = 3 ( 5 = 75 mV), E,(mercury)/E,(rigid) is ca. 12 at K a = 100 and ca. 23 at Ka = 200. This ratio further increases with K a . For a symmetrical electrolyte, from eqn (72) we find that E,(mercury) asymptotes to
+which is proportional to Ka. Comparing eqn (78) with the following large-Ka formula previously derived for rigid particles*
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1656 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENS'ION
+Ern
+5(
+C 1 2 3 4 5 6 78 4lkT
+Fig. 1. Computer results for the scaled electrophoretic mobility Em[defined by eqn (62)] of mercury drops in a KCl solution at 25 "C as a function of the (-potential for several values
+mercury drops, (- - - -) rigid particles. Note that the ordinate indicates also the scaled sedimentation potential [eqn (91)]. This is a direct consequence of the Onsager relation [eqn
+of KU (50, 100 and 200) in comparison with those for rigid spherical particles: (- )
+(7 1)I.
+where
+we find that, as K a -+ 00 (at fixed f),
+Em(mercury)
+Emtrigid) k a y W 6(Ka>.
+The large mobility of mercury drops arises from their finite viscosity, which gives rise to a tangential frictional force acting on the surface smaller than that for rigid particles, as has also been pointed out by Levich.' The tangential component of the liquid flow must be zero on the surface of a rigid particle (q d= a),but does not vanish on the drop surface (q d# 0). It follows from eqn (27) that the tangential
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY AND L. R. WHITE 1657
+20
+15
+Em 10
+5
+0 1 2 34 5 6 78 e l l kT
+Fig. 2. As for fig. 1 but for K Q = 10, 20 and 30.
+component ut(r, 8) of the liquid flow u is given by
+Id rdr
+u = - - [rh( r)]1El sin 8.
+For rigid particles we can calculate the large-Ka form of u, by using eqn (61) for d(h/r)/dr in the previous paper.' Substituting this equation into eqn (82) we find that, when KU >> 1, in the double-layer region ( r- a < K - ' )
+$ U sin 8. (83)
+22
+u,(rigid) = 1
+i
+22
+Eqn (83) shows that u, decays from $U sin 8 (just outside the double layer) to zero (at the drop surface) over the double-layer thickness K-'.. The tangential frictional force on the surface is then of order ~ U / K - 'F.or a mercury drop, on the other hand, it follows from eqn (A.6) that for Ka >> 1 u, has a constant value
+(84)
+u,(mercury) =$ u sin e
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1658 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+8
+7
+6
+5
+Em
+4
+3
+2
+1
+00 1 2 3 4 5 6 7 6
+@lkT
+Fig. 3. As for fig. 1 but for KU = 0, 0.1 and 1.
+in the muble-layer region and becomes zero at r = a / J 2 (inside the drop) Lwhich follows from eqn (28) and (40)], i.e. decays over distances of order a. The tangential frictional force on the drop surface is then of order 7)d U / a and hence the ratio of the mobility of a mercury drop to that of a rigid particle becomes Karl/ 7)d = K a . Another marked difference between the mobilities of mercury drops and rigid particles lies in the position of a maximum occurring in mobility curves when K a b 1 for mercury drops and KU 3 3 for rigid particks. For Ka 3 10, in particular, the mobility maximum of rigid particles o c c u ~ sat 5 = 5-6 (5== 125- 150 mV), while in
+the case of mercury drops it is shifted to 5 - 3 ( 6 =75 mV) (this value being easily
+accessible experimentally) and depends little on the magnitude of K a . The existence of a maximum in the mobility can be explained by the fact that as increases, the tangential flow of counter-ions in the double layer along the surface increases. This surface current tends to equalize the potential around the surface and hence retards the motion of the particle or the drop. For large KU and symmetrical electrolytes, the above effect (which is called the relaxation, the double-layer polarization or the surface c o n d ~ c t a n c e ' i~s)characterized by a factor F [eqn (SO)] for rigid particles and D [eqn (75)] for mercury drops. Roughly speaking, these parameters may be related to the ratio of the conductivity K , in the double-layer region (so-called surface conductivity) to the conductivity of the bulk electrolyte solution K", i.e. F, D = K , / aK as can be seen by calculating
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H . OHSHIMA, T. W. HEALY A N D L. R. WHITE 1659
+the excess tangential flow I, of counter-ions in the double layer ( F corresponds to
+Relintroduced by Derjaguin and Dukhin”). In the factor (1 +3m ) in the expression for F [eqn (SO)] the 3 m arises from the surface ionic flow due to the tangential liquid flow u, (ie. corresponds to the surface convection current) and the 1 arises from the flow due to the tangential gradient of the electrochemical potential, both terms being of the same order of magnitude. On the other hand, in the case of
+mercury drops, as the tangential liquid flow u, is of ’order I U,l= a(K U ) the contribution of the surface-convection term exceeds that of the other term by the order of KU, i.e. the surface current I, on the drop is caused mainly by convection of counter-ions. This explains why D is independent of KU (and hence why the position of the mobility maximum of mercury drops is insensitive to the magnitude of KU for large K U ) while F is proportional to 1 / K U . Thus F becomes zero as KU -+ a, corresponding to the well known fact in the case of rigid particles that at_infinite KU (for fixsd 5) the relaxation effect vanishes. Also, the fact that F = exp (5/2) and
+D =exp ( 5 ) explains the shift of the mobility maximum of mercury drops to small
+As mentioned earlier, the increase in surface current I , with 5 tends to equalize the potential around the drop (or the particle), which, in turn, suppresses further increase in I,. Therefore, the actual surface conductance for large KU is not propor
+tional to D (or F ) but to D / (1 + 0 )[or F / ( 1 +F ) ] ,as will be discussed again later.
+It is of interest to note (from fig. 1-3) that for very high 5 the mobility of mercury drops tends to that of rigid particles. In other words, mercury drops behave like rigid particles as 5 -+ co (except for two singular cases KU = 0 and a)because, for
+very high 5, the surface current I, on the mercury drop has its convection component (of order KCZ)fully suppressed and becomes of the same order as I , for rigid particles. Indeed, as 5 -+ a,both of the large KU formulae for mercury drops [eqn (72)] and rigid particles [eqn (79)] tend to the same limiting value:
+potentials.
+This ‘solidification’ effect of mercury drops at high 5 occurs not only for electrophoresis but also for other electrokinetic phenomena (conductivity and sedimentation), as will be seen later. For the special case of the sedimentation velocity at KU >> 1, Levich’ has already pointed out the above effect. In fig. 4 we compare the approximate results, eqn (61) and (72), with the computer results for mercury drops. The small-5 formula [eqn (61)] is_foundto be a good approximation with relative errors less than a few percent for 5 s 1.5. The large-Ka formula [eqn (72)], on the other hand, shows excellent agreement with the computer
+results at any values of 5 for large KU. The relative error F in eqn (72) is cegligible ( & < l % ) for K u a l O O ; ~ ~ 2 a2t ~%u = 5 0 e;ven at Ku=lO, F = s ~ % for 5 ~ 4 .We note that in the brackets on the right-hand side of eqn (72) the first term (linear in K U ) corresponds to the correct large-Ku limiting form [eqn (78)],_the sesond term becomes dominant and exceeds the first term for very high l[exp ([/2) 2 KU],
+and the contribution from the third term becomes large fo_rlow 5. [This term yields
+Smolchowski’s formula for rigid particles, Em= sgn (5)3[/22, in the limit qfd - W.]
+Fig. 4 also shows the mobility of mercury drops calculated by the formula of Levich and Frumkin,’ which is, in our notation,
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1660 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+10(
+IIIII II
+,--. '.
+20$ '. '.
+l./ \
+50
+00 1 2 3 4 5 6 7 8 e l l kT
+Fig. 4. Comparison of the approximate mobility formulae [eqn (61) and (72)] with computer results for mercury drops in a KC1 solution at 25 "C (the data used are the same as for fig. 1 and2). (- ) Computer results, (- - - -) small-6 formula [eqn (61)], (. * . * .) large-Kca
+formula [eqn (72)] and (- - - - - a -) Levich-Frumkin formula5 [eqn (86)].
+where we have replaced the surface charge density appearing in the original formula of Levich and Frumkin' by the large-Ka expression for b. As is seen in fig. 4, eqn
+(86) shows very large deviation from the exact computer _resultsexcept at small 6
+and very large KU ; for example, the deviation is 30% at 6 = 4 when KU = 100 and ZOO. Indeed eqn (86) agrees with the correct large-Ka form [eqn (78)] only when (<< 1, K u >> I and rn = 6.
+CONDUCTIVITY
+In fig. 5 we plot the computer results for the relative increment of the conductivity ( K * - K " ) / # X " in a KCl solution as a function of [ for several values of K a in comparison with those for rigid particles.
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+2
+1
+8%--.
+6*-0
+%
+I k
+v
+-1
+-1
+H. OHSHIMA, T. W. HEALY AND L. R. WHITE
+1 I1 I 1 I 1 1 I
+1661
+Fig. 5. Computer results for the relative conductivity increment ( K *- K")/+K" of a dilute suspension of mercury drops in a KC1 solution at 25 "C as a function of the J-potential for several values of K a in comparison with those for rigid spherical particles: (- ) mercury drops, (- - - -) rigid particles.
+The difference K " - K" due to the presence of charged spheres results from two effects: (1) the decrease in conductivity due to the presence of non-conducting spheres (note that although mercury drops are conducting, no currents exist inside the drops because of their perfect polarization) and (2) the increase in conductivity due to the surface conductivity K,, which is, for large K a , characterized by the parameter D [eqn (77)] for mercury drops and by F [eqn (SO)] for rigid particles, as discussed earlier. The value of ( K " - K " ) / # X " = -312 at (= 0 in fig. 5 corresponds to effect ( I 1 and so does the first term in each of the approximate formulae [eqn (64) and (7311. Fig. 5 shows a remarkable difference in the behaviour at K a +00 between mercury drops and rigid particles; i.e. as K a + a,the conductivity of the suspension of rigid particles becomes independent of (, while the conductivity of the mercury-drop
+suspension still depends on 6 even at K a = a.[For the case of symmetrical electrolytes the large-Ka limiting form of ( K *- K")/+K" agrees with the first two t p m s on the right-hand side of eqn (73) and has a very shallow maximum around
+6 = 5.5.1 This is due to the fact that, as K a -+ 00, K , vanishes for rigid particles but remains for mercury drops, as mentioned earlier.
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1662 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+For symmetrical electrolytes it is possible to obtain a large-Ka approximate formula for K , from eqn (73). If we put
+34 a
+K * = K"( 1 - : 4 ) +-K,
+where the first term on the right corresponds to effect (1), then using eqn (73) K , is given by
+K,(mercury) - 3mfi [exp (f/2) - exp (-5"/2)]'
+
+2 ( m + & ) 77d 2 773
+-+-+D
+aK"
+6mfi [exp ([/2) - exp (-[/2)]'
++A{(=) -v+d-+2D
+773
+(1 +exp (-[/2))]] 2
++6mfi In
+3fi D
+2(m+fi)77d 2
+773
+== +second term. -+-+D
+It is interesting to compare eqn (88) with the following corresponding formula for rigid particles with large K a [see eqn (65) of our previous paper']:
+&(rigid) 3 f i F 1 3 II
+-- + - y { - m ( l + 3 f i ) [ l -exp (-5/2)]
+aK" 2 ( m + f i ) l + F Kam+m
++2fi (L1 )+2-F6mfi (l + LF ,[In ( +exp2
+2
+Comparison of the leading terms of eqn (88) and (89) clearly shows correspondence
+between D and F and that K,X D / (1+D ) or F / ( 1+F ) . Fig. 5 also shows that the conductivity of the suspension of mercury drops tends
+to that for rigid particles as 5 - (except when K a =0 and m), as in the case of
+electrophoretic mobility. Indeed, both conductivity formulae for mercury drops [eqn (73)] and for rigid particles [eqn (65) of the previous paper'] tend to the same
+limiting value as 5 + co at fixed Ka, viz.
+K*-K" 3 9fi
+--+
+
+lim 
+c-rm 4 K m 2 2 ( m + f i )
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+2
+1
+8YB
+$0
+%
+Y
+*I
+W
+-1
+-2
+H. OHSHIMA, T. W. HEALY A N D L. R. WHITE 1663
+I I I / 1'1 ' I I I
+II 1 I I1 I
+-0 1 2 3 4 5 6 7 0 eSlkT
+Fig. 6. Comparison of the approximate conductivity formulae [eqn (64) and (73)] with computer results for a dilute suspension of mercury drops in a KC1 solution at 25 "C (the data used are the same as for fig. 1). (- ) Computer results, (- - - -) small-5 formula
+[eqn (64)] and (a - - - a a ) large-Kca formula [eqn (73)].
+In fig. 6 we compare the approximate formulae [eqn (64) and (73)] with the computer results for mercury drops. The relative error in eqn (64) is less than a few percent for [== 1.5, while eqn (73) is an excellent approximation for any [ when KU 2 50; even at KU = 10 it is only in error by cu. 10%.
+SEDIMENTATION VELOCITY
+Fig. 7 shows the computer results for the ratio of the sedimentation velocity Us,, of mercury drops in KCl to the Stokes velocity UzED for uncharged rigid particles [eqn (51)] as a function of [ for several values of KU, in comparison with those for rigid particles." For the case of rigid particles, the surface conductance effect (the relaxation effect) vanishes as K U - + 0 and as KU-+ a,and hence UsED(rigid)+ UzzD, which is independent of [, in these limits. On the other hand for mercury drops, as the surface conductivity does not vanish as KU + 00, the [-dependence of USEDremains in this limit and Us,, tends to its limiting form [eqn (74)] (for symmetrical electrolytes) as
+KU -b 00.
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1664 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+I I I I I I I1
+I IIII III
+01 2 3 4 5 6 7 8 4lkT
+Fig. 7. Computer results for the ratio of the sedimentation velocity Us,, of mercury drops in a KCI solution at 25 "C to the Stokes velocity U& as a function of the 5-potential for several values of KCI in comparison with those for rigid spherical particles: (- ) mercury drops, (- - - -) rigid particles.
+Fig. 7 also shows that for very large 8, Us,, of mercury drops tends to that of rigid particles (except when K a = 0 ) , as do the other electrokinetic phenomena.
+We also find that for K a b 1 and 5 6 5 , the (-dependence of Us,, of mercury drops is extremely small and hence the large-ica limiting form [eqn (74)] can serve as a good approximation for this region [for this reason no attempt has been made to obtain next-order corrections to eqn (74)]. For K a S 1 and e[/lcT< 2, the small-( approximate formula [eqn (69)l agrees well with the computer results with relative
+errors <O. 1% . Levich also derived an approximate formula for K a >> I , which agrees with eqn (74) only when (<< 1 and rn = &.
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY A N D L. R. WHITE 1665
+SEDIMENTATION POTENTIAL
+It has been seen that the small-c formula [eqn (70)] and large-rca formula [eqn (75)] for the sedimentation field EsEDsatisfy the Onsager relation [eqn (7l)] between electrophoresis and sedimentation. Further, we have confirmed that the computer results also satisfy the Onsager relation within the computer accuracy. Thus if the sedimentation field EsEnis scaled as
+the quantity E gEDbecomes identical numerically with the scaled electrophoretic mobility Em[eqn (62)]. The Onsager relation [eqn (71)] was originally proved by de Groot et all3 on the basis of irreversible thermodynamics, and in the previous paper'' we have given a direct proof without recourse to irreversible thermodynamics which is applicable for both mercury drops and rigid particles.
+H.O. acknowledges a Visiting Research Fellowship from the University of Melbourne. This work was supported by the Australian Research Grants Scheme.
+APPENDIX
+The large-rca approximate solutions to problems ( 1 ) and (2) can be derived by solving
+We denote 4{ for cations and anions in a symmetrical electrolyte by ++and c#-, respecwe can rewrite eqn (42) as
+the coupled eqn (42) and (43) for
+tively, and assume that 5 > 0. As has been shown
+and h as follows.
++&) = +*(a>+ U * ( r ) (A. 1) with
+[problem (l)]
+[problem (2)]
+[problem (2)J
+Noting that the integrand of each of eqn (A.2), (A.3) and (43) rapidly decays as r increases and is zero outside the double layer, we may expand r in the integrand around a and regard ( r - a ) / a to be of order l/rca. In addition to this result we use the fact that 4 * ( a )>> A+*( r ) in the double-layer region for large KQ, as will be made explicit later, and the following large-rca approximate formula for y correct to order 1/Ka [which is obtained from eqn (49) of ref. (16)]:
+1
+y =yp-- sinh (?)[2 ~ r(- a ) -tanh2(9(1 -exp [ - - 2 ~ ( r- a ) ] } ] (A.4)
+Ka
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+1666 ELECTROKINETIC PHENOMENA I N A MERCURY-DROP SUSPENSION
+where
+yp=4 arctanh {tanh ([/4) exp [-K( r - a ) ] }
+[problem (l)]
+ro
+is the potential distribution for KU = CO. Thus we find
+where rn, are the scaled drag coefficients of cations and anions, respectively. m e n , substituting eqn (A.4), (A.6) and (A.7) into eqn (A.2), we obtain simultaneous equations for $,(a) which are solved to give, for problem ( l ) ,
+2
+1
++-(3rn-)[l -exp (f/2)I2 ( 1 +3rn+)[l -exp (-[/2)]+6m+ln
+KU
++-31rn-[l -exp ([/2)] 2 +tanh ( f / 4 ) + 2 In (1 +exp;-Fm)
+Ka
+2
++(1 +3m+)[l-exp(-f/2)]2+6m+[l-exp (-f/2)]lr1
+For problem (2) they give
+(A.lO)
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online
+
+
+H. OHSHIMA, T. W. HEALY AND L. R. WHITE
+m+[l -exp (-f/2)][1 -exp (f/2)] In ( 1 +exP;-f/2))
+KU
+1667
+(A.11)
+The large-Ku formulae for Emand Us,, [eqn (72) and (74)] can be obtained by substituting eqn (A.4) and (A.7)-(A.11) into eqn (44b)and (49b), respectively, and retaining their leading terms. Similarly,the asymptotic constants C , for cations and anions, defined by eqn (48)[problem (l)] and (53) [problem (2)], can be calculated as follows. We rewrite eqn (48b) and (53b) as
+[problem (l)] (A.12)
+Substituting eqn (A.4) and (A.6)-(A.11) into eqn (A.12), using eqn (46) and (52) and retaining their leading terms, we obtain the large-Ku formulae for K * [eqn (73)] and EsED[eqn (76)].
+D. C. Henry, Proc. R. SOC.London, Ser. A, 1931, 133, 106. J. Th. G. Overbeek, Kolloid-Beih., 1943, 54, 287. F. Booth, Proc. R SOC.London, Ser. A, 1950, 203, 514. F. Booth, J. Chem. Phys., 1951, 19, 1331. V. G. Levich, Physicochemical Hvdrodynamics (Prentice Hall, Englewood Cliffs, N.J.,1962), chap. IX.
+‘ S. Levine and R. N. O’Brien, J. Colloid Interface Sci., 1973, 43, 616.
+’ R. W. O’Brien and L. R. White, J. Chem. SOC.,Faraday Trans. 2, 1978, 74, 1607.
+H. Ohshima, T. W. Healy and L. R. White, J. Chem. SOC.,Faraday Trans. 2, 1983, 79, 1613. R. W. O’Brien, J. Colloid Intetjizce Sci., 1981, 81, 234. lo H. Ohshima, R. W. O’Brien, T. W. Healy and L. R. White, J. Chem. SOC.,Faraday Trans. 2, 1984, in press. M. Abramowitz and I. A. Stegun, Handbook of Mathematical Functions (Dover, New York, 1965).
+11
+l2 R. W. O’Brien, personal communication. l 3 S. R. de Groot, P. Mazur and J. Th. G. Overbeek, J. Chem. Phys., 1952, 20, 1825. G. W. C.Kaye and T. H. Laby, Tables of Physical and Chemical Constants (Longman, London 14th edn, 1973). Is B. V. Derjaguin and S. S. Dukhin, Surface and Colloid Science, ed. E. Matijevic (Wiley, New York, 1974), vol. 7, chap. 3. l6 H. Ohshima, T. W. Healy and L. R. White, J. Colloid Interface Sci., 1982, 90, 17.
+14
+(PAPER 4/1056)
+Published on 01 January 1984. Downloaded by University of Massachusetts - Amherst on 5/10/2024 7:18:43 PM.
+View Article Online

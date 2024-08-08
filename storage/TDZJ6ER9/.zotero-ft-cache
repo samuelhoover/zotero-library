@@ -1,0 +1,240 @@
+DATA-DRIVEN COLLECTIVE VARIABLES
+FOR ENHANCED SAMPLING
+A PREPRINT
+Luigi Bonati
+Department of Physics, ETH Zurich, 8092 Zurich, Switzerland and Institute of Computational Sciences, Università della Svizzera italiana (USI), via Buffi 13, 6900 Lugano, Switzerland
+Valerio Rizzi
+Department of Chemistry and Applied Biosciences, ETH Zurich, 8092 Zurich, Switzerland and Institute of Computational Sciences, USI, via Buffi 13, 6900 Lugano, Switzerland
+Michele Parrinello
+Department of Chemistry and Applied Biosciences, ETH Zurich, 8092 Zurich, Switzerland, Institute of Computational Sciences, USI,via Buffi 13, 6900 Lugano, Switzerland, and Italian Institute of Technology, Via Morego 30, 16163 Genova, Italy
+ABSTRACT
+Designing an appropriate set of collective variables is crucial to the success of several enhanced sampling methods. Here we focus on how to obtain such variables from information limited to the metastable states. We characterize these states by a large set of descriptors and employ neural networks to compress this information in a lower-dimensional space, using Fisher’s linear discriminant as an objective function to maximize the discriminative power of the network. We test this method on alanine dipeptide, using the non-linearly separable dataset composed by atomic distances. We then study an intermolecular aldol reaction characterized by a concerted mechanism. The resulting variables are able to promote sampling by drawing non-linear paths in the physical space connecting the fluctuations between metastable basins. Lastly, we interpret the behavior of the neural network by studying its relation to the physical variables. Through the identification of its most relevant features, we are able to gain chemical insight into the process.
+Keywords Enhanced sampling | Collective variables | Deep learning
+arXiv:2002.06562v2 [physics.chem-ph] 7 Apr 2020
+
+
+In recent decades, enhanced sampling methods have become one of the main tools of computational science. They have extended the scope of atomistic simulations, allowing for long time scale phenomena to be simulated. Starting from the pioneering work of Torrie and Valleau [1], a large class of such methods relies on the introduction of collective variables (CVs) defined as functions of the atomic coordinates. Once these variables are identified, a bias potential that is a function of the selected CVs is added to the interaction potential to accelerate sampling [2]. The CVs are chosen so as to describe the hard-to-sample modes of the system, but this is non-trivial, especially when the system under investigation is complex and its transition pathways are unknown. Not surprisingly, much effort has been devoted to the identification and improvement of useful CVs. Very recently, machine learning methods of varying complexity have been also used to this effect [3–11]. Building on our previous studies, we introduce a new method that uses deep neural networks (NNs) to perform a nonlinear featurization of a large set of input descriptors in order to build effective CVs. However, before describing our approach we recall some recent findings that give a clue to what we plan to do.
+The free energy landscape of physical systems can be described as being made up of islands of metastability in a sea of improbable configurations. The metastable states are connected by narrow passageways that allow rare but crucial transitions from one state to another to take place. Very recently our group and others [12, 13] have developed a family of efficient CVs based only on the fluctuations in the metastable basins. This defies the conventional wisdom that for a variable to be effective, it must contain explicit information about the whole reaction path or at least the transition state [3, 14].
+As an example of this approach, we briefly recall how the method called harmonic linear discriminant analysis (HLDA) [12] works. One first identifies a small set of descriptors capable of discriminating between the states. The expectation value of the descriptors and their covariance matrices are computed from short unbiased runs in the two basins. With the knowledge of only these quantities, and by using a variant of the classification method that goes under the name of linear discriminant analysis (LDA)[15], one obtains CVs that are linear combinations of the input descriptors.
+This simple approach has proven to be highly effective in a variety of cases, such as chemical reactions [16, 17], crystallization [18], ligand unbinding [19] and small peptides folding [20], but it has limitations. At first, the states must be linearly separated in the descriptors space, as the HLDA CV is built upon their linear combination. Thus, HLDA crucially relies on the identification of a small set of uncorrelated descriptors. While this is a far less demanding task than finding CVs, it requires knowledge of the system and physical intuition. This intuition can be of great help in leading to an accelerated sampling, but, sometimes it might reflect more our prejudice than the actual system behavior, possibly preventing the exploration of some of the relevant transition pathways. With the use of an appropriately designed neural network, we want to lift these limitations.
+To achieve this result, we employ a NN to perform a non-linear transformation of the inputs, optimized by Fisher’s linear discriminant as objective function. The idea of improving linear techniques by combining them with NNs has been applied to LDA for classification purposes [21] and to other problems in different contexts[9, 11, 22, 23]. Here we want to apply it to the design of CVs.
+Method LDA was first introduced as a classification method. In this context, one searches for the linear combination of the input features that best separates the data in given classes. Let us consider a set of N data points x1, ..., xN (observations) of dimension d (local descriptors) belonging to C classes (metastable states). The covariance matrix over all these samples can be decomposed in two terms, the so-called within class Sw and between class Sb scatter matrices. The former takes into account the fluctuations inside the basins, and corresponds to the average of the class covariances Si:
+Sw = 1
+C
+C
+∑
+i
+Si. (1)
+On the other hand, Sb is defined as the covariance of the class means μi, and thus measures the fluctuations between classes:
+Sb = 1
+C
+C
+∑
+i
+(μi − μ)(μi − μ)T (2)
+where μ is the average of the C class means. Fisher’s criterion seeks a linear projection W into a C − 1 dimensional space, such that the samples show a high variance between classes and a low variance within. This is achieved by maximizing Fisher’s ratio
+argmax
+W
+WSbWT
+WSwWT , (3)
+that measures the degree of separation between the classes.
+In order to find the combination W which maximizes eq. 3, one has to solve the generalized eigenvalue problem:
+Sbwi = viSwwi ∀ i = 1, . . . , d (4)
+2
+
+
+Figure 1: Scheme of the construction of the Deep-LDA CV. A set of physical descriptors are used as inputs of a feed-forward neural network. A non-linear transformation is made by the NN via the composition of several hidden layers. In the the last layer, a Linear Discriminant Analysis is performed, the direction of maximal separation between classes is determined and the CV is obtained. To better illustrate the workings of Deep-LDA, we report three panels on the left hand side of the figure. In (a), we show the distribution of a pair of typical input descriptors and note how they do not distinguish state A from state B. In (b), we plot the distribution of a pair of variables from the topmost hidden layer, along with the LDA boundary projected in this space. At this stage, after the non-linear transformation, state A and B are linearly separable. In (c), we report the probability distribution of the Deep-LDA CV for the two states.
+where the eigenvectors wi form the projection matrix W and the eigenvalues vi quantify the separation in the corresponding directions. We then obtain the compressed representations si with i = 1, ..., C − 1 by projecting the
+data points x along the corresponding eigenvectors as: si = wT
+i x. By choosing si as a set of CVs, LDA has been used in enhanced sampling applications. In previous work, a harmonic average of the covariance matrices was performed in eq. 1, hence the name HLDA [12]. However, in this paper we use the standard LDA version.
+We now illustrate how LDA can be combined with a neural network (see fig. 1). We feed a number of descriptors to the NN that reduces the dimensionality of the data through a succession of continuous non-linear transformations represented by fθ(x) with parameters θ. We then perform LDA on the topmost hidden space representation h = fθ(x), and use the eigenvalues of eq. 4 to optimize the NN. From now on, we restrict the discussion to the typical case of two-classes, where the loss function reads:
+L = −v1 (5)
+and v1 is the only non-zero eigenvalue of eq. 4. By maximizing the LDA eigenvalue, one increases the discriminative power of the NN and learns at the same time linearly separable latent features (see fig. 1b). The resulting Deep-LDA CV, reported in fig. 1c, is obtained by projecting the output of the NN h along the LDA eigenvector w1 as follows:
+s = w1T h. Generalizing the loss function to multi-state problems is simple and can be done either by maximizing the smallest of the C − 1 eigenvalues or their sum [21].
+To make the optimization more stable we regularize the within scatter matrix by adding a multiple of the identity matrix
+S′w = Sw + λI, (6)
+as done in ref. [21]. Furthermore, we transform the generalized eigenvalue problem into a standard one by performing a Cholesky decomposition of S′w = L LT [15]. By simple manipulation, we rewrite eq. 4 as:
+S ̃ w ̃ i = vi w ̃ i i = 1, 2 (7)
+3
+
+
+where S ̃ = L−1Sb(LT )−1 and w ̃ i = LT wi. In this way, we have a symmetric eigenvalue problem which can be solved using the Pytorch library [24]. This allows training Deep-LDA networks with backpropagation and mini-batch gradient descent.
+We note that, in the context of classification, eq. 5 is used as loss function and training is stopped when the configurations are correctly labeled [21]. However, during the optimization process, the separation between the projected classes of eq. 3 tends to increase without bounds either by enlarging the distance between classes or by collapsing them into delta-like distributions. Since we intend to use the compressed representation in enhanced sampling methods, neither very large distances between states nor too narrow basins are suitable for our purpose. We regulate the width of the projected classes with λ (eq. 6), which provides a lower bound of the within class covariances, and we control the distance by modifying the loss function as follows:
+L = −v1 − α 1+
+(
+s2 − 1
+)2 (8)
+where α represents the magnitude of the regularization (see Supporting Information SI-1) and s2 = 1
+nb
+∑nb
+j=1 s2
+j is
+the average of the squared CV over a batch of nb configurations. The second term in eq. 8 is maximum for s2 = 1, thus it acts as an effective constraint on the distance between the basins. More details about the loss function and the optimization procedure are reported in the Supporting Information (SI).
+After the training reaches convergence, we use the Deep-LDA CV in combination with enhanced sampling methods. In principle, this could be done with any method, such as Metadynamics [25] or Variational Enhanced Sampling [26, 27]. In this work, we choose to employ a recently developed evolution of Metadynamics, called on-the-fly probability enhanced sampling (OPES) [28], which builds the bias from an on-the-fly estimation of the probability distribution.
+In OPES, the probability distribution at iteration n is given by
+Pn(s) =
+∑n
+k wkG(s, sk)
+∑n
+k wk
+, (9)
+where G(s, sk) is a multivariate Gaussian and the weights are computed from the previously deposited bias potential wk = eβVk−1(sk), with β the inverse temperature. In turn, the bias potential is defined as:
+Vn(s) =
+(
+1− 1
+γ
+)1
+β log
+( Pn(s)
+Zn
++
+)
+(10)
+where Zn is a normalization factor and the bias factor γ is a parameter, that, as in Well-Tempered Metadynamics [29], determines the broadening of the biased distribution. Finally,  is a regularization term, that sets a limit to the maximum value of the bias, thus limiting the exploration of higher free energy regions.
+Once the iterative process converged, the free energy surface (FES) can be computed as:
+Fn(s) = − 1
+β log Pn(s) (11)
+and simple umbrella-sampling reweighting gives access to all the static properties of interest. We refer the reader to ref. [28] for further details.
+The combination of Deep-LDA and OPES presents a few noteworthy features. Enhancing the dynamics along the Deep-LDA CV typically spreads the action of the bias over a fairly large number of degrees of freedom. This helps greatly in promoting transitions but also increases the risk of exploring unwanted regions of the phase space. Therefore, the capability of OPES to restrict the exploration by choosing appropriately the  parameter in eq. 10 helps in focusing the sampling. Other benefits of OPES include its robustness, due to a small number of free parameters and a convergence faster than Metadynamics.
+Before proceeding to the applications, we summarize the method for clarity:
+1. Run short unbiased MD runs in the metastable states and compute the descriptors
+2. Construct a CV by training a NN with LDA as the objective function
+3. Use the Deep-LDA CV to enhance the sampling and obtain the FES
+4
+
+
+Alanine dipeptide The first example that we choose is alanine dipeptide, a small molecule often used to benchmark sampling methods. Alanine has two metastable states that are well described using the pair of Ramachandran angles φ and ψ, which forms a nearly ideal set of CVs.
+However, since here we wish to show the strength of the method, we deliberately put ourselves in a situation more complex than necessary and choose a general set of descriptors. This is more similar to the situation one encounters in practice, where optimal CVs are difficult to find. The key here is Deep-LDA’s ability to handle a large number of descriptors. Unfortunately, we cannot directly use the atomic coordinates, since the resulting CV would not be rotationally and translationally invariant. A natural choice is to use coordinate combinations that are invariant under such symmetries, for instance distances, angles and dihedrals. To make things even more challenging, we choose only distance-based descriptors. In such a base the states cannot be linearly separated. Instead Deep-LDA, which is intrinsically non-linear, overcomes this difficulty and leads to satisfactory results.
+We run short unbiased trajectories in the two basins, using as descriptors the 45 distances between heavy atoms, and with the data thus accumulated we train a Deep-LDA CV (see SI-3). We developed an interface to load the Pytorch model in the open-source plug-in PLUMED2 [30] that allows using the Deep-LDA CV with enhanced sampling methods. The code and the input files needed to reproduce the simulations are openly available in the PLUMED-NEST repository with plumID:20.004.
+Enhancing the fluctuations of the Deep-LDA CV leads to a highly diffusive behavior comparable to the simulations where the pair of Ramachandran angles is biased (see fig. SI-3.1). In fig. 2a we report the FES along the Deep-LDA CV.
+Figure 2: We show here alanine dipeptide convergence tests in which we run 10 independent simulations with OPES and the Deep-LDA CV, from which we extract the mean (solid line) and the standard deviation (shadow region). In (a) we report the FES along the Deep-LDA CV, calculated from eq. 11. In (b), we show the FES along the φ angle, computed with a reweighting technique (see eq. SI-3.1). The dotted line represents the reference obtained when biasing directly φ and ψ. In (c), there is the free energy difference between the two metastable states as a function of time (see eq. SI-3.2).
+5
+
+
+Furthermore, we compare the projection of the FES along φ with more standard calculations that use φ and ψ as CVs (see fig. 2b). The full landscape in terms of φ and ψ is reported in fig. SI-3.3. We then monitor the free energy difference between the two basins as a function of time (fig. 2c) and observe a rapid convergence to the reference value. These results show that Deep-LDA is able to reproduce the two dihedrals which represent the slowest degrees of freedom.
+To illustrate this point further, we present in fig. 3 the isolines of the Deep-LDA CV on top of the FES, both projected onto φ and ψ (see also fig. SI-3.2). As there is no direct correspondence between the dihedral angles and the CV s, the isolines have been computed from the conditional probability p(s | φ, ψ) in the statistical ensemble generated by an OPES calculation with a uniform target distribution in the (φ, ψ) space. Note that the training is performed using data from the two basins alone and the isolines corresponding to the intermediate regions are extrapolated by the network. When the Deep-LDA fluctuations are enhanced by OPES, the system is driven along the direction perpendicular to the isolines of the CV. It is remarkable how well this direction is correlated to the low free energy path that connects the two basins.
+Similar results were obtained with different NN architectures and regularization parameters, as well as by using Well-Tempered Metadynamics (see fig. SI-3.5), demonstrating the robustness of the method on the choice of parameters and the enhanced sampling algorithm used.
+Figure 3: We show the isolines of the conditional probability of the Deep-LDA CV with respect to the Ramanchadran angles, on top of a reference free energy surface. The highlighted lines correspond to the regions of the two metastable states used for training, and they are spaced by 0.02. The black lines are extrapolated by the network and have a much larger spacing of 0.2. The isolines are solid or dashed depending on whether they are above or below zero.
+Aldol reaction The second example is the aldol reaction between vinyl alcohol and formaldehyde. This reaction presents several pathways and products [31]. Here, for simplicity, we focus on the most probable one, which has a barrier of ∼ 150 kJ/mol, as estimated in static calculations. This represents a challenging test since it is not obvious whether the reaction’s concerted mechanism can be captured with information coming exclusively from unbiased simulations of reactants and products. Once again, in the spirit of performing the computation in a blind manner, we build the descriptor set out of all the interatomic distances. We rely on the ability of Deep-LDA to combine them in a meaningful and optimal way and to point out the most relevant ones. Previous experience [17] has shown that a good input set for chemical reactions can be obtained from the interatomic distances r, using the following contact function:
+cij(r) =
+1−
+(r
+σij
+)n
+1−
+(r
+σij
+)m (12)
+where σij are typical bonding lengths between atoms of species i and j.
+6
+
+
+This non-linear pre-processing of the distances is crucial in the case of linear methods. In the present context, this step is not strictly necessary, thanks to the non-linearity provided by the NN. Nevertheless, it can be of help in focusing on the relevant degrees of freedom. As in the case of NN based interatomic potentials [32], the use of chemically informed descriptors facilitates learning from the data. In fig. SI-4.4 we show a simulation employing the distances as inputs of the Deep-LDA CV.
+Having defined the input descriptors, we train the Deep-LDA network on unbiased simulations of the two states and use the resulting CV in combination with OPES to enhance the process (see SI-4 for the computational details). The time evolution of the Deep-LDA CV is reported in fig. 4a, which illustrates how the system is reversibly driven from reactants to products.
+Figure 4: Results of the OPES simulation when enhancing the Deep-LDA CV. (a) Time evolution of the Deep-LDA CV. The points are colored according to the C1-C2 distance. (b) Features importance analysis, according to the magnitude of the weights of the first layer. The rankings are normalized so that their sum is equal to one. The first three inputs, separated by a gap from the following ones, are colored in orange. (c) Distribution of the visited configurations in the plane of the C1-C2 and O1-H distances, colored by the Deep-LDA CV. The gray dashed lines correspond to the isolines of the free energy surface projected onto this space, while the black solid one corresponds to the minimum free energy path, computed using the nudged elastic band method [33]. (d) Free energy surface projected along the C1-C2 distance, computed with a block average over the second part of the simulation, every 1 ns. The standard error is below 1 kJ/mol and is thus not visible.
+7
+
+
+To assess the convergence of the simulation, we compute the FES along the C1-C2 distance (see inset of fig. 4c) with a block average and report the results in fig. 4d. The uncertainty is 0.25 kJ/mol in the regions of the metastable minima and about 1 kJ/mol close to the free energy barrier.
+In order to gain a physical understanding of the process, we perform a feature importance analysis on the NN. More precisely, we rank the features by summing the modulus of the weights between the input and the first layer, multiplied by the standard deviation of the inputs in the training set. Another option is to calculate the derivatives of the Deep-LDA CV with respect to each input, averaged over all inputs in the training set. We found that these two ways of estimating feature relevance produce similar results (see fig. SI-4.3). As shown in fig. 4b, there are three relevant descriptors, separated by a large gap from the following ones. These are the C1-C2 contact associated with the carbon-carbon bond together with the O1-H and O2-H contacts that characterize the proton transfer. This result has been obtained without any a priori information on the reaction pathway and it is in agreement with chemical intuition.
+The FES projected on two of these variables has an easily understandable structure (fig. 4c and also fig. SI-4.2). The two basins are clearly separated and the Deep-LDA CV shows different values in the two basins. As in the alanine dipeptide example, the isolines of Deep-LDA resemble quite closely the ones of the FES. This implies that the direction along which the system is driven is correlated with the minimum free energy path, thus acting as a committor-like collective variable.
+Conclusions We introduce in this letter a method that compresses the information from the metastable states into CVs. The method relies on a non-linear dimensionality reduction, performed by a NN, followed by a linear transformation. This is achieved by maximizing the LDA objective function, which searches for the representation that best separates the states. We show that the method effectively draws a path in the descriptors’ space. The Deep-LDA CV can be used in combination with any CV-based enhanced sampling method. We wish to remind the reader that our purpose here is not to find the ideal CV, but rather to build a variable that is good enough to promote transitions between the metastable states, given only a limited amount of information. We expect this approach to work best when the starting basins are adjacent in the phase space. If the system presents intermediate metastable states, they can be added iteratively as new classes for Deep-LDA, either by building a CV for each pair of states [17] or by using a multi-class approach [16]. This CV could be further refined to follow the reaction pathway closely, either by including weighted data from biased simulations or by combining it with methods designed to extract the slowest relaxation modes [34, 35]. Another result is that the Deep-LDA features ranking can be used to identify the relevant descriptors in a data-driven way, as well as filtering them. For all these reasons we believe that our method could be of help in studying a large variety of rare events, including but not limited to chemical reactions, nucleation events and ligand-binding processes.
+Acknowledgments
+The authors thank Sandro Bottaro, Michele Invernizzi and GiovanniMaria Piccini for carefully reading the paper, Manyi Yang for providing the inputs of the aldol reaction and Riccardo Capelli and Emanuele Grifoni for useful discussions. This research was supported by the NCCR MARVEL, funded by the Swiss National Science Foundation, the Swiss National Science Foundation Grant No. 200021_169429/1 and the European Union Grant No. ERC-2014AdG-670227/VARMET. The calculations were carried out on the Euler cluster of ETH Zurich.
+8
+
+
+SUPPORTING INFORMATION
+SI-1 Neural network training
+The Deep-LDA model is trained using the PyTorch [24] library. We report here the parameters used for the training of the neural network. We first apply a regularization to the within class scatter matrix in the form of S′w = Sw + λI, with λ = 0.05.
+The loss function is composed by three terms:
+L = −v1 − α 1 1+
+(
+s2 − 1
+)2 + γ
+∑
+i
+|θi|2 (SI-1.1)
+where the first one is the LDA eigenvalue of eq. 4, the second one is the regularization on the CVs values introduced in eq. 6, and the third one is an L2 regularization over the weights θi of the network, with γ = 10−5. We found that the
+intensity α of the regularization term is connected to the value of λ in S′w, and a robust behavior is obtained when their product is kept constant. In fact, α affects the numerator of Fisher’s ratio (eq. 3), while the latter only the denominator. Thereby, we use α = 2/λ. We use the rectified linear unit as activation function. The training data, which consists of 10000 configurations, is divided into batches of size 2000, and the model is optimized using ADAM [36] with a learning rate of 10−4, until the loss function converges. In order to prevent overfitting, a small set of configurations from different simulations is used as a validation set, and the early stopping technique is used where necessary. Once the model has been trained, the LDA coefficients are obtained using the whole training set and the model is exported.
+SI-2 PLUMED interface with PyTorch
+A development version of the open-source plug-in PLUMED2 [30] is used. At first, we define the descriptors which form the input for the Deep-LDA network. The NN architecture and parameters are loaded using a custom interface via LibTorch C++ APIs. Finally, the Deep-LDA collective variable is used in combination with the OPES method to enhance the sampling.
+SI-3 Alanine dipeptide
+Computational details. The alanine dipeptide simulations are carried out using GROMACS 2019.4 [37] patched with PLUMED 2.5. We use the Amber99-SB force field [38] with a time step of 2 fs. The NVT ensemble is sampled using the velocity rescaling thermostat [39] with a temperature of 300K. For OPES we use SIGMA=0.05 and BARRIER=30 kJ/mol. The neural network used to model the Deep-LDA CV has 3 hidden layers with {30, 15, 5} neurons per layers. The distances are standardized to take values from -1 to 1.
+Comparison with φ and ψ. In fig. SI-3.1 we report the trajectory of a simulation using Deep-LDA, compared with the case in which the two Ramachandran angles are used. As it can be seen from the transition rate, despite the fact that only scalar distances are used as inputs for Deep-LDA, the NN manages to build a non-linear combination of them which is able to distinguish and to drive transitions between the states, thus mimicking the effect of the dihedral angles.
+Conditional probability distribution of the Deep-LDA CV in the Ramachandran plot. In fig. SI-3.2 we report the probability distribution of the Deep-LDA CV as a function of the two angles, p(s | φ, ψ). This has been computed from a simulation with OPES and an uniform target distribution in the {φ,ψ} space. The Deep-LDA CV is able to reproduce the topology of the free energy landscape of alanine dipeptide, while using only short unbiased simulations.
+Accuracy of the reweighted landscape. We quantify the accuracy of the reconstructed free energy landscape in terms of the physical variables, φ and ψ. The FES can be obtained from OPES simulations via an umbrella-sampling reweighting [28]:
+P (s) = 〈δ [s − s(R)] eβV (s)〉V
+〈eβV (s)〉V
+(SI-3.1)
+In figure SI-3.3 we report the results obtained from 10 independent simulations, which we use to quantify the standard deviation, as an estimate of the error of a single simulation. Furthermore, for a direct comparison, we report the reference FES obtained when biasing directly the two dihedral angles, from which we estimate the absolute error with respect to the reference. The error made in reconstructing the FES is smaller than 0.5 kBT (1.25 kJ/mol) in the most relevant regions. Moreover, the standard deviation is smaller than 1 kBT (2.5 kJ/mol) in all the regions of interest.
+9
+
+
+Figure SI-3.1: Time evolution of the φ angle in the Deep-LDA OPES simulation (top) and the optimal case when the two dihedral angles are used to define the bias potential (bottom).
+Figure SI-3.2: Probability distribution of the Deep-LDA CV in the Ramachandran plot.
+10
+
+
+Figure SI-3.3: Free energy surface of alanine dipeptide in the φ,ψ space. We show the free energy mean value reweighted from 10 OPES simulations where the Deep-LDA CV was biased (top right) and its corresponding standard deviation (top left). We then show a reference free energy obtained by biasing directly the two dihedrals φ and ψ (bottom left) and the absolute error between the reference and the Deep-LDA simulations (bottom right). In the panels on the right hand side, we display the isolines of the FES to highlight the position of the the metastable states.
+11
+
+
+Metadynamics simulations. Here we combine the Deep-LDA CV with Well-Tempered Metadynamics [29]. We follow the same protocol as above, running 10 independent simulations to calculate the mean and the standard deviation of the free energy. The Metadynamics parameters are SIGMA=0.05, GAMMA=6 and PACE=500. In fig. SI-3.4 we show the FES along the φ variable.
+Figure SI-3.4: Free energy surface along the φ variable from simulations with OPES and Well-Tempered Metadynamics where the Deep-LDA CV was biased. For comparison, the reference free energy value is shown.
+Convergence tests. We provide a test of the robustness of the Deep-LDA CV with respect to different enhanced sampling methods and different realizations of the NN by assessing the convergence of the alanine dipeptide free energy difference. After training different Deep-LDA CVs (by changing only one parameter at the time), our protocol is to run 10 different simulations for each case and calculate mean value and the standard deviation of the free energy difference. The free energy difference between the basins is defined as follows:
+∆F = 1
+β log
+∫
+A e−βF (φ)dφ
+∫
+B e−βF (φ)dφ (SI-3.2)
+where φ is the dihedral angle and F (φ) is the reweighted free energy. The two integrals are computed over the regions of phase space corresponding to metastable state A and B, in this case φ < 0 and φ > 0. The first 2 ns of the simulation are discarded and the update of ∆F is performed every 1 ns. In fig. SI-3.5, we compare the time evolution of the free energy difference in the different cases. All examples show a quick convergence of ∆F within the 0.5 kBT uncertainty.
+12
+
+
+Figure SI-3.5: Time evolution of the free energy difference for alanine dipeptide in a number of different simulations. The mean (solid line) and standard deviation (shadow area) over 10 simulations are reported, together with the reference value (thicker dotted line) and a region of 0.5kBT from within the reference (thinner dotted lines). In the top panel we compare OPES and Metadynamics simulations. In the central panel, we show the effect of different NN architecture. In the bottom panel, we vary the regulatization parameter λ (and therefore also α as we always keep α = 2/λ).
+13
+
+
+SI-4 Aldol reaction
+Computational details. The software package CP2K 7.1 [40] is used to carry out the simulations of the aldol chemical reaction at the PM6 semi-empirical level. We used an integration step of 0.5 fs, employing the same thermostat as in SI-3 with a time constant of 100 fs. In fig. SI-4.1 we report a snapshot of the aldol reaction with the labeling of the atoms used in the paper. The contacts between the atoms are computed using PLUMED, with the parameter σij of the switching function of eq. 10 being equal to 1.7 Å for C-C, 1.6 Å for O-O and C-O, and 1.2 Å for C-H and O-H species. The exponents of the contact functions are chosen as n = 6 and m = 8 to enforce a smooth behavior over a wide range of distances. The whole set is made of 40 contacts. A neural network with three hidden layers and {24, 10, 4} nodes per layer is used. In OPES, we use SIGMA=0.1 and BARRIER=160 kJ/mol. The Deep-LDA CV s is very sharp in the metastable basins, thus it is not ideal for usage in enhanced sampling. To broaden it, we transform it by s′ = s + s3 and use OPES to enhance the dynamics of s′. A restraint (k/2)(s′ − s0)2 with k = 2000 kJ/mol and s0 = ±3.2 is put to
+prevent s′ to explore regions beyond its scope. To set a limit on the mutual distance between the vinyl alcohol and the formaldehyde, we also put a restraint on the distance d between their respective centers of mass of the form k(d − d0)2 with k = 150 kJ/mol and d0 = 5 Å.
+Figure SI-4.1: Snapshot of the aldol reaction with labels on the relevant atoms involved in the process. The C1-C2 bond has to be formed, with a simultaneous proton transfer from O1 to O2.
+Free energy landscape projected onto chemical distances. We report in fig. SI-4.2 the free energy profiles obtained via reweighting of the Deep-LDA CV in the space of the three chemical distances identified by the features importance analysis.
+Figure SI-4.2: Free energy surface projected along combinations of the three chemical distances identified as the most important from the Deep-LDA ranking.
+14
+
+
+Features ranking based on the derivatives We propose an alternative ranking of the input contacts which is based on the derivatives of the CV with respect to the inputs. The ranking for the k-th descriptor is defined as rk =
+∑n j=1
+∣ ∣ ∣
+∂ sj ∂ xk
+j
+∣ ∣
+∣ σ(xk) where the sum is performed over a set of n configurations from the training set and σ(xk) is the
+standard deviation of descriptor xk over that set. The rankings are normalized so that their sum is equal to one. The resulting features ranking in fig SI-4.3 is in qualitative agreement with the one proposed in fig. 4 as the three most relevant contacts correspond.
+Figure SI-4.3: Features ranking based on the derivatives of the Deep-LDA CV with respect to inputs.
+15
+
+
+Distances as inputs for the Deep-LDA CV We train a Deep-LDA CV using all the distances instead of the contacts. In analogy with the simulations above, we transform it with s′ = s + s3 and feed it to OPES with SIGMA=0.09 and BARRIER=160 kJ/mol. The resulting CV dynamics is shown in fig. SI-4.4. The CV is able to drive the system back and forth between the basins, albeit in a slightly less efficient way than the CV trained with the contacts.
+Figure SI-4.4: Time evolution of the Deep-LDA variable trained over all the distances of the aldol reaction. The color corresponds to the C1-C2 distance.
+SI-5 Data availability
+All the code and the input files needed to reproduce the results reported in this paper are openly available in the PLUMED-NEST repository (www.plumed-nest.org), as plumID:20.004. The results are deposited in the Materials Cloud Archive (www.materialscloud.org), with id: 2020.0035.
+16
+
+
+References
+[1] G. Torrie and J. Valleau. “Nonphysical sampling distributions in Monte Carlo free-energy estimation: Umbrella sampling”. In: J. Comput. Phys. 23.2 (1977), pp. 187–199. [2] O. Valsson, P. Tiwary, and M. Parrinello. “Enhancing Important Fluctuations: Rare Events and Metadynamics from a Conceptual Viewpoint”. In: Annu. Rev. Phys. Chem. 67.1 (2016), pp. 159–184. [3] A. Ma and A. R. Dinner. “Automatic Method for Identifying Reaction Coordinates in Complex Systems ”. In: J. Phys. Chem. B 109.14 (2005), pp. 6769–6779. [4] J. M. L. Ribeiro, P. Bravo, Y. Wang, and P. Tiwary. “Reweighted autoencoded variational Bayes for enhanced sampling (RAVE)”. In: J. Chem. Phys. 149.7 (2018), p. 072301. [5] W. Chen and A. L. Ferguson. “Molecular enhanced sampling with autoencoders: On-the-fly collective variable discovery and accelerated free energy landscape exploration”. In: J. Comput. Chem. 39.25 (2018), pp. 20792102. [6] M. Schöberl, N. Zabaras, and P.-S. Koutsourelakis. “Predictive collective variable discovery with deep Bayesian models”. In: J. Chem. Phys. 150.2 (2019), p. 024109. [7] J. Rogal, E. Schneider, and M. E. Tuckerman. “Neural-Network-Based Path Collective Variables for Enhanced Sampling of Phase Transformations”. In: Phys. Rev. Lett. 123.24 (2019), p. 245701. [8] P. Ravindra, Z. Smith, and P. Tiwary. “Automatic mutual information noise omission (AMINO): generating order parameters for molecular systems”. In: Mol. Syst. Des. Eng. 5.1 (2020), pp. 339–348. [9] W. Chen, H. Sidky, and A. L. Ferguson. “Nonlinear discovery of slow molecular modes using state-free reversible VAMPnets”. In: J. Chem. Phys. 150.21 (2019), p. 214114. [10] C. Wehmeyer and F. Noé. “Time-lagged autoencoders: Deep learning of slow collective variables for molecular kinetics”. In: J. Chem. Phys. 148.24 (2018), p. 241703. [11] C. X. Hernández, H. K. Wayment-Steele, M. M. Sultan, B. E. Husic, and V. S. Pande. “Variational encoding of complex dynamics”. In: Phys. Rev. E 97.6 (2018), p. 062412. [12] D. Mendels, G. Piccini, and M. Parrinello. “Collective Variables from Local Fluctuations”. In: J. Phys. Chem. Lett. 9.11 (2018), pp. 2776–2781. [13] M. M. Sultan and V. S. Pande. “Automated design of collective variables using supervised machine learning”. In: J. Chem. Phys. 149.9 (2018), p. 094106. [14] B. Peters. Reaction Rate Theory and Rare Events. Elsevier, 2017, pp. 1–619. [15] M. Welling and Max Welling. “Fisher linear discriminant analysis”. In: Dep. Comput. Sci. Univ. Toronto (2005). [16] G. Piccini, D. Mendels, and M. Parrinello. “Metadynamics with Discriminants: A Tool for Understanding Chemistry”. In: J. Chem. Theory Comput. 14.10 (2018), pp. 5040–5044. [17] V. Rizzi, D. Mendels, E. Sicilia, and M. Parrinello. “Blind Search for Complex Chemical Pathways Using Harmonic Linear Discriminant Analysis”. In: J. Chem. Theory Comput. 15.8 (2019), pp. 4507–4515. [18] Y. Y. Zhang, H. Niu, G. Piccini, D. Mendels, and M. Parrinello. “Improving collective variables: The case of crystallization”. In: Journal of Chemical Physics 150.9 (2019), p. 94509. [19] R. Capelli, A. Bochicchio, G. Piccini, R. Casasnovas, P. Carloni, and M. Parrinello. “Chasing the Full Free Energy Landscape of Neuroreceptor/Ligand Unbinding by Metadynamics Simulations”. In: Journal of Chemical Theory and Computation 15.5 (2019), pp. 3354–3361. [20] D. Mendels, G. Piccini, Z. F. Brotzakis, Y. I. Yang, and M. Parrinello. “Folding a small protein using harmonic linear discriminant analysis”. In: J. Chem. Phys. 149.19 (2018), p. 194113. [21] M. Dorfer, R. Kelz, and G. Widmer. “Deep linear discriminant analysis”. In: 4th Int. Conf. Learn. Represent. ICLR. 2016.
+[22] G. Andrew, R. Arora, J. Bilmes, and K. Livescu. “Deep canonical correlation analysis”. In: 30th International Conference on Machine Learning, ICML 2013. Vol. 28. PART 3. 2013, pp. 2284–2292.
+[23] A. Mardt, L. Pasquali, H. Wu, and F. Noé. “VAMPnets for deep learning of molecular kinetics”. In: Nature Communications 9.1 (2018).
+[24] A. Paszke et al. “Automatic differentiation in PyTorch”. In: Adv. Neural Inf. Process. Syst. 32 (2019), pp. 80248035. [25] A. Laio and M. Parrinello. “Escaping free-energy minima”. In: Proc. Natl. Acad. Sci. 99.20 (2002), pp. 1256212566. [26] O. Valsson and M. Parrinello. “Variational Approach to Enhanced Sampling and Free Energy Calculations”. In: Phys. Rev. Lett. 113.9 (2014), p. 090601.
+17
+
+
+[27] L. Bonati, Y.-Y. Zhang, and M. Parrinello. “Neural networks-based variationally enhanced sampling”. In: Proc. Natl. Acad. Sci. 116.36 (2019), pp. 17641–17647.
+[28] M. Invernizzi and M. Parrinello. “Rethinking Metadynamics: from Bias Potentials to Probability Distributions”. In: J. Phys. Chem. Lett. (2020).
+[29] A. Barducci, G. Bussi, and M. Parrinello. “Well-Tempered Metadynamics: A Smoothly Converging and Tunable Free-Energy Method”. In: Phys. Rev. Lett. 100.2 (2008), p. 020603. [30] G. A. Tribello, M. Bonomi, D. Branduardi, C. Camilloni, and G. Bussi. “PLUMED 2: New feathers for an old bird”. In: Comput. Phys. Commun. 185.2 (2014), pp. 604–613. [31] M. Yang, J. Zou, G. Wang, and S. Li. “Automatic Reaction Pathway Search via Combined Molecular Dynamics and Coordinate Driving Method”. In: J. Phys. Chem. A 121.6 (2017), pp. 1351–1361. [32] G. Carleo et al. “Machine learning and the physical sciences”. In: Reviews of Modern Physics 91.4 (2019). [33] H. Jonsson, G. Mills, and K. W. Jacobsen. “Nudged elastic band method for finding minimum energy paths of transitions”. In: Class. Quantum Dyn. Condens. Phase Simulations. World Scientific, 1998, pp. 385–404. [34] J. McCarty and M. Parrinello. “A variational conformational dynamics approach to the selection of collective variables in metadynamics”. In: J. Chem. Phys. 147.20 (2017), p. 204109. [35] P. Tiwary and B. J. Berne. “Spectral gap optimization of order parameters for sampling complex molecular systems”. In: Proc. Natl. Acad. Sci. U. S. A. 113.11 (2016), pp. 2839–2844. [36] D. P. Kingma and J. Ba. “Adam: A Method for Stochastic Optimization”. In: 3rd ICLR (2014). [37] D. Van Der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark, and H. J. C. Berendsen. “GROMACS: Fast, flexible, and free”. In: J. Comput. Chem. 26.16 (2005), pp. 1701–1718. [38] V. Hornak, R. Abel, A. Okur, B. Strockbine, A. Roitberg, and C. Simmerling. “Comparison of multiple Amber force fields and development of improved protein backbone parameters”. In: Proteins Struct. Funct. Bioinforma. 65.3 (2006), pp. 712–725. [39] G. Bussi, D. Donadio, and M. Parrinello. “Canonical sampling through velocity rescaling”. In: J. Chem. Phys. 126.1 (2007), p. 014101.
+[40] J. Hutter, M. Iannuzzi, F. Schiffmann, and J. VandeVondele. “Cp2k: atomistic simulations of condensed matter systems”. In: Wiley Interdiscip. Rev. Comput. Mol. Sci. 4.1 (2014), pp. 15–25.
+18

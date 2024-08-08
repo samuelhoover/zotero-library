@@ -1,0 +1,351 @@
+Role of Associative Charging in the Entropy−Energy Balance of Polyelectrolyte Complexes
+Vikramjit S. Rathee, Hythem Sidky, Benjamin J. Sikora, and Jonathan K. Whitmer*
+Department of Chemical and Biomolecular Engineering, University of Notre Dame, Notre Dame, Indiana 46556, United States
+*
+S Supporting Information
+ABSTRACT: Polyelectrolytes may be classified into two primary categories (strong and weak) depending on how their charge state responds to the local environment. Both of these find use in many applications, including drug delivery, gene therapy, layer-by-layer films, and fabrication of ion filtration membranes. The mechanism of polyelectrolyte complexation is, however, still not completely understood, though experimental investigations suggest that entropy gain due to release of counterions is the key driving force for strong polyelectrolyte complexation. Here we perform a comprehensive thermodynamic investigation through coarse-grained molecular simulations permitting us to calculate the free energy of complex formation. Importantly, our expanded-ensemble methods permit the explicit separation of energetic and entropic contributions to the free energy. Our investigations indicate that entropic contributions indeed dominate the free energy of complex formation for strong polyelectrolytes, but are less important than energetic contributions when weak electrostatic coupling or weak polyelectrolytes are present. Our results provide a new view of the free energy of polyelectrolyte complex formation driven by polymer association, which should also arise in systems with large charge spacings or bulky counterions, both of which act to weaken ion−polymer binding.
+■
+INTRODUCTION
+Polyelectrolyte complexes (PECs) are highly important
+materials due to their many applications in drug delivery,1,2
+gene therapy,3−8 layer-by-layer fabrication of coatings and
+nanofiltration membranes,9−14 and the formation of hydrogels
+and nanoparticle complexes.15−18 The polyelectrolyte molecules which these materials are made from fall into two primary categories, strong and weak, based on the character of their charges. Strong polyelectrolytes completely ionize in solution, whereas weak polyelectrolyte ionization is influenced by many environmental factors, such as solution pH, the salt content, or
+the presence of other charged entities.19−24 This offers weak polyelectrolyte materials a uniquely tunable binding strength and response, which has been useful in drug delivery applications. PECs consisting of oppositely charging weak polyelectrolytes may be loaded with drug molecules, which can be subsequently released in the appropriate environmental
+conditions.25,26 PECs are further intrinsically related to the
+formation of coacervates,27,28 which are extensively used in the
+food industry.29 There, a solution of oppositely charged polymers separates into polymer-rich and polymer-poor phases whose properties are controlled by the ionic strength and pH
+of the solution.27,30−38 While use of PECs is widespread, the thermodynamic mechanisms involved in complex formation are still a matter of
+intense discussion,33,39−43 particularly for coacervating materials, which phase separate into stable polymer-rich and polymer-poor phases under appropriate experimental con
+ditions.34,44−46 Recent developments in the theory of complexation derive important model behaviors from a picture presented in the theoretical work of de la Cruz and co
+workers47−50 and furthered in the simulations of Ou and Muthukumar.51 These influential works suggested that entropy plays an essential role in the formation of polyelectrolyte complexes, one which is especially pronounced for highly charged polymers (as characterized by the dimensionless charge coupling strength Γ = λB/σ where λB is the Bjerrum
+length52,53 and σ is the distance between charged sites [see the Methods section for more discussion]). For example, the studies of refs 54 and 49 on the precipitation of polyelectrolytes with multivalent ions suggested that, in saltfree or in very low monovalent salt conditions, entropy plays a significant role in the complexation process. Key effects arising from the coupling strength Γ = λB/σ in the strong polyelectrolyte systems were further explored in refs 47 and
+48 and have been corroborated by computer simulations.55 While it may seem counterintuitive for the condensation of polyelectrolytes with strong enthalpic interactions to be driven by entropy, the picture is understood by considering the entropy that is gained when a neutralizing cloud of counterions
+is released after complexation.47−51,54 Assuming that the polyelectrolytes are nearly neutralized by these ions before they are released, and are neutralized completely after
+Received: August 12, 2018 Published: October 12, 2018
+Article
+pubs.acs.org/JACS
+Cite This: J. Am. Chem. Soc. 2018, 140, 15319−15328
+© 2018 American Chemical Society 15319 DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 21, 2024 at 21:15:11 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+complexing, the energetic considerations before and after
+complexation are overwhelmed by this entropy gain.47−50,54 Interestingly, ref 51 also suggested that, for weak Coulombic interactions, which can occur in highly solvated systems, systems with well-spaced charges, or complexes in high dielectric environments, enthalpy might be the driving force for complexation, due to loosely bound polyelectrolyte counterions in these limits making complexation more
+enthalpically favorable.47,48 Several subsequent experimental
+studies40,56−62 and extensive modeling27,32−35,63 have also shown strong, albeit indirect, evidence for the counterion release mechanism. There is a growing consensus in the community that counterion release plays a universal role in
+complexation behavior.28,34,36,47−50,54,62,64−66 While this counterion-release complexation mechanism is well-supported
+in the strong polyelectrolyte regime,40,56 less is known about the behavior of complexes formed by weak polyelectrolytes. Importantly, many of the experimental systems involve weak polyelectrolytes in the form of proteins, thermodynamic modeling predominately assumes that the polyelectrolytes are
+strongly charged33,34,51,64,67,68 (though, see the theory of Salehi
+and Larson69 for a notable counterpoint). This is an important distinction as, for weak polyelectrolytes, collective charging and
+charge suppression effects19,21 have been demonstrated to be important to overall polymer interactions and conformations. Polymer chains may preferentially acquire charge to form complexes, a process distinct from counterion release. Expanded-ensemble molecular simulations offer a way to examine each of these relative effects in a controlled way. Utilizing a recently developed coupling of reactive Monte Carlo, molecular dynamics, and advanced sampling rou
+tines,70−72 we extend a coarse-grained model of oppositely charged weak polyelectrolytes to include explicit salt effects. Subsequently, we use the model to uncover thermodynamic driving forces in the association of strong and weak polyelectrolytes. Importantly, we are able to demonstrate that, for weakly charged, associative complexes, the relative role of energy and entropy in the free energy of complex formation changes relative to the strong polyelectrolyte case, demonstrating that counterion release is only part of the thermodynamic contribution for many types of polymer complexation, rather than a ubiquitous driving force. This has important implications not just for weak polyelectrolyte
+systems, but for low-charge-density systems or sequences27 which support a complexed state, yet they nevertheless do not bind strongly to counterions when free in solution.
+■
+METHODS
+The simulations consist of two oppositely charging coarse-grained polyelectrolytes, each having monomers of size σ. A typical configuration is illustrated in Figures 1a and b, showing strongly charged polyelectrolytes in their complexed and uncomplexed states,
+respectively. Our model augments that of Stevens and Kremer,73−75 with the inclusion of Monte Carlo moves for regulating salt and base concentrations as well as charging the monomers. Both polyelectrolytes are of length N = 60, similar to models previously used to
+study strong polyelectrolytes.51 Throughout the article, we refer to the polyelectrolyte which acquires negative charge as the polyacid (PA) and the one that acquires positive charge as the polybase (PB). Monovalent ions comprising NaCl and KOH species in equilibrium with the simulation box are represented as coarse-grained charged spheres of size σ. All interacting sites are contained in a periodic volume of size (129.2σ)3.
+Steric interactions between each coarse-grained unit in the simulation are modeled via the shifted-truncated Lennard-Jones potential
+Ä
+Ç
+ÅÅÅÅÅÅÅÅÅÅÅÅÅ
+i
+k
+jjjjjj
+y
+{
+zzzzzz
+i
+k
+jjjjjj
+y
+{
+zzzzzz
+É
+Ö
+ÑÑÑÑÑÑÑÑÑÑÑÑÑ
+Ur r r
+() 4
+ij ij
+ij
+ij
+ij
+ij
+LJ ij
+12 6
+ε
+σσ
+=−
+(1)
+l
+mooo
+n
+ooo
+U U U rr
+r rr
+( ) ( ) ( ),
+0, elsewhere
+ij ij
+ij ij
+ij ij
+ij
+LJ
+LJ LJ cut cut
+trunc = − <
+(2)
+where rij = xi − xj defines the separation vector between atoms i and j,
+and rij is the distance, with σij = σ setting the length scale for these
+coarse-grained simulations. Moreover, ricjut is set to 21/6σ for all species,
+in effect imposing good solvent conditions for uncharged polymers. The strengths of the resulting excluded-volume interactions were set by εij = kBT. The masses mi of all species, were chosen to be identical and, along with kBT, were set to 1.0 in reduced units. Long range Coulomb interactions
+U kT
+qq
+r
+(r )
+ij ij
+ij
+ij
+coul = B λB
+(3)
+were handled via the Ewald summation.76 Here, λB is the Bjerrum
+length, qi takes values of −1, 0, or 1 depending on the instantaneous
+charge of each site, and electrostatic coupling (Γ = λB/σ) is either 1.0 or 2.8. These numbers are chosen to understand the extent solvation assumptions may have on these systems, as (using polyethylene backbones as a reference) bare ions will be spaced by σ = 0.256 nm
+while common hydrated monovalent ions have size σ ≈ λB in water.52
+Figure 1. Snapshots depicting highly charged polyelectrolytes [(μPA =
+8, μPB = 8); see Methods for a description of these parameters] in complexed (a) and noncomplexed (b) states. The color scheme for polymers and ions is as follows: polyacid beads are dark blue or light blue for negatively charged and neutral sites, respectively; dark red and light red beads are the positively charged and uncharged counterparts for the polybase; pink and green beads represent Na+
+and Cl− ions in equilibrium with a reservoir at fixed concentration;
+orange and purple beads represent K+ and OH− ions from a reservoir at constant base concentration.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15320
+
+
+The polyelectrolytes were modeled as bead−spring chains held
+together by FENE bonds74,75 Ä
+Ç
+ÅÅÅÅÅÅÅÅÅÅÅÅ
+i
+k
+jjjjj
+y
+{
+zzzzz
+É
+Ö
+ÑÑÑÑÑÑÑÑÑÑÑÑ
+U KR r
+R
+(r ) 1
+2 log 1
+ij ij
+ij FENE 0
+2
+0
+2
+=−
+(4)
+where the terms R0 (maximum extent) and K (spring constant) were
+set to 2σ and 7εij/σ, respectively.73 To represent the titration of these polyelectrolytes we utilize,
+reaction ensemble Monte Carlo (RxMC).77−79 We define the acid− base equilibrium reactions for the polyacid and polybase, respectively, as
+A F AH + OH
+− − (5)
+B F BH+ + OH− (6)
+Here, AH, BH+, A−, and B represent monomer of the polyacid, conjugate acid of the polybase, conjugate base of the polyacid, and polybase, respectively. A detailed description of the moves performed
+in these simulations may be found in the Supporting Information.80 For consistency, results are presented in this article in terms of charging chemical potential for polyacid (μPA) and polybase (μPB)
+respectively as19
+ln(10) pH pK
+PA a
+A
+μ = [ − ] (7)
+ln(10) pK pH
+PB a
+BH
+μ= [ − ]
++
+(8)
+Increasing these “charging chemical potentials” results in an increased tendency for each polymer chain to (de)protonate. Importantly, the symmetric case μPA = μPB should result in an equal
+number of A− and BH+ species. Three such cases are treated in detail in the results below. A demonstration of this behavior for μPA = μPB = 8 is given in Figure S1. For the simulations performed in this article, titration may be thought of as sweeping of the dissociation constant KaX for the appropriate species X and is equivalent to changing the chemical nature of the monomer beads in a given environment. Similar behavior is to be expected when sweeping pH, though this requires extra care to ensure that the overall salinity remains
+constant.23 The pH within the simulation box is fixed by grand canonical equilibrium of KOH with a reservoir of known concentration while overall salt concentration is maintained by equilibrium with a NaCl reservoir. Chemical potentials corresponding to known bulk concentrations for both KOH and NaCl are obtained from independent grand canonical Monte Carlo (GCMC) simulations of salt equilibrium at both electrostatic couplings. KOH is supplied at ∼0.002 M concentration or pH ≈ 11.3, while NaCl is provided at ∼10 mM concentration; using σ = 0.25 nm, these concentrations correspond to ∼36 KOH ion pairs and ∼208 NaCl ion pairs in the
+box of size ∼3.7 × 10−20 L [(129.2σ)3], during the reservoir/bulk simulations for KOH and NaCl, respectively. Independent simulations of salt equilibrium are carried out to set the chemical potential when varying λB. Figure 2 provides a graphical schematic of the Monte Carlo moves included in this work. Note that, while the concentration of base in these simulations is fairly high, it was necessary to maintain a nominal number of hydroxide ions in the simulation box for
+performing charging moves. At pH = 7 or ([OH−] ≈ 10−7), maintaining the salt concentration at 10 mM renders the free energy calculations performed in this study prohibitively expensive. Despite this, we also note that with sufficiently advanced computational resources, the protocol described here can be directly applied to any pH conditions. While Monte Carlo is essential to resolving the ensemble, molecular dynamics simulations of the polymers and salt greatly facilitate structural relaxations. Further, these enable the use of expanded-ensemble algorithms for free energy measurement. Free energy calculations are performed using the open-source code
+SSAGES71 coupled to LAMMPS for MD72 and SAPHRON70 for MC. The molecular dynamics sweep (MD sweep) consisted of 2000
+timesteps of size 0.005τ in reduced units. A Langevin thermostat was utilized to maintain the temperature during MD sweeps. Between each MD section, 40 Monte Carlo moves are attempted and distributed equally among all the types discussed above. The total number of Monte Carlo moves performed in each simulation was ∼7 × 106, whereas the total number of molecular dynamics steps was ∼4 × 108. Free energy profiles along the center-of-mass distance between two polymer chains are then obtained through the adaptive bias force
+(ABF) algorithm81 as implemented in SSAGES and applied to the center of mass distance between the two polymer chains, ΔrCOM.
+In the current study, we utilize a homogeneous λB value, which is an approximation that has been analyzed in the work of Fahrenberger
+and co-workers.82 There, it is shown that conductivity of dense polymer suspensions may be accurately described only when local polarizability due to counterions is accounted for. In the context of the current study, this could lead to different numbers of condensed counterions, and different overall charges of each weak polyelectrolyte in both complexed and noncomplexed states. Inclusion of variable λB lengths would resolve the calculated free energies more accurately. For the monomer concentrations examined here, this effect likely contributes quantitatively to the free energies measured but is not expected to qualitatively influence our observations, as only a modest increase of the bound counterion fraction is anticipated for the monomer concentrations examined in our study. Additionally, it should be noted that use of an implicit solvent necessarily ignores thermodynamic contributions from solvation energy and entropy of both ions and polymers. Here, we attempt to place some bounds on the role of solvation by computing the relative extent of energetic and entropic contributions when the ion coupling strength at contact mimics that expected from hydrated ions and that expected from bare ions (controlled by λB/σ). However, accurate determination of the breakdown between energetic and entropic contributions requires explictly accounting for solvent-accessible areas
+and overlap volumes83 or the use of explicit solvent molecules.
+■
+RESULTS AND DISCUSSION
+Our investigations focus on four instructive limits for complexation of weak polyelectrolytes. As outlined in prior
+Figure 2. Schematic of the Monte Carlo moves involved in the current study. The color scheme is as follows: light blue and light red beads represent uncharged monomers, while dark blue and dark red beads represent charged monomers of polyacid and polybase,
+respectively. Orange and purple beads represent K+ and OH− ion
+whereas pink and green represent Na+ and Cl−. The KOH and NaCl concentration in the simulation box are maintained via grand canonical Monte Carlo (GCMC). The titration move (RxMC) charges up both polyacid and polybase; however, note that the titration move for polyacid charge up is independent of that of polybase. The charge annealing move simulates the movement of charges along the polymer backbone due to equilibrium dissociation and recombination. See the Supporting Information for more details.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15321
+
+
+implicit-salt studies, two key parameters are the chemical potentials (μPA, μPB) of the polyacid and polybase,
+respectively.19 The role of energy−entropy trade-off in determining the complexation of oppositely charged polyelectrolytes can largely be understood through four limits of (μPA, μPB): very weak charging (−8, −8), strong charging (8, 8), strong associative charging (0, 8), and weak associative charging (0, 0). Note that as our model is symmetric with respect to charge inversion, results under reversal of μPA and
+μPB will reflect observations if the polyacid and polybase pKa’s are reversed. A key quantity of interest is the free energy of complexation. We obtain this by computing a potential of mean force (PMF) along the center of mass distance ΔrCOM between the polyacid and polybase. Our measurements take place within the dilute limit, since only two polymer chains are contained within the simulation box, though this nevertheless still results in a finite concentration that can be analytically continued to a more dilute concentration from the largest separation, provided the polymers are not interacting there. In what follows, we choose
+the noncomplexed state to begin at a separation Δr†COM = 60σ, while the fully complexed state is taken to be at the contact between the two polymers and calculate the complexation free energy as
+F F( r ) F( r )
+cmp COM
+min COM
+Δ = Δ − Δ † (9)
+Note that the minimum distance ΔrCmiOnM is close to zero but nonzero due to excluded volume interactions. By recording the average energy U(ΔrCOM) as a function of the reaction
+coordinate, we may easily extract analogous terms ΔUcmp and
+TΔScmp = ΔUcmp − ΔFcmp. Information about the conformations adopted by polyacids (through their radius of gyration RgPA) and their charge state f PA, which help elucidate
+different regimes in the free energy, are also plotted.
+Very Weak Charging Limit (−8, −8). We begin by exploring the natural limits of our model, to demonstrate it behaves according to expectations. Prior studies on implicit-ion systems have shown that in the very weak charging limit, complexation does not occur, as neither polyelectrolyte has
+sufficient charge to interact meaningfully with the other.19 Thus, we expect that the free energy in this case should be repulsive and dominated by the loss of entropy as the polymers are brought together. Indeed, examining Figure 3 this is exactly what is seen. Both the free energy (Figure 3a) and entropy (Figure 3c) have the logarithmic character one expects from the relative entropy of adjacent spherical shells. No significant change is seen in the energy term (Figure 3b). Importantly, while some charging does occur, the measured charge fraction of all conformations (Figure 3d) fluctuates around a value f PA
+≈ 3.5 × 10−4, implying that less than one bead within the polymer is charged on average. Further, while some extension of the polyacid is observed at contact, this is due to the additional excluded volume imposed by the polybase (Figure 3e). Outside this region, the polyacid should behave like a selfavoiding random-walk polymer. Note that these results are essentially independent of the electrostatic coupling chosen, with no significant charging or polymer extension observed for either coupling constant.
+Strong Charging Limit (8, 8). A second instructive limit to examine is the one where both polymer chains are fully (or almost fully) charged, where the pH value differs enough from pKa that the electrolytes are in the “strong” limit. There, based
+on prior investigations,19,47−51,54 we anticipate that the free energy is more nuanced, with gains in Coulombic energy due to polymer association that are augmented by gains in entropy from counterions which release during complexation. Importantly, while the polymers themselves should lose entropy upon complexation (and this effect will contribute to ΔScmp as measured here), it is anticipated that more entropy is gained by release of bound ions, and this should be reflected in the entropy numbers we calculate. Examining first the free energy (Figure 4a), there are two primary features that are evident. First, starting from the bound state, there is a steep monotonic increase as chains are separated, which gives way to a second, much flatter regime as chains cease to interact. This feature looks a bit odd at first; since the reported free energies here are uncorrected PMFs, one would naturally expect that noninteracting chains would
+Figure 3. Thermodynamics of complexation between effectively uncharged polymers. This result is used to demonstrate that no association occurs for polymers under these conditions, and the entropy, energy, and free energy are also as expected. The average charge on each polymer is less than one monomer at all separations.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15322
+
+
+lead to a logarithmic decrease in the free energy upon further separation, similar to that seen in the very weak charging limit. However, it should be noted that the energy scale of the very weak charging limit (particularly at separations beyond ΔrCOM
+= 40σ) is 2 orders of magnitude lower than the complexation free energy observed and is thus negligible relative to the scale observed. This feature of strongly complexing polyelectrolytes
+has been observed previously85,86 and indicates transition states where the polymers are partially attached and stretched prior to releasing to the decomplexed state, similar to two
+beaded chains sliding across one another.87 While a differentiation in the magnitude of the free energy is evident for the two coupling constants, the generic features of each are very similar. Importantly, these results suggest that strong polyelectrolytes prefer to be in the complexed state, with 6(100kBT) of work (∼420kBT for λB = 2.8σ and ∼270kBT for
+λB = 1.0σ), needed to separate the polyacid and polybase. We can then examine the relative contributions from energy and entropy. While both contributions are large compared to the very weak limit, their relative importance depends strongly on the coupling constant. At λB = 2.8σ, the energetic
+contributions to binding (ΔUcmp ≈ −90kBT) are less than 1/
+3 as large as the entropic contribution (TΔScmp ≈ 320kBT)
+(see Figure 4b and c). At weaker coupling λB = σ, the relative magnitude inverts, and energetic contributions are nearly twice as large as entropic contributions (ΔUcmp ≈ −180kBT, TΔScmp
+≈ 100kBT). This important observation has ramifications for the role of counterion release in strong polyelectrolyte
+systems,27,28,32−35,40,51,62−65 where the entropy gained by releasing ions into solution, while significant, is seen to be less essential in driving complexation at lower coupling constants. This perspective is supported by prior thermodynamic modeling and theory. For instance, the work of Solis and de la
+Cruz47,48 on flexible linear polyelectrolytes in multivalent salt solutions established that the collapse of polyelectrolytes by multivalent salts is dominated by the release of monovalent counterions, a key finding built upon by the simulations of ref 51. Further, in ref 49 it was shown that an increase in entropy due to the release of multivalent counterions can reduce the condensation of strong polyelectrolytes [there, poly(styrenesulfonate) (PSS) with trivalent La3+ counterions] when sufficient monovalent salt is added, as the energetic environment in the salt solution becomes more similar to the dense charges of the polyelectrolyte. In those cases, the highly charged multivalent ions are similar to the highly charged polyelectrolytes we examine here. For the modest salt concentrations we examine, release of monovalent counterions should be favored, and this is indeed what we see. At weaker charge couplings, the energetic environment in the vicinity of the polymer is closer to that in the bulk salt solution, leading to weaker binding of counterions in the noncomplexed state and, thus, a decreased influence of counterion release on the entropy. Utilizing the methodology presented in this paper, we are also able to model complexation-induced release of salt counterions into the bulk, as is depicted in Figure S3 of the Supporting Information. Importantly, in both limits examined here, the energy of complexation is an essential factor in the free energy. This can be understood as, for polyelectrolytes in contact, a larger number of charges of the opposite valence are available for neutralizing the polyelectrolyte chain than are accessible through salt counterions, which will only condense on the separated polyelectrolyte chains up to a point. The difference in energy change between the two limits may further be explained by the strength of association between the polyelectrolyte and its counterions. At λB = 2.8σ, more
+Figure 4. Thermodynamic properties of complexing polyelectrolytes in the strong charging limit, including free energy, charge, and conformational states. A steep monotonic increase in the free energies (a) from the complexed state indicates transition states where the polymers are partially attached and stretched leading to the dissociated, noninteracting state (approximately flat region) at large separation distances. Note that the logarithmic decrease in the free energy with increased separation is negligible relative to the scale in (a). Panels (b) and (c) demonstrate more significant entropic contributions relative to energetic contributions at λB = 2.8σ, while, at
+weaker coupling λB = σ, this effect inverts, implying that entropy gain due to counterion release (see main text and Figure S3 of the Supporting Information) is less essential in driving complexation there. The charging profiles in (d) show a strong influence of associative charging of the polymers, though charging is suppressed at
+larger separations for stronger charge coupling.84 The increasing values of RgPA in (e) indicate stretched states which occur during the
+transition from bound to unbound complexes.85
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15323
+
+
+counterions are present and bound to the polyelectrolyte when not complexed, and the contribution from counterion−polyion
+contacts is diminished as the polyelectrolytes assemble.48 Ultimately, the number of favorable contacts is not strongly affected by complexation, as a similar amount of monomer− monomer contacts are present in this limit, nearly balancing the counterion−monomer contacts originally present. However, in the case of λB = σ, counterions are not strongly bound resulting in comparatively weaker association between polyelectrolyte and its counterions, resulting in the formation of more energetically favored contacts in the complexed state. Note that the energetic contribution can be mitigated by adding sufficient salt to the system, which at experimentally relevant concentrations reduces, but does not remove, the
+entropic contribution to complexation.51 However, it should be noted that under very high salt conditions it is possible that the strongly charged polyelectrolytes can redissolve due to
+entropy gain.48 With parameters of salt concentration and charge density accessible to experiments, it is likely that an experimental window exists in the strong polyelectrolyte limit where the energy−entropy crossover may be directly addressed, to probe the fundamental limits of thermodynamic
+models for complex coacervation.27,28,33,34,36,45,62,63,88 Though hydrated ion diameters are not tunable in aqueous suspensions, a limit similar to lower electrostatic couplings can likely be achieved for polyelectrolytes with increased charge spacing
+between ionic sites.27 Examining the structural signatures of complexation, Figure 4d demonstrates that polyelectrolytes under both coupling conditions exhibit a high tendency to charge, though only in the case of complexed polyelectrolytes are they fully charged. When some separation is evident, self-repulsion results in suppression of charging additional monomers, an effect which
+shifts the effective pKa of individual monomers.19−21,84,89−94 The steady decrease in f PA as separation is increased is a result of a reduced tendency for associative charging, which reaches a steady constant when the polymers cease partial complexation. The plateau at large separations thus corresponds to the limit of independently charging monomers. The charge fraction at λB = 2.8σ is slightly lower compared to λB = 1.0σ due to larger energetic penalty to charging because of repulsive electrostatic
+interaction with neighboring charged monomers.84 Concomitantly, the RgPA data in Figure 4e elucidates that polymers in intermediate states of complexation tend to stretch in order to
+maximize favorable electrostatic interactions,85 before collapsing with their counterion cloud when such interactions are no longer favorable. Note that the RgPA value for the λB = 2.8σ in
+the dissociated state is slightly smaller than λB = 1.0σ, due to combination of lower charge fraction as discussed before and tighter binding to counterions surrounding the polyelectrolyte. Strong Associative Charging Limit (0, 8). We now proceed to explore a limit which is inaccessible to most current models, but which may be accessed readily in experiment by
+adjusting the pH of the solvent medium.95−99 Without loss of generality, we choose the polyacid to be weakly charged, so that the monomer pKa is equal to the global pH, while the polybase should be strongly charged, as in the previous case. From an experimental perspective, this limit has applicability to
+polyelectrolyte−protein,68 protein−protein,100 and protein−
+nucleic acid complex67 formation. Examining first the structural characteristics of complexation, in Figure 5d and 5e, we observe that the polyacid is only strongly charged when in close proximity to the polybase and that the transition to a
+noninteracting state (determined by collapse of the radius of gyration) occurs at a smaller ΔrCOM than in the prior, strongly
+charged, case. At large ΔrCOM the f PA plateaus at a value of
+∼0.2, whereas, in the complexed state, the f PA reaches ∼0.8 for
+both λB. The relatively weaker interactions depicted in Figure 5a, which manifest through associative charging of the
+Figure 5. Thermodynamics of complexation in the strong associative charging limit (μPA, μPB) = (0, 8). Free energy profiles in (a) follow a trend similar to strongly charged case but with relatively lower magnitudes. Panels (b) and (c) depict that the energetic contribution is smaller for λB = 2.8σ as compared to λB = 1.0σ and that the entropic
+contribution at λB = 2.8σ is almost twice as large as the energetic
+contribution, whereas for λB = 1.0σ the energetic contribution
+outweighs the entropic contribution by a factor of ∼1.6 (see text for further explanation). The major contributions to the entropy in (c) are due to he release of the polybase’s counterion cloud as there is minimal counterion cloud around the polyacid in the decomplexed state. Panel (d) shows that the weak polyacid is only strongly charged when in close proximity to the polybase. Dissociation [corresponding the the flat region in (d) and (e)] occurs at a smaller ΔrCOM when compared to the strongly charged case.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15324
+
+
+polyacid, nevertheless mimic the trends of the previous case. Also, similar to the strong-charging case, Figure 5b shows that the energetic contribution is smaller for λB = 2.8σ (∼−60kBT)
+as compared to λB = 1.0σ (∼−80kBT). Note that while the entropic contributions shown in Figure 5c exhibit a similar order of scales to the prior case, the relative magnitudes are shifted, with the entropic contribution (∼130kBT) at λB = 2.8σ almost twice as large as the energetic contribution, whereas for λB = 1.0σ the energetic contribution outweighs the entropic
+contribution (∼50kBT) by a factor of ∼1.6. Due to the magnitude of the entropy change, it may be inferred that counterion release is a dominant contributor to the entropy, though this release is predominantly from the polybase species. A slight increase in entropy due to the release of monomer−monomer binding restrictions may also be observed at large ΔrCOM. While the conclusions about driving forces (energetic versus entropic) in this limit are similar to the prior strong charging case, the driving force in energy is the creation of ion pair contacts between the two highly charged chains in the complexed state through associative charging, which increases the charge fraction of the weakly charged polyacid chain from ∼0.2 in the uncomplexed state to ∼0.8 in the complexed state (Figure 5d). At λB = 2.8σ, many favorable contacts between the highly charged polyelectrolytes and bound counterions in its cloud exist relative to the more loosely bound cloud around this polyelectrolyte at λB = σ. Concomitantly, the weakly charged chain has only a small number of total contacts with its counterions in the uncomplexed state at both λB, as can be deciphered from low charge fraction value of the polyacid chain in Figure 5d at ΔrCOM = 60σ. Because of this, the largest contribution to the
+free energy of complexation flips from entropic to energetic when the coupling strength is reduced, as fewer counterions are released, and more monomer−monomer contacts are formed by the complexing polymers. Though much about this limit may be understood from the previous strong-complexing result, there are nevertheless wholly new effects deriving from the weak nature of one of the complexing polymers. Thus, this limit provides fundamental new insight about the formation of polyelectrolyte complexes when one of the polyelectrolytes is weakly acidic or basic and importantly points toward a limit where entropic considerations should be minimal, when both polyelectrolytes are in the weakly charging limit.
+Weak Associative Charging Limit (0, 0). The first thing to notice within the weak-charging limit is that the free energy of complexation is significantly reduced. While there is a meaningful 6(10k T)
+B attraction for both coupling strengths (see Figure 6a), this is an order of magnitude below the associations observed in the previous case. But what is the origin of these interactions? Through the previous cases, we might expect that entropy drives the association of polymers at strong coupling, while energy is a larger contributor at weaker couplings. However, that is the opposite of what is observed when examining Figure 6b and c. In the case where λB = 2.8σ, entropic contributions to the free energy favor complexation by only modest ∼5kBT, while the energy term yields a
+difference of ∼25kBT. Despite the polymer chains acquiring a
+charge fraction f ≈ 0.4 at each coupling, energetic contributions for the case λB = 1.0σ yield only a modest 5kBT gain upon complexing, whereas entropic gain is of the same order. Since entropy is gained in complexation, it is evident that this comes from release of a weakly bound
+counterion cloud due to the modest but constant f ≈ 0.2 for noninteracting chains (see Figure 6d, e). By contrast, as the
+Figure 6. Thermodynamics of complexation between two weakly charged polyelectrolytes (μPA, μPB) = (0, 0). This process is thus driven primarily by associative charging and exhibits marked differences in the magnitude, thermodynamic breakdown, charging, and structural characteristics versus the cases when at least one of the polyelectrolytes is in the strongly charged limit. Here, panel (a) depicts that the overall free energy of complexation is reduced in comparison to the previous cases. Panels (b) and (c) suggest that, for λB = 2.8σ, energetic contributions outweigh the entropic contributions to the free energy, though both contributions are of modest magnitude. Surprisingly, for λB = 1.0σ, entropy is a comparatively larger contributor, though both energetic and entropic contributions are small. Panel (d) indicates that the maximum charging is association-driven (f ≈ 0.4) and in dissociated state the polymers chains are charged to a much lower extent. Importantly, strong electrostatics suppress charging in this limit, thus explaining the relative role of entropy in strong and weak coupling limits. The chain conformations are qualitatively similar to previous cases (e), though the transition to the decomplexed state occurs at smaller separations.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15325
+
+
+charging is suppressed at larger coupling constants, fewer counterions are released during complexation. The resulting contributions driving association are almost entirely energetic at this coupling, coming from an increased tendency of each polymer chain to acquire charge when complexed. Again, we may understand this partially through the arguments of ref 48 in the strong polyelectrolyte limit. Here, suppression of charging due to monomer−monomer repulsions results in a low charge and small number of bound counterions in the noncomplexed state. At λB = 2.8σ this is
+more pronounced, and thus, there is a significant drive to minimize potential energy by making favorable monomer− monomer contacts; the local charged environment then incentivizes further ionization and minimization of energy. By contrast, at λB = σ, though again very few counterions are associated, this must be tempered with an increase in the overall charge of the polymer and concomitant increase of the number of counterions in the cloud around each polyelectrolyte. Along with this, monomer−monomer contacts in the complexed state are not as strong. Though associative charging is still present, the weaker electrostatic coupling results in a lower magnitude of energy change. The resulting entropic contributions from complexation are thus very similar for both λB, while the overall free energy of complexation is lowered for
+λB = σ relative to λB = 2.8σ. Overall, our results here show how the energetic and entropic contributions to free energy of complexation vary (in fact, leading to reversal) as we go from strong charging to weak charging limits. The phase behavior of weakly charged polyelectrolyte dispersions in this limit (where the monomer pKa values are close) is an interesting target for future studies,
+as the stability of the complex formed within Δμ ≈ 2 (or 1 decade of pH) would be particularly sensitive to changes in the
+pH.
+■
+CONCLUSIONS
+As mentioned before, we expect these predictions to be experimentally testable by examining species which form liquid coacervates at various values of pH. In the absence of other self-association interactions, our simulations predict association to occur well outside the regime where the polyacid or polybase should individually be charged and predict moreover a breakdown between energetic and entropic considerations
+that can be tested by simple thermodynamic models.33 We further anticipate similar character to be present in designed
+sequences,27 perhaps even zwitterionic sequences,66,101−103 and solution conditions where salt binding to individual polymer chains before formation of the aggregate is minimal. Though the simulations presented here follow the complexation between two single oppositely charging polymers, the thermodynamic treatment presented here can be utilized to provide significant insight into the entropic versus enthalpic driving force for coacervation between weak polyelectrolytes and asymmetrically charging polyelectrolytes, similar to the entropy driven process of complex coacervation of strong
+polyelectrolytes,28,37 which can also be interpreted from the thermodynamic dissection of the free energy of complexation between strong polyelectrolytes performed in the current study. Though the explicit forms of the contributions will change somewhat when moving from a pair of oppositely charged chains to a polyelectrolyte coacervate, these calculations help us understand where the relative contributions to assembly favor enthalpy to entropy. Further, the
+methods we present are likely to be useful in studying the nucleation of larger numbers of polyelectrolytes into a coacervate phase. These investigations then could further offer opportunities to control the complex coacervates and its adaptation into physical material properties, as is demonstrated by using charge sequence based control of complex coacervates
+in the recent study.27 The methods described in this paper may be extended to a great many situations, such as polyelectrolyte nanoparticle
+complexes,104−107 and formation of dense polyelectrolyte phases, where weak polyelectrolytes are expected to behave in a qualitatively different way. In particular, the behavior of weak polyelectrolyte brushes for use in modifying surface
+wetting, among other applications.108−112 Suitable modifications to implement local move dynamics in the reaction ensemble may be useful for studying the rheology of weak polyelectrolyte liquids and gels as well as ion transport kinetics through these phases. However, as stated these methods are not suitable for dense or explicitly solvated phases. For those, it will be necessary to implement additional Monte Carlo routines, similar to the work of ref 113 based on non
+equilibrium candidate Monte Carlo.114 Those methods are very well suited to understanding microscopic details of titration involving weakly acidic sites in a full solvent bath. For coarse-grained models such as these, it may be sufficient to extend the routines described herein with continuous fractional
+component methods,115 though a detailed study will be necessary to ensure observed averages correspond to an appropriate thermodynamic ensemble. The model presented here is of idealized nature, both in terms of polyelectrolyte structure and in terms of ignoring the influence of aqueous solvent. Thus, some potentially significant effects due to hydrogen bonding within the polymer [which are known to affect the conformations of (e.g.) poly(acrylic
+acid)]116 are ignored, as are potentially large effects in the association free energy from the release of bound water
+molecules.117 It will be important in future studies including atomistic detail to quantify the relative roles of counterion and water release in complexation, as the balance of these two phenomena is unknown and not treated explicitly in available thermodynamic models. Regardless of how the methods might be extended, the results of these calculations should be highly relevant for experiments where pH is varied toward the pKa of one or both species. Importantly, for many charge complexes involving
+weak polyelectrolytes38,117,118 associative charging is likely to play a role, as long polymers and branched polymers will have significantly shifted pKa which depends on the local charge density. Thus, even if the monomer pKa values are separated
+by a few decades, the effective polymer pKa values are much closer together. The extent to which associative charging plays a role in complex formation further influences the relative role played by salt screening and solution acidity in determining the stability of complexes and is likely to be a vital engineering tool in the creation of smart materials for molecular capture and release.
+■
+ASSOCIATED CONTENT
+*
+S Supporting Information
+The Supporting Information is available free of charge on the ACS Publications website at DOI: 10.1021/jacs.8b08649.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15326
+
+
+Explicit details of the simulation protocol and additional plots and data in support of the main text (PDF)
+■
+AUTHOR INFORMATION
+Corresponding Author *jwhitme1@nd.edu ORCID
+Jonathan K. Whitmer: 0000-0003-0370-0873
+Notes
+The authors declare no competing financial interest.
+■
+ACKNOWLEDGMENTS
+Algorithm development by V.S.R, B.J.S., and J.K.W. was supported by MICCoM, as part of the Computational Materials Sciences Program funded by the U.S. Department of Energy, Office of Science, Basic Energy Sciences, Materials Sciences and Engineering Division. H.S. was supported by the NSF Graduate Research Fellowship Program (GRFP). The authors wish to acknowledge discussions with and contributions to the open-source code SSAGES by Michael J. Quevillon (University of Notre Dame) which greatly enabled this work.
+■
+REFERENCES
+(1) de la Torre, P. M.; Torrado, S.; Torrado, S. Biomaterials 2003, 24, 1459. (2) Liechty, W. B.; Kryscio, D.; Slaughter, B. V.; Peppas, N. A. Annu. Rev. Chem. Biomol. Eng. 2010, 1, 149−173.
+(3) Jin, L.; Zeng, X.; Liu, M.; Deng, Y.; He, N. Theranostics 2014, 4, 240−255. (4) Wolfert, M. A.; Dash, P. R.; Nazarova, O.; Oupicky, D.; Seymour, L. W.; Smart, S.; Strohalm, J.; Ulbrich, K. Bioconjugate Chem. 1999, 10, 993−1004. (5) Vehlow, D.; Schmidt, R.; Gebert, A.; Siebert, M.; Lips, K.; Müller, M. Nanomaterials 2016, 6, 53.
+(6) Freyer, J. L.; Brucks, S. D.; Campos, L. M. J. Polym. Sci., Part A: Polym. Chem. 2017, 55, 3167−3174.
+(7) Ziebarth, J.; Wang, Y. Biophys. J. 2009, 97, 1971−1983. (8) Boussif, O.; Lezoualc’h, F.; Zanta, M. A.; Mergny, M. D.; Scherman, D.; Demeneix, B.; Behr, J. P. Proc. Natl. Acad. Sci. U. S. A. 1995, 92, 7297−7301. (9) Müller, M.; Rieser, T.; Lunkwitz, K.; Meier-Haack, J. Macromol. Rapid Commun. 1999, 20, 607−611.
+(10) Guo, Y.; Geng, W.; Sun, J. Langmuir 2009, 25, 1004−1010. (11) Hong, C. A.; Son, H. Y.; Nam, Y. S. Sci. Rep. 2018, 8, 7738. (12) Qu, S.; Dilenschneider, T.; Phillip, W. A. ACS Appl. Mater. Interfaces 2015, 7, 19746−19754. (13) Rajesh, S.; Yan, Y.; Chang, H.-C.; Gao, H.; Phillip, W. A. ACS Nano 2014, 8, 12338−12345. (14) Rathee, V. S.; Qu, S.; Phillip, W. A.; Whitmer, J. K. Molecular Systems Design and Engineering 2016, 1, 301−312.
+(15) Chen, S. C.; Wu, Y. C.; Mi, F. L.; Lin, Y. H.; Yu, L. C.; Sung, H. W. J. Controlled Release 2004, 96, 285−300.
+(16) Gao, X.; He, C.; Xiao, C.; Zhuang, X.; Chen, X. Polymer 2013, 54, 1786−1793. (17) Ren, H.; Zhang, L.; An, J.; Wang, T.; Li, L.; Si, X.; He, L.; Wu, X.; Wang, C.; Su, Z. Chem. Commun. 2014, 50, 1000−1002. (18) Paltrinieri, L.; Wang, M.; Sachdeva, S.; Besseling, N. A. M.; Sudhölter, E. J. R.; de Smet, L. C. P. M. J. Mater. Chem. A 2017, 5, 18476−18485. (19) Rathee, V. S.; Zervoudakis, A. J.; Sidky, H.; Sikora, B. J.; Whitmer, J. K. J. Chem. Phys. 2018, 148, 114901. (20) Narayanan Nair, A. K.; Martinez Jimenez, A.; Sun, S. J. Phys. Chem. B 2017, 121, 7987−7998.
+(21) Stornes, M.; Linse, P.; Dias, R. S. Macromolecules 2017, 50, 5978−5988. (22) Ulrich, S.; Laguecir, A.; Stoll, S. Macromolecules 2005, 38, 8939−8949. (23) Laaser, J. E.; Jiang, Y.; Sprouse, D.; Reineke, T. M.; Lodge, T. P. Macromolecules 2015, 48, 2677−2685.
+(24) Laaser, J. E.; McGovern, M.; Jiang, Y.; Lohmann, E.; Reineke, T. M.; Morse, D. C.; Dorfman, K. D.; Lodge, T. P. J. Phys. Chem. B 2017, 121, 4631−4641. (25) Anandhakumar, S.; Gokul, P.; Raichur, A. M. Mater. Sci. Eng., C 2016, 58, 622−628. (26) Shen, H. J.; Shi, H.; Ma, K.; Xie, M.; Tang, L. L.; Shen, S.; Li, B.; Wang, X. S.; Jin, Y. Acta Biomater. 2013, 9, 6123−6133. (27) Chang, L.-W.; Lytle, T. K.; Radhakrishna, M.; Madinya, J. J.; Vélez, J.; Sing, C. E.; Perry, S. L. Nat. Commun. 2017, 8, 1273. (28) Lytle, T. K.; Sing, C. E. Soft Matter 2017, 13, 7001−7012. (29) Xiao, Z.; Liu, W.; Zhu, G.; Zhou, R.; Niu, Y. J. Sci. Food Agric. 2014, 94, 1482−1494. (30) Qin, J.; Priftis, D.; Farina, R.; Perry, S. L.; Leon, L.; Whitmer, J.; Hoffmann, K.; Tirrell, M.; De Pablo, J. J. ACS Macro Lett. 2014, 3, 565−568. (31) Perry, S. L.; Sing, C. E. Macromolecules 2015, 48, 5040−5053. (32) Perry, S. L.; Li, Y.; Priftis, D.; Leon, L.; Tirrell, M. Polymers 2014, 6, 1756−1772. (33) Priftis, D.; Laugel, N.; Tirrell, M. Langmuir 2012, 28, 15947− 15957.
+(34) Sing, C. E. Adv. Colloid Interface Sci. 2017, 239, 2−16. (35) Priftis, D.; Tirrell, M. Soft Matter 2012, 8, 9396−9405. (36) Radhakrishna, M.; Basu, K.; Liu, Y.; Shamsi, R.; Perry, S. L.; Sing, C. E. Macromolecules 2017, 50, 3030−3037. (37) Lytle, T. K.; Sing, C. E. Molecular Systems Design and Engineering 2018, 3, 183−196.
+(38) Priftis, D.; Xia, X.; Margossian, K. O.; Perry, S. L.; Leon, L.; Qin, J.; de Pablo, J. J.; Tirrell, M. Macromolecules 2014, 47, 3076− 3085. (39) Zhang, Y.; Batys, P.; O'Neal, J. T.; Li, F.; Sammalkorpi, M.; Lutkenhaus, J. L. ACS Cent. Sci. 2018, 4, 638−644. (40) Fu, J.; Schlenoff, J. B. J. Am. Chem. Soc. 2016, 138, 980−990. (41) Kulkarni, A. D.; Vanjari, Y. H.; Sancheti, K. H.; Patel, H. M.; Belgamwar, V. S.; Surana, S. J.; Pardeshi, C. V. Artif. Cells, Nanomed., Biotechnol. 2016, 44, 1615−1625.
+(42) Márquez-Beltrán, C.; Castañeda, L.; Enciso-Aguilar, M.; Paredes-Quijada, G.; Acuña-Campa, H.; Maldonado-Arce, A.; Argillier, J.-F. Colloid Polym. Sci. 2013, 291, 683−690.
+(43) Seručnik, M.; Podlipnik, Č .; Hribar-Lee, B. J. Phys. Chem. B 2018, 122, 5381−5388. (44) Kim, S.; Huang, J.; Lee, Y.; Dutta, S.; Yoo, H. Y.; Jung, Y. M.; Jho, Y.; Zeng, H.; Hwang, D. S. Proc. Natl. Acad. Sci. U. S. A. 2016, 113, E847−E853. (45) Spruijt, E.; Leermakers, F. A. M.; Fokkink, R.; Schweins, R.; van Well, A. A.; Cohen Stuart, M. A.; van der Gucht, J. Macromolecules 2013, 46, 4596−4605. (46) Salehi, A.; Desai, P. S.; Li, J.; Steele, C. A.; Larson, R. G. Macromolecules 2015, 48, 400−409.
+(47) Solis, F. J.; de la Cruz, M. O. J. Chem. Phys. 2000, 112, 2030− 2035. (48) Solis, F. J.; de laCruz, M. O. Eur. Phys. J. E: Soft Matter Biol. Phys. 2001, 4, 143−152. (49) de la Cruz, M. O.; Belloni, L.; Delsanti, M.; Dalbiez, J. P.; Spalla, O.; Drifford, M. J. Chem. Phys. 1995, 103, 5781−5791. (50) González-Mozuelos, P.; de la Cruz, M. O. J. Chem. Phys. 1995, 103, 3145−3157. (51) Ou, Z.; Muthukumar, M. J. Chem. Phys. 2006, 124, 154902. (52) Israelachvili, J. Intermolecular and Surface Forces, 3rd ed.; Academic: New York, 2010. (53) Stevens, M. J. Biophys. J. 2001, 80, 130−139. (54) Raspaud, E.; Olvera de la Cruz, M.; Sikorav, J.-L.; Livolant, F. Biophys. J. 1998, 74, 381−393.
+(55) Hsiao, P.-Y.; Luijten, E. Phys. Rev. Lett. 2006, 97, 148301.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15327
+
+
+(56) Gummel, J.; Cousin, F.; Boué, F. J. Am. Chem. Soc. 2007, 129, 5806−5807. (57) Lemmers, M.; Spruijt, E.; Beun, L.; Fokkink, R.; Leermakers, F.; Portale, G.; Cohen Stuart, M. A.; van der Gucht, J. Soft Matter 2012, 8, 104−117. (58) Lemmers, M.; Voets, I. K.; Cohen Stuart, M. A.; van der Gucht, J. Soft Matter 2011, 7, 1378−1389. (59) Gucht, J.; Spruijt, E.; Lemmers, M.; Cohen Stuart, M. A. J. Colloid Interface Sci. 2011, 361, 407−422.
+(60) Pham, T. T. H.; Wang, J.; Werten, M. W. T.; Snijkers, F.; de Wolf, F. A.; Cohen Stuart, M. A.; van der Gucht, J. Soft Matter 2013, 9, 8923−8930. (61) Vieregg, J. R.; Lueckheide, M.; Marciel, A. B.; Leon, L.; Bologna, A. J.; Rivera, J. R.; Tirrell, M. V. J. Am. Chem. Soc. 2018, 140, 1632−1638. (62) Marciel, A. B.; Srivastava, S.; Tirrell, M. V. Soft Matter 2018, 14, 2454−2464.
+(63) Spruijt, E. Strength, Structure and Stability of Polyelectrolyte Complex Coacervate. Ph.D. thesis, Wageningen University: Wageningen, The Netherlands, 2012. (64) Srivastava, S.; Tirrell, M. V. Advances in Chemical Physics, Vol. 161; Wiley-Blackwell, 2016; pp 499−544. (65) Li, L.; Srivastava, S.; Andreev, M.; Marciel, A. B.; de Pablo, J. J.; Tirrell, M. V. Macromolecules 2018, 51, 2988−2995. (66) Johnston, B. M.; Johnston, C. W.; Letteri, R. A.; Lytle, T. K.; Sing, C. E.; Emrick, T.; Perry, S. L. Org. Biomol. Chem. 2017, 15, 7630−7642. (67) Mascotti, D. P.; Lohman, T. M. Proc. Natl. Acad. Sci. U. S. A. 1990, 87, 3142−3146. (68) Cousin, F.; Gummel, J.; Ung, D.; Boué, F. Langmuir 2005, 21, 9675−9688. (69) Salehi, A.; Larson, R. G. Macromolecules 2016, 49, 9706−9719. (70) Sidky, H.; Sikora, B.; Rathee, V. S. SAPHRON. https://github. com/bsikora/SAPHRON/tree/laphron_MD_saphron/src. (71) Sidky, H.; Colón, Y. J.; Helfferich, J.; Sikora, B. J.; Bezik, C.; Chu, W.; Giberti, F.; Guo, A. Z.; Jiang, X.; Lequieu, J.; Li, J.; Moller, J.; Quevillon, M. J.; Rahimi, M.; Ramezani-Dakhel, H.; Rathee, V. S.; Reid, D. R.; Sevgen, E.; Thapar, V.; Webb, M. A.; Whitmer, J. K.; de Pablo, J. J. J. Chem. Phys. 2018, 148, 044104. (72) Plimpton, S. J. Comput. Phys. 1995, 117, 1−19. (73) Stevens, M. J.; Kremer, K. Phys. Rev. Lett. 1993, 71, 2228− 2231. (74) Kremer, K.; Grest, G. S. J. Phys.: Condens. Matter 1990, 2, SA295−SA298. (75) Kremer, K.; Grest, G. S. J. Chem. Phys. 1990, 92, 5057−5086. (76) Frenkel, D.; Smit, B. Understanding molecular simulation: from algorithms to applications, 2nd ed.; Academic Press: New York, 2002. (77) Brennan, J. K. Mol. Phys. 2005, 103, 2647−2654. (78) Smith, W. R.; Triska, B. J. Chem. Phys. 1994, 100, 3019−3027. (79) Johnson, J. K.; Panagiotopoulos, A. Z.; Gubbins, K. E. Mol. Phys. 1994, 81, 717−733. (80) Supporting Information outlining explicitly the Monte Carlo moves performed in this work and presenting data which augment the results presented in the main text is available on the ACS Web site. (81) Darve, E.; Rodríguez-Gómez, D.; Pohorille, A. J. Chem. Phys. 2008, 128, 144120. (82) Fahrenberger, F.; Hickey, O. A.; Smiatek, J.; Holm, C. Phys. Rev. Lett. 2015, 115, 118301.
+(83) Wagoner, J. A.; Baker, N. A. Proc. Natl. Acad. Sci. U. S. A. 2006, 103, 8331−8336. (84) Rathee, V. S.; Sikora, B. J.; Sidky, H.; Whitmer, J. K. Mater. Res. Express 2018, 5, 014010.
+(85) Xu, X.; Kanduč, M.; Wu, J.; Dzubiella, J. J. Chem. Phys. 2016, 145, 034901. (86) Yu, S.; Xu, X.; Yigit, C.; van der Giet, M.; Zidek, W.; Jankowski, J.; Dzubiella, J.; Ballauff, M. Soft Matter 2015, 11, 4630−4639. (87) We additionally demonstrate this behavior, using the μPA = μPB = ∞ limit of our model in supporting Figure S2.
+(88) Zhang, P.; Shen, K.; Alsaifi, N. M.; Wang, Z.-G. Macromolecules 2018, 51, 5586−5593. (89) Qu, C.; Shi, Y.; Jing, B.; Gao, H.; Zhu, Y. ACS Macro Lett. 2016, 5, 402−406. (90) Dong, R.; Lindau, M.; Ober, C. K. Langmuir 2009, 25, 4774− 4779. (91) Choi, J.; Rubner, M. F. Macromolecules 2005, 38, 116−124. (92) Nap, R.; Gong, P.; Szleifer, I. J. Polym. Sci., Part B: Polym. Phys. 2006, 44, 2638−2662. (93) Brettmann, B. K.; Laugel, N.; Hoffmann, N.; Pincus, P.; Tirrell, M. J. Polym. Sci., Part A: Polym. Chem. 2016, 54, 284−291.
+(94) Panagiotopoulos, A. Z. J. Phys.: Condens. Matter 2009, 21, 424113. (95) Ye, H.; Liu, Y.; Gao, L.; Du, T.; Jia, Y. Polym. Int. 2017, 66, 1662−1668. (96) Burke, S. E.; Barrett, C. J. Macromolecules 2004, 37, 5375− 5384. (97) Maza, E.; Tuninetti, J. S.; Politakos, N.; Knoll, W.; Moya, S.; Azzaroni, O. Phys. Chem. Chem. Phys. 2015, 17, 29935−29948. (98) Wang, S.; Granick, S.; Zhao, J. J. Chem. Phys. 2008, 129, 241102. (99) Carnal, F.; Stoll, S. J. Phys. Chem. B 2011, 115, 12007−12018. (100) Kundrotas, P. J.; Alexov, E. Biophys. J. 2006, 91, 1724−1736. (101) Wang, M.; Wang, Y. Soft Matter 2014, 10, 7909−7919. (102) Peresypkin, A. V.; Menger, F. M. Org. Lett. 1999, 1, 1347− 1350. (103) Jing, B.; Qiu, J.; Zhu, Y. Soft Matter 2017, 13, 4881−4889. (104) Birch, N. P.; Schiffman, J. D. Langmuir 2014, 30, 3441−3447. (105) Weber, D.; Torger, B.; Richter, K.; Nessling, M.; Momburg, F.; Woltmann, B.; Müller, M.; Schwartz-Albiez, R. Nanomaterials 2018, 8, 358. (106) Shi, Y.; Xue, J.; Xu, S.; You, Y.; Yan, X. Q.; Zhao, X.; Cao, J. Colloids Surf., B 2018, 165, 235−242.
+(107) Martins, A. F.; Follmann, H. D.; Monteiro, J. P.; Bonafé, E. G.; Nocchi, S.; Silva, C. T.; Nakamura, C. V.; Girotto, E. M.; Rubira, A. F.; Muniz, E. C. Int. J. Biol. Macromol. 2015, 79, 748−755.
+(108) Zhou, Q.; Fu, Y.; Zhang, X.; Luo, T.; Luo, W. Mater. Sci. Eng., B 2018, 227, 89−99. (109) Boyaciyan, D.; Braun, L.; Löhmann, O.; Silvi, L.; Schneck, E.; von Klitzing, R. J. Chem. Phys. 2018, 149, 163322. (110) Han, L.; Yan, B.; Zhang, L.; Wu, M.; Wang, J.; Huang, J.; Deng, Y.; Zeng, H. Colloids Surf., A 2018, 539, 37−45. (111) Roman, M. J.; Decker, E. A.; Goddard, J. M. ACS Appl. Mater. Interfaces 2014, 6, 5383−5387.
+(112) Xiao, S.; Ren, B.; Huang, L.; Shen, M.; Zhang, Y.; Zhong, M.; Yang, J.; Zheng, J. Curr. Opin. Chem. Eng. 2018, 19, 86−93. (113) Radak, B. K.; Chipot, C.; Suh, D.; Jo, S.; Jiang, W.; Phillips, J. C.; Schulten, K.; Roux, B. J. Chem. Theory Comput. 2017, 13, 5933− 5944. (114) Nilmeier, J. P.; Crooks, G. E.; Minh, D. D. L.; Chodera, J. D. Proc. Natl. Acad. Sci. U. S. A. 2011, 108, E1009−E1018.
+(115) Yoo, B.; Marin-Rimoldi, E.; Mullen, R. G.; Jusufi, A.; Maginn, E. J. Langmuir 2017, 33, 9793−9802 PMID: 28845994 . (116) Weidman, J. L.; Mulvenna, R. A.; Boudouris, B. W.; Phillip, W. A. J. Am. Chem. Soc. 2016, 138, 7030−7039.
+(117) Zhang, Y.; Li, F.; Valenzuela, L. D.; Sammalkorpi, M.; Lutkenhaus, J. L. Macromolecules 2016, 49, 7563−7570.
+(118) Hammond, P. T. Curr. Opin. Colloid Interface Sci. 1999, 4, 430−442.
+Journal of the American Chemical Society Article
+DOI: 10.1021/jacs.8b08649 J. Am. Chem. Soc. 2018, 140, 15319−15328
+15328

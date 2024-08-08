@@ -1,0 +1,158 @@
+
+View Online
+
+Export Citation
+CrossMark
+RESEARCH ARTICLE | JULY 11 2016
+Theory of multiple quantum dot formation in strained-layer heteroepitaxy
+Lin Du ; Dimitrios Maroudas
+Appl. Phys. Lett. 109, 023103 (2016) https://doi.org/10.1063/1.4955409
+ CHORUS
+20 March 2024 18:55:18
+
+
+Theory of multiple quantum dot formation in strained-layer heteroepitaxy
+Lin Du and Dimitrios Maroudasa)
+Department of Chemical Engineering, University of Massachusetts, Amherst, Massachusetts 01003-9303, USA
+(Received 31 May 2016; accepted 23 June 2016; published online 11 July 2016)
+We develop a theory for the experimentally observed formation of multiple quantum dots (QDs) in strained-layer heteroepitaxy based on surface morphological stability analysis of a coherently strained epitaxial thin film on a crystalline substrate. Using a fully nonlinear model of surface morphological evolution that accounts for a wetting potential contribution to the epitaxial film’s free energy as well as surface diffusional anisotropy, we demonstrate the formation of multiple QD patterns in self-consistent dynamical simulations of the evolution of the epitaxial film surface perturbed from its planar state. The simulation predictions are supported by weakly nonlinear analysis of the epitaxial film surface morphological stability. We find that, in addition to the StranskiKrastanow instability, long-wavelength perturbations from the planar film surface morphology can trigger a nonlinear instability, resulting in the splitting of a single QD into multiple QDs of smaller sizes, and predict the critical wavelength of the film surface perturbation for the onset of the nonlinear tip-splitting instability. The theory provides a fundamental interpretation for the observations of “QD pairs” or “double QDs” and other multiple QDs reported in experimental studies of epitaxial growth of semiconductor strained layers and sets the stage for precise engineering of tunable-size nanoscale surface features in strained-layer heteroepitaxy by exploiting film surface nonlinear, pattern forming phenomena. Published by AIP Publishing. [http://dx.doi.org/10.1063/1.4955409]
+Quantum dots (QDs) are three-dimensional (3D) crystalline structures of nanoscale size that exhibit quantum confinement and have a broad range of applications in the fabrication of electronic, optoelectronic, and photovoltaic devices.1 Controlling the size of QDs is used to tailor their electronic structure and has a direct impact on their optoelectronic properties.2 A common approach to QD growth is through the Stranski-Krastanow (SK) instability of the epitaxial film surface morphology in strained-layer heteroepitaxy, resulting in a growth transition, from layer-by-layer epitaxy to formation of 3D islands.3 Experimental studies have reported the formation of intriguing, complex QD morphologies, such as the “dumbbellshaped QDs” observed in the growth of InSb layers on GaSb substrates,4 the “multiple QDs” grown in the InSb/GaAs and InSb:N/InAs systems,5 and the “QD pairs” formed in the epitaxy of InAs on GaAs substrates for both patterned and unpatterned GaAs substrate surfaces.6 In all of these cases, the formed QDs are characterized by split tips of variable height. This interesting pattern forming phenomenon can be exploited to control the size of QDs grown by strained-layer heteroepitaxy; however, a fundamental understanding of the phenomenon is required to enable the precise control of QD size. Similar surface tip splitting phenomena have been reported in recent theoretical studies of the surface morphological evolution of uniaxially stressed elastic solids and have been attributed to nonlinear instabilities undergone by the solid surface morphology accompanying the well-known Asaro-Tiller or Grinfeld instability.7,8 The purpose of this Letter is to develop a theory that describes and explains the multiple quantum dot pattern forming phenomenon in strained-layer epitaxy. Using a fully
+nonlinear model for the surface morphological evolution of a coherently strained epitaxial film, we explain the formation of multiple QD patterns on the film surface as a result of a nonlinear long-wavelength tip-splitting instability predicted by a weakly nonlinear stability analysis of the epitaxial film surface morphology that accompanies the SK instability. The predictions of the stability theory are validated by self-consistent dynamical simulations of the surface morphological evolution, which demonstrate the formation of multiple quantum dot patterns and explain their experimental observation in epitaxial growth on both patterned and unpatterned substrates. We consider a coherently strained epitaxial thin film on a thick substrate, with a nominal film thickness of h0, as shown in Fig. 1(a). The film is subject to an equibiaxial stress, with components rxx 1⁄4 ryy 1⁄4 r0 in the x- and y-direction,
+FIG. 1. (a) Schematic representation of a coherently strained epitaxial thin film of nominal thickness h0, the surface of which is subject to a plane-wave perturbation from the planar morphology. The perturbation amplitude has been amplified for clarity. (b) 2D contour map of the dimensionless dispersion relation x 1⁄4 xðkx; kyÞ for the rate of growth or decay of the perturbation from the planar morphology of the epitaxial film surface as a function of the wave vector k 1⁄4 ðkx; kyÞ of the perturbation. The 1D dispersion relation
+x 1⁄4 xðkÞ, where k 
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi kx2 þ ky2
+q
+, is plotted in the inset for parameter values
+NW 1⁄4 0:127, A 1⁄4 10, m 1⁄4 2, and /x 1⁄4 /y 1⁄4 15. The vertical dotted lines in the inset indicate that an initial perturbation with wave number k 1⁄4 0.7 can induce a faster growing sub-harmonic ripple of wave number 2k 1⁄4 1:4.
+a)Aurthor to whom correspondence should be addressed. Electronic mail: maroudas@ecs.umass.edu.
+0003-6951/2016/109(2)/023103/4/$30.00 109, 023103-1 Published by AIP Publishing.
+APPLIED PHYSICS LETTERS 109, 023103 (2016)
+20 March 2024 18:55:18
+
+
+respectively, of the Cartesian frame of reference of Fig. 1(a). The surface morphology of the film is parameterized with the surface height function, hðx; y; tÞ. Using a Nernst-Einstein equation to express the surface atomic flux and the continuity equation to express mass conservation gives the height evolution equation
+@h
+@t 1⁄4 H0rs  dsX
+kBT Ds  rs UE  cf j þ UW
+
+
+: (1)
+In Eq. (1), H0  ð1 þ h2
+x þ h2
+yÞ1=2; hx  @h=@x and hy  @h=@y, X is the atomic volume, ds=X is the number of surface atoms per unit area, kB is the Boltzmann constant, T is temperature, Ds is the surface diffusivity, and rs represents the surface gradient operator, which acts (within the bracketed flux expression) on the chemical potential of the film surface atoms; this chemical potential includes contributions from the densities of the elastic strain energy, UE, the surface energy, cf j, where j is the surface curvature, and the wetting poten
+tial, UW. Ds is a transversely isotropic tensor9
+Ds 1⁄4 Ds
+xx 0
+0 Ds
+yy
+"#
+1⁄4 Ds;min
+xx f ðhxÞ 0
+0 Ds;min
+yy f ðhyÞ
+"#
+; (2)
+where f ðhaÞ 1⁄4 1 þ A cos21⁄2mðha þ /aÞ; a 1⁄4 x or y, is the surface diffusional anisotropy function for face-centered cubic (fcc) crystals.10 In this function of the surface orientation angle ha between the surface tangent vector, ta, and the a-axis, A is the strength of the anisotropy, m is the number of fast surface diffusion directions, and /a is the angle between the fast diffusion direction and the a-axis; for fcc crystals, m 1⁄4 1, 2, or 3, corresponds to {110}, {100}, and {111} surfaces, respectively. For purposes of theoretical analysis, in the small-slope approx
+imation, d  ffiffiffiffiffiffiffiffiffi
+haha
+p  1; j 1⁄4 haa þ Oðd3Þ. According to the “transition-layer” model,11,12 a transition of the surface energy per unit area from that of the film cf to that of the substrate cs over a length scale b gives the wetting potential density as
+UW 1⁄4 cf  cs
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1 þ haha
+pb
+p b2 þ h2
+ð Þ : (3)
+In the above model, cf is taken to be isotropic for the reasons discussed in Ref. 10. UE can be calculated asymptotically based on regular perturbation theory,12 as
+UE 1⁄4 Uð0Þ
+E þ Uð1Þ
+E þ Uð2Þ
+E þ Oðd3Þ : (4)
+An analogous asymptotic expansion with terms Uð0Þ
+W ; Uð1Þ
+W;
+Uð2Þ
+W , and higher-order terms also can be written for UW. For morphological stability analysis, the planar surface of the thin film is subjected to a low-amplitude plane-wave perturbation, D0 expðik:xÞ with wave vector k 1⁄4 ðkx; kyÞ, and UE and UW are calculated.13 For linear stability analysis, UE and UW in Eq. (1)
+are approximated retaining up to the Uð1Þ
+E and Uð1Þ
+W contributions in the respective expansions. Making lengths and time dimen
+sionless with length scale l  Mscf
+r2
+0
+, where Ms is the biaxial mod
+ulus of the substrate, and time scale s  kBTl4
+ds XDs;min
+xx cf
+, respectively,
+writing Eq. (1) in dimensionless form, linearizing it, and using a
+trial solution of h~ðx; y; tÞ 1⁄4 h~0 þ D~ 0 expð ~xt~Þ expðik~:x~Þ, with tildes used to denote dimensionless quantities, gives the dimensionless dispersion relation
+~x 1⁄4 2bk~3  bk~4  NWbk~2 : (5)
+Using the Ge/Si system as representative, we obtain values for l and s of approximately 6.58 nm and 272 h, respectively. In Eq. (5), x is the growth or decay rate of the perturbation,
+b 1⁄4 ðf2 þ 1Þ11⁄2f ðhx 1⁄4 0Þ þ Kf2f ðhy 1⁄4 0Þ; f  ky=kx; kx 61⁄4 0;
+k
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffi kx2 þ ky2
+q
+; K  Ds;min
+yy =Ds;min
+xx , and NW 1⁄4 1⁄22bðcs  cf Þ=
+ðph3
+ocf ÞðMscf =r2
+0Þ2 is the wetting potential strength scaled by the strain energy. Henceforth, all quantities are dimensionless and the tildes are dropped for simplicity. If NW < 1 or h0 is larger than a critical thickness, x becomes positive in some domain of k and, as shown in Fig. 1(b), the StranskiKrastanow instability is triggered. Equation (5) gives the max
+imally unstable wave number as kmax 1⁄4 3þ ffiffiffiffiffiffiffiffiffiffiffi
+98NW
+p
+4. For weakly nonlinear analysis, the surface height function is expressed as h 1⁄4 h0 þ hð1Þ þ hð2Þ þ Oðd3Þ and a
+sequence of OðdnÞ initial-value problems is solved to calculate the evolution of h in response to the plane-wave perturbation. This analysis is carried out in Ref. 13, retaining up to
+the hð2Þ; Uð2Þ
+E , and Uð2Þ
+W terms in the respective expansions. The physical significance of the analytical solution is that it contains a second sub-harmonic ripple, of wave number 2 k, that indicates the formation of a double QD. The analytical solution structure allows for multiple QD formation, in general, if the asymptotic expansion is carried out to higherorder terms. To calculate the onset of multiple QD formation, we adopt the ansatz of Ref. 8: All the sub-harmonics (with wave numbers nk) of the initial plane-wave perturbation (with wave number k) are excited and evolve independently with the growth rate of Eq. (5) for the corresponding wave number nk and with the actual number of ripples (QDs) formed determined by the sub-harmonic that has the highest growth rate. Therefore, the evolution rate of the sub-harmonic with wave number of nk is
+xðnÞ
+1 1⁄4 2ðnkÞ3b  ðnkÞ4b  NWðnkÞ2b : (6)
+The fastest growing mode, n, satisfies the relations xðn1Þ
+1
+ xðnÞ
+1  xðnþ1Þ
+1 , leading to
+nþ1
+ð Þ3  n3
+nþ1
+ð Þ4  n4 1⁄21 þ nðnÞ  k
+ n3  n  1
+ð Þ3
+n4  n  1
+ð Þ4 1 þ n n  1
+1⁄2 ð Þ ;
+(7)
+where nðnÞ 1⁄4
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1  1⁄2ðnþ1Þ4n41⁄2ðnþ1Þ2n2
+1⁄2ðnþ1Þ3n32 NW
+r
+. This relation
+gives the range of the initial perturbation wave number k, which will cause the formation of n ripples per original wavelength. The critical wave number ks;c for the onset of the tip splitting instability is obtained by substituting n 1⁄4 2
+into Eq. (7), giving ks;c 1⁄4 7
+15 1 þ
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1  45
+49 NW
+q
+
+.
+023103-2 L. Du and D. Maroudas Appl. Phys. Lett. 109, 023103 (2016)
+20 March 2024 18:55:18
+
+
+We validate the conclusions of the weakly nonlinear stability theory using self-consistent dynamical simulations. We use a spectral collocation method where the film surface is discretized into 128 128 grid points. Discrete Fast Fourier Transform is used to calculate the stress and strain tensors at every point on the film surface12 and an additive semi-implicit Runge-Kutta method14 is employed with adaptive time step size for the integration of Eq. (1). In the simulations, we apply either a specified initial perturbation, consisting of a superposition of two plane waves resembling a regular square pattern of surface mounds, as shown in Fig. 2(a1), or a completely random initial perturbation, as shown in Fig. 2(b1). In the initial perturbation of Fig. 2(a1), kx 1⁄4 ky 1⁄4 0:70 < ks;c 1⁄4 0:905. According to the weakly nonlinear theory, a tip-splitting instability will occur in both the x- and y-directions, and a multiple QD consisting of four smaller-size QDs is expected to form for each low-amplitude “mound” of the original perturbation. At t 1⁄4 0.58, Fig. 2(a2), the shape of the mound is not symmetric anymore with respect to the z-axis. This asymmetry is caused by the surface diffusional anisotropy. The height profile in the inset in Fig. 2(a2) shows that the amplitude of the perturbation has grown and each mound in the pattern is taller. At t 1⁄4 0.84, Fig. 2(a3), it is evident that the mounds keep growing and the valleys in the film surface morphology become deeper. Most importantly, mound tip splitting has been initiated, and four new tips have now formed per each original mound. The tip splitting is particularly clear in the profile in the inset in Fig. 2(a3). Due to surface diffusional anisotropy, the newly formed tips are asymmetrically arranged within each mound. However, in simulations where the surface diffusional anisotropy is not accounted for, the observed tip splitting is symmetric resulting in a multiple QD that is a cluster of four symmetrically arranged QDs of equal height. The profile in the inset in Fig. 2(a3) resembles strongly the experimentally observed “double QDs.”5,13 At t 1⁄4 1.00,
+Fig. 2(a4), the valleys between the smaller-size QDs in each multiple QD become deeper and the smaller-size QDs become more distinct having grown taller while retaining different heights. Eventually, the shorter small-size QDs gradually catch up with the taller ones within each original mound, and QD coarsening processes also become operative and determine the final, steady-state surface morphology shown in Ref. 13. The evolution of the thin film morphology in our simulation with the specified initial perturbation, Figs. 2(a1)–2(a4), is very similar to the experimental observations made in the growth of an InAs film on the surface of a GaAs substrate patterned with embedded InAs QDs, where “QD pairs” form at sites arranged exactly like the pattern of the embedded InAs QDs, facilitating the lateral replication of single QDs into QD pairs.6 The strain field developed by the embedded InAs QDs induces a long-wavelength perturbation on the grown InAs film surface with the wave number k determined by the lattice parameter of the embedded QD pattern. As a result, large-size QDs are allowed to form, which, according to our theory, undergo tip splitting for k < ks,c resulting in the formation of the pattern of “QD pairs” observed in Ref. 6. Representative results from simulations starting with a random initial perturbation, Fig. 2(b1), from the planar surface morphology are shown in Figs. 2(b1)–2(b4). The formation of QDs in the film surface is evident, Fig. 2(b2), leading to a pattern of multiple QDs as shown in Figs. 2(b3) and 2(b4); the connectivity of these multiple QDs in the form of a QD cluster is clear both in the 2D contour maps of Figs. 2(b3) and 2(b4) and the surface height profiles in the respective insets. However, in contrast to the multiple QD patterns of Figs. 2(a3) and 2(a4), these QD clusters are not identical to each other and they are not arranged in a regular pattern but a random one. Moreover, the total number of QDs formed in Figs. 2(b3) and 2(b4) is lower than that
+FIG. 2. 2D contour maps of simulated evolving surface morphology, hðx; y; tÞ, of coherently strained epitaxial film starting with (a1-a4) a specified perturbation, h 1⁄4 0:1 þ 0:00051⁄2expði0:7xÞ þ expði0:7yÞ, at (a1) t 1⁄4 0, (a2) t 1⁄4 0.58, (a3) t 1⁄4 0.84, and (a4) t 1⁄4 1.00 and (b1-b4) a random low-amplitude perturbation at (b1) t 1⁄4 0, (b2) t 1⁄4 0.18, (b3) t 1⁄4 0.68, and (b4) t 1⁄4 0.78. 1D surface profiles, hðx; y; tÞ, along the black solid lines marked on the 2D maps are plotted in the insets. Parameter values: NW 1⁄4 0:127, A 1⁄4 10, m 1⁄4 2, and /x 1⁄4 /y 1⁄4 15.
+023103-3 L. Du and D. Maroudas Appl. Phys. Lett. 109, 023103 (2016)
+20 March 2024 18:55:18
+
+
+formed in Figs. 2(a3) and 2(a4), respectively, for the same film surface area. These computed film surface patterns are consistent with the experimental observations6 that multiple QDs of InAs are formed on both patterned and unpatterned GaAs surfaces, but the multiple QDs formed on unpatterned GaAs surfaces are randomly arranged and fewer per unit area than those formed on patterned GaAs surfaces. After a sufficiently long evolution period, the epitaxial film surfaces in both simulation types reach the same stable steady state, characterized by a regular pattern of equal-size QDs arranged in a hexagonal lattice.13 Nevertheless, as the film surface morphology evolves toward its steady state, various multiple QD patterns develop, such as those shown in Fig. 2. These patterns can be frozen, i.e., trapped kinetically, in the film surface by lowering the substrate temperature and diminishing the rate of diffusional transport. “Double QDs,” “triple QDs,”5 “quadruple QDs,”5 and even “6-fold QDs”6 have been observed in experiments. Our theory can predict the number of smaller-size QDs in a multiple QD that forms. For specified initial perturbations such as that shown in Fig. 2(a1), the predictions of Eq. (7) for the number, n, of smaller-size QDs in a multiple QD is plotted in Fig. 3(a) for the parameter set that gave the results of Fig. 2 as a function of the wavelengths of the perturbation scaled by the corresponding maximally unstable wavelength kmax. To validate these predictions, we conduct a systematic protocol of hundreds of surface morphological evolution simulations, with initial perturbation wavelengths kx and ky sampled evenly over the entire domain of Fig. 3(a). The simulation results in Fig. 3(b) are in good qualitative and reasonable quantitative agreement with the theoretical results of Fig. 3(a). The critical wave number predicted by the simulations is ks,c 1⁄4 0.80, in reasonable agreement with the theoretical prediction of ks,c  0.91. According to our theory, the formation of a multiple QD with a large number n of distinct smaller-size QDs requires longer-wavelength perturbations that will result in larger-size initial QDs. Such QDs are difficult to grow on unpatterned substrate surfaces, since tip splitting will be triggered when the QD size is sufficiently large, and double QDs will form preventing the continuous growth of the original QD size. This explains why, in the experiments, multiple QDs, i.e., large QD clusters with n > 2 are
+much less commonly observed than double QDs (n 1⁄4 2), but they are easier to form on patterned substrates. In summary, we studied the morphological stability of a coherently strained epitaxial thin film using weakly nonlinear analysis and self-consistent dynamical simulations based on a fully nonlinear model of surface morphological evolution that accounts for the stress state of the film, the wetting potential, and surface diffusional anisotropy. We found that long-wavelength perturbations from the planar film surface morphology can trigger a nonlinear instability that leads to the tip splitting of a single epitaxial QD, which grows as a result of the Stranski-Krastanow instability, and the formation of multiple QDs in the form of a QD cluster consisting of several closely located smaller-sized QDs with individual tips of variable height. The nonlinear instability occurs independent of the film surface diffusional anisotropy, which affects only the resulting QD morphology through an asymmetric splitting of the originally formed QD. Our theory provides a fundamental interpretation to numerous experimental observations of multiple quantum dot formation in strainedlayer heteroepitaxy on both patterned and unpatterned substrates. Our findings also suggest that nonlinear surface phenomena in strained-layer heteroepitaxy can be exploited for precise engineering of tunable-size nanoscale surface features, resulting in tailored material properties toward optimal optoelectronic function.
+This work was supported by the U.S. Department of Energy, Office of Basic Energy Sciences, Division of Materials Sciences and Engineering, under Award No. DEFG02-07ER46407.
+1A. P. Alivisatos, Science 271, 933 (1996). 2S. Kiravittaya, A. Rastelli, and O. G. Schmidt, Rep. Prog. Phys. 72, 046502 (2009). 3D. J. Eaglesham and M. Cerullo, Phys. Rev. Lett. 64, 1943 (1990); F. M. Ross, J. Tersoff, and R. M. Tromp, ibid. 80, 984 (1998). 4P. M€ock, G. Booker, N. Mason, R. Nicholas, E. Aphandery, T. Topuria, and N. Browning, Mater. Sci. Eng. B 80, 112 (2001). 5F. Hatami, S. M. Kim, H. B. Yuen, and J. S. Harris, Appl. Phys. Lett. 89, 133115 (2006). 6S. Kiravittaya, H. Heidemeyer, and O. G. Schmidt, Appl. Phys. Lett. 86, 263113 (2005); S. Kiravittaya, R. Songmuang, A. Rastelli, H. Heidemeyer, and O. Schmidt, Nanoscale Res. Lett. 1, 1 (2006). 7V. Tomar, M. R. Gungor, and D. Maroudas, Appl. Phys. Lett. 94, 181911 (2009); J. Appl. Phys. 109, 053518 (2011). 8L. Du, D. Dasgupta, and D. Maroudas, J. Appl. Phys. 118, 035303 (2015). 9G. I. Sfyris, M. R. Gungor, and D. Maroudas, Appl. Phys. Lett. 96, 231911 (2010). 10M. R. Gungor and D. Maroudas, Int. J. Fract. 109, 47 (2001); D. Maroudas, Surf. Sci. Rep. 66, 299 (2011); L. Du, D. Dasgupta, and D. Maroudas, Appl. Phys. Lett. 104, 181901 (2014). 11B. J. Spencer, Phys. Rev. B 59, 2011 (1999). 12Y. Pang and R. Huang, Phys. Rev. B 74, 075413 (2006). 13See supplementary material at http://dx.doi.org/10.1063/1.4955409 for the calculation of the terms in the expansions for the elastic strain energy and the wetting potential densities, the weakly nonlinear analysis of the film surface morphological evolution, the computed steady state of the epitaxial film surface morphology, and comparisons between experimentally observed and simulated multiple QD configurations. 14X. Zhong, J. Comput. Phys. 128, 19 (1996).
+FIG. 3. Number of smaller-sized QDs formed by the splitting of a single QD, n, as a function of the primary wavelengths of the perturbation from the epitaxial film planar surface morphology, scaled by the maximally unstable wavelength, kx=kmax and ky=kmax, as predicted by (a) the weakly nonlinear stability theory and (b) direct dynamical simulations of epitaxial film surface morphological evolution. In all the simulations, hðt 1⁄4 0Þ 1⁄4 0:1 þ 0:00051⁄2expði2px=kxÞ
+þ expði2py=kyÞ; NW 1⁄4 0:127, A 1⁄4 10, m 1⁄4 2, and /x 1⁄4 /y 1⁄4 15.
+023103-4 L. Du and D. Maroudas Appl. Phys. Lett. 109, 023103 (2016)
+20 March 2024 18:55:18

@@ -1,0 +1,132 @@
+r 2010 American Chemical Society and Division of Chemical Education, Inc. _ pubs.acs.org/jchemeduc _ Vol. 88 No. 1 January 2011 _ Journal of Chemical Education 67
+10.1021/ed1000476 Published on Web 10/13/2010
+In the Classroom
+Can One Take the Logarithm or the Sine of a Dimensioned Quantity or a Unit? Dimensional Analysis Involving Transcendental Functions
+Cherif F. Matta*
+Department of Chemistry and Physics, Mount Saint Vincent University, Halifax, NS, Canada B3M 2J6 and Department of Chemistry, Dalhousie University, Halifax, NS, Canada B3H 4J3 *cherif.matta@msvu.ca
+Lou Massa
+Hunter College and the Graduate School, City University of New York (CUNY), New York, New York 10021, United States
+Anna V. Gubskaya
+Department of Chemistry and Physics, Mount Saint Vincent University, Halifax, NS, Canada B3M 2J6
+Eva Knoll
+Faculty of Education, Mount Saint Vincent University, Halifax, NS, Canada B3M 2J6
+Dimensional analysis (1) is central in the physical sciences because it ensures both a deeper understanding of the physics and allows a detection of dimensionally inconsistently derived equations, by requiring the two sides of an equality to carry the same dimensions (a necessary but not sufficient condition for the correctness of a derived equation). This analysis is not typically taught in the systematic manner it deserves in undergraduate courses nor does it feature prominently in standard physical or analytical chemistry textbooks. Several authors, recognizing the importance of dimensional analysis, devote a chapter or an appendix to the topic, for example, the opening chapter of the book Mathematical Physics by Donald Menzel entitled “Physical Dimensions and Fundamental Units” (2). The discussion, however, usually focuses on equations that seldom include transcendental functions such as logarithms, exponentiation, trigonometric, and hyperbolic functions. In this article, the words dimensions and units are often used interchangeably because their behavior in dimensional analysis is identical, a unit being a dimension “dressed” with a given magnitude, or to quote Hakala, a dimension is “a generalization of a unit of measurement. That is, the dimensions of a physical quantity are concerned with the nature and not the amount of the quantity” (3). For example, volume may be expressed in cubic
+meters (m3), cubic feet (ft3), and so forth all having the same
+dimension of cubic length [L]3. Different units are related by a constant dimensionless number. So while there is a conceptual distinction between a unit and a dimension, their interchange is tantamount to changing the symbol of a given physical quantity, since the dimensionless number that converts one unit to another does not appear in dimensional analysis. There has been a vigorous debate in the literature for over six decades about the fate of dimensions (and units) when quantities with dimensions are the arguments of logarithms (or exponentiation) (4-10, see also ref 11). The same issue has also been a subject of discussion and disagreement recently on the Internet (12). Some of these views are correct, some are wrong, and some
+are correct for the wrong reasons. The goals of this article are to (i) summarize the issue, (ii) expose some common traps and misconceptions, and (iii) generalize the discussion to include transcendental functions other than logarithms and exponentiation, which were not discussed before (for example, trigonometric and hyperbolic functions).
+Bridgman's Principle of “Dimensional Homogeneity”
+The rule of dimensional homogeneity needs to be introduced early in the education of students of the physical sciences: quantities A and B on both sides of the addition and subtraction operators as well as equality and inequality must have the same dimensions, that is, in each one of the following expressions A and B are dimensionally homogeneous:
+AþB A-B A1⁄4B A>B A<B
+etc: g ð1Þ
+Rule 1 is a generalization of the property of the operator expression dim (A ( B) = dim A = dim B showing that dimensional operator algebra differs, for example, from the algebra of numbers, as discussed in this Journal (13). Although it is acceptable to write A þ
+A2=B þ B2 for dimensionless (pure) numbers, this expression is meaningless if A and B represent physical quantities that are essentially the product of a pure number and a physical dimension expressed in a system of units (1, 14). Thus, although
+v þ s 1⁄4 gt þ 1
+2 gt2 ð2Þ
+where v = gt and s = 1/2gt2, is numerically correct, this equation is devoid of physical meaning (1), unless the dimension or unit for
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 21, 2024 at 16:10:52 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+68 Journal of Chemical Education _ Vol. 88 No. 1 January 2011 _ pubs.acs.org/jchemeduc _ r 2010 American Chemical Society and Division of Chemical Education, Inc.
+In the Classroom
+each term, including the coefficients, is defined and, further, that these are compatible under the applied operations according to rule 1. This is a statement of the familiar expression that one cannot add, subtract, or compare apples and oranges. Dimensional analysis is the method used to ensure dimensional homogeneity by making explicit the dimensional validity of an equation by ascribing, when necessary, the correct dimensionality to constants of proportionality (2). The application of these rules can be useful in spotting errors in a derived equation. Conversely, their satisfaction, although necessary, is not sufficient to guarantee the correctness of an equation.
+Apparent Problems in Dimensional Analysis Involving Transcendental Functions
+By definition, transcendental functions such as logarithm (to any base), exponentiation, trigonometric functions, and hyperbolic functions act upon and deliver dimensionless numerical values. We now explore some common examples of misconceptions involving these functions and the resolution of such misconceptions.
+Logarithms
+Arrhenius Equation. If the argument of the function is already dimensionless as, for example, the argument of the exponential function in the Arrhenius equation
+k 1⁄4 A exp - Ea
+RT
+
+ð3Þ
+then, according to rule 1 both k and the pre-exponential factor A must necessarily have the same dimensions (of reciprocal time) because the exponential factor is dimensionless. A difficulty arises when one has to insert a quantity with dimension (expressed in a given system of units) in the argument of a transcendental function. The logarithm is defined as the reciprocal operation of exponentiation (12), that is
+y 1⁄4 logb x if x 1⁄4 b y ð4Þ
+where b, x, and y are real numbers, b being the base of the logarithm. This definition precludes the association of any physical dimension to any of the three variables, b, x, and y, so as not to violate rule 1. Consider the following example discussed by Molyneux (8)
+logð10 gramsÞ 1⁄4 logð10  gramÞ 1⁄4 logð10Þ þ logðgramÞ 1⁄4 1 þ logðgramÞ
+ð5Þ
+where the log is to the base 10. Molyneux's suggestion that the last equality defines the meaning of log 10 gram is mistaken for the following reason. If we follow this suggestion, then if we apply definition in eq 4 one may ask: what is the exponent y ( a number) to which one should raise the base b, that will yield gram(s)? Because there are no reasonable answers to this question, the quantity (log gram) is meaningless as is eq 5 as a whole. The notion that, in logarithmic relationships, dimensions are carried additively (15) is a misconception: dimensions are not carried at all in a logarithmic function. To linearize the Arrhenius equation (eq 3), it is often modified by taking the logarithm of both sides:
+ln k 1⁄4 ln A - Ea
+RT ð6Þ
+But, in fact, it should have been written as (14)
+ln k
+k0
+1⁄4 ln A
+k0
+- Ea
+RT ð7Þ
+where k0 is the unit rate constant in the chosen system of units. In this manner, the dependence of the logarithm on the unit used is irrelevant because the argument of the logarithm in eq 7 is a ratio of two variables having the same unit, that is, a pure number. The method of expressing the arguments of the logarithms in the Arrhenius equation shown in eq 7 is recommended when tabulating or plotting data as it avoids potential ambiguities. In this manner, the numerical value of a (dimensioned) physical quantity is disengaged from its dimension, such that (11)
+physical quantity=unit 1⁄4 numerical value ð8Þ
+as, for example, in ΔHf0/(kJ mol-1) = -285.9. This is known as quantity calculus, the importance of which has been underscored some time ago in this Journal and has been adopted as the Journal 's conventional style (11). The differential form of the Arrhenius equation is
+Ea 1⁄4 -R dln k
+dð1=T Þ 1⁄4 -RT 2 dln k
+dT ð9Þ
+which is another deceptive form that may give the appearance of taking the logarithm of a dimensioned quantity, that is, the rate constant k. Formulas of this form occur in abundance in physical sciences, and the resolution of this apparent problem is in the identity (1)
+dln k
+dT 1⁄4 1
+k 3 dk
+dT ð10Þ
+where the dimensions of k are cancelled and which is equivalent to dln(k/k0)/dT, that is, taking the logarithm of a dimensionless number. In addition to logarithms, it is equally meaningless to include dimensioned quantities as the arguments of trigonometric or hyperbolic functions because these are defined as ratios (the sine of an angle is the ratio of the length of the opposite side to the length of the hypotenuse, the cosine is the ratio of the length of the adjacent side to the length of the hypotenuse, etc.) The hyperbolic functions, themselves defined in terms of either exponential or trigonometric functions, cannot operate on quantities to which physical dimensions are attached either.
+pH, pKa, log IC50, and So Forth. Mills has emphasized that the correct definition of pH is (7, 16, 17):
+pH 1⁄4 - log10
+1⁄2Hþ
+mol dm - 3
+!
+ð11Þ
+Thus, before taking the logarithm, one has to divide the concentration by the unit of concentration used to obtain a dimensionless or unitless number. A similar division by appropriate units is necessary before applying the negative of the logarithm to quantities such as the acid dissociation constant (Ka) or the 50% inhibitory concentrations and so forth. The argument of the logarithm of the partition coefficient (for example, Po/w = Co/Cw) is already dimensionless because it is a ratio of concentrations.
+
+
+r 2010 American Chemical Society and Division of Chemical Education, Inc. _ pubs.acs.org/jchemeduc _ Vol. 88 No. 1 January 2011 _ Journal of Chemical Education 69
+In the Classroom
+Relative versus Absolute Units as Arguments of Transcendental Functions
+Using a calculator, what happens to the dimensions or units when one inserts a dimensioned quantity as an argument of a transcendental function? To develop an answer with the student asking such a question, we may ask them the following question: What is the length of the side of a square whose perimeter is equal in magnitude to its area? An incorrect approach is to write:
+4x 1⁄4 x2 ð12Þ
+where x is the length of the side, because if we solve for x then any square of side length = 4 would satisfy eq 12, but 4 of what units? In other words, any square could be a solution to this problem, provided the unit is defined as one-fourth of its side length. The mistake lies of course in ignoring the dimensions or units. Instead, if the original unit of length u is changed to one that
+is y times the original unit, that is, u0 = yu, then eq 12 becomes
+(4x  yu) = (x  yu)2, which simplifies to x = 4/yu, a solution that yields a perimeter equal to 16/yu but a surface equal to
+16/y2u2. Applying rule 1 to the above problem helps reaching the correct answer. To balance the units or dimensions according to rule 1, the equation needs to be rewritten as
+4u  x 1⁄4 x2 ð13Þ
+Solving for x:
+x 1⁄4 4u
+If we repeat the analysis with careful tracking of the dimensions, we get
+4x1⁄2L 1⁄4 fx1⁄2Lg2
+4 1⁄4 x1⁄2L ð14Þ
+where the quantity in square bracket [L] refers to the dimension of length (or any of its surrogate units). Rule 1 demands that both sides of eq 14 have the same dimensions, and because the lefthand side is a pure number, so must be the quantity on the righthand side (but it is not). Therefore
+x 1⁄4 x0  1⁄2L - 1 ð15Þ
+where x0 is a pure dimensionless number. If we now substitute x0 in eq 12 instead of x we get
+4x0 1⁄4 x02 ð16Þ
+an equation that appears identical to eq 12 but with a profound difference: eq 16 re-expresses eq 12 in relative dimensionless form and will always be true. Equations similar to 16 that are unchanged when a unit is scaled are known as “complete equations” (1). Atomic units that are often used in molecular and atomic physics and quantum chemistry are relative (dimensionless) units because they provide the numerical coefficients of the ratio of the quantity of interest to a standard reference value (18). Other dimensionless units include radian, percent, mole, bit, and so forth. In optics, to describe a sinusoidal disturbance as a function of distance from a chosen origin, one must first multiply x[L] by a
+“propagation number”, k[L]-1, before inserting in the argument
+of the sine function (19). Thus,
+ψðx, tÞ 1⁄4 A sin kðx - vtÞ ð17Þ
+where ψ is the disturbance in specified dimensions and units (e.g., electric or magnetic field strength), A is the maximum disturbance or the amplitude in the same units as the disturbance, and sin k(x - vt) is dimensionless and provides the temporal and spatial periodicity of the disturbance. In the words of Hecht (19):
+It's necessary to introduce the constant k simply because we cannot take the sine of a quantity that has physical units. The sine is the ratio of two lengths and is therefore unitless. Accordingly, kx is properly in radians, which is not a real physical unit [since it is a ratio].
+Thus, whenever a quantity is to be inserted into the argument of a transcendental function it is either dimensionless from the start or it has to be made dimensionless. In other words, dimensions must be left at the doorstep of transcendental functions.
+The Fallacy of an Argument Based on Taylor's Expansion
+Wikipedia is a site that is gaining wide popularity among students and faculty, and it and other such online publications can no longer be ignored. Although generally very useful, sometimes these nonpeer-reviewed online publications can perpetuate wrong (but seemingly plausible) views and analyses. An example of a flawed argument that nevertheless reaches the correct conclusion is Wikipedia's entry, as of September 2010, and which dismisses the insertion of a dimensioned quantity into the argument of a transcendental function on the basis of the Taylor expansion of these functions (20). The Wikipedia article argues that the Taylor expansion of transcendental functions leads to terms of different dimensions that cannot be added or subtracted (rule 1), and hence, the argument cannot be dimensioned. The example quoted is (20):
+lnð3 kgÞ 1⁄4 3 kg - 9 kg2
+2 þ ::: ð18Þ
+The Taylor expansion written in eq 18 is incorrect and deceptive. If we write the formal Taylor expansion,
+f ðx þ DxÞ 1⁄4 f ðxÞ þ Dxdf ðxÞ
+dx þ Dx2
+2 3 d2f ðxÞ
+dx2 þ Dx3
+6 3 d3f ðxÞ
+dx3 þ :::
+1⁄4 f ðxÞ þ ¥ X
+n1⁄41
+Dxn
+n! 3 dnf ðxÞ
+dxn ð19Þ
+eq 19 shows that, should f (x) be dimensioned, then every term in the expansion has the same dimensions as f(x), because the
+dimensions of (∂xn/1)  (1/dxn) cancel as discussed in ref 14. Therefore, the addition (or subtraction) of the terms in a Taylor expansion is numerically and dimensionally permissible and the equation satisfies dimensional homogeneity (rule 1). The same argument carries over to all transcendental and algebraic functions that can be expanded as Taylor series. The reason for the necessity of including only dimensionless real numbers in the arguments of transcendental function is not due to the dimensional nonhomogeneity of the Taylor expansion, but rather to the lack of physical meaning of including dimensions and units
+
+
+70 Journal of Chemical Education _ Vol. 88 No. 1 January 2011 _ pubs.acs.org/jchemeduc _ r 2010 American Chemical Society and Division of Chemical Education, Inc.
+In the Classroom
+in the arguments of these function. This distinction must be clearly made to students of physical sciences early in their undergraduate education.
+Conclusions
+Dimensional analysis is not generally given the prominence it deserves in undergraduate education. We have paid particular attention in this article to dimensional analysis when the equations involve transcendental functions because this is perhaps one of the least frequently discussed topics in dimensional analysis. When a physical quantity is to be inserted into the argument of a transcendental function, care must be taken to convert them first into dimensionless ratios. We have reviewed common misconceptions and errors associated with dimensional analysis involving these functions, and in particular an example of a deceptive argument, related to Taylor expansion, that leads to correct conclusions but for the wrong reasons. The fallacy of the latter argument promulgated online underscores the importance that care be exerted when using nonpeer-reviewed online publications in undergraduate education. The importance of a thorough understanding of dimensional analysis for future scientists, who will derive as well as apply formulas and functions, cannot be overemphasized.
+Acknowledgment
+The authors are grateful to the excellent suggestions made by three anonymous reviewers that helped to improve this article considerably. The authors also thank Professors Katherine V. Darvesh and Michael Bowen (both at Mount Saint Vincent University) and Mr. Hugo Bohorquez (Ph.D. Candidate, Dalhousie University) for useful discussions and suggestions. L.M. thanks the City University of New York CUNY-PSC fund for grant support. C.F.M. acknowledges the Natural Sciences and Engineering Research Council of Canada (NSERC), Canada Foundation for Innovation (CFI), and Mount Saint Vincent University for financial support.
+Literature Cited
+1. Bridgman, P. W. Dimensional Analysis; Yale University Press: New Haven, 1931. 2. Menzel, D. H. Mathematical Physics; Dover Publications, Inc.: New York, 1961. 3. Hakala, R. W. J. Chem. Educ. 1964, 41, 380–384. 4. DePierro, E.; Garafalo, F.; Toomey, R. J. Chem. Educ. 2008, 85, 1226–1228. 5. Freeman, R. D. J. Chem. Educ. 1997, 74, 899. 6. Molyneux, P. J. Chem. Educ. 1995, 72, 955–956. 7. Mills, I. M. J. Chem. Educ. 1995, 72, 954–955. 8. Molyneux, P. J. Chem. Educ. 1991, 68, 467–469. 9. Boggs, J. E. J. Chem. Educ. 1958, 35, 30–31. 10. Copley, G. N. J. Chem. Educ. 1958, 35, 366–367. 11. White, M. A. J. Chem. Educ. 1998, 75, 607–609. 12. Physics Forum, What is the Unit after you take the Natural Logarithm? http://www.physicsforums.com/showthread.php? p=1279091#post1279091 (accessed Oct 2010). 13. Musulin, B. J. Chem. Educ. 1964, 41, 622. 14. Berberan-Santos, M. N.; Pogliani, L. J. Math. Chem. 1999, 26, 255–261. 15. Denker, J. S. Dimensionless Units, http://www.av8n.com/physics/ dimensionless-units.htm. post1279091 (accessed Oct 2010). 16. Mills, I.; Cvitas, T.; Homann, K.; Kallay, N.; Kuchitsu, K. Quantities, Units and Symbols in Physical Chemistry, the IUPAC Green Book, 2nd ed.; Blackwell Scientific: London, 1988. 17. Cohen, E. R.; Cvitas, T.; Frey, J. G.; Holmstrom, B.; Kuchitsu, K.; Marquardt, R.; Mills, I.; Pavese, F.; Quack, M.; Stohner, J.; Strauss, H. L.; Takami, M.; Thor, A. J. Quantities, Units and Symbols in Physical Chemistry, the IUPAC Green Book, 3rd ed.; RSC Publishing, Cambridge: London, 2007.
+18. Szabo, A.; Ostlund, N. S. Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory; Dover Publications, Inc.: New York, 1989. 19. Hecht, E. Optics, 4th ed.; Pearson Education, Inc.: New York, 2002. 20. Wikipedia, the Free Encyclopedia, Dimensional Analysis, http:// en.wikipedia.org/wiki/Dimensional_analysis (accessed Oct 2010).

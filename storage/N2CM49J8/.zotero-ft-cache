@@ -1,0 +1,505 @@
+Journal of Computational Physics 443 (2021) 110519
+Contents lists available at ScienceDirect
+Journal of Computational Physics
+www.elsevier.com/locate/jcp
+Deep learning and self-consistent field theory: A path towards accelerating polymer phase discovery
+Yao Xuan a,∗, Kris T. Delaney b, Hector D. Ceniceros a, Glenn H. Fredrickson b,c
+a Department of Mathematics, University of California, Santa Barbara, CA 93106, USA b Materials Research Laboratory, University of California, Santa Barbara, CA 93106, USA c Departments of Materials and Chemical Engineering, University of California, Santa Barbara, CA 93106, USA
+article info abstract
+Article history:
+Available online 17 June 2021
+Keywords:
+Self-consistent field theory Machine learning Sobolev space Saddle density fields Global shift-invariance
+A new framework that leverages data obtained from self-consistent field theory (SCFT) simulations with deep learning to accelerate the exploration of parameter space for block copolymers is presented. Deep neural networks are adapted and trained in Sobolev space to better capture the saddle point nature of the SCFT approximation. The proposed approach consists of two main problems: 1) the learning of an approximation to the effective Hamiltonian as a function of the average monomer density fields and the relevant physical parameters and 2) the prediction of saddle density fields given the polymer parameters. There is an additional challenge: the effective Hamiltonian has to be invariant under shifts (and rotations in 2D and 3D). A data-enhancing approach and an appropriate regularization are introduced to effectively achieve said invariance. In this first study, the focus is on one-dimensional (in physical space) systems to allow for a thorough exploration and development of the proposed methodology. © 2021 Elsevier Inc. All rights reserved.
+1. Introduction
+Numerical simulations using self-consistent field theory (SCFT) are a valuable method to study the energetics and structure of polymer phases [1–3]. However, these computations are generally expensive. Relaxation methods to the SCFT (saddle point) solutions are slow to converge and each iteration is costly as it requires the solution of one or several modified diffusion (Fokker-Planck) equations [1,4,5]. There are some recent attempts to combine SCFT with machine learning. Nakamura [6] proposed to predict polymer phase types by a neural network with a theory-embedded layer that captures the characteristic features of the phase via coarse-grained mean-field theory. Wei, Jiang, and Shi [7] introduced a neural network approach as a solver to the SCFT modified diffusion equations to accelerate the computation of the mean fields. In this work we leverage techniques of machine learning to obtain fast and accurate predictions of SCFT solutions after a suitable map from parameter space and average monomer density is learned. This new approach, which merges computer-simulated data with supervised learning, works for a large range of parameters after one single training and has the potential to dramatically accelerate the discovery and study of new polymer phases. To describe the proposed approach in more detail, let us consider the simple model of an incompressible AB diblock copolymer melt.1 The relevant parameters are χ N (χ is the Flory parameter and N is the copolymer degree of polymer
+* Corresponding author. E-mail address: yxuan@math.ucsb.edu (Y. Xuan). 1 This SCFT model is fully described in Appendix A.1.
+https://doi.org/10.1016/j.jcp.2021.110519 0021-9991/© 2021 Elsevier Inc. All rights reserved.
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+ization), which measures the strength of segregation of the two components, L, the cell length in units of the unperturbed radius of gyration R g , and f , the volume fraction of component A. Let ρ = ρA be the local average monomer density of blocks A. Then, the framework we propose consists of solving the following two problems:
+• Problem 1: Learn a map (χ N, L, f , ρ) −→ H ̃ (χ N, L, f , ρ), where H ̃ is an accurate approximation of the field-theoretic intensive Hamiltonian H , the Helmholtz free-energy per chain at saddle points. • Problem 2: For specific values χ N∗, L∗, f ∗, find accurately and efficiently the density field ρ∗ that minimizes H ̃ .
+Once H ̃ , a surrogate for the effective Hamiltonian at the saddle points, is learned (Problem 1), the procedure to solve Problem 2 can be expediently applied to screen the parameter space for new phase candidates. To solve the first problem we recast H as
+H(χ N, L, f , ρ) = χ N f − χ N
+Ld
+∫
+ρ2dr + R(χ N, L, f , ρ), (1)
+by extracting the leading (quadratic) interaction term, and focus on learning, via neural networks, the remainder or residual term R, which contributes to polymer entropy, but not enthalpy. In Eq. (1), d is the spatial dimension. The rationale for splitting H is simply that we know the exact expression for the enthalpic part of H , and it is both local and economical to compute while the entropic part is not known in closed form and is computationally expensive. We present numerical results in Appendix A.2 that show learning only the entropic part R produces superior results for the predicted density field ρ∗ than those obtained by learning the full functional H . Note that in an auxiliary field theory the effective Hamiltonian H , which coincides with the free energy at the SCFT saddle point, is a functional of one or more potential-chemical-like fields and one pressure-like field. The ρ dependence is generally integrated out using Gaussian integral identities and ρ is instead evaluated from these auxiliary fields. Here, we seek instead to learn directly an approximation of H , or more precisely of R, as a function of ρ. Both Problem 1 and Problem 2 are challenging for the following reasons. First, the training data set for machine learning is generated from SCFT simulations, which produce physically meaningful information only at the saddle point. Thus, we only know H at the saddle point solutions, a reduced set of a much larger complex manifold. But ultimately, we would like to find a minimizer of H over all possible ρ fields, including both saddle points and non-saddle points. Therefore, additional assumptions about the map are necessary. Second, the input is very high dimensional; the density field ρ becomes a large vector whose components correspond to values of ρ at regular mesh points in physical space. Consequently, even with a successfully learned map in Problem 1, Problem 2 is still a formidable optimization problem due to its high dimensionality. Moreover, H can have many local minima, thus finding a global minimum is a difficult task. Finally, the learned map H ̃ needs to be invariant under translations (and rotations in 2D and 3D) and this poses an additional challenge to the maplearning process. In this work, we propose to learn a map from (χ N, L, f , ρ) to the free energy, using SCFT-generated data, which is a good approximation of H and its gradient around saddle points and is invariant under spatial shifts of the density field. This is achieved by constructing a novel deep neural network in Sobolev space. Then, we pre-screen candidates for minimizers of the learned map to find, via gradient descent, predictors of new SCFT saddle points. In this first study, we focus on onedimensional (in physical space) systems to allow for a thorough exploration and development of the proposed methodology. The rest of this article is organized as follows. In Section 2, we propose the neural network-based method to approximate H in Sobolev space. By using a Sobolev metric we are able to predict both H and its gradient (thermodynamic force) simultaneously. Additional properties are added to the neural network based on the periodic shift invariance of the modeled system and the mathematical existence of the desired neural network is rigorously proved. Section 4 is devoted to a summary of numerical results for an AB diblock system and for an AB3 mikto-arm star system, both with density-field variations in only one space dimension. Finally, some concluding remarks, including the prospects for extension to higher spatial dimensions, are given in Section 5.
+2. The neural network model
+We describe in this section the deep neural network trained in Sobolev space that we propose to accurately describe H and its gradient in the vicinity of field-theoretic saddle points.
+2.1. Methodology
+Henceforth, we use x = (χ N, L, f , ρ) to denote all parameters of the model, which for concreteness is an incompressible diblock copolymer melt. Here, ρ is a vector whose components are the values of the local average density field ρ at the
+spatial grid points. We need to learn a map (χ N, L, f , ρ) −→ H ̃ (χ N, L, f , ρ) which approximates the effective Hamiltonian H of the field theory at the saddle points. Suppose M = {(x1, H1), (x2, H2), ..., (xNT , H NT )} is the training set of size NT generated by SCFT simulations, where xi = (χ Ni , Li, fi, ρi) represents the ith training point and Hi is the corresponding H value (free energy) for the ith training point.
+2
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+As mentioned in the introduction, we start by rewriting H as
+H(x) = χ N f − χ N
+L
+∫
+ρ2dr + R(x), (2)
+and learn the entropic remainder function R. An appropriate model for this task is one that matches both the functional value of R and its gradient (first variation in the continuum case) because at a saddle point ρ∗, necessarily δH
+δρ |ρ=ρ∗ = 0. We will call N N the approximation to R obtained via a neural network approach that we specify in detail below. Hence, at the end, the approximate effective Hamiltonian map has the expression
+H ̃ (x) = χ N f − χ N
+L
+∫
+ρ2dr + N N(x). (3)
+In a neural network, there are many parameters in the form of weights and biases. These parameters are determined by minimizing a cost or loss function, which is defined based on the desired properties of the neural network. For our problem, we first choose a basic version of cost function as
+C(α) =
+N ∑T
+i=1
+(H ̃ (xi) − Hi)2 + β
+N ∑T
+i=1
+‖∇ρ H ̃ (xi)‖2, (4)
+where α refers to the all the parameters in the neural network (hidden in the structure of H ̃ ) and β is a parameter
+that controls the size of the penalty term ∑NT
+i=1 ‖∇ρ H ̃ (xi)‖2, which favors vanishing gradients at training points and adds
+smoothness to the learned map and prevents overfitting. More importantly, this regularizing term effectively enforces that the gradient of the learned H ̃ approximates the zero vector at the training points (all training points are saddle points of H ). It is important to emphasize that the learned map will ultimately match accurately both the functional value of H and its vanishing gradient at training points. This property of the model represents a new approach to predict SCFT saddle points. Note that for each data point (xi , Hi), in view of (2) and (3), N N should match
+Ri = Hi − χ Ni fi + χ Ni
+Li
+∫
+ρ2
+i dr. (5)
+Moreover, after discretizing in space we have
+∇ρ H ̃ (xi) = − 2χ Ni
+Li
+r ρi + ∇ρ N N(xi), (6)
+where r is the spatial mesh size. Then, we can rewrite the cost function (4) in terms of the residual map N N as
+C(α) =
+N ∑T
+i=1
+(N N(xi) − Ri)2 + β
+N ∑T
+i=1
+‖∇ρ N N(xi) − 2χ Ni
+Li
+r ρi‖2. (7)
+From Eq. (7), the cost function we seek to minimize is just the distance between the predicted map, N N, and the actual map we are trying to approximate, R, in the sense of the Sobolev norm. The existence of a neural network to approximate a map to a desired accuracy has been established for different activation functions [8,9]. Thus, a natural question is: does there exist a neural network that approximates both the map and its gradient, i.e. in the sense of Sobolev norm? The answer is yes and our approach is built on this solid theoretical foundation. A single hidden layer feedback network constructs functions of the form
+g(x) =
+q ∑
+j=1
+ω j G(θ j ·  ̃x), (8)
+where G is an activation function (e.g. sigmoid, softmax, ReLU, etc.),  ̃x = (1, x), ω j represents hidden-to-output layer weights and the vectors θ j (of dimension equal to the dimension of x plus 1) represent input-to-hidden layer weights. Collectively, these parameters are the vector α appearing in the cost or loss function (7). If this class of functions is dense in a functional space F under some specific metric, then for any f ∈ F , there is a neural network of the form (8) that approximates f to a given accuracy in that metric. Hornik, Stinchcombe, and White [10] proved this is the case with the Sobolev norm. This result guarantees the existence of a single-hidden-layer neural network that approximates both a functional and its functional gradient simultaneously and provides the theoretical foundation for our proposed cost function (7). Moreover, there also exists, as proved by Czarnecki, Osindero, Jaderberg, Swirszcz, and Pascanu [11], a single layer neural network that matches both the functional and its functional gradient with zero training loss. That is, theoretically, there exists α∗ such that C (α∗) = 0. A more technical summary of these important theorems is presented in the Appendix A.3. We use stochastic gradient descent methods, employing backpropagation and the Adam method, to find the network’s parameters by minimizing (7). We designed a deep neural network with 6 hidden layers to learn N N; the architecture of this deep neural network is shown in Table 1. The width and depth of neural network, which control the generalization power and convergence rate, are tunable hyperparameters. We selected these hyperparameters guided by an ablation study, which is summarized in Appendix A.5.
+3
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Table 1
+Architecture of the deep neural network: number of neurons (cells) in each hidden layer.
+Hidden layer 1 2 3 4 5 6
+Number of neurons 60 180 180 180 180 60
+Fig. 1. Density field in any period window generates the same effective Hamiltonian. This global shift-invariance is required for the learned map.
+2.2. Neural network with global shift-invariance
+In the SCFT model, with periodic boundary conditions, the effective Hamiltonian is invariant under shifts in ρ. Hence, our approximation H ̃ should have the property
+H ̃ (x) = H ̃ (T sx), (9)
+where T sx = (χ N, L, f , T sρ) and T sρ is a spatial shift of the periodic density field ρ, i.e., T sρ(r)=ρ(r + s). Equivalently,
+H ̃ (χN , L, f , [ρ1, ρ2, ...]) = H ̃ (χN , L, f , [ρ1+s, ρ2+s, ...ρ1, ..., ρs]). This is illustrated in Fig. 1: any period-window of ρ generates the same effective Hamiltonian. This is of course also the case for the entropic remainder term R. Machine learning techniques with global shift-invariance are not yet common in the literature. Some popular deep learning architectures, such as the convolutional neural network (CNN), have local shift-invariance. However, it is easy to construct examples in which a small change in input can result in a huge change of the output in a CNN [12]. Our goal here is to construct a deep neural network with global shift-invariance. This can be achieved by combining data augmentation and the addition of a penalty or regularization term in the loss function. Data augmentation consists in adding (cyclically) shifted data points to training set so that the neural network can learn the pattern of periodic shift-invariance directly from the data. Suppose M = {(xi , Hi), 1 ≤ i ≤ NT } is the original training set, the new training set after augmentation is defined as:
+M ̃ = {(T sxi, Hi), 1 ≤ i ≤ NT , 1 ≤ s ≤ Ns},
+where Ns is number of possible shifts. We also modify the cost or loss function with an additional penalty term as follows
+C(α) =
+N ∑s
+s=1
+N ∑T
+i=1
+(N N(T sxi) − H ̃i)2 (10)
++β
+N ∑s
+s=1
+N ∑T
+i=1
+‖∇ρ N N(T sxi) − 2χ Ni
+Li
+r T sρi‖2
++γ
+N ∑s
+s=1
+N ∑T
+i=1
+(N N(xi) − N N(T sxi))2.
+4
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+The last term penalizes the differences of N N at shifted points. It is worth noting that while global shift-invariance is essential for many physical models, the machine learning literature on that topic is scarce. Global shift-invariance is a challenging problem because it results in a much smaller subspace of the general neural network approximation space. Therefore, the existence of a neural network, in the global shift-invariant space, that approximates accurately a functional in the Sobolev norm is an important and non-trivial question. Indeed, if the subspace is not large enough, the existence of a network to approximate accurately any given functional is not guaranteed. Fortunately, we are able to prove the existence of a neural network that approximates a given functional under the Sobolev norm and has global shift-invariance at the same time. In more precise terms, we have the following result.
+Theorem 1. There exists a neural network N N(x) with a ReLU (or a leaky ReLU) activation function such that the neural network has zero training loss with loss function (10).
+Proof. Let f (x) = R(x), i.e. the true remainder of the effective Hamiltonian and g(ρ) = 2χN
+L rρ, the true gradient of the
+remainder. Then, we can take any extension of g(ρ), say  ̃g(x), such that  ̃g(x) matches g(ρ) on all the coordinates corresponding to ρ. By Theorem 4 in the Appendix, there is a neural network such that N N(x) matches f (x) and N Nx(x) matches  ̃g(x) exactly, on the training set. Since we only need the gradient with respect to ρ, by the definition of  ̃g(x), N Nρ is equal to g(ρ) on the training set. This directly makes the first two terms vanish in cost function (10). For the third term, noting that
+N N(T sxi) = R(T sxi) = R(xi) = N N(xi),
+for all i, s, we get N N(xi) − N N(T sxi ) = 0. Thus, there exists a neural network N N(x) that leads to a zero training loss with the cost function (10). In other words, it is possible to achieve simultaneously the desired approximation in the Sobolev norm and global shift-invariance with one neural network. 
+2.3. Searching for saddle points
+As described above, the map H ̃ is trained in Sobolev space. Once this is achieved, we can use local minimizers of H ̃ , obtained via gradient descent, as predictors of the saddle point density fields of the effective Hamiltonian.2 To solve ∇ρ H ̃ = 0 we employ the gradient descent method because it is simple and fast to evaluate the learner and its gradient at any x. Given arbitrary (χ N∗, L∗, f ∗), we eliminate these variables in H ̃ (x) so that H ̃ can be viewed as a function of ρ alone. Then, we proceed with gradient descent to find a local minimizer ̂ρ NN as an approximation to a saddle point ρ∗ of the effective field-theoretic Hamiltonian:
+ρn+1 = ρn − ∇ρ H ̃ (xn), (11)
+where xn = (χ N∗, L∗, f ∗, ρn) and is the step size. Note that, as expressed in (6),
+∇ρ H ̃ (x) = − 2χN
+L r ρ + ∇ρ N N(x), (12)
+where ∇ρ N N(x) can be efficiently evaluated by the Chain Rule applied to the neural network, e.g. ∇ρ g(x) =
+∑q
+j=1 ω j∇ρ G(θ j ·  ̃x) for a single-layer neural network. This is easy to compute even for a multiple-layer neural network because a computation graph is automatically generated for the neural network to gather gradient information for backward propagation. Again, here r is the spatial mesh resolution. The gradient descent iteration (20) is terminated when ‖∇ρ H ̃ ‖ decreases below a target specified small value. One important component of the gradient descent method is the initial iterate ρ0. Here we propose a selection strategy for ρ0 that fully uses the information of the training set. For a given (χ N∗, L∗, f ∗), we scan all the density fields in the
+training set to find the one that generates the smallest ‖∇ρ H ̃ ‖ at (χ N∗, L∗, f ∗). Since a neural network is just a composition of a series of linear functions and simple (nonlinear) activation functions, this evaluation is extremely fast in comparison with the evaluation of the full SCFT model.
+2.4. Strategies to tune hyperparameters
+Hyperparameter tuning is an important procedure in deep learning. The weights and biases in the network, denoted collectively as α above, are parameters. There are multiple hyperparameters in a neural network model, such as the strengths of the penalization terms β and γ in the loss function, the hyperparameters defining the architecture of the network, such as the number of layers and the number of nodes per layer, and the learning rate (step size) used in the training process.
+2 Henceforth, we call the local minimizer of H ̃ a saddle point predictor or a predicted saddle point.
+5
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Following standard practice, we split the dataset into three parts: a training set, a validation set, and a test set. For various combinations of different values of hyperparameters, the neural network is trained on the training set and the results are compared with the data in the validation set. After selecting the optimal combination of hyperparameters based on the performance on the validation set, we evaluate the best model on the test set to check the error. This comparison requires the specification of a metric. For the given validation set with parameters (χ N∗
+i , L∗
+i, f∗
+i ) where 1 ≤ i ≤ NV , we define the metric or loss function on the validation set as follows
+C V (α) =
+N ∑s
+s=1
+N ∑V
+i=1
+(N N(T sx∗
+i ) − Ri)2 + βV
+N ∑s
+s=1
+N ∑V
+i=1
+‖∇ρ N N(T sx∗
+i ) − 2χ N∗
+i
+L∗
+i
+rT sρ∗
+i ‖2 (13)
++ γV
+N ∑s
+s=1
+N ∑V
+i=1
+(N N(x∗
+i ) − N N(T sx∗
+i ))2 + θV
+N∑V
+i=1
+‖̂ρ NN
+i − ρ∗
+i ‖2,
+where x∗
+i = (χ N∗
+i , L∗
+i, f∗
+i ,ρ∗
+i ) and ̂ρ N N
+i is the predicted density field corresponding to (χ N∗
+i , L∗
+i, f∗
+i ). The first two terms provide a measure of the accuracy of the learner and its gradient. The third term measures the shift-invariance. The fourth term measures the deviation of predicted minimizers ̂ρ NN from the saddle points. Thus, with this metric on the validation set we can find hyperparameters that lead to a neural network that not only approximates the effective Hamiltonian and its gradient but also predicts the saddle point after gradient descent searching. In the implementation, we can adjust the weights (βV , γV and θV ) to each of the terms in C V to prioritize the approximation of N N, its gradient, its shift-invariance, or a saddle point, local density field or to balance the scaling.
+2.5. The algorithm
+In training deep networks it is common to add a regularization term to the loss function that penalizes the size of weights and biases and provides smoothness to the model. Here, we follow that practice and modify our loss function by adding the term λ‖α‖2
+2, i.e.
+C(α) =
+N ∑s
+s=1
+N ∑T
+i=1
+(N N(T sxi) − Ri)2 + β
+N ∑s
+s=1
+N ∑T
+i=1
+‖∇ρ N N(T sxi) − 2χ Ni
+Li
+r T sρi‖2
++γ
+N ∑s
+s=1
+N ∑T
+i=1
+(N N(xi) − N N(T sxi))2 + λ‖α‖2
+2.
+(14)
+Algorithm 1 provides the sequence of steps for deep learning H and to obtain predictions of SCFT saddle points. Training of the neural network is done under the Sobolev norm to obtain accurate predictions of both H and its gradient. With this network, after selecting a good, data-based initial guess, the gradient descent method is used to find accurate approximations of the saddle point.
+Algorithm 1: Neural network method to learn the effective Hamiltonian and to obtain a saddle point density field prediction.
+Input: Training set M, validation set MV , test set MT 1. Hyperparameter tuning:
+for hyperparameter λi , β j , γk do
+use Adam method to search for αijk = arg minα C (α) evaluate C V (αijk) on MV end
+λ, β, γ = arg minλi ,β j ,γk C V (αijk)
+2. Prediction of effective Hamiltonian on MT : for x = (χ N, L, f , ρ) do H ̃ (x) = χ N f − χ N
+L
+∫ ρ2dr + N N(x) end 3. Prediction of saddle point corresponding to χ N∗, L∗, f ∗: for ρi from M do
+Evaluate H ̃ (χ N∗, L∗, f ∗, ρi ), ∇ρ H ̃ (χ N∗, L∗, f ∗, ρi ) end
+ρ0 = arg minρi ‖∇ρ H ̃ (χ N∗, L∗, f ∗, ρi )‖ while ‖∇ρ H ̃ (χ N∗, L∗, f ∗, ρi )‖ > δ do ρn+1 = ρn − ∇ρ H ̃ (xn) end
+ρn → ρ ̃ NN which is the estimated saddle point corresponding to χ N∗, L∗, f ∗
+6
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+3. Exploring a simpler data-based learner
+As we show in Section 4, our deep NN-based approach is remarkably accurate and efficient in building a shift-invariant surrogate for the field-theoretic effective Hamiltonian in the vicinity of saddle points. There is however a vast number of other data-based learners that one could potentially use within our proposed framework to accelerate the exploration of parameter space in polymer SCFT. In fact, the first learner we tried, inspired by the pioneering work of Snyder, Rupp, Hansen, Blooston, Müller, and Burke [13–15], was Kernel Ridge Regression (KRR). In KRR, one constructs the approximate map H ̃ from an expansion of the form
+H ̃ (x) =
+N ∑T
+j=1
+α j K (x, x j), (15)
+where, as before, x = (χ N, L, f , ρ), xi represents ith training point, K is a fixed function known as the kernel (e.g. the Gaussian function), and NT is the training set size. Because the number of parameters α j is not fixed and depends on the size NT of the data, KRR is a simple data-adaptive regression approach. To use KRR as the data-based learner in our proposed, accelerated SCFT framework we need 1) to train KRR (i.e. determine α1, α2, ..., αNT ), in Sobolev space to approximate simultaneously H and its gradient, and 2) to constrain the KRR learner to be shift-invariant. While we could solve 1) explicitly, we were unable to find a satisfactory solution for 2). Although this is a serious limitation of KRR in the context of polymer SCFT, the extension of the KRR to Sobolev space training could be useful for other applications that do not require the global invariance. With this in mind, we present below this extension and compare this approximation with that produced by the deep NN learner. Specifically, to train KRR in Sobolev space and determine α1, α2, ..., αNT , we minimize the cost function
+C(α) =
+N ∑T
+i=1
+(H ̃ (xi) − Hi)2 + β
+n ∑
+i=1
+‖∇ρ H ̃ (xi)‖2 + λ αT K α, (16)
+where ∇ρ H ̃ (xi ) stands for the gradient of H ̃ with respect to ρ evaluated at xi , α = (α1, α2, ..., αNT )T , and K is a matrix
+with entries Kij = K (xi , x j). The regularization term λ αT K α penalizes the size of the coefficients α in the metric induced by the kernel and limits overfitting. The gradient term in C (α) favors approximations with a vanishing gradient, consistent with SCFT saddle points. We now derive an explicit expression for α in our Sobolev space KRR model. We employ the Gaussian kernel
+K (xi, x j) = exp
+(
+− ‖xi − x j‖2
+2σ 2
+)
+, (17)
+where
+‖xi − x j‖ =
+√
+c1(χ Ni − χ N j)2 + c2(Li − L j)2 + c3( fi − f j)2 + ‖ρi − ρ j‖2
+2, (18)
+‖ · ‖2 is the l2 norm, and c1, c2, c3 are positive hyperparameters.
+Theorem 2. The Sobolev space-trained Kernel Ridge Regression (15) with Gaussian kernel (17), which minimizes (16), has coefficients α that satisfy linear system
+(K T K + β K ̃ + λK )α = K T H, (19)
+where K ̃ =
+N ∑T
+i=1
+K ̃i and K ̃i is a matrix with (K ̃i) jm = 1
+σ 4 K (xi , x j)K (xi , xm)〈ρ j − ρi, ρm − ρi〉.
+A proof is given in Appendix A.4. This result is an attractive feature of KRR; there is an explicit expression for α, i.e. the learner is easy to train. There are 6 hyperparameters in our KRR method: c1, c2, c3, λ, σ , and β. They could either be determined by the methods in Section 2.4 or by k-fold cross validation. Once the KRR learner is obtained, we proceed as in the deep neural network case, to minimize H ̃ , via gradient descent, to find saddle point predictors
+ρn+1 = ρn − ∇ρ H ̃ (xn), (20)
+where the gradient is evaluated explicitly:
+∇ρ H ̃ (x) =
+N ∑T
+j=1
+ρj −ρ
+σ 2 α j K (x, x j). (21)
+7
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Table 2
+Performance of the Sobolev space-trained deep neural network on the test set (root mean square error): E H is the error of predicted effective Hamiltonian, EG is the error of predicted effective Hamiltonian gradient, E I is the difference of predicted effective Hamiltonian of shifted density fields. Low χ N refers to χ N ∈ [20, 35.5] for all cases. High χ N refers to χ N ∈ [50, 65.5] for the AB diblock with f = 0.3 and for the AB3 star system, and to χ N ∈ [45, 60.5] for the AB diblock with f = 0.4.
+χ N Structure f E H EG E I
+Low χ N AB diblock 0.3 0.017 0.018 0.006 0.4 0.006 0.023 0.005 AB3 star 0.4 0.013 0.035 0.005
+High χ N AB diblock 0.3 0.011 0.050 0.006 0.4 0.012 0.046 0.017 AB3 star 0.4 0.017 0.065 0.012
+4. Results
+We conducted several numerical experiments to validate the proposed SCFT-deep learning framework. We summarize our results in this section. We considered two systems: an AB diblock copolymer melt and an AB3 star copolymer melt, both in one spatial dimension. There were two stages in the numerical experiments. First, we trained a machine learning architecture (the deep neural network here, but other machine learning methods could be used in this step) to predict the effective Hamiltonian H and its gradient from the parameters, χ N, L, f and average monomer (A) density field ρ. The deep neural network learner is equipped with global shift-invariance obtained through a data augmentation technique and the addition of a penalty term in the loss function. Second, we selected an initial guess for the density field from the training set and searched by gradient descent for a density field that minimizes the learned map H ̃ .
+4.1. AB diblock copolymer with low-to-moderate χ N
+In this experiment, we first test the algorithms on an AB diblock system for χ N in the range [20, 35.5] for A-block volume fractions f ∈ {0.3, 0.4}. The training, validation, and test data for f = 0.3 are as follows:
+• The training set consists of the combination of χ N ∈ {n ∈ N : 20 ≤ n ≤ 35}, L ∈ {n + 0.2, n + 0.5, n + 0.8 : 3 ≤ n ≤ 6} and f ∈ {0.3}. The size of the training set is 16 ∗ 3 ∗ 4 = 192. • The validation and test sets consist of the combination of χ N ∈ {n, n + 0.5 : 20 ≤ n ≤ 35, n ∈ N}, L ∈ {n, n + 0.1, n + 0.3, n + 0.4, n + 0.6, n + 0.7, n + 0.9 : 3 ≤ n ≤ 6} and f ∈ {0.3}. Note that this larger set has no overlap with the training set. We randomly take 192/3 = 64 points by uniform distribution from this set as our validation set and apply the rest as the test set.
+All the data points are obtained by numerically solving the SCFT model for each corresponding set of parameters. The modified diffusion equations were solved using periodic boundary conditions and pseudo-spectral collocation in space with 64 mesh points in 1D. 100 contour steps were made using second-order operator splitting [16,17]. Auxiliary fields, initialized with smooth fields with a fixed number of periods, were relaxed to saddle-point configurations using the semi-implicit Seidel iteration [4]. L was varied rather than set to the value that minimizes the effective Hamiltonian in building the datasets. This gave more richness to the training set by including stressed configurations. However, as L increases, solutions with an increased number of periods become feasible; the algorithm selects the density field that produces the smallest effective Hamiltonian among these solutions with different periods. We use a similar strategy to generate the data for the case f = 0.4. The deep neural network is trained separately for f = 0.3 and f = 0.4.
+Fig. 2 shows the excellent accuracy of the predicted H ̃ as a function of χ N and L. H ̃ coincides with the SCFT mean-field free energy H to two digits of accuracy. As mentioned above, global shift-invariance is an important property the SCFT model solutions. Fig. 3a displays the output of the deep network for all the possible periodic shifts (cyclic permutations) of the density array input (from 0 to 63) for some representative cases. As this figure demonstrates, the proposed deep network preserves with good accuracy (2–3 digits) the desired, global shift-invariance. We now test the ability of our deep learning model to predict saddle point SCFT densities. As mentioned earlier this is done using gradient descent of the learned map. The search process starts from the density field in the training set that generates a gradient of the learner H ̃ closest to 0. Then, in each iteration, we evaluate the gradient of the learner by summing up the gradient of the leading order term and the gradient of the deep-learned remainder R, computed by the Chain Rule. Because the training is done in Sobolev space, a minimizer of the learner H ̃ yields an accurate approximation of the true SCFT saddle point density field. Fig. 4 presents four examples of the predicted density field and compares them with the corresponding SCFT solution. The accuracy of the deep learning model predictions is outstanding. Table 2 lists the specific errors of the predictions on the test set for both the AB diblock and the AB3 star copolymer.
+8
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 2. AB diblock copolymer with low-to-moderate χ N: comparison of the deep learned effective Hamiltonian with the SCFT effective Hamiltonian. In (d), there is a jump because the optimal density field switches from two periods to one period at that point and this leads to a smaller effective Hamiltonian.
+Fig. 3. Global shift-invariance validation for some representative cases: (a) low-to-moderate χ N and high χ N cases for AB diblock system, (b) low-to moderate and high χ N cases for AB3 star system. (For interpretation of the colors in the figure(s), the reader is referred to the web version of this article.)
+We are using a relatively small training set but get fairly accurate approximations. Increasing the number of data points would generally improve the performance. As proved by Chen, Jiang, Liao, and Zhao [18], there exists a deep ReLU archi
+tecture such that the mean squared error of the approximation converges at the rate of O (n− 2(s+α)
+2(s+α)+d log3 n) when n points are sampled to approximate a Hölder function in Hs,α supported on a d-dimensional Riemannian manifold isometrically embedded in RD with sub-Gaussian noise and a data intrinsic dimension of d.
+4.2. AB diblock copolymer with high χ N
+We now consider the case of high χ N, i.e. strong segregation. This is a notoriously difficult case from the SCFT computational point of view. High χ N SCFT simulations usually require high spatial resolution and are numerically stiff, taking
+9
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 4. AB diblock copolymer with low-to-moderate χ N: predicted and SCFT saddle density fields.
+hundreds or thousands of iterations to converge. Here, we select χ N in the range [50, 65.5] for f = 0.3 and χ N in the range [45, 60.5] for f = 0.4, using a similar procedure with same number of spatial and contour grid points as Section 4.1 to generate the dataset. Fig. 5 shows representative predictions of the effective Hamiltonian map H from (χ N, L, f , ρ), and Fig. 3a displays representative results for global shift-invariance. As in the low-to-intermediate χ N cases, the deep learner produces excellent predictions. Table 2 demonstrates that we still have several digits of accuracy in H , its gradient, and in preserving global shift-invariance. However, as expected, the error in the gradient is larger for the high χ N cases because of the sharper interfaces. Predictions of the SCFT saddle point density field for a given (χ N∗, L∗, f ∗) are shown in Fig. 6. The deep learner in combination with gradient descent is able to predict the density profiles for these higher values of χ N almost as accurately as for the lower χ N values. We emphasize that high χ N SCFT computations are computationally much more expensive than those for smaller χ N due to the requirement of higher numerical resolution and slower convergence of the saddle point iterations. In contrast, with the deep learning method we can obtain an accurate prediction of the saddle point density field for high χ N fast, at the same cost as that for obtaining a density prediction for low-to-moderate χ N case; in both cases, it is just several evaluations of a neural network, which is a combination of linear functions and activation functions as shown in Eq. (8). After generating hundreds of training data points and a one-time training, the Sobolev-trained neural network becomes a valuable, fast computational tool to predict accurately the effective Hamiltonian from density fields on any dataset, for example a large scale dataset with tens of thousands of data points to evaluate. No additional training or fine-tuning is needed during the subsequent polymer phase discovery process. To illustrate the running time difference between the predictions by the numerical solution of SCFT and the new deep neural network model, we take 200 samples of (χ N, L, f ) with 61 ≤ χ N ≤ 65, to compare both approaches. The running times are shown in Table 3. The SCFT CPU and the neural network CPU times are from the same machine (MacBook Pro, 2.2 GHz Intel Core i7 Processor, 16 GB 1600 MHz DDR3 Memory). The neural network GPU time is the running time on a Tesla P100 GPU. The same stopping criterion was used CPU and GPU neural network experiments. The superiority of the deep neural network model is clear and the computational savings would even more dramatic in 2D and 3D. Finding saddle point, local density fields with large 3D SCFT computations can take several hours whereas we should expect the proposed deep learning approach to accomplish the same task in seconds. In addition, as the size of sample set to be predicted increases, the neural network approach becomes more efficient because it is implemented based on tensor operations and the running time increases slowly as the size of input set increases.
+10
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 5. AB diblock copolymer with high χ N: comparison of the learned and SCFT Hamiltonian.
+Table 3
+Comparison of the direct SCFT and the deep neural network approach in terms for 200 samples.
+Model SCFT CPU Neural network CPU Neural network GPU
+Prediction time 1123 s 5.97 s 3.27 s
+4.3. AB3 star copolymer
+To show the generalizability of our model, we now test our deep learning model for an AB3 star copolymer melt, which has a different molecular architecture than the AB diblock melt. In an AB3 star system, three B blocks are attached at a point to the A block terminus. In both systems, strand lengths (including degeneracy factor) sum to 1. In the AB diblock case, f A + f B = 1 while f A + 3 f B = 1 for the AB3 star system. We employ the same technique for the AB3 star system as used for the AB diblock melt, where we wrote the effective Hamiltonian as the sum of the enthalpic term (explicitly extracting the quadratic interaction) and a remainder that contains the polymer entropy and is deep learned in Sobolev space. Experiments are run on both a low-to-moderate χ N case and a high χ N case, and in both cases accurate results are obtained. The predicted map from (χ N, L, f , ρ) to effective Hamiltonian H is shown in Fig. 7 and a validation of the global shiftinvariance is presented in Fig. 3b. Just as for the AB diblock, the predictions for the AB3 star copolymer are, as Table 2 quantifies, very accurate. The density profile predictions are also excellent for both low and high χ N as Fig. 8 demonstrates.
+4.4. Comparison with the kernel ridge regression learner
+We implemented the Sobolev-trained Kernel Ridge Regression (KRR) learner introduced in Section 3 for the AB diblock copolymer and the AB3 star copolymer. Even though the KRR does not comply with the shift invariance constraint, a comparison with the deep NN-based method offers information on the capability of the Sobolev-trained KRR to approximate simultaneously H and its gradient, which might be useful for other applications. Table 4 shows a comparison of the accuracy of the deep NN and the KRR for approximating H and its gradient, for both the AB block copolymer and the AB3 star copolymer. The accuracy in H is slightly better for the deep NN but the
+11
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 6. AB diblock copolymer with high χ N: predicted and SCFT saddle density field.
+Table 4
+Comparison of the NN and the KRR learners trained in Sobolev space for the AB diblock and the AB3 star system with low χ N. E H is the error of predicted effective Hamiltonian, EG is the error of predicted effective Hamiltonian gradient, and E I is the difference of predicted effective Hamiltonian of shifted density fields. The KRR learner does not have this approximate shift invariance.
+Structure Learner f E H EG E I
+AB diblock NN 0.3 0.017 0.018 0.006 KRR 0.3 0.021 0.006 
+AB3 star NN 0.4 0.017 0.065 0.012 KRR 0.4 0.020 0.007 
+KRR yields a more accurate approximation of the gradient. The latter is not surprising given the additional shift-invariance requirement in the deep NN which effectively reduces the approximating space. It is in fact remarkable that the deep NN yields comparable accuracy with that of the constraint-free KRR. This underlines the generalization power of the deep NN while handling additional learning constraints. On the other hand, for systems that do not require a global shift (and/or rotational) invariance, the Sobolev-trained KRR could provide a simple, accurate, and explicitly trained learner.
+5. Conclusions
+We presented a deep learning framework to accelerate the exploration of parameter space for block copolymer systems based on field theoretic models. The central idea is to use data sets obtained from SCFT simulations to train in Sobolev space and learn the effective Hamiltonian of the system as a function of the relevant average monomer density field and the model parameters. The proposed neural network learner is built from rigorous universal approximation results in Sobolev space and accurately preserves global shift-invariance. Once this learning process is done, one can expeditiously find, via gradient descent, an accurate prediction for a saddle point density field. Moreover, we can potentially combine any global optimizer with this neural network approach to search for a global minimum. The proposed SCFT-deep learning approach could also be used to accelerate the solution of the inverse design problem: given target properties of the system, find the parameters and composition that generate those properties. This could be
+12
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 7. AB3 star copolymer: comparison of predicted and SCFT effective Hamiltonian.
+done by optimizing a suitable fitness function, which measures deviations from the target system, and whose evaluation can be expeditiously done through a deep-learned functional. There are, of course, several other machine learning models beside deep neural networks. In fact, we started this project by exploring the use of Kernel Ridge Regression (KRR), inspired by the pioneering work of Snyder, Rupp, Hansen, Blooston, Müller, and Burke [13–15] on the use of KRR in the context of density functional theory. We derived an explicit formula to compute the KRR parameters with Sobolev training to effectively predict H and its gradient, ∇ H , simultaneously. While this machine learning approach requires smaller training sets, we could not construct a KRR model that satisfactorily preserves the important global shift-invariance. The deep network model quickly revealed more general and robust approximations properties for our system and consequently we adopted this and not KRR. The focus of this work has been on systems in one spatial dimension to allow us properly develop and test the proposed framework. Work on 2D and 3D systems is underway. In the higher-dimensional case we need global shift invariance along all axes, as well as rotational invariance. Both can be incorporated with the data enhancement and regularization approach proposed here.
+CRediT authorship contribution statement
+Yao Xuan contributed to the methodology, design of algorithms and implementation of experiments. Kris T. Delaney contributed to the software, methodology, and analysis of experiments. Hector D. Ceniceros supervised the project and contributed to the methodology, algorithms and analysis of experiments. Glenn H. Fredrickson contributed to the SCFT theory, methodology and analysis of experiments.
+Declaration of competing interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+13
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 8. AB3 star copolymer: predicted and SCFT saddle density fields.
+Acknowledgements
+H.D.C. and Y.X. acknowledge partial support from the National Science Foundation under award DMS-1818821. K.T.D. and G.H.F. were supported by the DMREF Program of the National Science Foundation under award DMR-1725414. Use was made of computational facilities purchased with funds from the National Science Foundation (CNS-1725797) and administered by the Center for Scientific Computing (CSC). The CSC is supported by the California NanoSystems Institute and the the Materials Research Science and Engineering Center (MRSEC; NSF DMR 1720256) at UC Santa Barbara.
+Appendix A
+A.1. The SCFT AB diblock copolymer model
+The effective Hamiltonian of an AB diblock copolymer melt is expressed in terms of two fields, w A and w B [1,19]
+H[wA, wB] =
+∫
+[−(w A + w B )/2 + (w B − w A)2/(4χ N)]dr − V ln Q [w A, w B ], (22)
+where χ is the Flory parameter and measures the strength of binary contacts, N is the copolymer degree of polymerization, and V is the system volume. Q [w A , w B ] is the partition function for a single copolymer with field w A acting on the A block and field w B acting on the B block. This functional can be evaluated by the formula
+Q [wA, wB] = 1
+V
+∫
+q(r, 1; [w A, w B ]), (23)
+where q(r, s; [w A , w B ]) is the copolymer propagator (s is the contour variable which parametrizes a copolymer chain) which satisfies the Fokker-Planck equation (often referred to as the modified diffusion equation)
+∂q
+∂ s = ∇2q − ψq, q(r, 0; [w A, w B ]) = 1. (24)
+Here,
+14
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+ψ(r, s) =
+{
+w A(r), 0 ≤ s ≤ f ,
+w B (r), f < s ≤ 1, (25)
+where f is the average volume fraction of type A blocks. The SCFT solution corresponds to saddle points of H , where H is a minimum with respect to the chemical potential-like field
+w−(r) ≡ 1
+2 [w B (r) − w A(r)] (26)
+and a maximum with respect to pressure-like field
+w+(r) ≡ 1
+2 [w B (r) + w A(r)]. (27)
+To find the saddle point fields, via gradient descent (for w−) and gradient ascent (for w+) we need to evaluate the first variation (“gradient”) of H . This can be done in terms of monomer density fields ρA and ρB :
+δH[w+, w−]
+δ w+(r) = ρA(r; [w+, w−]) + ρB (r; [w+, w−]) − 1,
+δH[w+, w−]
+δ w−(r) = 2
+χ N w− + ρB (r; [w+, w−]) − ρA(r; [w+, w−]).
+(28)
+In turn, ρA and ρB are computed using the Feynmman-Kac formulas
+ρA(r; [w+, w−]) = 1
+Q [w+, w−]
+∫f
+0
+q(r, s; [w+, w−])q†(r, 1 − s; [w+, w−])ds,
+ρB (r; [w+, w−]) = 1
+Q [w+, w−]
+∫1
+f
+q(r, s; [w+, w−])q†(r, 1 − s; [w+, w−])ds,
+(29)
+where the propagator q† accounts for the lack of head-to-tail symmetry of the diblock. Analogously to q, q† satisfies the equation,
+∂q†
+∂ s = ∇2q† − ψ †q†, q†(r, 0; [w A , w B ]) = 1, (30)
+where
+ψ†(r, s) =
+{
+w B (r), 0 ≤ s < 1 − f ,
+w A(r), 1 − f ≤ s ≤ 1. (31)
+A typical SCFT computation requires hundreds or thousands of evaluations of (28) and hence of solutions to the FokkerPlanck equations. This makes polymer SCFT simulations very expensive.
+A.2. Learning H versus learning R only
+We present here numerical evidence that the proposed splitting of the Hamiltonian to focus on learning the entropic part R only produces superior results for the predicted saddle point density field than those produced by learning the full functional H . To make a fair comparison of the two strategies, we trained the two NN learners with the same architecture in the same set-up. Both methods produce comparable accuracy for H and its gradient and are both capable of enforcing shift invariance accurately but as Fig. 9 shows, the splitting approach yields significantly more accurate density field predictions.
+A.3. Universal approximation
+Consider the Sobolev space W pm(U ) ≡ { f ∈ L1,loc(U )|∂α f ∈ L p(U , λ), 0 ≤ |α| ≤ m}. There are two significant results on the existence of neural network approximation neural network in Sobolev space. These are the following theorems.
+Theorem 3 ([10]). If G is l-finite, 0 ≤ m ≤ l, U is an open bounded subset of Rr and C0∞(Rr ) is dpm-dense in W pm(U ) then (G) is
+also dpm-dense in W pm(U ).
+15
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 9. Learning H versus learning R only. Predicted saddle point density fields prediction for the AB diblock copolymer with low-to-moderate χ N: left panels (a and c) are the predictions based on learning the entropic remainder R only, right panels (b and d) are the predictions based on learning the entire Hamiltonian H .
+For a natural number l, G is l-finite if G ∈ Cl(R) and 0 < ∫ |Dl G|dλ < ∞. Most commonly used activation functions are l-finite. In Theorem 2 dpm is the Sobolev norm up to mth derivative induced, by L p norm. The condition that C0∞(Rr ) is
+dpm-dense in W pm(U ) is easy to satisfy. As pointed out by Hornik et al. [10], for all U which is a bounded domain starshaped with respect to a point O (equivalently, any ray with origin O has a unique intersection with the boundary of U ), C0∞(Rr ) is dpm-dense in W pm(U ). This means that for most common subsets of Rr , the aforementioned condition is naturally true. In [10], the authors also proved several other versions of this universal approximation result for single layer neural networks with respect to the Sobolev norm. These theorems support the existence of such neural networks that simultaneously approximates a functional and its functional gradient.
+Theorem 4 ([11]). Given any two functions f : S → R and g : S → Rd and a finite set U ⊂ S, there exits neural network N N with a ReLU (or a leaky ReLU) activation such that ∀x ∈ U : f (x) = N N(x) and g(x) = ∂ NN
+∂x (x).
+This theorem guarantees the existence of a Sobolev space-trained neural network with 0 training loss.
+A.4. Kernel ridge regression in Sobolev space
+In this appendix, we prove Theorem 2.
+Proof. Since H ̃ (x) = ∑NT
+j=1 α j K (x, x j), we have
+∇ρ H ̃ (x) =
+N ∑T
+j=1
+ρj −ρ
+σ 2 α j K (x, x j),
+‖∇ρ H ̃ (xi)‖2 = 〈∇ρ H ̃ (xi), ∇ρ H ̃ (xi)〉
+16
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 10. Relationship between the error on test set (root square error of H and its gradient) and the size of neural network: (a) error versus number of hidden layers (depth), (b) error versus number of hidden cells (width) from hidden layer 2 to hidden layer 5.
+=〈
+N ∑T
+j=1
+ρ j − ρi
+σ 2 α j K (xi, x j),
+N ∑T
+m=1
+ρm − ρi
+σ 2 αm K (xi, xm)〉
+=
+N ∑T
+j=1
+N ∑T
+m=1
+α jαm
+1
+σ 4 K (xi, x j)K (xi, xm)〈ρ j − ρi, ρm − ρi〉
+= αT K ̃iα,
+where K ̃i is a matrix with (K ̃i ) jm = 1
+σ 4 K (xi , x j)K (xi , xm)〈ρ j − ρi, ρm − ρi〉. Thus,
+N ∑T
+i=1
+‖∇ρ H ̃ (xi)‖2 =
+N ∑T
+i=1
+αT K ̃iα = αT K ̃ α, (32)
+where K ̃ =
+N ∑T
+i=1
+K ̃i . Note that both K ̃i and K ̃ are symmetric matrices. The cost function (16) can now be rewritten as
+C(α) =
+N ∑T
+i=1
+(H ̃ (xi) − Hi)2 + β αT K ̃ α + λ αT K ̃ α
+= (H − K α)T (H − K α) + β αT K ̃ α + λ αT K α.
+(33)
+Therefore
+∂C
+∂α = 2(−K T )(H − K α) + β(K ̃ + K ̃ T )α + λ(K + K T )α = 0 (34)
+and consequently, α is the solution of the linear system
+(K T K + β K ̃ + λK )α = K T H.  (35)
+A.5. Ablation study
+In this section, we summarize results of a study that guided our choice of the network size. We consider the approximation error, in both H and its gradient, as the networks depth (number of hidden layers) and the network width (number of cells per layer) is changed while the training and test sets and all the other hyperparameters are kept fixed. We also examine the behavior of the training and validation loss functions as the number of epochs (iterations on the stochastic gradient descent method) increases. In the first batch of experiments, all the hyperparameters are fixed except for the network depth. Seven neural networks with different number of hidden layers are trained on the same training set and evaluated on the same test set independently. In the second batch of experiments, the number of cells (network width) in the middle hidden layers are the only variable while all other hyperparameters are fixed. Again, seven neural networks with different widths are trained on the same training set and evaluated on the same test set. Fig. 10 shows that the approximation is relatively stable with respect to the network size (both in depth and width) for the range considered. This suggests that for the relatively modest training
+17
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+Fig. 11. Training and validation loss functions against the number of epochs (stochastic gradient descent iterations).
+Table 5
+Hyperparameters employed in the numerical experiments. Ns is the number of possible shifts.
+χ N Structure f Learning rate λ β γ
+Low χ N AB diblock 0.3 0.0001 8.15e-08 1 Ns/(Ns − 1) 0.4 0.001 8.44e-09 1 Ns/(Ns − 1) AB3 star 0.4 0.0001 5.23e-08 1 Ns/(Ns − 1)
+High χ N AB diblock 0.3 0.001 4.97e-10 1 Ns/(Ns − 1) 0.4 0.001 2.80e-10 1 Ns/(Ns − 1) AB3 star 0.4 0.001 4.93e-11 1 Ns/(Ns − 1)
+set size there is no discernible improvement of the approximation as the network size grows beyond 6-8 levels. In other words, the training set is not big enough to benefit from the use of larger networks. This observation is consistent with the results reported by D’souza, Huang, and Yeh [20] on a convolutional neural network with a small sample size. We now look at the behavior of the training and validation loss functions as number of epochs (iterations on the stochastic gradient descent method) increases. The training loss functions and the validation loss function (the sum of the loss of the effective Hamiltonian, the effective Hamiltonian gradient and the shift invariance term) after 100 epochs are presented in Fig. 11. Both training loss function and the validation loss function (not used in training) decrease as expected as the number of epochs increases.
+A.6. Hyperparameters employed in the numerical experiments
+We list in Table 5 the hyperparameters we used for the experiments in Section 4. We took β = 1 to stress the equal priority of approximating both the Hamiltonian and its gradient also to match the coefficient of the Sobolev norm. We chose γ = Ns/(Ns − 1), which is close to 1. This choice takes into account that one of the possible shifts, s = Ns, is a one-period shift and leads to a 0 difference with N N(xi ) in formula (10) (only Ns − 1 valid terms in the summation). We employed the hyperparameters-tuning strategies described in Section 2.4 to select the optimal learning rate and the regularization coefficient λ. We took βV = β and γV = γ in the validation loss (13) and θV = Ns to balance the summation. Note that one could also view β and γ as hyperparameters and tune them as done for the learning rate and λ, which might generate better results. We did not do this because with the more expedited use of fixed values of β and γ the deep NN already produced impressive results. In Step 2, when we search for saddle density fields by gradient descent, we performed 500 iterations after selecting the initial density fields from training set.
+References
+[1] G.H. Fredrickson, The Equilibrium Theory of Inhomogeneous Polymers, Oxford University Press, 2006. [2] M.W. Matsen, Self-Consistent Field Theory and Its Applications, chapter 2, John Wiley & Sons, Ltd, 2007, pp. 87–178. [3] F. Schmid, Self-consistent-field theories for complex fluids, J. Phys. Condens. Matter 10 (37) (Sep. 1998) 8105–8138. [4] H.D. Ceniceros, G.H. Fredrickson, Numerical solution of polymer self-consistent field theory, Multiscale Model. Simul. 2 (3) (2004) 452–474. [5] P. Stasiak, M.W. Matsen, Efficiency of pseudo-spectral algorithms with Anderson mixing for the SCFT of periodic block-copolymer phases, Eur. Phys. J. E 34 (10) (2011) 1–9. [6] Issei Nakamura, Phase diagrams of polymer-containing liquid mixtures with a theory-embedded neural network, New J. Phys. 22 (1) (2020) 015001. [7] Qianshi Wei, Ying Jiang, Jeff Z.Y. Chen, Machine-learning solver for modified diffusion equations, Phys. Rev. E 98 (5) (2018) 053304. [8] G. Cybenko, Approximation by superpositions of a sigmoidal function, Math. Control Signals Syst. 2 (4) (1989) 303–314.
+18
+
+
+Y. Xuan, K.T. Delaney, H.D. Ceniceros et al. Journal of Computational Physics 443 (2021) 110519
+[9] M. Leshno, V.Y. Lin, A. Pinkus, S. Schocken, Multilayer feedforward networks with a nonpolynomial activation function can approximate any function, Neural Netw. 6 (6) (1993) 861–867. [10] K. Hornik, M. Stinchcombe, H. White, Universal approximation of an unknown mapping and its derivatives using multilayer feedforward networks, Neural Netw. 3 (5) (1990) 551–560. [11] W.M. Czarnecki, S. Osindero, M. Jaderberg, G. Swirszcz, R. Pascanu, Sobolev training for neural networks, in: Advances in Neural Information Processing Systems, 2017, pp. 4278–4287. [12] R. Zhang, Making convolutional networks shift-invariant again, CoRR, arXiv:1904.11486 [abs], 2019. [13] J.C. Snyder, M. Rupp, K. Hansen, K.R. Müller, K. Burke, Finding density functionals with machine learning, Phys. Rev. Lett. 108 (25) (2012) 253002. [14] J.C. Snyder, M. Rupp, K. Hansen, L. Blooston, K.R. Müller, K. Burke, Orbital-free bond breaking via machine learning, J. Chem. Phys. 139 (22) (2013) 224104. [15] J.C. Snyder, M. Rupp, K.R. Müller, K. Burke, Nonlinear gradient denoising: finding accurate extrema from inaccurate functional derivatives, Int. J. Quant. Chem. 115 (16) (2015) 1102–1114. [16] K. Rasmussen, G. Kalosakas, Improved numerical algorithm for exploring block copolymer mesophases, J. Polym. Sci., Part B, Polym. Phys. 40 (16) (2002) 1777–1783. [17] G. Tzeremes, K. Rasmussen, T. Lookman, A. Saxena, Efficient computation of the structural phase behavior of block copolymers, Phys. Rev. E 65 (4) (2002) 041806. [18] M. Chen, H. Jiang, W. Liao, T. Zhao, Nonparametric regression on low-dimensional manifolds using deep ReLu networks, preprint, arXiv:1908.01842, 2019. [19] H.D. Ceniceros, Efficient order-adaptive methods for polymer self-consistent field theory, J. Comput. Phys. 386 (2019) 9–21. [20] N.R. D’souza, P.-Y. Huang, F.-C. Yeh, Structural analysis and optimization of convolutional neural networks with a small sample size, Sci. Rep. 10 (1) (2020) 834.
+19

@@ -1,0 +1,144 @@
+
+View Online
+
+Export Citation
+CrossMark
+RESEARCH ARTICLE | MARCH 07 2017
+Current-induced surface roughness reduction in conducting thin films
+Lin Du ; Dimitrios Maroudas
+Appl. Phys. Lett. 110, 103103 (2017) https://doi.org/10.1063/1.4977024
+ CHORUS
+20 March 2024 18:55:42
+
+
+Current-induced surface roughness reduction in conducting thin films
+Lin Du and Dimitrios Maroudasa)
+Department of Chemical Engineering, University of Massachusetts, Amherst, Massachusetts 01003-9303, USA
+(Received 16 August 2016; accepted 6 February 2017; published online 7 March 2017)
+Thin film surface roughness is responsible for various materials reliability problems in microelectronics and nanofabrication technologies, which requires the development of surface roughness reduction strategies. Toward this end, we report modeling results that establish the electrical surface treatment of conducting thin films as a physical processing strategy for surface roughness reduction. We develop a continuum model of surface morphological evolution that accounts for the residual stress in the film, surface diffusional anisotropy and film texture, film’s wetting of the layer that is deposited on, and surface electromigration. Supported by linear stability theory, self-consistent dynamical simulations based on the model demonstrate that the action over several hours of a sufficiently strong and properly directed electric field on a conducting thin film can reduce its surface roughness and lead to a smooth planar film surface. The modeling predictions are in agreement with experimental measurements on copper thin films deposited on silicon nitride layers. Published by AIP Publishing. [http://dx.doi.org/10.1063/1.4977024]
+Surface roughness affects many physical properties of materials, including thin films of metals and semiconductors, such as their thermal conductance,1–3 electrical conductance,4–6 and optical properties.7 Such reduction of thermal conductance and electrical conductance becomes increasingly significant as the miniaturization of devices drives the device features to the nanometer scale,8,9 which is characteristic of the dimensions of copper interconnects in modern integrated circuits. Ab initio calculations10 show that even atomic-scale roughness on an otherwise perfectly smooth planar surface leads to a substantial reduction in the electrical conductivity of copper films. Moreover, surface roughness can reduce the structural integrity and mechanical reliability of the thin films as it may cause surface cracking under the action of the film’s residual stress and/or electromigration conditions.11 Nanoscale surface roughness can arise easily due to thermal annealing, which enhances surface atomic transport driven by residual compressive stresses in the materials or by electric currents that pass through them. Continuum models of driven surface mass transport have been employed widely in the study of surface morphological evolution12–15 and can provide a fundamental understanding and design principles toward controlling surface morphology and roughness. It is well known that electric current can drive mass fluxes on metallic film surfaces that can change the surface morphology.16 Theoretical analyses14,15,17 have proposed that the planar surface morphology of conducting metallic thin films can be stabilized by externally applied electric fields due to the induced surface electromigration fluxes. Experimental observations of surface roughness reduction in copper thin films by electrical stressing treatment18 have demonstrated the beneficial effects of electric field-driven film surface engineering. The purpose of this letter is to establish the electrical treatment of conducting thin film surfaces as an engineering strategy for surface roughness reduction. Using linear
+stability theory (LST) and numerical simulations based on a realistic model of surface morphological evolution of a metallic thin film deposited on an elastic substrate with and without the simultaneous flow of an electric current through the film, we show that a sufficiently strong and properly directed electric field can reduce the film surface roughness and lead to a smooth planar film surface over a time period of several hours. This realistic surface morphological evolution model is fully three-dimensional (3D) and accounts for the biaxial state of stress in the film, the applied electric field direction that can be aligned on the surface to optimize the electric field effect, and the wetting potential that has additional stabilizing effects on the surface morphology; all of these realistic elements of surface morphological evolution have not been considered simultaneously in previous detailed 2D models of current-driven morphological evolution of metallic crystal surfaces.14,15,19,20 The modeling predictions are validated by comparisons with experimental measurements on electric-current-stressed copper thin films deposited on silicon nitride layers. We consider a compressively strained metallic thin film with nominal thickness h0 deposited on a thick substrate. The film is subject to an equibiaxial stress, with components rxx 1⁄4 ryy 1⁄4 r0 in the x- and y-directions, respectively, of a Cartesian frame of reference. The stress r0 is typical of the residual stress in deposited Cu interconnect films,11,21 which is lower than the yield strength of copper under compression;22 thus, plastic deformation phenomena in the film can safely be neglected. An electric field E0 is applied to the thin film directed parallel to the xy-plane and aligned at an angle /E with respect to the x-axis. The film surface morphology is parameterized with the height function, h x; y; t
+ð Þ. Expressing the surface atomic flux through a Nernst-Einstein equation and mass conservation through the continuity equation gives the height evolution equation
+@h
+@t 1⁄4 H0 ds
+kBT rs  Ds  Esq
+s þ XDs  rsl
+
+
+; (1)
+a)Aurthor to whom correspondence should be addressed. Electronic mail: maroudas@ecs.umass.edu.
+0003-6951/2017/110(10)/103103/5/$30.00 110, 103103-1 Published by AIP Publishing.
+APPLIED PHYSICS LETTERS 110, 103103 (2017)
+20 March 2024 18:55:42
+
+
+where H0  ð1 þ h2
+x þ h2
+yÞ1=2; hx  @h=@x, and hy  @h=@y, X is the atomic volume, ds=X is the number of surface atoms per unit area, kB is the Boltzmann constant, T is the temperature, Ds is the surface diffusivity, and rs denotes the surface gradient operator. The chemical potential of the film surface atoms is expressed as l 1⁄4 l0 þ UE  cf j þ UW, where l0 is the atomic chemical potential of a reference planar, unstrained free surface, UE is the elastic strain energy density, cf is the surface free energy of the film per unit area, j is the surface curvature, and UW is the wetting potential density. Es is the component of the local electric field tangent to the surface, and q
+s is the surface effective charge for expressing the electromigration force on the surface atoms.11 Ds is a transversely isotropic tensor15 with nonzero diagonal elements Ds;min
+xx f ðhxÞ and Ds;min
+yy f hy
+ , where f ðhaÞ 1⁄4 1 þ A cos2 m ha þ /a
+1⁄2 ð Þ; a 1⁄4 x or y, is the surface diffusional anisotropy function for face-centered cubic (fcc) crystals,11,23 ha is the surface orientation angle between the surface tangent vector, ta, and the a-axis, A is the strength of the anisotropy, m is the number of fast surface diffusion directions, and /a is the angle between the fast diffusion direction and the a-axis; for fcc crystals, m 1⁄4 1, 2, and 3 correspond to {110}, {100}, and {111} surfaces, respectively. To minimize the structural complexity of our model, we take the film to be single crystalline, but we set its surface crystallographic orientation by setting the value of m to model the textured films used in metallic interconnects; we also note that for temperatures below 100 C like in the experiments of Ref. 18, diffusion on Cu{111} surfaces is much faster than grain boundary diffusion in Cu, which can be neglected. According to the “transition-layer” model,24,25 UW 1⁄4 cf  cs
+ð Þb= p ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1 þ haha
+p b2 þ h2
+ðÞ
+ , where cs is the surface free energy of the substrate per unit area, b is the transition layer thickness, and the repeated index a implies summation over x and y. Regarding the anisotropy of the crystalline film material properties, only the strongest anisotropy is accounted for in the model, namely, the surface diffusional anisotropy,11,23 while elastic properties and surface free energy are assumed to be isotropic. To monitor the film surface morphological evolution, Es and UE are calculated by solving the corresponding 3D electrostatic and elastostatic boundary-value problems. For morphological stability analysis, the planar film surface is merely subjected to low-amplitude plane-wave perturbations, D0 exp ikx
+ð Þ with wave vector k 1⁄4 kx;ky
+ð Þ. This allows Es, UE, and UW to be calculated asymptotically based on regular perturbation theory
+through expansions including terms Eð0Þ
+s , Eð1Þ
+s , and Eð2Þ
+s ; Uð0Þ
+E, Uð1Þ
+E , and Uð2Þ
+E ; and Uð0Þ
+W ; Uð1Þ
+W , and Uð2Þ
+W , as well as higher-order
+terms.25–27 For linear stability analysis, Es, UE, and UW in
+Eq. (1) are approximated retaining up to the Eð1Þ
+s ; Uð1Þ
+E , and Uð1Þ
+W
+contributions in the respective expansions. Making lengths and
+time dimensionless with length scale l  Mscf
+r2
+0
+, where Ms is the
+biaxial modulus of the substrate,27 and time scale s  kBTl4
+ds XDs;min
+xx cf
+,
+respectively, writing Eq. (1) in dimensionless form and lineariz
+ing it, and using a trial solution of h~ x;y;t
+ð Þ 1⁄4 h~0 þ D~ 0 exp ~xt~
+ðÞ
+exp ik~x~
+ð Þ, with tildes used to denote dimensionless quantities, give the dimensionless dispersion relation
+~x 1⁄4 b 2k~3  k~4  NW þ NEn
+ð Þk~2
+hi
+: (2)
+Using a typical Cu/Si3N4 system as representative of metallic interconnects,18 we obtain values for l and s of approximately 1 lm and 5.6 h, respectively. In Eq. (2), x is
+the growth or decay rate of the perturbation, b 1⁄4 ðf2 þ 1Þ1
+1⁄2f ðhx 1⁄4 0Þ þ Kf2f ðhy 1⁄4 0Þ; f  ky=kx; kx 61⁄4 0; k 
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffi kx2 þ ky2
+q ;
+K  Ds;min
+yy =Ds;min
+xx ; NW 1⁄4 1⁄22bðcs  cf Þ=ðph3
+ocf Þl2 is the wet
+ting potential strength scaled by the strain energy, NE 1⁄4
+E0q
+s = cf X
+  l2 is the electric field strength scaled by the
+strain energy, and n  cos /E @f hx 1⁄4 0
+ð Þ=@hx
+  þ K sin /E
+
+@f hy 1⁄4 0
+ =@hy
+ f2=1⁄2ðhx 1⁄4 0Þ þ Kf ðhy 1⁄4 0Þf2 is a parameter that depends on the surface diffusional anisotropy and the alignment of the electric field, where /E is the angle formed by the electric field direction and the x-axis, which determines the alignment of the electric field. Henceforth, all quantities are made dimensionless, and the tildes are dropped for notational simplicity. If NW þ NEn < 1, then x > 0 in some domain of k as shown in Fig. 1, and the planar surface becomes unstable, i.e., increasingly rough, under the action of the stress in the film. The criticality condition, x 1⁄4 0, for the critical electric field strength requirement, NE;c, that can stabilize the planar film surface by reducing its roughness is derived from Eq. (2) and gives NE;c 1⁄4 1  NW
+ð Þ=minf22 0;þ1
+1⁄2 ÞðnÞ, for the optimal alignment of the electric field, /E;o, that minimizes the electric field strength requirement, yielding the lowest critical value NE;c at a given set of material properties and experimental conditions. For a representative set of surface diffusional anisotropy parameters, A 1⁄4 10, m 1⁄4 3 for {111}textured Cu films, /x 1⁄4 15, /y 1⁄4 15, and K 1⁄4 1, we
+obtain n 1⁄4 51⁄2sin /E  ðsin /E  cos /EÞ=ð1 þ f2Þ. To assess the validity of the conclusions of the linear stability theory, we compare the theoretical predictions with the results of self-consistent dynamical simulations. To solve the boundary-value problems for the stress and electric fields
+FIG. 1. Dispersion relations for increasing values of the dimensionless electric-field strength, (1) NE 1⁄4 0, (2) NE 1⁄4 0:75 NE;c, (3) NE 1⁄4 NE;c, and (4) NE 1⁄4 1:85 NE;c, giving the dependence of the evolution rate, x, for the growth (x > 0) or decay (x < 0) of a perturbation from a planar film surface mor
+phology on the dimensionless wave number, k 
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi kx2 þ ky2
+q
+. The inset is the
+contour map of x 1⁄4 x kx; ky
+ð Þ as a function of the wave vector k 1⁄4 kx; ky
+ð Þ in the case where NE 1⁄4 NE;c. Parameter values: NW 1⁄4 0:064; h0 1⁄4 0:1, A 1⁄4 10, m 1⁄4 3, /x 1⁄4 /y 1⁄4 15, and /E 1⁄4 45 in (2)–(4).
+103103-2 L. Du and D. Maroudas Appl. Phys. Lett. 110, 103103 (2017)
+20 March 2024 18:55:42
+
+
+in the metallic film, we use a spectral collocation method, where the film surface is discretized into 128  128 grid points, and discrete fast Fourier transforms to compute the stress and strain tensors25 and the tangential component of the electric field at every point on the film surface. For the integration (time stepping) of Eq. (1), we employ an advanced operator splitting-based semi-implicit spectral method28 with adaptive time step size. In the simulations, the initial film surface configuration consists of a random perturbation from the planar morphology, as shown in Figs. 2(a1), 2(b1), and 2(c1), to mimic the actual roughness of the metallic thin film surface in Ref. 18; specifically, the roughness amplitude of the initial surface configuration in the simulations is taken to be consistent with that of the textured polycrystalline Cu thin films of Ref. 18. Using properties representative of a Cu film on a Si3N4 barrier layer as in Ref. 18, b 1⁄4 0.001 and a dimensionless h0 1⁄4 0:1 gives NW 1⁄4 0:064. We also use the representative set of surface diffusional anisotropy parameters (A 1⁄4 10, m 1⁄4 3, /x 1⁄4 15;
+/y 1⁄4 15, and K1⁄41) in all the simulations. For these material properties, the theoretical predictions for the optimal electric field alignment angle and the critical electric field
+strength are /E;o 1⁄4 45 and NE;c 1⁄4 pffi2ffiffi 1  NW
+ð Þ=5 1⁄4 0:265, respectively. For validation purposes, we conducted numerous numerical simulations of surface morphological evolution varying the strength and alignment of the applied electric field.
+Figure 2 shows the outcomes of three representative simulations at three different electric field strengths, namely, NE 1⁄4 0; NE 1⁄4 0:20 < NE;c, and NE 1⁄4 0:49 > NE;c. The 1D surface profiles along the black lines marked on the surface are given as insets in each case. Figure 2(a1) shows a rough film under no electric field action. At t 1⁄4 0.58, it is seen in Fig. 2(a2) that the roughness amplitude has grown while the roughness dominant wave number has decreased, corresponding to coarsening of the rough surface features. This is consistent with the negative growth rates x shown by curve (1) in Fig. 1 at high k values. Surface features with k  1:5 exhibit the fastest growth rate, thus dominating the film surface morphology in Fig. 2(a2). At t 1⁄4 1.18, as seen in Fig. 2(a3), the roughness amplitude keeps growing, and the metallic thin film resembles a collection of small 3D islands emanating from a very thin wetting layer of the metal on the barrier layer. The thickness of the wetting layer depends on the strength of the wetting potential. A weak wetting potential may result in the breaking up of the metallic thin film into separate pieces under the action of the equibiaxial residual stress. For a uniaxial stress state, the film morphology is characterized by parallel grooves that form on the surface and deepen over time. At t 1⁄4 3.0, as shown in Fig. 2(a4), the morphology of the rough film surface has not changed qualitatively from that at t 1⁄4 1.18 in Fig. 2(a3) due to the stabilizing effect of the sufficiently strong wetting potential that prevents further surface roughening.
+FIG. 2. 2D contour maps of simulated evolving surface morphology, h x; y; t
+ð Þ, of a stressed metallic thin film starting with a rough surface under (a1)–(a4) no electric field action and under the action of an electric field with (b1)–(b4) NE 1⁄4 0:20 < NE;c and (c1)–(c4) NE 1⁄4 0:49 > NE;c at (a1), (b1), (c1) t 1⁄4 0, (a2), (b2), (c2) t 1⁄4 0.58, (a3), (b3), (c3) t 1⁄4 1.18, and (a4), (b4), (c4) t 1⁄4 3.00. 1D surface profiles, h x; y; t
+ð Þ, along the black solid lines marked on the 2D maps are
+plotted in the insets. Parameter values: NW 1⁄4 0:064; h0 1⁄4 0:1, A 1⁄4 10, m 1⁄4 3, /x 1⁄4 /y 1⁄4 15, and /E 1⁄4 45 in (b1)–(b4) and (c1)–(c4).
+103103-3 L. Du and D. Maroudas Appl. Phys. Lett. 110, 103103 (2017)
+20 March 2024 18:55:42
+
+
+Comparing the film surface configurations of Figs. 2(b1)–2(b3) with those of Figs. 2(a1)–2(a3), we see that the surface without electric field action, NE 1⁄4 0, is generally rougher than that at NE 1⁄4 0:20, for the same evolution times. This shows that the applied electric field has a stabilizing effect on the rough surface morphology, reducing the roughness growth rate x, consistently with the LST prediction of case (2) in Fig. 1. However, since NE < NE;c, the surface roughness continues to grow with x > 0 over a range of roughness wave numbers. At t 1⁄4 3.00, the thin film again reaches a morphology that resembles a collection of 3D islands on a very thin wetting layer, Fig. 2(b4), very similar and of comparable roughness to that of Fig. 2(a4). Consistently with the LST predictions, a stronger-than-critical electric field of NE 1⁄4 0:49 > NE;c applied to the metallic film leads to reduction of the surface roughness, as demonstrated by the sequence of configurations in Figs. 2(c1)–2(c4) that show surface smoothening over time. At t 1⁄4 3.00, the roughness amplitude has decreased by more than one order of magnitude compared to that of the initial configuration to 1A ̊ , i.e., it has reached atomic-scale dimensions corresponding to a smooth film. To make quantitative comparisons of the surface roughness evolution in the three cases of Fig. 2, the root mean squared (RMS) roughness of each of the respective surface morphologies is plotted in Fig. 3 as a function of time with the height-height correlation function, providing the roughness metric.25 Curve (1) shows that, at NE 1⁄4 0, the surface roughness grows relatively abruptly and reaches a plateau at about t 1⁄4 0.6. Curve (2), NE 1⁄4 0:20 < NE;c, shows that the lowerthan-critical electric field slows down the roughness growth rate, and the roughness reaches a plateau at a later time t 1⁄4 2.5. However, in case (3), NE 1⁄4 0:49 > NE;c, the action of a stronger-than-critical electric field leads to a continuous reduction of the surface roughness down to that of a merely atomically rough surface. In general, it should be mentioned that our numerical simulations show that the initial roughness amplitude, varied up to 10% of the film thickness, does not affect significantly the accuracy of the LST prediction for the onset of surface roughness reduction; however, it does affect the rate of growth or decay of the surface roughness, consistent with the findings of the detailed 2D analyses of Ref. 19. Our theoretical and computational predictions are in good agreement with the experimental results of Ref. 18. For
+the material properties and experimental conditions of this Cu/Si3N4 system, the critical electric field strength of 0.265 corresponds to a current density of 2  104 A=cm2, lower than the current density of 106A=cm2 that caused the Cu film surface roughness reduction in the experiments.18 It should be mentioned that deviation by a few tens of degrees from the optimal /E angle of 45 can increase the critical current density by 1–2 orders of magnitude; because the Cu film of Ref. 18 is actually polycrystalline, the electric field alignment can be optimized for a {111} surface of a given grain of the textured film but not for the entire film surface. Also, the time scale of t 1⁄4 3, i.e., of 16.8 h, required for practically full surface roughness reduction in our simulations, Figs. 2(c1)–2(c4) and case (3) in Fig. 3, is consistent with the duration of current stressing (10 h) in the experiments of Ref. 18. In summary, we have analyzed the surface roughness evolution of a textured metallic thin film deposited on an elastic substrate under the action of an externally applied electric field and the film’s residual stress, wettting potential, and surface tension using linear stability theory and selfconsistent dynamical simulations based on a fully nonlinear model of surface morphological evolution. We found that, in the absence of electric field action, the smooth planar morphology of the strained metallic thin film surface is not stable, and the film surface becomes increasingly rough under the action of the residual stress until it reaches a steady state stabilized due to the wetting effect. The action of an externally applied electric field can slow down the surface roughening process and can reduce the surface roughness by orders of magnitude within a period of several hours, achieving atomic-scale smoothness, when the electric field is sufficiently strong and properly directed. Our findings are in agreement with experimental measurements of surface roughness reduction in electrically stressed copper interconnect films18 and establish the electrical treatment of conducting film surfaces as a viable physical processing strategy to reduce their surface roughness.
+This work was supported by the U.S. Department of Energy, Office of Basic Energy Sciences, Division of Materials Sciences and Engineering, under Award No. DEFG02-07ER46407.
+1D. Santamore and M. Cross, Phys. Rev. B 63, 184306 (2001). 2L. Liu and X. Chen, J. Appl. Phys. 107, 033501 (2010). 3J. Carrete, L. J. Gallego, L. M. Varela, and N. Mingo, Phys. Rev. B 84, 075403 (2011). 4U. Jacob, J. Vancea, and H. Hoffmann, Phys. Rev. B 41, 11852 (1990). 5G. Palasantzas and J. Barnas, Phys. Rev. B 56, 7726 (1997). 6D. Ketenoglu and B. €Unal, Physica A 392, 3008 (2013). 7G. Yin, C. Merschjann, and M. Schmid, J. Appl. Phys. 113, 213510 (2013). 8J. Plombon, E. Andideh, V. M. Dubin, and J. Maiz, Appl. Phys. Lett. 89, 113124 (2006). 9S. M. Rossnagel and T. S. Kuan, J. Vac. Sci. Technol. B 22, 240 (2004). 10V. Timoshevskii, Y. Ke, H. Guo, and D. Gall, J. Appl. Phys. 103, 113705 (2008). 11D. Maroudas, Surf. Sci. Rep. 66, 299 (2011). 12K. Bratland, T. Spila, D. Cahill, J. Greene, and P. Desjardins, J. Appl. Phys. 109, 063513 (2011). 13C. G. Gamage and Z.-F. Huang, Phys. Rev. E 87, 022408 (2013). 14V. Tomar, M. R. Gungor, and D. Maroudas, Phys. Rev. Lett. 100, 036106 (2008); J. Appl. Phys. 107, 093527 (2010); 107, 103525 (2010).
+FIG. 3. Simulated evolution of surface RMS roughness of metallic thin films under (1) no electric field action and (2) and (3) the action of an electric field with strength (2) NE 1⁄4 0:20 < NE;c and (3) NE 1⁄4 0:49 > NE;c. Parameter values: identical to those of Fig. 2.
+103103-4 L. Du and D. Maroudas Appl. Phys. Lett. 110, 103103 (2017)
+20 March 2024 18:55:42
+
+
+15G. I. Sfyris, M. R. Gungor, and D. Maroudas, Appl. Phys. Lett. 96, 231911 (2010). 16A. Panin, A. Shugurov, and J. Schreiber, Surf. Sci. 524, 191 (2003). 17I. Derenyi, C. Lee, and A.-L. Barabasi, Phys. Rev. Lett. 80, 1473 (1998). 18T.-C. Chan, K.-C. Chen, and C.-N. Liao, Appl. Phys. Lett. 98, 181902 (2011). 19T. O. Ogurtani, J. Appl. Phys. 106, 053503 (2009). 20M. Khenner, C. R. Phys. 14, 607 (2013). 21R. P. Vinci, E. M. Zielinski, and J. C. Bravman, Thin Solid Films 262, 142 (1995).
+22P. G. Sanders, J. A. Eastman, and J. R. Weertman, Acta Mater. 45, 4019 (1997). 23M. R. Gungor and D. Maroudas, Int. J. Fract. 109, 47 (2001); L. Du, D. Dasgupta, and D. Maroudas, Appl. Phys. Lett. 104, 181901 (2014). 24B. J. Spencer, Phys. Rev. B 59, 2011 (1999). 25Y. Pang and R. Huang, Phys. Rev. B 74, 075413 (2006). 26Y. Xiang and W. E, J. Appl. Phys. 91, 9414 (2002). 27L. Du and D. Maroudas, Appl. Phys. Lett. 109, 023103 (2016). 28G. Tegze, G. Bansel, G. I. Toth, T. Pusztai, Z. Fan, and L. Granasy, J. Comput. Phys. 228, 1612 (2009).
+103103-5 L. Du and D. Maroudas Appl. Phys. Lett. 110, 103103 (2017)
+20 March 2024 18:55:42

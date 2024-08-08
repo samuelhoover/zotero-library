@@ -1,0 +1,1636 @@
+Journal of Artificial Intelligence Research 12 (2000) 149–198 Submitted 11/99; published 3/00
+A Model of Inductive Bias Learning
+Jonathan Baxter JONATHAN.BAXTER@ANU.EDU.AU Research School of Information Sciences and Engineering Australian National University, Canberra 0200, Australia
+Abstract
+A major problem in machine learning is that of inductive bias: how to choose a learner’s hypothesis space so that it is large enough to contain a solution to the problem being learnt, yet small enough to ensure reliable generalization from reasonably-sized training sets. Typically such bias is supplied by hand through the skill and insights of experts. In this paper a model for automatically learning bias is investigated. The central assumption of the model is that the learner is embedded within an environment of related learning tasks. Within such an environment the learner can sample from multiple tasks, and hence it can search for a hypothesis space that contains good solutions to many of the problems in the environment. Under certain restrictions on the set of all hypothesis spaces available to the learner, we show that a hypothesis space that performs well on a sufficiently large number of training tasks will also perform well when learning novel tasks in the same environment. Explicit bounds are also derived demonstrating that learning multiple tasks within an environment of related tasks can potentially give much better generalization than learning a single task.
+1. Introduction
+Often the hardest problem in any machine learning task is the initial choice of hypothesis space; it has to be large enough to contain a solution to the problem at hand, yet small enough to ensure good generalization from a small number of examples (Mitchell, 1991). Once a suitable bias has been found, the actual learning task is often straightforward. Existing methods of bias generally require the input of a human expert in the form of heuristics and domain knowledge (for example, through the selection of an appropriate set of features). Despite their successes, such methods are clearly limited by the accuracy and reliability of the expert’s knowledge and also by the extent to which that knowledge can be transferred to the learner. Thus it is natural to search for methods for automatically learning the bias.
+In this paper we introduce and analyze a formal model of bias learning that builds upon the PAC model of machine learning and its variants (Vapnik, 1982; Valiant, 1984; Blumer, Ehrenfeucht, Haussler, & Warmuth, 1989; Haussler, 1992). These models typically take the following general form: the learner is supplied with a hypothesis space and training data
+    drawn independently according to some underlying distribution 
+on !" . Based on the information contained in  , the learner’s goal is to select a hypothesis
+#%$ '&(" from minimizing some measure )*+  #  of expected loss with respect to  (for ex
+ample,inthecaseofsquaredloss )*+  #  $-,/.103246587 +  #  9;:<=?> ). Insuchmodelsthelearner’s
+bias is represented by the choice of ; if does not contain a good solution to the problem, then, regardless of how much data the learner receives, it cannot learn.
+Of course, the best way to bias the learner is to supply it with an containing just a single optimal hypothesis. But finding such a hypothesis is precisely the original learning problem, so in the
+@ c 2000 AI Access Foundation and Morgan Kaufmann Publishers. All rights reserved.
+
+
+BAXTER
+PAC model there is no distinction between bias learning and ordinary learning. Or put differently, the PAC model does not model the process of inductive bias, it simply takes the hypothesis space as given and proceeds from there. To overcome this problem, in this paper we assume that instead of being faced with just a single learning task, the learner is embedded within an environment of
+related learning tasks. The learner is supplied with a family of hypothesis spaces A B  , and its
+goal is to find a bias (i.e. hypothesis space DC A ) that is appropriate for the entire environment.
+A simple example is the problem of handwritten character recognition. A preprocessing stage that identifies and removes any (small) rotations, dilations and translations of an image of a character will be advantageous for recognizing all characters. If the set of all individual character recognition problems is viewed as an environment of learning problems (that is, the set of all problems of the form “distinguish ‘A’ from all other characters”, “distinguish ‘B’ from all other characters”, and so on), this preprocessor represents a bias that is appropriate for all problems in the environment. It is likely that there are many other currently unknown biases that are also appropriate for this environment. We would like to be able to learn these automatically.
+There are many other examples of learning problems that can be viewed as belonging to environments of related problems. For example, each individual face recognition problem belongs to an (essentially infinite) set of related learning problems (all the other individual face recognition problems); the set of all individual spoken word recognition problems forms another large environment, as does the set of all fingerprint recognition problems, printed Chinese and Japanese character recognition problems, stock price prediction problems and so on. Even medical diagnostic and prognostic problems, where a multitude of diseases are predicted from the same pathology tests, constitute an environment of related learning problems.
+In many cases these “environments” are not normally modeled as such; instead they are treated as single, multiple category learning problems. For example, recognizing a group of faces would normally be viewed as a single learning problem with multiple class labels (one for each face in the group), not as multiple individual learning problems. However, if a reliable classifier for each individual face in the group can be constructed then they can easily be combined to produce a classifier for the whole group. Furthermore, by viewing the faces as an environment of related learning problems, the results presented here show that bias can be learnt that will be good for learning novel faces, a claim that cannot be made for the traditional approach.
+This point goes to the heart of our model: we are not not concerned with adjusting a learner’s bias so it performs better on some fixed set of learning problems. Such a process is in fact just ordinary learning but with a richer hypothesis space in which some components labelled “bias” are also able to be varied. Instead, we suppose the learner is faced with a (potentially infinite) stream of tasks, and that by adjusting its bias on some subset of the tasks it improves its learning performance on future, as yet unseen tasks.
+Bias that is appropriate for all problems in an environment must be learnt by sampling from many tasks. If only a single task is learnt then the bias extracted is likely to be specific to that task. In the rest of this paper, a general theory of bias learning is developed based upon the idea of learning multiple related tasks. Loosely speaking (formal results are stated in Section 2), there are two main conclusions of the theory presented here:
+E
+Learning multiple related tasks reduces the sampling burden required for good generalization, at least on a number-of-examples-required-per-task basis.
+150
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+E
+Bias that is learnt on sufficiently many training tasks is likely to be good for learning novel tasks drawn from the same environment.
+The second point shows that a form of meta-generalization is possible in bias learning. Ordinarily, we say a learner generalizes well if, after seeing sufficiently many training examples, it produces a hypothesis that with high probability will perform well on future examples of the same task. However, a bias learner generalizes well if, after seeing sufficiently many training tasks it produces a hypothesis space that with high probability contains good solutions to novel tasks. Another term that has been used for this process is Learning to Learn (Thrun & Pratt, 1997).
+Our main theorems are stated in an agnostic setting (that is, A does not necessarily contain a
+hypothesis space with solutions to all the problems in the environment), but we also give improved bounds in the realizable case. The sample complexity bounds appearing in these results are stated
+in terms of combinatorial parameters related to the complexity of the set of all hypothesis spaces A
+available to the bias learner. For Boolean learning problems (pattern classification) these parameters are the bias learning analogue of the Vapnik-Chervonenkis dimension (Vapnik, 1982; Blumer et al., 1989). As an application of the general theory, the problem of learning an appropriate set of neuralnetwork features for an environment of related tasks is formulated as a bias learning problem. In the case of continuous neural-network features we are able to prove upper bounds on the number of training tasks and number of examples of each training task required to ensure a set of features that works well for the training tasks will, with high probability, work well on novel tasks drawn
+from the same environment. The upper bound on the number of tasks scales as F HG where G is
+a measure of the complexity of the possible feature sets available to the learner, while the upper
+bound on the number of examples of each task scales as F JILKMGONPQ where F JIR is the number
+of examples required to learn a task if the “true” set of features (that is, the correct bias) is already
+known, and P is the number of tasks. Thus, in this case we see that as the number of related tasks
+learnt increases, the number of examples required of each task for good generalization decays to the minimum possible. For Boolean neural-network feature maps we are able to show a matching lower bound on the number of examples required per task of the same form.
+1.1 Related Work
+There is a large body of previous algorithmic and experimental work in the machine learning and statistics literature addressing the problems of inductive bias learning and improving generalization through multiple task learning. Some of these approaches can be seen as special cases of, or at least closely aligned with, the model described here, while others are more orthogonal. Without being completely exhaustive, in this section we present an overview of the main contributions. See Thrun and Pratt (1997, chapter 1) for a more comprehensive treatment.
+E
+Hierarchical Bayes. The earliest approaches to bias learning come from Hierarchical Bayesian methods in statistics (Berger, 1985; Good, 1980; Gelman, Carlin, Stern, & Rubim, 1995). In contrast to the Bayesian methodology, the present paper takes an essentially empirical process approach to modeling the problem of bias learning. However, a model using a mixture of hierarchical Bayesian and information-theoretic ideas was presented in Baxter (1997a), with similar conclusions to those found here. An empirical study showing the utility of the hierarchical Bayes approach in a domain containing a large number of related tasks was given in Heskes (1998).
+151
+
+
+BAXTER
+E
+Early machine learning work. In Rendell, Seshu, and Tcheng (1987) “VBMS” or Variable Bias Management System was introduced as a mechanism for selecting amongst different learning algorithms when tackling a new learning problem. “STABB” or Shift To a Better Bias (Utgoff, 1986) was another early scheme for adjusting bias, but unlike VBMS, STABB was not primarily focussed on searching for bias applicable to large problem domains. Our use of an “environment of related tasks” in this paper may also be interpreted as an “environment of analogous tasks” in the sense that conclusions about one task can be arrived at by analogy with (sufficiently many of) the other tasks. For an early discussion of analogy in this context, see Russell (1989, S4.3), in particular the observation that for analogous problems the sampling burden per task can be reduced.
+E
+Metric-based approaches. The metric used in nearest-neighbour classification, and in vector quantization to determine the nearest code-book vector, represents a form of inductive bias. Using the model of the present paper, and under some extra assumptions on the tasks in the environment (specifically, that their marginal input-space distributions are identical and they only differ in the conditional probabilities they assign to class labels), it can be shown that there is an optimal metric or distance measure to use for vector quantization and onenearest-neighbour classification (Baxter, 1995a, 1997b; Baxter & Bartlett, 1998). This metric can be learnt by sampling from a subset of tasks from the environment, and then used as a distance measure when learning novel tasks drawn from the same environment. Bounds on the number of tasks and examples of each task required to ensure good performance on novel tasks were given in Baxter and Bartlett (1998), along with an experiment in which a metric was successfully trained on examples of a subset of 400 Japanese characters and then used as a fixed distance measure when learning 2600 as yet unseen characters.
+A similar approach is described in Thrun and Mitchell (1995), Thrun (1996), in which a neural network’s output was trained to match labels on a novel task, while simultaneously being forced to match its gradient to derivative information generated from a distance metric trained on previous, related tasks. Performance on the novel tasks improved substantially with the use of the derivative information.
+Note that there are many other adaptive metric techniques used in machine learning, but these all focus exclusively on adjusting the metric for a fixed set of problems rather than learning a metric suitable for learning novel, related tasks (bias learning).
+E
+Feature learning or learning internal representations. As with adaptive metric techniques, there are many approaches to feature learning that focus on adapting features for a fixed task rather than learning features to be used in novel tasks. One of the few cases where features have been learnt on a subset of tasks with the explicit aim of using them on novel tasks was Intrator and Edelman (1996) in which a low-dimensional representation was learnt for a set of multiple related image-recognition tasks and then used to successfully learn novel tasks of the same kind. The experiments reported in Baxter (1995a, chapter 4) and Baxter (1995b), Baxter and Bartlett (1998) are also of this nature.
+E
+Bias learning in Inductive Logic Programming (ILP). Predicate invention refers to the process in ILP whereby new predicates thought to be useful for the classification task at hand are added to the learner’s domain knowledge. By using the new predicates as background domain knowledge when learning novel tasks, predicate invention may be viewed as a form of
+152
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+inductive bias learning. Preliminary results with this approach on a chess domain are reported in Khan, Muggleton, and Parson (1998).
+E
+Improving performance on a fixed reference task. “Multi-task learning” (Caruana, 1997) trains extra neural network outputs to match related tasks in order to improve generalization performance on a fixed reference task. Although this approach does not explicitly identify the extra bias generated by the related tasks in a way that can be used to learn novel tasks, it is an example of exploiting the bias provided by a set of related tasks to improve generalization performance. Other similar approaches include Suddarth and Kergosien (1990), Suddarth and Holden (1991), Abu-Mostafa (1993).
+E
+Bias as computational complexity. In this paper we consider inductive bias from a samplecomplexity perspective: how does the learnt bias decrease the number of examples required of novel tasks for good generalization? A natural alternative line of enquiry is how the runningtime or computational complexity of a learning algorithm may be improved by training on related tasks. Some early algorithms for neural networks in this vein are contained in Sharkey and Sharkey (1993), Pratt (1992).
+E
+Reinforcement Learning. Many control tasks can appropriately be viewed as elements of sets of related tasks, such as learning to navigate to different goal states, or learning a set of complex motor control tasks. A number of papers in the reinforcement learning literature have proposed algorithms for both sharing the information in related tasks to improve average generalization performance across those tasks Singh (1992), Ring (1995), or learning bias from a set of tasks to improve performance on future tasks Sutton (1992), Thrun and Schwartz (1995).
+1.2 Overview of the Paper
+In Section 2 the bias learning model is formally defined, and the main sample complexity results are given showing the utility of learning multiple related tasks and the feasibility of bias learning. These results show that the sample complexity is controlled by the size of certain covering numbers associated with the set of all hypothesis spaces available to the bias learner, in much the same way as the sample complexity in learning Boolean functions is controlled by the Vapnik-Chervonenkis dimension (Vapnik, 1982; Blumer et al., 1989). The results of Section 2 are upper bounds on the sample complexity required for good generalization when learning multiple tasks and learning inductive bias.
+The general results of Section 2 are specialized to the case of feature learning with neural networks in Section 3, where an algorithm for training features by gradient descent is also presented. For this special case we are able to show matching lower bounds for the sample complexity of multiple task learning. In Section 4 we present some concluding remarks and directions for future research. Many of the proofs are quite lengthy and have been moved to the appendices so as not to interrupt the flow of the main text.
+The following tables contain a glossary of the mathematical symbols used in the paper.
+153
+
+
+BAXTER
+Symbol Description First Referenced
+
+Input Space 155
+"
+Output Space 155
+
+Distribution on ST" (learning task) 155
+U
+Loss function 155 Hypothesis Space 155
+#
+Hypothesis 155
+)* +  #  Error of hypothesis # on distribution  156
+
+Training set 156
+V
+Learning Algorithm 156
+)W*X  #  Empirical error of # on training set  156
+Y
+Set of all learning tasks  157
+Z
+Distribution over learning tasks 157
+A
+Family of hypothesis spaces 157
+)*[   Loss of hypothesis space on environment Z 158
+\ P]^_ -sample 158
+)W*a`   Empiricallossof on \ 158
+V
+Bias learning algorithm 159
+#b Function induced by # and U 159
+b
+Set of #b 159
+# #Rc b Averageof# 2b# c 2b 159
+dQb Sameas# #Rc b 159
+cb Setof# #=c b 159
+A cb Setof cb 159
+Te Function on probability distributions 160
+A e Set of e 160
+fg Pseudo-metric on cb 160
+f [ Pseudo-metric on A e 160
+h Jij A e f [  Coveringnumberof A e 160
+k Jij A e  CapacityofA e 160
+h Jij A cb flg  CoveringnumberofA cb 160
+m Jij A cb  CapacityofA cb 160
+d
+SequenceofP hypotheses  #  #=c  163
+n
+SequenceofP distributions     c  163
+)* g  d  Averagelossof d on n 164
+)W* `  d  Averagelossof d on \ 164
+o
+Set of feature maps 166
+p
+Output class composed with feature maps q 166
+psr q Hypothesis space associated with q 166
+p b Loss function class associated with p 166
+h Jij p b f +  Coveringnumberofp b 166
+k Hij p b  Capacityofp b 166
+ft+ 2uvxw  q qzy Pseudo-metriconfeaturemapsq qzy 166
+h Jij o f=t+ 2uv{w Coveringnumberofo 166
+154
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Symbol Description First Referenced
+h Jij o f t+ 2uv{w8 Coveringnumberofo 166
+k uv Jij o  Capacityofo 166
+}| Neural network hypothesis space 167
+~0 restricted to vector  172
+  ^_ Growth function of 172
+   Vapnik-Chervonenkis dimension of 172
+~ restricted to matrix  173
+A ~ A restricted to matrix  173
+  P]^_ Growthfunctionof A 173
+f   PQ Dimension function of A 173
+f  A  Upper dimension function of A 173
+f  A  Lower dimension function of A 173
+= g  A c  Optimalperformanceof A c on n 175
+f Metricon 179
+# / #=c Averageof# , ,#Rc 179
+3 c Setof# / #=c 180
+ . >  2c 5 Permutations on integer pairs 182
+\j Permuted \ 182
+f `  d d y  Empirical U metric on functions d 182
+)W* g   Optimal average error of on n 185
+2. The Bias Learning Model
+In this section the bias learning model is formally introduced. To motivate the definitions, we first describe the main features of ordinary (single-task) supervised learning models.
+2.1 Single-Task Learning
+Computational learning theory models of supervised learning usually include the following ingre
+dienE ts:An input space  and an output space " ,
+E
+a probability distribution  on Ss" ,
+E
+alossfunctionU$ "s"&D , and
+E
+a hypothesis space which is a set of hypotheses or functions #$  &¡" .
+As an example, if the problem is to learn to recognize images of Mary’s face using a neural network,
+then  would be the set of all images (typically represented as a subset of ]¢ where each component
+is a pixel intensity), " would be the set £ ¤ , and the distribution  would be peaked over images
+of different faces and the correct class labels. The learner’s hypothesis space would be a class of
+neural networks mapping the input space  ¢ to £ ¤ . The loss in this case would be discrete loss:
+Uzy $¦¥ ¤ if§y
+£
+ifL y (1)
+155
+
+
+BAXTER
+Using the loss function allows us to present a unified treatment of both pattern recognition (" 
+£ ¤ , U as above), and real-valued function learning (e.g. regression) in which "   and usually
+U   ̈ y ]© L:a y  > .
+The goal of the learner is to select a hypothesis # CT with minimum expected loss:
+)*+ #  $B«¬®° ̄ U# ±=f QR (2)
+Of course, the learner does not know  and so it cannot search through for an # minimizing
+)* +  #  . In practice, the learner samples repeatedly from 23" according to the distribution  to
+generateatrainingset  $      j (3)
+Based on the information contained in  the learner produces a hypothesis # CT . Hence, in general
+a learner is simply a map V from the set of all training samples to the hypothesis space :
+V $ ́μ¶DT"  &
+(stochastic learner’s can be treated by assuming a distribution-valued V .)
+Many algorithms seek to minimize the empirical loss of # on  , where this is defined by:
+)W*X#  $ ^¤ · ̧1 U#   ̧ ̧ (4)
+Of course, there are more intelligent things to do with the data than simply minimizing empirical error—for example one can add regularisation terms to avoid over-fitting.
+However the learner chooses its hypothesis # , if we have a uniform bound (over all # C ) on
+the probability of large deviation between )W*X  #  and )*+  #  , then we can bound the learner’s gen
+eralization error )*+  #  as a function of its empirical loss on the training set )W*X  #  . Whether such
+a bound holds depends upon the “richness” of . The conditions ensuring convergence between
+)W* X  #  and )* +  #  arebynowwellunderstood;forBooleanfunctionlearning(" B£ ¤ , discrete
+loss), convergence is controlled by the VC-dimension1 of :
+Theorem 1. Let  be any probability distribution on  £ ¤ and suppose  
+ 6 isgeneratedbysampling^ timesfromo £ ¤ accordingto . Let
+f»$  =   . Then with probability at least ¤®:1⁄21⁄4 (over the choice of the training set  ), all
+# C3⁄4 will satisfy
+)*+ # ¿ )W*X#  K ÀOÁ^Â ÃfÅÄÆ ÂÇf^ K ÄÆÉÈ1⁄4±ÊË ÍÌ> (5)
+Proofs of this result may be found in Vapnik (1982), Blumer et al. (1989), and will not be reproduced here.
+1. The VC dimension of a class of Boolean functions Î is the largest integer Ï such that there exists a subset Ð»Ñ Ò
+ÓaÔÕ×Ö×Ø×Ø×ØÖJÔ3ÙÚÅÛÝÜ suchthattherestrictionofÎ toÐ containsallÞ Ù BooleanfunctionsonÐ .
+156
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Theorem 1 only provides conditions under which the deviation between )*+  #  and )W*X  #  is
+likely to be small, it does not guarantee that the true error )*+  #  will actually be small. This is
+governed by the choice of . If contains a solution with small error and the learner minimizes
+error on the training set, then with high probability )*+  #  will be small. However, a bad choice of
+will mean there is no hope of achieving small error. Thus, the bias of the learner in this model2 is represented by the choice of hypothesis space .
+2.2 The Bias Learning Model
+The main extra assumption of the bias learning model introduced here is that the learner is embedded in an environment of related tasks, and can sample from the environment to generate multiple training sets belonging to multiple different tasks. In the above model of ordinary (single-task)
+learning, a learning task is represented by a distribution  on ßà" . So in the bias learning
+model, an environment of learning problems is represented by a pair  Y Z  where Y is the set of
+all probability distributions on á®" (i.e., Y is the set of all possible learning problems), and Z is a
+distribution on Y . Z controls which learning problems the learner is likely to see3. For example, if
+the learner is in a face recognition environment, Z will be highly peaked over face-recognition-type
+problems, whereas if the learner is in a character recognition environment Z will be peaked over
+character-recognition-type problems (here, as in the introduction, we view these environments as sets of individual classification problems, rather than single, multiple class classification problems). Recall from the last paragraph of the previous section that the learner’s bias is represented by its choice of hypothesis space . So to enable the learner to learn the bias, we supply it with a family
+or set of hypothesis spaces A $ â  .
+Putting all this together, formally a learning to learn or bias learning problem consists of:
+E
+an input space  and an output space " (both of which are separable metric spaces),
+E
+alossfunctionU$ "s"&D ,
+E
+an environment  Y Z  where Y is the set of all probability distributions on D3" and Z is
+a distribution on Y ,
+E
+a hypothesis space family A â  where each ãC A is a set of functions #%$  &2" .
+From now on we will assume the loss function U has range ä £ ¤6å , or equivalently, with rescaling,
+we assume that U is bounded.
+2. The bias is also governed by how the learner uses the hypothesis space. For example, under some circumstances the
+learner may choose not to use the full power of Î (a neural network example is early-stopping). For simplicity in
+this paper we abstract away from such features of the algorithm æ and assume that it uses the entire hypothesis space
+Î
+.
+3. ç ’s domain is a è -algebra of subsets of é . A suitable one for our purposes is the Borel è -algebra êQëìéÅí generated
+by the topology of weak convergence on é . If we assume that Ü and î are separable metric spaces, then é is also
+a separable metric space in the Prohorov metric (which metrizes the topology of weak convergence) (Parthasarathy,
+1967), so there is no problem with the existence of measures on êëìéÅí . See Appendix D for further discussion,
+particularly the proof of part 5 in Lemma 32.
+157
+
+
+BAXTER
+We define the goal of a bias learner to be to find a hypothesis space ßC A minimizing the
+following loss:
+)*6[   $ «ï ð=ñ
+òó )*+ #  f Z   (6)
+ «ï ð=ñ
+òó «¬É° ̄ U# ±=f =fZ  
+The only way )*[   can be small is if, with high Z -probability, contains a good solution # to
+any problem  drawn at random according to Z . In this sense )*[   measures how appropriate
+the bias embodied by is for the environment  Y Z  .
+In general the learner will not know Z , so it will not be able to find an minimizing )*[  
+directly. However, the learner can sample from the environment in the following way:
+E
+Sample P times from Y according to Z to yield:
+  c.
+E
+Sample ^ times from S3" according to each   ̧ to yield:
+ ̧ B ̧  ̧  ̈ ̧  ̧ .
+E
+The resulting P training sets—henceforth called an  P]^_ -sample if they are generated by the
+above process—are supplied to the learner. In the sequel, an  P]^_ -sample will be denoted
+by\ andwrittenasamatrix:     ôôõ j
+\ $  ... ... ... ...
+ c c    c c !c (7)
+An  P]^_ -sample is simply P training sets  a c sampled from P different learning tasks
+   c , where each task is selected according to the environmental probability distribution Z .
+The size of each training set is kept the same primarily to facilitate the analysis.
+Based on the information contained in \ , the learner must choose a hypothesis space 'C A .
+One way to do this would be for the learner to find an minimizing the empirical loss on \ , where
+thisisdefinedby: )W* `   $ P¤ · ̧ì1c ðRñ
+ò3ó )W*X?ö#  (8)
+Note that )W *a`   is simply the average of the best possible empirical error achievable on each
+training set   ̧ , using a function from . It is a biased estimate of )*6[   . An unbiased esti
+mate of )* [   would require choosing an with minimal average error over the P distributions
+   c ,wherethisisdefinedbycÉ÷ c ̧1 ðRñò3ó  )*+ö# .
+As with ordinary learning, it is likely there are more intelligent things to do with the training data
+\
+than minimizing (8). Denoting the set of all  P]^_ -samples by  Ss"  . c 2 5 , a general “bias
+learner” is a map V that takes  P]^_ -samples as input and produces hypothesis spaces SC A as
+output: V $ c ́μ¶
+μ¶ Ds" .c2 5 &'A  (9)
+158
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+(as stated, V is a deterministic bias learner, however it is trivial to extend our results to stochastic
+learners). Note that in this paper we are concerned only with the sample complexity properties of a bias
+learner V ; we do not discuss issues of the computability of V .
+Since V is searching for entire hypothesis spaces within a family of such hypothesis spaces
+A
+, there is an extra representational question in our model of bias learning that is not present in
+ordinary learning, and that is how the family A is represented and searched by V . We defer this
+discussion until Section 2.5, after the main sample complexity results for this model of bias learning have been introduced. For the specific case of learning a set of features suitable for an environment of related learning problems, see Section 3. Regardless of how the learner chooses its hypothesis space , if we have a uniform bound (over
+all ãC A ) on the probability of large deviation between )W*`   and )*6[   , and we can compute
+an upper bound on )W *a`   , then we can bound the bias learner’s “generalization error” )*[   .
+With this view, the question of generalization within our bias learning model becomes: how many
+tasks (P ) and how many examples of each task (^ ) are required to ensure that )W*`   and )*[  
+are close with high probability, uniformly over all C A ? Or, informally, how many tasks and how
+many examples of each task are required to ensure that a hypothesis space with good solutions to all the training tasks will contain good solutions to novel tasks drawn from the same environment? It turns out that this kind of uniform convergence for bias learning is controlled by the “size”
+of certain function classes derived from the hypothesis space family A , in much the same way as
+the VC-dimension of a hypothesis space controls uniform convergence in the case of Boolean function learning (Theorem 1). These “size” measures and other auxiliary definitions needed to state the main theorem are introduced in the following subsection.
+2.3 Covering Numbers
+Definition1. Foranyhypothesis#%$ ø&D" ,define#=b$ ù3"&(ä£ ¤6å by
+#b= $ U# 9R (10)
+For any hypothesis space in the hypothesis space family A , define
+b $B#=b$# CT j (11)
+ForanysequenceofP hypotheses#  # c ,define#  # c b$ DT" c &(ä£ ¤6å by
+# #Rcb   c c $ P¤ · ̧ì1c U# ̧  ̧ ̧ (12)
+We will also use db to denote  #  #=c  b . For any in the hypothesis space family A , define
+cb $B# # c b$ ̈# # c CT j (13)
+Define
+A cb $  ́ó  cb  (14)
+159
+
+
+BAXTER
+In the first part of the definition above, hypotheses #$  & " are turned into functions #b
+mapping øÝ"©&(ä £ ¤6å by composition with the loss function. b is then just the collection of all
+such functions where the original hypotheses come from . b is often called a loss-function class.
+In our case we are interested in the average loss across P tasks, where each of the P hypotheses
+is chosen from a fixed hypothesis space . This motivates the definition of db and cb . Finally,
+A cb is the collection of all  #  # c  b , with the restriction that all #  # c belong to a single
+hypothesis space C A .
+Definition2. ForeachãC A ,defineTe $ Y &(ä£ ¤6å by
+e  $ ðRñ
+ò3ó )*+ #  (15)
+For the hypothesis space family A , deAfinee $ B e $ C A j (16)
+It is the “size” of A cb and A e that controls how large the  P]^_ -sample \ must be to ensure
+)W*a`   and )*6[   are close uniformly over all úC A . Their size will be defined in terms of
+certain covering numbers, and for this we need to define how to measure the distance between
+elements of A cb and also between elements of A e .
+Definition 3. Let n ©    c  be any sequence of P probability distributions on DT" . For
+anydb d yb C A cb ,define
+flg dQb d yb $M«.¬®° ̄ 5ûõüdb  cc;: d yb  ccü
+f    ̈f c  c c  (17)
+Similarly, for any distribution Z on Y and any e >e C A e , define
+f[  e >e $ «ï ü e ;: >e ü f Z   (18)
+It is easily verified that fg and f [ are pseudo-metrics4 on A cb and A e respectively.
+Definition4. An i -cover of  A e f [  is a set  Te  Týe  such that for all 3⁄4eDC A e ,
+f [  Te 3⁄4 ̧e T¿þi for some ÿ 2¤; . Note that we do not require the T ̧e to be contained in
+A e , just that they be measurable functions on Y . Let h Jij A e f [  denote the size of the smallest
+such cover. Define the capacity of A e by
+k JilA e $[ h JilA e f[  (19)
+where the supremum is over all probability measures on Y . h Jij A cb f g  is defined in a similar
+way, using fg in place of f [ . Define the capacity of A cb by:
+k JijA cb $g h JilA cb fg  (20)
+where now the supremum is over all sequences of P probability measures on S3" .
+4. Apseudo-metric Ï isametricwithouttheconditionthatÏë Ô°Ö íRÒ  Ô Ò  .
+160
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+2.4 Uniform Convergence for Bias Learners
+Now we have enough machinery to state the main theorem. In the theorem the hypothesis space family is required to be permissible. Permissibility is discussed in detail in Appendix D, but note that it is a weak measure-theoretic condition satisfied by almost all “real-world” hypothesis space
+families. All logarithms are to base Ç .
+Theorem 2. Suppose  and " are separable metric spaces and let Z be any probability distri
+bution on Y , the set of all distributions on  »" . Suppose \ is an  P]^_ -sample generated by
+sampling P times from Y according to Z to give    c , and then sampling ^ times from each
+  ̧ togenerate  ̧    ̧   ̧   ̧   ̧  ,ÿ  ¤3P . LetA    beanypermissible
+hypothesis space family. If the number of tasks P satisfies
+P   Âi> ÄÆk> A e
+1⁄4 iÈ>  (21)
+and the number of examples ^ of each task satisfies
+^!  ¥ÉÂ
+Pi> ÄÆ k > A cb
+1⁄4 "iÈ>$# (22)
+then with probability at least ¤:1⁄4 (over the  P]^_ -sample \ ), all C A will satisfy
+)*[  %¿ )W*a` 9K i (23)
+Proof. See Appendix A.
+There are several important points to note about Theorem 2:
+1. Provided the capacities k Jij A e  and k Jij A cb  are finite, the theorem shows that any bias
+learner that selects hypothesis spaces from A can bound its generalisation error )* [   in
+terms of )W*a`   for sufficiently large  P]^_ -samples \ . Most bias learner’s will not find the
+exact value of )W *a`   because it involves finding the smallest error of any hypothesis # Cs
+on each of the P training sets in \ . But any upper bound on )W *`   (found, for example
+by gradient descent on some error function) will still give an upper bound on )*O[   . See
+Section 3.3.1 for a brief discussion on how this can be achieved in a feature learning setting.
+2. In order to learn bias (in the sense that )*[   and )W*a`   are close uniformly over all
+C A ), both the number of tasks P and the number of examples of each task ^ must
+be sufficiently large. This is intuitively reasonable because the bias learner must see both sufficiently many tasks to be confident of the nature of the environment, and sufficiently many examples of each task to be confident of the nature of each task.
+3. Once the learner has found an úC A with a small value of )W * `   , it can then use to
+learn novel tasks  drawn according to Z . One then has the following theorem bounding the
+sample complexity required for good generalisation when learning with (the proof is very
+similar to the proof of the bound on ^ in Theorem 2).
+161
+
+
+BAXTER
+Theorem3. Let â         beatrainingsetgeneratedbysamplingfrom
+¡" according to some distribution  . Let be a permissible hypothesis space. For all
+il1⁄4 with £% ij1⁄4&%M¤ ,if the numberoftraining examples ^ satisfies
+^!   iÈ> ÄÆ Èk ')( b
+1⁄4 ¤i >  (24)
+then with probability at least ¤%: 1⁄4 , all # CT will satisfy
+)*+ #%¿ )W*X#K ij
+The capacity k Jil  appearing in equation (24) is defined in an analogous fashion to the
+capacities in Definition 4 (we just use the pseudo-metric f +  #b # yb  $+* ¬®° ̄ ü#b  =:
+# yb  QR ü f   = ). The important thing to note about Theorem 3 is that the number of ex
+amples required for good generalisation when learning novel tasks is proportional to the logarithm of the capacity of the learnt hypothesis space . In contrast, if the learner does not
+do any bias learning, it will have no reason to select one hypothesis space ¡C A over any
+other and consequently it would have to view as a candidate solution any hypothesis in any
+of the hypothesis spaces C A . Thus, its sample complexity will be proportional to the
+capacity of ,  ó   b ® A b , which in general will be considerably larger than the capacity
+of any individual ãC A . So by learning the learner has learnt to learn in the environment
+ Y Z  in the sense that it needs far smaller training sets to learn novel tasks.
+4. Having learnt a hypothesis space with a small value of )W *a`   , Theorem 2 tells us that
+with probability at least ¤ :_1⁄4 , the expectedvalue of ð=ñ òó  )*+  #  on a novel task  will be
+less than )W *a`   K i . Of course, this does not rule out really bad performance on some tasks
+
+. However, the probability of generating such “bad” tasks can be bounded. In particular,
+note that )*[   is just the expected value of the function e over Y , and so by Markov’s
+inequality, for -/. £ ,
+0 * ¥  $ ðRñ
+ò3ó )*+ #1 - #  0 * $ e  - 
+¿32 [ e
+
+ )*6[  
+
+¿ )W*` 9Kài
+
+(with probability ¤%:1⁄4 ).
+5. Keeping the accuracy and confidence parameters ij1⁄4 fixed, note that the number of examples
+required of each task for good generalisation obeys
+^  F Ã P¤ ÄÆ k ôijA cb Ê  (25)
+So provided Ä Æ k Jil A cb  increases sublinearly with P , the upper bound on the number of
+examples required of each task will decrease as the number of tasks increases. This shows that for suitably constructed hypothesis space families it is possible to share information between tasks. This is discussed further after Theorem 4 below.
+162
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+2.5 Choosing the Hypothesis Space Family A .
+Theorem 2 only provides conditions under which )W * `   and )* [   are close, it does not guaran
+tee that )*[   is actually small. This is governed by the choice of A . If A contains a hypothesis
+space with a small value of )*[   and the learner is able to find an C A minimizing error on
+the  P]^_ sample \ (i.e., minimizing )W*a`   ), then, for sufficiently large P and ^ , Theorem 2 en
+sures that with high probability )*[   will be small. However, a bad choice of A will mean there
+is no hope of finding an with small error. In this sense the choice of A represents the hyper-bias
+of the learner.
+Note that from a sample complexity point of view, the optimal hypothesis space family to choose is one containing a single, minimal hypothesis space that contains good solutions to all of the
+problems in the environment (or at least a set of problems with high Z -probability), and no more.
+For then there is no bias learning to do (because there is no choice to be made between hypothesis spaces), the output of the bias learning algorithm is guaranteed to be a good hypothesis space for the environment, and since the hypothesis space is minimal, learning any problem within the environment using will require the smallest possible number of examples. However, this scenario is analagous to the trivial scenario in ordinary learning in which the learning algorithm contains a single, optimal hypothesis for the problem being learnt. In that case there is no learning to be done, just as there is no bias learning to be done if the correct hypothesis space is already known.
+At the other extreme, if A contains a single hypothesis space consisting of all possible func
+tions from  & " then bias learning is impossible because the bias learner cannot produce a
+restricted hypothesis space as output, and hence cannot produce a hypothesis space with improved sample complexity requirements on as yet unseen tasks.
+Focussing on these two extremes highlights the minimal requirements on A for successful bias
+learning to occur: the hypothesis spaces C A must be strictly smaller than the space of all
+functions '&ß" , but not so small or so “skewed” that none of them contain good solutions to a
+large majority of the problems in the environment.
+It may seem that we have simply replaced the problem of selecting the right bias (i.e., selecting the right hypothesis space ) with the equally difficult problem of selecting the right hyper-bias (i.e.,
+the right hypothesis space family A ). However, in many cases selecting the right hyper-bias is far
+easier than selecting the right bias. For example, in Section 3 we will see how the feature selection problem may be viewed as a bias selection problem. Selecting the right features can be extremely difficult if one knows little about the environment, with intelligent trial-and-error typically the best one can do. However, in a bias learning scenario, one only has to specify that a set of features should exist, find a loosely parameterised set of features (for example neural networks), and then learn the features by sampling from multiple related tasks.
+2.6 Learning Multiple Tasks
+It may be that the learner is not interested in learning to learn, but just wants to learn a fixed set
+of P tasks from the environment  Y Z  . As in the previous section, we assume the learner starts
+out with a hypothesis space family A , and also that it receives an  P]^_ -sample \ generated from
+the P distributions    c . This time, however, the learner is simply looking for P hypotheses
+ #  #Rc  , all contained in the same hypothesis space , such that the average generalization
+error of the P hypothesesis minimal. Denoting  #  #=c  by d and writing n      c  ,
+163
+
+
+BAXTER
+this error is given by:
+)*g d  $ P¤ · ̧ì1c )*+ö#  ̧ (26)
+ P¤ · ̧ì1c «¬É° ̄ U# ̧±=f  ̧=
+and the empirical loss of d on \ is
+)W*a`d  $ P¤ · ̧1c )W*X?ö#  ̧ (27)
+ P¤ · ̧1c ^¤ 4·1 U# ̧ ̧4 ̧4
+As before, regardless of how the learner chooses  #  #=c  , if we can prove a uniform bound on
+the probability of large deviation between )W* `  d  and )* g  d  then any  #  # c  that perform
+well on the training sets \ will with high probability perform well on future examples of the same
+tasks.
+Theorem4. Letn ©    c  beP probabilitydistributionson" andlet\ bean  P]^_ 
+sample generated by sampling ^ times from oa" according to each   ̧ . Let A    be any
+permissible hypothesis space family. If the number of examples ^ of each task satisfies
+^!  ¥5PiÈ> ÄÆ Èk)( A cb
+1⁄4 ¤i > # (28)
+then with probability at least ¤:1⁄4 (over the choice of \ ), any d C A c will satisfy
+)*g d %¿ )W*a`d  K i (29)
+(recall Definition 4 for the meaning of k Jil A cb  ).
+Proof. Omitted (follow the proof of the bound on ^ in Theorem 2).
+The bound on ^ in Theorem 4 is virtually identical to the bound on ^ in Theorem 2, and note
+again that it depends inversely on the number of tasks P (assuming that the first part of the “max”
+expression is the dominate one). Whether this helps depends on the rate of growth of k  )( A cb  as
+a function of P . The following Lemma shows that this growth is always small enough to ensure that
+we never do worse by learning multiple tasks (at least in terms of the upper bound on the number of examples required per task).
+Lemma 5. For any hypothesis space family A ,
+k ilA b ¿ k HilA cb¿ k ilA bc  (30)
+164
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Proof. Let 6 denote the set of all functions  #  #Rc  b where each #  ̧ can be a member of any
+hypothesis space !C A (recall Definition 1). Then A cb87 6 and so k Hij A cb  ¿ k Jij 6  . By
+Lemma 29 in Appendix B, k Hij 6 ¿ k  il A b  c and so the right hand inequality follows.
+For the first inequality, let  be any probability measure on ß " and let n be the mea
+sure on  !<"  c obtained by using  on the first copy of  <" in the product, and ignoring
+all other elements of the product. Let be an i -cover for  A cb flg  . Pick any #b C A b and
+let :9 ;9 c b C besuchthatfg # # # b:9 ;9 c b¿ i . Butbyconstruction,
+flg # # 3 # b:9 ;9 c b f + # :9 b,whichestablishesthefirstinequality.
+ByLemma5 ÄÆ k ijA b ¿ ÄÆ k JijA cb ¿àP ÄÆ k ijA b  (31)
+So keeping the accuracy parameters i and 1⁄4 fixed, and plugging (31) into (28), we see that the upper
+bound on the number of examples required of each task never increases with the number of tasks,
+and at best decreases as F ×¤NPQ . Although only an upper bound, this provides a strong hint that
+learning multiple related tasks should be advantageous on a “number of examples required per task” basis. In Section 3 it will be shown that for feature learning all types of behavior are possible, from
+no advantage at all to F ×¤NPQ decrease.
+2.7 Dependence on i
+In Theorems 2, 3 and 4 the bounds on sample complexity all scale as ¤Ni > . This behavior can be
+improved to ¤Ni if the empirical loss is always guaranteed to be zero (i.e., we are in the realizable
+case). The same behavior results if we are interested in relative deviation between empirical and true loss, rather than absolute deviation. Formal theorems along these lines are stated in Appendix A.3.
+3. Feature Learning
+The use of restricted feature sets is nearly ubiquitous as a method of encoding bias in many areas of machine learning and statistics, including classification, regression and density estimation. In this section we show how the problem of choosing a set of features for an environment of
+related tasks can be recast as a bias learning problem. Explicit bounds on k  A e ai3 and k  A cb ai3
+are calculated for general feature classes in Section 3.2. These bounds are applied to the problem of learning a neural network feature set in Section 3.3.
+3.1 The Feature Learning Model
+Consider the following quote from Vapnik (1996):
+The classical approach to estimating multidimensional functional dependencies is based on the following belief:
+Real-life problems are such that there exists a small number of “strong features,” simple functions of which (say linear combinations) approximate well the unknown function. Therefore, it is necessary to carefully choose a low-dimensional feature space and then to use regular statistical techniques to construct an approximation.
+165
+
+
+BAXTER
+In general a set of “strong features” may be viewed as a function q $ ø&+< mapping the input
+space  into some (typically lower) dimensional space < . Let o þ q  be a set of such feature
+maps (each q may be viewed as a set of features  q  q>=  if <   = ). It is the q that must be
+“carefully chosen” in the above quote. In general, the “simple functions of the features” may be
+represented as a class of functions p mapping < to " . If for each q C_o we define the hypothesis
+space pTr q $B?9 r q $ 9 C p  , thenwehavethehypothesisspacefamily A
+A $psr q $ q C3⁄4o j (32)
+Now the problem of “carefully choosing” the right features q is equivalent to the bias learning
+problem “find the right hypothesis space C A ”. Hence, provided the learner is embedded within
+an environment of related tasks, and the capacities k  A e ai and k  A cb ai are finite, Theorem 2 tells
+us that the feature set q can be learnt rather than carefully chosen. This represents an important
+simplification, as choosing a set of features is often the most difficult part of any machine learning problem.
+In Section 3.2 we give a theorem bounding k  A e ai and k  A cb ai3 for general feature classes.
+The theorem is specialized to neural network classes in Section 3.3.
+Note that we have forced the function class p to be the same for all feature maps q , although
+this is not necessary. Indeed variants of the results to follow can be obtained if p is allowed to vary
+with q .
+3.2 Capacity Bounds for General Feature Classes
+Notationally it is easier to view the feature maps q as mapping from ùs" to <ás" by  =A@&
+ q  ±= , and also to absorb the loss function U into the definition of p by viewing each 9 C p as a
+mapfrom<â " into ä£ ¤6å via CB ̈RA&@ U :9±CB= . Previouslythislatterfunctionwouldhavebeen
+denoted 9 b but in what follows we will drop the subscript U where this does not cause confusion. The
+class to which 9 b belongs will still be denoted by p b .
+With the above definitionslet p b r o $¦?9 r q $ 9 C p b q Cao  . Define the capacityof p b in
+theusualway, k Jilp b $DE+  h Jilp b f + 
+wherethesupremumisoverallprobabilitymeasureson<á3" ,andf + :9;9 y $ *GF ° ̄ ü9zCB ̈R:
+9 y CB= ü f  CB= . To define the capacity of o we first define a pseudo-metric f t+ 2uvxw on o by
+“pulling back” the H metric on  through p b as follows:
+ft+2uvwq qy $ «°¬É° ̄ 
+Ióuvü9 r q =;:/9 r q yQRüf = (33)
+It is easily verified that f=t+ 2uvxw is a pseudo-metric. Note that for ft+ 2uv w to be well defined the supre
+mum over p b in the integrand must be measurable. This is guaranteed if the hypothesis space family
+A   p b r q $ q C o  is permissible (Lemma 32, part 4). Now defineh Jil o f t+ 2uv{w8 to be the
+smallest i -cover of the pseudo-metric space  o f t+ 2u v w  and the i -capacity of o (with respect to p b )
+as kuvJilo  $D+ h Jilo ft+2uv{w
+where the supremum is over all probability measures on -õ" . Now we can state the main theorem
+of this section.
+166
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Theorem 6. Let A be a hypothesis space family as in equation (32). Then for all ijai ai > . £ with
+i®i K i>, k JilA cb¿ k Hi p bc k uv Ji> o  (34)
+k JijA e¿ k uv Hilo  (35)
+Proof. See Appendix B.
+3.3 Learning Neural Network Features
+In general, a set of features may be viewed as a map from the (typically high-dimensional) input
+space  ¢ to a much smaller dimensional space  = (JLK f ). In this section we consider approximat
+ing such a feature map by a one-hidden-layer neural network with f input nodes and J output nodes
+(Figure1). WedenotethesetofallsuchfeaturemapsbyM | ©ON | 2 N | 2=  $QP CR  where
+R
+is a bounded subset of TS (U is the number of weights (parameters) in the first two layers).
+This set is the o of the previous section.
+EachfeatureN | 2 ̧ $  ¢ & ä£ ¤6å,ÿ ©¤3 J isdefinedby
+N| 2 ̧9 $VWX 4·1b B ̧4#4±KYB ̧b Z[ (36)
+where # 4  ± is the output of the \^] # node in the first hidden layer, CB  ̧ _B  ̧ b  are the output
+node parameters for the ÿ th feature and V is a “sigmoid” squashing function V $ á& ä £ ¤6å . Each
+firstlayerhiddennode#  ̧ $  ¢ &S , ÿ ¤3 U,computes
+# ̧9 $V WX 4·1¢a` ̧44 K ` ̧¢ Z[ (37)
+where  `  ̧  `  ̧ ¢  are the hidden node’s parameters. We assume V is Lipschitz.5 The weight
+vector for the entire feature map is thus
+P ©`` ¢ `b `b¢ _B_B b _B= _B=b 
+andthetotalnumberoffeatureparameters U  U  f K¤ K J  U K ¤ .
+For argument’s sake, assume the “simple functions” of the features (the class p of the previous
+section) are squashed affine maps using the same sigmoid function V above (in keeping with the
+“neural network” flavor of the features). Thus, each setting of the feature weights P generates a
+hypothesis space:
+Ý| $  Vcb· ̧1=ed  ̧N| 2 ̧K d = f $ d  d =  C R y (38)
+where R y is a bounded subset of  =  . The set of all such hypothesis spaces,
+A $B | $QP CR  (39)
+5.è isLipschitzifthereexistsaconstantg suchthathè ̈ëÔ íjièëÔ>kí;h?lmgnhÔ i Ô>khforallÔ°ÖHÔkporq .
+167
+
+
+BAXTER
+k
+n
+l
+d
+Feature
+Map
+Input
+Multiple Output Classes
+Figure 1: Neural network for feature learning. The feature map is implemented by the first two
+hidden layers. The P output nodes correspond to the P different tasks in the  P]^_ 
+sample \ . Each node in the network computes a squashed linear function of the nodes in
+the previous layer.
+is a hypothesis space family. The restrictions on the output layer weights  d  d =   and feature
+weights P , and the restriction to a Lipschitz squashing function are needed to obtain finite upper
+bounds on the covering numbers in Theorem 2.
+Finding a good set of features for the environment  Y Z  is equivalent to finding a good hy
+pothesis space | C A , which in turn means finding a good set of feature map parameters P .
+As in Theorem 2, the correct set of features may be learnt by finding a hypothesis space with
+small error on a sufficiently large  P]^_ -sample \ . Specializing to squared loss, in the present
+framework the empirical loss of | on \ (equation (8)) is given by
+)W*` | Å P¤ · ̧1c ðRñ
+.tsu62sÕ2wvwvwv2s^x65ó>yk^¤ 4·1{zVYb·b1= dbN|2b ̧49K d¶f :< ̧4}|> (40)
+Since our sigmoid function V only has range ä £ ¤6å , we also restrict the outputs " to this range.
+3.3.1 ALGORITHMS FOR FINDING A GOOD SET OF FEATURES
+Provided the squashing function V is differentiable, gradient descent (with a small variation on
+backpropagation to compute the derivatives) can be used to find feature weights P minimizing (40)
+(or at least a local minimum of (40)). The only extra difficulty over and above ordinary gradient
+descent is the appearance of “ðRñ ” in the definition of )W * `  Ý|  . The solution is to perform gradient
+descent over both the output parameters  d ¶  d =  for each node and the feature weights P . For
+more details see Baxter (1995b) and Baxter (1995a, chapter 4), where empirical results supporting the theoretical results presented here are also given.
+168
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+3.3.2 SAMPLE COMPLEXITY BOUNDS FOR NEURAL-NETWORK FEATURE LEARNING
+The size of \ ensuring that the resulting features will be good for learning novel tasks from the same
+environment is given by Theorem 2. All we have to do is compute the logarithm of the covering
+numbersk Jij A cb  andk Jij A e .
+Theorem 7. Let A 3~ Ý| $aP C  S5 be a hypothesis space family where each }| is of the form
+Ý| $  V b· ̧1=d ̧N|2 ̧K d¶f $d  d= C  =
+where M |  ON | 2  N | 2=  isaneural networkwith U weightsmapping from  ¢ to  = . Ifthe
+feature weights P and the output weights d ¶3 d  d = are bounded, the squashing function V is
+Lipschitz, U is squared loss, and the output space "  ä £ ¤6å (any bounded subset of  will do), then
+there exist constants  =y (independent of il U and J ) such that for all i . £ ,
+ÄÆ k JijA cb ¿ Â J K¤ÍP}K U ÄÆ i (41)
+ÄÆ k JijA e ¿ ÂU ÄÆ iRy (42)
+(recall that we have specialized to squared loss here).
+Proof. See Appendix B.
+Noting that our neural network hypothesis space family A is permissible, plugging (41) and (42)
+into Theorem 2 gives the following theorem.
+Theorem 8. Let A   |  be a hypothesis space family where each hypothesis space | is a
+set of squashed linear maps composed with a neural network feature map, as above. Suppose the
+number of features is J , and the total number of feature weights is W. Assume all feature weights and
+output weights are bounded, and the squashing function V is Lipschitz. Let \ be an  P]^_ -sample
+generated from the environment  Y Z  . If
+P F Ã i¤> ÀU ÄÆ i¤ K ÄÆ 1⁄4¤=ËRÊ (43)
+and
+^! F Ã i¤> ÀÃ J K¤ K UP Ê ÄÆ i¤ K P¤ ÄÆ 1⁄4¤ËRÊ (44)
+then with probability at least ¤:1⁄4 any | C A will satisfy
+)*[ }| ¿ )W*`}| 9K il (45)
+169
+
+
+BAXTER
+3.3.3 DISCUSSION
+1. Keeping the accuracy and confidence parameters i and 1⁄4 fixed, the upper bound on the number
+of examples required of each task behaves like F  J K U NPQ . If the learner is simply learning
+P
+fixed tasks (rather than learning to learn), then the same upper bound also applies (recall Theorem 4).
+2. Note that if we do away with the feature map altogether then U £ and the upper bound on
+^
+becomes F  J  , independent of P (apart from the less important 1⁄4 term). So in terms of the
+upper bound, learning P tasks becomes just as hard as learning one task. At the other extreme,
+if we fix the output weights then effectively J ¦£ and the number of examples required of
+each task decreases as F  U NPQ . Thus a range of behavior in the number of examples required
+of each task is possible: from no improvement at all to an F ×¤NPQ decrease as the number of
+tasks P increases (recall the discussion at the end of Section 2.6).
+3. Once the feature map is learnt (which can be achieved using the techniques outlined in Baxter, 1995b; Baxter & Bartlett, 1998; Baxter, 1995a, chapter 4), only the output weights have to be estimated to learn a novel task. Again keeping the accuracy parameters fixed, this requires no
+more that F  J  examples. Thus, as the number of tasks learnt increases, the upper bound on
+the number of examples required of each task decays to the minimum possible, F  J  .
+4. If the “small number of strong features” assumption is correct, then J will be small. However,
+typically we will have very little idea of what the features are, so to be confident that the neural network is capable of implementing a good feature set it will need to be very large, implying
+UJ . F  J K U NPQ decreasesmostrapidlywithincreasingP when UJ ,soatleastin
+terms of the upper bound on the number of examples required per task, learning small feature sets is an ideal application for bias learning. However, the upper bound on the number of
+tasks does not fare so well as it scales as F  U  .
+3.3.4 COMPARISON WITH TRADITIONAL MULTIPLE-CLASS CLASSIFICATION
+A special case of this multi-task framework is one in which the marginal distribution on the input
+space   ̧ ~¬ is the same for each task ÿ ¤3P , and all that varies between tasks is the conditional
+distribution over the output space " . An example would be a multi-class problem such as face
+recognition, in which " Sl¤3P; where P is the number of faces to be recognized and the
+marginal distribution on  is simply the “natural” distribution over images of those faces. In that
+case, if for every example   ̧ 4 we have—in addition to the sample   ̧ 4 from the ÿ th task’s conditional
+distribution on " —samples from the remaining P: ¤ conditional distributions on " , then we can
+view the P training sets containing ^ examples each as one large training set for the multi-class
+problem with ^TP examples altogether. The bound on ^ in Theorem 8 states that ^TP should be
+F  P J K U  , or proportional to the total number of parameters in the network, a result we would
+expect from6 (Haussler, 1992). So when specialized to the traditional multiple-class, single task framework, Theorem 8 is consistent with the bounds already known. However, as we have already argued, problems such as face recognition are not really single-task, multiple-class problems. They are more appropriately viewed
+6. If each example can be classified with a “large margin” then naive parameter counting can be improved upon (Bartlett, 1998).
+170
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+as a (potentially infinite) collection of distinct binary classification problems. In that case, the goal
+of bias learning is not to find a single P -output network that can classify some subset of P faces
+well. It is to learn a set of features that can reliably be used as a fixed preprocessing for distinguishing any single face from other faces. This is the new thing provided by Theorem 8: it tells us that
+provided we have trained our P -output neural network on sufficiently many examples of sufficiently
+many tasks, we can be confident that the common feature map learnt for those P tasks will be good
+for learning any new, as yet unseen task, provided the new task is drawn from the same distribution
+that generated the training tasks. In addition, learning the new task only requires estimating the J
+output node parameters for that task, a vastly easier problem than estimating the parameters of the entire network, from both a sample and computational complexity perspective. Also, since we have high confidence that the learnt features will be good for learning novel tasks drawn from the same environment, those features are themselves a candidate for further study to learn more about the nature of the environment. The same claim could not be made if the features had been learnt on too small a set of tasks to guarantee generalization to novel tasks, for then it is likely that the features would implement idiosyncrasies specific to those tasks, rather than “invariances” that apply across all tasks.
+When viewed from a bias (or feature) learning perspective, rather than a traditional P -class
+classification perspective, the bound ^ on the number of examples required of each task takes on
+a somewhat different meaning. It tells us that provided P is large (i.e., we are collecting examples
+of a large number tasks), then we really only need to collect a few more examples than we would
+otherwise have to collect if the feature map was already known (J K U NP examples vs. J examples).
+So it tells us that the burden imposed by feature learning can be made negligibly small, at least when viewed from the perspective of the sampling burden required of each task.
+3.4 Learning Multiple Tasks with Boolean Feature Maps
+Ignoring the accuracy and confidence parameters i and 1⁄4 , Theorem 8 shows that the number of
+examples required of each task when learning P tasks with a common neural-network feature map
+is bounded above by F  J K U NPQ , where J is the number of features and U is the number of
+adjustable parameters in the feature map. Since F  J  examples are required to learn a single task
+once the true features are known, this shows that the upper bound on the number of examples
+required of each task decays (in order) to the minimum possible as the number of tasks P increases.
+This suggests that learning multiple tasks is advantageous, but to be truly convincing we need to
+prove a lower bound of the same form. Proving lower bounds in a real-valued setting ("   )
+is complicated by the fact that a single example can convey an infinite amount of information, so
+one typically has to make extra assumptions, such as that the targets  C " are corrupted by a
+noise process. Rather than concern ourselves with such complications, in this section we restrict
+our attention to Boolean hypothesis space families (meaning each hypothesis # C A maps to
+"   ¤ andwemeasureerrorbydiscretelossU# 9R®þ¤ if# ±}§- andU# 9Rõ¦£
+otherwise).
+We show that the sample complexity for learning P tasks with a Boolean hypothesis space family
+A
+is controlled by a “VC dimension” type parameter f=  PQ (that is, we give nearly matching upper
+and lower bounds involving f   PQ ). We then derive bounds on f   PQ for the hypothesis space
+family considered in the previous section with the Lipschitz sigmoid function V replaced by a hard
+threshold (linear threshold networks).
+171
+
+
+BAXTER
+As well as the bound on the number of examples required per task for good generalization across
+those tasks, Theorem 8 also shows that features performing well on F  U  tasks will generalize well
+to novel tasks, where U is the number of parameters in the feature map. Given that for many feature
+learning problems U is likely to be quite large (recall Note 4 in Section 3.3.3), it would be useful
+to know that F  U  tasks are in fact necessary without further restrictions on the environmental
+distributions Z generating the tasks. Unfortunately, we have not yet been able to show such a lower
+bound. There is some empirical evidence suggesting that in practice the upper bound on the number of tasks may be very weak. For example, in Baxter and Bartlett (1998) we reported experiments in which a set of neural network features learnt on a subset of only 400 Japanese characters turned out to be good enough for classifying some 2600 unseen characters, even though the features contained several hundred thousand parameters. Similar results may be found in Intrator and Edelman (1996) and in the experiments reported in Thrun (1996) and Thrun and Pratt (1997, chapter 8). While this gap between experiment and theory may be just another example of the looseness inherent in general bounds, it may also be that the analysis can be tightened. In particular, the bound on the
+number of tasks is insensitive to the size of the class of output functions (the class p in Section 3.1),
+which may be where the looseness has arisen.
+3.4.1 UPPER AND LOWER BOUNDS FOR LEARNING  TASKS WITH BOOLEAN HYPOTHESIS
+SPACE FAMILIES
+First we recall some concepts from the theory of Boolean function learning. Let be a class of
+Booleanfunctionson andT©     C   . ~0 isthesetofallbinaryvectorsobtainable
+byapplyingfunctionsin to ~:0 $B#   #    $ ̈# CT j
+Clearly ü ~0 ü ¿ Â  . If ü ~0 ü  Â  we say shatters  . The growth function of is defined by
+  ^_ $ L
+0ó¬/ ~0
+The Vapnik-Chervonenkis dimension    is the size of the largest set shattered by :
+=   $ ^ $ ^_ Â j
+An important result in the theory of learning Boolean functions is Sauer’s Lemma (Sauer, 1972), of which we will also make use.
+Lemma 9 (Sauer’s Lemma). For a Boolean function class with   Å f ,
+  ^_¿ · ̧1¢¶ Ã^ÿÊ ¿Çf^¢
+for all positive integers ^ .
+We now generalize these concepts to learning P tasks with a Boolean hypothesis space family.
+172
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Definition 5. Let A be a Boolean hypothesis space family. Denote the P ^ matrices over the
+input space  by  . c 2 5 . For each  C  . c 2 5 and ¡C A , define ~ to be the set of (binary)
+matrices, _~ $   #    #  ô 
+... . . . ...
+#=cc   #Rcc t $z#  #c CT 
+Define A ~}$  ́ó  ~ 
+NowforeachP . £^ . £ ,define  P]^_ by
+ P]^_ $ L
+ó¬ûA ~
+Notethat  P]^_%¿ Â c  .If A ~   Â c  wesayA shattersthematrix .ForeachP . £ let
+f PQ $ ^ $  P]^_ Âc j
+Define f A  $  = A  and
+fA  $ 
+ ó =  
+Lemma10. f  A  f  A 
+f PQ  ¥¢¡fA 
+P £ fA # Â¤ Ã ¡fA 
+P £K fAÊ
+Proof. The first inequality is trivial from the definitions. To get the second term in the maximum
+in the second inequality, choose an C A with =  a f  A  and construct a matrix
+ C  . c 2 5 whose rows are of length f  A  and are shattered by . Then clearly A shatters  . For
+the firstterm inthe maximum take asequence T©   ¢ .  5  shattered by A (the hypothesis
+space consisting of the union over all hypothesis spaces from A ), and distribute its elements equally
+among the rows of  (throw away any leftovers). The set of matrices
+  #O  #ô®
+... . . . ...
+#c   #c ¤t $# C A  
+where^ ¦¥f  A NP § isasubsetofA ~ andhassizeÂ c  .
+Lemma11.  P]^_¿ À Ç ^
+f= PQËc¢? ̈.c5
+173
+
+
+BAXTER
+Proof. Observe that for each P ,   P]^_     P9^_ where is the collection of all Boolean
+functions on sequences   c  obtained by first choosing P functions #  #Rc from some
+C A , and then applying # to the first ^ examples, # > to the second ^ examples and so on. By
+thedefinition of f   PQ , =  Å P f   PQ ,hencetheresult follows fromLemma9appliedto
+.
+If one follows the proof of Theorem 4 (in particular the proof of Theorem 18 in Appendix
+A) then it is clear that for all © . £ , k  A cb ai3 may be replaced by   P] Â ^_ in the Boolean
+case. Making this replacement in Theorem 18, and using the choices of d Ea from the discussion
+following Theorem 26, we obtain the following bound on the probability of large deviation between empirical and true performance in this Boolean setting.
+Theorem12. Let n      c  be P probability distributions on o  ¤ and let \ be an
+ P]^_ -samplegeneratedbysampling^ timesfrom  ¤ accordingtoeach   ̧ . Let A B 
+be any permissible Boolean hypothesis space family. For all £% © ¿ ¤ ,
+0 * \ $¬«=d C A c $ )*g d  )W*a`d  K ij¿ È P]Â^_) ×: ©>P9^_NÈ (46)
+Corollary 13. Under the conditions of Theorem 12, if the number of examples ^ of each task
+satisfies
+^! i> ÀÂf  PQÄÆ ÂiÂ K P¤ ÄÆ È1⁄4Ë (47)
+then with probability at least ¤:1⁄4 (over the choice of \ ), any d C A c will satisfy
+)*g d %¿ )W*a`d  K i (48)
+Proof. Applying Theorem 12, we require
+È  P]Â^_) ×: ©>P9^_NÈ¿ 1⁄4
+which is satisfied if
+^! ©È> Àf PQÄÆãÂÇ^
+f  PQ K P¤ ÄÆ È1⁄4 Ë (49)
+where we have used Lemma 11. Now, for all ImM¤ , if
+^  Ã ¤ K Ç¤Ê I ÄÆ Ã ¤ÅK Ç¤Ê I
+then^!1⁄2I ÄÆ ^ .SosettingIL  È f  PQNi > ,(49)issatisfiedif
+^! i> ÀÂf PQÄÆ ÂiÂ K P¤ ÄÆ È1⁄4Ë 
+174
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Corollary 13 shows that any algorithm learning P tasks using the hypothesis space family A
+requires no more than
+^  F Ã i¤> Àf= PQÄÆ i¤ K P¤ ÄÆ 1⁄4¤ËRÊ (50)
+examples of each task to ensure that with high probability the average true error of any P hypotheses
+it selects from A c is within i of their average empirical error on the sample \ . We now give a
+theorem showing that if the learning algorithm is required to produce P hypotheses whose average
+true error is within i of the best possible error (achievable using A c ) for an arbitrary sequence of
+distributions    c , then within a Ä Æ  factor the number of examples in equation (50) is also
+necessary.
+For any sequence n      c  of P probability distributions on   ¤ , define
+=g A c by g A c $ ðRñ
+ó û )*g d 
+Theorem 14. Let A be a Boolean hypothesis space family such that A contains at least two
+functions. For each P3¤3 Â  let V c be any learning algorithm taking as input  P]^_ -samples
+\ C (  ¤ .c 2 5 andproducingasoutputP hypotheses d S#  #=c  C A c . Forall
+£%1⁄2i%M¤NÈ and£% 1⁄4¤%M¤NÈ,if
+^!% i¤> Àf PQ
+¤ KM×¤:»i>P¤ ÄÆ Ã ¤
+1⁄4°×¤ : Â1⁄43ÊË
+then there exist distributions n      c  such that with probability at least 1⁄4 (over the
+randomchoiceof\ ), )*g V c J\° . =g A c  K i
+Proof. See Appendix C
+3.4.2 LINEAR THRESHOLD NETWORKS
+Theorems 13 and 14 show that within constants and a Ä Æ ×¤Ni3 factor, the sample complexity of
+learning P tasks using the Boolean hypothesis space family A is controlled by the complexity pa
+rameter f   PQ . In this section we derive bounds on f   PQ for hypothesis space families constructed
+as thresholded linear combinations of Boolean feature maps. Specifically, we assume A is of the
+form given by (39), (38), (37) and (36), where now the squashing function V is replaced with a hard
+threshold: V± $  ¤ if® £R
+:É¤ otherwise
+and we don’t restrict the range of the feature and output layer weights. Note that in this case the
+proof of Theorem 8 does not carry through because the constants  Ry in Theorem 7 depend on the
+Lipschitz bound on V .
+Theorem 15. Let A be a hypothesis space family of the form given in (39), (38), (37) and (36), with
+a hard threshold sigmoid function V . Recall that the parameters f , U and J are the input dimension,
+number of hidden nodes in the feature map and number of features (output nodes in the feature map)
+175
+
+
+BAXTER
+respectively. Let U $  U  f Kâ¤]K J  U Kâ¤ (the number of adjustable parameters in the feature
+map).Then, f  PQ ¿ Â Ã UP K J K¤Ê ÄÆ > ÂÇ J K U K¤z
+Proof. Recall that for each P C TS , M | $  ¢ &( = denotes the feature map with parameters P .
+Foreach  C  .c 2 5 ,let M | ~ denotethematrix
+ M | 6  M | ôõ
+... . . . ...
+M | c   M | c t
+Note that A ~  is the set of all binary P ^ matrices obtainable by composing thresholded linear
+functions with the elements of M | ~  , with the restriction that the same function must be applied to
+each element in a row (but the functions may differ between rows). With a slight abuse of notation,
+define ° ̄ P]^_ $ 
+ó¬ û~M|~$aP C S 
+Fix  C  . c 2  5 . By Sauer’s Lemma, each node in the first hidden layer of the feature map computes
+at most  Ç ^TPQN f K¤ ¢ functions on the P9^ input vectors in  . Thus, there can be at most
+ Ç ^TPQN f K¤ b . ¢ 5 distinct functions from the input to the output of the first hidden layer on
+the P9^ points in  . Fixing the first hidden layer parameters, each node in the second layer of the
+featuremapcomputesatmost  Ç ^TPQN U K¤ b  functionsonthe imageof  producedatthe output
+of the first hidden layer. Thus the second hidden layer computes no more than  Ç ^TPQN U K¤ = . b  5
+functions on the output of the first hidden layer on the P9^ points in  . So, in total,
+° ̄ P]^_ ¿ Ã Ç^TP
+f K¤RÊ b.¢ 5 Ã Ç^TP
+UK¤Ê =.b 5
+Now, for each possible matrix M | ~  , the number of functions computable on each row of M | ~  by a
+thresholded linear combination ofthe output of thefeature map isatmost  Ç ^_N J K¤ =  . Hence,
+the number of binary sign assignments obtainable by applying linear threshold functions to all the
+rowsisatmostÇ ^_NJ K ¤ c .=  5.Thus,
+  P]^_¿ Ã Ç^TP
+f K¤Ê b.¢ 5 Ã Ç^TP
+UK¤Ê =.b 5 Ã Ç^TP
+PÅJ K¤Ê c.= 5
+q ± $ ÄÆ  isaconvexfunction,henceforallIG± . £ ,
+q Ã JIÉK UGKY±
+J K UK¤ Ê ¿ ¤
+J K UK¤ JRq JIK Uq HGK q 2±
+3 Ã J K UK¤
+JIõK UG]Kc±Ê = ́b¶μ ̧· Ã I¤Ê =} ́ Ã G¤Ê b1μ Ã ±¤Ê ·
+SubstitutingI  U K¤ ,G f K¤ and± PÅJ K¤ showsthat
+ P]^_¿ Ã Ç^TPÅJ K UK¤
+U K PÅJ K¤ Ê S  c.= 5 (51)
+176
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Hence, if
+^ . Ã UP K J K ¤Ê ÄÆ> Ã Ç^TPÅJ K UK ¤
+U K PÅJ K¤ Ê (52)
+then P]^_o% Â c  andsobydefinitionf  PQ¿^ . ForallI . ¤ ,observethat . I ÄÆ > 
+ifT Â I ÄÆ > Â I .SettingT Ç^TPÅJ K U K¤NU K PÅJ K¤ andI  Ç J K U K¤ showsthat
+(52)issatisfiedif^  Â U NP}K J K¤ ÄÆ > ÂÇ J K U K¤.
+Theorem 16. Let A be as in Theorem 15 with the following extra restrictions: f Á , U J and
+J ¿ f.Then f  PQ Â¤ Ã ¡ÂUP £ K J K¤Ê
+Proof. We bound f  A  and f  A  and then apply Lemma 10. In the present setting A contains all
+three-layer linear-threshold networks with f input nodes, U hidden nodes in the first hidden layer, J
+hidden nodes in the second hidden layer and one output node. From Theorem 13 in Bartlett (1993),
+wehave = A  flU K UJ :1⁄2¤
+Â K¤3
+which under the restrictions stated above is greater than U N Â . Hence f  A  U N Â .
+As J ¿ f and U J we can choose a feature weight assignment so that the feature map is the
+identity on J components of the input vector and insensitive to the setting of the reminaing f : J
+components. Hence we can generate J Ká¤ points in  whose image under the feature map is
+shattered by the linear threshold output node, and so f  A ] J K¤ .
+Combining Theorem 15 with Corrolary 13 shows that
+^! F Ã i¤> ÀÃ UP K J K¤Ê ÄÆ i¤ K P¤ ÄÆ 1⁄4¤ËÊ
+examples of each task suffice when learning P tasks using a linear threshold hypothesis space family,
+while combining Theorem 16 with Theorem 14 shows that if
+^ ¿1⁄4» Ã i¤> ÀÃ UP K J K ¤Ê K P¤ ÄÆ 1⁄4¤ËÊ
+then any learning algorithm will fail on some set of P tasks.
+4. Conclusion
+The problem of inductive bias is one that has broad significance in machine learning. In this paper we have introduced a formal model of inductive bias learning that applies when the learner is able to sample from multiple related tasks. We proved that provided certain covering numbers computed from the set of all hypothesis spaces available to the bias learner are finite, any hypothesis space that contains good solutions to sufficiently many training tasks is likely to contain good solutions to novel tasks drawn from the same environment.
+In the specific case of learning a set of features, we showed that the number of examples ^
+required of each task in an P -task training set obeys ^ F  J K U NPQ , where J is the number of
+177
+
+
+BAXTER
+features and U is a measure of the complexity of the feature class. We showed that this bound is
+essentially tight for Boolean feature maps constructed from linear threshold networks. In addition, we proved that the number of tasks required to ensure good performance from the features on novel
+tasks is no more than F  U  . We also showed how a good set of features may be found by gradient
+descent. The model of this paper represents a first step towards a formal model of hierarchical approaches to learning. By modelling a learner’s uncertainty concerning its environment in probabilistic terms, we have shown how learning can occur simultaneously at both the base level—learn the tasks at hand—and at the meta-level—learn bias that can be transferred to novel tasks. From a technical perspective, it is the assumption that tasks are distributed probabilstically that allows the performance guarantees to be proved. From a practical perspective, there are many problem domains that can be viewed as probabilistically distributed sets of related tasks. For example, speech recognition may be decomposed along many different axes: words, speakers, accents, etc. Face recognition represents a potentially infinite domain of related tasks. Medical diagnosis and prognosis problems using the same pathology tests are yet another example. All of these domains should benefit from being tackled with a bias learning approach. Natural avenues for further enquiry include:
+E
+Alternative constructions for A . Although widely applicable, the specific example on feature
+learning via gradient descent represents just one possible way of generating and searching
+the hypothesis space family A . It would be interesting to investigate alternative methods,
+including decision tree approaches, approaches from Inductive Logic Programming (Khan et al., 1998), and whether more general learning techniques such as boosting can be applied in a bias learning setting.
+E
+Algorithms for automatically determining the hypothesis space family A . In our model the
+structure of A is fixed apriori and represents the hyper-bias of the bias learner. It would
+be interesting to see to what extent this structure can also be learnt.
+E
+Algorithms for automatically determining task relatedness. In ordinary learning there is usually little doubt whether an individual example belongs to the same learning task or not. The analogous question in bias learning is whether an individual learning task belongs to a given set of related tasks, which in contrast to ordinary learning, does not always have such a clear-cut answer. For most of the examples we have discussed here, such as speech and face recognition, the task-relatedness is not in question, but in other cases such as medical problems it is not so clear. Grouping too large a subset of tasks together as related tasks could clearly have a detrimental impact on bias-learning or multi-task learning, and there is emprical evidence to support this (Caruana, 1997). Thus, algorithms for automatically determining task-relatedness are a potentially useful avenue for further research. In this context, see Silver and Mercer (1996), Thrun and O’Sullivan (1996). Note that the question of task relatedness
+is clearly only meaningful relative to a particular hypothesis space family A (for example, all
+possible collections of tasks are related if A contains every possible hypothesis space).
+E
+Extended hierarchies. For an extension of our two-level approach to arbitrarily deep hierarchies, see Langford (1999). An interesting further question is to what extent the hierarchy can be inferred from data. This is somewhat related to the question of automatic induction of structure in graphical models.
+178
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Acknowledgements
+This work was supported at various times by an Australian Postgraduate Award, a Shell Australia Postgraduate Fellowship, U.K Engineering and Physical Sciences Research Council grants K70366 and K70373, and an Australian Postdoctoral Fellowship. Along the way, many people have contributed helpful comments and suggestions for improvement including Martin Anthony, Peter Bartlett, Rich Caruana, John Langford, Stuart Russell, John Shawe-Taylor, Sebastian Thrun and several anonymous referees.
+Appendix A. Uniform Convergence Results
+Theorem 2 provides a bound (uniform over all 1⁄2¿3⁄4ÁÀ ) on the probability of large deviation between
+Â?ÃÄ1Å 1⁄2 Æ and Â?ÇÃÈpÅ 1⁄2 Æ . To obtain a more general result, we follow Haussler (1992) and introduce the
+following parameterized class of metrics on ÉAÊ :
+Ë"ÌÍÎÐÏ_Ñ"ÒeÓ1Ô ÕÎmÖ×ÑÕ
+ÎØ8ÑÙØcÚ Ï
+where ÚÜÛÞÝ . Our main theorem will be a uniform bound on the probability of large values of
+Ë"Ì1ÍÂ?ÃÄ1Å1⁄2 ÆÏÂ?ÃÈpÅ1⁄2 ÆÒ,ratherthanÕÂ?ÃÄ1Å1⁄2 Æ Ö Â?ÇÃEÈ"Å1⁄2ßÆ Õ.Theorem2willthenfollowasacorollary,as
+will better boundsfor the realizable case Â?ÇÃEÈ"Å 1⁄2ßÆ ÔDÝ (Appendix A.3).
+Lemma 17. The following three properties of ËpÌ are easily established:
+1. For all à ÏEáÙâ1⁄4Ý , ÝãËpÌÍà ÏEáäÒÐãæå
+2.ForallÝnã à ã1⁄4áãèç,Ë"Ì1ÍàÏEá?ÒÐã1⁄4Ë"Ì1ÍàÏ_çéÒandË"Ì Íêá^Ï_çéÒãËpÌ ÍàÏ_çéÒ.
+3.ForÝLã àÏEá¤ãæå,ëì}íïîë
+ÌÊ ̧ð ãË"ÌÍàÏEá?ÒÐã ëìíïîë
+Ì
+For ease of exposition we have up until now been dealing explicitly with hypothesis spaces 1⁄2
+containingfunctionsñ ÓQò!óô ,andthenconstructinglossfunctionsñQõ mappingò÷ö ô3óøÍÝjÏäå}Ò
+byñQõÅÎÐÏ_Ñ Æ Ó1ÔùÅñ ÅÎ ÆÏ_Ñ Æ forsomelossfunctionùÓúôÁöAô3óûÍÝjÏäå}Ò.However,ingeneralwecanview
+ñQõ just as a function from an abstract set ü (ò+ö®ô ) to ÍÝjÏäå}Ò and ignore its particular construction
+in terms of the loss function ù . So for the remainder of this section, unless otherwise stated, all
+hypothesis spaces 1⁄2 will be sets of functions mapping ü to Í ÝjÏäå}Ò . It will also be considerably more
+convenient to transpose our notation for ÅCý Ï_þ Æ -samples, writing the ý training sets as columns
+insteadofrows: ÿ Ô   
+... . . . ...
+  
+where each 3⁄41⁄4ü . Recalling the definition of Å ò÷öô Æ  (Equation 9 and prior discussion),
+with this transposition ÿ lives in Å ò ößô Æ    . The following definition now generalizes quantities
+likeÂ?ÇÃ È Å1⁄2 Æ,Â?Ã Å1⁄2ßÆ andsoontothisnewsetting.
+Definition6. Let 1⁄2  Ï  Ï 1⁄2  be ý sets of functions mapping ü into ÍÝjÏäå}Ò. For any ñ  3⁄4
+1⁄2 ÏÏñ  3⁄4ß1⁄2  ,letñ  ñ  orsimply denotethemap
+ÅÆÔ åý ñ Å Æ
+179
+
+
+BAXTER
+forall  Ô Å  Ï  Ï  Æ 3⁄4Üü  . Let1⁄2 !"# 1⁄2  denotethesetofallsuchfunctions. Given
+53⁄4 1⁄2 $%& 1⁄2  andþ elementsofÅò ö ô Æ ,Å Ï Ï  Æ (orequivalentlyanelementÿ of
+Å ò ö ô Æ    bywritingthe  asrows),define
+Â?ÇÃÈ"ÅÆÓ1Ô þå 'ÅÆ
+(recall equation (8)). Similarly, for any product probability measure ( Ô*)  ö  ö+)  on
+Åò ö ô Æ,define Â?Ã ÅÆ Ó1Ô-,#.0/ ÅÆË( ÅÆ
+(recallequation(26)).Forany Ï 21 Ó Åò ö ô Æ óûÍÝjÏäå}Ò (notnecessarilyoftheformñ 345 ñ  ),
+define Ë ÅÏ1ÆÓ1Ô%,./ ÕÅÆÖ 1ÅÆÕË( ÅÆ
+(recallequation(17)). Forany classof functions 1⁄2 mapping Å ò÷öô Æ  to ÍÝjÏäå}Ò , define
+6 Å57Ï1⁄2 ÆÓ1Ô98;:=<?> Å@7Ï1⁄2 ÏËÆ
+wherethesupremumisoverallproductprobabilitymeasureson Å ò ö ô Æ  and> Å7 Ï 1⁄2 ÏË  Æ isthe
+size of the smallest 7 -cover of 1⁄2 under Ë  (recall Definition 4).
+The following theorem is the main result from which the rest of the uniform convergence results in this paper are derived.
+Theorem18. Let1⁄2BAè1⁄2  C 1⁄2  beapermissibleclassoffunctionsmapping Åò÷ößô Æ  into
+ÍÝjÏäå}Ò. Letÿ 3⁄4 Åò÷ö ô Æ    begeneratedbyþâEDF Å@G ð Ú Æ independenttrialsfromÅò ö ô Æ
+accordingtosomeproductprobabilitymeasure( Ô9)  ö  öH)  .ForallÚßÛ1⁄4Ý ,ÝJI G Iæå ,
+KÃMLÿ 3⁄4 Åò ößô ÆÓN8;:O#<ËpÌÍÂ?ÇÃÈÅ'ÆÏÂ?ÃÅ'ÆÒÐÛ GQPã+R6Å@GÚSTÏ1⁄2 ÆÂVU<ÅÖGðÚýþWTÆ (53)
+The following immediate corollary will also be of use later.
+Corollary 19. Under the same conditions as Theorem 18, if
+þ!âYX[ZU]\ GðTÚýH^_&`R6bacdÌÏ1⁄2fe
+g ÏGDðÚih Ï (54)
+then KÃLÿ 3⁄4 Åò÷ö ô Æ Ój8;:O#< ËpÌÍÂ?ÇÃÈ"Å'ÆÏÂ?Ã Å'ÆÒ'Û G P ã g (55)
+A.1 Proof of Theorem 18
+The proof is via a double symmetrization argument of the kind given in chapter 2 of Pollard (1984). I have also borrowed some ideas from the proof of Theorem 3 in Haussler (1992).
+180
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+A.1.1 FIRST SYMMETRIZATION
+Anextrapieceofnotation: forallÿ 3⁄4 Å ò÷öô Æ ð    ,letÿ Å å Æ bethetophalfofÿ andÿ Å D Æ bethe
+bottomhalf,viz: ÿ Åå Æ Ô   
+... . . . ...
+k  ÿÅDÆÔ Êl  Ê
+... . . . ...
+ðl  ð
+The following lemma is the first “symmetrization trick.” We relate the probability of large deviation between an empirical estimate of the loss and the true loss to the probability of large deviation between two independent empirical estimates of the loss.
+Lemma20. Let 1⁄2 be a permissible set of functions from Å ò÷ö ô Æ  into ÍÝjÏäå}Ò and let ) be a
+probabilitymeasureonÅò÷öô Æ .ForallÚ ÛÝjÏÝmI G Iæå andþ!â cFðnÌ ,
+KÃLÿ 3⁄4 Åò ößô ÆÓN8;:O#<ËpÌÍÂ?ÇÃÈÅñïÆÏÂ?Ãpo1Åñ¬ÆÒ'Û GP
+ãYDKÃLÿ 3⁄4®ü ðÓN8;:O#<ËpÌrqÂ?ÇÃÈ Åñ¬ÆÏÂ?ÇÃÈðÅñ¬Æts Û GD P  (56)
+Proof. Note first that permissibility of 1⁄2 guarantees the measurability of suprema over 1⁄2
+(Lemma 32 part 5). By the triangle inequality for ËpÌ , if Ë"Ì qÂ?ÇÃ È  ÅñïÆ Ï Â?Ãuo1ÅñïÆs Û G and
+Ë"Ì]qÂ?ÇÃÈ ðÅñïÆÏÂ?ÃVo ÅñïÆts I GD,thenË"ÌrqÂ?ÇÃÈ ÅñïÆÏÂ?ÇÃÈ ðÅñïÆts Û GD.Thus,
+KÃ&vÿ 3⁄4 Åò÷öô ÆðÓxwñ3⁄4ß1⁄2 ÓQË"Ì qÂ?ÇÃÈÅñïÆÏÂ?ÇÃÈðÅñïÆsÛ GDzy
+â KÃvÿ 3⁄4 Åò÷ö ô ÆðÓ0wñ3⁄4¢1⁄2 Ó"Ë"Ì qÂ?ÇÃÈÅñïÆÏÂ?Ãuo1ÅñïÆs Û G and
+Ë"Ì qÂ?ÇÃÈðÅñïÆÏÂ?Ãuo1ÅñïÆs I GDy (57)
+By Chebyshev’s inequality, for any fixed ñ ,
+KÃvÿ 3⁄4 Åò ö ô ÆÓQËÌÍÂ?ÇÃÈÅñïÆÏÂ?ÃoÅñïÆÒ{I GDy
+â KÃLÿ 3⁄4 Åò ö ô ÆÓÕÂ?ÇÃÈ"ÅñïÆÖ Â?Ão1ÅñïÆÕ
+Ú I GDP
+âæåÖ Â?ÃoÅñïÆÅårÖ Â?ÃoÅñïÆ_Æ
+þÚ G ð |R
+â Då
+asþâ-DF Å@G ð Ú Æ andÂ?Ão1Å ñ¬Æ ã å . Substitutingthislastexpressionintotherighthandsideof(57)
+gives the result.
+181
+
+
+BAXTER
+A.1.2 SECOND SYMMETRIZATION
+The second symmetrization trick bounds the probability of large deviation between two empirical estimates of the loss (i.e. the right hand side of (56)) by computing the probability of large deviation when elements are randomly permuted between the first and second sample. The following definition introduces the appropriate permutation group for this purpose.
+Definition 7. For all integers þ×Ï ý â å , let } ð    denote the set of all permutations ~ of the
+sequenceofpairsofintegers Åå>ÏäåÆÏÏÅå>Ïý ÆÏÏÅDþ×ÏäåÆÏÏÅDþ×Ïý Æ suchthatforall,å&ã
+ ãþ ,either~ ÅÏÆ Ô Åþ Ø ÏÆand~ ÅþØ ÏÆ Ô ÅÏÆor~ ÅÏÆ Ô ÅÏÆand~ ÅþØ ÏÆ Ô
+Åþ Ø ÏÆ.
+Foranyÿ 3⁄4 Åò÷öô Æ ð  andany~×3⁄4H} ð ,let
+ÿF Ó1Ô  l   
+... . . . ...
+ðl  ð
+Lemma21. Let 1⁄2 Ô 1⁄2 " 1⁄2  be a permissible set of functions mapping Å ò ö ô Æ  into
+ÍÝjÏäå}Ò (asinthestatementofTheorem18).Fixÿ 3⁄4 Åò÷ößô Æ ð   andlet1⁄2Ç Ó1Ô  ÏÏ3W be
+anG ÚST-coverforÅ1⁄2 ÏËÈÆ,whereË ÈpÅ Ï 1Æ Ó1Ô ð+ ð'  Õ Å Æ Ö  1Å ÆÕwherethe aretherows
+of ÿ . Then,
+KÃL~×3⁄4H} ðÓj8:O#<Ë"Ì]qÂ?ÇÃÈ; ÅÆÏÂ?ÇÃÈ;ðÅ'ÆtsÛ GDP
+ã 'KÃv~ 3⁄4H} ðÓQËÌ qÂ?ÇÃÈ Å ÆÏÂ?ÇÃÈ ðÅ Æts Û GR y Ï (58)
+where each ~×3⁄4H} ð    ischosenuniformlyatrandom.
+Proof.Fix~1⁄43⁄4} ð  andlet3⁄481⁄2 besuchthatËpÌqÂ?ÇÃÈ; Å'ÆÏÂ?ÇÃÈ; ðÅÆts Û G D (ifthereis
+nosuch  forany ~ wearealreadydone). Choose¤3⁄4 1⁄2 Ç suchthatË È Å  Ï >Æ ã G ÚST . Withoutloss
+ofgeneralitywecanassume isoftheform Ô  3   .Now,
+ÚDËÈÅÏ>ÆÔ  ð' uñ Å ÆÖ Å Æ
+Újþ ý
+Ô  ð' uñ Å ÆÖ Å Æ
+Újþ ý
+â  ' pqñ Å ÆÖ Å Æs
+Újþ ý Ø  ' uqñ Å ÆØ Å Æs
+Ø  ð'Ê pqñ Å ÆÖ Å Æts
+Úaþ ý Ø  ð'Ê uqñ Å ÆØ Å Æts
+ÔË"Ì qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈ ÅÆsØcËpÌ qÂ?ÇÃÈðÅÆÏÂ?ÇÃÈðÅÆs
+182
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Hence, by the triangle inequality for ËpÌ ,
+ÚDËÈÅÏ>ÆØËÌ qÂ?ÇÃÈ Å>ÆÏÂ?ÇÃÈðÅÆsâËÌ qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈ ÅÆs
+ØcËÌ qÂ?ÇÃÈðÅ'ÆÏÂ?ÇÃÈðÅÆtsØcËÌ qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈðÅÆts
+âËpÌ qÂ?ÇÃÈ; Å'ÆÏÂ?ÇÃÈ; ðÅÆs (59)
+ButÌð Ë ÈpÅ Ï>Æ ã G |R byconstructionandË"Ì]qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈ ðÅÆts Û G D byassumption,so
+(59)impliesË"Ì qÂ?ÇÃÈ Å>ÆÏÂ?ÇÃÈ ðÅ>Æs Û G |R.Thus,
+v~×3⁄4H} ðÓxw 3⁄4¢1⁄2 ÓúË"ÌrqÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈðÅ'ÆtsÛ GDy
+A v~×3⁄4H} ðÓxwÙ3⁄4 1⁄2ÇÓïË"Ì qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈðÅÆsÆÛ GRy Ï
+which gives (58).
+Now we bound the probability of each term in the right hand side of (58).
+Lemma22. Let  Ó Å ò÷öô Æ  ó ÍÝjÏäå}Ò be any function that can be written in the form  Ô
+{3 .Foranyÿ 3⁄4 Åò ö ô Æ ð ,
+KÃMv~ 3⁄4b} ðÓQË"Ì]qÂ?ÇÃÈ Å>ÆÏÂ?ÇÃÈðÅ>ÆtsÛ GRy ãYDÂVU<ÖGðÚjþ ý
+T  Ï (60)
+where each ~×3⁄4H} ð    ischosenuniformlyatrandom.
+Proof. Forany~ 3⁄4f} ð  ,
+ËÌ qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈðÅÆtsÔ   pq Å ÆÖ ÅÊ Æts
+Újþ ý Ø  ð u Å Æ  (61)
+To simplify the notation denote  Å Æ by  . For each pair  , åYã  ã þ , åYãDã ý , let
+ô l be an independent random variable such that ô Ô  Ö   Ê  with probability åD and
+ô l Ô   Ê  Ö  withprobabilityåD .From(61),
+KÃMv~×3⁄4H} ðÓïË"Ì qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈðÅÆsÛ GRy
+Ô KÃl~ 3⁄4H} ðÓ 'pq Å ÆÖ ÅÊ ÆtsÛ GR¡¢Úaþ ý Ø ð'p£¤Y¥§l¦
+Ô KÃ'uô GR¡¢Újþ ý Ø ðu £¤+¥§¦
+For zero-mean independent random variables ô  Ï  Ïô0 ̈ with bounded ranges © ã ô ã«a , Ho
+effding’s inequality (Devroye, Gyo ̈rfi, & Lugosi, 1996) is
+KÃ\ ' ̈ô â¬h ãYDÂVU<®'Ö D3¬ð
+  ̈Åa Ö © Æð# ̄ 
+183
+
+
+BAXTER
+Notingthattherangeofeachô isÍÖ Õ Ö  Ê   Æ ÕÏ Õ Ö  Ê   Æ ÕÒ,wehave
+KÃl'pô Û GR°¢Újþ ý Ø ðu£¤+¥§¦ ãYDÂVU< ±¢Ö Gð32Újþ ý Ø  ð uV ́ð
+μD  pÅ Ö  ÊÆð£¤¶
+Let· Ô  ð p  .AsÝã  ãæå,   u Å Ö  Ê Æð ã ·.Hence,
+DÂVU< ±¢Ö Gð2Újþ ý Ø  ð' ul ́ð
+μD ' uÅlÖ  ÊÆð£¤¶ãYDÂVU< Ö GðÅÚjþ ý Ø ·eÆð
+μD· 
+ÅÚjþ ý Ø ·eÆ ð  · isminimizedbysetting· ÔDÚjþ ý givingavalueofR"Újþ ý .Hence
+KÃv~ 3⁄4f} ðÓúËÌ qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈðÅÆtsÛ GRy ãYDÂVU< ÖGðÚaþ ý
+T Ï
+as required.
+A.1.3 PUTTING IT TOGETHER
+Forfixedÿ 3⁄4 Å ò ö ô Æ ð   ,Lemmas21and22give:
+KÃL~×3⁄4H} ðÓj8:O#<Ë"Ì]qÂ?ÇÃÈ; ÅÆÏÂ?ÇÃÈ;ðÅ'ÆtsÛ GDP
+ãYD> Å@GÚSTÏ1⁄2 ÏËÈÆ_ÆÂVU<WeÖ GðÚjþ ý
+T 
+Note that Ë È is simply Ë  where ( Ô Å )  Ï  Ï;)  Æ and each ) is the empirical distribution that
+putspointmassåGþ oneach  Ï¤Ô å>Ï  ÏDþ (recallDefinition3).Hence,
+KÃL~×3⁄4H} ðÏÿ 3⁄4 Åò öô ÆðÓN8;:O=<Ë"Ì qÂ?ÇÃÈ ÅÆÏÂ?ÇÃÈðÅÆsÛ GDP
+ãYD6 Å@GÚSTÏ1⁄2 ÆÂVU<WeÖ GðÚjþ ý
+T 
+Now, for a random choice of ÿ , each in ÿ is independently (but not identically) distributed and ~
+only ever swaps and Ê   (so that ~ swaps a drawn according to ) with another component
+drawn according to the same distribution). Thus we can integrate out with respect to the choice of
+~
+and write
+KÃLÿ 3⁄4 Åò ößô ÆðÓj8;:O#<ËpÌ qÂ?ÇÃÈÅÆÏÂ?ÇÃÈðÅÆsÛ GDP
+ãYD6 Å@GÚSTÏ1⁄2 ÆÂVU<WeÖ GðÚjþ ý
+T 
+Applying Lemma 20 to this expression gives Theorem 18.
+184
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+A.2 Proof of Theorem 2
+Another piece of notation is required for the proof. For any hypothesis space 1⁄2 and any probability
+measures( Ô Å) ÏÏ;)  Æ onü ,let
+Â?ÇÃÅ1⁄2 ÆÓ1Ô ýå '] ̧'1=o
+»&1⁄4O Â?Ão&1⁄2Åñ¬Æ
+Note that we have used Â?ÇÃ  Å 1⁄2 Æ rather than Â?Ã  Å 1⁄2ßÆ to indicate that Â?ÇÃ  Å 1⁄2ßÆ is another empirical
+estimateofÂ?ÃÄ1Å1⁄2 Æ.
+With the ÅCý Ï_þ Æ -sampling process, in addition to the sample ÿ there is also generated a se
+quence of probability measures, ( Ô Å )  Ï  Ï;)  Æ although these are not supplied to the learner.
+ThisnotionisusedinthefollowingLemma,whereK Ã  Åÿ Ï (Æ3⁄4 Åò ößô Æ 3⁄4! öÀ¿  ÓxÁ  means
+“the probability of generating a sequence of measures ( from the environment Å ¿nÏpÂ Æ and then an
+ÅCý Ï_þ Æ -sample ÿ according to ( such that A holds”.
+Lemma23.K ÃIfL ÅÿÏ(Æ13⁄4 Åò ö ô Æ3⁄4! öf¿  ÓN8:Ã#< Ë"Ì1ÍÂ?ÇÃÈ"Å1⁄2 ÆÏÂ?ÇÃ Å1⁄2 ÆÒÐÛ GD P ã DgÏ (62)
+and KÃL( 3⁄4 ¿ ÓÄ8;:Ã#< Ë"Ì ÍÂ?ÇÃ Å1⁄2 ÆÏÂ?Ã}Ä1Å1⁄2 ÆÒÛ GD P ã DgÏ (63)
+then KÃLÿ 3⁄4 Åò ö ô Æ3⁄4!ÓÄ8;:Ã#< Ë"Ì1ÍÂ?ÇÃÈpÅ1⁄2 ÆÏÂ?ÃÄ1Å1⁄2 ÆÒÐÛ GP ã g
+Proof. Follows directly from the triangle inequality for Ë Ì .
+We treat the two inequalities in Lemma 23 separately.
+A.2.1 INEQUALITY (62)
+In the following Lemma we replace the supremum over 1⁄2¿3⁄4ÁÀ in inequality (62) with a supremum
+over83⁄4ÁÀ  .
+Lemma 24.
+KÃMLÅÿÏ(Æ3⁄4 Åò÷öô Æöf¿Ój8;:Ã#<ËpÌÍÂ?ÇÃÈ"Å1⁄2ßÆÏÂ?ÇÃÅ1⁄2ßÆÒÐÛ GQP
+ã KÃ\ ÅÿÏ(Æ3⁄4 Åò÷öô Æöf¿ ÓN8;Ã:#/Å<ËpÌÍÂ?ÇÃEÈpÅ'ÆÏÂ?ÃÅ'ÆÒÛ Gh (64)
+185
+
+
+BAXTER
+Proof. Supposethat Åÿ Ï(Æ aresuchthat8;:#< Ã ËpÌ ÍÂ?ÇÃEÈ"Å1⁄2ßÆÏÂ?ÇÃ Å1⁄2ßÆÒnÛ G . Let1⁄2 satisfythisin
+equality. SupposefirstthatÂ?ÇÃÈ"Å1⁄2ßÆ ã Â?ÇÃ  Å1⁄2ßÆ. BythedefinitionofÂ?ÇÃÈ"Å1⁄2ßÆ,forall7 Û Ý there
+exists53⁄4 1⁄2  Ó1Ô 1⁄2 -& 1⁄2 suchthatÂ?ÇÃÈ"ÅÆ I Â?ÇÃEÈ"Å1⁄2ßÆ Ø 7.Hencebyproperty(3)oftheË"Ì
+metric,forall7 Û Ý ,thereexistsæ3⁄4Y1⁄2  suchthatË"Ì ÍÂ?ÇÃÈ"ÅÆ ÏÂ?ÇÃEÈ"Å1⁄2 ÆÒjI 7 . Pickanarbitrary
+satisfyingthisinequality. Bydefinition,Â?ÇÃ Å1⁄2 Æ ã Â?Ã ÅÆ,andsoÂ?ÇÃEÈ"Å1⁄2ßÆ ã Â?ÇÃ Å1⁄2ßÆ ã Â?Ã Å'Æ.
+AsË Ì ÍÂ?ÇÃ È Å1⁄2ßÆ Ï Â?ÇÃu Å1⁄2ßÆ ÒÛ G (byassumption),bythecompatibilityofË Ì withtheorderingonthe
+reals,ËpÌ1ÍÂ?ÇÃÈ"Å1⁄2ßÆÏÂ?Ã Å'ÆÒ'Û G Ô G Ø g ,say.BythetriangleinequalityforËpÌ ,
+ËpÌ1ÍÂ?ÇÃÈpÅÆÏÂ?ÃÅ'ÆÒQØcË"ÌÍÂ?ÇÃÈpÅÆÏÂ?ÇÃEÈ"Å1⁄2 ÆÒÐâËpÌ1ÍÂ?ÇÃÈ"Å1⁄2ßÆÏÂ?ÃÅ'ÆÒÔ G Ø g
+ThusËpÌ1ÍÂ?ÇÃÈ"Å'Æ ÏÂ?Ã  Å'ÆÒ¤Û G Ø g Ö 7 andforany7 Û Ý an satisfyingthisinequalitycanbe
+found.Choosing7 Ô g showsthatthereexists 3⁄4 1⁄2  suchthatË"Ì1ÍÂ?ÇÃÈ"ÅÆ ÏÂ?Ã  ÅÆÒ'Û G .
+If instead, Â?ÇÃ  Å 1⁄2ßÆ I Â?ÇÃÈ"Å 1⁄2 Æ , then an identical argument can be run with the role of ÿ and (
+interchanged. Thus in both cases,
+8:Ã#<Ë"Ì1ÍÂ?ÇÃÈpÅ1⁄2 ÆÏÂ?ÇÃÅ1⁄2 ÆÒÐÛ G®Æ w83⁄4ÁÀ õÓQËpÌ1ÍÂ?ÇÃÈ"Å'ÆÏÂ?ÃÅ'ÆÒÛ GÏ
+which completes the proof of the Lemma.
+By the nature of the ÅCý Ï_þ Æ sampling process,
+KÃ\°ÅÿÏ(Æ3⁄4 Åò öô ÆöÇ¿8;Ã:#/Å<ÓúËpÌÍÂ?ÇÃÈ"Å'ÆÏÂ?ÃÅ'ÆÒ'Û Gh
+Ô 1⁄4,3È/KÃ\ÿ 3⁄4 Åò÷öô ÆÓj8;Ã:=/Å<ËÌÍÂ?ÇÃÈÅÆÏÂ?ÃpÅÆÒÐÛ Gh ËÉÂ Å(Æ (65)
+NowÀ õ AYÊ Ë Ê whereÊ Ó1Ô GñQõÓ ñ3⁄4¢1⁄2 Ó 1⁄2¿3⁄4ÁÀH andÀ õ ispermissiblebytheassumed
+permissibility of À (Lemma 32, Appendix D). Hence À õ satisfies the conditions of Corollary 19
+and so combining Lemma 24, Equation (65) and substituting G D for G and g D for g in Corollary
+19 gives the following Lemma on the sample size required to ensure (62) holds.
+Lemma25. If þ!â+X[Z U L μ D
+GðÚýf^_&` T6Å@GÚSåÌÏÀ õÆ
+g ÏGTðÚP
+then KÃLÅÿÏ(Æ3⁄4 Åò öô Æöf¿ Ój8;:Ã#< ËpÌÍÂ?ÇÃÈ"Å1⁄2ßÆÏÂ?ÇÃÅ1⁄2ßÆÒÐÛ GD P ã Dg
+A.2.2 INEQUALITY (63)
+NotethatÂ?Ã Å1⁄2 Æ Ô   '  1⁄2ÇÍÅ) Æ andÂ?ÃÄ Å1⁄2 Æ ÔÏÎ oÑÐ Ä 1⁄2ÇÍÅ) Æ,i.etheexpectationof1⁄2fÍÅ) Æ
+where ) is distributed according to Â . So to bound the left-hand-side of (63) we can apply Corollary
+19with ý Ô å , þ replacedbyý ,1⁄2 replacedby À4Í , G and g replacedby G D and g D respectively,
+)
+replaced by Â and ü replaced by ¿ . Note that À Í is permissible whenever À is (Lemma 32).
+Thus,if ý â+X[ZU L GμðDÚ ^_&` T6Å@GÚSåÌÏÀ4Í?Æ
+g ÏG TðÚ P (66)
+186
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+then inequality (63) is satisfied. Now, putting together Lemma 23, Lemma 25 and Equation 66, we have proved the following more general version of Theorem 2.
+Theorem 26. Let À be a permissible hypothesis space family and let ÿ be an ÅCý Ï_þ Æ -sample gen
+eratedfromtheenvironment Å¿nÏpÂ Æ .ForallÝ[I G Ï g Iæå andÚßÛÝ ,if
+ý âYX[ZU LGμðDÚ ^_&` T6Å@GÚSåÌÏÀ ÍÆ
+g ÏGTðÚP
+and þ!âYX[ZU L μD
+GðÚý ^_&` T6Å@GÚ0åÌÏÀ õÆ
+g ÏGTðÚP Ï
+then KÃLÿ 3⁄4 Åò÷ö ô Æ3⁄4!Ój8;:Ã#<ËpÌ1ÍÂ?ÇÃÈ"Å1⁄2ßÆÏÂ?ÃÄ1Å1⁄2ßÆÒ'Û GP ã g
+TogetTheorem2,observethatÂ?ÃÄ Å1⁄2ßÆ Û Â?ÇÃÈÅ1⁄2ßÆ Ø 7mÆ ËÌ ÍÂ?ÇÃÈÅ1⁄2 ÆÏÂ?ÃÄ Å1⁄2 ÆÒ1Û 7ÅD{Ø5Ú Æ.
+SettingG Ô 7  ÅDØÚ Æ andmaximizingG ð Ú givesÚ ÔÒD . SubstitutingG Ô 7 |R andÚ ÔED into
+Theorem 26 gives Theorem 2.
+A.3 The Realizable Case
+In Theorem 2 the sample complexity for both þ and ý scales as å 7 ð . This can be improved to
+å7 ifinsteadofrequiringÂ?ÃÄÅ1⁄2 Æ ã Â?ÇÃÈ"Å1⁄2 Æ Ø 7,werequireonlythatÂ?ÃÄ Å1⁄2 Æ ãÓ Â?ÇÃEÈpÅ1⁄2ßÆ Ø 7
+forsomeÓ1⁄4Û å.Toseethis,observethatÂ?ÃÄ Å1⁄2ßÆ Û Â?ÇÃÈÅ1⁄2 ÆÅåØ G Æ ÅåÖ G Æ Ø G ÚS Åå Ö G Æ Æ
+Ë"Ì1ÍÂ?ÇÃÈ"Å1⁄2 ÆÏÂ?Ã}Ä1Å1⁄2 ÆÒÛ G ,sosettingG Ú0 ÅåoÖ G Æ Ô 7 inTheorem26andtreatingG asaconstant
+gives:
+Corollary 27. Under the same conditions as Theorem 26, for all 7 ÛÝ and ÝJI G Ï g Iæå , if
+ý âX[ZU L μD
+G$ÅåÖ GÆ7^_&` T6Å_ÅåÖ GÆ7åÌÏÀÔÍäÆ
+g ÏT
+GÅåÖ GÆ7P
+and þ âX[ZU L μD
+G$ÅåÖ GÆ7ý ^_&` T6Å_ÅåÖ GÆ7åÌÏÀ õÆ
+g ÏT
+G$ÅåÖ GÆ7P Ï
+then KÃLÿ 3⁄4 Åò÷ö ô Æ3⁄4!ÓN8;:Ã#<Â?ÃÄ1Å1⁄2 Æâ å$Ø G
+åÖ GÂ?ÇÃÈpÅ1⁄2 ÆØ 7P ã g
+Theseboundsareparticularlyusefulifweknowthat Â?ÇÃÈpÅ 1⁄2 Æ ÔÜÝ ,forthenwecanset G Ô åD
+(whichmaximizesGÅ å Ö G Æ ).
+Appendix B. Proof of Theorem 6
+Recalling Definition 6, for À of the form given in (32), À õ can be written
+À õ Ô ÕÖ 3 ÕzÖrÓÕÏÏÕ 3⁄4b×¬õand 3⁄4ÇØÇ
+To write À õ as a composition of two function classes note that if for each oÓúò ó Ù we define
+ÚrÓÅò ö ô Æ ó ÅÙ ö ô Æ by
+ÚÅÎÏ_ÑÏÏ_ÎÏ_ÑÆÓ1Ô ÅÅÎÆÏ_ÑÏÏÅÎÆÏ_ÑÆ
+187
+
+
+BAXTER
+thenÕÖ  bt ÕiÖ ßÔ Õ ÕzÖ Ú.Thus,setting×õ Ó1Ô ×¬õb ×ïõandØ Ó1Ô ÚoÓ0 3⁄4
+ØÇ, À õ Ô ×õ Ö Ø  (67)
+The following two Lemmas will enable us to bound 6 Å57 Ï À õ Æ .
+Lemma28.Let1⁄2 Óïò÷ö ô÷ó ÍÝjÏäå}Ò beoftheform1⁄2 Ô ×¬õ Ö Ø whereò ö ô Ö¶óÛ Ù ö ô ÖOÜóÅ
+ÍÝjÏäå}Ò.Forall7Ï7ð ÛÝ, 6Å57Ø 7ðÏ1⁄2ßÆ ã 6ÜÅÅ57ÏØLÆ6Å57ðÏ×¬õ:Æ
+Proof. Fix a measure ) on ò ö ô and let Ý be a minimum size 7  -cover for Å Ø ÏË=Þo Ü ÅßÆ . By
+definitionÕÝ Õ ã 6 Ü ÅÅ57  ÏØmÆ.Foreach 3⁄4bÝ let)$à bethemeasureonÙ ö ô definedby)$à Åá Æ Ô
+) Å  í  Åá Æ_Æ foranyset á inthe ~ -algebraon Ù ö×ô ( ismeasurableso  í  Åá Æ ismeasurable).
+Let â à be a minimumsize 7 ð -cover for Å×ïõÏË oFã Æ. By definitionagain, Õâ à Õ ã 6 Å57 ð Ï ×ïõ2Æ. Let
+ä Ó1Ô Õ Ö oÓå 3⁄49Ý andÕ1⁄43⁄4â à.NotethatÕä Õ ã 6 ÜÅÅ57ÏØmÆ6 Å57ðÏ×¬õCÆ sotheLemmawillbe
+proved if ä can be shown to be an 7  Ø 7 ð -cover for Å 1⁄2 ÏË o Æ . So, given any Õ Ö  3⁄41⁄41⁄2 choose
+ 1 ̧3⁄4HÝ suchthatË ÞoÜÅßÅ¬Ï 1Æ ã 7 andÕ3⁄41 ̧3⁄4Àâ àVæsuchthatËoãæÅÕ ÏÕ3⁄41CÆ ã 7ð.Now,
+Ë o1ÅÕ Ö ÐÏÕ 1 Ö  1Æ ãË o ÅÕ Ö 'ÏÕ Ö  1Æ ØYË o ÅÕ Ö  1ÏÕ 1 Ö  1Æ
+ãË Þo Ü Åçß Å ¬Ï 1Æ ØcË o ã æEÅÕ Ï Õ 1Æ
+ã7Ø7ð
+where the first line follows from the triangle inequality for Ë o and the second line follows from
+thefacts:Ëo1ÅÕ Ö 1ÏÕ1Ö 1Æ Ô÷ËoFãjÅÕÏÕ3⁄41:Æ andËo1ÅÕ Ö 'ÏÕ Ö 1Æ ã!ËÞoÜÅßÅ¬Ï1Æ. Thusä isan
+7  Ø 7 ð -coverfor Å 1⁄2 ÏË o Æ andsotheresultfollows.
+Recalling the definition of 1⁄2 { 1⁄2  (Definition 6), we have the following Lemma.
+Lemma29. 6 Å57Ï1⁄2 M3 1⁄2 Æ ã è6 Å57Ï1⁄2 Æ
+Proof. Fixaproductprobabilitymeasure( Ô)  ö  ö)  on Åò÷ö ô Æ . Letä  Ï  Ïä  be
+7
+-coversofÅ1⁄2 ÏËoéÆÏÅ1⁄2 ÏËo/Æ.andletä Ô ä  % ä .Givenñ Ô ñ % ñ 3⁄4
+1⁄2 {& 1⁄2 ,chooseÕ93 Õ 3⁄4 ä suchthatËo&1⁄2Åñ ÏÕ Æ ã 7 foreach Ô å>ÏÏý .Now,
+ËÅñ ñÏÕ93 ÕÆÔ ýå ,./'ñ Å ÆÖ 'Õ Å ÆË( Å ÏÏ Æ
+ã ýå 'Ëo&1⁄2EÅñ ÏÕ Æ
+ã7
+Thusä isan7 -coverfor1⁄2 93 1⁄2  andasÕä Õ Ô-ê '  Õä Õ theresultfollows.
+188
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+B.1 Bounding6 Å@7 ÏÀÇëìjÆ
+FromLemma28, 6 a7 Ø 7ðÏ×¬õ Ö Ø e ã 6 Å@7Ï×ïõÆ 6ÜÅ/ a7ðÏØ e (68)
+andfromLemma29, 6 Å@7 Ï×¬õ Æ ã 6 Å57 Ï×¬õ:Æ  (69)
+Using similar techniques to those used to prove Lemmas 28 and 29, 6 Ü Å / Å57 Ï Ø¢Æ can be shown to
+satisfy 6ÜÅ/ Å57ðÏØ Æ ã 6ÜÅÅ7ðÏØmÆ  (70)
+Equations (67), (68), (69) and (70) together imply inequality (34).
+B.2 BoundingíîïSð^ÀÇñò
+We wish to prove that 6 Å57 Ï ÀÔÍäÆ ã 6 Ü Å Å@7 Ï ØmÆ when À is a hypothesis space family of the form
+À Ô |×¬õ Ö Óx 3⁄4fØ4 .Notethateach1⁄2fÍo3⁄4/ÀÔÍ correspondstosome×¬õ Ö  ,andthat
+1⁄2 ÍÅ) ÆÔ  ̧'1#o
+ó 1⁄4 Ü Å Â?Ão1ÅÕ Ö  Æ 
+Any probability measure Â on ¿ induces a probability measure Âiôõö on ò ößô , defined by
+ÂzôzõöÅáÆÔ-,È ) ÅáÆËÉÂ Å) Æ
+for any á in the ~ -algebra on ò ößô . Note also that if ñ Ï ñ 1 are bounded, positive functions on an
+arbitrarysetÁ ,then   ̧÷1#o
+ø1⁄43ùñÅ©jÆÖ  ̧÷1#o
+ø 1⁄43ù ñ 1Å©aÆ  ã+8:#<
+ø1⁄43ù ñÅ©aÆÖ ñ1Å©aÆ (71)
+Let Â be any probability measure on the space ¿ of probability measures on ò ö ô . Let 1⁄2fÍ Ï 1⁄2ÇðÍ
+be twoelements of À Í with corresponding hypothesisspaces ×¬õ Ö   Ï ×¬õ Ö  ð . Then,
+ËÄ1Å1⁄2 ÍÏ1⁄2 ðÍÆÔ-,È  ̧'1=o
+ó1⁄4ÜÅÂ?Ão1ÅÕÖÆÖ  ̧'1#o
+ó1⁄4ÜÅÂ?Ão1ÅÕÖðÆËÉÂ Å) Æ
+ã,È 8;:#<
+ó1⁄4ÜÅÕÂ?Ão1ÅÕ Ö Æ Ö Â?Ão1ÅÕ Ö ðÆÕËÉÂ Å) Æ (by(71)above)
+ã ,È ,ôõö 8:#<
+ó1⁄4ÜÅÕÕÖÅÎÐÏ_ÑÆÖ ÕÖðÅÎÏ_ÑÆÕË3⁄4) ÅÎÏ_ÑÆËÂ Å) Æ
+ÔË ÞÄûúýüþ Ü Åçß Å   Ï ð Æ 
+The measurability of 8;:#< Ü Å Õ Ö  is guaranteed by the permissibility of À (Lemma 32 part 4, Ap
+pendixD).FromËÄ1Å1⁄2ÇÍÏ1⁄2fðÍÆ ãË ÞÄ úMü|þ ÜÅßÅÏðÆ wehave,
+> Å57ÏÀ ÍÏËÄÆã > a7ÏØ ÏË=ÞÄúMü|þÜÅßeÏ (72)
+which gives inequality (35).
+189
+
+
+BAXTER
+B.3 Proof of Theorem 7
+In order to prove the bounds in Theorem 7 we have to apply Theorem 6 to the neural network hypothesis space family of equation (39). In this case the structure is
+Éýÿ ÖwóÛ É ̈ ÖóÜûÍÝjÏäå}Ò
+where× Ô ÅÎ ÏÏ_Î0 ̈Æó ~   ̈' G Î Ø G Ó Å@GÏG ÏÏG  ̈Æ 3⁄43 forsomebounded
+subset  of É  ̈ Ê  and some Lipschitz squashing function ~ . The feature class Ø Ó É ÿ ó É  ̈
+is the set of all one hidden layer neural networks with Ë inputs, ù hidden nodes, outputs, ~ as
+the squashing function and weights 3⁄4 where is a bounded subset of É . The Lipschitz
+restriction on ~ and the bounded restrictions on the weights ensure that Ø and × are Lipschitz
+classes. HencethereexistsabI suchthatforall 3⁄4Ø andÎÏ_Î 1 3⁄4É ÿ ,   ÅÎ Æ Ö ÅÎ 1Æ I
+aÎmÖ/Î 1 andforallÕm3⁄4W× andÎÏ_Î 1 3⁄4 É  ̈,ÕÕ ÅÎ Æ Ö Õ ÅÎ 1ÆÕ IYaÎmÖ/Î 1 where   isthe  norm
+in each case. The loss function is squared loss.
+Now,ÕõÅÎÐÏ_Ñ Æ ÔæùÅÕ ÅÎ ÆÏ_Ñ Æ Ô ÅÕ ÅÎ Æ Ö Ñ Æð,henceforallÕ ÏÕ1Ð3⁄4× andallprobabilitymeasures
+)
+onÉ  ̈ ö ÍÝjÏäå}Ò (recallthatweassumedtheoutputspaceô was ÍÝjÏäå}Ò),
+ËoÅÕ>õÏÕõ1ÆÔ-,õÞlßÅÕÅÆÖ×ÑÆðÖ ÅÕ1ÅÆÖ×ÑÆðË) ÅÏ_ÑÆ
+ãYDý, ÕÅÆÖ Õ1ÅÆË3⁄4)ÅÆÏ (73)
+where )   is the marginal distribution on É  ̈ derived from ) . Similarly, for all ¬Ï 1 3⁄4-Ø and
+probabilitymeasures) onÉ ÿ ö ÍÝjÏäå}Ò,
+ËÞoÜÅßÅ¬Ï1ÆãYD&aå,ÅÎÆÖ1ÅÎÆË)ÅÎÆ (74)
+Define 6 a7Ï×Ï e Ó1Ô98;:o#<> a7Ï×Ï Å) ÆeÏ
+where the supremum is over all probability measures on (the Borel subsets of) É  ̈ , and
+> a 7 Ï × Ï   Å ) Æ e isthesizeofthesmallest 7 -cover of × underthe   Å ) Æ metric. Similarlyset,
+6 a7ÏØ ÏeÓ1Ô98;:o#<> a7ÏØ ÏÅ) ÆeÏ
+where now the supremum is over all probability measures on É ÿ . Equations (73) and (74) imply
+6Å57Ï×¬õ2Æ ã 6 7DÏ× Ï  (75)
+6ÜÅÅ@7ÏØmÆ ã 6 D7&aÏØ Ï  (76)
+Applying Theorem 11 from Haussler (1992), we find
+6 D7Ï×ïõÏ ãD7a!ð ̈Ê ̧ð
+6 D7&aÏØ Ï ãD7að ð" 
+Substituting these two expressions into (75) and (76) and applying Theorem 6 yields Theorem 7.
+190
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Appendix C. Proof of Theorem 14
+This proof follows a similar argument to the one presented in Anthony and Bartlett (1999) for ordinary Boolean function learning. First we need a technical Lemma.
+Lemma30. Let G bearandomvariableuniformlydistributed on  åDÙØ  D ÏäåDnÖ  D  , with
+ÝÇI  I å .Let#  Ï  Ï#  bei.i.d. å>ÏäÖÙå  -valuedrandomvariableswithK ÃGÅ# Ô å Æ Ô G forall
+
+.Foranyfunction mappingå>ÏäÖ{å ó åDoØ  D ÏäåDÖ  D,
+KÃ#ÏÏ# Ó0Å#ÏÏ# Æ%Ô$ G Û Rå'&åÖ'( å1Ö)í+*-,n
+é/.,n10 
+Proof. Letä Å #"Æ denotethenumberofoccurencesofØ&å intherandomsequence# Ô Å #  Ï  Ï #  Æ .
+The function  can be viewed as a decision rule, i.e. based on the observations # ,  tries to guess
+whethertheprobabilityof Ø&å is åDoØ  D or åDÙÖ  D . TheoptimaldecisionruleistheBayes
+estimator: Å#ÏÏ# Æ Ô åDØ  D ifä Å#"Æ âèþWD,and Å#ÏÏ# Æ Ô åD$Ö  D otherwise.
+Hence, KÃÅÅ#^Æ2Ô$ GÆ â Då KÃ ä Å#^Æ â þD G Ô Då Ö D
+Ø DåKÃä Å#"ÆI þD G Ô Då Ø Dý
+Û DåKÃä Å#^Æâ þD G Ô Då Ö D
+which is half the probability that a binomial Å þ×ÏäåD&Ö  D Æ random variable is at least þWD . By
+Slud’sinequality(Slud,197K7)Ã,ÐÅ Å#"Æ3Ô$ G Æ Û Då K Ã ü â þ  ð
+åÖ ð ̄
+where ü is normal Å ÝjÏäå Æ . Tate’s inequality (Tate, 1953) states that for all Î®âÝ ,
+KÃÅü âèÎÆâ Då 2åÖ'4 å1Ö)í65n ́
+Combining the last two inequalities completes the proof.
+Let7 3⁄4 ò 3⁄4! beshatteredby À ,withþ÷Ô Ë Ã ÅCý Æ . Foreachrow in7 let¿ bethesetof
+allD ÿ distributions) onò+ö 98 å  suchthat) ÅÎÐÏäå Æ Ô«) ÅÎÐÏÝ Æ Ô3Ý ifÎ isnotcontainedinthe
+
+throwof7 ,andforeachÁÔ å>ÏÏËÃ ÅCý Æ,) ÅÎ ÏäåÆ Ô Åå 8'ÆÅD>ËÃ ÅCý Æ_Æ and) ÅÎ ÏäÖÙåÆ Ô
+Åå;: ÆÅD>ËÃ ÅCýÆ_Æ.Let¿3Ó1Ô¿  ö öf¿.
+Notethatfor( Ô Å)  Ï  Ï;)  Æ13⁄4 ¿ ,theoptimalerror_ <<  Å À  Æ isachievedbyanysequence
+ Í Ô ÅñÍÏÏñÍÆ suchthatñÍÅÎ Æ ÔÞå ifandonlyif) ÅÎ ÏäåÆ Ô Åå Ø ÆÅD>ËÃ ÅCý Æ_Æ,andÀ 
+always contains such a sequence because À shatters 7 . The optimal error is then
+_<6<ÅÀ ÆÔ Â?ÃÅÍÆÔ ýå ') GñÍÅÎÆ3Ô$5ÑÔ ýå 'ÿ= 
+u å1Ö 
+D>ËÃÅCýÆ Ô å1ÖD Ï
+191
+
+
+BAXTER
+andforany Ô Åñ ÏÏñ Æ 3⁄4ÁÀ ,
+Â?ÃpÅ'ÆÔ _<6<ÅÀ ÆØ 
+ýËÃ ÅCýÆ ÕÅÏÆÓñ ÅÎ Æ3Ô$ ñÍÅÎ ÆÕ (77)
+For any ÅCý Ï_þ Æ -sample ÿ , let each element þ in the array
+>5ÅÿÆÓ1Ô þ   þ ÿ?= 
+... . . . ...
+þ   þ ÿ= 
+equal the number of occurrences of Î in ÿ .
+Now, if we select ( Ô Å)  Ï  Ï;)  Æ uniformly at random from ¿ , and generate an ÅCý Ï_þ Æ 
+sample ÿ using ( , then for  ÔA@  Å ÿ Æ (the output of the learning algorithm) we have:
+Î ÅÕÅÏÆÓñ ÅÎ Æ2Ô$ ñÍÅÎlÆÕÆÔ CB ) Å/> ÆÎ ÅÕÅÏÆÓñ ÅÎ Æ2Ô$ ñÍÅÎlÆÕaÕ> Æ
+Ô B ) Å/> Æ'ÿ= 
+u ) ÅñÅÎ Æ2Ô$ ñÍÅÎ ÆÕþ lÆ
+where ) Å/> Æ is theprobabilityofgenerating aconfiguration > of the Î underthe ÅCý Ï_þ Æ -sampling
+process and the sum is over all possible configurations. From Lemma 30,
+) ÅñÅÎlÆ2Ô$ ñÍÅÎ ÆÕþ ÆÛ RåEDFå1Ö'G åÖ)í*1⁄2H,n
+é/.,nIJ Ï
+hence
+Î å
+ýËÃÅCýÆÕÅÏÆÓñ ÅÎ Æ3Ô$ ñÍÅÎ ÆÕ Û å
+ýËÃÅCýÆB ) Å/> Æ'ÿ?= 
+p Rå DFå1Ö G åÖ)í*1⁄2H,n
+é/. , n IJ
+â Rå'&å Ö ( å1Ö)í *-,n
+=K/MLKé/.,nL0 (78)
+byJensen’sinequality. Sinceforany ÍÝjÏäå}Ò-valuedrandomvariable ü ,K ÃGÅ ü Û1⁄4Î Æ âYÎ ü Ö Î ,(78)
+implies: K Ã  å
+ýËÃÅCýÆÕÅÏÆÓñ ÅÎlÆ3Ô$ ñÍÅÎ ÆÕÛ ·G Û ÅåÖ ·ÆG
+where G Ó1Ô RåN&å Ö ( å Ö)í *-,n
+= K/OLKé/.,nL0 (79)
+and·Á3⁄4 ÍÝjÏäå}Ò. Pluggingthisinto(77)showsthat
+KÃÅ( ÏÿÆÓÂ?ÃÅ@ ÅÿÆ_ÆÛ _<6<ÅÀ ÆØ ·GM Û ÅåÖ ·ÆG
+192
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Since the inequality holds over the random choice of ( , it must also hold for some specific choice
+of ( . Hence for any learning algorithm @  there is some sequence of distributions ( such that
+KÃÿÓÂ?ÃÅ@ ÅÿÆ_ÆÛ _<<ÅÀ ÆØ ·GM Û ÅåÖ ·eÆG
+Setting Åå Ö ·eÆG â gÏ and · G  â 7 Ï (80)
+ensures K Ãÿ Ó Â?Ã Å@ ÅÿÆ_Æ Û _<6< ÅÀ Æ Ø 7 Û g (81)
+Assumingequalityin(80),wegetG Ô åÖg · Ï  Ô g7 å Ö· · 
+Solving (79) for þ , and substituting the above expressions for G and  shows that (81) is satisfied
+provided þ!ãËÃ ÅCýÆ & 7g ð  å1Ö· ·  ð Öå0 ^_&` Åå Ö ·eÆð
+Tg ÅåÖ · ÖDgÆ (82)
+Setting· Ô å Ö © g forsome© Û«R (© Û¡R sinceG IÞå|R andG Ô g  ÅåÙÖ · Æ),andassuming
+7 Ïg ãÜå ÅÉ©jÆ forsome ÛYD ,(82)becomes
+þ!ã ËÃÅCýÆ
+©ð å1Ö D ^'_&` ©ð
+TÅ© ÖDÆ (83)
+Subject to the constraint © ÛÒR , the right hand side of (83) is approximately maximized at © Ô
+T QPSR Ì&Ì ,atwhichpointthevalueexceedsË Ã ÅCý ÆÅå°ÖCDF QÆ ÅD&D>Ý 7 ð^Æ.Thus,forall â å,if7 Ïg ã
+åR and þ!ã ËÃ ÅCýÆaå Ö  ̈ðe
+D&D>Ý7ð Ï (84)
+then KÃÿÓ Â?Ã Å@ ÅÿÆ_Æ Û _<6< ÅÀ ÆØ 7 Û g
+To obtain the g -dependence in Theorem 14 observe that by assumption À  contains at least two
+functionsñ  Ï ñ ð ,hencethereexistsanÎ 3⁄4 ò suchthatñ  Å Î Æ3Ô$ ñ ð Å Î Æ . Let)UT betwodistributions
+concentratedonÅÎÐÏäåÆ andÅÎÐÏäÖ{åÆ suchthat) T ÅÎÏñ ÅÎ Æ_Æ Ô Åå 8 7ÆD and) T ÅÎÏñ ðÅÎ Æ_Æ Ô
+Åå;: 7ÆD.Let(Ê Ó1Ô9) Ê ö  öb) Ê and( í Ó1Ô-) í ö  öH) í betheproductdistributionson
+Åò ö 98 åÆ generatedby)VT ,and  Ó1Ô Åñ ÏÏñ ÆÏ ð Ó1Ô Åñ ðÏÏñ ðÆ.Notethat  and ð
+are both in À  . If ( is one of ( T and the learning algorithm @  chooses the wrong hypothesis  ,
+then Â?Ã Å'ÆÖ _<6< ÅÀ Æ Ô 7
+193
+
+
+BAXTER
+Now, if we choose ( uniformly at random from (ÙÊ Ï ( í  and generate an ÅCý Ï_þ Æ -sample ÿ ac
+cording to ( , Lemma 30 shows that
+KÃÅ( ÏÿÆÓ Â?ÃÅ@ ÅÿÆ_Æâ _<<ÅÀ ÆØ 7 Û RåN&å1Ö ( åÖ)/*XWn
+é/.Wn0 Ï
+whichisatleastg if þ I åÖ 7 ð
+7ð ýåf^_&` å
+TgÅårÖDgÆ (85)
+provided ÝJI g Iæå|R . Combining the two constraints on þ : (84) (with Ô P ) and (85), and using
+X[ZU Î Ï_Î ð â ð ÅÎ  ØcÎ ðÆ finishestheproof.
+Appendix D. Measurability
+In order for Theorems 2 and 18 to hold in full generality we had to impose a constraint called
+“permissibility” on the hypothesis space family À . Permissibility was introduced by Pollard (1984)
+for ordinary hypothesis classes 1⁄2 . His definition is very similar to Dudley’s “image admissible
+Suslin” (Dudley, 1984). We will be extending this definition to cover hypothesis space families.
+Throughout this section we assume all functions ñ map from (the complete separable metric
+space) ü into ÍÝjÏäå}Ò . Let Y Å °Æ denote the Borel ~ -algebra of any topological space . As in Section
+2.2, we view ¿ , the set of all probability measures on ü , as a topological space by equipping it
+with the topology of weak convergence. Y Å ¿ Æ is then the ~ -algebra generated by this topology. The
+following two definitions are taken (with minor modifications) from Pollard (1984).
+Definition 8. A set 1⁄2 of Í ÝjÏäå}Ò -valued functions on ü is indexed by the set if there exists a function
+rÓü ö óûÍÝjÏäå}Òsuchthat 1⁄2 Ô  ÅÏ_çÆÓQç 3⁄4Z 
+Definition 9. The set 1⁄2 is permissible if it can be indexed by a set such that
+1. is an analytic subset of a Polish7 space , and
+2. the function oÓ ü ö ó ÍÝjÏäå}Ò indexing 1⁄2 by is measurable with respect to the product
+~
+-algebraY Åü°Æ\[]Y Å Æ.
+An analytic subset of a Polish space is simply the continuous image of a Borel subset ò
+of another Polish space ò . The analytic subsets of a Polish space include the Borel sets. They
+are important because projections of analytic sets are analytic, and can be measured in a complete measure space whereas projections of Borel sets are not necessarily Borel, and hence cannot be measured with a Borel measure. For more details see Dudley (1989), section 13.2.
+Lemma31. 1⁄2 2| 1⁄2  Ó Åò÷öô Æ ó ÍÝjÏäå}Ò ispermissibleif1⁄2 ÏÏ1⁄2  areallpermissible.
+Proof. Omitted.
+We now define permissibility of hypothesis space families.
+7. A topological space is called Polish if it is metrizable such that it is a complete separable metric space.
+194
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Definition 10. A hypothesis space family À Ô ä1⁄2W is permissible if there exist sets á and that
+are analytic subsets of Polishspaces á and respectively, and a function oÓ ü ö ö á ó ÍÝjÏäå}Ò ,
+measurablewithrespectto^_[`Y Å°Æ\[`Y Åá Æ ,suchthat
+À ÔbaÅÏ_ç}ÏEáÆÓïç3⁄4ZÓïá 3⁄4 ádc
+Let Å òÏfeoÏhg Æ be a measure space and be an analytic subset of a Polish space. Let @ Å ò Æ
+denote the analytic subsets of ò . The following three facts about analytic sets are taken from
+Pollard (1984), appendix C.
+(a) IfÅò®ÏfeoÏhg Æ iscompletethen@ Åò ÆA e .
+(b) @ Å ò ö °Æ containstheproduct~ -algebrae []Y Å °Æ .
+(c) Foranysetô in@ Å ò÷ö Æ ,theprojectioni ô ô ofô ontoò isin@ Å ò Æ .
+Recall Definition 2 for the definition of À4Í . In the following Lemma we assume that Å ü Ï Y Å ü°Æ_Æ
+has been completed with respect to any probability measure ) , and also that Å ¿nÏ Y Å ¿ Æ_Æ is complete
+with respect to the environmental measure Â .
+Lemma 32. For any permissible hypothesis space family À ,
+1. À õ is permissible.
+2. Gñ®3⁄4ß1⁄2 Ó 1⁄2Þ3⁄4×Àf ispermissible.
+3. 1⁄2 is permissible for all 1⁄2¿3⁄4/À .
+4. 8:#< O and ̧'1#oO aremeasurableforall1⁄2¿3⁄4/À .
+5. 1⁄2 Í ismeasurableforall 1⁄2Þ3⁄4/À .
+6. ÀÔÍ is permissible.
+Proof. As we have absorbed the loss function into the hypotheses ñ , À õ is simply the set of all
+ý
+-fold products 1⁄2 " 1⁄2 such that 1⁄2 3⁄4 À . Thus (1) follows from Lemma 31. (2) and (3)
+are immediate from the definitions. As 1⁄2 is permissible for all 1⁄2 3⁄4À , (4) can be proved by an
+identical argument to that used in the “Measurable Suprema” section of Pollard (1984), appendix C.
+For(5),notethatforanyBorel-measurable ñ Ó ü ó ÍÝjÏäå}Ò,thefunction ñ Ó0¿ ó ÍÝjÏäå}Ò defined
+by ñ Å ) Æ Ó1Ôkj . ñ Å Æ Ë) Å Æ is Borel measurable Kechris (1995, chapter 17). Now, permissibility of
+1⁄2
+automaticallyimpliespermissibilityof1⁄2 Ó1Ô  ñ Ó ñ/3⁄4 1⁄2W ,and1⁄2fÍ Ô  ̧'1#o O so1⁄2fÍ ismeasurable
+by (4).
+Now let À be indexed by rÓ ü ö ö á ó ÍÝjÏäå}Ò in the appropriate way. To prove (6),
+defineÕ Óû¿Þö ö á ó ÍÝjÏäå}Ò byÕ Å)1Ï_ç}ÏEáÆ Ó1Ôlj.  Å Ï_çÏEáÆË) Å Æ. ByFubini’stheoremÕ isa
+Y Å¿ Æ;[mY Å°Æ;[ Y Åá Æ-measurablefunction. Letâ Óû¿ ö á ó ÍÝjÏäå}Ò bedefinedbyâ Å) ÏEá Æ Ó1Ô
+ ̧'1#oon 1⁄4qp Õ Å )1Ï_ç}ÏEá Æ . â indexes ÀÔÍ intheappropriateway for ÀÔÍ to be permissible, provided it can
+be shown that â is Y Å ¿ Ær[ Y Åá Æ -measurable. This is where analyticity becomes important. Let
+Õ c Ó1Ô  Å)1Ï_ç}ÏEá Æ Ó Õ Å) Ï_çÏEá Æ Û G . Byproperty(b)ofanalyticsets,@ Å¿ ö ö á Æ containsÕ c .
+Thesetâ c Ó1Ô  Å)1ÏEá Æ Ó â Å)1ÏEá Æ Û G  istheprojectionofÕ c onto¿ ö á ,whichbyproperty(c)is
+also analytic. As Å ¿nÏ Y Å ¿ Æ ÏpÂ Æ is assumed complete, â c is measurable, by property (a). Thus â is
+a measurable function and the permissibility of À4Í follows.
+195
+
+
+BAXTER
+References
+Abu-Mostafa, Y. (1993). A method for learning from hints. In Hanson, S. J., Cowan, J. D., & Giles, C. L. (Eds.), Advances in Neural Information Processing Systems 5, pp. 73–80 San Mateo, CA. Morgan Kaufmann.
+Anthony, M., & Bartlett, P. L. (1999). Neural Network Learning: Theoretical Foundations. Cambridge University Press, Cambridge, UK.
+Bartlett, P. L. (1993). Lower bounds on the VC-dimension of multi-layer threshold networks. In Proccedings of the Sixth ACM Conference on Computational Learning Theory, pp. 44–150 New York. ACM Press. Summary appeared in Neural Computation, 5, no. 3.
+Bartlett, P. L. (1998). The sample complexity of pattern classification with neural networks: the size of the weights is more important than the size of the network. IEEE Transactions on Information Theory, 44(2), 525–536.
+Baxter, J. (1995a). Learning Internal Representations. Ph.D. thesis, Department of Mathematics and Statistics, The Flinders University of South Australia. Copy available from
+http://wwwsyseng.anu.edu.au/s jon/papers/thesis.ps.gz.
+Baxter, J. (1995b). Learning internal representations. In Proceedings of the Eighth International Conference on Computational Learning Theory, pp. 311–320. ACM Press. Copy available
+from http://wwwsyseng.anu.edu.au/s jon/papers/colt95.ps.gz.
+Baxter, J. (1997a). A Bayesian/information theoretic model of learning to learn via multiple task sampling. Machine Learning, 28, 7–40.
+Baxter, J. (1997b). The canonical distortion measure for vector quantization and function approximation. In Proceedings of the Fourteenth International Conference on Machine Learning, pp. 39–47. Morgan Kaufmann.
+Baxter, J., & Bartlett, P. L. (1998). The canonical distortion measure in feature space and 1-NN classification. In Advances in Neural Information Processing Systems 10, pp. 245–251. MIT Press.
+Berger, J. O. (1985). Statistical Decision Theory and Bayesian Analysis. Springer-Verlag, New York.
+Blumer, A., Ehrenfeucht, A., Haussler, D., & Warmuth, M. K. (1989). Learnability and the vapnikchervonenkis dimension. Journal of the ACM, 36, 929–965.
+Caruana, R. (1997). Multitask learning. Machine Learning, 28, 41–70.
+Devroye, L., Gyo ̈rfi, L., & Lugosi, G. (1996). A Probabilistic Theory of Pattern Recognition. Springer, New York.
+Dudley, R. M. (1984). A Course on Empirical Processes, Vol. 1097 of Lecture Notes in Mathematics, pp. 2–142. Springer-Verlag.
+Dudley, R. M. (1989). Real Analysis and Probability. Wadsworth & Brooks/Cole, California.
+196
+
+
+A MODEL OF INDUCTIVE BIAS LEARNING
+Gelman, A., Carlin, J. B., Stern, H. S., & Rubim, D. B. (Eds.). (1995). Bayesian Data Analysis. Chapman and Hall.
+Good, I. J. (1980). Some history of the hierarchical Bayesian methodology. In Bernardo, J. M., Groot, M. H. D., Lindley, D. V., & Smith, A. F. M. (Eds.), Bayesian Statistics II. University Press, Valencia.
+Haussler, D. (1992). Decision theoretic generalizations of the pac model for neural net and other learning applications. Information and Computation, 100, 78–150.
+Heskes, T. (1998). Solving a huge number of similar tasks: a combination of multi-task learning and a hierarchical Bayesian approach. In Shavlik, J. (Ed.), Proceedings of the 15th International Conference on Machine Learning (ICML ’98), pp. 233–241. Morgan Kaufmann.
+Intrator, N., & Edelman, S. (1996). How to make a low-dimensional representation suitable for diverse tasks. Connection Science, 8.
+Kechris, A. S. (1995). Classical Descriptive Set Theory. Springer-Verlag, New York.
+Khan, K., Muggleton, S., & Parson, R. (1998). Repeat learning using predicate invention. In Page, C. D. (Ed.), Proceedings of the 8th International Workshop on Inductive Logic Programming (ILP-98), LNAI 1446, pp. 65–174. Springer-Verlag.
+Langford, J. C. (1999). Staged learning. Tech. rep., CMU, School of Computer Science.
+http://www.cs.cmu.edu/s jcl/research/ltol/staged latest.ps.
+Mitchell, T. M. (1991). The need for biases in learning generalisations. In Dietterich, T. G., & Shavlik, J. (Eds.), Readings in Machine Learning. Morgan Kaufmann.
+Parthasarathy, K. R. (1967). Probabiliity Measures on Metric Spaces. Academic Press, London.
+Pollard, D. (1984). Convergence of Stochastic Processes. Springer-Verlag, New York.
+Pratt, L. Y. (1992). Discriminability-based transfer between neural networks. In Hanson, S. J., Cowan, J. D., & Giles, C. L. (Eds.), Advances in Neural Information Processing Systems 5, pp. 204–211. Morgan Kaufmann.
+Rendell, L., Seshu, R., & Tcheng, D. (1987). Layered concept learning and dynamically-variable bias management. In Proceedings of the Tenth International Joint Conference on Artificial Intelligence (IJCAI ’87), pp. 308–314. IJCAI , Inc.
+Ring, M. B. (1995). Continual Learning in Reinforcement Environments. R. Oldenbourg Verlag.
+Russell, S. (1989). The Use of Knowledge in Analogy and Induction. Morgan Kaufmann.
+Sauer, N. (1972). On the density of families of sets. Journal of Combinatorial Theory A, 13, 145–168.
+Sharkey, N. E., & Sharkey, A. J. C. (1993). Adaptive generalisation and the transfer of knowledge. Artificial Intelligence Review, 7, 313–328.
+197
+
+
+BAXTER
+Silver, D. L., & Mercer, R. E. (1996). The parallel transfer of task knowledge using dynamic learning rates based on a measure of relatedness. Connection Science, 8, 277–294.
+Singh, S. (1992). Transfer of learning by composing solutions of elemental sequential tasks. Machine Learning, 8, 323–339.
+Slud, E. (1977). Distribution inequalities for the binomial law. Annals of Probability, 4, 404–412.
+Suddarth, S. C., & Holden, A. D. C. (1991). Symolic-neural systems and the use of hints in developing complex systems. International Journal of Man-Machine Studies, 35, 291–311.
+Suddarth, S. C., & Kergosien, Y. L. (1990). Rule-injection hints as a means of improving network performance and learning time. In Proceedings of the EURASIP Workshop on Neural Networks Portugal. EURASIP.
+Sutton, R. (1992). Adapting bias by gradient descent: An incremental version of delta-bar-delta. In Proceedings of the Tenth National Conference on Artificial Intelligence, pp. 171–176. MIT Press.
+Tate, R. F. (1953). On a double inequality of the normal distribution. Annals of Mathematical Statistics, 24, 132–134.
+Thrun, S. (1996). Is learning the n-th thing any easier than learning the first?. In Advances in Neural Information Processing Systems 8, pp. 640–646. MIT Press.
+Thrun, S., & Mitchell, T. M. (1995). Learning one more thing. In Proceedings of the International Joint Conference on Artificial Intelligence, pp. 1217–1223. Morgan Kaufmann.
+Thrun, S., & O’Sullivan, J. (1996). Discovering structure in multiple learning tasks: The TC algorithm. In Saitta, L. (Ed.), Proceedings of the 13th International Conference on Machine Learning (ICML ’96), pp. 489–497. Morgen Kaufmann.
+Thrun, S., & Pratt, L. (Eds.). (1997). Learning to Learn. Kluwer Academic.
+Thrun, S., & Schwartz, A. (1995). Finding structure in reinforcement learning. In Tesauro, G., Touretzky, D., & Leen, T. (Eds.), Advances in Neural Information Processing Systems, Vol. 7, pp. 385–392. MIT Press.
+Utgoff, P. E. (1986). Shift of bias for inductive concept learning. In Machine Learning: An Artificial Intelligence Approach, pp. 107–147. Morgan Kaufmann.
+Valiant, L. G. (1984). A theory of the learnable. Comm. ACM, 27, 1134–1142.
+Vapnik, V. N. (1982). Estimation of Dependences Based on Empirical Data. Springer-Verlag, New York.
+Vapnik, V. N. (1996). The Nature of Statistical Learning Theory. Springer Verlag, New York.
+198

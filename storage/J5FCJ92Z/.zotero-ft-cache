@@ -1,0 +1,1355 @@
+../6
+SANDIA REPORT
+SAND91--1144 • UC-_05 Unlimited Release Printed May 1993
+Fast Parallel Algorithms for Short
+Range Molecular Dynamics
+Steve Plimpton
+Prepared by
+=" Sandia National Laboratories Albuquerque, New Mexico 87185 and Livermore, California 94550 for the United States Oepartment of Energy undor Contract DE.ACO4-76DPOO789
+=
+=
+D!81-RI_/=iJUTIONOF THIS DOCUMENT i6 UNLIMITED
+
+
+Issued by Sandia National Laboratories, operated for the United States
+Department of Energy by Sandia Corporation.
+NOTICE: This report was prepared as an account of work sponsored by an
+agency of the United States Government. Neither the United States Government nor any agency thereof, nor any of their employees, nor any of their contractors, subcontractors, or their employees, makes any warranty, express or implied, or assumes any legal liability or responsibility for the accuracy, completeness, or usefulness of any information, apparatus, product, or process disclosed, or represents that its use would not infringe privately owned rights. Reference herein to any specific commercial product, process, or service by trade name, trademark, manufacturer, or otherwise, does not necessarily constitute or imply its endorsement, recommendation, or favoring by the United States Government, any agency thereof or any of their contractors or subcontractors. The views and opinions expressed herein do not necessarily state or reflect those of the United States Government, any
+agency thereof or any of their contractors.
+Printed in the United States of America. This report has been reproduced directly from the best available copy.
+Available to DOE and DOE contractors from Office of Scientific and Technical Information PO Box 62 Oak Ridge, TN 37831
+Prices available from (615) 576-8401, FTS 626-8401
+Available to t'.m public f"om
+National Technical Information Service US Department of Commerce 5285 Port Royal Rd Springfield, VA 22161
+NTIS price codes Printed copy: A03 Microfiche copy: A01
+
+
+Distribution Category UC-_05
+SAND91-1144 Unlimited Release Printed May 1993
+Fast Parallel Algorithms
+for
+Short-Range Molecular Dynamics
+Steve Plimpton Department 1421 °_ Sandia National Labort.tories
+Albuquerque, NM 87185 (505) 845-7873 sjplimp@cs.sandia.gov
+Abstract
+Three parallel algorithms for classical molecular dynamics are presented. The first assigns each processor a subset of atoms; the second assigns each a subset of inter-atomic forces to compute; the third assigns each a fixed spatial region. The algorithms are suitable for molecular dynamics models
+which can be difficult to parallelize efficiently -- those with short-range forces where the neighbors of each atom change rapidly. They can be implemented on any distributed-memory parallel machine which allows for message-passing of data between independently executing processors. The algorithms are tested on a standard Lennard-Jones benchmark problem for system sizes ranging from 500 to 10,000,000 atoms on three parallel supercomputers, the nCUBE 2, Intel iPSC/860, and Intel Delta. Comparing the results to the fastest reported vectorized Cray Y-MP and C90 algorithm shows that the current generation of parallel machines is competitive with conventional vector supercomputers even for small problems. For large problems, the spatial algorithm achieves parallel efficiencies of 90% and the |ntel Delta performs about 30 times faster than a single Y-MP processor and 12 times faster than a single C90 processor. Trade--otis between the three algorithms and guidelines for adapting them to more complex molecular dynamics simulations are also discussed.
+This work was partially supported by the Applied Mathematical Sciences program, U.S. Department of Energy, Office of Energy Research, and was performed at Sandia National Laboratori_, operated for the DOE under cotltract No. DE-AC0476DP00789.
+This is a pre-print of a paper subnfitted to a journal; please contact the author if you would like the latest up-to-date
+version of the manuscript. For exaxnple, when they become available, Intel Paragon mad Cray MPP timings will likely be added to the tables in Section 7.
+1
+%_..
+BISTRtl_t.JTtON OF THIS E)OOUMENT 16 UNLIMITEE)
+
+
+1 Introduction
+Classical rnolecular dynamics (MD) is a commonly used computational tool for simulating the properties
+of liquids, solids, and molecules [1, 2]. Each of the N atoms or molecules in the simulation is treated as
+a point mass and Newton's equations are integrated to compute their motion. From tile motion of the
+ensemble of at.ores a variety of useful microscopic and macroscopic inforrnation can be extracted such as
+transport coefficients, phase diagrams, and structural or conformational properties. The physics of the
+model is contained in a potential energy functional for the system from which individual force equations for
+each atom are derived.
+MD simulations are typically not memory intensive since only vectors of atom information are stored.
+Computationally, lhc simulations are "large" in two domains .......the number of atoms and number of
+timesteps. The length scale for atomic coordinates is Angstroms; in three dimensions many thousands
+or millions of atoms must usually be sinmlated to approach even tile microscopic scale. In liquids and solids
+the timestep size is constrained by the demand that tile vibrational motion of tile atoms be accurately
+tracked. This limits timesteps to the femtosecond scale and so tens or hundreds of thousands of timesteps
+are necessary to sirnulate even picoseconds of "real" time. Because of these con_putational demands, con
+siderable effort has been expended by researchers to optimize hiD calculations for vector SUl_ercomputers
+[22, 28, 31, 39, 41] and even to build special---purpose hardware for performing hiD silnulations [3, 4]. The
+current state-of--the-art is such that simulating ten- to hundred--thousand atom systems for picoseconds
+takes hours of CPU time on machines such as the Cray Y-MP.
+The fact that MD computations are inherently parallel has been extensively discussed in the literature
+[9, 19]. There has been considerable effort, in the last few years by researchers to exploit this parallelism
+on various machines. The majority of the work that has inchlded implementations of proposed algorithms
+has been for single---instruction/multiple-data (SIMD) parallel machines such as the CM-2 [10, 46], or for
+multiple-instruction/nmltiple-data (MIMD) parallel machines with a few dozens of processors [24, 32, 40].
+More recently there have been efforts mt creating scalable algorithms that will work well on hundred-.- to
+thousand-processor MIMD machines [7, 12, 34, 45]. We are convinced that the MIMD programnfing model
+(or the single-program/multiple-data SPMD model as it is sometimes called) is the only one that provides
+enough flexibility to implement all the data structure and computational enhancements that are conmmnly
+exploited in MD codes on serial and vector machines. Also, we have found that it, is only the current
+generation of massively parallel MIMD machines with hundreds to thousands of processors that have the
+computational power to be competitive with the fastest, vector machines for Ml) calculations.
+In this paper we present three parallel algorithnls which are appropriate for a general class of M D problems
+that has two salient characteristics. Tile first characteristic is that forces are limited in range, meaning each
+atom interacts only with other atoms that are geometrically nearby. Solids and liquids are often modeled
+this way due to electronic screening effects or simply to avoid the computational cost of including long-range
+Coulombic forces. For short-range MD tlm computational effort per timestep scales as N, the number of
+
+
+atoms, but care must be taken to write efficient parallel algorithms that take full advantage of the local nature of the forces.
+The second characteristic is that the atoms can undergo large displacements over the duration of the
+simulation. This could be due to diffusion in a solid or liquid or conformational changes in a biological
+molecule. The important feature from a computational standpoint is that each atom's neighbors change a.s
+the simulation progresses. While the algorithms we discuss could also be used for fixed-neighbor simulations
+(e.g. ali atoms remain on lattice sites in a solid), it, is a harder task to continually track the neighbors of
+each atom and maintain efficient O(N) scaling for the overall computation on a parallel machine.
+Our first goal in this effort, was to develop parallel algorithms that would be competitive with the fastest
+methods on vector supercomputers such ms the Cray. Moreover we wanted the algorithms to work well
+on problems with small numbers of atoms, not just for large problems where parallelism is often easier to
+exploit. This is because currently the vast majority of MD simulations are performed on systems of a few
+hundred to several thousand atoms where N is chosen to be as small as possible while still accurate enough
+to model the desired physical etl\_cts [6, 38, 47]. The computational goal in these calculations is to perform
+each timestep as quickly as possible. This is particularly true in non--equilibrium MD where macroscopic
+changes in tlle system n-lay take significant time to evolve, requiring millions of timesteps to model. Thus, it
+is often more useful to be able to perform a 100,000 timestep simulation of a 1000 atom system fast rather
+than 1000 timestel)s of a 100,000 atom systmn, though the O(N) scaling means the computational effort is
+the same for both cases. To this end, we consider model sizes a.s small as a few hundred atoms in this paper.
+For very large MD problelns, our second goal in this work was to develop par_llel aigorithnls that would
+be scalable to large.r and faster parallel Inacllines. While the timings we present; for large MI) models (10 s
+to 10r atoms) on tile current generation ot" parallel supercomputers (hundreds to thousands of processors)
+are quite fast compared t,o vector supercomputers, they are still too slow to allow long-timescale simulations
+to be done routinely, ltowrver, our large-system algorithnl scales optimally with respect to N and P (the
+number of processors) so that a.s parallel machines become more powerful in the next few years, algorithms
+similar to it will enable larger problems to be studied.
+Our earlier efforts in this area [33] produced algorit, hnls which were fast for systems up to tens of thou
+sands of atoms bllt. did not scale optitnally wit,la N for larger systems. After improving on these efforts
+to create a scalable large-system algorithm [34]we have recently added an idea of Tamayo and Giles [45]
+t,hat has improved the algoritllm's performance on medium-sized problems by reducing the inter-processor
+communication requirements. We have also recently developed a new parallel algorithm which we present
+here in the context of Ml) simulations for the first time. lt offers the advantages of both simplicity and speed
+for small to medium-sized problems.
+In this paper we present the culmination of our efforts: several algorithms we have found, through
+implementing and testing a variety of ideas on different parallel machines, to be the fastest methods for
+short-range molecular dynamics across a wide range of problem sizes. By implementing the algorithms on
+
+
+machines with hundreds to thousands of processors, we have been able to understand ill practical terms
+what algorithmic features work best and tailor tile algorithms accordingly to opt, imize their performance a.s
+a function of N and P. Due to their scalability, we can also predict, how these algorithms will perform on
+the faster, larger parallel machines of tile filture.
+In tile next section, the computational aspects of MD are highlighted and efforts to speed the calculations
+on vector and parallel machines are reviewed. In Sections 3, 4, and 5 we describe our three parallel algorithms
+in detail. A standard Lennard-Jones benchmark calculation is outlined in Section 6. In Section 7, imple
+mentation details and tinting results for the parallel algorithms on three massively parallel MIM D machines
+are given and comparisons made to the best Cray Y-MP and C90 limings for the benchmark calculation.
+Discussion of the scaling properties of the algorithms is also included. Next,, in Section 8, issues relevant, to
+using the parallel algorithms in difiZrent kinds of MD simulations are discussed. Finally, in Section 9, we
+draw conclusions and give several guidelines for deciding which parallel algorithm is likely to be fastest for
+a particular short-range M D simulation.
+2 Computational Aspects of Molecular Dynamics
+The computational task in a Ml) simulation is to integrate the set, of coupled differential equations (Newton's
+equations) given by
+d_
+mi--_i- - _-_ F2(7_, _'j ) + _-_ _-_ Fa( ,'i, ,'j , ,'k ) -t- . . . (1)
+j jk d5 d-T = vi
+where mi is the mass of atom i, 7i and Fi are its position and velocity vectors, F2 is a force function describing
+pairwise interactions between atoms, Fa describes three-body interactions, and many-body interactions can
+be added. The force terms are derivatives of energy expressions in which the energy of atom i is typically
+written as a function of only the positions of itself and other atoms. In practice, only one or a few terms in
+equation (1) are kept and F2, b)_, etc. are constructed so as to include many-body and quantum effects. To
+the extent the at)proximations are accurate these equations give a filll descril)tion of the tinm-evolution of
+the system. Thus, the great computational advantage of classical M D, as compared to ab initio electronic
+structure calculations, is that the dynamic behavior of the atomic system is described empirically without
+having to solve Schrodinger's equation at each timestep.
+The force terms in equation (1) are typically non-linear functions of the distance rii between pairs of
+atoms and may be either long-range or short-range in nature. For long-range forces, such a.s Coulombic
+interactions in an ionic solid or biological system, each atom interacts with ali others. Directly computing
+these forces scales as N "2and is too costly for large N. Various approximate methods overcome this difficulty.
+They include particle-mesh algorithms [29] which scale as f(M)N where M is the number of mesh points,
+4
+
+
+hierarchical methods [5] which scale as N log(N), and fast-,nultipole methods [21] which scale as N. Recent
+parallel implementations of these algorithms [17, 50] have improved their range of applicability for many
+body simulations, but because of their expense, long-range force models are not conamonly used in classical M D simulations.
+By contrast, short-range force models are used extensively in M D and is what we are concerned with
+in this paper. They are chosen either because electronic screening effectively limits the range of influence
+of the interatomic forces being modeled or simply to truncate the long-range interactions and lessen the
+computational load. Ira either case, the summations in equation (1) are restricted to atoms within some
+small region surrounding atom i. This is typically implemented using a cutoff distance rc, outside of which
+ali interactions are ignored. The work to coml,ut.e forces now scales linearly with N. ltowever, even with this
+savings, the vast majority of computation time spent in a short-range force MD simulation is in evaluating the
+force terms in equation (1). The time integration typically requires only 2-3% of tile total time. To evaluate
+the sums efficiently requires knowing which atoms are within the cutoff distance rC at every timestep. The
+key' is to minimize the number of neighboring atoms that must be checked for possible interactions since
+calculations performed ol_ neighbors at, a distance r > rc. are wasted coml)utation. There are two basic
+techniques used to accomplish this on serial and vector machines; we discuss them briefly here since our
+parallel algorithms incorporate similar ideas.
+The first, idea, that of neighbor lists, was originally proposed by Verlet [49]. For each atom, a list is
+maintained of nearby atonls. Typically, when tile list is formed, ali neighboring atoms within an extended
+cutoff dist.ance r, = rc + 6 are stored. The list is tlsed for a few timesteps to calculate ali force interactions.
+Then it is rebuilt, before any atom could have moved from a distance r > r., to r < rC. Though 6 is always
+chosen to be small relative to rC, an optimal value depends on the parameters (e.g. temperature, diffusivity,
+density) of the particular simulation. The advantage of the neighbor list is that once it is built, examining
+it for possible interactions is much faster than checking ali atoms in tile system.
+The second technique commonly used for speeding up MD calculations is known as tile link-cell method
+[30]. At every timestep, ali the atoms are binned into 3-D cells of side length d where d = rC or slightly
+larger. This reduces the t.ask of finding neighbors of a given atom to checking in 27 bins -- the bin the atom
+is in and the 26 surrounding ones. Since binning the atoms only requires O(N) work, the extra overhead
+associated with it is acceptable for the savings of only having to check a local region for neighbors.
+The fastest M D algorithms on serial and vector machines use a combination of neighbor lists and link-cell
+binfling. In the combined method, atoms are only binned once every few timesteps for the purpose of forming
+neighbor lists. In this c_se atoms are binned into cells of size d > r,. At intermediate timesteps the neighbor
+list.s alone are used irl tire usual way to find neighbors within a distance rC of each atom. This is a significant
+savings over a conventional link-cell method since there are far fewer atoms to check in a sphere of volume
+47rr, a/3 than in a cube of volume 27rc a. Additional savings can be gained due to Newton's 3td law by only
+computing a force oP,ce for each pair of atones (rather than once for each atom in the pair). In the combined
+
+
+method this is done by only searching half the surrounding bins of each atom to form its neighbor list. This
+has the effect of storing atom j in atom i's list, but not atom i iii atorn j's list,, thus halving tile number of
+force computations that. must be done.
+Although these ideas are simply described, optimal performance oil a vector machine requires careful
+attention to data structures and loop constructs to insure complete vectorization. The fastest implementation
+reported in the literature is that of Grest, et. al. [22]. They use the combined neighbor list/link-cell method
+described above to create long lists of pairs of neighboring atoms. At each timestep, they prune the lists to
+keep only those pairs within the cutoff distance rc. Finally, they organize the lists into packets in which no
+atom appears twice [39]. The force computation for each packet can then be completely vectorized, resulting
+in performance on the benchmark problem described in Section 6 that is from 2 to 10 times faster than other
+vectorized algorithms [28, 41] over a wide range of simulation sizes.
+Recently there has been considerable interest in devising parallel MD algorithms. Tile natural parallelism
+in MD is that the force calculations and velocity/position updates can be done simultaneously for ali atoms.
+To date, two basic ideas have been exploited to achieve this parallelism. The goal in each is to divide the
+force computations in equation (1) evenly across the processors so as to extract, maxinmm pa.rallelism. To
+our knowledge, all algorithms that have been proposed or implemented (including ours) have been variations
+on these two methods. References [18, 23, 43] include good overviews of various techniques.
+In the first class of methods a pre-determined set of force computations is assigned to each processor.
+The assignment remains fixed for the duration of the simulation. The simplest way of doing this is to give a
+subgroup of atoms to each processor. We call this method an atom-decomposition of the workload, since the
+processor computes forces on its atoms no matter where they move in the siinulation domain. More generally,
+a subset of tile force loops inherent in equation (1) can be assigned to each processor. We term this a force
+decomposition arid describe a new algorithm of this type later in the paper. Both of these decompositions are
+analogous to Lagrangian gridding in a fluids simulations where the grid cells (computational elements) move
+with the fluid (atoms in MD). By contrast, in the second general class of methods, which we call a spatial
+decornpos*tion of the workload, each processor is assigned a portion of the physical sinmlation domain. Each
+processor computes only the forces on at,ores irt its sub-domain. As the sinlulation progresses processors
+exchange atoms as they move from one sub-domain to another. This is analogous to an Eulerian gridding
+for a fluids simulation where the grid remains fixed in space as fluid moves through it.
+Within the two classes of methods for parallelization of MD, a variety of algorithms have been proposed
+and implemented by various researchers. The details of the algorithms vary widely from one parallel machine
+to another since there are numerous problem-dependent and machine-dependent trade-offs to consider, such
+as the relative speeds of computation and communication. A brief review of some notable efforts follows.
+Atom-decomposition methods, also called replicated-data methods [43] because vectors of atom infor
+mation are replicated across ali processors, are often used in MD simulations of molecular systems. This is
+because the duplication of information makes for straight-forward computation of additional three- and four
+
+
+body force terms. Parallel implementations of state-of-the-art biological MD programs such as CItARMM
+and GROMOS using this technique are discussed in [11, 15]. Force--decomposition methods which systoli
+cally cycle atom data around a ring or through a grid of processors have been used on MIMD [24, 43] and SIMD machines [14, 51]. Other force-decomposition methods that use tile force-matrix formalism we
+discuss in Sections 3 and .1 have been presented in [10] and [13]. Boyer and Pawley [10] block--decompose
+the force matrix in a manner similar to that explained in Section 4, while the method of Brunet, et. al. [13]
+partitions the matrix element by element. Both of tile methods are designed for long-range force systems
+requiring all-pairs calculations (no neighbor lists) oil SIMD machines. Thus tile scaling of these algorithms
+is different from what is presented in Section 4 as is the way they distribute tile atom data among processors
+and perform inter-processor communication.
+Spatial-decomposition methods, also called geometric methods [18, 23], are more common in the literature
+because they are well-suited to very large MD simulations. Recent parallel MIMD implementations for the
+Intel iPSC/2 hypercube [32, 40, 43], CM--5 [7, 45], and Fujitsu AP1000 [12] have some features in common
+with the spatial-decomposition algorithm we present in Section 5. The fastest published algorithms for
+SIMD machines also employ spatial-decomposition techniques [46]: However, the SIMD programming model,
+which requires processors executing each statement to operate simultaneously on a global data structure,
+introduces inefficiencies in short-range MD algorithms, particularly when coding the construction and access
+of variable-length neighbor lists via indirect addressing. Thus the timings in [46] for the benchmark problem
+discussed in Section 6 on a 32K--processor CM-2 [46] are slower than the single-processor Cray Y-MP
+timings presented in Section 7. By contrast, the timings for the MIMD parallel algorithms in this paper and
+references [7, 12, 45] are considerably faster, indicating the advantage a MIMD capability offers for exploiting
+parallelism in short-range MD simulations.
+3 Atom-Decomposition Algorithm
+In our first parallel algorithm each of the P processors is assigned a group of N/P atoms at the beginning
+of the simulation. Atoms in a group need not have any special spatial relationship to each other. For ease
+of exposition, we assume N is a multiple of P, though it is simple to relax this constraint. A processor will
+compute forces on only its N/P atoms and will update their positions and velocities for the duration of the
+simulation no matter where they move in the physical domain. As discussed in the previous section, this is
+an atom-decompositiou of the computational workload.
+A useful construct for representing the computational work involved in the algorithm is the N x N force
+matrix F. The (i j) element of F represents the force on atom i due to atom j. Note that F is sparse due
+to short-range forces and skew-symmetric, i.e. Fij = -Fji, due to Newton's 3rd law. We also define x
+and f as vectors of length N which store the position and total force on each atom. For a 3-D simulation,
+xi would store the three coordinates of at.ore i. With these definitions, the atoln-decomposition algorithm
+assigns each processor a sub-block of F which consists of N/P rows. This is shown in Figure 1 where we let
+7
+
+
+the z subscript denote the processor number from 0 to P- 1. Thus, processor P_ computes matrix elements
+in the Fz block of rows. lt also is assigned the corresponding sub-vectors of length N/P denoted by x, and
+x,f
+Xz Fz
+Figure 1: The division of the force matrix anlong processors ill tile atom-decomposition algorithm. Processor
+z is assigned a group of N/P rows of the matrix and corresponding pieces of the position and force vectors,
+z and f.
+Assume tile computation of matrix element Fij requires only the two atom positions xi and zj. (We
+relax this assumption in Section 8.) To compute ali the elements in F_, processor P_ will need the positions
+of many atoms owned by other processors. In the atom-decomposition algorithm, this is accomplished
+by having each processor send its updated atom positions to ali the other processors after each timestep,
+an operation called all-to-ali communication. Various algorithms have been developed for performing this
+operation efficiently on different parallel machines and architectures [19, 48]. We use an idea due to Fox,
+et. al. [19] that is simple, portable, and works well on a variety of machines. We describe it here because it
+is the chief communication component of both the atom-decomposition algorithms of this section and the
+force-decomposition algorithms presented in the next section.
+Following Fox's nomenclature, we term the all-to-ali communication procedure an ezpand operation.
+Each processor allocates memory of length N to store the entire z vector. At the beginning of the expand,
+processor P, has z,, an updated piece of z of length N/P. Each processor needs to acquire ali the other
+processor's pieces, storing them in the correct places in its copy of x. Figure 2 illustrates the steps that
+accomplish this for an 8 processor example. The processors are mapped consecutively to the sub-pieces of
+the vector. In the first communication step, each processor exchanges its piece with an adjacent processor
+
+
+in the vector. Processor 2 exchanges with processor 3 in the figure. Now, every processor has a contiguous
+piece of x that is of length 2N/P. Iii the second step, each processor exchanges this piece with a processor
+two positions away (2 exchanges with 0). Each processor now has a 4N/P.-length piece of x. In the last
+step, each processor exchanges an N/2-1ength piece of z with a processor Pl2 positions away (2 exchanges
+with 6); the entire vector now resides on each processor.
+N/P
+Step 1" lbl 1 liiiii3i1ll4151617 [
+Step 2: [.OI 1 415 1617 [
+Step3" [ !i_i!i[!fiiil!li_!!iI!!}_ili4],1 51 6 [ 7 I
+Figure 2: An ezpand operation among 8 processors. Processor 2 exchanges successively longer sub-vectors
+with processors 3, 0, and 6.
+A pseudo-code version of the expand operation is given in Figure 3. For simplicity we again assume a
+power-of-two number of processors; relaxing this assumption is straightforward. The expand proceeds in
+log_(P) steps. At each step P_ performs a data exchange with a partner processor Pa. The new processor
+number P_ is obt.ained by flipping one bit in z, which itself is a string of log2(P ) bits. The sub-vector Y is
+sent to pc and the received sub-vector w is concatenated with Y (the "l" operation) in the proper order. Thus
+Y doubles in length at every step; at the end of the expand V has become the filll N-length vector z. Costs
+for a communication algorithm are typically quantified by the number of messages and the total volume of
+data sent and received. On both these accounts the expand is optimal; each processor performs lo&(P)
+sends and receives and exchanges N - NIP data values. This is the reason the expand operation works well
+on many machines. A drawback is that it requires O(N) storage on every processor. Alternative methods
+for performing all-to-ali communication require less storage at the cost of more sends and receives. This is
+usually not a good trade-off for MD simulations because, as we shall see, quite large problems can be run
+with an atom-decomposition algorithm in the many Mbytes of local memory available on current-generation
+processors.
+
+
+y :"-- Xz
+FOR k - 0,...,log2(P )- 1
+P' :- Pz with k th bit of z flipped
+SEND y to processor P_
+RECEIVE w from processor P'
+IF bit k of z is 0 THEN
+y :- ylw ELSE
+V := wIV
+z::y
+Figure 3: The ezpand operation for processor Pz.
+A communication operation that is essentially the inverse of the expand will also prove useful in the
+atom- and force-decomposition algorithms. Assume each processor has stored new force values throughout
+its copy of the force vector f. Processor Pz needs to know the N/P values in fz, where each of the values is
+summed across ali P processors. A procedure for doing this is known as a ft ld operation [19] and is outlined
+in Figure 4. Again the operation proceeds in log2(P ) steps. "At each step, y represents a portion of the
+force vector f, and is split into two pieces, u and v. One of the pieces is sent to a partner processor /_.
+The received sub-vector w is summed element by element with the retained piece. This summed sub-vector
+becomes y in the next step, so that y is halving in length at each iteration of the loop. When the fold is
+finished, y has become fz, with values summed across ali P processors. Like the expand, the fold operation
+requires log2(P ) sends and receives and N - N/P data to be exchanged by each processor. Additionally it
+requires N - NIP floating point operations to do the summations, typically a small extra cost.
+Having defined the expand and fold operations, we now present two versions of the atom-decomposition
+algorithm. The first is simpler and does not take advantage of Newton's 3rd law. We call this algorithm
+AI; it is outlined in Figure 5 with the dominating term(s) in the computation or communication cost of
+each _t_ep listed on the right. We assume at the beginning of the timestep that each processor knows the
+current positions of ali N atoms, i.e. each has a copy of the entire x vector. Step (1) of the algorithm is to
+construct neighbor lists for ali the pairwise interactions that must be computed in block F,. Typically this
+will only be dorle once every few timesteps. If the ratio of the physical domain diameter D to the extended
+force cutoff length rs is relatively small, it is quicker for Pz to construct the lists by checking ali N2/P pairs
+in its F, block. When the simulation is large enough that 4 or more bins can be created in each dimension,
+it is quicker for each processor to bin ali N atoms, then check the 27 surrounding bins of each of its N/P
+atoms to form the lists. This checking scales as N/P but has a large coefficient, so the overall scaling of the
+binned neighbor list construction is recorded as N/P + N.
+10
+
+
+y:= f
+FOR k = log_(P) - 1,...,0
+u := top half of y vector
+v := bottom half of y vector
+P' := Ps with k th bit of z flipped
+IF bit k of z is 0 THEN
+SEND v to processor PI
+RECEIVE w from processor P'
+y:=u+w
+ELSE
+SEND u to processor P_
+RECEIVE w from processor P'
+y::v+w
+fs :=Y
+Figure 4: The fold operation for processor Ps.
+In step (2) of the algorithm, the neighbor lists are used to compute the non-zero matrix elements in Fs.
+As each pairwise force interaction is computed, the force components are summed into fz, so that Fz is never
+actually stored as a matrix. At. the completion of the step, each processor knows the total force fs on each
+of its N/P atoms. This is used to update their positions and velocities in step (4). (A step (3) will be added
+to other algorithms in this and the following sections.) Finally, in step (5) the updated atom positions in xz
+are shared among ali P processors in preparation for the next timestep via the expand operation of Figure
+3. As discussed above, this operation scales a.s N, the volume of data in the position vector x.
+(1) Construct neighbor lists of non-zero il;l.eractions in Fs
+N_
+(D < 4r8) Ali pairs .-p-.
+(D >_ 4r,) Binning Tr+NN
+(2) Compute elements of Fs summing results into fs tc
+, -p
+(4) Update atom positions in xs using fz 7gr
+(5) Expand xs among ali processors, result is z N
+Figure 5" Single timestep of atom-decomposition algorithm A1 for processor Pz.
+11
+
+
+As mentioned above, algorithm A1 ignores Newton's 3rd law. If different processors own atoms i and
+j as is usually the case, both processors compute tile (i j) interaction and store tile resulting force on their
+atom. This can be avoided at the cost of more communication by using a modified force matrix G which
+references each pairwise interaction only once. There are several ways to do this by striping the force matrix
+[42]; we choose instead to form G as follows. Let Gi.i = Fij, except that Gij = 0 when i > j and i + j is
+even, and likewise Gij = 0 when i < j and i + j is odd. Conceptually, G is colored like a checkerboard with
+red squares above the diagonal set to zero and black squares below the diagonal also set to zero. A modified
+atom-decomposition algorithm A2 that uses G to take advantage of Newton's 3td law is outlined in Figure
+6.
+[1) Construct neighbor lists of non-zero interactions iii Gz
+N_
+(D < 4rj) Ali pairs ,yp
+(D >_4rs) Binning yp+NN
+(2) Compute elements of Gs,
+doubly summing results into local copy of f N
+(3) Fold f among ali processors, result is fs N
+(4) Update atom positions in xs using f_ TNr
+(5) Expand xs among ali processors, result is x N
+Figure 6: Single tirnestep of atom-decomposition algorithm A2 for processor Pz, which takes advantage of
+Newton's 3rd law.
+Step (1) is the same as in algorithm A1 except only half as many neighbor list entries are made by each
+processor since Gs has only half the non-zero entries of Fz. This is reflected in the factors-of-two included
+in the scaling entries. For neighbor lists formed by binning, each processor must still bin ali N atoms, but
+only need check half the surrounding bins of each of its NIP atoms. In step (2) the neighbor lists are used
+to compute elements of Gz. For an interaction between atoms i and j, the resulting forces on atoms i and j
+are summed into both the i and j locations of force vector f. This means each processor must store a copy
+of the entire force vector, as opposed to just storing f_ as in algorithm Al. When ali the matrix elements
+have been computed, f is folded across ali P processors using the algorithm in Figure 4. Each processor
+ends up with fz, the total forces on its atoms. Steps (4) and (5) then proceed the same as in Al.
+Note that implementing Newton's 3rd law essentially halved the computational cost in steps (1) :Lhd (2),
+at the expense of doubling the communication cost. There are now two communication steps (3) and (5),
+each of which scale as N. This will only be a net gain if the communication cost in A1 is less than a third
+of the overall run time. As we shall see, this will usually not be the case on large numbers of processors, so
+in practice we almost always choose A1 instead of A2 for an atom-decomposition algorithm. However, for
+12
+
+
+small P or expensive force models, A2 can be faster.
+Finally. we discuss the issue of load-balance. Each processor will has an equal a amount of work if each
+Fz or Gz block has roughly the same number of non-zero elements. This will be the case if the atom density
+is uniform across the simulation domain. However non-uniform densities can arise if, for example, there are
+free surfaces so that. some atoms border on vacuum, or phase changes are occurring within a liquid or solid.
+This is only a problem for load-balancing of the atom-decomposition computation across processors if the N
+atoms are ordered in a geometric sense as is typically the case. Then a group of NIP atoms near a surface,
+for example, will have fewer neighbors than groups in the interior. This can be overcome by randomly
+permuting the at.ore ordering at the beginning of the simulation, which is equivalent to permuting rows and
+columns of F or G. This insures that every Fz or G, will have roughly the same number of non.-zeros even
+if the atom density is non-uniform. A random permutation also has the advantage that the load-balance
+will likely persist as atoms move about during the simulation. Note that this permutation need only be done
+once, as a pre-processing step before beginning the dynamics.
+In summary, the atom-decomposition algorithms divide the MD force computation and integration evenly
+across the processors (ignoring the O(N) component of binned neighbor list construction which is usually
+not significant). However, the algorithms require global communication, as each processor must acquire
+information held by ali the other processors. This communication scales as N, independent of P, so it limits
+the number of processors that can be used effectively. The chief advantage of the algorithms is that of
+simplicity. Steps (1), (2), and (4) can be implemented by simply modifying the loops and data structures in
+a serial or vector code to treat NIP atoms instead of N. The expand and fold communication operations
+can be treated as black-box routines and inserted at the proper locations in steps (3) and (5). Few other
+changes are typically necessary to parallelize an existing code.
+4 Force-Decomposition Algorithm
+Our next parallel MD algorithm is based on a block-decomposition of the force matrix F ra:her than a row
+wise decomposition as used in the previous section. We term this a force-decomposition of the workload. As
+we shall see, this improves the O(N) scaling of the communication cost to O(N/x/-P). Block--decompositions
+of matrices are common in linear algebra algorithms [8, 26] for parallel machines which sparked our interest in
+the idea, but to our knowledge we are the first to apply this idea to short-range MD simulations [27, 36, 37].
+The assignment of sub-blocks of F to processors is depicted in Figure 7. We assume for ease of exposition
+that P is an even power of 2 and that N is a multiple of P, although again it is straightforward to relax
+these constraints. The block owned by each processor is thus of size (N/x/r'fi) x (N/v/ft). We use the Greek
+subscripts t_ and/3 to index the row and column blocks of F running from 0 to _- 1. A sub-block of F is
+denoted as FoZ, and the processor owning it is P_Z. We note that a and _ also index sub-vectors of x and
+f of length N/v/_. 2'o compute the matrix elements in F_, processor PaZ must know the xa and x_ pieces
+of x. As these elements are computed they will be stored in local copies of the force sub-vectors, namely fa
+13
+
+
+and la.
+X
+x,f
+xa Fal3
+Figure 7: The division of the force matrix among proce3sors in the force-decomposition algorithm. Processor
+Pac is assigned a sub-block Foe of size N/v/-fi by N/_,/'fi. Likewise it stores the corresponding length N/x/"fi
+pieces of the position and force vectors.
+In addition to computing the matrix elements in Foe, each processor will be responsible for updating
+the p_itions and velocities of N/P atoms, as in the atom-decomposkion algorithm. These atoms are a
+sub-vector of xa; that is, the v/-fi processors in row c_ divide aza among them, so each is responsible for
+a contiguous piece of length N/P. Numbering these pieces with the column index/3 of the processor, we
+denote each processor's piece with a superscript, zZ_. Similarly, the total force acting on these atoms is the
+N/P-length sub-vector f_. As in the atom-decomposition case, an element of f_ is the sum of ali the
+matrix elements across the corresponding row of F.
+Our first force-decomposition algorithm F1 is outlined in Figure 8. As before, each processor has updated
+copies of the needed atom positions at the beginning of the timestep. In this case it is the current sub-vectors
+azo and xe. In step (1) neighbor lists are constructed. Again, for small problems this is most quickly done
+be checking ali N2/P possible pairs in F_ e. For large problems, the N/x/ff atoms in x e are binned, then
+the 27 surrounding bins of each atom in xa is checked. The total number of interactions stored in each
+processor 's lists is still O(N/P). The scaling of the binned neighbor list construction is thus N/P + N/v/ft.
+In step (2) the neighbor lists are used to compute the nlatrix elements in Faa. As before the elements are
+summed into a local copy of fa as they are computed, so FoB need never be stored in matrix form. In
+step (3) a fold operation is performed within each row of processors so that processor Pa_ obtains the total
+14
+
+
+forces on its N/P at.ores, f_. Although the fold algorithnl used is tile same as in tile preceding section,
+there is a key difference. In this case the vector f, being folded is only of length N/v/-'P and only the v_
+processors in one row are participating in tile fold. Thus this operation scales as N/v_ instead of N as in
+the atom-decomposition communication steps.
+In step (4), f_ is used by P_e to update the NIP atom positions in x_. Steps (5a-5d) share these updated
+positions with ali the processors that will need them for the next timestep. These are the processors which
+share a row or column with P_0. First,, in (5a), the processors in row a perform an expand of their x_ sub
+vectors so that each acquires the entire x_. As with the fold, this operation scales as the N/x/_ length of xa
+instead of as N as it, did in algorithms A1 and A2. In step (5b), each processor exchanges its updated atom
+positions with processor P_ which owns the block of F in the transpose position of the matrix. The cost
+of this operation scales as the N/P length of the data being exchanged. Finally, in step (5c), the processors
+in each column/3 perform an expand of the received sub-vector x_. As a result, they ali acquire xa and are
+ready to begin the next timestep.
+(1) Construct neighbor lists of non-zero interactions in Fo_
+N2
+(D < 4rs) Ali pairs --p-
+(D _>4r,) Binning .p-+_pN (2) Compute elements of Fc,_ storing results in f_ N
+, -p
+(3) Fold f_ within row a, result i_:f_ N
+(4) Update atom positions in z_ using f_ -gp
+N
+(5a) Expand x_ within row a, result is x_ 7"f' (5b) Exchange atom positions with transpose processor PZo -Np.
+Send x_a to PZ,_
+Receive x/_ from PZt,
+(5c) Expand x_ within column/3, result is xz _g
+Figure 8: Single timestep of force-decomposition algorithm F1 for processor Pc,z.
+As with algorithm Al, algorithm F1 does not take advantage of Newton's 3rd law; each pairwise force
+interaction is computed twice. Algorithm F2 avoids this duplicated effort by using the same checkerboarded
+matrix G that was defined in the preceding section. Note that now the total force on atom i is the sum of
+ali matrix elements in row i minus the sum of ali elements in column i. The modified force-decomposition
+algorithm F2 is outlined in Figure 9. Step (1) is the same as in F1, except that half as many interactions
+are stored in the neighbor lists. Likewise, step (2) requires only half as many matrix elements be computed.
+For each (tj) element, the computed force components are now summed into two force vectors instead of
+one. Tire force on atom i is summed into f,_ in _e location corresponding to row i. The same force on atom
+15
+
+
+j is also summed into f_ in tile location corresponding to column j. Steps (3a-3d) accumulate these forces
+so that processor P,_ ends up with the total force on its N/P atoms. First, in step (3a), the x/_ processors
+in column fl fold their local copies of f_. The result is "_. Each element of this N/P-length sub-vector is
+the sum of an entire column of G. In step (3t)) this sub--vector is exchanged with the transpose-position
+processor P_a. The values in the sub-vector each processor receives in this transpose operation are the column contribution to the forces on its N/P atoms. Next, in step (3c), the row contributions to the forces
+are summed by performing a fold of the f, vector within each row oc. The result is Z_, each element of
+which is the sum across a row of G. Finally, in step (3d) the column and row contributions are subtracted
+elemev.t by element to yield tile total forces f_ oil the atoms owned by processor P_,q. The processor can
+now update the positions and velocities of its atoms; steps 4 and 5 are identical to those of F1.
+(1) Construct neighbor lists of non-zero interactions in Go_
+Na
+(D < 4r_) Ali pairs 2"rfP"
+(D >_4v_) Binning n-p+_N
+(2) Compute elements of G_,
+storing results in local copies of f_ and f_ .'!N"p
+--o N (3a) Fold f_ within column /3, result is f_
+(3b) Exchange column forces with transpose processor P_a 7Nr
+Send 7_ to P_a
+Receive f_ from P_
+N (3c) Fold f_ within row (_, result is f__
+(3d) Subtract received ft, from folded _f_, result is total f_ -Np"
+(4) Update atom positions in x_ using f_ 7gr
+N (5a) Expand x_ within row _, result is xo 7"fi (5b) Exchange atom positions with transpose processor P_. -Np
+Send x_ to P_
+Receive x_ from P_
+/v (5c) Expand x_ within column /3, result is x_ _7_
+Figure 9: Single timestep of force-decomposition algorithm F2 for processor P_, which takes advantage of Newton's 3rd law.
+In the force-decomposition algorithms, exploiting Newton's 3rd law again halves tile computation required
+in steps (1) and (2). However, the communication cost in steps (3) and (5) does not double. Rather there are
+4 expands and folds required in F2 versus 3 in F1. There are also two transpose operations instead of one.
+Thus, in practice, it is usually faster to use algorithm F2 with its reduced computational cost and slightly
+16
+
+
+increased communication cost rather than F1. The key point is that ali the expand and fold operations in
+F1 and F2 scale as N/x/-fi rather than as N as was the case in algorithms A.1 and A2. As we shall see, when
+run o:l large numbers of processors this significantly reduces the time the force-decomposition algorithms
+spend on communication as compared to the atona-decomposition algorithms.
+Finally, the issue of load-balance is a more serious concern for the force-decomposition algorithms.
+Processors will have equal work to do only if ali the matrix blocks F_,t_ or G,_ are uniformly sparse. If
+the atoms are ordered geometrically this will not be the case even for problems with uniform density. This
+is because such an ordering creates a force matrix with diagonal bands of non-zero elements. As in the
+atom-decomposition case, a random permutation of the atom ordering produces the desired effect. Only
+now the permutation should be done as a pre-processing step for ali problems, even those with uniform atom densities.
+In summary, algorithms F1 and F2 divide the MD computations evenly across processors t_s did the
+atom-decomposition algorithms. But the block-decomposition of the force matrix means each processor
+only needs O(N/x/'-fi) information to perform its computations. Thus the communication and memory costs
+are reduced by a factor of v/-fi versus algorithnLs A1 and A2. The force-decomposition strategy retains the
+simplicity of the atom-deconlposition technique; F1 and F2 can be implemented using the same "black
+box" communication routines as Al and A2. The force-decomposition algorithms also need no geometric
+information abo_lt the physical problem being modeled t.o perform optimally. In fact, for load-balancing
+purposes the algoritllms intentionally ignore such illformation by using a random at.ore ordering.
+5 Spatial-Decomposition Algorithm
+In our final parallel algorithm the physical simulation domain is subdivided into small 3-D boxes, one for
+each processor. We call this a spatial-decomposition of the workload. Each processor computes forces on
+and updates the positions and velocities of ali atoms within its box at each timestep. Atoms are reassigned
+to new processors as they move through the physical domain. In order to compute forces on its atoms, a
+processor need only know positions of atoms in nearby boxes. The communication required in the spatial
+decomposition algorithm is thus local in nature as compared to global in the atom-and force-decoml)osition
+cases.
+The size and shape of the box assigned to each processor will depend on N, P, and the shape of
+the physical domain, which we assume to be a 3-D rectangular parallelepiped. Within these constraints
+the number of processors in each dimension is chosen so as to make each processor's box as "cubic" as
+possible. This is; to mininfize communication since in the large N limit the communication cost of the
+spatial-decomposition algorithm will turn out to be proportional to the surface area of the boxes. An
+important point to note is that in contrast to the link-cell method for conventional MD described in Section
+2, the box lengths may now be smaller or larger than the force cutoff lengths rc and rs.
+Each processor in our spatial-decomposition algorithm maintains two data structures, one for the NIP
+17
+
+
+atoms ill its box and one for atoms in nearby boxes. III tile first data structure, each processor stores complete
+information --positions, velocities, neighbor lists, etc. This data is stored in a linked list to allow insertions
+and deletions as atoms move to new boxes. In the second data structure only atonl positions are stored.
+Interprocessor communication at, each tinlestep keeps this information current.
+The communication schenle we use to acquire this izlformation from processors owning the nearby boxes
+is shown in Figure 10. The first step (a) is for each processor t,o pair up with an adjacent processor in the
+east/west dimension, 2 pairs with 1 for exaznple. Processor 2 fills a message buffer with atom positions it
+owns t,hat are within a force cutoff length 7"_of processor l's box. (The reason for using r_ instead of re
+will be made clear below.) If d < 7"_, where d is the box length in the east/west direction, this will be ali of
+processor 2's atoms; otherwise it. will be those nearest to box 1. Now pro_essors 2 alld 1 exchange |nessages.
+Processor 2 puts the information ii, receives into its second data structure. Now the processors pair up
+in the opposite east--west direction, 2 with 3 in this case, and perlbrm the same operation. If d > r_, ali
+needed atom positions in the east,-west dimension have now been acquired by each processor. If d < v,, this
+procedure is repeated with each processor sending more needed atom positions to its adjacent processors. For
+example, processor 2 sends processor 1 atom positions from box 3 (which processor 2 now has in its se.cond
+data sl.ructure). This can be repeated until each processor kllows ali atom positions within a distance r, of
+its box, as indicated by the dotted boxes in the figure. The same process is now repeated in the. north/south
+dilnension; see step (b) of the figure. The only difference is that Inessages sent to the adjacent processor now
+contain not only atoms l]le processor owns (in its lirsl data structure), but also any atolll positions in its
+second data structure that are needed by the adjacel_t, processor. For d = 7_ this has the effect _,f sending 3
+boxes worth of atom positions iii one message as shown iii (I)). Finally, iii sl.el) (c) the l)rocess is repeated in
+the up/down dimension. Now alolll positions frolll ali elltire pla.zle of boxes (9 in the tigtire) are effectively _, being exchanged in cacti message.
+There are se.veral key advantages to this schmne, ali of which reduce the overall cost of conmlu|lication in
+our algorilhln. First, for d >_ v,, needed atoln l_osil.ions from ali 26 surrounding boxes are. obtained in just 6
+data exchanges. Moreow_r,a.s will be discussed in the results section, ifl.l,, parallel macllineis a. hypercube,
+the processors can be mapped to the boxes in such a way tllat ali 6 of these processors will be directly
+connected to the center processor. Thus nlessage passing will be fast and contention- free. l']ven if d < 7:,so
+that atom informalion is needed from more. distant boxes, this occurs with only a few extra data exchanges,
+all of which are still with the 6imnlediateneighborprocessors. Second, the. amount of dataconlinunicated is
+mininlized. Each processor acquires only the al,ot_! positions tllat are within ,_ distance r., of its box. Third,
+ali of the received atom positions can be placed a.s contiguous data directly into the processor's second data
+structure. No time is spent rearranging data, except to create the buffered messages tllat need to be sent.
+Finally, as will be discussed in more. detail below, this message creation can be done w'_ry quickly. A flail
+scan of the two data structures is only done once every Dw timesteps, when the neighbor lists are created, t.o
+decide which a_,om positions to send in each Inessage. The scan procedure creates a list of atoins that make
+18
+
+
+(a) east/west exchanges (c)
+(b) north/south exchanges
+E] ,
+iii@_i'l.ii_i::_
+[.Jt..] up/down exchanges
+Figure 10: Method by which a processor acquires nearby atom positions in the spatial-decomposition algo
+rithm. In 6 data exchanges ali at,on l positions in adjacent boxes in the (a) east/west, (b) north/south, and
+(c) up/down directions can be communicated.
+up each message. During ali the other timesteps, the lists can be used, in lieu of scanning the full atom list,
+to directly index the referenced atoms and buffer up the messages quickly. This is the equivalent of a gather
+operation.
+We now outline our spatial decomposition algorithm $1 in Figure 11. Box z is assigned to processor f9_,
+where z runs from 0 to P- 1 ms before. Processor P_ stores the atom positions of its NIP atoms in x_
+and the forces on those atoms in f_. Steps (la-lc) are the neighbor list, construction, performed once every
+few timesteps. This is somewhat more complex than in the other algorithms because, as discussed above,
+it illcludes the making of lists of atoms that will be communicated at every tinlestep. First, in step (la)
+the positions, velocities, and any other identifying information of atoms that are no longer inside box z are
+deleted from xz and stored in a lnessage buffer. These atones are exchanged with the 6 adjacent processors
+via the communication pattern of Figure 10. As the information routes through each dimension, processor
+P_ checks for new atoms that are now inside its box boundaries, adding them to z_. Next, in step (lh), ali
+atom positions within a distance r_ of box z are acquired by the communication scheme described above.
+As the different, messages are buffered by scanning through the two data structures, lists of included atoms
+are made. The lists will be used in step (5). The scaling factor A for steps (la) and (lb) will be explained
+below.
+When steps (la) and (lb) are complete, both of the processor's data structures are current. Neighbor
+19
+
+
+(la) Move necessary atoms to new boxes A
+(lb) Make lists of ali atoms that will need to be exchanged A
+(lc) Construct neighbor lists of interaction pairs in box z
+(d < 2r,) Ali pairs N U
+7,(.'TP+ _x)
+(d _>2r_) Binning .7A-Np+
+(2) Compute forces on atoms iii I)OX z, douMv, storing results iii f_ ,7A,pN+
+(4) Update atom positions xz in box z using f_ TXr
+(5) Exehange atom positions across box boundaries
+with neighboring processors -J.,-(1+ 2r_/d) a
+(d < r_) Send N/P positions to many neiglll)ors r.,a
+(d-_ r.,) Send NIP positions to nearest neigilbors TNr
+(d > r,) Send l)ositions near box stlrface to nearest neighi)ors (_):_/a
+Figure 11" Single timestel) of spatial-decolnposition algorithzn Sl for i)rocessor P_.
+lists for its N/P atoms can now be constructed in step (lc). If atoms i and j are both in box z (an inner- box
+interaction), the (tj) pair is only stored once in the height)or list. If i and j arc in dilferent boxes (a two--box
+interaction), both processors store the interaction in tlmir respective neighbor lists. If l.his were not done,
+processors would compute forces on atoms they do not own and coz_ununication of tile forces back to tlm
+processors owning the atolns would be required. A modified algoritlllll which l)erforlils this conmlunication
+to avoid tile duplicated force computation of two-box interactions is discussed below. When d, the length
+of box z, is less than two cutoff distances, it is quicker to lind neighbor illteractions by checking each atom
+inside box z against ali the atol_ls in both of the. processor's data structures. This scales as the square of
+N/P. If d > 2rs, then with tile shell of atoms around box z, there arc 4 or lllore bins in each (liJ_iension.
+In this case, as with the other algorithms, it is quicker to perform the Imighl)or list construction by bitching.
+Ali the atorns in both data structures are llashed into bins of size r,. The surrounding bins of each atom in
+box z are then checked for possible neighbors.
+Processor t_ call now compute ali the forces on its atoms in step (2) using the neigl_l)or lists. When
+the interaction is between two atolns inside box z, the resulting force is stored twice in f_, once for atom
+i mid once for atom j. For two--I)ox interactions, ollly the force on the proeessor's own atom is stored.
+After computing f_, the atom l)ositions are ul)dated in step (4). Finally, these updated positions tnust he
+comnmnicated to the surrounding processors in preparation for the next timestep. This occurs in st(q) (5)
+using the previously made lists to create each message and the communication l)attern of Figure 10. The
+amount of data exchanged in this operation is a fianction of the relative values of the force cutoff distance
+and box length and is discussed in the next paragral)h. Also, we note that on the ti|nestel)s that neighbor
+lists are constructed, step (5) does not have to I)e performed since step (lb) h_s the santa effect.
+20
+
+
+The communication operations in algorithm Sl occur ill steps (la), (lb), and (5). The communication
+in tile latter two steps is identical. Tile cost of these sl,eps scales as tile volume of data exchanged. For step
+(5), if we assunw unifornl atom density, this is proportional to the physical vohlme of the shell of thickness
+r, around box z, namely (d + 2rs) 3- da. Note there are roughly NIP atoms in a volume of d 3, since d3 is
+the size of box z. There are 3 cases to consider. First, if d < 7".,data from many neighboring boxes nnlst
+be exchanged and t.he operation scales as 8r., . Second, if d _ v,,, the data in ali 26 surrounding boxes is
+exchanged and the operation scales as 27N/P. Finally, if d is much larger than v_, only atom positions near
+the 6 faces of [)ox z will be exchanged. 'Fhe conamunication then scales as the surface area of box z, namely
+67.,(N/P) _/a. These 3 cases are explicitly listed in the scaling of step (5). l_lsewhere in Figure 11, we use
+the t.erm A to represent whichever of the three is al)plicable for a given N, P, and 7'_. We note that step
+(la) involves less comnmnication since not ali the atoms within a cutofr distance of a box face will move out
+of the box. But this operation sl.iii scales as the surface area of box z, so we list, its scaling as A.
+The computat.ional portion of algoritlltl, Sl is in st.eps (lc), (2), and (4). Ali of these scale a_s N/t _
+with addil.ional work in steps (lc) and (2) for atoms that are neighboring box z and stored in the second
+data structure. The numl)er of these atoms is l)roportional to A so it is included in the scaling of those
+steps. 'File leading term in the scalillg of steps (lc) and (2) is listed as N/2P a.s in algorithins A2 and
+F2, since inlwr--box interactions are only stored and computed once for each pair of atolns in algorithm
+$1. Note that a.s d grows large relative to 7', as it will for very large simulat.iolls, the A contril)ution to the
+ow.'rall colnputation tinw decreases and tll_. overall scaling of algorithm Sl api)roaches the ol_t,imal N/2P.
+In essence, each processor spends nearly ali its ti,lle working in its own box and only exchanges a relatively
+small amount of information wilh neighboring processors t,o update its boundary conditions.
+An important, feature of algorithln Sl is that the lists and st,ruclure of the data are only changed once
+every few timesteps wll_'n neighbor lists are constructod. In particular, even if an atom moves outside box
+z's bolirl(laries it, is not reassigned lo a new l)rocessor _lnl.il step (la.) is executed [45]. Processor I{ can still
+conlpute correct forces for t.he atoln so long as two criteria are met. The tirst is that an atonl cannot move
+farther thall d between two neighbor list collst, ructions since tllis would cause problelns for step (lR). The
+second is t.llat ali nearl)y atolns wit.!lin a distance r,, instead of 7'e, lllllst, be updated every tinlestep. The
+alternative is to move atoms to tlleir new processors at ew__ry timestep [34]. This llas the advantage that
+only atoms within a distance 7":.of box : need be exchanged at ali timesteps when neight)or lists are not
+constrtlcted. This reduces the volulne of communication since rc < r,. llowever, now the neigllbor list. of
+a reassigned atonl must also lte sent. The illfornlation in tile neighbor list is atom indices referencillg local
+lnelnory locations wllere tile neighbor at,onls are sl.ored. If atoms are continuously moving to new processors,
+t.llese local i_dices t_ecome meaningless. To overco_ne l.his, our i_nplementation in ['_4] assigned a global i_dex
+(1 to N) to each at,ore which n_ow,d with l.l_e at.o_ fro_ processor to processor. A mapping of global index
+to local _wmory must then be stored ill a wwtor of size N by each processor or the global i_dices must, be
+sorted and searched to find tile correct, ato_ns wl_en they are referenced in a ne,ighbor list. 'I'l_e forn_er solution
+21
+
+
+limits the size of problems that can be run; the latter solution incurs a considerable cost for the sort, and
+search operations. We found that implementing the Tamayo and Giles idea [45] in our algorithm $1 made
+tile resulting code less complex and reduced the computational and cornnaunication overhead. This _:iid not
+affect the timings for simulations with large N, but improved the algorithm's performance for medium-sized
+problems.
+A modified version of SI that takes filll advantage of Newton's 3td law can also be devised, call it
+algorithm $2. If processor P_. acquires atoms only from its west,, south, and down directions (and sends its
+own atoms only in the east., north, and tip directions), then each pairwise interaction need only be computed
+once, even when the two atoms reside in different boxes. This requires sending computed force results back
+in the opposite directions to the processors who own the atoms, as a step (3) in the algorithm. This scheme
+does not reduce communication costs, since half as much information is communicated twice a.s often, but
+does eliminate the duplicated force computations for two-box interactioiis. An algorit.hm similar to this
+is detailed in [12] with excellent results for the Fujitsu AP1000 machine that we note in the next section.
+Two points are worth noting. First, the overall savings of $2 over Sl is small, particularly for large N.
+Only t,he A term in steps (lc) and (2) is saved. Second, as we mention in our conclusions, the real speed
+to be gained in spatial-decomposition algorithms for large systems is by improving the single--processor
+performance of force computation in step (2). As floating point processors in parallel machines become more
+sophisticated more attention must be paid to data structures and loop orderings in the force and neighbor
+list construction routines to achieve high single-processor flop rates. Implementing $2 requires special-case
+coding for atoms near box edges and corners t.o insure ali interactions are counted only once [12] and thus
+affects this optimization process.
+Finally, the issue of load-balance is an important concern in any spatial-decomposition algorithm. Al
+gorithm $1 will be load-balanced only if ali boxes have a roughly equal number of atoms (and surrounding
+atoms). This will not be the case if the physical atom density is non-uniform. Additionally, if the physical
+domain is not a rectangular parallelepiped, it can be difficult to split into P equal-sized pieces. Sophis
+ticated load-balancing algorithms have been developed [25] to partition an irregular physical domain or
+non-uniformly dense clusters of atoms, but in general they create sub-dornains which are irregular in shape
+or are connected in an irregular fashion to their neighboring sub-donaains. In either case, the task of assigning
+atoms to sub-domains and communicating with neighbors becomes more costly and complex. If the physical
+atom density changes over time during the MD simulat.ion, the load-balance problem is compounded. Any
+dynamic load-balancing scheme requires additional computational overhead and data movement.
+In sun,mary, the spatial-decomposition algorithm, like the atom- and force-decomposition algorithms,
+evenly divides the MD computations across ali the processors. Its chief benefit is that it takes full advantage
+of the local nature of the interatomic forces by performing only local communication. Thus, in the large N
+limit, it achieves optimal O(N/P) scaling and is clearly the fastest algorithm, ttowever, this is only if good
+load-balance is also achievable. Since its performance is sensitive to the problem geometry, algorithm Sl
+22
+
+
+is more restrictive than A2 and F2 whose perfornaance is geometry-'i,-_dependent. A second drawback of
+algorithm Sl is its complexity; it, is more difl'icult to iml_lenwnt efficiently than the simpler ai,ota-- and force 
+decomposition algoritllms. In particular the communication scheme requires extra coding and bookkeeping
+to create messages and access data received from neighboring boxes. In practice, integrating algorithna Sl
+into an existing serial Ml) code can require a sul._stantial reworking of data structures and code.
+6 Benchmark Problem
+The test case used to benchmark our three parallel algorithlns is a MI) probleln that has been used extensively
+by various researchers [12, 22, 28, 34, 41, 46, 45]. lt. models atom interactions with a I,ennard-dones potential
+energy between pairs of at.ores separal.ed by a distance r as
+where _ and cr are constant.s. 'l'lle derivative of this energy expression with respect to r is the b.) term in
+equation (1); Fa and higher-order terms are ignored.
+The N atoms are sinmlated in a 3-1) lmrallelepiped with periodic boundary conditions at, the I,ennard
+Jones state point detined by the reduced density F = 0.84,t2 and reduced teznperature 7-_' = 0.72. This
+is a liquid state near the Lennard--.lones triple point. The simulation is begun with tlm atonls on an fcc
+lattice with rando,nized w_locities chosell ft'ore a Boltzmann distribution. The solM quickly melts a.s the
+system evolves to its nat.llral liquid state. A roughly uniform spatial density persists fox' the duration of the
+sthrelation. The simulation is run at COllStmit N, volume I/, aEld energy E, a statistical saml)ling from the
+lnicrocanonical enseml_le. Force col_q:,utatiolls using the l_ot,ential in equation (2) are t.ruxlcated at. a distance
+r_ = 2.50". The integration t,inmstep is 0.0046? in reduced tlnit, s. For simplicity we use a leapfrog scheme to
+i_t.egratc equation (1) as in [2]. ()tlwr in_l_lenwntatio_s of the bench_nark [22] have used predictor--correct.or
+schemes; this ollly slows tlleir l)ert'ortnance by 2-3%.
+For tiilfing purtmses , the critical features of the belJchxnark for a given problenl size N are p" and r_.
+These deterxlfine how ninny force interactions lllllS[, ge coniputed at every timestep. Tlm. numl_er of atonls
+in a sphere of radius r" = r/0" is given by 4a'p'(r')a/3. For this benchmark, using r:. = 2.5o', each atom has
+on average 55 neighbors. If m'ighl_or lists are. used, l.he benchnmrk also detixies an extended cutoff length
+rs = 2.8o" (encompassing about 78 atoms) for forming the neighbor lists and specifies that the lists be created
+or updated every 20 timestel_s. 'Filnixlgs for the benchmark are usually reported in CPU seconds/timestep.
+If neighl)or lists are used then the cost of creating l.henl every 20 steps is amortized over the per tixnestep
+timing.
+lt is worth noting tidal, without runzling a standard benchnmrk problem it can be difticult to accurately
+assess the performmlce ofa parallel algorithm. In particular, it can be misleading to only compare perfor
+mance era parallel version of a code to the original vectorized or serial code because, as we have learned from
+23
+
+
+our codes as well as other's results, tile vector code performance may well be far from optinlal. Even when
+problem specifications are reported, it can be difficult to compare two algorithm's relative performance when
+two different benchmark problems are used. This is because of tile wide variability in the cost, of calculating
+force equations, the number of neighbors included in cutoff distances, and tile frequency of neighbor list
+building as a function of temperature, atom density, cutoff distances, etc.
+7 Results
+The parallel algorithms of Sections 3, 4, and 5 were tested on three parallel MIM D supercomputers, a nCUBE
+2, an Intel iPSC/860, and the Intel Delta. The first two machines are at Sandia; the Delta is at. Cal Tech.
+The nCUBE 2 is a 1024-processor hypercube. Each processor is capable of about 2 Mflops and has 4 Gbytes
+of memory. Sandia's iPSC/860 has 64 i860 processors connected in a hypercube topology. Its processors
+have 8 Mbytes of melilory and are capable of about 60 Mflops, but in practice 5--10 Mflops is the typical
+compiled Fortran performance. The lntel Delta has 512 processors configured as a 2-D mesh. The il_dividual
+processors have 16 Mbytes of memory and are identical to those in the iPSC/8¢i0, though the communication network is somewhat faster.
+Because the algorithms were implemented in standard Fortran with calls to vendor-supplied message-
+passing subroutines, only minor changes were required to implement the benchmark codes on the different
+machines. The algorithms as described do not specify a mapping of processors to the computational elements
+(force lnatrix sub-blocks, 3-D boxes, etc.). The real)ping could potentially be tailored for a particular
+machine architecture to minimize message contention (multiple messages using the same communication
+wire) and the distance messages have to travel between pairs of processors that are not directly connected
+by a communication wire. We chose mappings that are simple and good choices for hyl)ercubes. For code
+portability we used the same mappings on the mesh-architecture Delta.
+For the atom--decomposition algorithm we siml)ly assign the processors in ascending order to the row
+blocks of the force matrix in Figure 1. The expands and folds then take place exactly as in Figure 2. For
+the force--decomposition algorithm we use a natural calendar ordering of the processors to the force matrix
+in Figure 7. On a hypercube this means each row and column of the matrix is a sub-cube of processors so
+that expands and folds within rows :_lld columns can be done optimally. However, the transpose operations
+in algorithms F1 and F2 now require communication between pairs ot" processors that are architecturally
+distant. Thus with this mapping there will be some message contention during the transposes ms multiple
+messages route to their distant destinations simultaneously. Since the transpose operations scale a.s the
+volume of data exchanged or N/P, even with some slow-down due to message congestion, the overall N/x,/-P
+scaling of the communication portion of the force-decomposition algorithms is not affected. Although we did
+not implement it for this work, a mapping of processors to the force matrix that produces contention-free
+transposes for a hypercube is possible and is described in [27]. We have also recently developed a modified
+force-decomposition algorithm that does not. require transpose operations and thus runs slightly faster on
+24
+
+
+mesh-architecture parallel machines [35].
+For the spatial-decomposition Mgorit.hna, we use a processor mapping that essentially configures a hy
+percube as a 3-D mesh. Such a mapping is done using a Gray-coded ordering [19] of the processors. This
+insures each processor's box ill Figure 10 has 6 spatial neighbors (boxes in the east, west, north, sou_h, up,
+down directions) that are assigned to processors which are also nearest neighbors in the hypercube topol
+ogy. Communication with these neighbors is thus contention-free and as fast as possible. Gray-coding also
+provides naturally for periodic boundary conditions in the MD simulation since processors at the edge of
+the 3-D mesh are topological nearest neighbors to those on the opposite edge. The only restriction the
+Gray-coding imposes is that the number of processors assigned to each dinaension of the 3-D mesh be a
+power-of-two. For the lntel Delta there is no obvious best way to map a 3-D problem to its 2-D mesh of
+processors. We use the same 3-D Gray-coding assignment scheme for code portability.
+Timing results for the benchmark problem on the different parallel machines are shown in Tables I, II,
+and III for the atom--, force , and spatial-decomposition algorithms. A wide range of problem sizes are
+considered from N = 500 atoms to N = 107 atoms. The lattice size tbr each problem is also specified; there
+are 4 atoms per unit cell for the fcc lattices. Entries with a dashed line are for problems that would not fit
+in available memory. The last entries in each table are roughly the largest problem sizes for this benchmark
+that can be run with each algorithm due to memory restrictions on the three parallel machines.
+For comparison, we also implemented the vectorized algorithm of Grest, ct. al. [22] on single processors
+of Sandia's Cray Y-MP and a Cray C90 at Cray Research. Our version is slightly different from the original
+Grest code, using a simpler integrator and allowing for non-cubic physical domains. The timings in reference
+[22] were for a Cray X-MP. We believe these timings for the faster Y-MP and C90 architectures are the
+fastest that have been reported for this benchmark problem on a single processor of a col :ntional vector
+supercomputer. They show a C90 processor to be about 2.5 times faster than a Y-MP processor for this
+algorithm. The st,:rred Cray timings ix_the tables are estimates for problems too large t.t_fit in memory on
+the machines accessible to us. They are extrapo!ations of the N = 10s system timing based on the observed
+linear scaling of the Cray algorithm, lt is also worth nor,ing that ideas similar to those used in the parallel
+algorithms of i_he previous sectiona could be used to create efficient parallel Cray codes for multiple processors
+of a Y-MP or C90. For example, a speed-up of 6.8 on a 8-processor Cray Y-MP has been achieved by
+Kremer with the Grest, ct. al. algorithm [20].
+The parallel timings in the three tables are ali for single-precision (32-bit) implementations of the bench
+mark. The Cray tinamgs are, of course, f'gr 64-bit arithmetic since that is the only option. MD simulations
+do not typically require douLle precision accuracy since there is a nmch coarser approximation inherent in
+the potential model and the integrator. This is particularly true of Lennard-Jones systems since the e and _r
+coefficients are only specified to a few digits of accuracy as an approximate model of the interatomic energies
+in a real material. With this said, double precision timings can be easily estimated for the parallel algorithms.
+The processors in ali three of the parallel machines compute about 20-30% slower in double-precision arith
+25
+
+
+lntel
+l:h'oblem Size C90 Y-MP nCUBE 2 lntel iPSC/860 Delta
+N Lattice P=I P=I P=512 ] P=1024 P=32 P=64 P=256
+i
+500 5x5x5 .00373 .00930 .00724 --- .0111 .00880 .00518
+2048 8x8x8 .0154 .0369 .0252 .0217 .0446 .0336 .0172
+4000 lOxlOxlO .0232 .0610 .0458 .0394 .0807 .0616 .0314
+6912 12x12x12 .0425 .106 .0780 .0669 .138 .103 .0532
+10976 14x14x14 .0657 .167 .124 .106 .220 .164 .0863
+16384 16x16x16 .103 .250 .182 .155 .337 .249 .130
+32000 20x20x20 .202 .470 .351 .301 .635 .474 .256
+500_ 20x25x25 .286 .733 .546 .469 .993 .740 .399
+100,000 25x25x40 .592 1.47 1.09 .935 1.98 1.48 .820
+Table I: CPU seconds/timestep for the atom-decomposition algorithm AI oil several parallel machines for
+the benchmark simulation. Single processor Cray Y-MP and C90 timings using a fully vectorized algorithm are also given for comparison.
+metic than single, so the time spent computing would be increased by that amount. Conununication costs in
+each of the algorithn-Ls would essentially double, since the volume of information being exchanged iii messages
+would increase by a factor of two. Thus depending on the fraction of time being spent in communication for
+a particular N and P (see the scaling discussion below), the overall timings typically increase by 20-50% for
+double-precision runs.
+The tables show the parallel machines to be competitive with the Cray Y-MP and C90 machines across
+the entire range of problem sizes for ali three parallel algorithlrLs. The force-decomposition algorithm is
+fastest for the smallest problem sizes; spatial-decomposition is fastest for large N. The Intel Delta is the
+fastest of the three parallel machines, up to 30 times faster than a single Y-MP processor on the largest
+problem smes using the spatial-decomposition algorithm and 12 times faster than a C90 processor. The
+nCUBE 2 and Intel Delta can perform million atom simulations of the benchmark problem at 1.17 and
+.498 seconds/timestep respectively. A surprising result is that the parallel machines are competitive with
+a single processor of the Cray machines even for the smallest problem sizes. One typically does not think
+of there being enough parallelism to exploit when there are only a few atoms per processor. The hardware
+26
+
+
+Problem Size C90 Y-MP nCUBE 2 Intel iPSC/860 Intel Delta
+Lattice P=I P=I P=-512 I P=-1024 P=-32 P=64 P=-256 I P=512
+N
+i|
+500 5x5x5 .00373 .00930 .00592 --- .00980 .00695 .00480 .00455
+2048 8x8x8 .0154 .0369 .0110 .00864 .0359 .0250 .00894 .00677
+6912 12x12x12 .0425 .106 .0245 .0179 .112 .0759 .0250 .0160
+10976 14x14x14 .0657 .167 .0394 .0277 .180 .122 .0399 .0244
+32000 20x20x20 .202 .470 .0890 .0603 .521 .349 .115 .0667
+50000 20x25x25 .286 .733 .162 .112 .828 .544 .179 .103
+100,000 25x25x40 .592 1.47 .251 .171 1.75 1.10 .369 .210
+500,000 50x50x 50 2.86* 7.33* 2.47 1.66 --- 6.04 1.96 1.17
+10000,000 50x50x100 5.92* 14.7" --- 3.29 ...... 4.04 2.41
+Table II: CPU seconds/timestep for the force-decomposition algorithm F2 on several parallel machines and
+the Cray Y-MP and C90.
+performance monitor on the Cray also provides the useful metric that the vectorized algorithm runs at about
+260 Mflops for large N on a C90 processor. Though tile floating point operation count is not identical in the
+parallel codes, this implies the 512-processor lntel Delta runs the spatial-decomposition algorithm at about
+3 Gflops for the largest problem sizes, or about 6 Mflops/processor which is typical of i860 chip performance
+on compiled Fortran code. However, since basic linear algebra subroutines (BLAS) run at 20-30 Mflops on
+the i860 (out of a peak speed of 60 Mflops), this indicates much higher performance could still be achieved in
+parallel MD algorithms by writing code optimized for a particular parallel machine's floating point processor.
+Timings for this benchmark on other parallel machines are also discussed in [7, 12, 46, 45], ali for spatial
+decomposition algorithms. Tamayo, et. al. [46] implemented several SIMD algorithms on a 32K-processor
+CM-2 (1024 floating point processors). Their fastest algorithm ran at 0.57 sec/timestep for a N = 18000
+atom system, about a factor of two slower than the single processor Y-MP timing in the tables here. More
+recently, Tamayo and Giles [45] achieved a time of 0.4 sec/timestep on a N = 51,200 atom simulation on
+256 processors of a CM--5. This is roughly a factor of two faster than a Y-MP processor and was for a
+CM-5 without vector units programmed in MIMD mode with explicit message passing; the timings should
+improve dramatically with the vector units. Ill other work on the CM-5, Beazley and Lomdahl [7] report a
+time of 1.00 sec/timestep for a N = 106 atom simulation on 1024 processors, also without vector units. This
+however, was for a shorter cutoff distance with only an average of 21 neighbors/atom instead of 55 as in this
+benchmark. Finally, Brown, et. al. [12] detail an algorithm similar to the S2 algorithm discussed in Section
+5. For a N = 729000 atom system (at a slightly smaller reduced density of p* = 0.8) run on 512 processors
+27
+
+
+Problem Size C90 Y-MP nCUBE 2 Intel iPSC/860 lntel Delta
+N I Lattice P=I P=I P=512 P=-1024 P=32 P=64 P=256 P=512
+1
+500 5xSx5 .00373 .00930 10130 .0119 .0129 .0106 .00706 .00592
+,,
+2048 8x8x8 .0154 .0369 .0173 .0148 .0321 .0189 .00837 .00650
+6912 12x12x12 .0425 .106 .0374 .0250 .0768 .0436 .0159 .0111
+....
+16384 16x16x16 .103 .250 .0650 .0407 .161 .0874 .0275 .0167
+50000 20x25x25 .286 .733 .160 .0967 .420 .224 .0664 .0380
+100,1300 25x25x40 .592 1.47 .298 .165 .798 .418 .119 .0678
+500,000 50x50x50 2.86* 7.33* 1.17 .650 3.66 1.88 .501 .261
+1,000,000 50x50x100 5.92* 14.7" 2.23 1.17 --- 3.68 .951 .498
+5,000,000 !OOxlOOx125 28.6* 73.3* 10.2 5.28 ...... 4.45 2.31
+10,000,000 lOOx125x200 59.2* 147.* --- 10.2 ......... 4.60
+Table III: CPU seconds/timestep for the spatial--decomposition algorithm Sl.
+of tile Fujitsu AP1000 they report a time of 0.927 see/timestep.
+The timings in Table I show that communication o "ts have begun to dorninate in the a tom-deconlposition
+algorithm by the time hundreds of processors are used. There is little speed up gained by doubling the number
+of processors used. By contrast timings in Table II show the force-decomposition algorithm is speeding up
+by roughly 30% when the number of processors is doubled. The timings for the largest problem sizes in Table
+III evidence excellent scaling properties. Doubling P nearly halves the run times for a given N. Similarly,
+as N increases for fixed P, the run times per atom actually become faster as the surface-to-volume ratio
+of each processor's box is reduced. We note, however, that this scaling depends on uniform atom density
+within a simple domain such as the rectangular parallelepiped of the benchmark problem.
+A comparison of the different algorithm's performance using data from ali 3 tables can be better displayed
+in graphical form. Figure 12 shows the nCUBE 2's performance on the benchmark simulation on 1024
+processors as a function of problem size. Single processor Y-MP timings are also included. The linear
+scaling of ali the algorithms when N is large is evident. Note that force-decomposition is faster than atom
+decomposition across ali problem sizes due to its reduced communication costs. On this many processors, the
+spatial-decomposition algorithm has significant overhead costs for small N. This is because the d/r_ ratio is
+so small that each processor has to communicate with a large number of neighboring processors to acquire
+ali its needed information. As N increases, this overhead is reduced relative to the computation performed
+28
+
+
+inside the processor's box, and the algoritllm's performance asymptotically approaches its optimal O(N/P)
+performance. Thus there is a cross-over size N at which the spatial-decomposition algorithm becomes faster
+than force-decomposition. We return to this point in the conclusions section.
+101 - Cray Y-MP/1 D-----II Atom-Decomposition Force-Decomposition Spatial-Decomposition
+_0
+_ 10
+E
+t¢,Dn
+_ 0-1
+E1
+!°_'
+IO21_.
+10 .2
+' , ' .... I a I , , ,,,,I , • , , ,J,,l , , , ,,,,,I
+10 3 10 4 105 106 N (atoms)
+Figure 12: CPU timings (seconds/timestep) for tile three parallel algorithms on 1024 processors of the
+nCUBE 2 for different problem sizes. Single-processor Cray Y-MP timings are also given for comparison.
+In Figure 13 we plot the Intel Delta's performance on the N "- 10976 atom benchmark as a function
+of number of processors. The single-processor i860 and Y--MP timings are also shown; the Y-MP is about
+13.3 times faster than a i860 processor on this problem. The dotted line is the maximum achievable speed
+of the Delta if any of the algorithms were 100% efficient. Parallel efficiency is defined as the run time on
+1 processor divided by the quantity (P × run time on P processors). Thus if the 512-processor timing is
+256 times as fast as the 1-processor timing, the algorithm is 50% efficient. On small n,lmbers of processors
+communication is not a significant factor and ali the algorithms perform similarly. But as P increases, the
+algorithms become less efficient. The atoI,-decomposition falls off most rapidly due to the O(N) scaling
+of its communication. On the Delta's large 2-D mesh the all-to-ali communication this algorithm requires
+is particularly inefficient (because of message contention), causing a slow-down when going from 256 to
+29
+
+
+512 processors. Force-decomposition is next most efficient due to its O(N/v/"fi) communication scaling, lt
+remains competitive with tire spatial-deconlposition algorithm across a wide range of numbers of processors.
+When hundreds or thousands; of processors are used, even the spatial-decomposition algorithm becmnes less
+efficient, since now tile box size is small relative to the force cutoff distance for this N. Ii, is worth noting
+that the trends in the plots of Figures 12 and 13 are the same for the oi.her machines and prol:flem sizes
+tested in this study. Though the absolute data values are functions of N, P, and the benchmark attributes,
+the relative trade--offs between the various algorithms are consistently the same.
+Using one-node timings on the nCUBI'3 and Intel machines ms reference points, parallel efficiencies can be
+computed for ali the algorithms. The nCUBE 2 one-processor tin ring is 9.15 × 10 -4 seconds/tinaestep/atom.
+Both Intel machines give a one-processor timing of 2.03 × 10 -4 seconds/timestep/atom. Because the algo
+rithms and codes scale so linearly, these values can be used to predict optimal timings for problems larger
+than will fit on a single processor. For the million-atom simulation, the timings in Table II1 show the
+spatial-decomposition algorithm Sl thus has a parallel efficiency of 76% on 1024 processors of the nCUBE
+and 80% on 512 processors of the late! Delta. The larger simulations approach roughly a 90% parallel effi
+ciency. To put these numbers in context, consider that on the nCUBE, the million.-atoln simulation means
+each processor has about, 1000 atoms in itu box. But, the range of the cutoff distance in the benchmark is
+such that about 2600 atoms from surrounding boxes are still needed at every timestep to compute forces.
+Thus the spatial-decomposition _dgorithm Sl is 76% efficient even though two-and--a-h',df ti|nes as many
+atom positions are communicated as are updated locally by each processor.
+Finally, we discuss the scalability of the different parallel algorithms in the large N limit. Table IV shows
+the overall scaling of the computation and communication portions of the 5 algorithn_s. This is constructed
+from the scaling entries for the various steps of the algorithms in Figures 5, 6, 8, 9, and 11, using large
+N values when there is an opt.ion. Some coefficients are included to show contra.,_ts between the various
+algorithms. The anaount of memory required per processor to store atom position and force vectors is also listed in the table.
+Computation in the atom-decomposition algorithm A1 scales as N/P + N where the second term is
+for binned neighbor list construction. The coefficient on this term is small so it is usually not a significant
+factor. The communication scales as N, as does the memory to store ali atom positions. By contrast,
+atom-decomposition algorithm A2 implements Newton's 3rd law so its leading computational term is cut in
+half. Now the communication cost is doubled and the entire force vector must be stored on each processor as weil.
+Force-decomposition algorithms F1 and F2 have the same computational complexity as A1 and A2
+respectively except the binning for neighbor list construction now scales as N/v/ft, again not typically a
+significant factor. In F1 there are 3 expands/folds and one transpose operation for a total communication
+cost of 3N/v/-fi + NIP. Similarly F2 requires 4 expands/folds and 2 transposes, hnplementing F1 requires
+storing two atom position sub-vectors and one force sub-vector, ali of length N/v/-fi. F2 requires an extra
+3O
+
+
+101 Atom-Decomposition Force-Decomposition
+I =- --" Spatial-Decomposition
+100
+(_ ••
+E •,,
+• Cray Y-MP/1 ",,•
+u_ -1 •
+m 10 "-.
+E
+O -2 "'.
+10
+I I i I 1l I I I I
+1 2 4 e 16 32 64 128 256 512
+P (processors)
+Figure 13: CPU timings (seconds/timestep) for the three parallel algorithms on the Intel Delta for different
+numbers of processors on a benchmark simulation with N = 10976 atoms. Single-processor i860 and Cray
+Y-MP timings are shown for comparison.
+force sub-vector.
+Computation in the spatial-decomposition algorithm SI scales as N/2P since it implements Newton's
+3rd law for interactions between atom pairs inside a processor's box. For large N problems there is an extra
+factor for computations performed on nearby atoms within a distance rs of the box faces. The number of
+these atoms is proportional to the surface area of the box face (N/P 2/3) times rs for each of the 6 faces.
+The communication in algorithm Sl scales as the same factor as do the memory requirements for storing
+the nearby atoms. Additionally, O(N/P) memory must be allocated for storing the atoms in a processor's
+box.
+As mentioned above, the memory entries in Table IV are for the atom position and force vectors used
+in each algorithm. However, in ali of the algorithms processors must store additional O(N/P) information
+such as neighbor lists and velocities for the N/P atoms they own. In practice, for the force- and spatial
+decomposition algorithms, storage of neighbor lists is actually the dominant factor in limiting the size of
+31
+
+
+Algorithm Computation Communication Memory
+A1 N N N
+A2 N 2N 2N
++N
+2P
+F1 N N A' N N
+- -+- 3-
+F2 N N 4 N N 4 N 2P + _ _+2p ff
+Sl N N 2/3 N 2/3 N N 2/3 2 P + 6rs (-rf) 6rs (-rf) -ff + 6rs (-rf)
+Table IV: Scaling properties of ali 5 parallel algorithms as a function of problem size N and number of
+processors P. Run time scaling for the communication and computation portions of tile algorithms as well
+as their per-processor memory requirements are listed.
+problem that can be run. For example, the 4-6 Gbytes of user memory available on tile nCUBE 2 and lntel
+Delta machines used in this study allows a 10 7 atom simulation to be run wit,la tile rc = 2.5cr cutoff of the
+benchmark problem. Using a shorter cutoff on tile 1024-processor CM-5 (which has more user memory)
+allowed Beazley and Lomdahl to run a 70-million atom 3-D simulation [7]. These figures are indicative of
+the size of problems that can be run on current-generation parallel machines.
+8 Application of the Algorithms
+While the benchmark problem discussed in Sections 6 and 7 is relatively simple, the parallel algorithms
+described in this paper can be used in a variety of more complex MD simulations with little modification.
+We discuss the parallel implications of some common MD issues in the next several paragraphs.
+(A) Force models more computationally expensive than Lennard-Jones potentials are often used in MD
+simulations of various materials. Pairwise forces, even if they are very expensive, can often be pre-computed
+once and then stored in table form or as a set of interpolating coefficients. Then they turn out to be little
+32
+
+
+more expensive to compute with than 6-12 potentials. Modern parallel computers have ample memory for
+storing quite large tables of force values and/or coefficients in duplicate on every processor.
+(B) Force models that are functions of atom velocities, or other quantities besides just atom positions,
+are sometimes used. An example is the embedded atom method (EAM) potentials [16] commonly used in
+modeling metals and metal alloys where an atom's energy is a function of electron density contributions from
+neighboring atoms as well as conventional pair--potential interactions. A more general N-body simulation
+example is vortex methods in fluid dynamics where "particles" of fluid interact via their vorticities. Ali of
+the parallel algorithms described here can be augmented in steps (3) and (5) to communicate additional
+atom-based quantities as needed [36] without affecting their overall parallel scaling.
+(C) More sophisticated many-body force models are often used in MD simulations of covalently bonded
+materials. Examples include angular (three-body) forces for silicon and torsional (four-body) forces for
+organic polymers or proteins. These forces can be most easily computed in parallel if a single processor
+knows the positions of ali the atoms in a particular bond group. This is simple to implement in the atom
+decomposition algorithm since each processor knows the positions of every atom. Likewise, the spatial
+decomposition algorithm can also be modified t.o insure each processor acquires enough information from
+surrounding boxes to compute ali the many--body terms its atoms are a party to, since the bond groups are
+short-range in nature, tlowever, the force-decomposition algorithm requires special care in this respect. This
+is because a processor only knows the positions of 2N/v/_ atoms that have no special spatial relationship to
+each other. OHe solution is to perform a pre-processing step to reorder the atoms in such a way that one or
+more processors will know the positions of all the atoms in each bond group. We have developed methods for
+doing this in organic MI) simulations where the connectivity of the bond groups is static [37, 35]. tlowever,
+we know of no simple way to use the force--decomposition idea for the more general case of dynamically
+changing connectivities, such as for silicon three--body potentials.
+(D) Though force calculation is the key computational kernel in M D simulations, the quantities of interest
+are often global parameters like pressure, structure factors, and diffusion coefficients. These thermodynamic
+and transport properties are often calculated once every 50 or 100 timesteps and add little to tile overall
+computational cost of a serial program. The same is true for the parallel case. In short-range MD each
+processor can compute its partial contribution to one of these quantities from the atom information it already
+knows. Then the local values can be accumulated quickly as a global sum across ali the processors.
+(E) In many MD codes, neighbor list construction is triggered by atom movement. For example, lists will
+only be recreated when some atom has moved half the distance r_ -r_. Again, this can easily be implemented
+in the parallel algorithms by having each processor check if any of its NIP atoms have met the criterion,
+then exchanging a global flag to decide if the neighbor list routines should be called. If the list of interacting
+neighbors is static in a particular MD simulation (e.g. atoms on a lattice), then step (1) in ali of the parallel
+algorithms becomes unnecessary. The remaining steps of the algorithms are still a fast way to p'arallelize the
+necessary computation and communication for this special case.
+33
+
+
+(F) The benchmark problem implements a constant N, volume V, and energy E microcanonical ensemble.
+Another common choice is to hold N, pressure P, and temperature T constant, sampling from the canonical
+ensemble. This involves rescaling the simulation domain dimensions and velocities at each timestep (or every
+few timesteps) to hold the pressure and temperature constant. In parallel this requires a small amount of
+additional communication, a global summation or exchange of the rescaling parameters, similar to the effort
+involved in (D) and (E) above.
+(G) A simple leapfrog integrator was used in our implementation of the benchmark problem. More
+complex ODE integrators such as Runge-Kutta or predictor--corrector methods can easily be used in the
+context of any of the parallel algorithms in step (4). These methods are perfectly parallel since they only
+require information about the NIP atoms already owned by each processor. They may also require extra
+O(N/P) memory to store old timestep values or work vectors.
+(H) Multiple-timescale MD methods have been proposed [44], where work is done at staggered times on
+different length scales to allow longer timesteps to be taken on average. Only very short--range information
+is used to compute forces in the smallest timesteps. These schemes are an effort to include longer-range
+effects while avoiding true long-range force computation. They are typically implemented by a hierarchy of
+neighbor lists which store information for the different length scales. Since they are still inherently short
+range force models, they can be implemented within the general framework of any of the parallel algorithms
+we have presented. In the limit that the force computation becomes truly long-range in nature, pairwise
+forces are usually not the computational method of choice as discussed in Section 2. However, if long-range
+pairwise forces are used, they can still be computed directly in the force-matrix formalism of the atom--and
+force-decomposition algorithms [27]. By contrast the spatie,]-decomposition algorithm would now require
+long-range communication and become an inefficient solution.
+9 Conclusion
+We have detailed the construction and implementation of three kinds of parallel algorithms for MD simu
+lations with short-range forces. Each of them has advantages and disadvantages. The atom-decomposition
+algorithm is simplest to implement and load-balances automatically, but because it performs all-to-ali com
+munication, its communication costs begin to dominate its run time on large numbers of processors. The
+force-decomposition algorithm is also relatively simple, though it often requires some pre-processing to as
+sure load-balance. It also works well independent of the physical problem's geometry. Its O(N/v/-fi) scaling
+is better than that of the atom-decomposition algorithm, but is not optimal for large simulations. The
+spatial-decomposition algorithm does exhibit optimal O(N/P) scaling for large problems. However it suffers
+more easily from load-imbalance and is more difficult to implement efficiently.
+In practical terms, how does one choose the "best" parallel algorithm for a particular MD simulation?
+Assuming one knows the ranges of N and P the simulation will be run with, we find the following four
+guidelines helpful.
+34
+
+
+(A) Choose an atom-decomposition algorithm only if the communication cost is expected to be negligible.
+In this case simplicity outweighs tile inefficient communications. Typically this will only be true for small P
+(say P <_ 16 processors) or very expensive forces where computation time dominates communication time.
+(B) A force-decomposition approach will be faster than atom-decomposition in ali other cases. Both
+the atom- and force-decomposition algorithms scale linearly with N for fixed P. This means for a given
+P, the parallel efficiency of either algorithm is independent of N. Moreover, ms P doubles, the efficiency
+of the communication portion of the atom-decomposition algorithm goes down by a factor of 2, while the
+force-decomposition algorithm's efficiency decreases by a factor of only v/2. Thus, once P is large enough
+that force-decomposition is significantly faster than atom-decomposition, ii, will remain faster ms P increases,
+independent of N. For the benchmark problem this was the case for P :> 16 processors.
+(C) For a given P, the scaling of the spatial-decomposition algorithm is not linear with N. For small
+N communication and overhead costs are significant and the efficiency is poor; for large N the efficiency
+is asymptotically optinml (100%). Thus when compared to a force-decomposition approach, there will be
+some cross-over point as N increa.ses for a given P where a spatial-decomposition algorithm becomes faster.
+In the benchmark the cross-over size was several thousands of atoms on hundreds of processors, as in Figure
+12. In general, the cross-over size is a function of the complexity of the force model, force cutoff distances,
+and the computational and communication capabilities of a particular parallel machine, lt will also be a
+function of P. For example, if [:,lie force cutoff distance is reduced (say to rc = 21160, as is common for
+fluids modeled with purely repuisiw. • forces), a spatial-decomposition algorithm will require less exchange
+of information between processors assigned to neighboring boxes and the cross-over size will be reduced as
+weil. A rough estimate of a spatial--deconlposition algorithm's efficiency for a given N and P can be made
+by noting each processor's box has voluu_e da - N/P, but it computes and communicates information in an
+extended volume of (d + 2r_)3. Comparing the extended volume to the box volume gives a rough measure
+of the extra (inefficient) work tlw algorithln is perfornfing.
+(D) The preceding paragraph assumes the computation in the spatial--decomposition algorithm is per
+fectly load-balanced. Load-iznbalance imposes an upper bound on the efficiency a spatial-decomposition
+algorithm can achieve. For example, biological simulations of proteins solvated by water often are performed
+in a vacuum so that the atoms in the simulation fill a roughly spherical volume. If this domain is treated
+as a cube and split into P pieces then the sphere fills only a _'/6 fraction of the cube and a 50% parallel
+inefficiency results. The net effect of load-imbalance is to increase the cross-over size at which a spatial
+decomposition algorithm becomes faster than a force-decomposition approach. In practice, we have found
+the force decomposition algorithm can be faster or at lea.st quite competitive with spatial-decomposition
+algorithms for simulations of up to many tens of thousands of atoms [37].
+In Section 7 we discussed the performance of the parallel algorithms on three different parallel computers,
+the nCUBE 2, lntel iPSC/860, and Delta. The results show that current-generation parallel machines are
+competitive with multi-processor Cray-class vector supercomputers for short-range MD simulations. More
+35
+
+
+generally, these algorithms can be implemented on any parallel computer that allows its processors to execute
+code independently of each other and exchanges data between processors by standard message-passing
+techniques. This is the definition of a multiple instruction/multiple data (MIMD) parallel architecture. Mast
+of the current- and next-generation parallel supercomputers support this mode of programming, including
+the lntel Paragon, CM-5, and Cray MPP machines. Several features of tile algorithms take advantage of
+the flexibility of the MIMD paradigm, including the code to build and access variable-length neighbor lists
+via indirect addressing, to select/pack/unpack data for messages, and to efficiently exchange variable-length
+data structures between sub-groups of processors as in Figures 2 and lO.
+Finally, we are confident these algorithms or versions based on similar ideas will continue to be good
+choices for MD simulations on parallel machines of the future. Optimizing their performance for next
+generation machines will require improving their single-processor computational performance. As the indi
+vidual processors used in parallel machines become faster and more complex, high computational rates can
+only be achieved by writing pipelined or vectorized code. Thus, many of the data reorganization and other
+optimization techniques that have been developed for MD on vector machines [22] will become important
+for parallel implementations as weil.
+10 Acknowledgments
+I am indebted to Bruce tlendrickson of Sandia for many useful discussions regarding MD algorithms, par
+ticularly with respect to the force-decomposition techniques described here. Early runs of the algorithms
+on the Intel iPSC/860 were performed at Oak Ridge National Labs; Al Geist was particularly helpful to
+me in this effort. I also thank Gary Grest at, Exxon Research for sending me a copy of his vectorized Cray
+algorithm and have benefited from discussions with Pablo Tamayo at Los Alamos National Labs concerning
+parallel MD techniques. John Mertz at Cray Research performed the Cray C90 runs discussed in Section
+7. Additionally, I thank ali of these individuals for suggesting improvements to this manuscript. Work on
+the Intel Delta was supported by the Concurrent Supercomputing Consortium at Cal Tech; I thank Sharon
+Brunet of the CSC staff Ibr timely assistance in this regard.
+References
+[1] F. F. Abraham. Computational statistical mechanics: methodology, applications and supercomputing. Advances in Physics, 35:1-111, 1986.
+[2] M. P. Allen and D. J. Tildesley. Computer Simulation of Liquids. Clarendon Press, Oxford, 1987.
+[3] D. J. Auerbach, W. Paul, A. F. Bakker, C. Lutz, W. E. Rudge, and F. F. Abraham. A special purpose
+parallel computer for molecular dynamics: Motivation, design, implementation, and application. J. Phys. Chem., 91:4881-4890, 1987.
+[4] A. F. Bakker, G. H. Gilmer, M. H. Grabow, and K. Thompson. A special purpose computer for molecular dynamics calculations. J. Comp. Phys., 90:313-335, 1990.
+36
+
+
+[5] J. Barnes and P. llut. A hierarchical O(NlogN) force-calculation algorithm. Nature, 324:446-449,
+1986.
+[6] M. Baskes, M. Daw, B. Dodson, and S. Foiles. Atomic--scale simulat, ion in materials science. Materials Research Society Bulletin, pages 28--34, Feb 1988.
+[7] D. M. Beazley and 1:'. S. Lomdahl. Message--passing multi-cell molecular ¢lynamics on the C,onnection Machine 5. Technical Report LA-UR-92-3158, Los Alamos National Laboratories, I,os Alamos, NM, 1993.
+[8] R. H. Bisseling and J. G. G. van tie Vorst. Parallel I_U decomposition on a transl)uter network. In G. A. van Zee and 3. G. G. van de Vorst., editors, Lectulv Notes in Computer Science, Number 7184, pages 61--77. Springer-Verlag, 1989.
+[9] B. M. Boghosian. Computational physics on the C,onnection Machine. Comp. in Phys., Jan/Feb, 1990.
+[10] I,. L. Boyer and G. S. Pawley. Molecular dynamics of clusters of particles interacting with pairwise forces using a ma.ssivcly parallel computer. ,1. Comp. Phys., 78:405-423, 1988.
+[11] B. R. Brooks and M. ttodo._ek, l'arallelization of C,IIARMM for MIMD machines. Chemical Design Automation. News, 7:16-22, 1992.
+[12] D. Brown, 3. It. R. Clarke, M. Okuda, and T. Yamazaki. A domain decomposition parallelization strategy for molecular dynanfics simulations on distributed memory machines. Comp. Phys. Comm., 74:67--80, 1993.
+[13] 3. P. Brunet, A. Edelman, and 3. P. Mesirov. llypercube algorithms for direct N-body solvers for different granularit, ies. SIAM ,I. Sci. Dist. Comp., 1993. to appear.
+[14] 3. P. Brunet, J. P. Mesirov, and A. l';dehnan. An optimal hypercube direct N--body solver on the Connect, ion Machine. In Proc. Super'computing '90, pages 748-752. IEEE Computer Society Press, 1990.
+[15] T. W. Clark, 3. A. McCammon, and L. R. Scott. Parallel molecular dynamics. In Proc. 5rh SlAM Conference on Parallel Processing for Scientific Computing, pages 338-344. SIAM, 1992.
+[16] M. S. Daw and M. 1. Baskes. Enlbedded-atonl method: Derivation and application t.o impurities, surfaces, and other defects in metals. Phys. Rev. B, 29:6443-6453, 1984.
+[17] II. Q.I)ing, N. Karasawa, and W. A. Goddardlll. Atomic level simulations on a million particles: The cell multipole method for Coulomt) and London interactions. J. Chem. Phys., 97:4309, 1992.
+[18] D. Fincham. Parallel computers and nlolecular simulation. Molec. Stm., 1:1-45, 1987.
+[19] G. C. Fox, M. A. Johnson, (1. A. Lyzenga, S. W. Otto, J. K. Salmon, and D. W. Walker. Soh, ing Problems on Concurrent Processors: Volume I. Prentice llall, Englewood Cliffs, NJ, 1988.
+[20] G. S. Grest at Exxon Research, personal communication, 1993.
+[21] L. Greengard and V. Rokhlin. A fast algorithm for particle simulations. J. Comp. Phys., 73:325-348,
+1987.
+[22] G. S. Grest, B. Diinweg, and K. Kremer. Vectorized link cell Fortran code for molecular dynamics simulations for a large number of particles. Comp. Phys. Comm., 55:269--285, 1989.
+[23] S. Gupta. Computing aspects of molecular dynamics simulations. Comp. Phys. Comm., 70:243-270,
+1992.
+37
+
+
+[24] H. Heller, H. Grubmuller, and K. Schulten. Molecular dynamics simulation on a parallel computer. Molec. Slm., 5:133-165, 1990.
+[25] B. Hendrickson and R. Leland. An improved spectral graph partitioning algorithn_ for mapping parallel computations. Technical Report SAN D90-1460, Sandia National Laboratories, Albuquerque, N M, 1992.
+[26] B. Hendrickson and D. Womble. The torus-wrap mapping for dense matrix calculations on ma.ssively
+parallel computers. Technical Report SAND92-0792, Sandia National Laboratories, Albuquerque, NM,
+1992.
+[27] B. A. Hendrickson and S. J. Plimpton. Parallel many-body simulations without all-to-ali communication. Technical Report. SAND92-2766, Sandia National Laboratories, Albuquerque, NM, 1993.
+[28] D. M. Heyes and W. Smith. 11¢ Q. Computer Simulation Condensed Phases (Daresbury Laboratory),
+28:63, 1988.
+[29] R. W. Hockney and J. W. Eastwood. Computer Simulation Using Particles. Adam llilger, Net, York, NY, 1988.
+[30] R. W. ltockney, S. P. Goel, and J. W. Eastwood. Quiet high-resolution computer models of a plasma. J. Comp. Phys., 14:148-158, 1974.
+[31] J. J. Morales and M. J. Nuevo. Comparison of liak-cell and neighbourhood tables on a range of computers. Comp. Phys. Comm., 69:223-228, 1992.
+[32] M. R. S Pinches, D. J. Tildesley, and W. Smith. Large-scale molecular dynamics on parallel computers using the link-cell algorithm. Molec. Sire., 6:51-87, 1991.
+[33] S. J. Plimpton. Molecular dynamics simulations of short-range force systens on 1024-node hypercubes.
+In Proc. 5rh Distributed Memory Computing Conference, pages 478--483. IEEE Computer Society Press,
+1990.
+[34] S. J. Plimpton. Scalable parallel molecular dynamics on MIMD supercomputers. In Proc. Scalable High PeTformance Computing Conference-92, pages 246-251. IEEE Computer Society Press, 1992.
+[35] S. J. Plimpton and B. A. ttendrickson. A new strategy for parallelizing molecular dynamics simulations of organic systems. In preparation.
+[36] S. J. Plimpton and B. A. ltendrickson. Parallel molecular dynamics with the embedded atom method.
+In Materials Theory. and Modeling, volume 291, pages 37-42. Materials Research Society Symposium
+Proc., Fall 1992.
+[37] S. J. Plimpton, B. A. tlendrickson, and G. S. tteffelfinger. A new decomposition strategy for paral
+lel bonded molecular dynamics. In Proc. 6th SlAM CoT_ference on Parallel Processing for Scientific Computing, pages 178-182. SIAM, 1993.
+[38] S. J. Plimpton and E. D. Wolf. Effect of interatomic potential on simulated grain-boundary and bulk diffusion: A molecular dynamics study. Phys. Pev. B, 41:2712-2721, 1990.
+[39] D. C. Rapaport. Comput. Phys. Pep., 9:1, 1988.
+[40] D. C. Rapaport. Multi-million particle molecular dynamics. II. Design considerations for distributed processing. Comp. Phys. Comm., 62:217-228, 1991.
+[41] M. Sch6en. Structure of a simple molecular dynamics Fortran program optimized i'or Cray vector processing computers. Comp. Phys. Comm., 52:175-185, 1989.
+38
+
+
+[42] H. Schreiber, O. Steinhauser, and P. Schuster. Parallel molecular dynamics of biomolecule. _ Parallel Computing, 18:557-573, 1992.
+[43] W. Smith. Molecular dynamics on hypercube parallel computers. Comp. Phys. Comm., 62:229-248, 1_,91.
+[44] W. B. Street, D. J Tildesley, and G. Saville. Multiple timestep methods ill molecular dynamics. Mol. Phys., 35:639-48, 1978.
+[45] P. Tamayo and R. Gil,:s. A parallel scalabl_ approach to short -range molecular dynamics on tlm CM-5. In Proc. Scalable High Perfomnance Computing Conference-92, pages 240-245. IEEE Computer Society Press, 1992.
+[46] P. Tamayo, J. P. Mesirov, and B. M. Boghosian. Parallel approaches to short-range molecular dynamics simulations In Proc. Supercomputing '9I, pages 462--470. IEEE Computer Society Press, 1991.
+[47] P. A. Taylor, J. S. Nelson, and B. W. Dodson. Adhesion between atomically flat metallic surfaces. Phys. Rez,. B, 44:-5834-5841, !991.
+[48! R. van de (;eijn. Efficient global combine operations. In Proc. 6rh D,._tributed Memory Coraputi._q Conference, pages 291-294. IEEE Computer Society Press, 1991.
+[49] L. Verlet. Computer experin,vnts on classical fluids. I. Thermodynarnical properties of Lennard-Jones molecules. Phys. Rev., 159:98-103, 1967.
+[50] M. S. Warren and J. K. Salmon. A l,_r_,liel treecode for gravitational N-body simulations with up to 20 million particles. Bulletin of the ,.tmemcan Astronomical Society, 23:1345, 1991.
+[51] A. Windemuth and K. Schulten. Mclecaiar dynamics simulation on the Connection Machine. Molec. Stm., 5:353-361, 1991.
+39
+
+
+Internal Distribution
+Paul Fleury 1000 Brian Dodson 1104 Jeff Nelson 1112 Ed Barsis 1400
+Sudip Dosanjh 1402 Bill Camp 1421
+Grant Heffelfinger 1421 Martin Lewitt 1421
+Steve Plimpton (15) 1421 Mark Sears 1421 Dick Allen 1422 Bruce Hendrickson 1422
+Kevin McCurley 1423 Art Hale 1424 Rob Leland 1424 Mike Proicou 1424
+Steve Attaway 1425
+Paul Taylor 1432 John Curro 1702 Mike Kent 1815 Elizabeth Holm 1831 Dona Crawford 1900 Ray Cline 1952 Randy Cygan 6118
+Gary Carlson 6211 John Shelnutt 6211 Mike Colvin 8117 Richard Judson 8117 Charles Tong 8117 Joe Schoeniger 8117 Murray Daw 8341
+Stephen Foiles 8341 Carl Melius 8353 Jim Plimpton 9301
+Technical Library (5) 7141 Technical Publications 7151 Document Processing for
+DOE/OSTI (10) 7613-2 Central Technical File 8523-2
+4O
+
+
+I ql''l"
+i " ,, • 1

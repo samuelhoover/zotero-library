@@ -1,0 +1,208 @@
+MIT Open Access Articles
+Machine Learning Predictions of Block Copolymer Self#Assembly
+The MIT Faculty has made this article openly available. Please share how this access benefits you. Your story matters.
+Citation: Tu, Kun#Hua, Huang, Hejin, Lee, Sangho, Lee, Wonmoo, Sun, Zehao et al. 2020. "Machine Learning Predictions of Block Copolymer Self#Assembly." Advanced Materials, 32 (52).
+As Published: http://dx.doi.org/10.1002/adma.202005713
+Publisher: Wiley
+Persistent URL: https://hdl.handle.net/1721.1/140599
+Version: Author's final manuscript: final author's manuscript post peer review, without publisher's formatting or copy editing
+Terms of use: Creative Commons Attribution-Noncommercial-Share Alike
+
+
+This is the author manuscript accepted for publication and has undergone full peer review but has not been through the copyediting, typesetting, pagination and proofreading process, which may lead to differences between this version and the Version of Record. Please cite this article as doi: 10.1002/adma.202005713.
+This article is protected by copyright. All rights reserved.
+Machine Learning Predictions of Block Copolymer Self-assembly
+Kun-Hua Tu, Hejin Huang, Sangho Lee, Wonmoo Lee, Zehao Sun, Alfredo Alexander-Katz* and Caroline A Ross*
+Dr. K.H Tu, H. Huang, S. Lee, W. Lee, Prof. A. Alexander-Katz, Prof. C.A. Ross
+Department of Materials Science and Engineering Massachusetts Institute of Technology Cambridge MA 02139, USA E-mail: aalexand@mit.edu, caross@mit.edu
+ABSTRACT: Directed self-assembly of block copolymers is a key enabler for nanofabrication of devices with sub-10nm feature sizes, allowing patterning far below the resolution limit of conventional photolithography. Among all the process steps involved in block copolymer self-assembly, solvent annealing plays a dominant role in determining the film morphology and pattern quality, yet the interplay of multiple parameters during solvent annealing, including initial thickness, swelling, time and solvent ratio, makes it difficult to predict and control the resultant self-assembled pattern. Here we apply machine-learning tools to analyze the solvent annealing process and predict the effect of process parameters on morphology and defectivity. Two neural networks are constructed and trained, yielding accurate prediction of the final morphology in agreement with experimental data. A ridge regression model is constructed to identify the critical parameters that determine the quality of line/space patterns. These results illustrate the potential of machine learning to inform nanomanufacturing processes.
+The self-assembly of block copolymers has become increasingly important as a method for nanofabrication and synthesis at small length scales[1–3]. A block copolymer (BCP), which consists of two or more different polymer blocks covalently bonded together, can undergo microphase separation to produce arrays of microdomains on the scale of a few nm to 100s of nm whose geometry and length-scale are determined by the volume fraction of each block and the degree of polymerization[4–7]. The BCP self-assembly is a thermodynamically-driven process during which the chemical incompatability between the different blocks results in their microphase separation. The phase behavior of BCPs is governed by the Flory-Huggins interaction parameter χ, the degree of polymerization N, and the volume fraction of one block f. [8–11] In addition, for BCP thin films, the morphology and orientation of BCP microdomains are determined not only by f but also by other
+
+
+This article is protected by copyright. All rights reserved.
+2
+factors including the film thickness, surface energy, and interfacial interactions. These factors can be regulated via the annealing process, substrate chemistry and coating.[12–15] Thin films of BCPs can generate large-area patterns in a low-cost process, with a better resolution than that provided by conventional photolithography.[4,15,16]
+However, certain characteristics of BCP self-assembly pose challenges for nanomanufacturing: several different morphologies (including spheres, cylinders and lamellae) can coexist on the substrate, and the patterns lack long range order and contain defects[17]. Chemical or physical templates have been employed to guide the morphology and registration of the microdomains,[14,1821] an essential capability for microelectronic device fabrication, but even untemplated BCP patterns are useful in applications such as self-cleaning hydrophobic surfaces[22], nanoporous desalination or filtration membranes[23,24], and porous dielectrics[25].
+Among the different process steps involved in BCP self-assembly, the thermal or solvent annealing[7,26] that facilitates microphase separation stands out as a critical step, playing a dominant role in determining the morphology and defect densities of the final pattern. The BCP is kinetically trapped in a non-equilibrium state after being cast onto a substrate. During the solvent annealing step, the solvent molecules diffuse into the BCP film, increase the chain mobility in the swollen film and enable the polymer to reorganize into well-ordered structures.[12,27,28] Solvent annealing enables access to a range of morphologies not seen in bulk thermally-annealed BCPs, but there are multiple interdependent process parameters that determine the morphology and quality of the selfassembled pattern. There has been considerable research on the effects of BCP composition, film thickness and annealing parameters (such as solvent composition and solvent vapor pressure) on self-assembly[12,29–32], and in-situ experiments have revealed the morphological evolution during the process[26,33–35]. However, these experiments can only explore part of the extensive parameter space available, and it is difficult to track the interplay between the process parameters. Simulation tools such as self-consistent field theory can be used to determine the lowest energy configuration of the BCP, but the volume of the simulated system is small and the model parameters are not always easily related to experimental parameters[36–39].
+Compared to conventional simulation methods, machine learning has proved to be a powerful tool to solve problems with a large parameter space, and has achieved numerous successes in a variety of domain areas[40]. For example, a convolutional neural network was reported to outperform experts in skin cancer and arrhythmia diagnoses[41,42], and machine learning algorithms have been incorporated into genetic and genomic research[43]. Machine learning approaches have also become critical tools in understanding, analyzing, and designing new materials. Different models, which integrate physical understanding and machine learning algorithms, have been successfully applied to microstructure analysis, predicting material properties, searching for new materials, and process optimization[44–50]. In the field of polymers[51,52], synthetic routes for making BCPs[53], mechanical properties of polymer composites[54], glass transition temperatures[55], optical and electronic
+
+
+This article is protected by copyright. All rights reserved.
+3
+properties of copolymers[56], protein aggregation[57] and microstructure quantification[49] have been analyzed using machine learning with good prediction accuracy. Machine learning has also been applied in BCP self-assembly, mainly in simulations which aim to find the phase behavior at equilibrium[58] or to determine optimized chemical templates to produce a desired structure[59,60]. The limited applications of machine learning to BCP self-assembly experiments have focused on layout optimization and verification of specific patterns such as contact vias[61–63].
+Here we apply machine learning to a critical experimental process step in BCP self-assembly, solvent annealing, in order to reveal hidden interactions between the process parameters and to predict both BCP morphologies and defect density. The model developed here can serve as a useful tool for both morphology prediction and process optimization. Two neural networks (NNs) are designed and trained: the input parameters of the first NN are extracted from the experiment, while the second NN uses the raw data directly. The two NNs perform equally well, and both are able to extract physically intuitive results and make accurate morphology predictions based on a limited amount of training data. These results demonstrate the value of machine learning to identify important experimental features and make accurate predictions, even without foreknowledge of the physical basis of the process. In addition, by implementing another machine-learning technique, ridge regression, we reveal the experimental parameters that affect the quality of the BCP pattern. This marks the first time that machine learning approaches have been applied to analyze a BCP annealing process, and more broadly, this work illustrates how the predictive power of machine learning tools can be applied to a manufacturing-relevant process. Similar machine learning analyzes may be beneficial throughout semiconductor device fabrication where each silicon wafer goes through hundreds of process steps, each of which has multiple input parameters.
+Polystyrene-block-polydimethylsiloxane (PS-b-PDMS), a representative high-χ BCP, was used as a model system to generate ordered thin-film nanostructures via solvent vapor annealing[7,12,36]. PS-bPDMS is attractive for nanolithography applications because the high chemical incompatability between the PS and PDMS blocks enables microphase separation with sub-10nm feature sizes and sharp interfaces. Moreover, the blocks show a high etch contrast in an oxygen plasma, which removes the PS and oxidizes the PDMS into a robust silica-like pattern. Films of PS-b-PDMS with a thickness 25–50 nm were spin-coated on Si substrates and solvent-annealed by exposure to different vapor pressures of toluene or toluene+heptane controlled by flowing nitrogen gas through a chamber containing liquid solvent. The toluene and heptane are good solvents for PS and PDMS respectively, and the BCP thin film swells upon exposure to these solvent vapors, increasing the chain mobility and facilitating microphase separation at room temperature. The apparatus is shown in Figure 1(a) (see Experiment Section). The initial film thickness, the liquid solvent composition, nitrogen flow rate and total anneal time were varied and the film thickness was tracked in situ, as exemplified in Figure 1(b). On quenching, the swelling ratio returning to 1.0 within 10 s. The same quenching process was used for each experiment. In Figure 2(b), the final film thickness is taken as the value measured just before quenching. The morphologies were determined by etching the films
+
+
+This article is protected by copyright. All rights reserved.
+4
+and imaging the oxidized PDMS microdomains by scanning electron microscopy (SEM). Overall, 80 successful experiments were conducted with different process parameters and at least 6 images were analyzed for each sample. A range of annealing processes (i.e. swelling ratio vs. time) was generated to provide training data spanning multiple combinations of parameters. Figures 1(c)-(e) show examples of the morphologies of the PDMS microdomains, which include spheres (S1), single layer cylinders (C1) and double layer cylinders (C2). The fourth morphology is an empty region (E), which corresponds to in-plane lamellae or wetting layers. Figure 1(f) and Figure S1 show examples of mixtures of these morphologies.
+Two neural networks, a Feedforward Neural Network (FNN) and a long-short term memory (LSTM) network, were constructed to predict the areal proportion of each of the four morphologies observed (S1, C1, C2 and E) as a function of the process parameters. The FNN was implemented with 2 hidden layers of 64 units in each layer and an output layer of 4 units, as shown in Figure S2(a). The FNN is an effective tool in situations where the parameters governing the experimental system are well understood. Eleven different parameters listed in Table S1 were extracted as input for the FNN from the time-dependent film thickness curves based on the pre-knowledge of solvent annealing exemplified in Figure 1(b). These parameters are expected to have relevance to the final morphology, for example the film thickness determines the number of layers of microdomains that form; the swelling ratio corresponds to the diffusivity of the BCP chains in the swelled state; and the diffusion distance of the polymer chains depends on the annealing time. The input parameters also include some terms that are transformed from other directly-measured parameters, such as the reciprocal of swelling ratio and the product of thickness and time. Because of the limited number of layers in the model (only two hidden layers), these pre-defined non-linear terms are expected to help the NN to converge faster.
+In contrast, the LSTM is a type of recurrent neural network (RNN) that gates both the inferences from the internal state of the network and the input data. The advantage of this model over FNN is that it does not require any pre-knowdge of the parameters that influence the experimental process. Raw data from the thickness vs. time curve is directly provided as the input to the LSTM. A schematic of the LSTM is shown in Figure S2(b). The curves were preprocessed by the rolling-window technique to reduce the number of input parameters to 53 as described in the supporting information. Among the 80 experiments conducted, 56 of them were used as training data for the two models while the 24 remaining experiments were used as test data. In both neural networks, the number of parameters to be trained far exceeds the number of training data. A 50% dropout rate is introduced such that only 50% of the nodes in the hidden layer are active during the training process. Such regularization addresses the concerns of overfitting and improves the generalization ability of the model.
+We first demonstrate the success of the FNN and LSTM for prediction of morphologies. The training and validation curves of the FNN and LSTM are shown in Figures S3 and S4, respectively. Table 1
+
+
+This article is protected by copyright. All rights reserved.
+5
+offers a comparison of average error and R2 score between these neural networks for training, validation and most importantly the test data. The average error is calculated by averaging over the absolute value of deviation between predicted area fraction and the true value. The R2 score for each predicted area fraction is defined as Equation (1).
+R2 = 1 − ∑(gi − yi)2 / ∑(y − yi)2 (1)
+where gi is the predicted value, yi is the true value and y is the mean of yi. Scores of all four outputs are averaged, weighted by the variances of each individual output.
+Both neural networks demonstrated a good capability to predict the areal fraction of each morphology: The test score of FNN was around 0.817 with a 6.5% average error in the predicted area fraction of each morphology, while the testing score and average error of LSTM were around 0.769 and 6.7%, respectively. It is observed from Table 1 that the test data accuracy is significantly lower than the training data accuracy for LSTM RNN, while these two values are comparable for FNN. This result indicates that by implementing the dropout, FNN demonstrates good generalization ability with only a limited amount of data. Although the same regularization method is implemented, it is more difficult to avoid the overfitting for LSTM: the RNN contains tens of thousands of parameters to be trained, while the number of training data is only slightly above 50. Because of the limited data, certain data points in the test set may include parameter values that were not learned by the model from the training data and thus contribute to the test error. A more accurate prediction is expected with an increasing number of data points.
+The key difference between the two NNs is the number of input parameters. The input features of the FNN are the eleven parameters derived from the thickness vs. time curve, while the input features of the LSTM are the 53 data points from the thickness vs. time curve after data preprocessing. Their almost comparable performance indicates that the neural network is able to learn and extract key factors that affect the areal fraction of each morphology. With fewer parameters, the FNN performs much faster in training and prediction, but its performance depends on the selection of the parameters which requires an initial knowledge of the system. On the other hand, the LSTM is inherently suitable for temporal sequence data and is capable of learning to select the desired features of the sequential data through training, but it requires a longer training and prediction time.
+We now show how machine learning can isolate the effects of individual process parameters. Figure 2 shows the areal fraction of each pattern predicted by the FNN as a function of several of the process parameters, based on dummy inputs in which only one process parameter was varied with others fixed. An increase in the as-cast thickness of BCP film is predicted to drive a morphology transition from single layer to double layer cylinders (Figure 2(a)). The maximum swelling ratio during the annealing must exceed 2.0 in order to produce cylinders, otherwise a sphere pattern is dominant (Figure 2(b)). A higher final swelling ratio promotes a double layer instead of a single layer
+
+
+This article is protected by copyright. All rights reserved.
+6
+of cylinders (Figure 2(c)). Finally, the morphology is not sensitive to annealing time, as suggested by Figure 2(d). Even though the FNN does not make any assumptions about the mechanism of solvent annealing, its predictions agree with previously reported trends, for example an increase in the number of layers of microdomains with as-cast or swelled film thickness[10], and a change in the effective volume fraction of PDMS with swelling ratio in a selective solvent, which drives a morphological transition. It is worth noting that Figure 2 also demonstrates that the FNN has good generalization ability, as it manages to give reasonable predictions even when the parameters are beyond the range of the training data (for example, the max thickness in the training data is 37.9 nm, but the model still gives good predictions at 40 nm thickness).
+We tested the predicted variation in morphology vs. as-cast thickness shown in Figure 2(a) by annealing a series of films with thickness 20 nm, 25 nm, 35 nm and 50 nm under the conditions that were used to generate Figure 2(a) (max SR = 2.6, final SR = 2.0, annealing time = 60 mins, pure toluene). The resulting fractions of morphologies of three samples with thickness 20 nm, 25 nm and 35nm are overlaid on Figure 2(a). The experimental result matches the predicted area fraction of morphologies to within <10% deviation, with a change in the dominant morphology from single layer to double layer cylinders with increasing thickness. For an initial thickness of 50 nm, the model predicts 100% double layer cylinders while the experiment yielded a mixture of double and triple layers of cylinders. This discrepancy arises because the thickness is well outside the range of thicknesses used for training, [23.7 nm, 37.9 nm], and the final morphology of triple layer cylinders does not appear in any of the training samples. None of the training samples was thick enough to exhibit triple layers of cylinders, therefore the NN did not include this morphology in its output layer (Figure S2(a)). For predictions of the morphology of BCP films with initial thickness larger than 40 nm, training data with larger differentiation as well as a slightly different neural network design is needed. Based on the current result, our neural network demonstrates great generalization ability for film thickness in the range of [20 nm, 40 nm].
+Line patterns are of particular significance in nanolithography as they can be used to define interconnects, gratings and other linear features. Ridge regression was used to correlate four pattern quality metrics: the defect density, correlation length, line edge roughness (LER), and line width roughness (LWR), with the process parameters. Only the samples with an areal proportion of single layer line patterns larger than 45% were selected for this analysis, resulting in 46 valid samples. Fifteen of them were reserved for testing. Out of the eleven process parameters used for the FNN listed in Table S1, six were selected as input for ridge regression: initial thickness, time, maximum and final swelling ratios and their reciprocals. We discarded the other five parameters due to either their linear dependency (final and maximum thickness are linearly dependent on final and maximum swelling ratio), or higher complexity (e.g. the products final thickness  time and final
+thickness  (time)1/2) to avoid overfitting as the training data is rather limited. As an attempt to improve the model performance, we also tried another ridge regression setup, where a seventh input parameter, the areal proportion of single-layer cylinders (the target pattern), was also used
+
+
+This article is protected by copyright. All rights reserved.
+7
+(vide infra). The pattern quality metrics were determined by automated analysis of the SEM images[64]. Figure 3(a,b) show an example of the image analysis of defect density and correlation length in a C1 region. Tables S2 and S3 summarize the distribution of each quality metric over the training data and test data respectively. The performance of models was again characterized by the R2 score[65] as previously described.
+Although the linear model was simple, it still managed to capture the relation between process parameters and film quality metrics. Considering the defect density, the model achieved R2 = 0.64 for training set and 0.62 for test set by ridge regression with the seven selected parameters. Figure 3(c) shows the correlation coefficient of each of the 7 input parameters with the defect density. Prior to fitting, the data of each parameter were normalized according to their mean values and standard deviations, so that their contributions to the output can be visualized in a straightforward way by direct comparison of these coefficient values. It is clear that the maximum SR and its reciprocal had a dominant influence on the defect density. The net outcome of these two factors in combination was predicted to be a sharp decrease in defect density when the maximum SR is not too large (≲ 2.5), followed by a plateau thereafter (Figure S5(d)). This result is intuitive and matches previous reports: greater swelling promotes exponentially increasing diffusivity, which helps to annihilate the defects in the pattern during the annealing time[66]. The comparison of predicted and real values of defect density is shown in Figure 3(d). Although a relatively large error was observed due to the simplicity of this linear model, our prediction still managed to capture the general trend of the defect density based on the limited data.
+Another set of ridge regression analysis was done using only six process parameters, as shown in Figure S5(a–c). Compared with the scenario using seven parameters, the model performance was worse with R2 ≈ 0.44 for both the training set and test set. The reason was proposed to be two-fold: Mathematically, the C1 areal proportion is an intermediate variable dictated by other process parameters as demonstrated in the previous section, and their non-linear relation can compensate for the oversimplification of the linear model; physically, a lower percentage of C1 coverage, meaning higher areal fraction of other undesirable patterns, is also an indication of higher defect density. As a result, using this additional input parameter improved model performance. Nevertheless, it is shown that even without the parameter, the conclusion still holds true that the maximum swelling ratio is the dominant factor affecting defect density (Figure S5(a)).
+In contrast, no clear relationship was observed between the process parameters and the correlation length, i.e. the average distance over which cylinders retain a constant orientation. This result appears counterintuitive: a longer annealing time provides more time for diffusion which should lead to a larger correlation length. It is reported experimentally that the relationship between the correlation length ξ and annealing time t follows a power law[67–70]: ξ = ktm where k is a temperaturedependent constant. For thin films, m has been reported between 0.20 and 0.35[67–69]. Because m is much smaller than 1.0, the correlation length changes only slowly with the annealing time, even as
+
+
+This article is protected by copyright. All rights reserved.
+8
+local defects are eliminated. In the 46 samples used, the mean and standard deviation of the annealing time are 70.04 min and 28.33 min respectively. The limited range in annealing time accounts for the lack of a clear effect on the correlation length.
+There is little relation between the process parameters and the other quality metrics, LER and LWR, based on the ridge regression model, with R2 ≈ 0.2. This result is consistent with these two parameters being mainly dominated by the etch process, which removes the PS and leaves oxidized PDMS features with etch-dependent edge roughness, instead of being dominated by the solvent annealing[71]. For ridge regression of correlation length, LEW, and LWR, whether or not to include the C1 areal proportion parameter did not show a significant difference.
+In conclusion, this work shows how machine learning algorithms can be used to model the BCP selfassembly process under solvent annealing. Two neural networks predict the areal proportion of each morphology as a function of the process parameters, achieving a good prediction accuracy (~80%) with limited test data. Furthermore, the FNN yields physically intuitive predictions of the effects of each process parameter and a good quantitative agreement was obtained with the results of a subsequent experiment where only film thickness was varied. Finally, ridge regression identified the factors that play a role in determining the defect level and correlation length of patterns consisting of parallel lines.
+The predictions of the effects of parameters such as film thickness or swelling ratio match the trends seen in prior work, even though the model is not built by considering the physical phenomena underlying microphase separation. The quality of the predictions validates the model approach, which captures the effects of multiple parameters and gives accurate predictions from a limited amount of training data. In a broader context, integrating machine learning with experimental design enables us to identify critical process parameters, understand their interactions, and predict the outcome of experiments. This predictive power has immense value in manufacturing where individual processes include the complexity of multiple parameters but a large quantity of data is available to train a machine learning model.
+Experimental Section
+Film preparation: PS-b-PDMS with a molecular weight of 53 kg/mol (PS37kg/mol-b-PDMS16kg/mol) was first dissolved into cyclohexane (1 wt%) and then spin-coated onto silicon substrates to form films with thicknesses ranging from 25 to 50 nm. Samples used to test the predictions of the models (stars in Fig. 2a) were made a few months after the model training and test samples. The BCP thin films were solvent vapor annealed in a closed glass chamber, 5 cm diameter and 4.5 cm in height, as shown in Figure 1(a). The chamber contained a solvent reservoir of 4 cm3, consisting of either pure toluene or toluene/heptane with volumetric ratio of 4:1. The relationship between solvent vapor
+
+
+This article is protected by copyright. All rights reserved.
+9
+pressure in a reservoir system and the mixture of solvents in the liquid is described in Ref. [12]. The solvent vapor pressure was adjusted by nitrogen flow through the chamber with the rate ranging from 0 – 20 sccm controlled by a mass flow controller. During the annealing, the BCP films swell by absorption of solvent vapor, and the thickness vs. time was measured every 10 s using spectral reflectometry (Filmetrics, F20-UV, 250–1500 nm). Several examples of time-dependent swelling curves are shown in Figure 1(f). The film was quenched by removing the lid of the chamber and removing the sample with tweezers. The film changed color indicating deswelling in less than 5 s. After annealing, the BCP films were reactive-ion etched by a 5s CF4 plasma to remove the top PDMS surface layer and then a 22s O2 plasma to remove the PS and oxidize the PDMS microdomains. The final morphology was characterized by scanning electron microscopy.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or from the author.
+Acknowledgements
+K.H. Tu and H. Huang contributed equally to this work. The authors acknowledge support from the National Science Foundation, award number DMR1606911, the Semiconductor Research Corporation and from Tokyo Electron. Shared facilities of CMSE, an NSF MRSEC under award DMR1419807 were used in this work.
+Conflict of Interest
+The authors declare no conflict of interest.
+Keywords
+self-assembly, block copolymer, machine learning, ridge regression, nanomanufacturing
+Received: ((will be filled in by the editorial staff)) Revised: ((will be filled in by the editorial staff)) Published online: ((will be filled in by the editorial staff))
+
+
+This article is protected by copyright. All rights reserved.
+10
+References
+[1] W. Bai, C. A. Ross, MRS Bulletin 2016, 41, 100.
+[2] H. Tsai, J. W. Pitera, H. Miyazoe, S. Bangsaruntip, S. U. Engelmann, C.-C. Liu, J. Y. Cheng, J. J. Bucchignano, D. P. Klaus, E. A. Joseph, D. P. Sanders, M. E. Colburn, M. A. Guillorn, ACS Nano 2014, 8, 5227.
+[3] M. P. Stoykovich, P. F. Nealey, Materials Today 2006, 9, 20.
+[4] J. G. Kennemur, L. Yao, F. S. Bates, M. A. Hillmyer, Macromolecules 2014, 47, 1411.
+[5] A. P. Lane, X. Yang, M. J. Maher, G. Blachut, Y. Asano, Y. Someya, A. Mallavarapu, S. M. Sirard, C. J. Ellison, C. G. Willson, ACS Nano 2017, 11, 7656.
+[6] S. Ji, U. Nagpal, W. Liao, C.-C. Liu, J. J. de Pablo, P. F. Nealey, Advanced Materials 2011, 23, 3692.
+[7] W. Bai, A. F. Hannon, K. W. Gotrik, H. K. Choi, K. Aissou, G. Liontos, K. Ntetsikas, A. Alexander-Katz, A. Avgeropoulos, C. A. Ross, Macromolecules 2014, 47, 6000.
+[8] F. S. Bates, G. H. Fredrickson, Physics Today 2008, 52, 32.
+[9] F. S. Bates, G. H. Fredrickson, Annual Review of Physical Chemistry 1990, 41, 525.
+[10] A. Knoll, A. Horvat, K. S. Lyakhova, G. Krausch, G. J. A. Sevink, A. V. Zvelindovsky, R. Magerle, Phys. Rev. Lett. 2002, 89, 035501.
+[11] E. Helfand, Y. Tagami, J. Chem. Phys. 1972, 56, 3592.
+[12] K. W. Gotrik, A. F. Hannon, J. G. Son, B. Keller, A. Alexander-Katz, C. A. Ross, ACS Nano 2012, 6, 8052.
+[13] K. W. Gotrik, C. A. Ross, Nano Lett. 2013, 13, 5117.
+[14] M. P. Stoykovich, M. Müller, S. O. Kim, H. H. Solak, E. W. Edwards, J. J. de Pablo, P. F. Nealey, Science 2005, 308, 1442.
+[15] H. S. Suh, D. H. Kim, P. Moni, S. Xiong, L. E. Ocola, N. J. Zaluzec, K. K. Gleason, P. F. Nealey, Nat Nanotechnol 2017, 12, 575.
+[16] K. Aissou, M. Mumtaz, G. Fleury, G. Portale, C. Navarro, E. Cloutet, C. Brochon, C. A. Ross, G. Hadziioannou, Adv. Mater. 2015, 27, 261.
+
+
+This article is protected by copyright. All rights reserved.
+11
+[17] H.-C. Kim, S.-M. Park, W. D. Hinsberg, Chem. Rev. 2010, 110, 146.
+[18] R. Ruiz, H. Kang, F. A. Detcheverry, E. Dobisz, D. S. Kercher, T. R. Albrecht, J. J. de Pablo, P. F. Nealey, Science 2008, 321, 936.
+[19] J. Y. Cheng, C. T. Rettner, D. P. Sanders, H.-C. Kim, W. D. Hinsberg, Advanced Materials 2008, 20, 3155.
+[20] J. K. W. Yang, Y. S. Jung, J.-B. Chang, R. A. Mickiewicz, A. Alexander-Katz, C. A. Ross, K. K. Berggren, Nature Nanotechnology 2010, 5, 256.
+[21] Y. S. Jung, C. A. Ross, Nano Lett. 2007, 7, 2046.
+[22] A. Checco, A. Rahman, C. T. Black, Advanced Materials 2014, 26, 886.
+[23] H. Ahn, S. Park, S.-W. Kim, P. J. Yoo, D. Y. Ryu, T. P. Russell, ACS Nano 2014, 8, 11745.
+[24] E. A. Jackson, M. A. Hillmyer, ACS Nano 2010, 4, 3548.
+[25] H. W. Ro, K. J. Kim, P. Theato, D. W. Gidley, D. Y. Yoon, Macromolecules 2005, 38, 1031.
+[26] A. Baruth, M. Seo, C. H. Lin, K. Walster, A. Shankar, M. A. Hillmyer, C. Leighton, ACS Appl. Mater. Interfaces 2014, 6, 13770.
+[27] S. H. Kim, M. J. Misner, T. Xu, M. Kimura, T. P. Russell, Advanced Materials 2004, 16, 226.
+[28] Y. Xuan, J. Peng, L. Cui, H. Wang, B. Li, Y. Han, Macromolecules 2004, 37, 7301.
+[29] P. W. Majewski, K. G. Yager, ACS Nano 2015, 9, 3896.
+[30] A. Stenbock-Fermor, A. W. Knoll, A. Böker, L. Tsarkova, Macromolecules 2014, 47, 3059.
+[31] J. N. L. Albert, T. H. Epps, Materials Today 2010, 13, 24.
+[32] V. Mishra, G. H. Fredrickson, E. J. Kramer, ACS Nano 2012, 6, 2629.
+[33] X. Gu, I. Gunkel, A. Hexemer, T. P. Russell, Macromolecules 2016, 49, 3373.
+[34] D. Posselt, J. Zhang, D.-M. Smilgies, A. V. Berezkin, I. I. Potemkin, C. M. Papadakis, Progress in Polymer Science 2017, 66, 80.
+[35] M. Y. Paik, J. K. Bosworth, D.-M. Smilges, E. L. Schwartz, X. Andre, C. K. Ober, Macromolecules 2010, 43, 4253.
+
+
+This article is protected by copyright. All rights reserved.
+12
+[36] A. F. Hannon, W. Bai, A. Alexander-Katz, C. A. Ross, Soft Matter 2015, 11, 3794.
+[37] G. H. Fredrickson, V. Ganesan, F. Drolet, Macromolecules 2002, 35, 16.
+[38] M. D. Whitmore, J. D. Vavasour, Acta Polymerica 1995, 46, 341.
+[39] A. F. Hannon, D. F. Sunday, A. Bowen, G. Khaira, J. Ren, P. F. Nealey, J. J. de Pablo, R. J. Kline, Mol. Syst. Des. Eng. 2018, 3, 376.
+[40] Y. LeCun, Y. Bengio, G. Hinton, Nature 2015, 521, 436.
+[41] A. Esteva, B. Kuprel, R. A. Novoa, J. Ko, S. M. Swetter, H. M. Blau, S. Thrun, Nature 2017, 542, 115.
+[42] A. Y. Hannun, P. Rajpurkar, M. Haghpanahi, G. H. Tison, C. Bourn, M. P. Turakhia, A. Y. Ng, Nature Medicine 2019, 25, 65.
+[43] M. W. Libbrecht, W. S. Noble, Nature Reviews Genetics 2015, 16, 321.
+[44] G. Pilania, A. Mannodi-Kanakkithodi, B. P. Uberuaga, R. Ramprasad, J. E. Gubernatis, T. Lookman, Scientific Reports 2016, 6, 19375.
+[45] G. Pilania, C. Wang, X. Jiang, S. Rajasekaran, R. Ramprasad, Scientific Reports 2013, 3, 2810.
+[46] L. Ward, A. Agrawal, A. Choudhary, C. Wolverton, npj Comput Mater 2016, 2, 1.
+[47] P. Raccuglia, K. C. Elbert, P. D. F. Adler, C. Falk, M. B. Wenny, A. Mollo, M. Zeller, S. A. Friedler, J. Schrier, A. J. Norquist, Nature 2016, 533, 73.
+[48] B. Cao, L. A. Adutwum, A. O. Oliynyk, E. J. Luber, B. C. Olsen, A. Mar, J. M. Buriak, ACS Nano 2018, 12, 7434.
+[49] X. Li, Y. Zhang, H. Zhao, C. Burkhart, L. C. Brinson, W. Chen, Scientific Reports 2018, 8, 1.
+[50] T. Mueller, A. G. Kusne, R. Ramprasad, in Reviews in Computational Chemistry, John Wiley & Sons, Ltd, 2016, pp. 186–273.
+[51] A. L. Ferguson, J. Phys.: Condens. Matter 2017, 30, 043002.
+[52] D. J. Audus, J. J. de Pablo, ACS Macro Lett. 2017, 6, 1078.
+[53] Y. Mohammadi, M. R. Saeb, A. Penlidis, E. Jabbari, F. J. Stadler, P. Zinck, K. Matyjaszewski, Polymers 2019, 11, 579.
+
+
+This article is protected by copyright. All rights reserved.
+13
+[54] Z. Zhang, K. Friedrich, Composites Science and Technology 2003, 63, 2029.
+[55] G. Pilania, C. N. Iverson, T. Lookman, B. L. Marrone, J. Chem. Inf. Model. 2019, 59, 5013.
+[56] L. Wilbraham, R. S. Sprick, K. E. Jelfs, M. A. Zwijnenburg, Chem. Sci. 2019, 10, 4973.
+[57] K. M. Ruff, T. S. Harmon, R. V. Pappu, J. Chem. Phys. 2015, 143, 243123.
+[58] C. L. Tsai, K. T. Delaney, G. H. Fredrickson, Macromolecules 2016, 49, 6558.
+[59] G. S. Khaira, J. Qin, G. P. Garner, S. Xiong, L. Wan, R. Ruiz, H. M. Jaeger, P. F. Nealey, J. J. de Pablo, ACS Macro Lett. 2014, 3, 747.
+[60] M. Z. Miskin, G. Khaira, J. J. de Pablo, H. M. Jaeger, PNAS 2016, 113, 34.
+[61] S. Shim, S. Cai, J. Yang, S. Yang, B. Choi, Y. Shin, in Alternative Lithographic Technologies VII, International Society For Optics And Photonics, 2015, p. 94231E.
+[62] Z. Xiao, Daifeng Guo, M. D. F. Wong, H. Yi, M. C. Tung, H.-S. P. Wong, in 2015 52nd ACM/EDAC/IEEE Design Automation Conference (DAC), 2015, pp. 1–6.
+[63] Z. Xiao, Y. Du, Haitong Tian, M. D. F. Wong, H. Yi, H.-S. P. Wong, Hongbo Zhang, in 2014 51st ACM/EDAC/IEEE Design Automation Conference (DAC), 2014, pp. 1–6.
+[64] J. N. Murphy, K. D. Harris, J. M. Buriak, PLOS ONE 2015, 10, e0133088.
+[65] A. E. Hoerl, R. W. Kennard, Technometrics 1970, 12, 55.
+[66] S.-M. Hur, G. S. Khaira, A. Ramírez-Hernández, M. Müller, P. F. Nealey, J. J. de Pablo, ACS Macro Lett. 2015, 4, 11.
+[67] C. T. Black, K. W. Guarini, Journal of Polymer Science Part A: Polymer Chemistry 2004, 42, 1970.
+[68] C. Harrison, D. H. Adamson, Z. Cheng, J. M. Sebastian, S. Sethuraman, D. A. Huse, R. A. Register, P. M. Chaikin, Science 2000, 290, 1558.
+[69] S. Ji, C.-C. Liu, W. Liao, A. L. Fenske, G. S. W. Craig, P. F. Nealey, Macromolecules 2011, 44, 4291.
+[70] P. W. Majewski, K. G. Yager, Soft Matter 2016, 12, 281.
+
+
+This article is protected by copyright. All rights reserved.
+14
+[71] K.-H. Tu, W. Bai, G. Liontos, K. Ntetsikas, A. Avgeropoulos, C. A. Ross, Nanotechnology 2015, 26, 375301.
+[72] S. Hochreiter, J. Schmidhuber, Neural Computation 1997, 9, 1735.
+Figure 1. Characterization of inline parameters and final morphology. (a) The apparatus for solvent vapor annealing. The BCP thin film is placed in the chamber and monitored in-situ by spectral reflectometry. Liquid solvent (blue) is present in the chamber and the nitrogen flow controls the vapor pressure. (b) The swelled film thickness vs. time (blue curve: thickness=29.7nm, max swelling ratio (SR)=2.76, final SR=2.67, time=40 mins, pure toluene; orange curve: thickness=30.7nm, max SR=1.74, final SR=1.73, time=30 mins, pure toluene; green curve: thickness=37.9nm, max SR=2.42, final SR=1.65, time=20 mins, pure toluene; red curve: thickness=29.3, max SR=2.29, final SR=1.62, time=60 mins, pure toluene). The legend shows the percent of each morphology produced by each annealing condition. The initial, maximum and final thickness of the process shown in green are labelled. (c)-(f) Morphologies in PS37-b-PDMS16 of (c) S1, a monolayer of spheres, including a few short cylinders; (d) C1, single layer cylinders, (e) C2, double layer cylinders and (f) a mixture of S1, C1, and C2.
+
+
+This article is protected by copyright. All rights reserved.
+15
+Figure 2. Prediction of the effects of individual process parameters. The effects of (a) initial film thickness (for max SR=2.6, final SR=2.0, time=60 mins), where the stars in the plot show the experimental results with initial thickness of 20 nm, 25 nm and 35 nm with error bar; (b) maximum swelling ratio (for thickness=30 nm, time=60 mins, and final SR=2.0 when max SR > 2.0, or final SR= max SR when max SR < 2.0), (c) final swelling ratio (for thickness=30 nm, max SR=2.6, time=60 mins) and (d) annealing time (for thickness=30 nm, max SR=2.6, final SR=2.0) on pattern areal fraction predicted by the feedforward neural network (FNN). S1 = single layer of spheres, C1 = single layer of cylinders, C2 = double layer of cylinders, E = empty or wetting layer. In each case the solvent was pure toluene.
+
+
+This article is protected by copyright. All rights reserved.
+16
+Figure 3 Characterization of the relation between process parameters and film quality metrics. (a) SEM image of a single layer cylinder pattern with terminations and junctions marked with dots and stars respectively. (b) The same sample with the orientation color coded; the correlation length of the pattern describes the size of regions with constant orientation. (c) The normalized coefficients derived from the model that relate defect density to the seven input parameters: the initial thickness, annealing time, maximum and final swelling ratio and their reciprocals, and the areal proportion of single-layer cylinders; (d) measured and predicted defect density of each sample in the data.
+
+
+This article is protected by copyright. All rights reserved.
+17
+Table 1. Summary of the performance metrics for training, validation and accuracy for each NN model in the morphology prediction task.
+Feedforward NN LSTM RNN
+Training Validation Testing Training Validation Testing
+Average error
+in area fraction 5.06% 5.14% 6.54% 3.04% 5.26% 6.72%
+R2 0.859 0.837 0.817 0.924 0.838 0.769
+Table of Contents
+Machine-learning is used to analyze the self-assembly of block copolymer thin films. The neural networks predict the effect of process parameters on morphology and defectivity during solvent annealing, and a ridge regression model identifies the critical parameters that determine the quality of line/space patterns. These results illustrate the potential of machine learning to inform nanomanufacturing processes.

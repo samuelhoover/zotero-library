@@ -11,7 +11,7 @@
 	"configOptions": {
 		"getCollections": true,
 		"cached": true,
-		"hash": "d9c5e0ba1e7490ef13fd2fce8f59169d4b93f2d7fc026f691b208de3b2c8e651"
+		"hash": "37a3047badc2300f75f3a19bb8815f9cf4623889106a580a6ddd16071e6e2f92"
 	},
 	"displayOptions": {
 		"exportNotes": false,
@@ -24,7 +24,7 @@
 	},
 	"priority": 50,
 	"inRepository": false,
-	"lastUpdated": "2024-08-06"
+	"lastUpdated": "2024-08-07"
 }
 
 ZOTERO_CONFIG = {"GUID":"zotero@zotero.org","ID":"zotero","CLIENT_NAME":"Zotero","DOMAIN_NAME":"zotero.org","PRODUCER":"Digital Scholar","PRODUCER_URL":"https://digitalscholar.org","REPOSITORY_URL":"https://repo.zotero.org/repo/","BASE_URI":"http://zotero.org/","WWW_BASE_URL":"https://www.zotero.org/","PROXY_AUTH_URL":"https://zoteroproxycheck.s3.amazonaws.com/test","API_URL":"https://api.zotero.org/","STREAMING_URL":"wss://stream.zotero.org/","SERVICES_URL":"https://services.zotero.org/","API_VERSION":3,"CONNECTOR_MIN_VERSION":"5.0.39","PREF_BRANCH":"extensions.zotero.","BOOKMARKLET_ORIGIN":"https://www.zotero.org","BOOKMARKLET_URL":"https://www.zotero.org/bookmarklet/","START_URL":"https://www.zotero.org/start","QUICK_START_URL":"https://www.zotero.org/support/quick_start_guide","PDF_TOOLS_URL":"https://www.zotero.org/download/xpdf/","SUPPORT_URL":"https://www.zotero.org/support/","SYNC_INFO_URL":"https://www.zotero.org/support/sync","TROUBLESHOOTING_URL":"https://www.zotero.org/support/getting_help","FEEDBACK_URL":"https://forums.zotero.org/","CONNECTORS_URL":"https://www.zotero.org/download/connectors","CHANGELOG_URL":"https://www.zotero.org/support/changelog","CREDITS_URL":"https://www.zotero.org/support/credits_and_acknowledgments","LICENSING_URL":"https://www.zotero.org/support/licensing","GET_INVOLVED_URL":"https://www.zotero.org/getinvolved","DICTIONARIES_URL":"https://download.zotero.org/dictionaries/","PLUGINS_URL":"https://www.zotero.org/support/plugins","NEW_FEATURES_URL":"https://www.zotero.org/blog/zotero-7/"}
@@ -42376,6 +42376,7 @@ ${entry.input}`, input: entry.input });
     DOIandURL: "both",
     exportBibTeXStrings: "off",
     exportBraceProtection: true,
+    exportSort: "id",
     exportTitleCase: true,
     extraMergeCitekeys: false,
     extraMergeCSL: false,
@@ -42548,6 +42549,11 @@ ${entry.input}`, input: entry.input });
       "detect": "Assume single-word fields to be @string vars",
       "match": "Match against the @string declarations below",
       "match+reverse": "Match against the @string declarations and their values below"
+    },
+    "exportSort": {
+      "off": "off (fastest)",
+      "id": "item creation order (plenty fast)",
+      "citekey": "citation key (slower on very large libraries)"
     },
     "importCaseProtection": {
       "as-needed": "minimal",
@@ -51161,11 +51167,23 @@ ${error.stack}`.trim() : "";
           this.items.push(this.map[item.itemID] = this.map[item.itemKey] = item);
         }
       }
-      this.items.sort((a, b) => {
-        if (typeof a.itemID !== "number") return 1;
-        if (typeof b.itemID !== "number") return -1;
-        return a.itemID - b.itemID;
-      });
+    }
+    sortkey(item) {
+      return `${item.itemID === "number" ? "a" : "b"}	${item.citationKey || ""}	${item.itemID === "number" ? item.itemID : ""}`;
+    }
+    sort(sort) {
+      switch (sort) {
+        case "id":
+          this.items.sort((a, b) => {
+            if (typeof a.itemID !== "number") return 1;
+            if (typeof b.itemID !== "number") return -1;
+            return a.itemID - b.itemID;
+          });
+          break;
+        case "citekey":
+          this.items.sort((a, b) => this.sortkey(a).localeCompare(this.sortkey(b)));
+          break;
+      }
     }
     erase() {
       this.items = [];
@@ -51404,6 +51422,7 @@ ${error.stack}`.trim() : "";
       var _a2, _b, _c, _d;
       const translation = new this(translator, "export");
       translation.input = input;
+      translation.input.items.sort(translation.preferences.exportSort);
       translation.export = {
         dir: Zotero.getOption("exportDir"),
         path: Zotero.getOption("exportPath")

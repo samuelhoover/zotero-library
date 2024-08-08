@@ -1,0 +1,333 @@
+Conformational preferences and phase behavior of intrinsically disordered low complexity sequences: insights from multiscale simulations
+Kiersten M Ruff, Rohit V Pappu and Alex S Holehouse
+While many proteins and protein regions utilize a complex repertoire of amino acids to achieve their biological function, a subset of protein sequences are enriched in a reduced set of amino acids. These so-called low complexity (LC) sequences, specifically intrinsically disordered variants of LC sequences, have been the focus of recent investigations owing to their roles in a range of biological functions, specifically phase separation. Computational studies of LC sequences have provided rich insights into their behavior both as individual proteins in dilute solutions and as the drivers and modulators of higher-order assemblies. Here, we review how simulations performed across distinct resolutions have provided different types of insights into the biological role of LC sequences.
+Address
+Department of Biomedical Engineering and Center for Biological Systems Engineering Washington University in St. Louis, St. Louis, MO, 63130, USA
+Corresponding authors: Ruff, Kiersten M (kiersten.ruff@wustl.edu), Pappu, Rohit V (pappu@wustl.edu), Holehouse, Alex S (alex.holehouse@wustl.edu)
+Current Opinion in Structural Biology 2019, 56:1–10
+This review comes from a themed issue on Sequences and topology
+Edited by Anna Panchenko and M  ́onika Fuxreiter
+For a complete overview see the Issue and the Editorial
+Available online 12th November 2018
+https://doi.org/10.1016/j.sbi.2018.10.003
+0959-440X/ã 2018 Elsevier Ltd. All rights reserved.
+Introduction
+Multi-scale and multi-resolution computational approaches are increasingly being used in the study of intrinsically disordered proteins and protein regions (IDRs) [1,2–4]. Conformational heterogeneity is the defining characteristic of IDRs. This introduces significant challenges for both computational and experimental characterization of IDRs [5,6]. While IDRs come in many flavors, a large subset can be classified as low complexity (LC) sequences [7]. Although an operational definition of ‘low complexity’ is somewhat nebulous, we subscribe to the broad classification of LC sequences as those that are enriched in a small subset of the twenty
+naturally occurring amino acids [8,9]. While we focus here on low complexity IDRs (Figure 1), it is important to emphasize that IDRs are not necessarily low complexity and LC sequences are not necessarily intrinsically disordered [10,11]. In LC IDRs the lack of sequence complexity can encode a preference for many conformational states that are equally favorable leading to the ‘egg-carton’-like free energy landscape commonly associated with IDRs [12,13]. Additionally, for many LC IDRs the degeneracy of intramolecular interactions is also manifest as a multi-valency in intermolecular interactions, leading to self-association. The nature of these interactions plays roles in the material properties, the phase behavior, and ultimately the cellular function of proteins containing LC sequences [14,15].
+The low sequence complexity, the degeneracy of states at the single-molecule level, and the tendency to aggregate and/or phase separate make experiments aimed at uncovering detailed structural and mechanistic insights of LC sequences difficult. However, computational approaches can be utilized to supplement and guide experiments on LC sequences. Here we review the methodologies used and tradeoffs made in the study of disordered LC sequences using computational approaches across different resolutions (Figure 2).
+Analytical polymer models of LC sequences The sequence of lowest complexity is a homopolymer, and here one has access to a large body of work from the world of polymer physics for describing the sizes, shapes, and amplitudes of conformational fluctuations of homopolymers [16]. The mapping of a higher-complexity sequence onto a homopolymer model provides a convenient formalism for co-opting existing theories to interpret experimental data and simulation results [17,18,19]. Alternatively, one can develop more sophisticated theories that account for the effects of sequence without reducing the chain to a homopolymer. An example of this generalization comes from the recent work from Ghosh and coworkers who have developed an analytical theory to describe charge-patterning effects on conformational properties on LC sequences [20,21]. Similarly, analytical models developed by Lin and Chan have been used to describe sequence-dependent
+phase separation of LC sequences [8,14,22,23,24], while a model developed by Samanta et al. offers a route to encode intramolecular interactions into a mean-field polymer model [25].
+Available online at www.sciencedirect.com
+ScienceDirect
+www.sciencedirect.com Current Opinion in Structural Biology 2019, 56:1–10
+
+
+Analytical models often invoke simplifying and uncontrolled or even limiting assumptions. As a result, these models can fail to provide an accurate description of the sequence determinants of conformational properties or phase behavior of LC sequences [18,19,26,27]. Recent advances go some way to address these limitations, but the complex interplay of intramolecular interactions remains a challenging set of features to capture analytically [28]. Consequently, more detailed explicit representations of LC sequences are often needed in order to fully understand their properties.
+Coarse-grained models of LC sequences
+Coarse-graining refers to a set of methods in which the resolution associated with an atomistic model is reduced by combining groups of atoms together into sets of coarse-grained ‘beads’ (Figure 2). By significantly reducing the number of individual particles in
+the system this provides a route to bridge the gap between theoretical models and all-atom simulations. Coarse-grained simulations have been primarily utilized as a means to capture sequence-specific features that drive and/or modulate early association events along the pathway to aggregation/phase separation. The resolution deployed can vary from many residues per coarse-grained bead to several coarse-grained beads per residue. In the case of transferable coarse-grained forcefields the resolution is predefined by the forcefield parameterization [29]. However, in cases for which coarse-graining is performed in a system-specific fashion the resolution will generally depend on previously determined conformational properties of the monomeric protein and on the question of interest [30]. Below we highlight some of the coarse-graining approaches that have been utilized to model LC sequences and the insights they have generated.
+2 Sequences and topology
+Figure 1
+A C D E F G H I K L N M P Q R S T V W Y
+SUM 100 100 100 73.9 68.4
+100
+100
+100 30.7
+35.2
+8
+10.5
+46.7
+11.2
+21.2
+28.6
+12.7
+12.5
+75.0
+41.3
+17.4
+17.4
+17.4
+93.5
+26.8
+29.8
+17.2
+13.1
+86.9
+16.6
+22.7
+25.8
+14.7
+79.8
+9.5
+13.5
+8.1
+25.7
+15.5
+72.3
+8.2 22
+15.4
+12.5
+11.6 9.8
+79.5
+8.1
+9.9
+17.1
+31.5
+66.6
+PolyA PolyG
+PolyQ Httex1 Elastin
+FUSLCD
+TDP-43LCD
+Nup116m
+ProTα
+RNAPolIICTD
+SE8Y
+hnRNPA2LCD
+Current Opinion in Structural Biology
+Amino acid compositions of computationally studied disordered LC sequences highlighted in this article. Each LC sequence is displayed in a column. Any amino acid that makes up eight or more percent of the sequence is shown by a circle whose size corresponds to the percent. Circles are colored by amino acid type: hydrophobic – grey, negatively charged – blue, glycine – yellow, polar – green, proline – orange, and aromatic – purple. The percent of a given amino acid in a sequence is given within or next to its corresponding circle. The total sum of the shown percentages is given below each column. For the non-homoprotein sequences only three to six amino acids make up 70 or more percent of the sequence. The exact sequences used are as follows: Httex1 (P42858 residues 1-88 [17]), hnRNPA2 LCD (P22626-2 residues 190-341 [96]), Elastin (P15502 [15]), SE8Y ([64]), RNA Pol II CTD (P24928 residues 1773-1970 [97]), FUS LCD (P35637 residues 1-163 [50]), TDP-43 LCD (Q13148 residues 267-414 [98]), Nup116 m (Q02630 residues 165-715 [115]), and ProTa (P06454 [51]).
+Current Opinion in Structural Biology 2019, 56:1–10 www.sciencedirect.com
+
+
+Multiple-residues per bead coarse-grained models
+The nature of LC sequences is conducive to coarsegraining. This is especially true for homoproteins repeats of either single amino acids or perfect repeats of a short peptide motif. Homoprotein systems have been modeled using a single bead per polypeptide or with multiple repeat units per bead in order to study the effect of repeat length and sequence context on higher order
+associations [31,32–34]. One sequence architecture that has received considerable attention is that of a diblock copolymer [35]. As an example, exon 1 of the huntingtin protein contains a polyglutamine tract flanked by an Nterminal amphipathic stretch and a C-terminal LC proline-rich stretch [36]. A construct consisting of just the polyglutamine and proline-rich region LC domains is readily mapped to a diblock copolymer in which these two physicochemically distinct regions are each represented by a single type of repeating bead. Burke et al. took advantage of this mapping to explore the role of polyglutamine tract length and intrinsic conformational biases on self-assembly [32]. Through this relatively simple model, the driving forces for self-assembly were found to depend primarily on the length of the polyglutamine tract, the protein concentration, and the relative hydrophobicities of the two blocks, rather than the conformational preference of the polyglutamine tract. These results are consistent with recent experimental studies, which suggest that huntingtin exon 1 fragments undergo spontaneous self-assembly above a length-dependent
+concentration in a manner that is independent on b-sheet formation within the monomer [37,38].
+More generally, copolymer models can be applicable to systems in which the repeat unit is not a single amino acid. The study of copolymers with elastin-like polypeptide (ELP) blocks is one such application. Condon et al. deployed a coarse-grained model to understand the effects of conjugating a non-ELP-like block to an ELP-like block [33]. By representing 1–2 repeat units with a single bead these simulations were able to access experimentally relevant length and time scales, recapitulating key features consistent with experimentally measured emergent behavior [39]. Furthermore, given that block architecture has been experimentally shown to tune the size and morphology of ELP-based multi-block copolymer assemblies, coarse-grained models that recapitulate ELP behavior may be useful for the design of new multi-block copolymer assemblies with specific sizes and morphologies [40,41].
+For LC sequences that are more complex than a single repeating unit the mapping to and the parameterization of multiple-residue per bead coarse-grained models is less straightforward. However, for these sequences a systematic approach to determine the coarse-grained mapping and parameterization, which usually relies on results from atomistic simulations, can be deployed [30,42,43,44,45,46,47,48,49]. Systematic parameterization methods include Boltzmann inversion [42],
+Conformational preferences and phase behavior of intrinsically disordered low complexity sequences: insights from multiscale simulations Ruff, Pappu and Holehouse 3
+Figure 2
+Multiple-beads per residue
+Single-bead per residue
+Multiple-residues per bead
+Analytical models Coarse-grained models All-atom models
+Computational cost
+Model assumptions
+Insight resolution Ability to study emergent behavior
+Current Opinion in Structural Biology
+Computational approaches utilized to study LC sequences. LC sequences have been studied across a range of resolutions. Here, a snapshot of the LC polyglutamine tract (orange, compact region) and C-terminal LC proline-rich stretch (mostly purple, extended region) of huntingtin exon 1 is utilized to depict the various resolutions. Analytical models are the lowest resolution models. These models provide fast evaluations of conformational and phase behavior parameters and comparisons in the trends of these parameters across different sequences. However, these models often invoke simplifying assumptions and uncontrolled approximations. Coarse-grained models provide an intermediate resolution between analytical and all-atom models. These models can be deployed to study sequence-specific effects on intermolecular interactions. However, the insights gained depend on the features modeled and the system / model used for parameterization. All-atom models can yield high-resolution insights. However, high-resolution descriptions increase the computational cost of the simulations. Thus, all-atom models are often impractical for the study of emergent behavior of LC sequences.
+www.sciencedirect.com Current Opinion in Structural Biology 2019, 56:1–10
+
+
+Bayesian optimization [30], force-matching [43,44],
+and minimization of the relative entropy [45,46], the details of which have been discussed elsewhere. Two approaches for systematic mapping include the identification of rigid units of Gohlke and Thropey [47] and shape-based coarse-graining [48]. For both these mapping strategies, appropriate coarse graining of a given LC sequence depends on the presence and identification of regions whose internal fluctuations can be averaged over. However, this approach may be inappropriate for many non-homoprotein LC sequences with degenerate interactions and thus finer resolution coarse-grained models, including single-bead per residue mappings, may be more desirable.
+Single-bead per residue coarse-grained models
+Coarse-grained models with individual beads per residue have been utilized to understand the features important for driving intermolecular interactions and phase behavior for a range of LC sequences [50,51,52,53,54]. Given that each amino acid is represented as a single bead, hydrophobicity scales are often utilized to parameterize the interactions between pairs of amino acids, allowing the reproduction of experimentally observed conformational
+properties [50,52,53]. For example, Dignon et al. have developed a one-bead-per-residue coarse-grained framework for studying phase separation of LC sequencesbased on the Kapcha and Rossky hydrophobicity scale and the Ashbaugh-Hatch potential function [52,55–57]. In this functional form, optimal values for short-range interactions between pairs of amino acids are determined by comparing the radius of gyration (Rg) from coarsegrained simulations with experimentally determined Rg values for a range of IDPs. The resulting framework was then used to examine the phase behavior of the LC domain of FUS in comparison to its phosphomimetic mutants, recapitulating experimental observations [50,52]. This framework may be appropriate to study the sequence-determinants of phase behavior in other LC sequences, allowing direct interrogation of intermolecular interactions that are not easily probed experimentally.
+Ghavami et al. deployed a similar method to study the organization of phenylalanine-glycine LC sequences (FG-Nups) within the yeast nuclear pore complex (NPC) [53]. Through parameterization using experimentally determined Stokes radii of FG-Nups in conjunction with hydrophobicity scale-based parameters, coarsegrained simulations showed that the FG-repeats formed a doughnut-like shape of high-density within the center of the NPC. Mutational studies found that this organization was dependent on the presence and sequence position of charged residues. Simulations suggest that FGNup combinations known to support viable cell growth yield the donut shaped organization. In contrast, combinations that show a loss of the donut shape in simulations
+are incompatible with viability. These results suggest that the internal organization of the FG-repeats is critical for cell viability. The average density of FG-Nups observed in simulations was also predictive of the experimentally determined permeability of a cargo protein through the NPC while total FG-Nup mass density was not, thus highlighting the importance of FG-Nup organization on NPC permeability [58].
+Single-bead per residue coarse-grained models have also been deployed to study highly charged LC sequences [51,54]. Borgia et al. utilized such a model to determine the in-complex conformational ensemble of two polyelectrolytic LC sequences - the highly positively charged histone H1 and the highly negatively charged prothymosin-a [51]. The model was parameterized to reproduce the experimentally determined intra- and inter-molecular single-molecule F  ̈orster resonance energy transfer (smFRET) efficiencies. Simulations suggest that H1 and prothymosin-a form a heterogeneous ensemble of complexes that appear to be driven mainly by electrostatic interactions. The coarse-grained model of Borgia et al. uses an identical treatment of glutamic and aspartic acid, as well as lysine and arginine. Despite this, the simulation results are in good agreement with independent nuclear magnetic resonance (NMR) spectroscopy data, suggesting interactions are purely electrostatically driven and structural differences between different types of charged amino acids are insignificant for this system. However, in other LC systems the specific types of charged amino acid can lead to different behaviors [14]. Thus, capturing the correct resolution of charged residues within LC sequences is also an important consideration in order to extract relevant insights and testable predictions from computational models.
+Beyond providing insights regarding the intermolecular interactions and driving forces for phase behavior of LC sequences, coarse-grained simulations can also help to identify limitations in theoretical models. Particularly, one-bead per residue lattice-based simulations of two fully charged 50-mers with different charge patterns showed qualitatively similar but quantitatively different results compared to random-phase-approximation (RPA) polymer theory when phase behaviors were compared [54]. This discrepancy appears to result from a lack of excluded volume considerations in RPA theory [26]. Similarly, through the use of a single-bead per residue explicit chain model, Song et al. showed that the Rg and end-to-end distance can be decoupled as a result of conformational heterogeneity, a feature generally absent from homopolymer models [19]. Taken together, singlebead per residue coarse grain models provide a convenient touchstone with which analytical theory can be compared to help identify systematic weakness and limitations, as well as a simple but powerful framework for the simulation of LC sequences in their own right.
+4 Sequences and topology
+Current Opinion in Structural Biology 2019, 56:1–10 www.sciencedirect.com
+
+
+Multiple-beads per residue coarse-grained models
+Finer coarse-grained models, in which each residue is represented by multiple beads, have also been deployed in the study of LC sequences. These models come in two flavors: transferable models and system-specific models [49]. For transferable models the resolution and parameterization is fixed across all studied systems. Examples of transferable multiple-beads per residue models deployed for LC sequences include PRIME [59–63], PLUM [6466], AWSEM [67], and MARTINI-based models [29,6870]. These models are used in simulations of fibril formation of homoproteins [60–62], the aggregation of repeat peptides [68], the gating and transport mechanism of the NPC [69], and the molecular mechanisms of the thermoresponsive behavior of silk-elastin-like proteins (SELPs) [64]. For example, the PLUM model was found to reproduce the experimentally observed change in Rg at the monomer level around the transition temperature for SELPs [64]. With this result in hand, further coarsegrained simulations showed that during temperaturedependent SELP hydrogel formation intermolecular interactions trap the individual monomers in an expanded high energy state. These insights help explain the experimentally observed diminished deswelling of the hydrogel upon heating as a function of increased SELP concentration.
+Despite their apparent generality, transferable models are not always appropriate for studying LC sequences. The relevance of a given model often depends on what the model was originally parameterized against. For instance, the original PLUM model can lead to an over stabilization of secondary structure for some IDPs [66], whereas the MARTINI model for proteins can underrepresent structural features and prohibit structural transitions [68]. Because of the limitations of transferable models, system-specific coarse-grained models have been frequently applied to study LC sequences. These models often use information gleaned from atomistic simulations in order to parameterize bespoke models for the system of interest. The two main approaches for systematically determining parameters from atomistic simulations for coarse
+grained models are structure-based [45,71–74] and forcematching methods [43,75,76,77,78–84]. In structurebased methods the objective is to reproduce certain conformational distributions from the atomistic simulations, whereas in force-matching net forces from atomistic simulations are mapped to the simpler empirical force
+field of a coarse-grained model [46,49]. Both these approaches have been deployed to study the aggregation of homoproteins implicated in disease [71,82]. The forcematching methods pioneered by Voth and colleagues were also deployed to examine the conformational properties of FG-Nups within the NPC [79,85]. This method captures the biphasic disorder of several, longer FGNups, strongly implicating sequence organization,
+composition, and sequence-specific conformational biases in the cellular function of FG-Nups.
+Summary of coarse-grained models
+Coarse-grained models can provide valuable insights regarding the mechanisms of early aggregation events and morphologies of aggregates for LC sequences. These models can explicitly capture sequence-specific heterogeneity, a feature that is typically absent in analytical models. However, coarse-grained models have their own limitations. Parameterization of coarse-grained modelsbased on atomistic simulations assumes that the atomistic simulations are accurate and that many-body interaction terms can be gleaned from simulations of small numbers of molecules. Such an assumption may be inappropriate for LC sequences if the single-chain properties are weakly-coupled to intermolecular interactions. Furthermore, the relevance of a coarse-grained model relies on the assumption that the specific feature(s) of interest is appropriately captured by the model. For LC sequences that can undergo emergent conformational transitions within higher-order assemblies, coarse-grained models may be fundamentally limited in their ability to capture the thermodynamics and kinetics of self-association unless these transitions are explicitly encoded. Taken together, while coarse-grained models provide an important route to assess the sequence-dependent biases of individual molecules and the collections of these molecules, their limitations should always be considered with regard to the certainty of conclusions that can be drawn.
+Atomistic simulations of LC sequences
+While coarse-grained simulations have been used to study aggregation and assembly of LC sequences, atomistic simulations are particularly valuable for extracting detailed conformational features at the level of individual polypeptides. Given their general repetitive nature and high aggregation propensity, experimental characterization of these proteins is often challenging. Consequently, all-atom simulations provide a convenient solution, providing ‘infinite resolution’ at infinite dilution. For homoproteins that are aggregation-prone (e.g. polyglutamine, polyglycine, polyalanine) atomistic simulations have provided considerable insight into the conformational biases of individual monomers [12,86–93]. Recently, smFRET experiments have been used to complement all-atom simulations, and the integration of smFRET transfer efficiencies with simulation-derived ensembles helps mitigate shortcomings associated with both methods
+[17,18,94]. This approach was deployed by Warner et al. who were able to extract conformational ensembles of monomeric huntingtin exon 1 as a function of poly
+glutamine length [17]. Analysis of these ensembles negated the popular hypothesis of a sharp, structural change within monomeric huntingtin exon 1 as a function of polyglutamine length. Atomistic simulations of LC sequences can also be combined with other experimental
+Conformational preferences and phase behavior of intrinsically disordered low complexity sequences: insights from multiscale simulations Ruff, Pappu and Holehouse 5
+www.sciencedirect.com Current Opinion in Structural Biology 2019, 56:1–10
+
+
+techniques such as NMR spectroscopy and small-angle x-ray scattering to yield complementary information [95].
+Atomistic simulations are also valuable for extracting information from ensembles that goes beyond a specific experimental read-out. Often, one or a few experimental read-outs are used to either assess or re-weight a simu
+lated ensemble [17,96–98]. A suitably ratified ensemble can be analyzed for features that cannot be easily examined experimentally in order to gain additional insights about the system and also make testable predictions. This approach has been deployed on systems such as the LC domain of TDP-43 [98], the LC domain of hnRNPA2 [96], and the C-terminal tail of RNA polymerase II [97] in order to try to extract molecular features that are predicted to modulate the intermolecular associations of these systems.
+Additionally, analysis of conformational properties from monomeric, atomistic simulations can be useful to make predictions about the phase behavior of LC sequences [96,98,99,100,101]. Monomeric collapse as a function of temperature can often be correlated with the critical temperature for phase separation for LC sequences [57,102]. Thus, quantifying the collapse transition from simulations of monomeric systems as a function of sequence design or mutation may help to design sequences with bespoke phase behavior. Tarakanova et al. deployed this strategy on a library of ELPs [103]. Here, the Rg values of various ELP sequences were examined as a function of temperature in order to determine the collapse transition temperature at the singlemolecule level. Predictions of the transition temperatures generated by these simulations were tested experimentally. The results suggest that atomistic simulations can be used to determine structural transition temperatures of LC sequences and this information can be deployed for the design of thermo-responsive materials with distinct properties.
+Although atomistic simulations provide insights at highresolution, they are not without limitations. Given their computational cost, studying intermolecular association and aggregation of large numbers of molecules remains prohibitive [104,105,106]. As with any simulation the accuracy of conclusions drawn is dependent on the correctness of the underlying forcefield, an issue that has garnered considerable recent attention [3,4,107,108]. The limitations of forcefields are amplified for low complexity sequences, where even small inaccuracies in parameters can be significantly enhanced due to the repetitive nature of a sequence. Additionally, the high degeneracy of conformational states makes configurational sampling a major challenge, especially in the context of molecular dynamics [109,110]. Consequently, while all-atom simulations have provided extensive insight into our understanding of LC sequences, as with any approach, care
+should be taken when considering the methodological limitations.
+Computational approaches for ordered LC sequences
+As mentioned previously, LC sequences are not necessarily disordered. Examples of LC sequences that form stable ordered structures include collagen, which consists of a glycine/proline rich tripeptide repeat that gives rise to a stable triple-helix [111], the snow-flea antifreeze protein, a folded globular protein that is 60% glycine and alanine [11] and repetitive charge-enriched single-a helices [112]. The energy landscape of LC sequences is inherently rugged, regardless of whether they ultimately fold into a single low-energy conformation or remain in a heterogeneous ensemble. While computational approaches similar to those described for LC IDRs are applicable for folded LC sequences, the in silico folding of LC sequences raises many sampling challenges due to this rugged landscape. Moreover, the conformationallyspecific energy minima associated with folded states mean forcefields may be unable to ignore important ingredients such as conformational transitions mediated by electronic polarization, solution ion mediated charge inversion, or charge regulation such as context-dependent pKa shifts. Thus, at the atomistic level, the appropriate forcefield for ordered LC sequences may be different than their disordered counterparts [4]. Additionally, specific structural features are not always easily retained or captured in coarse-grained models. To remedy this, coarse-grained models for ordered LC sequences often utilize a multiple-bead per residue resolution and invoke additional potentials in order to capture structural features and native contacts [111,113].
+Conclusions
+There is growing interest in the conformational properties, phase behavior and the evolutionary determinants of LC sequences. Multi-scale, multi-resolution theories and simulations have a clear role to play in advancing our understanding of key aspects pertaining to LC sequences. In this perspective, we have provided an overview of the most recent advances that have come about via different methodological approaches and theoretical underpinnings. The growing body of insights from simulations performed at distinct length scales will need to be generalized to connect disparate length scales leading to multiresolution models [114]. The insights from truly multiscale, multi-resolution models will likely open the door to the development of advanced polymer theoretical predictions of conformational properties and phase behavior of LC sequences. These predictions can be leveraged to develop a framework for understanding the evolutionary determinants and functional contributions of LC sequences.
+6 Sequences and topology
+Current Opinion in Structural Biology 2019, 56:1–10 www.sciencedirect.com
+
+
+Conflict of interest None.
+References and recommended reading
+Papers of particular interest, published within the period of review, have been highlighted as:
+ of special interest  of outstanding interest
+1. 
+Best RB: Computational and theoretical advances in studies of intrinsically disordered proteins. Curr Opin Struct Biol 2017, 42:147-154. A relevant review of computational methods that can be utilized to study generic intrinsically disordered proteins.
+2. Levine ZA, Shea JE: Simulations of disordered proteins and systems with conformational heterogeneity. Curr Opin Struct Biol 2017, 43:95-103.
+3. Huang J, Rauscher S, Nawrocki G, Ran T, Feig M, de Groot BL, Grubmuller H, MacKerell AD Jr: CHARMM36m: an improved force field for folded and intrinsically disordered proteins. Nat Methods 2017, 14:71-73.
+4. Robustelli P, Piana S, Shaw DE: Developing a molecular
+dynamics force field for both folded and disordered protein states. Proc Natl Acad Sci U S A 2018, 115:E4758-E4766.
+5. van der Lee R, Buljan M, Lang B, Weatheritt RJ, Daughdrill GW, Dunker AK, Fuxreiter M, Gough J, Gsponer J, Jones DT et al.: Classification of intrinsically disordered regions and proteins. Chem Rev 2014, 114:6589-6631.
+6. Mittag T, Forman-Kay JD: Atomic-level characterization of disordered protein ensembles. Curr Opin Struct Biol 2007, 17: 3-14.
+7. Das RK, Ruff KM, Pappu RV: Relating sequence encoded information to form and function of intrinsically disordered proteins. Curr Opin Struct Biol 2015, 32:102-112.
+8. 
+Martin EW, Mittag T: Relationship of sequence and phase separation in protein low complexity regions. Biochemistry 2018, 57:2478-2487. A review that describes LC sequences and summarizes what sequence features drive and modulate phase separation of low complexity regions.
+9. Romero P, Obradovic Z, Li XH, Garner EC, Brown CJ, Dunker AK: Sequence complexity of disordered protein. Proteins-Struct Funct Genet 2001, 42:38-48.
+10. Pak CW, Kosno M, Holehouse AS, Padrick SB, Mittal A, Ali R, Yunus AA, Liu DR, Pappu RV, Rosen MK: Sequence
+determinants of intracellular phase separation by complex coacervation of a disordered protein. Mol Cell 2016, 63:72-85.
+11. Gates ZP, Baxa MC, Yu W, Riback JA, Li H, Roux B, Kent SBH, Sosnick TR: Perplexing cooperative folding and stability of a low-sequence complexity, polyproline 2 protein lacking a hydrophobic core. Proc Natl Acad Sci U S A 2017, 114: 2241-2246.
+12. Vitalis A, Wang XL, Pappu RV: Quantitative characterization of intrinsic disorder in polyglutamine: Insights from analysis based on polymer theories. Biophys J 2007, 93:1923-1937.
+13. Papoian GA: Proteins with weakly funneled energy landscapes challenge the classical structure-function paradigm. Proc Natl Acad Sci U S A 2008, 105:14237-14238.
+14. Wang J, Choi JM, Holehouse AS, Lee HO, Zhang X, Jahnel M, Maharana S, Lemaitre R, Pozniakovsky A, Drechsel D et al.: A molecular grammar governing the driving forces for phase separation of prion-like RNA binding proteins. Cell 2018, 174:688-699 e616.
+15. Quiroz FG, Chilkoti A: Sequence heuristics to encode phase behaviour in intrinsically disordered protein polymers. Nat Mater 2015, 14:1164-1171.
+16. Rubinstein M, Colby RH: Polymer Physics. Oxford; New York: Oxford University Press; 2003.
+17. 
+Warner JB, Ruff KM, Tang PS, Lemke EA, Pappu RV, Lashuel HA: Monomeric huntingtin exon 1 has similar overall structural features for wild-type and pathological polyglutamine lengths. J Am Chem Soc 2017, 139:14456-14469. Presents the integration of single-molecule Fo ̈ rster resonance energy transfer efficiencies with atomistic simulations in order to overcome shortcomings of both methods and extract conformational ensembles of monomeric huntingtin exon 1 as a function of polyglutamine length
+18. 
+Fuertes G, Banterlea N, Ruff KM, Chowdhury A, Mercadante D, Koehler C, Kachala M, Girona GE, Milles S, Mishra A et al.:
+Decoupling of size and shape fluctuations in heteropolymeric sequences reconciles discrepancies in SAXS vs. FRET
+measurements. Proc Natl Acad Sci U S A 2017, 114: E6342-E6351. Presents results from a combined approach of single-molecule Fo ̈ rster resonance energy transfer (smFRET), small-angle X-ray scattering (SAXS) and atomistic simulations to study the conformational ensembles of disordered proteins. Results suggest that homopolymer models may be inadequate to convert between conformational descriptors extracted from smFRET and SAXS as they fail to capture the contributions of heteropolymeric effects on the conformational heterogeneity of IDPs.
+19. Song JH, Gomes GN, Shi TF, Gradinaru CC, Chan HS:
+Conformational heterogeneity and FRET data interpretation for dimensions of unfolded proteins. Biophys J 2017, 113: 1012-1024.
+20. 
+Sawle L, Ghosh K: A theoretical method to compute sequence dependent configurational properties in charged polymers and proteins. J Chem Phys 2015, 143:085101.
+Presents an analytical model that takes into account charge patterning and excluded volume effects to describe the size of polyampholytic LC sequences at the single-molecule level
+21. Firman T, Ghosh K: Sequence charge decoration dictates coilglobule transition in intrinsically disordered proteins. J Chem Phys 2018, 148:123305.
+22. 
+Lin YH, Forman-Kay JD, Chan HS: Sequence-specific
+polyampholyte phase separation in membraneless organelles. Phys Rev Lett 2016, 117:178101. Presents a theory that accounts for charge patterning in the context of predicting phase behavior of polyampholytic IDPs.
+23. Lin YH, Chan HS: Phase separation and single-chain compactness of charged disordered proteins are strongly correlated. Biophys J 2017, 112:2043-2046.
+24. Lin YH, Forman-Kay JD, Chan HS: Theories for sequencedependent phase behaviors of biomolecular condensates. Biochemistry 2018, 57:2499-2508.
+25. Samanta HS, Zhuravlev PI, Hinczewski M, Hori N, Chakrabarti S, Thirumalai D: Protein collapse is encoded in the folded state architecture. Soft Matter 2017, 13:3622-3638.
+26. Song JH, Gomes GN, Gradinaru CC, Chan HS: An adequate account of excluded volume is necessary to infer compactness and Asphericity of disordered proteins by Forster resonance energy transfer. J Phys Chem B 2015, 119:15191-15202.
+27. Ruff KM, Holehouse AS: SAXS versus FRET: a matter of heterogeneity? Biophys J 2017, 113:971-973.
+28. Zheng WW, Zerze GH, Borgia A, Mittal J, Schuler B, Best RB: Inferring properties of disordered chains from FRET transfer efficiencies. J Chem Phys 2018, 148:123329.
+29. Marrink SJ, Risselada HJ, Yefimov S, Tieleman DP, de Vries AH: The MARTINI force field: coarse grained model for biomolecular simulations. J Phys Chem B 2007, 111:7812-7824.
+30. 
+Ruff KM, Harmon TS, Pappu RV: CAMELOT: A machine learning approach for coarse-grained simulations of aggregation of block-copolymeric protein sequences. J Chem Phys 2015, 143:243123. Presents a machine learning approach to extract parameters from fine grained simulations in order to model sequence-specific effects on the morphologies of higher order assemblies.
+31. 
+Ruff KM, Khan SJ, Pappu RV: A coarse-grained model for polyglutamine aggregation modulated by amphipathic flanking sequences. Biophys J 2014, 107:1226-1235.
+Conformational preferences and phase behavior of intrinsically disordered low complexity sequences: insights from multiscale simulations Ruff, Pappu and Holehouse 7
+www.sciencedirect.com Current Opinion in Structural Biology 2019, 56:1–10
+
+
+Exploits the homoprotein nature of an IDP to coarse-grain out detailed monomeric structure but capture pairwise interaction potentials and assess the impact of sequence on large-scale assembly
+32. Burke MG, Woscholski R, Yaliraki SN: Differential
+hydrophobicity drives self-assembly in Huntington’s disease. Proc Natl Acad Sci U S A 2003, 100:13928-13933.
+33. Condon JE, Martin TB, Jayaraman A: Effect of conjugation on phase transitions in thermoresponsive polymers: an atomistic and coarse-grained simulation study. Soft Matter 2017, 13:2907-2918.
+34. Feric M, Vaidya N, Harmon TS, Mitrea DM, Zhu L, Richardson TM, Kriwacki RW, Pappu RV, Brangwynne CP: Coexisting liquid phases underlie nucleolar subcompartments. Cell 2016, 165:1686-1697.
+35. Feng HB, Lu XY, Wang WY, Kang NG, Mays JW: Block
+copolymers: synthesis, self-assembly, and applications. Polymers 2017, 9:494.
+36. Zuccato C, Valenza M, Cattaneo E: Molecular mechanisms and potential therapeutical targets in Huntington’s disease. Physiol Rev 2010, 90:905-981.
+37. Crick SL, Ruff KM, Garai K, Frieden C, Pappu RV: Unmasking the roles of N- and C-terminal flanking sequences from exon 1 of huntingtin as modulators of polyglutamine aggregation. Proc Natl Acad Sci U S A 2013, 110:20075-20080.
+38. Walters RH, Murphy RM: Examining polyglutamine peptide length: a connection between collapsed conformations and increased aggregation. J Mol Biol 2009, 393:978-992.
+39. Luo TZ, Kiick KL: Noncovalent modulation of the inverse temperature transition and self-assembly of elastin-bcollagen-like peptide bioconjugates. J Am Chem Soc 2015, 137:15362-15365.
+40. MacEwan SR, Weitzhandler I, Hoffmann I, Genzer J, Gradzielski M, Chilkoti A: Phase behavior and self-assembly of perfectly sequence-defined and monodisperse multiblock
+copolypeptides. Biomacromolecules 2017, 18:599-609.
+41. Roberts S, Harmon TS, Schaal J, Li K, Hunt A, Miao V, Wen Y, Oas TG, Collier J, Pappu RV et al.: Modulation of order and disorder in recombinant polypeptides creates injectable tissue integrating networks. Nat Mater 2018.
+42. Karimi-Varzaneh HA, Qian HJ, Chen XY, Carbone P, Muller
+Plathe F: IBIsCO: a molecular dynamics simulation package for coarse-grained simulation. J Comput Chem 2011, 32: 1475-1487.
+43. Lu LY, Dama JF, Voth GA: Fitting coarse-grained distribution functions through an iterative force-matching method. J Chem Phys 2013, 139121906.
+44. 
+Izvekov S, Voth GA: A multiscale coarse-graining method for biomolecular systems. J Phys Chem B 2005, 109:2469-2473.
+Describes a force-matching approach for systematic coarse-graining from atomistic simulations.
+45. 
+Shell MS: The relative entropy is fundamental to multiscale and inverse thermodynamic problems. J Chem Phys 2008, 129:144108. Describes a relative entropy method for systematic coarse-graining from atomistic simulations.
+46. 
+Saunders MG, Voth GA: Coarse-graining methods for computational biology. Annu Rev Biophys 2013, 42:73-93.
+A detailed review of coarse-grained methods utilized to study biomolecular systems.
+47. Gohlke H, Thorpey MF: A natural coarse graining for simulating large biomolecular motion. Biophys J 2006, 91:2115-2120.
+48. Arkhipov AS, Freddolino PL, Schulten K: Stability and dynamics of virus capsids described by coarse-grained modeling. Biophys J 2007, 14:1767-1777.
+49. 
+Noid WG: Perspective: coarse-grained models for biomolecular systems. J Chem Phys 2013, 139:090901.
+Presents a review of “top-down”, “knowledge-based”, and “bottom-up” coarse-graining approaches to study biomolecular systems.
+50. Monahan Z, Ryan VH, Janke AM, Burke KA, Rhoads SN, Zerze GH, O’Meally R, Dignon GL, Conicella AE, Zheng WW et al.:
+Phosphorylation of the FUS low-complexity domain disrupts phase separation, aggregation, and toxicity. EMBO J 2017, 36:2951-2967.
+51. Borgia A, Borgia MB, Bugge K, Kissling VM, Heidarsson PO, Fernandes CB, Sottini A, Soranno A, Buholzer KJ, Nettels D et al.: Extreme disorder in an ultrahigh-affinity protein complex. Nature 2018, 555:61-66.
+52. 
+Dignon GL, Zheng WW, Kim YC, Best RB, Mittal J: Sequence determinants of protein phase behavior from a coarse-grained model. PLoS Comput Biol 2018, 14 e1005941. Presents a single-bead per residue coarse-grained model for LC sequences optimized against experimentally determined radius of gyration values and the deployment of this model to study the phase behavior of LC sequences.
+53. Ghavami A, Veenhoff LM, van der Giessen E, Onck PR: Probing the disordered domain of the nuclear pore complex through coarse-grained molecular dynamics simulations. Biophys J 2014, 107:1393-1402.
+54. 
+Das S, Eisen A, Lin YH, Chan HS: A lattice model of chargepattern-dependent polyampholyte phase separation. J Phys Chem B 2018, 122:5418-5431. Presents a lattice-based coarse-grained approach to study the effects of charge patterning on the phase behavior of polyampholytes.
+55. Kapcha LH, Rossky PJ: A Simple atomic-level hydrophobicity scale reveals protein interfacial structure. J Mol Biol 2014, 426:484-498.
+56. Ashbaugh HS, Hatch HW: Natively unfolded protein stability as a coil-to-globule transition in charge/hydropathy space. J Am Chem Soc 2008, 130:9536-9542.
+57. Dignon GL, Zheng W, Best RB, Kim YC, Mittal J: Relation
+between single-molecule properties and phase behavior of intrinsically disordered proteins. Proc Natl Acad Sci 2018. 201804177.
+58. Ghavami A, van der Giessen E, Onck P, Veenhoff L: Coarse
+grained molecular dynamics of the natively-unfolded domain of the NPC. In Nuclear-Cytoplasmic Transport. Edited by Springer. 2018:205-221.
+59. Voegler Smith A, Hall CK: alpha-helix formation: discontinuous molecular dynamics on an intermediate-resolution protein model. Proteins 2001, 44:344-360.
+60. Marchut AJ, Hall CK: Side-chain interactions determine amyloid formation by model polyglutamine peptides in molecular dynamics simulations. Biophys J 2006, 90: 4574-4584.
+61. Marchut AJ, Hall CK: Effects of chain length on the aggregation of model polyglutamine peptides: molecular dynamics
+simulations. Proteins-Struct Funct Bioinformatics 2007, 66: 96-109.
+62. Nguyen HD, Hall CK: Spontaneous fibril formation by polyalanines; discontinuous molecular dynamics simulations. J Am Chem Soc 2006, 128:1890-1901.
+63. Cheon M, Chang I, Hall CK: Extending the PRIME model for protein aggregation to all 20 amino acids. Proteins-Struct Funct Bioinformatics 2010, 78:2950-2960.
+64. Yeo JJ, Huang WW, Tarakanova A, Zhang YW, Kaplan DL,
+Buehler MJ: Unraveling the molecular mechanisms of thermoresponsive properties of silk-elastin-like proteins by integrating multiscale modeling and experiment. J Mater Chem B 2018, 6:3727-3734.
+65. Bereau T, Deserno M: Generic coarse-grained model for protein folding and aggregation. J Chem Phys 2009, 130 235106.
+66. Rutter GO, Brown AH, Quigley D, Walsh TR, Allen MP: Testing the transferability of a coarse-grained model to intrinsically disordered proteins. Phys Chem Chem Phys 2015, 17:3174131749.
+67. Chen MC, Wolynes PG: Aggregation landscapes of Huntingtin exon 1 protein fragments and the critical repeat length for the
+8 Sequences and topology
+Current Opinion in Structural Biology 2019, 56:1–10 www.sciencedirect.com
+
+
+onset of Huntington’s disease. Proc Natl Acad Sci U S A 2017, 114:4406-4411.
+68. Seo M, Rauscher S, Pomes R, Tieleman DP: Improving internal peptide dynamics in the coarse-grained MARTINI model: toward large-scale simulations of amyloid- and elastin-like peptides. J Chem Theory Comput 2012, 8:1774-1785.
+69. Miao LL, Schulten K: Transport-related structures and processes of the nuclear pore complex studied through molecular dynamics. Structure 2009, 17:449-459.
+70. Monticelli L, Kandasamy SK, Periole X, Larson RG, Tieleman DP, Marrink SJ: The MARTINI coarse-grained force field: extension to proteins. J Chem Theory Comput 2008, 4:819-834.
+71. Carmichael SP, Shell MS: A new multiscale algorithm and its application to coarse-grained peptide models for selfassembly. J Phys Chem B 2012, 116:8383-8393.
+72. Lyubartsev A, Mirzoev A, Chen LJ, Laaksonen A: Systematic coarse-graining of molecular models by the Newton inversion method. Faraday Discuss 2010, 144:43-56.
+73. Lyubartsev AP, Laaksonen A: Calculation of effective
+interaction potentials from radial-distribution functions - a reverse Monte-Carlo approach. Phys Rev E 1995, 52:3730-3737.
+74. Muller-Plathe F: Coarse-graining in polymer simulation: from the atomistic to the mesoscopic scale and back. ChemPhysChem 2002, 3:754-769.
+75. Chu JW, Izvekov S, Voth GA: The multiscale challenge for biomolecular systems: coarse-grained modeling. Mol Simul 2006, 32:211-218.
+76. Chu JW, Voth GA: Coarse-grained modeling of the actin filament derived from atomistic-scale simulations. Biophys J 2006, 90:1572-1582.
+77. 
+Dama JF, Sinitskiy AV, McCullagh M, Weare J, Roux B, Dinner AR, Voth GA: The theory of ultra-coarse-graining. 1. General principles. J Chem Theory Comput 2013, 9:2466-2480.
+Presents a multiple-residue per bead coarse-grained method that incorporates both continuous and discrete degrees of freedom in order to model full domains or sub-domains into a single coarse-grained particle.
+78. Davtyan A, Dama JF, Voth GA, Andersen HC: Dynamic force matching: a method for constructing dynamical coarsegrained models with realistic time dependence. J Chem Phys 2015, 142:154104.
+79. Hills RD, Lu LY, Voth GA: Multiscale coarse-graining of the protein energy landscape. PLoS Comput Biol 2010, 6:e1000827.
+80. Hone TD, Izvekov S, Voth GA: Fast centroid molecular dynamics: a force-matching approach for the predetermination of the effective centroid forces. J Chem Phys 2005, 122:54105.
+81. Izvekov S, Parrinello M, Burnham CJ, Voth GA: Effective force fields for condensed phase systems from ab initio molecular dynamics simulation: a new method for force-matching. J Chem Phys 2004, 120:10896-10913.
+82. Wang YT, Voth GA: Molecular dynamics simulations of polyglutamine aggregation using solvent-free multiscale coarse-grained models. J Phys Chem B 2010, 114:8735-8743.
+83. Izvekov S, Swanson JMJ, Voth GA: Coarse-graining in
+interaction space: a systematic approach for replacing longrange electrostatics with short-range potentials. J Phys Chem B 2008, 112:4711-4724.
+84. Noid WG, Chu JW, Ayton GS, Voth GA: Multiscale coarsegraining and structural correlations: connections to liquidstate theory. J Phys Chem B 2007, 111:4116-4127.
+85. Ando D, Zandi R, Kim YW, Colvin M, Rexach M, Gopinathan A: Nuclear pore complex protein sequences determine overall copolymer brush structure and function. Biophys J 2014, 106:1997-2007.
+86. Tran HT, Mao A, Pappu RV: Role of backbone - solvent interactions in determining conformational equilibria of intrinsically disordered proteins. J Am Chem Soc 2008, 130:7380-7392.
+87. Holehouse AS, Garai K, Lyle N, Vitalis A, Pappu RV: Quantitative assessments of the distinct contributions of polypeptide backbone amides versus side chain groups to chain expansion via chemical denaturation. J Am Chem Soc 2015, 137:2984-2995.
+88. Asthagiri D, Karandur D, Tomar DS, Pettitt BM: Intramolecular interactions overcome hydration to drive the collapse transition of Gly(15). J Phys Chem B 2017, 121:8078-8084.
+89. Karandur D, Wong KY, Pettitt BM: Solubility and aggregation of Gly5 in water. J Phys Chem B 2014, 118:9565-9572.
+90. Vitalis A, Wang XL, Pappu RV: Atomistic simulations of the effects of polyglutamine chain length and solvent quality on conformational equilibria and spontaneous homodimerization. J Mol Biol 2008, 384:279-297.
+91. Vitalis A, Lyle N, Pappu RV: Thermodynamics of beta-sheet formation in polyglutamine. Biophys J 2009, 97:303-311.
+92. Kang H, Vazquez FX, Zhang LL, Das P, Toledo-Sherman L, Luan BQ, Levitt M, Zhou RH: Emerging beta-sheet rich
+conformations in supercompact huntingtin Exon-1 mutant structures. J Am Chem Soc 2017, 139:8820-8827.
+93. Daggett V, Kollman PA, Kuntz ID: A molecular-dynamics
+simulation of polyalanine - an analysis of equilibrium motions and helix coil transitions. Biopolymers 1991, 31:1115-1134.
+94. Zheng WW, Borgia A, Buholzer K, Grishaev A, Schuler B, Best RB: Probing the action of chemical denaturant on an intrinsically disordered protein by simulation and experiment. J Am Chem Soc 2016, 138:11702-11713.
+95. Martin EW, Holehouse AS, Grace CR, Hughes A, Pappu RV, Mittag T: Sequence determinants of the conformational properties of an intrinsically disordered protein prior to and upon multisite phosphorylation. J Am Chem Soc 2016, 138:15323-15335.
+96. Ryan VH, Dignon GL, Zerze GH, Chabata CV, Silva R, Conicella AE, Amaya J, Burke KA, Mittal J, Fawzi NL: Mechanistic view of hnRNPA2 low-complexity domain structure, interactions, and phase separation altered by mutation and arginine methylation. Mol Cell 2018, 69:465-479.
+97. Janke AM, Seo DH, Rahmanian V, Conicella AE, Mathews KL, Burke KA, Mittal J, Fawzi NL: Lysines in the RNA polymerase II C-terminal domain contribute to TAF15 fibril recruitment. Biochemistry 2018, 57:2549-2563.
+98. Conicella AE, Zerze GH, Mittal J, Fawzi NL: ALS mutations
+disrupt phase separation mediated by alpha-helical structure in the TDP-43 low-complexity C-terminal domain. Structure 2016, 24:1537-1549.
+99. Wei MT, Elbaum-Garfinkle S, Holehouse AS, Chen CCH, Feric M, Arnold CB, Priestley RD, Pappu RV, Brangwynne CP: Phase
+behaviour of disordered proteins underlying low density and high permeability of liquid organelles. Nat Chem 2017, 9: 1118-1125.
+100. 
+Zhao BW, Li NK, Yingling YG, Hall CK: LCST behavior is manifested in a single molecule: elastin-like polypeptide (VPGVG)n. Biomacromolecules 2016, 17:111-118.
+Presents an atomistic study of elastin-like polypeptides to connect singlechain behavior to phase behavior.
+101. Li NK, Roberts S, Quiroz FG, Chilkoti A, Yingling YG: Sequence directionality dramatically affects LCST behavior of elastinlike polypeptides. Biomacromolecules 2018, 19:2496-2505.
+102. Raos G, Allegra G: Chain collapse and phase separation in poor-solvent polymer solutions: a unified molecular description. J Chem Phys 1996, 104:1626-1645.
+103. Tarakanova A, Huang W, Weiss AS, Kaplan DL, Buehler MJ:
+Computational smart polymer design based on elastin protein mutability. Biomaterials 2017, 127:49-60.
+104. Zhang Y, Zai-Rose V, Price CJ, Ezzell NA, Bidwell GL, Correia JJ, Fitzkee NC: Modeling the early stages of phase separation in disordered elastin-like proteins. Biophys J 2018, 114: 1563-1578.
+Conformational preferences and phase behavior of intrinsically disordered low complexity sequences: insights from multiscale simulations Ruff, Pappu and Holehouse 9
+www.sciencedirect.com Current Opinion in Structural Biology 2019, 56:1–10
+
+
+105. Rauscher S, Baud S, Miao M, Keeley FW, Pomes R: Proline and glycine control protein self-organization into elastomeric or amyloid fibrils. Structure 2006, 14:1667-1676.
+106. 
+Rauscher S, Pomes R: The liquid structure of elastin. Elife 2017, 6 e26526. Atomistic simulations are deployed to study the assembly of elastin-like polypeptides. This paper overcomes barriers that are usually prohibitive for studying self-assembly at the all-atom level.
+107. Rauscher S, Gapsys V, Gajda MJ, Zweckstetter M, de Groot BL, Grubmuller H: Structural ensembles of intrinsically disordered proteins depend strongly on force field: a comparison to experiment. J Chem Theory Comput 2015, 11:5513-5524.
+108. Fluitt AM, de Pablo JJ: An analysis of biomolecular force fields for simulations of polyglutamine in solution. Biophys J 2015, 109:1009-1018.
+109. Hicks A, Zhou HX: Temperature-induced collapse of a disordered peptide observed by three sampling methods in molecular dynamics simulations. J Chem Phys 2018, 149 072313.
+110. Kang H, Luan B, Zhou R: Glassy dynamics in mutant huntingtin proteins. J Chem Phys 2018, 149 072333.
+111. Gautieri A, Russo A, Vesentini S, Redaelli A, Buehler MJ: Coarsegrained model of collagen molecules using an extended MARTINI force field. J Chem Theory Comput 2010, 6:1210-1218.
+112. Wolny M, Batchelor M, Bartlett GJ, Baker EG, Kurzawa M, Knight PJ, Dougan L, Woolfson DN, Paci E, Peckham M: Characterization of long and stable de novo single alpha-helix domains provides novel insight into their stability. Sci Rep 2017, 7.
+113. Condon JE, Jayaraman A: Development of a coarse-grained model of collagen-like peptide (CLP) for studies of CLP triple helix melting. J Phys Chem B 2018, 122:1929-1939.
+114. Wagoner JA, Pande VS: Communication: adaptive boundaries in multiscale simulations. J Chem Phys 2018, 148:141104.
+115. Yamada J, Phillips JL, Patel S, Goldfien G, Calestagne-Morelli A, Huang H, Reza R, Acheson J, Krishnan VV, Newsam S et al.: A bimodal distribution of two distinct categories of intrinsically disordered structures with separate functions in FG nucleoporins. Mol Cell Proteomics 2010, 9:2205-2224.
+10 Sequences and topology
+Current Opinion in Structural Biology 2019, 56:1–10 www.sciencedirect.com

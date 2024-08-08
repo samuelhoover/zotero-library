@@ -1,0 +1,620 @@
+01/2020
+Accepted Article
+Title: In-situ Construction of Polyelectrolyte/Polyzwitterion Coacervate Framework for High-Performance Silicon Anodes
+Authors: Yingchuan Zhang, Yongkang Han, Yike Lei, Jie Ni, Weidong Zhou, and Qiangfeng Xiao
+This manuscript has been accepted after peer review and appears as an Accepted Article online prior to editing, proofing, and formal publication of the final Version of Record (VoR). The VoR will be published online in Early View as soon as possible and may be different to this Accepted Article as a result of editing. Readers should obtain the VoR from the journal website shown below when it is published to ensure accuracy of information. The authors are responsible for the content of this Accepted Article.
+To be cited as: Batteries & Supercaps 2024, e202400030
+Link to VoR: https://doi.org/10.1002/batt.202400030
+
+
+1
+In-situ Construction of Self-healing Polyelectrolyte/polyzwitterion Coacervate
+Framework for High-performance Silicon Anodes
+Yingchuan Zhang, Yongkang Han, Yike Lei, Jie Ni, Weidong Zhou and Qiangfeng Xiao*
+Y. Zhang, Y. Han, Y. Lei, J. Ni, Q. Xiao*
+Clean Energy Automotive Engineering Center and School of Automotive Studies
+Tongji University
+Shanghai 201804, China
+E-mail: xiaoqf@tongji.edu.cn
+W. Zhou
+State Key Laboratory of Organic-Inorganic Composites, Beijing Advanced Innovation Center
+for Soft Matter Science and Engineering
+Beijing University of Chemical Technology
+Beijing, 100029, China
+Keywords: lithium ion battery, silicon anode, binder, polyzwitterion
+Silicon is considered as a promising candidate for anode materials due to its ultrahigh
+theoretical capacity and natural abundance. However, the commercialization is severely
+hampered by the large strain and short cycle life. Herein, we have synthesized a reversible
+polyelectrolyte/polyzwitterion coacervate framework to achieve high-performance silicon
+anodes with high initial Coulombic efficiency (ICE) and stable cyclability. Such coacervate
+framework is formed via in-situ free radical polymerization of zwitterionic 2-methacryloyloxy
+ethyl phosphorylcholine (MPC) with polyacrylic acid (pAA) during heating the slurry. The
+resulting pAA/pMPC coacervate framework presents excellent adhesion, thermal stability, and
+negligible swelling in the electrolyte. Comparing with pAA, pAA/pMPC0.1 coacervate
+framework binder exhibits superior performance during charge/discharge. The ICE is improved
+from 84.41%, to 87.61%. After 250 cycles, the specific capacity of pAA/pMPC0.1 silicon anode
+is 1678 mAh g-1 with a retention of 78% while the pAA silicon anode completely failed after
+less than 200 cycles. Such improvement is ascribed to the structural integrity of the electrode
+endowed by the self-healing ability of pAA/pMPC coacervate framework. This work not only
+offers a feasible method to in-situ construct coacervate framework with self-healing capability
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+2
+to achieve high-performance silicon anodes but also a compatible electrode preparation process
+for other high-capacity materials.
+1. Introduction
+To meet the increasing demand for high-performance batteries, silicon is widely regarded as a
+promising candidate for high-capacity anode.[1] Under ambient condition, the theoretical
+specific capacity of silicon is 3580 mAh g-1, about ten times that of graphite. Under high
+temperature environment, the completely lithiated silicon transforms into Li22Si5 alloy,
+reaching a specific capacity as high as 4200 mAh g-1.[2] Different from intercalation chemistry
+of lithium storage in graphite, the lithium storage mechanism of silicon originates from the
+gradual alloying with lithium ions.[3] Though silicon possesses numerous advantages including
+high specific capacity, safe lithiation potential (about 0.4 V vs. Li/Li+), and abundant reserves,
+the practical application of silicon anodes has been severely hindered. Heretofore, the amount
+of silicon doped in the composite anodes is stuck at a low level.[4] The main obstacles
+encountered by silicon on the road to large-scale application are poor conductivity (6.7×10-4 S
+cm-1), exaggerated strain (more than 300%)[5] and short cycle life. With the deepening of the
+alloying degree, the accumulated stress leads to splintering of silicon particles, which causes
+crack, pulverization and delamination at the electrode level.[6] During long-term
+charge/discharge, the cyclic stress not only causes the loss of active materials, but also
+consumes the electrolyte through the continuous growth of solid-electrolyte interphase (SEI)
+on exposed surface, and eventually the battery suffers from a rapid resistance increase and
+capacity decline.[7]
+The strategy to improve the performance of silicon anodes mainly stems from two aspects:
+the structure design and surface modification of silicon materials, and the construction of
+various networks to relieve stress and improve conductivity at the electrode level.[8] Design of
+the nanostructure can effectively resist the particle breakage caused by stress and shorten the
+diffusion distance of lithium ions inside the silicon.[9] Xiao et al. designed hierarchically porous
+Si nanospheres, whose porous shell and hollow core structure successfully transferred the
+volume expansion during alloying process to inward breathing, and significantly improved the
+diffusion of lithium ions, thereby ameliorating the stability and rate of the silicon anodes.[10] At
+the electrode level, the construction of the three-dimensional network can maintain the overall
+mechanical and conductive integrity, which is undertook by binder in the electrode
+component.[11] In terms of the source of the binder, polymeric binders are usually synthetic or
+biomass. Some biomass materials with ultra-high molecular weight, such as sodium
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+3
+carboxymethyl cellulose, sodium alginate, etc., have shown excellent performance as binders
+on silicon anodes. Ling et al. proposed using okra gum to alleviate the failure of silicon
+anodes[12]. Chen et al. took advantage of the hydrophilic properties of poly(methyl vinyl ether
+alt-maleic acid) polymer to achieve uniform dispersion of electrode components[13]. Due to the
+designability of the polymer structure, the binder can be given some more unique functions,
+such as self-healing ability, by intentionally introducing various functional groups[14]. The
+abundant hydrogen bonding sites on poly(ether-thioureas) chains enable cracks on silicon anode
+generated during cycling to be reversibly repaired[15].Wang et al. proposed a self-healing binder
+driven by hydrogen bonds, which can reversibly repair cracks and thus prolong battery life[16].
+When advancing from mechanism exploration to industrial application, the practical feasibility
+becomes a particularly important factor. Overly elaborate designs usually rely on complicated
+synthesis and tough conditions, and issues such as compatibility with industrial production, cost,
+and emissions need to be reconsidered.[17]
+Herein, we propose a one-step synthesis method to construct in-situ
+polyelectrolyte/polyzwitterion coacervate framework during the electrode preparation process,
+which is proven to effectively improve the stability and conductivity of silicon anodes. As
+shown in Figure 1, the zwitterionic monomer MPC is added into the anode slurry and
+polymerized. More specifically, the water-soluble initiator 2,2-azobis(2
+methylpropionamidine) dihydrochloride (AIBA) decomposes into free radicals under heating
+conditions, then initiates the C=C double bonds of the monomer MPC to polymerize into pMPC.
+Simultaneously, the resulting pMPC coacervates with pAA to form a
+polyelectrolyte/polyzwitterion framework. Thanks to the non-overlapping characteristics of the
+positive and negative charge centers of zwitterions, many unexpected regulatory effects can be
+achieved by introducing them into the battery system.[18] Margossian et al. revealed that the
+dipole-driven self-assembly between charged macromolecules is based on electrostatic
+attraction and entropy gain in complexation.[19] Such non-covalent and reversible interaction
+transforms the linear network into a three-dimensional network, which can better buffer the
+expansion during lithium storage and repair the resultant cracks.[20] From the perspective of
+conductivity, the introduction of zwitterions can play a vital role as lithium ion dissociation
+enhancers at the electrode/electrolyte interface to facilitate ionic conduction.[21] This
+environmentally benign method employs water as the reaction solvent without scruple of
+organic solvents emission. In addition, such one-step synthesis design features high practical
+feasibility due to outstanding compatibility with industrial production process.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+4
+Figure 1. The schematic of the constructing in situ pAA/pMPC coacervate framework.
+a) Free radical polymerization of MPC and in-situ construction of pAA/pMPC coacervate
+framework. b) chemical structures of MPC, pAA, pMPC. c) illustration of coacervate driven
+by dipole interactions.
+2. Results and discussion
+In this work, the zwitterionic monomer MPC was synthesized into pMPC by free radical
+polymerization with 2,2-azobis(2-methylpropionamidine) dihydrochloride as the initiator under
+heating conditions. To verify the polymerization, 1H-NMR was carried out to investigate the
+chemical environment of hydrogen before and after the reaction. As shown in Figure 2a, it can
+be observed from the 1H-NMR spectrum that the multiple peaks with chemical shifts around
+1.80 ppm correspond to methylene protons of pAA, while the asymmetric peaks with chemical
+shifts around 2.45 ppm correspond to methine protons. It is worth noting that the protons of the
+hydroxyl groups cannot be observed since active hydrogens do not have peaks in protic solvents
+including deuterated water. In terms of zwitterions, the single peak signal with a chemical shift
+of 3.23 ppm originates from the quaternary ammonium group, while four peaks with chemical
+shifts in the range of 3.56-4.37 ppm correspond to the methylene protons at four different
+positions on the zwitterion side chain.[22] Importantly, the convincing evidence of
+polymerization is the phenomenon that two peaks of zwitterionic monomer MPC at chemical
+shift of 5.64 and 6.07ppm, which are attributed to protons on ethylenic bond, vanish after
+heating. The integral calculation of the chemical shift peak of the 1H-NMR spectrum showed
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+5
+that the conversion of monomer MPC exceeds 98%, indicating that this thermally initiated free
+radical polymerization reaction is highly efficient. Further, the interaction between
+polyzwitterionic pMPC and polyelectrolyte pAA needs to be revealed in detail. Figure S1
+shows the ATR-FTIR spectra of pure pAA, pure pMPC and pAA/pMPC, respectively. The
+absorbance bands at 1707 cm-1 in pAA spectrum can be traced to C=O stretching region, peaks
+at 957, 1072, and 1257 cm-1 in pMPC spectrum are attributed to P-O phosphate group, and peak
+at 1707 cm-1 comes from ketone group[23]. While it’s clear to identify the characteristic peaks
+of the two polymers, no new absorbance peak in pAA/pMPC spectrum is observed in the
+fingerprint area, indicating that the interaction between these two polymers cannot be ascribed
+to the generation of covalent bonds. When it comes to wavenumber range of 3000-3500cm-1, it
+can be observed that the signal of the absorbance bands has been enhanced, indicating that the
+interaction between molecules is charge attraction. The side chains of polymers are extremely
+polar due to the tendency of the charge distribution on the functional groups. In detail, the
+negative-charged carboxyl group of pAA and positive-charged quaternary ammonium group of
+pMPC attracts and interacts with each other. Driven by this dipolar interaction, the two
+polymers coacervate and construct a framework.
+Figure 2. Polymerization of monomer MPC and coacervate of pAA/pMPC. a) 1H-NMR
+spectroscopy of pAA,pAA/MPC and pAA/pMPC. b) the pAA/pMPC coacervate framework
+was titrated sequentially with alkali and acid. A reversible and pH-dependent behavior was
+observed, which is typical features of polyelectrolyte/polyzwitterion coacervate.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+6
+Figure 3. Mechanical and thermal stability characterization of pAA and pAA/pMPC
+coacervate framework. a) Swelling test of the polymeric film immersed in electrolyte after
+48h (error bars are the standard deviation of measurement of at least 3 individual electrodes).
+b) 180° peel test of the electrode from current collector. c) thermogravimetric curves in argon
+atmosphere.
+Figure 2b shows the photographs of alkali and acid titration of pAA/pMPC coacervate
+framework in sequence. As the pH increases, the dipole interaction between chains attenuates
+even disappears, and the original emulsion-like coacervate framework transforms into
+transparent linear network. When pH is titrated by acid to original value, the uniform coacervate
+framework is reversibly recurrent. This pH-dependent and reversible behavior is the typical
+feature of coacervates. Such behavior is further confirmed by the aqueous GPC results. The
+calibration curves of pAA/pMPC framework with different ratios in Figure S2 all contain
+merely single main peaks, which indicate that pAA/pMPC flowed through the gel column as a
+whole. Table S1 shows that as the content of pMPC increased from 0% to 10%, the weight
+average molecular weight increased from 8.3 k Daltons to 20.9 k Daltons, and the polydispersity
+decreased from 3.00 to 1.87. Higher and more uniformly-distributed molecular weight is
+undoubtedly beneficial for the stability of silicon anodes, since more dense wrapping of silicon
+particles and conductive additives and tighter interchain entanglement between chains are
+achieved, thereby more efficiently stabilizing the interface and buffering expansion. However,
+when the pMPC content increased to 20%, the molecular weight and polydispersity of the
+coacervate framework regressed slightly. Nakai et al. previously found that zwitterionic
+copolymers could self-assemble and transform into nanoscale unilamellar vesicles using cryo
+transmission electron microscopy when the ion concentration of the environment is reduced[24].
+A similar scenario may also occur in pAA/pMPC coacervate framework. Due to the decrease
+of pAA content, the original uniform network with micrometer scale collapses into pMPC
+centered nanovesicles, resulting in decline of molecular weight and degradation of mechanical
+properties which will be discussed in the following sections.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+7
+Small swelling rate and high mechanical and thermal stability of the polymer binders in
+the electrolyte are highly desirable to maintain the structure integrity of silicon anodes which
+are continuously subjected to enormous cyclic stress during charge/discharge. Large swelling
+can not only significantly reduce the strength and modulus of polymer binder but also
+deteriorate the cell performance in the case of the lean electrolyte. The pAA/pMPC samples
+with different ratios were made into thin films and soaked in electrolyte for 48 hours at 25°C to
+calculate the swelling rate. The results in Figure 3a show that the swelling rate of pAA/pMPC
+coacervate framework decreases significantly with the increase of pMPC content. Specifically,
+the swelling rates of samples with 0%, 5%, 10%, and 20% pMPC content were 7.4%, 3.1%,
+2.2%, and 1.2% in sequence (three replicate samples for each group). The swelling inhibition
+of polyzwitterionic pMPC might be explained by the formation of pAA/pMPC coacervate
+framework and its low solvation. When the charged hydrophilic groups on the side chains of
+pMPC are impregnated in the low polar DMC solvent, due to the low affinity at the interface,
+the diffusion of solvent molecules into the polymer skeleton is hindered, thus achieving the low
+swelling properties of the pAA/pMPC framework. In order to ensure the integrity of the
+electrode during charge/discharge, the polymer framework not only shoulders the duty to wrap
+the active material and conductive additives, but also achieve robust adhesion between each
+component and the current collector. The 180° electrode peeling test was performed to evaluate
+the effect of the introduction of pMPC on the adhesion force to current collector. Figure 3b
+shows that in the relatively low content range, the amount of pMPC introduced is positively
+correlated with the adhesion force of the electrode. Specifically, the maximum adhesion force
+of pAA, pAA/pMPC0.05, pAA/pMPC0.1 silicon anode is 2.2, 2.8, 6.0 N, and the average
+adhesion force in displacement range of 50 mm is 1.0, 2.2, 3.1 N, respectively. This can be
+explained that as the content of pMPC increases, the degree of coacervate deepens, and denser
+dipole attraction between molecular chains builds a more compact three-dimensional network
+within the electrode, thereby achieving a significant increase in adhesion force. It is noticeable
+that the maximum and average adhesion force of the pAA/pMPC0.2 shows a significant
+landslide of 1.7 and 0.6N, respectively. The reduction in molecular weight directly contributes
+to the attenuation of adhesion effect, since interchain entanglement is no longer as effective.
+Furthermore, the adhesion force of pAA/pMPC0.2 is even lower than that of pure pAA, which
+is also conjectured to be related to the spontaneous contraction of polyzwitterion posture into
+vesicles under low ion concentration environment.
+Excellent thermal stability is an effective guarantee for battery safety. The
+thermogravimetric curves of Figure 3c show that pMPC is the key factor to increase the
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+8
+decomposition temperature of the coacervate framework. In an argon atmosphere, pAA began
+to experience a decrease in mass retention at 150 °C, suggesting the onset of decomposition,
+till the decomposition rate reached a maximum at 380 °C. As compared with pAA, the
+decomposition temperature of pAA/pMPC coacervate framework was increased to 270, 290,
+and 230°C when the content of pMPC increased from 5%, 10% to 20%. The improvement of
+thermal stability comes from the introduction of flame-retardant element phosphorus, which
+has a great improvement effect on ensuring the safe charge/discharge of batteries. the
+introduction of pMPC. On the one hand, the interaction brought by pMPC increases the binding
+energy of the coacervate framework, thereby promoting its decomposition temperature and
+thermal stability. On the other hand, the synergistic flame-retardant effect of nitrogen and
+phosphorus elements in pMPC molecules ensures the safe charge/discharge of batteries.
+Figure 4. Electrochemical tests of pAA and pAA/pMPC coacervate framework. a) CV
+curves of silicon anodes at scan rate of 0.05mV s-1 from 0.001-2V after two cycles of activation
+at 0.05C; b) the initial charge-discharge profiles of silicon anodes at 0.05C; c) average ICE of
+Si anodes (error bars are the standard deviation of measurement of at least 3 individual
+electrodes); d) EIS results of silicon anodes within the frequency range from 10mHz to 100kHz.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+9
+Figure 5. Cycling stability and kinetic test results of silicon anodes. a) Galvanostatic
+charge/discharge cycle test at 0.2C. b-c) differential capacity curve of pAA/pMPC0.1 silicon
+anode in 50 cycles. d-e) differential capacity curve of pAA silicon anode in 50 cycles. f) rate
+test. g) galvanostatic charge/discharge cycle test at 0.5C.
+To verify the electrochemical stability of pAA/pMPC coacervate framework silicon anode,
+CV measurement was performed to scan the oxidation and reduction peaks of the electrodes.
+As shown in Figure 4a, no new peaks are observed on the curve based on the pAA/pMPC
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+10
+silicon anodes compared with pAA anodes, which means that the pAA/pMPC coacervate
+framework can maintain excellent electrochemical stability within the working potential
+window of the electrode without redox decomposition. In the negative scan after activation, two
+significant reduction peaks appeared at 0.18 and 0.01V, which is the phase transition process
+from crystalline silicon to lithiated silicon (LixSi).[25] In the positive scan, the two oxidation
+peaks at 0.33 and 0.51V represent the dealloying during delithiation and the transformation of
+silicon to amorphous state.[26] In more detail, higher reduction peak potentials and larger peaks
+were observed for the two components pAA/pMPC0.1 and pAA/pMPC0.2, implying that a high
+content of pMPC reduces polarization and improves kinetics, similar to the results of first scan
+in Figure S3. Figure 4b shows the potential curves of the first charge/discharge of the silicon
+anode. Notably, pMPC significantly improves the charge/discharge capacity of the silicon
+anode. The first discharge capacity of pAA/pMPC0.1 is as high as 3139 mAh g-1, while that of
+pAA silicon anode is only 2529 mAh g-1. By analysing the potential curves, it can be found that
+the introduction of pMPC can advance the electrode into the lithium intercalation/extraction
+platform, indicating that the polarization is suppressed, which is consistent with the CV results.
+For high-capacity and huge-strain anode material like silicon, the initial Coulombic efficiency
+(ICE) is critical to achieve high-energy full cells because it reflects the consumption of active
+lithium inventory to grow the solid electrolyte interphase (SEI). High ICE means that the
+formed SEI is thin and uniform and the side reactions at the electrode/electrolyte interface is
+mitigated so that more lithium ions survive and participate in subsequent cycles, achieving high
+stability. Figure 4c counts ICE of pAA, pAA/pMPC0.05, pAA/pMPC0.1, pAA/pMPC0.2 (three
+replicate samples for each group) as 84.41%, 87.49%, 87.61% and 88.32%, respectively. It can
+be interpreted that the charged groups on the side chains of the polyzwitterion promote the
+dissociation of lithium ions, thus improving the conduction of lithium ions and enhancing the
+ICE. The EIS spectra in Fig.4d further confirm such presumption. The inset picture is the fitting
+of the equivalent circuit. The impedance of the electrode has clear negative correlation with the
+content of pMPC, the charge transfer impedance (Rct) of pAA, pAA/pMPC0.05, pAA/pMPC0.1,
+pAA/pMPC0.2 are 8.0, 6.4, 5.7, 4.3 Ohm respectively.
+Since the molecular chain posture is related to the concentration of ions in the environment,
+the mechanical properties of the pAA/pMPC coacervate framework only benefit from the
+pMPC content in a certain range, while in the electrochemical aspect, the conductivity of the
+pAA/pMPC silicon anode is directly related to the quantity of charged groups on side chain. In
+the galvanostatic charge/discharge and rate evaluation which performed to evaluate to practical
+capability of silicon anodes, the mechanical and electrical properties of the pAA/pMPC
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+11
+coacervate framework need a compromise to achieve the optimal performance. Figure 5a
+shows galvanostatic charge/discharge cycling test of different ratios of pAA/pMPC coacervate
+framework silicon anodes at 0.2C. After 150 cycles, the capacities of pAA/pMPC0.05,
+pAA/pMPC0.1 and pAA/pMPC 0.2 anodes decrease from 2788 to 1532 mAh g-1, 2765 to 1819
+mAh g-1 and 2604 to 1204 mAh g-1 respectively, and the retention are 55%, 66% and 46%,
+while the capacity of pAA decrease from 2566 to 742 mAh g-1 with a retention of less than 29%.
+It is worthy to point out that the pAA/pMPC0.2 silicon anode suffers from a non-negligible
+decline in capacity, which is due to the weak mechanical strength not enough to withstand the
+huge cyclic stress. In order to analyse the electrode evolution during cycling in detail, the first
+50 cycles of all the anodes were tracked. Figure 5b-e record the differential capacity curves of
+pAA/pMPC0.1 and pAA silicon anodes in the first 50 cycles. Apparently, after 50 cycles,
+pAA/pMPC0.1 showed obvious superiority in both electrochemical stability and activity.
+Comparing the peak shift and peak value of the differential curves of the two samples, it can be
+judged that pAA/pMPC0.1 inhibited the polarization and improved the kinetics at the same time.
+As shown in Figure 5f, pAA/pMPC0.1 exhibited excellent kinetics and recovery ability in the
+rate test. When the rate increases from 0.1C to 0.2C, 0.5C, and 1C, the average delithiation
+capacity of pAA/pMPC0.1 is 3096, 2715, 2258, 1722 mAh g-1, while the pAA silicon anode is
+only 2385, 2100, 1666, 1194 mAh g-1. Moreover, when the rate was returned to 0.1C, 94% of
+the capacity of the pAA/pMPC0.1 silicon anode was recovered, while pAA was only 87%. As
+shown in Fig.S4, the Rct of pAA/pMPC0.1 reduces to 4.1 Ohm after entering a stable stage,
+indicating that pAA/pMPC can assist in the formation of a thin and uniform SEI and maintain
+its electrochemical stability during cycling. In order to further reveal the reason that the
+introduction of pMPC can improve the rate performance of silicon anode, as shown in Figure
+S5, the galvanostatic intermittent titration technique (GITT) was carried out to measure the
+diffusion coefficient of lithium ions in the silicon anode. Figure S6 shows that the diffusion
+coefficient of the pAA/pMPC0.1 silicon anode has been improved, which means that the
+insertion and extraction of lithium ions are smoother, and the silicon anode has achieved
+superior rate performance as the result. The prolonged galvanostatic charge/discharge cycle test
+at 0.5C is also consistent with the above results. The pAA/pMPC0.1 anode shows better
+performance than pAA/pMPC0.05 and pAA/pMPC0.2 anodes. As shown in Fig.5g, the
+delithiation specific capacities of pAA/pMPC0.05, pAA/pMPC0.1, pAA/pMPC0.2 silicon anode
+after 250 cycles of charge/discharge are 1534, 1678, 786 mAh g-1 with the retention of 67%,
+78%, and 39%, respectively. Conversely, the pAA silicon anode completely failed after less
+than 200 cycles.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+12
+Figure 6. SEM images of top-view (a-h) and cross-section (i-l) of pAA, pAA/pMPC0.05,
+pAA/pMPC0.1 and pAA/pMPC0.2 silicon anodes after 50 cycles.
+In order to elucidate the effect of the pAA/pMPC coacervate framework on the
+aforementioned electrochemical performance of silicon anodes, the morphology of the silicon
+electrodes before and after cycling has been investigated by SEM. As compared with the images
+before cycling (Figure S7), the surfaces of pAA, pAA/pMPC0.05, pAA/pMPC0.1 and
+pAA/pMPC0.2 silicon anodes after 50 cycles are obviously covered with SEI (Figure 6a-d).
+The low magnification images demonstrate relatively comprehensive and direct electrode
+integrity. The surface of the pAA anode exhibits severe cracking, up to 7.43 μm in size, after
+continuous exposure to cyclic strain. In contrast, pAA/pMPC0.05 and pAA/pMPC0.1 maintain an
+intact electrode surface, and there are no visible cracks on the anode surface of pAA/pMPC0.1,
+which not only comes from the three-dimensional network of polyelectrolyte/polyzwitterion
+coacervate framework to resist the fracture, but also could be attributed to reversible dipole
+interaction between pAA and pMPC molecular chains which achieved self-healing towards the
+crack. Cracks also appeared on the surface of pAA/pMPC0.2 anode to some extent after cycling,
+because the over-concentrated coacervate sites were insufficient to buffer the strain caused by
+lithium intercalation, so that the mechanical damage accumulated to the point of irreversibility.
+The images in Figure 6e-h under larger magnification provide more features of the cycled
+electrodes. Regarding the linear pAA, silicon particles are irreversibly agglomerated and
+gradually fall off from the conductive network, which eventually leads to a rapid decline in the
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+13
+capacity of the silicon anode. Conversely, pAA/pMPC0.05 and pAA/pMPC0.1 still maintain the
+uniform and dense distribution of silicon particles, conductive additives and coacervate
+framework at the microscopic level, thus preventing the generation of cracks on the
+macroscopic level. Fig.6i-l shows the cross-sectional images of the silicon anode after 50 cycles,
+which clearly exhibit the difference in thickness and interior structure of the silicon anodes. The
+thickness of the pAA reached 43.6 μm after cycling, and the expansion rate was 404% in
+thickness, while the expansion rates of the pAA/pMPC0.05, pAA/pMPC0.1 and pAA/pMPC0.2
+anodes were reduced to less than 260%. In addition, the structures of pAA and pAA/pMPC0.2
+became loose and porous after cycling due to the lack of robust coacervate framework and
+stable SEI, while the the pAA/pMPC0.05 and pAA/pMPC0.1 anodes maintained a compact
+structure.In addition to mechanical properties, excellent chemical stability is essential for
+adhesives. X-ray Photoelectron Spectroscopy in Figure S8 shows the changes in element
+valence states before and after cycling of the silicon anode to track the chemical evolution of
+the polymer pMPC in the electrode. More specifically, the P 2p spectrum of the phosphorus
+element uniquely contained in pMPC is analyzed in detail in Figure S9. Since pAA anode does
+not contain phosphorus element, no signal can be observed in the spectrum. However, the
+spectrum of pristine pAA/pMPC0.1 anode only shows an obvious single peak at 134.2 eV. This
+peak is a typical phosphate functional group and can be attributed to -PO4-- group in polymer
+pMPC, which is highly consistent with the experimental results. After 50 charge/discharge
+cycles, pAA anode shows two peaks at 133.8 eV and 136.7 eV, corresponding to LixPEy and
+LixPOyFz in SEI respectively. Both of them originate from the decomposition of LiPF6 in the
+electrolyte during the initial cycle, which is the process of SEI growing on the surface of the
+anode. The above three peaks appeared simultaneously in pAA/pMPC0.1 anode after cycling.
+The -PO4-- signal remains highly consistent before and after cycling, proving the excellent
+stability of pMPC in the electrode. The phosphorus-containing component in SEI is the
+decomposition products of LiPF6 in the same manner.
+3. Conclusion
+In summary, we have developed an in-situ method to construct the pAA/pMPC coacervate
+framework during the preparation of silicon anodes. The pAA/pMPC coacervate framework
+shows small swelling rate and good adhesion, which are extremely important to maintain the
+mechanical stability of the electrode. The electrochemical test results showed that the
+introduction of polyzwitterionic pMPC greatly enhanced the cell ICE rate capability and cycling
+life. Such improvement benefits from the three-dimensional network of polymers formed by
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+14
+the reversible dipole interaction between polyelectrolytes and polyzwitterions. The postmortem
+morphology analysis of the cycled battery further verified that the pAA/pMPC coacervate
+framework enhance the structural integrity of the silicon anodes. Taking water solvent into
+account, the in-situ method developed in this work is environmentally benign and compatible
+with the current electrode preparation process which also provide a feasible path to
+accommodate the large volume change of other high-capacity active materials.
+4. Experimental Section
+Materials: Monomer 2-methacryloyloxy ethyl phosphorylcholine (MPC), Initiator 2,2-azobis
+(2-methylpropionamidine) dihydrochloride (AIBA) and polyacrylic acid (pAA) were
+purchased from Sigma-Aldrich (USA). Silicon nanoparticles (average particle size of ~100 nm),
+ketjen black, were obtained from MTI Corporation (China). Electrolyte of 1M lithium
+hexafluorophosphate (LiPF6) dissolved in dimethyl carbonate (DMC): fluoroethylene
+carbonate (FEC) (3:1 vol.) was purchased from Dodo Chem (China). All materials above were
+used as received without further purification.
+Preparationof pAA/pMPC framework silicon anode: Taking pAA/pMPC0.1 framework as an
+example, to prepare aqueous precursor of coacervate framework, 4.5g pAA and 0.5g zwitterion
+monomer MPC were mixed together and dissolved in 45mL deionized water, followed by
+adding 9.15mg AIBA as a water-soluble initiator. It is worth emphasizing that the weight ratio
+of pAA to MPC is adjustable according to different sample groups, while the ratio of
+zwitterionic monomer to initiator is fixed at a molar ratio of 50:1. The electrode preparation
+process is synchronized with the construction of the coacervate framework. Silicon
+nanoparticles as active materials, ketjen black as conductive additive and pAA/MPC/AIBA as
+binder were mixed at weight ratio of 70:15:15 using a Thinky mixer to prepare slurry with
+uniform dispersion and moderate viscosity. The slurry was then cast on the copper foil current
+collector by scraper with a specific thickness and then stored in argon-filled atmosphere at 80 °C
+for 2h to initiate the polymerization and coacervate. After the reaction, the electrodes were
+vacuum-dried overnight at 120°C, rolled and cut into discs with a diameter of 13 mm for
+subsequent cell assembly and testing. In the galvanostatic charge/discharge test, the silicon
+loading of the 0.2C cycle electrode is 0.8-1.0 mg cm-2, the 0.5C cycle is 0.7-0.8 mg cm-2, and
+the silicon loading of the rate test is 0.6-0.7 mg cm-2.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+15
+Characterization: 1H nuclear magnetic resonance (1H-NMR) spectroscopy of samples were
+recorded in deuterated water by Bruker 600 MHz spectrometer (Germany). Molecular weight
+and polydispersity of polymers were measured by aqueous gel permeation chromatography
+(GPC) Agilent PL-GPC220 (USA). Attenuated total reflectance-Fourier transform infrared
+(ATR-FTIR) spectra were recorded on Thermo Scientific Nicolet iS50 FTIR spectrometer
+(USA). Thermogravimetric analysis (TGA) were performed in nitrogen at heating speed of
+10 °C/min between 30 to 800 °C with PerkinElmer STA 8000 (USA). To meticulously observe
+the morphology of the electrodes and analyse the elements on the surface, scanning electron
+microscopy (SEM) Zeiss Sigma 300 (Germany) and X-ray photoelectron spectroscopy (XPS)
+Thermo Scientific K-Alpha (USA) were carried out.
+Electrochemical measurements: The pre-prepared disc anodes were transferred to an argon
+filled glove box (water, oxygen content <0.5 ppm) and assembled into CR2032 half cells. 25
+μL of electrolyte was dropped on both sides of Celgard 2500 polypropylene separator, and metal
+lithium was used as the counter electrode. After assembly, the coin cells were left to stand
+overnight until the electrolyte fully infiltrated inside silicon anode and then could be used for
+testing. Battery testing system Neware CT2001A (China) and electrochemical workstation Bio
+Logical VMP3 (France) were employed to test the electrochemical performance of pAA/pMPC
+coacervate framework silicon anodes. Cyclic voltammetry (CV) measurement was operated in
+the voltage range of 0.001–2 V at a scan rate of 0.05 mV s-1. Electrochemical impedance
+spectroscopy (EIS) was measured within the frequency range from 10mHz to 100kHz.
+Galvanostatic charge/discharge and rate test were both at the potential range of 0.01-1.2V and
+followed by cycles of activation at 0.05C. All the electrochemical tests mentioned above were
+conducted in a 25°C incubator.
+Supporting Information
+Supporting Information is available from the Wiley Online Library or from the author.
+Acknowledgements
+This work was supported by the National Natural Science Foundation of China (Grant No.
+52073215).
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+16
+Received: ((will be filled in by the editorial staff))
+Revised: ((will be filled in by the editorial staff))
+Published online: ((will be filled in by the editorial staff))
+References
+[1] a)L. Sun, Y. Liu, R. Shao, J. Wu, R. Jiang, Z. Jin, Energy Storage Materials 2022, 46,
+482; b)C. Wang, C. Yang, Z. Zheng, Adv Sci (Weinh) 2022, 9, e2105213.
+[2] X. Chen, H. Li, Z. Yan, F. Cheng, J. Chen, Sci. China Mater 2019, 62, 1515.
+[3] Y. He, L. Jiang, T. Chen, Y. Xu, H. Jia, R. Yi, D. Xue, M. Song, A. Genc, C. Bouchet
+Marquis, L. Pullan, T. Tessner, J. Yoo, X. Li, J. G. Zhang, S. Zhang, C. Wang, Nat
+Nanotechnol 2021, 16, 1113.
+[4] P. Li, H. Kim, S.-T. Myung, Y.-K. Sun, Energy Storage Materials 2021, 35, 550.
+[5] a)J. D. McBrayer, M.-T. F. Rodrigues, M. C. Schulze, D. P. Abraham, C. A. Apblett,
+I. Bloom, G. M. Carroll, A. M. Colclasure, C. Fang, K. L. Harrison, G. Liu, S. D. Minteer, N.
+R. Neale, G. M. Veith, C. S. Johnson, J. T. Vaughey, A. K. Burrell, B. Cunningham, Nature
+Energy 2021, 6, 866; b)L. Zhang, C. Wang, Y. Dou, N. Cheng, D. Cui, Y. Du, P. Liu, M. Al
+Mamun, S. Zhang, H. Zhao, Angew Chem Int Ed Engl 2019, 58, 8824.
+[6] Y. He, L. Jiang, T. Chen, Y. Xu, H. Jia, R. Yi, D. Xue, M. Song, A. Genc, C. Bouchet
+Marquis, Nature nanotechnology 2021, 16, 1113.
+[7] a)F. Shi, Z. Song, P. N. Ross, G. A. Somorjai, R. O. Ritchie, K. Komvopoulos, Nat
+Commun 2016, 7, 11886; b)Y. Zhang, N. Du, D. Yang, Nanoscale 2019, 11, 19086.
+[8] a)H. Li, H. Li, Y. Lai, Z. Yang, Q. Yang, Y. Liu, Z. Zheng, Y. Liu, Y. Sun, B. Zhong,
+Z. Wu, X. Guo, Advanced Energy Materials 2022, 12; b)J.-T. Li, Z.-Y. Wu, Y.-Q. Lu, Y.
+Zhou, Q.-S. Huang, L. Huang, S.-G. Sun, Advanced Energy Materials 2017, 7; c)L. Deng, Y.
+Zheng, X. Zheng, T. Or, Q. Ma, L. Qian, Y. Deng, A. Yu, J. Li, Z. Chen, Advanced Energy
+Materials 2022, 12.
+[9] a)C. Yu, X. Chen, Z. Xiao, C. Lei, C. Zhang, X. Lin, B. Shen, R. Zhang, F. Wei, Nano
+Lett 2019, 19, 5124; b)C. Zhang, F. Wang, J. Han, S. Bai, J. Tan, J. Liu, F. Li, Small
+Structures 2021, 2; c)M. A. Rahman, G. Song, A. I. Bhatt, Y. C. Wong, C. Wen, Advanced
+Functional Materials 2016, 26, 647.
+[10] Q. Xiao, M. Gu, H. Yang, B. Li, C. Zhang, Y. Liu, F. Liu, F. Dai, L. Yang, Z. Liu,
+Nature communications 2015, 6, 1.
+[11] a)Z. Xu, J. Yang, T. Zhang, Y. Nuli, J. Wang, S.-i. Hirano, Joule 2018, 2, 950; b)Z. Li,
+Z. Wan, X. Zeng, S. Zhang, L. Yan, J. Ji, H. Wang, Q. Ma, T. Liu, Z. Lin, M. Ling, C. Liang,
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+17
+Nano Energy 2021, 79; c)A. N. Preman, H. Lee, J. Yoo, I. T. Kim, T. Saito, S.-k. Ahn,
+Journal of Materials Chemistry A 2020, 8, 25548.
+[12] H. Y. Ling, L. Hencz, H. Chen, Z. Wu, Z. Su, S. Chen, C. Yan, C. Lai, X. Liu, S.
+Zhang, Sustainable Materials and Technologies 2021, 28.
+[13] H. Chen, Z. Wu, Z. Su, L. Hencz, S. Chen, C. Yan, S. Zhang, Journal of Energy
+Chemistry 2021, 62, 127.
+[14] H. Chen, Z. Wu, Z. Su, S. Chen, C. Yan, M. Al-Mamun, Y. Tang, S. Zhang, Nano
+Energy 2021, 81.
+[15] H. Chen, M. Ling, L. Hencz, H. Y. Ling, G. Li, Z. Lin, G. Liu, S. Zhang, Chemical
+Reviews 2018, 118, 8936.
+[16] C. Wang, H. Wu, Z. Chen, M. T. McDowell, Y. Cui, Z. Bao, Nature chemistry 2013,
+5, 1042.
+[17] I. Kovalenko, B. Zdyrko, A. Magasinski, B. Hertzberg, Z. Milicev, R. Burtovyy, I.
+Luzinov, G. Yushin, Science 2011, 334, 75.
+[18] a)J. Yang, Z. Xu, J. Wang, L. Gai, X. Ji, H. Jiang, L. Liu, Advanced Functional
+Materials 2021, 31; b)J. Liu, H. Li, J. Wang, Y. Zhang, D. Luo, Y. Zhao, Y. Li, A. Yu, X.
+Wang, Z. Chen, Advanced Energy Materials 2021, 11; c)G. Li, F. Lu, X. Dou, X. Wang, D.
+Luo, H. Sun, A. Yu, Z. Chen, J Am Chem Soc 2020, 142, 3583.
+[19] K. O. Margossian, M. U. Brown, T. Emrick, M. Muthukumar, Nat Commun 2022, 13,
+2250.
+[20] T. Liu, Q. Chu, C. Yan, S. Zhang, Z. Lin, J. Lu, Advanced Energy Materials 2019, 9,
+1802645.
+[21] a)C. Tiyapiboonchaiya, J. M. Pringle, J. Sun, N. Byrne, P. C. Howlett, D. R.
+MacFarlane, M. Forsyth, Nat Mater 2004, 3, 29; b)J. H. Lee, J. S. Yeon, J. Kim, J. H. Park, S.
+S. Yoo, S. Hong, M. Kim, M. J. Park, H. S. Park, P. J. Yoo, Journal of Materials Chemistry A
+2021, 9, 25463; c)I. Phiri, C. Y. Bon, M. Mwemezi, L. Hamenu, A. Madzvamuse, J. H. Park,
+K. S. Lee, J. M. Ko, Y. Lu, Materials Chemistry and Physics 2020, 243.
+[22] Q. Cheng, A. B. Asha, Y. Liu, Y.-Y. Peng, D. Diaz-Dussan, Z. Shi, Z. Cui, R. Narain,
+ACS Applied Materials & Interfaces 2021, 13, 9006.
+[23] a)J. Dong, Y. Ozaki, K. Nakashima, Journal of Polymer Science Part B: Polymer
+Physics 1997, 35, 507; b)M. Kyomoto, T. Moro, T. Konno, H. Takadama, N. Yamawaki, H.
+Kawaguchi, Y. Takatori, K. Nakamura, K. Ishihara, J Biomed Mater Res A 2007, 82, 10.
+[24] K. Nakai, U. Kwolek, J. Bednar, M. Zatorska, M. Nowakowska, M. Kepczynski, S.-i.
+Yusa, European Polymer Journal 2017, 94, 125.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+18
+[25] J. Liu, P. Kopold, P. A. van Aken, J. Maier, Y. Yu, Angewandte Chemie 2015, 127,
+9768.
+[26] K. Kitada, O. Pecher, P. C. Magusin, M. F. Groh, R. S. Weatherup, C. P. Grey,
+Journal of the American Chemical Society 2019, 141, 7014.
+10.1002/batt.202400030
+Accepted Manuscript
+Batteries & Supercaps
+This article is protected by copyright. All rights reserved.
+25666223, ja, Downloaded from https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/batt.202400030 by University Of Massachusetts, Wiley Online Library on [10/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

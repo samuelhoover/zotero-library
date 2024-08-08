@@ -1,0 +1,252 @@
+Appl. Num. Anal. Comp. Math. 1, No. 2, 524 – 534 (2004) / DOI 10.1002/anac.200410015
+Efficient Implementation of the Nelder–Mead Search Algorithm
+Sasˇa Singer∗1 and Sanja Singer∗∗2
+1 Department of Mathematics, University of Zagreb, P.O. Box 335, 10002 Zagreb, Croatia. 2 Faculty of Mechanical Engineering and Naval Architecture, University of Zagreb, I. Lucˇic ́a 5, 10000 Zagreb, Croatia.
+Received 30 October 2004, revised 30 November 2004, accepted 5 December 2004 Published online 20 December 2004
+Key words optimization, direct search methods, Nelder–Mead algorithm, complexity, termination test. AMS 90C56, 65Y20, 65K10, 90C90
+The Nelder–Mead or simplex search algorithm is one of the best known algorithms for unconstrained optimization of non–smooth functions. Even though the basic algorithm is quite simple, it is implemented in many different ways. Apart from some minor computational details, the main difference between various implementations lies in the selection of convergence (or termination) tests, which are used to break the iteration process. A fairly simple efficiency analysis of each iteration step reveals a potential computational bottleneck in the domain convergence test. To be efficient, such a test has to be sublinear in the number of vertices of the working simplex. We have tested some of the most common implementations of the Nelder–Mead algorithm, and none of them is efficient in this sense. Therefore, we propose a simple and efficient domain convergence test and discuss some of its properties. This test is based on tracking the volume of the working simplex throughout the iterations. Similar termination tests can also be applied in some other simplex–based direct search methods.
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+1 Introduction
+The classical unconstrained optimization problem is to locate a point of minimum x∗ of a given (nonlinear) function f : Rn → R. If f is non–smooth or even discontinuous at some points in Rn, the optimization method should use only the function values of f , since the derivatives of f may not exist at a particular point. Methods of this type are usually called Direct Search Methods (DSM). The Nelder–Mead search (NMS) or simplex search [6] is one of the best known and most widely used methods in this class. Originally published in 1965, the method is nowadays a standard member of all major libraries and has many different implementations. Apart from some minor computational details in the basic algorithm, the main difference between various implementations lies in the selection of convergence (or termination) tests, which are used to break the iteration process. Despite its popularity, there is a widespread belief that NMS becomes inefficient as n increases, even for moderate space dimensions (like n ≥ 10). This belief is mainly based on extensive numerical evidence, but is hard to substantiate mathematically, due to the lack of convergence theory. Rigorous analysis of the Nelder–Mead simplex method seems to be a very hard problem. So far, there are convergence results only for low dimensions (1 and 2) by Lagarias et al. in a very readable paper [3], and there is a counterexample by McKinnon [5]. Unfortunately, these convergence results are valid only for strictly convex functions. Almost nothing is known about behaviour of the Nelder–Mead method for discontinuous functions, which occur quite frequently in experimental mathematics. And that is where we experienced the inefficiency of the Nelder–Mead algorithm. While trying to develop some new pivoting strategies for structured problems in numerical linear algebra, we have compared several DSMs on a series of problems with discontinuous functions f
+∗ Corresponding author: e-mail: singer@math.hr, Phone: +385 1 4605 745, Fax: +385 1 4680 335 ∗∗ e-mail: ssinger@math.hr, Phone: +385 1 6168 215, Fax: +385 1 6156 940
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+Appl. Num. Anal. Comp. Math. 1, No. 2 (2004) / www.anacm.org 525
+(see [10]). Contrary to all our expectations, NMS turned out to be (by far) the slowest method, so we decided to determine the cause, and do something about it, if possible. Computational efficiency analysis of a single NMS iteration in [11] shows that efficient implementation of the domain convergence test is crucial for overall efficiency. Moreover, most common implementations are either inefficient for discontinuous functions, or unable to handle such functions at all. To circumvent this problem, here we propose a simple and efficient domain convergence test and discuss some implementation details. We begin by a brief description of the NMS algorithm, followed by a summary of efficiency results from [11]. This section also shows how to efficiently implement the simplex transformation part of the NMS. Then we describe the relative volume termination test. Finally, we present some numerical examples (based on [10]) which illustrate improvements in efficiency of the NMS.
+2 The Nelder–Mead search algorithm
+A simplex S ⊂ Rn is defined as the convex hull of n + 1 points or vertices x0, . . . , xn ∈ Rn and will be denoted by S = S(x0, . . . , xn). Simplex based direct search algorithms (including the NMS) perform certain transformations of the working simplex S, based on function values fj := f (xj), for j = 0, . . . , n, and return a
+point xfinal ∈ Rn, which is the computed approximation for x∗. The general algorithm is
+Algorithm Simplex DSM
+INIT: construct an initial working simplex Sinit;
+repeat the following steps: { next iteration } TERM: calculate termination test information; if the termination test is not satisfied then TRANSF: transform the working simplex; until the termination test is satisfied;
+xfinal := the best vertex of the current simplex S;
+where the best vertex is, obviously, the one with the smallest function value.
+Algorithm INIT constructs the initial simplex Sinit = S(x0, . . . , xn) around (or near) the initial point xinit which is usually given as an input, and computes the function values fj, j = 0, . . . , n, at all the vertices. The most frequent choice is x0 = xinit to allow proper restarts. Usually, Sinit is chosen to be right–angled at x0, based on coordinate axes, or
+xj := x0 + hjej, j = 1, . . . , n,
+with stepsizes hj in directions of unit vectors ej in Rn. In some implementations, Sinit can be a regular simplex, where all edges have the same length. The inner loop algorithm TRANSF determines the type of the simplex based DSM. In all implementations of the NMS, TRANSF consists of the following 3 steps.
+1. Determine indices h, s, l of the worst, second–worst and the best point, respectively
+fh = mjax fj, fs = max
+j=h fj , fl = jm=ihn fj .
+2. Calculate the centroid c of the best side (this is the one opposite to the worst point xh)
+c := 1
+n
+∑n
+j=0 j=h
+xj. (1)
+3. Compute the new working simplex S from the old one, denoted by S′. First, try to replace the worst point xh with a better point xnew, by using reflection, expansion or contraction with respect to the best side. If this fails, shrink the simplex towards the best point xl.
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+526 S. Singer and S. Singer: Efficient Implementation of the Nelder–Mead Search Algorithm
+Simplex transformations S′ → S in the NMS are controlled by four parameters: α for reflection, β for contraction, γ for expansion and δ for shrinkage (or massive contraction). They should satisfy the following constraints
+α > 0, 0 < β < 1, γ > 1, γ > α, 0 < δ < 1.
+The standard values, used in most implementations, are
+α = 1, β = 1
+2 , γ = 2, δ = 1
+2.
+A slightly different choice has been suggested in [7]. There is also an alternate notation for these four parameters: ρ, γ, χ, σ, respectively, which is used in [3] and Matlab implementation fminsearch.m of the NMS [4]. Step 3 of TRANSF can be implemented in several different ways. Regarding efficiency, these differences are minor, so everything that will be subsequently said applies to all variants of the basic algorithm. The following algorithm for step 3 is based on [9].
+{ Try to REFLECT the simplex } xr := c + α(c − xh); fr := f (xr);
+if fr < fs then { Accept REFLECT } xh := xr; fh := fr;
+if fr < fl then { Try to EXPAND }
+xe := c + γ(xr − c); fe := f (xe);
+if fe < fl then { Accept EXPAND } xh := xe; fh := fe;
+else { We have fr ≥ fs. REFLECT if it helps, and try to CONTRACT } if fr < fh then
+xc := c + β(xr − c) { Outside contraction } else
+xc := c + β(xh − c); { Inside contraction } fc := f (xc);
+if fc < min{fr, fh} then { Accept CONTRACT, inside or outside } xh := xc; fh := fc;
+else { SHRINK the simplex towards the best point } for j := 0 to n do if j = l then
+xj := xl + δ(xj − xl); fj := f (xj);
+Note that we accept expansion of the working simplex as soon as fr < fl and fe < fl, regardless of the relationship between fr and fe. It may happen that fr < fe, so xr would be a better new point than xe, and we still include xe in the new simplex. This is the so called “greedy expansion”. We want to keep the simplex as large as possible, to avoid premature termination of the iterations, which is sometimes useful for non-smooth functions. On the other hand, the “greedy minimization” approach, used in [3], includes the better of the two points xr, xe in the new simplex, and the simplex is expanded only if fe < fr < fl. It is hard to say which approach is better, as we have encountered examples where each one “beats” the other. Any algorithm must terminate in a finite number of steps or iterations. For simplicity, assume that the algorithm TERM computes the logical (boolean) value term which becomes true when it is time to stop the iterations. Quite generally, term is composed of three different parts
+term := term x or term f or fail ;
+where
+• term x is a “domain convergence or termination test”, which becomes true when the working simplex S is sufficiently small in some sense (some or all vertices xj are close enough),
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+Appl. Num. Anal. Comp. Math. 1, No. 2 (2004) / www.anacm.org 527
+• term f is a “function value convergence test”, which becomes true when (some or all) function values fj are close enough in some sense,
+• fail is a “no convergence in time” test.
+There are many ways to define term x and term f tests and some examples will be given in the following sections. But, regardless of the exact definition of term, two simple facts should be observed. The fail test must be present in any numerical algorithm. A method may be convergent in theory, but fail to do so in practice, due to many reasons, such as inexact computation. Without a term x test, the algorithm will obviously not work for discontinuous functions. But, such a test is necessary for continuous functions, as well, if we want to find a reasonable approximation for x∗ in addition to the minimal function value. In such cases, term f test is only a safeguard for “flat” functions.
+3 Efficiency of a single iteration
+To say anything about overall efficiency of the NMS, we would need some convergence theory to provide an estimate for the number of iterations required to satisfy any reasonable accuracy requirement in the termination test. Since no such theory exists, as yet, we confine ourselves to a more modest goal — efficiency analysis of a single NMS iteration. This has been done in [11] and reveals several potential computational bottlenecks. It also explains quite well why some implementations of the NMS (sometimes) run painfully slow. For the sake of completeness, here we give a summary of results from [11], with emphasis on efficient implementation of various parts of TRANSF. Let Talg(input) denote the number of “flops” (machine floating point arithmetic operations) needed to execute the algorithm ALG for a given input. In practice, the input function f is always given as an algorithm F which computes f (x) for a given x ∈ Rn. Therefore, it has its own complexity Tf which depends on the input point x. Of course, Tf implicitly depends on n — the flops required to compute f (x) actually operate on coordinates x(i), i = 1, . . . , n, not on the whole x. In order to obtain simple and useful complexity results, we have to assume that Tf is (more or less) independent of x, and (essentially) depends only on n, so that Tf = Tf (n) holds for the complexity of F. This assumption is easily verified and certainly valid in many practical applications. In theory, it can also be viewed in the probabilistic sense, as the average complexity on x. All this enables us to express complexity results in terms of n and Tf (n). The standard asymptotic notation (o, O, Θ, Ω, ω) will be used just to hide the unnecessary details of the flops count. Each complete iteration in the algorithm Simplex DSM consists of TERM and TRANSF, so the complexity Titer(n) of a single iteration is
+Titer(n) = Ttransf (n) + Tterm(n). (2)
+As TRANSF is the effective part of the inner loop, we want to spend as much time as possible in TRANSF doing useful work, without wasting too much time in TERM. This motivates the following definition of efficiency.
+Definition 3.1 The efficiency of a single iteration of the Simplex DSM algorithm is
+Eiter(n) := Ttransf (n)
+Titer(n) = 1 − Tterm(n)
+Titer(n) . (3)
+The algorithm is efficient if Eiter(n) ≈ 1 holds for most of the iterations.
+For the Nelder–Mead simplex transformation algorithm TRANSF we have the following complexity result [11].
+Theorem 3.2 Assume that every step of the NMS algorithm TRANSF is implemented as efficiently as possible. For all iterations, except the first one, the complexity of TRANSF is
+Ttransf (n) =
+{
+Θ(n) + Θ(Tf (n)), without shrinkage in step 3,
+Θ(n2) + Θ(nTf (n)), with shrinkage in step 3. (4)
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+528 S. Singer and S. Singer: Efficient Implementation of the Nelder–Mead Search Algorithm
+P r o o f. The proof is constructive, as it shows how to implement all the steps of TRANSF efficiently, and (4) then follows easily. We begin by considering the effects of the simplex transformation S′ → S which performed in step 3. Without shrinkage, only one point in S′, the worst one, is replaced by a new point. So, nonshrink steps are fast in the Nelder–Mead algorithm, which is one of the reasons why it is so popular in practice. To obtain an efficient implementation, we have to update all the objects (primarily c) by keeping all the information for unchanged points in S′ → S. To simplify the notation, the values of objects related to S′ (or in the previous iteration) will be denoted by primes. Let Tk(n) denote the complexity of step k in TRANSF, for k = 1, 2, 3. Then
+Ttransf (n) = T1(n) + T2(n) + T3(n). (5)
+Efficient implementation of step 1 requires O(n) (or, roughly, at most 3n) comparisons to find the new indices h, s, l, even without updating. Therefore,
+T1(n) = O(n). (6)
+In some implementations (notably those for Matlab), the vertices of S are sorted to obtain a nondecreasing order of fj in each iteration. This is certainly inefficient, as it gives T1(n) = O(n2), or T1(n) = O(n log n), at best. On the other hand, if we want to apply the tie-breaking rules from [3] in case of equal function values, it is necessary to keep the vertices of S ordered and labeled x0, x1, . . . , xn, such that f0 ≤ f1 ≤ · · · ≤ fn holds in each iteration. Then sorting is required only to obtain the initial ordering in Sinit, or when S is a result
+of the shrink transformation, since only one point from S′ (the best one in S′) remains in S. In this case, T1 = O(n log n) or T1(n) = O(n2), depending on the sorting algorithm used.
+If S has been obtained from S′ by a nonshrink transformation in the previous step 3, we can do much better. Only one point has changed and the ordering can be updated in linear time (at most n comparisons) by one step of straight insertion sort. This again gives (6). At first glance it seems that Θ(n2) flops are required to compute the centroid c from (1) in step 2. This is true only for the initial centroid cinit, in the first iteration. Later on, the centroids can be efficiently updated, according to the simplex transformation which produced S in the previous iteration. It is easy to see that
+c=
+⎧⎪⎨
+⎪⎩
+c′ + 1
+n (xh′ − xh), without shrinkage in S′ → S,
+xl′ + δ(c′ − xl′ ) + 1
+n (xh′ − xh), with shrinkage in S′ → S.
+(7)
+Note that all points refer to the current simplex S. Only the indices h′ and l′ have to be saved, but not the coordinates of the corresponding points in S′, so almost no additional storage is required. As it can happen that h = h′, from (7) it is obvious that
+T2(n) = O(n), (8)
+except for the first iteration, when T2(n) = Θ(n2). It should be noted that centroid updates are not really necessary after a shrink transformation (which itself takes much more time), but they still pay off if there is a significant number of shrinkages throughout the iterations. On the other hand, all other centroid updates are essential for efficiency, as will be illustrated in the last section. Most of the work in step 3 is spent to compute a certain number of new points, including the function value for each point. Each new point x requires Θ(n) flops to compute and Tf (n) flops for f (x), or the complexity per point is Θ(n) + Tf (n). At least one new point xr is always computed. Without shrinkage, at most one additional point xe or xc is computed. Finally, if shrinkage is used, n + 2 points are computed. Thus
+T3(n) =
+{
+Θ(n) + Θ(Tf (n)), without shrinkage,
+Θ(n2) + Θ(nTf (n)), with shrinkage. (9)
+Substitution of (6), (8) and (9) in (5) completes the proof.
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+Appl. Num. Anal. Comp. Math. 1, No. 2 (2004) / www.anacm.org 529
+It is reasonable to assume that f (x) depends, in general, on all n coordinates of x. When we compute f (x) for a given x, each coordinate x(i) is used at least once as an operand in a flop, and, since flops take at most two operands, at least n/2 flops are needed to compute f (x). Thus, Tf (n) is at least linear in n, or Tf (n) = Ω(n), so the second term dominates in (4). Experience also shows that slow shrinkage transformations are quite rare in practice, so the first relation in (4)
+Ttransf (n) = Θ(Tf (n)) (10)
+can be used to judge the efficiency, as it is true for most of the iterations. From (2) and (3) it follows that
+Eiter(n) = 1 − Tterm(n)
+Tterm(n) + Θ(Tf (n)) ,
+so the efficiency of a single NMS iteration crucially depends on Tterm(n), or how fast the termination test is with respect to the function evaluation. If Tterm(n) = ω(Tf (n)) for a given function f , the termination test becomes a computational bottleneck, and the NMS algorithm is inefficient for that f . To avoid this situation for all functions f , the complexity of TERM must satisfy
+Tterm(n) = o(n), (11)
+In other words, the termination test has to be sublinear in n. Note that a linear termination test Tterm(n) = Θ(n) is certainly efficient for all functions f such that Tf (n) = ω(n). But, if Tf (n) = Θ(n) with a small hidden constant in Θ, then Eiter(n) = O(1) and the overall efficiency may be low. We see that (11) is a necessary condition for efficiency. But, if everything else is implemented efficiently, it is also sufficient — it guarantees that we have an implementation of the Nelder–Mead algorithm which is efficient for all functions f . It should be pointed out that this type of inefficiency is quite specific for the Nelder–Mead method. When we look back, it comes as a consequence of (10). The same argument does not apply to many other DSM algorithms which have more than a constant number of function evaluations per iteration (usually n). It is just because the NMS iterations are so fast, that the termination test becomes a problem. Of course, the most interesting question is whether it occurs in practice.
+3.1 Efficiency of termination tests
+To estimate Tterm(n), we have to analyze all three parts of the termination test. The fail test just checks the number of iterations or function evaluations against the prescribed maximum allowed value. Its complexity is Θ(1), and it is always efficient. There are essentially two different types of term f tests in practice. The first type uses a constant number of function values (usually 2 or 3) to compute the test, and the complexity is Θ(1), which is again efficient. A typical example, taken from amoeba in [8], is
+term f := 2 · |fh − fl|
+|fh| + |fl| ≤ tol f , (12)
+where tol f is some prescribed relative tolerance. We have found this test to be quite effective in practice. On the other hand, fminsearch.m in Matlab [4] uses
+term f := fh − fl ≤ tol f , (13)
+where tol f is now a given absolute tolerance. The second type of tests uses all n + 1 function values, so the complexity is Θ(n), which may be inefficient. Note that (13) in fminsearch.m is actually computed as
+term f := max
+j=l |fj − fl| ≤ tol f ,
+so it is really of the second type. The term x test is the real bottleneck in practice. All implementations of the Nelder–Mead method that we have checked can be divided into three groups with respect to the term x test.
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+530 S. Singer and S. Singer: Efficient Implementation of the Nelder–Mead Search Algorithm
+1. This test requires Θ(n2) flops, which is slow (sometimes very slow). All tests based on the diameter of the working simplex fall into this group. For example, fminsearch.m in Matlab [4] uses
+term x := max
+j=l ‖xj − xl‖∞ ≤ tol x ,
+where tol x is a given absolute tolerance, while Higham’s nmsmax.m [1, 2] uses
+term x :=
+max
+j=l ‖xj − xl‖1
+max{1, ‖xl‖1} ≤ tol x , (14)
+where tol x is now a given relative tolerance.
+2. This test requires Θ(n) flops, which may be inefficient when Tf (n) = Θ(n). We have found only one example of such a test — by Rowan in simplx.f from [9]:
+term x := ‖xh − xl‖2 ≤ tol x · ‖x(0)
+h − x(0)
+l ‖2, (15)
+where x(0)
+l , x(0)
+h denote the best and the worst point in the initial simplex Sinit, and tol x is again a given relative tolerance.
+3. Such a test is not present at all. This is, obviously, efficient, but works only for (at least) continuous functions f . For example, one of the most popular implementations amoeba from [8] belongs to this group.
+We can conclude that none of these implementations is efficient for all functions f .
+4 Efficient domain convergence test
+In the view of all we have said so far, it is quite surprising that an efficient domain convergence test, which satisfies (11), is not so hard to construct. In fact, it is almost obvious, from geometrical point of view, and performs even better than required by (11). The NMS algorithm performs a series of simplex transformations and it is easy to see that simplex volumes behave in a simple way under these transformations. The volume of the simplex S = S(x0, . . . , xn) is defined as
+V (S) := 1
+n! · √Γ(x1 − x0, . . . , xn − x0),
+where Γ denotes the Gramm determinant. Each of the 5 elementary simplex transformations in step 3 of the NMS can be written as S := transform(S′), where transform ∈ {reflect, expand, inside contract, outside contract, shrink}. It is easy to see that the following holds for the volume ratio
+V (S)
+V (S′) =
+⎧⎪⎪⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎪⎪⎩
+α, if transform = reflect, β, if transform = inside contract, α · β, if transform = outside contract, α · γ, if transform = expand, δn, if transform = shrink.
+(16)
+This means that the volume ratio can be updated in a single flop in each iteration, if we precompute the factors in (16). The obvious “relative volume” termination test is
+term v := V (S) ≤ tol v · V (Sinit), (17)
+where tol v is the prescribed (relative) volume tolerance.
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+Appl. Num. Anal. Comp. Math. 1, No. 2 (2004) / www.anacm.org 531
+To avoid underflow and overflow problems in floating–point computation of (17) for higher values of n, we can rewrite it in a “linearized” form
+term x := LV (S) ≤ tol x · LV (Sinit), (18)
+where LV (S) := n √V (S) denotes a “linearized volume” of S, and tol x is the same prescribed relative tolerance as in the usual term x tests. Linearized volume ratio updates are trivial from (16), so (18) also requires a single flop per iteration, which is always efficient. Finally, the initial linearized volume LV (Sinit) can be easily computed for all standard choices of Sinit. For example, if we use a right–angled simplex with vertices xj := x0 + hjej, j = 1, . . . , n, it is obvious that
+LV (Sinit) = n √h1 · · · hn.
+Actually, there is no need at all to compute LV (Sinit), as we are only interested in (linearized) volume ratios. We can easily set LV (Sinit) = 1, regardless of how Sinit is formed, and apply linearized volume ratio updates until (18) is satisfied. Some theoretical justification for this test can be found in [3], where V (S) → 0 is used in convergence proofs. Of course, in practice, we can encounter situations when V (S) → 0, and S simply degenerates into a hyperplane, without being small (in terms of its diameter). But, this should not be interpreted as a disadvantage of this test. On the contrary, if this happens, it usually means that there is something wrong with our problem. Either, n is too high, and we have too much freedom (as in nonlinear least squares problems), or the method has simply stuck, and it is time to restart (or accept the results). As we shall see in the following section, the linearized “relative volume” test performs quite well in practice. Similar termination tests can also be applied in some other simplex–based direct search methods.
+5 Numerical experiments
+The main goal of this section is to show what gains can be achieved by efficient implementation of various parts of the NMS algorithm. Our model problem, as in [10], is to maximize the growth factor in Gaussian elimination for various pivoting strategies (also, see Chapter 26 in [2]). Let m ∈ N and let A ∈ Rm×m be a real matrix of order m. Consider the LU factorization or the Gaussian elimination of A with a prescribed pivoting strategy P. Numerical stability of this process can be expressed in terms of the pivotal growth factor [2]. The “worst” cases for P are described by maximal values of
+f (A) = growth factor ρm(A) in the LU–P factorization of A, A ∈ Rm×m.
+The growth factor ρm(A) for a particular strategy is defined by
+ρm(A) = maxi,j,k |a(k)
+ij |
+maxi,j |aij | ,
+where a(k)
+ij are the intermediate elements generated during the elimination. Note that f is discontinuous at some
+points in Rn, with n = m2. For all reasonable pivoting strategies, Tf only slightly depends on A, and we have
+Tf (m) = Θ(m3) or Tf (n) = Θ(n3/2).
+For simplicity, we first take the pivoting strategy P to be the well known partial pivoting. It is known that the maximal growth factor is 2m−1, but this is not very important for our experiment. We want to demonstrate how various implementations of step 1, step 2, and TERM affect the overall efficiency. To this aim, we test two different implementations of step 1
+• S1 (slow), which uses sorting to find the indices h, s, l, with T1(n) = O(n2) = O(m4),
+• F1 (fast), which finds h, s, l directly by comparisons, with T1(n) = O(n) = O(m2).
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+532 S. Singer and S. Singer: Efficient Implementation of the Nelder–Mead Search Algorithm
+No attempt is made to observe the tie-breaking rules from [3] in case of equal function values. Likewise, to compute c in step 2, we have two choices: (1) and (7). The first one is slow, with T2(n) =
+Θ(n2) = Θ(m4), and the second is fast, T2(n) = O(n) = O(m2). Finally, in TERM we always use the function value test (12), and compare three domain convergence tests with drastically different complexities: Higham’s (14), Rowan’s (15), and the linearized “relative volume” test (18). Since Tf (m) = Θ(m3), a linear term x test, like Rowan’s, is quite fast, as it takes Θ(n) = Θ(m2) time. In fact, we do not expect to see much difference in performance between (15) and (18). On the other hand, a quadratic test, like Higham’s, takes Θ(n2) = Θ(m4) time, which is out of question, as the evaluation of f is slow enough by itself. By combining some of the above choices, we obtain the following 5 algorithms with different implementations of the NMS:
+A1 = S1 + Slow centroid (1) + Higham’s term x (14),
+A2 = F1 + Slow centroid (1) + Higham’s term x (14),
+A3 = F1 + Fast centroid (7) + Higham’s term x (14),
+A4 = F1 + Fast centroid (7) + Rowan’s term x (15),
+A5 = F1 + Fast centroid (7) + Volume term x (18).
+These algorithms are tested and timed on exactly the same set of jobs. For each value of m = 2, . . . , 8, we use m random starting matrices and maximize the pivotal growth ρm. Each of these m jobs consists of 5 runs (start and 4 restarts), with a maximum of 4000 function evaluations per run. Finally, all termination tests use the same tolerances tol x = 10−8, tol f = 10−10, since all computations are performed in IEEE extended precision with unit roundoff u = 5.42 · 10−20. To compare efficiencies, for each value of m, we compute two simple efficiency measures — the average time per iteration, denoted by eiter(m), and the average time per function evaluation, denoted by efeval(m). In both cases, the average is taken over all runs and all jobs for that m. Our timing includes the whole iteration loop, i.e., both TERM and TRANSF, together with the initial centroid cinit calculation, which is slow. The computed values of eiter(m) and efeval(m) for all 5 algorithms are given in Table 1.
+Table 1 Average times (in 10−6 s) per iteration and per function evaluation for various algorithms.
+A1 A2 A3 A4 A5
+m eiter efeval eiter efeval eiter efeval eiter efeval eiter efeval
+2 162 73 146 79 138 74 124 67 114 61
+3 363 212 358 218 312 190 230 139 212 125
+4 827 506 823 513 668 423 393 247 382 218
+5 1684 1121 1669 1130 1297 875 603 406 552 364
+6 3163 2231 3132 2193 2350 1646 885 618 798 555
+7 5535 4031 5460 3972 3978 2894 1228 893 1103 801
+8 9112 6568 8986 6336 6427 4532 1717 1213 1545 1089
+These results clearly show how much is gained by efficient implementation of various steps in the NMS. We must say that all the values in Table 1 are intentionally much higher than they should really be in practice. They were obtained by running an experimental code, with quite a lot of book-keeping, on a rather slow computer (Pentium II, 333 MHz), especially chosen to get more accurate timings. To get some feeling of the amount of computation involved in this test, Table 2 shows the numbers of function evaluations and iterations (both total and by type of transformation) performed by each algorithm to produce the results in the last row m = 8 (or n = 64) of Table 1. The results for A3 and A5 are equal by coincidence.
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+Appl. Num. Anal. Comp. Math. 1, No. 2 (2004) / www.anacm.org 533
+Table 2 Number of function evaluations and iterations for m = 8 in various algorithms.
+number of A1 A2 A3 A4 A5
+function evaluations 157407 156107 156091 155359 156091
+iterations 112201 110073 110057 109759 110057
+reflections 81985 80541 80525 80938 80525
+expansions 1410 1489 1489 1504 1489
+contractions 28609 27817 27817 27087 27817
+shrinkages 197 226 226 230 226
+Because of high running times, we have used only m random starts, which is far too small to find high pivotal growth factors. The maximal values found in this experiment are not worth mentioning, but it should be noted that all algorithms ended with similar values. The first experiment was designed just to compare efficiencies of algorithms A1–A5. In the following one, we are going to use only A5, but in a more serious attempt to find high growth factors for partial, complete, and rook pivoting strategies (see [2]). This time, we use 2m3 random starting matrices, allow 10 runs (9 restarts) for each job, with a stronger requirement tol x = 10−12 in (18). All other parameters are the same as in the first experiment. Actually, the source code is the same as before. The whole run takes about 4 hours on a much faster machine (Pentium 4, 3 GHz), and the obtained maximal growth factors are given in Table 3.
+Table 3 Obtained growth factors by algorithm A5 for partial, complete and rook pivoting.
+Pivoting strategy
+m partial complete rook
+2 1.99999999991650406 1.99999999989327416 1.99999999992127092
+3 3.99999999984057538 1.99999999992693958 2.99997357960583527
+4 7.99611697434938424 3.97730448158971522 4.45411806209411044
+5 15.1876649879346456 3.99978652257938052 5.80481033824281461
+6 24.3141518961117570 3.99985831323532101 6.59020480078501313
+7 39.2122482678208174 4.16061043683397093 6.76462611299813698
+8 59.7370345076401456 4.24812396323047320 7.57048152020520245
+9 71.9623989093906266 4.29664555613955791 8.88565039452449410
+10 106.394726804636864 4.35430403736946545 9.18275254080742746
+This is still not a systematic search for maximal (or high) growth factors, as we have used only purely random starting matrices for each order m. No attempt has been made to use “bad” matrices for smaller m’s as starts for higher m’s. Actually, this experiment only shows that the probability of finding a really “bad” matrix (with high growth factor) is much smaller than 1/m, 1/m2, or even 1/m3, as m grows. This fact is well known, and has already been demonstrated by similar experiments in [12], which, like [2], is an excellent reference on the subject of pivoting. The results of these experiments are not very significant by themselves. We may say that the results for rook pivoting in Table 3 are better lower bounds then those in Problem 9.18 in [2]. But this is only a byproduct of these tests, showing that something can be gained by more extensive experimenting, which is possible by using more efficient tools.
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+
+534 S. Singer and S. Singer: Efficient Implementation of the Nelder–Mead Search Algorithm
+6 Conclusion
+The relative “linearized volume” test proposed in this work makes the NMS run much faster, and its performance is comparable to the standard domain convergence termination tests, regarding the obtained optimal function values. This may not be so important for simple and easy problems, but for some difficult and time consuming problems which occur quite frequently in experimental mathematics, the advantages may be enormous. For years, the Nelder–Mead method has been an invaluable tool in numerical experiments, and making it more efficient simply gives us the opportunity to tackle more complicated and larger problems.
+Acknowledgements This work was supported by grant 0037114 by Ministry of Science, Education and Sports, Croatia.
+References
+[1] N. J. Higham, The Test Matrix Toolbox for Matlab (version 3.0), Numerical Analysis Report 276, Manchester Centre for Computational Mathematics, Manchester, England (1995). [2] N. J. Higham, Accuracy and Stability of Numerical Algorithms, second ed. (SIAM, Philadelphia, 2002). [3] J. C. Lagarias, J. A. Reeds, M. H. Wright and P. E. Wright, Convergence Properties of the Nelder–Mead Simplex Method in Low Dimensions, SIAM. J. Optim. 9, 112–147 (1998). [4] The MathWorks, Inc., MATLAB Language Reference Manual, Version 7 (Natick, Massachusetts, 2004). [5] K. I. M. McKinnon, Convergence of the Nelder–Mead Simplex Method to a Nonstationary Point, SIAM. J. Optim. 9, 148–158 (1998). [6] J. A. Nelder and R. Mead, A simplex method for function minimization, Comput. J. 7, 308–313 (1965). [7] J. M. Parkinson and D. Hutchinson, An investigation into the efficiency of variants on the simplex method, in: Numerical Methods for Nonlinear Optimization, edited by F. A. Lootsma (Academic Press, New York, 1972), pp. 115–135. [8] W. H. Press, S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery, Numerical Recipes in FORTRAN: The Art of Scientific Computing, second ed. (Cambridge University Press, Cambridge, New York, 1992). [9] T. H. Rowan, Functional Stability Analysis of Numerical Algorithms, Ph.D. thesis, University of Texas, Austin, (1990). [10] S. Singer and S. Singer, Some applications of direct search methods, in: Proceedings of the 7th International Conference on Operational Research — KOI’98, Rovinj, Croatia, 1998, edited by I. Aganovic ́, T. Hunjak, and R. Scitovski (Croatian Operational Research Society, Osijek, 1999), pp. 169–176. [11] S. Singer and S. Singer, Complexity Analysis of Nelder–Mead Search Iterations, in: Proceedings of the 1. Conference on Applied Mathematics and Computation, Dubrovnik, Croatia, 1999, edited by M. Rogina, V. Hari, N. Limic ́ and Z. Tutek (PMF–Matematicˇki odjel, Zagreb, 2001), pp. 185–196. [12] L. N. Trefethen and D. Bau III, Numerical Linear Algebra (SIAM, Philadelphia, 1997).
+©c 2004 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim

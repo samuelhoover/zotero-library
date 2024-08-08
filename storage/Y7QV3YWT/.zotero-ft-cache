@@ -1,0 +1,237 @@
+DOI 10.1140/epje/i2019-11830-y
+Regular Article
+Eur. Phys. J. E (2019) 42: 67 THE EUROPEAN
+PHYSICAL JOURNAL E
+Conformational fluctuations of a DNA electrophoretically translocating through a nanopore under the action of a motor protein
+Harshwardhan H. Katkar1,2 and Murugappan Muthukumar2,a
+1 Department of Chemistry, The University of Chicago, Chicago, IL 60637, USA 2 Department of Polymer Science and Engineering, University of Massachusetts, Amherst, MA 01003, USA
+Received 14 June 2018 and Received in final form 10 April 2019 Published online: 29 May 2019 c© EDP Sciences / Societ`a Italiana di Fisica / Springer-Verlag GmbH Germany, part of Springer Nature, 2019
+Abstract. Single-file single-molecule electrophoresis through a nanopore has emerged as one of the successful methods in DNA sequencing. In gaining sufficient accuracy in the readout of the sequence, it is essential to position every nucleotide of the sequence with great accuracy and precision at the interrogation point of the nanopore. A combination of a ratcheting enzyme and a threaded DNA across a protein pore under an electric field is experimentally shown to be a viable method for DNA sequencing within the singlemolecule electrophoresis technique. Using coarse-grained models of the enzyme and the protein nanopore, and Langevin dynamics simulations, we have characterized the conformational fluctuations of the DNA inside the nanopore. We show that the conformational fluctuations of DNA are significant for slowly operating enzymes such as phi29 DNA polymerase. Our results imply that there is considerable uncertainty in precisely positioning a nucleotide at the interrogation point of the nanopore. The discrepancy between the results of coarse-grained simulations and the experimentally successful accurate sequencing suggests that additional features of the experiments, such as explicit treatment of electrolyte ions and hydrodynamics, must be incorporated in the simulations to accurately model experimental constructs.
+1 Introduction
+The use of nanopores as a high-throughput low-cost alternative to existing DNA sequencing techniques has gained popularity and success in the past two decades. The size, e.g. the radius of gyration of DNA, is typically orders of magnitude larger than the size of biological nanopores such as α-hemolysin and Mycobacterium smegmatis porin A (MspA). Despite this fact, a sufficient voltage difference applied across the nanopore can drive the DNA through the nanopore in a single-file fashion, such that consecutive bases of the DNA pass through the nanopore in sequence. By measuring the current due to small ions driven across the nanopore by the resulting electric field, which is blocked to a different extent depending on the type of nucleotide present inside the pore [1–3], the entire sequence of the DNA can be measured without the need to label nucleotides. ss-DNA was successfully shown to
+ Contribution to “Polymers: From Adsorption to Translocation - Topical Issue in Memoriam Lo ̈ıc Auvray (1956–2016)” edited by Jean-Marc Di Meglio, Fabien Montel, Jan C. Behrends. a e-mail: muthu@polysci.umass.edu
+translocate single-file across an α-hemolysin nanopore almost two decades ago [4]. However, it was realized that a precise control over the translocation process is necessary in order to reliably measure the ionic current traces and hence to accurately map the traces back to the unknown DNA sequence [4,5]. To our advantage, a large set of parameters are involved in the process of DNA translocation through nanopores. Several studies have aimed at isolating the effects of these parameters, including nanopore design to tune nanopore-DNA interactions [6–21], experimental conditions such as electrolyte (salt) type and concentration [22–30], pH [31,27], temperature [6,32,20], solvent viscosity [33,34], electric [35–37,20] and flow [38,39,11, 40–42] fields. One of the major challenges in DNA sequencing is the limit in simultaneously achieving control over the speed of translocation and over the noise in the ionic current traces. In addition to inherent fluctuations in the ionic current, the noise is also affected by conformational fluctuations of DNA inside the nanopore. In addition to exploiting the parameters listed above, other strategies involving DNA binding proteins have also been proposed to control the speed of translocation.
+
+
+Page 2 of 8 Eur. Phys. J. E (2019) 42: 67
+Furthermore, alternative methods such as those that involve labeling nucleotides and using nanopores have been investigated recently [43–46]. phi29 DNA polymerase replicates a template single stranded DNA by synthesizing a complementary strand. It has an active polymerization site where the complementary strand is synthesized, and an exonuclease site for hydrolysing erroneous nucleotides from the complementary strand for accurate replication [47]. The average rate of replication is in the range of 40–60 nucleotides per second [48], which is slow compared to the desired speed of translocation of DNA for sequencing application. This rate decreases when tension is applied on the template strand [48]. The proposed strategy involves applying a tension on the DNA inside the nanopore by using the motor activity of the phi29 polymerase and an electric field in the opposite direction of the motor [49–51]. In this approach, a primer strand and a blocking oligomer are attached to the DNA, and the resulting assembly is initially in complex with a phi29 DNA polymerase in solution. The activity of phi29 DNA polymerase is suppressed in the bulk due to the presence of the blocking oligomer. External electric field applied across the nanopore drives this entire complex towards the nanopore, followed by threading of the template DNA into and across the nanopore. This is further followed by gradual unzipping of the blocking oligomer under the action of the applied electric field that drives the DNA through the phi29 DNA polymerase in a direction opposite to its motor activity, until the blocking oligomer is completely stripped off the template DNA. The phi29 DNA polymerase gets activated only after most of the template DNA translocates through the nanopore, due to the unzipping of the blocking oligomer. Upon activation, the phi29 DNA polymerase exerts a motor force on the template DNA in a direction opposite to the applied electric field, pulling the template DNA in the opposite direction. The speed of pulling is determined by the to the average rate of replication of the phi29 DNA polymerase in presence of a tension on the DNA resulting from the opposing electric field [48]. The rate of replication decreases with increasing tension and stalls for ∼ 40 pN tensile force [48]. The detailed cycle of phi29 DNA polymerase has also been investigated and involves two states, resulting into distinct fluctuations in the ionic current [52–54]. Although dependent on the value of linear charge density σ of the DNA backbone inside the nanopore and the voltage profile due to the applied electric field, this tensile force translates to about 250 mV for a linear charge density of one unit charge per nm, assuming a linear voltage profile along the pore axis. Here, the force f on the DNA due to a potential difference V applied across the nanopore is simply estimated as f = V σ. Although the resulting reduction in translocation speed using the proposed strategy is well within the desired range for accurately measuring ionic current traces, reducing noise in the ionic current traces also requires that the tension applied to the DNA should be effective at suppressing its conformational fluctuations inside the nanopore. In this work, we use a coarse-grained model to evaluate the extent of conformational fluctuations during translocation through MspA pore under the opposing forces from the
+Fig. 1. A typical snapshot of the simulation setup. Pore and polymerase beads are replaced by polyhedra for visualization.
+periodic ratcheting of phi20 DNA polymerase and a constant electric field. With the aid of Langevin dynamics simulations, we study the dynamics of different segments of the DNA inside the nanopore, in response to a hypothesized two-step mechanism by which the motor forces act. The two-step mechanism that we hypothesize is qualitatively similar to the Brownian ratchet model proposed in the literature for protein translocation [55,56]. The structure of phi29 polymerase also suggests a two-step mechanism where a complementary nucleotide has to diffuse to the active site and then bind to the complimentary DNA strand, followed by relative displacement of the DNA [47]. We characterize the fluctuations of segments of DNA near the phi29 polymerase and at the interrogation site of the nanopore. We find that the DNA undergoes fluctuations according to Rouse dynamics at the interrogation site, despite the tension applied to it. Details of our model and simulations are provided in sect. 2. The results of our simulations are presented in Section 3, followed by a discussion in sect. 4. Conclusions drawn from our work are presented in sect. 5.
+2 Model and simulation methods
+Reduced units are derived for all quantities using the scales for three fundamental quantities-mass = 0.130 kg/mol, length = 3  ̊A and energy = kBT , where kB is the Boltzmann constant and T = 300 K is the temperature. All values reported in the rest of this manuscript are in reduced units, unless explicitly stated. In these units, the timescale in our simulations is derived to be ∼ 2.2 ps. Furthermore, each step in our simulation corresponds to 0.005 reduced units and hence ∼ 0.0108 ps. The simulation setup (fig. 1) is a coarse-grained minimal mimic of the experimental setup used in ref. [50],
+
+
+Eur. Phys. J. E (2019) 42: 67 Page 3 of 8
+and consists of a thick membrane that divides the simulated region into two compartments. The membrane is embedded with a MspA pore with the pore axis aligned in the z-direction. The pore is oriented such that the pore entrance (vestibule region) is on the right hand side. In other words, the left and right compartments are on trans and cis sides of the pore. A phi29 DNA polymerase complexed with a ss-DNA is placed near the pore entrance on the right and oriented such that its tunnel corresponding to the ss-DNA is along the pore entrance.
+2.1 Coarse-graining
+The membrane is represented by two parallel walls made from spherical beads of size 1.8 arranged in a rectangular array. We use X-ray crystal structures of the MspA pore [57] and the phi29 DNA polymerase [47] from the protein data bank to obtain corresponding coarse-grained models. In these coarse-grained models, each residue of the MspA pore and the phi29 DNA polymerase is represented by a united atom bead with diameter 1 unit, with the center at the C-α position. Each coarse-grained bead is assigned charge corresponding to physiological conditions. Thus, the beads corresponding to ARG, HIS and LYS residues are assigned a unit positive charge, while those corresponding to ASP and GLU residues carry a unit negative charge. Rest of the beads are neutral. Coordinates obtained after coarse-graining are then translated and rotated as required to generate the simulation setup. The origin is chosen at the entrance of the MspA pore, with the z-direction along the pore axis. The membrane walls are located at z = −14.8 and z = −29.5, the MspA pore extends from z = −31.17 to z = 0 and the phi29 DNA polymerase extends from z = −3.5 to z = 17.92. The ss-DNA consists of 100 nucleotides and is initially placed such that 64 nucleotides are in the trans compartment, while the rest are either inside the MspA pore, inside the phi29 polymerase or in the cis compartment. Each nucleotide is represented using a three-bead model, with spherical beads of diameter 0.83 corresponding to a base, sugar and a phosphate group. In this model, the sugar and phosphate beads are alternating along the backbone and the pendant base bead is attached to the sugar bead in each nucleotide [58]. Each phosphate bead in a nucleotide belonging to the ss-DNA is assigned a unit negative charge while the sugar and base beads are neutral. We number the beads starting from the cis side, such that the base, sugar and the phosphate beads of the first nucleotide are numbered 1, 2 and 3 respectively. Thus, the entire ss-DNA is made using using 300 beads. A potential difference of 180 mV is applied across the membrane. The negatively charged ss-DNA experiences an electric force towards the trans side, against the direction of the pulling force due to motor protein. The resulting voltage profile across the pore is obtained by solving Poisson-Nernst-Planck equation in the absence of the DNA, using the boundary conditions that the electric potential is equal to 0 mV at the left boundary and is equal
+Fig. 2. Voltage profile inside the pore. The approximate locations of the MspA pore and the phi29 polymerase are also shown. The active site of the phi29 DNA polymerase is marked with a black circle.
+to −180 mV at the right boundary:
+0∇ · [(r)∇V (r, t)] = − ∑
+i
+zieci(r, t) − ρpore(r), (1)
+∂ci(r, t)
+∂t = ∇ · [Di∇ci(r, t) + μici(r, t)∇V (r, t)] , (2)
+μi = zieDi
+kBT . (3)
+Here, 0, kB and e correspond to permittivity of free space, Boltzmann constant and elementary charge respectively. The dielectric constant (r) varies depending on whether the location r is in the protein or in the rest of the region containing water. We choose  = 2 for the protein and  = 80 for water. The salt is assumed to be potassium chloride, with concentrations of the monovalent (zi = ±1) potassium and chloride ions to be 0.3 M at the simulation boundaries. The diffusion coefficients Di for potas
+sium and chloride ions are 0.196  ̊A2/ps and 0.203  ̊A2/ps respectively [59]. The set of coupled equations (1), (2) and (3) is solved numerically for the given charge distribution ρpore inside the pore to get the resulting salt concentration profile ci(r, t) and the electric potential profile V (r, t) at steady state as discussed in [60]. The resulting voltage profile is approximated by a piecewise linear curve. Figure 2 shows the resulting voltage profile, with the MspA pore and phi29 polymerase overlaid at their approximate positions.
+2.2 Forces
+The beads corresponding to MspA pore and phi29 DNA polymerase are kept fixed at their positions. The beads corresponding to the ss-DNA interact amongst themselves and with the rest of the beads according to the following pairwise interactions. Excluded volume and electrostatic interactions between two beads i and j with charges qi and qj separated
+
+
+Page 4 of 8 Eur. Phys. J. E (2019) 42: 67
+by a distance rij are modelled using a truncated LennardJones potential (ULJ) and a Debye-Hu ̈ckel potential (UDH) respectively. These potentials are given by
+ULJ =
+⎧⎪⎪⎨
+⎪⎪⎩
+4LJ
+[( σ
+rij
+)12
+−
+(σ
+rij
+)6]
++LJ, for rij ≤ 1.12σ,
+0, for rij > 1.12σ;
+(4)
+UDH =
+⎧⎪⎨
+⎪⎩
+C qi qj
+rij
+e−κrij , for rij ≤ 3,
+0, for rij > 3.
+(5)
+Here, LJ = 1 is the depth of the truncated LennardJones potential, while σ is the average of the sizes of the two beads. κ−1 = 1.873 is the Debye length corresponding to a monovalent salt concentration of 0.3 M, to mimic the experimental conditions used in [50]. The constant C = 1 in reduced units. The Lennard-Jones potential is truncated at the distance where the potential is minimum. This, in combination with an additive shift factor LJ, preserves only the repulsive part of the potential. The size of each bead is decided by choosing the appropriate value of σ. For example, for a phi29 DNA polymerase bead, σ = 1. The Debye-H ̈uckel potential is truncated beyond the cutoff distance of 3 for computational efficiency. The beads belonging to ss-DNA have an additional harmonic potential interaction Uh to represent bond connectivity and an angle potential Ua to restrict the angle θ between the base, sugar and phosphate beads, given as follows:
+Uh = K(r − r0)2, (6)
+Ua = Ka(cos(θ) − cos(θ0))2. (7)
+The spring constant K = 2580 and the angle energy constant Ka = 125, while θ0 = 65◦ is the base-sugarphosphate equilibrium angle. These potentials along with the chosen parameter values are used to represent the DNA as a semi-flexible chain. The position r of each bead belonging to the ss-DNA is updated using the equation of motion given by
+m d2r
+dt2 = −ζ dr
+dt −∇(ULJ +UDH +Uh +Ua)+Fr +Fext. (8)
+Here, m = 1 is the mass of the bead, t is the time and ζ = 50.5 is the bead friction coefficient. ∇ is the three dimensional gradient operator. The random force Fr is related to the friction coefficient by the fluctuation dissipation theorem [60]. The external force Fext has two contributions to it —the contribution due to the electric field, and the contribution due to the pulling force of the motor protein. The equation of motion is integrated using the velocity Verlet algorithm implemented in LAMMPS [61], using a timestep of 0.005, which corresponds to ∼ 0.0108 ps. The electric field acts only along the z-direction and is approximated using a piecewise linear curve as discussed earlier (fig. 2). The pulling force of the motor protein acts on an ss-DNA bead nearest to the location (2.165, −1.565, 7.818). In the remainder of this
+manuscript, we refer to this location as active site. Figure 2 also shows the location of the active site.
+2.3 Procedure
+The phi29 DNA polymerase is known to synthesize a complimentary DNA strand at 40 nucleotides per second [48]. To mimic the polymerase activity, we adopt the pull-relax strategy in our simulations, as described below. At t = 0, the ss-DNA bead nearest to the active site is rapidly pulled towards the active site in 5 simulation steps, which corresponds to 0.054 ps. This bead is then held at the active site for trelax simulation steps. The nearly instantaneous displacement created during the pulling stage travels along the ss-DNA during this relaxation stage. In this work, we study the dynamics of beads at different locations along the ss-DNA chain for trelax = 106 steps, as discussed in sect. 3. Positions of all the beads are stored after every 5 steps for quicker analysis.
+3 Results
+The starting configuration is such that the 23rd bead (corresponding to sugar of the 8th nucleotide) along the ssDNA chain happens to be present nearest to the active site. We denote the position of a ss-DNA bead from the chain end on the right side by s, while the bead pulled at the active site is denoted by s0. As explained in the previous section, after pulling this bead at the active site, we let the chain relax for trelax steps before pulling the next sugar bead towards the active site, i.e. s0 = 26. The choice of specifically pulling a sugar bead is arbitrary and is a consequence of the chosen starting configuration. We continue these pull-relax stages for all the sugar beads along the backbone of the ss-DNA. Figure 3 shows the displacement in z-direction of marked ss-DNA beads s for s0 = 26, averaged across 79
+independent simulation runs, for trelax ≡ 106 steps. The displacement calculations are limited upto 20000 steps for computational efficiency. The values of tpull and trelax used in the simulations correspond to a motor protein that acts faster than the typical rate of synthesis of the phi29 DNA polymerase (40 nt/s) by a factor of 2 × 106. However, as seen in fig. 3, the ss-DNA chain (up to s = 35) is relaxed at a much shorter time, well within the chosen value of trelax. The choice of trelax is thus justified, since we are interested in the dynamics of the ss-DNA chain as it relaxes. As seen from fig. 3, the bead pulled towards the active site (s0 = 26) quickly undergoes displacement in zdirection and then remains at the active site for rest of the relaxation steps. The next bead (s = 29) along the ss-DNA backbone follows its displacement with an associated delay, as shown by the red curve. This continues for all consecutive beads, with an increasing delay. At the same time, the maximum displacement that a bead undergoes also decreases for consecutive beads along the ssDNA backbone.
+
+
+Eur. Phys. J. E (2019) 42: 67 Page 5 of 8
+0 5000 10000 15000 20000
+step
+0
+0.25
+0.5
+0.75
+1
+1.25
+<[Z(step)-Z(0)]>
+s=26 s=29 s=32 s=35 s=38 s=41 s=44 s=47 s=50 s=53 s=56 s=80
+Fig. 3. Trajectories of marked sugar beads s in z-direction. Different colors represent data for different marked beads, as indicated in the legend. For this set of trajectories, 26th bead is pulled towards the active site (s0 = 26). This bead reaches the maximum displacement quickly, as seen from the trajectory in black color. The neighboring beads catch up, but with a lag.
+0 5000 10000 15000 20000
+step
+-0.5
+-0.4
+-0.3
+-0.2
+-0.1
+0
+0.1
+<[X(step)-X(0)]>
+s=26 s=29 s=32 s=35 s=38 s=41 s=44 s=47 s=50 s=53 s=56 s=80
+Fig. 4. Trajectories of marked sugar beads s in x-direction. Different colors represent data for different marked beads, as indicated in the legend. For this set of trajectories, 26th bead is pulled towards the active site (s0 = 26). The pulled bead reaches the maximum displacement quickly, as seen from the trajectory in black color. The displacement of the neighboring beads is only slightly related to that of bead 26 and the correlation decays beyond a few consecutive beads.
+Figure 4 shows corresponding trajectories in xdirection (s0 = 26). Similar to the displacement in zdirection (fig. 3), bead 26 of the ss-DNA undergoes maximum displacement instantaneously and then fluctuates around the same mean position. Note that unlike the displacement in z-direction that always takes place in the positive z-direction, the x-directional displacement of the ss-DNA bead at the active site is governed by the geometry of the channel near the active site of the phi29 DNA polymerase. Thus, in fig. 4, bead 26 has an average negative displacement due to the location of the active site. In contrast to the displacement in z-direction, the x-directional displacement of the next sugar bead of the ss-DNA (s = 29) is only slightly related to that of bead 26. All the consecutive beads along the ss-DNA chain undergo random fluctuations around some average. Hence,
+0 10 20 30
+Δs
+0
+4000
+8000
+12000
+tr
+s0=26
+s0=29
+s0=32
+s0=35
+s0=38
+s0=41
+0 10000 20000
+step
+0
+0.5
+1
+1.5
+<[Z(step)-Z(0)]>
+Zmax
+tr
+Δtr
+Fig. 5. Relaxation time tr of a bead s as a function of its position Δs = s − s0 from the active site. The relaxation time is calculated from the trajectories shown in fig. 3 as described in the text. Different symbols indicate different beads s0 at the active site, as indicated in the legend. The inset shows the definition of tr for a sample trajectory.
+the net drift in the x-direction is nearly zero for the rest of the beads downstream. In order to quantify these observations, we analyze the trajectories in terms of the maximum displacement of bead s of the ss-DNA in the z-direction and a characteristic time associated with its displacement. We define the maximum displacement Zmax of bead s as the average displacement that the bead undergoes in the last 500 steps of its trajectory, between steps 19501 and 20000 (inset of fig. 5). The characteristic relaxation time for a bead tr is calculated as the time at which the bead undergoes characteristic displacement, which is defined as (1 − 1/e) × Zmax. Additionally, we also assign a width Δtr to the displacement vs time data, defined as half of the difference between the time taken for ±10% of the characteristic displacement. The inset of fig. 5 shows the definitions of these quantities for a sample trajectory. Figure 5 shows the variation of the characteristic relaxation time of subsequent beads s for different beads s0 at the active site. The error bars indicate the corresponding values of Δtr. For a given bead s, the characteristic relaxation time tr is observed to increase as its relative position from the active site, denoted by Δs = s − s0, increases. The disturbance introduced at the active site travels along the backbone of the ss-DNA as a wave. The amplitude of this wave decreases with the distance from the active site, as shown in fig. 6. In translocation experiments, the narrowest region of the nanopore is termed as the interrogation point. For MspA pore, the interrogation point is identified at z = −27.488 in the current simulations. The square of the displacement of a DNA bead located nearest to the interrogation point during the pulling stage is monitored for each simulation run. Figure 7 shows the x-directional mean square displacement of beads located at the interrogation point for different values of s0, averaged over all simulation runs. Figure 8 shows a similar plot for displacement in the z-direction. Due to computational constraints, we do
+
+
+Page 6 of 8 Eur. Phys. J. E (2019) 42: 67
+0 10 20 30
+Δs
+0
+0.5
+1
+1.5
+Zmax
+s0=26 s0=29 s0=32 s0=35 s0=38 s0=41
+Fig. 6. Characteristic displacement Zmax of a bead as a function of its relative position Δs. Different symbols indicate different beads present at the active site, as indicated in the legend.
+0 5000 10000 15000 20000
+step
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+<[X(step)-X(0)]2>
+s0=26
+s0=29
+s0=32
+s0=35
+s0=38
+s0=41
+s0=80
+s0=110
+Fig. 7. Mean square displacement in x-direction for beads near the interrogation point. Different colors indicate different beads s0 at the active site, as indicated in the legend. The mean square displacement in x-direction begins to saturate at longer times.
+0 5000 10000 15000 20000
+step
+0
+0.1
+0.2
+0.3
+<[Z(step)-Z(0)]2>
+s0=26
+s0=29
+s0=32
+s0=35
+s0=38
+s0=41
+s0=80
+s0=110
+Fig. 8. Mean square displacement in z-direction for beads near the interrogation point. Different colors indicate different beads s0 at the active site, as indicated in the legend.
+not compute the mean square displacements beyond 20000 steps. However, the mean square displacement in both x
+and z-directions appears to be saturating at longer times. The saturation in x-direction can be understood as a result of the confinement in x-direction due to the presence of the pore. No significant confinement is present in the z-direction due to the pore. However, the chain connectivity of the DNA along with the fixed position of bead s0 at the active site (z = 7.818) can result into a saturation in the mean square displacement.
+4 Discussion
+In reduced units, the Rouse time for a polymer of N segments, with each segment having a length of l reduced units, is given by the equation
+τRouse = ζ(N l)2
+12π2 . (9)
+The bead friction coefficient ζ = 50.5 and the bond length l = 0.833 are the same as the corresponding values used in the simulations. In simulations, we model the DNA chain using a three bead model for each nucleotide, with alternating sugar and phosphate beads along the backbone and a pendant base bead for each nucleotide. To map this to a linear Rouse chain, we define the parameter b as effective number of beads of equivalent friction that corresponds to a single unit in a linear chain of the same contour length as the DNA backbone. Using the effective number of beads, we define
+Δs ̃ = Δs
+b . (10)
+Using this definition, we obtain an expression for the Rouse time as
+τRouse = ζl2
+12π2 [Δs ̃]2 . (11)
+We fit the simulation data with the quadratic equation of the form
+τ = aΔs2 = ab2[Δs ̃]2 (12)
+using the a as the fitting parameter. Comparing τ with τRouse gives an expression for the effective number of beads b in terms of the fitting parameter a, as
+b=
+√
+ζl2
+12π2a . (13)
+We perform the fitting using the least squares method, only including the data points for beads (s < 80) that have amplitude Zmax > 0.4. Figure 9 shows the comparison of the simulation data and eq. (12), along with the resulting values of effective number of beads shown in the inset. We observe that the effective number of beads is approximately equal to 2.3. This comparison suggests that the dynamics of the DNA chain inside the pore is not far from the Rouse dynamics.
+
+
+Eur. Phys. J. E (2019) 42: 67 Page 7 of 8
+0 10 20 30
+Δs
+0
+4000
+8000
+12000
+tr
+s0=26
+s0=29
+s0=32
+s0=35
+s0=38
+s0=41
+30 40 50
+s0
+2
+2.2
+2.4
+2.6
+# effective beads
+Fig. 9. Fitting the Rouse relaxation time given by eq. (9) to the simulation results, for trelax = 106. Symbols indicate the simulation data, while solid lines show the model result. Different colors show results for different beads present at the active site, as indicated in the legend.
+5 Conclusion
+Even for the simulated speed of the motor protein corresponding to tpull + trelax steps, which is much faster than experimentally observed speed of 40 nucleotides per second for the phi29 polymerase, the conformational fluctuations of DNA present inside the pore are not suppressed. The findings of this work suggest that at the operating speeds of the phi29 DNA polymerase, the tension acting along the polymer chain due to the motor protein and the electric field acting in opposite directions is not enough to suppress the conformational fluctuations of the DNA. Our results imply that there is considerable uncertainty in precisely positioning a nucleotide at the interrogation point of the nanopore. On the other hand, these conformational fluctuations are somehow suppressed in experimental setups which enable accurate sequencing. The discrepancy between the present minimal model and the experiments must be due to the absence of all features of the experiments in the model. For example, we use implicit salt concentration in our simulations, while the noise in the ionic current measured in experiments has been shown to be sensitive towards the identity and concentration of the salt ions [29]. We further ignore other factors such as hydrodynamics and any residue/nucleotide specific interactions in our simulations. Thus, we expect certain unresolved discrepancy between our results and experiments [62]. Detailed much longer simulations with finer resolution models for the protein, the phi29 DNA polymerase and the ss-DNA, and with explicit solvent and ions would be the subject of a future investigation.
+The National Institute of Health (grant R01HG002776-11) and the Air Force Office of Scientific Research (grant FA9550-171-0160) are gratefully acknowledged.
+Author contribution statement
+All the authors were involved in the preparation of the manuscript. All the authors have read and approved the final manuscript.
+Publisher’s Note The EPJ Publishers remain neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+References
+1. X. Chen, I. Rungger, C.D. Pemmaraju, U. Schwingenschloegl, S. Sanvito, Phys. Rev. B 85, 115436 (2012). 2. D. Stoddart, A.J. Heron, E. Mikhailova, G. Maglia, H. Bayley, Proc. Natl. Acad. Sci. U.S.A. 106, 7702 (2009). 3. R.F. Purnell, K.K. Mehta, J.J. Schmidt, Nano Lett. 8, 3029 (2008). 4. J. Kasianowicz, E. Brandin, D. Branton, D. Deamer, Proc. Natl. Acad. Sci. U.S.A. 93, 13770 (1996). 5. S. Carson, M. Wanunu, Proc. SPIE 26, 074004 (2015). 6. L. Payet, M. Martinho, C. Merstorf, M. Pastoriza-Gallego, J. Pelta, V. Viasnoff, L. Auvray, M. Muthukumar, J. Mathe ́, Biophys. J. 109, 1600 (2015). 7. G. Gibrat, M. Pastoriza-Gallego, B. Thiebot, M.F. Breton, L. Auvray, J. Pelta, J. Phys. Chem. B 112, 14687 (2008). 8. M. Muthukumar, J. Chem. Phys. 118, 5174 (2003). 9. K. Luo, T. Ala-Nissila, S.C. Ying, A. Bhattacharya, J. Chem. Phys. 126, 145101 (2007). 10. B. Luan, G. Stolovitzky, G. Martyna, Nanoscale 4, 1068 (2012). 11. K. Ding, Q. Yan, N. Wang, F. Wu, Z. Wu, Eur. Phys. J. Appl. Phys. 58, 31201 (2012). 12. C.J. Rasmussen, A. Vishnyakov, A.V. Neimark, J. Chem. Phys. 137, 144903 (2012). 13. J.A. Cohen, A. Chaudhuri, R. Golestanian, Phys. Rev. X 2, 021002 (2012). 14. H.H. Katkar, M. Muthukumar, J. Chem. Phys. 140, 135102 (2014). 15. G. Maglia, M.R. Restrepo, E. Mikhailova, H. Bayley, Proc. Natl. Acad. Sci. U.S.A. 105, 19720 (2008). 16. I. Jou, M. Muthukumar, Biophys. J. 113, 1664 (2017). 17. B.N. Anderson, M. Muthukumar, A. Meller, ACS Nano 7, 1408 (2013). 18. M.G. Gauthier, G.W. Slater, J. Chem. Phys. 128, 175103 (2008). 19. S. Banerjee, J. Wilson, J. Shim, M. Shankla, E.A. Corbin, A. Aksimentiev, R. Bashir, Adv. Funct. Mater. 25, 936 (2014). 20. M. Wanunu, J. Sutin, B. McNally, A. Chow, A. Meller, Biophys. J. 95, 4716 (2008). 21. D.K. Lubensky, D.R. Nelson, Biophys. J. 77, 1824 (1999). 22. G. Oukhaled, L. Bacri, J. Math, J. Pelta, L. Auvray, EPL 82, 48003 (2008). 23. S.W. Kowalczyk, D.B. Wells, A. Aksimentiev, C. Dekker, Nano Lett. 12, 1038 (2012). 24. S.W. Kowalczyk, C. Dekker, Nano Lett. 12, 4159 (2012). 25. M. Wanunu, W. Morrison, Y. Rabin, A.Y. Grosberg, A. Meller, Nat. Nanotechnol. 5, 160 (2010). 26. B.J. Jeon, M. Muthukumar, J. Chem. Phys. 140, 015101 (2014). 27. B.J. Jeon, M. Muthukumar, Macromolecules 49, 9132 (2016). 28. J. Ivica, P.T.F. Williamson, M.R.R. de Planque, Anal. Chem. 89, 8822 (2017). 29. I.C. Nova, I.M. Derrington, J.M. Craig, M.T. Noakes, B.I. Tickman, K. Doering, H. Higinbotham, A.H. Laszlo, J.H. Gundlach, PLOS ONE 12, e0181599 (2017). 30. J. Sha, H. Shi, Y. Zhang, C. Chen, L. Liu, Y. Chen, ACS Sens. 2, 506 (2017). 31. C.T.A. Wong, M. Muthukumar, J. Chem. Phys. 133, 045101 (2010).
+
+
+Page 8 of 8 Eur. Phys. J. E (2019) 42: 67
+32. A. Meller, L. Nivon, E. Brandin, J. Golovchenko, D. Branton, Proc. Natl. Acad. Sci. U.S.A. 97, 1079 (2000). 33. D. Fologea, J. Uplinger, B. Thomas, D.S. McNabb, J. Li, Nano Lett. 5, 1734 (2005). 34. H.W. de Haan, G.W. Slater, J. Chem. Phys. 136, 204902 (2012). 35. L. Brun, M. Pastoriza-Gallego, G. Oukhaled, J. Math, L. Bacri, L. Auvray, J. Pelta, Phys. Rev. Lett. 100, 158302 (2008). 36. R.J. Murphy, M. Muthukumar, J. Chem. Phys. 126, 051101 (2007). 37. A. Meller, L. Nivon, D. Branton, Phys. Rev. Lett. 86, 3435 (2001). 38. T. Auger, J. Math ́e, V. Viasnoff, G. Charron, J.M. Di Meglio, L. Auvray, F. Montel, Phys. Rev. Lett. 113, 028302 (2014). 39. B. Lu, D.P. Hoogerheide, Q. Zhao, D. Yu, Phys. Rev. E 86, 011921 (2012). 40. C.T.A. Wong, M. Muthukumar, J. Chem. Phys. 126, 164903 (2007). 41. P. Rowghanian, A.Y. Grosberg, Phys. Rev. E 87, 042723 (2013). 42. M.M. Hatlo, D. Panja, R. van Roij, Phys. Rev. Lett. 107, 068101 (2011). 43. J.W.F. Robertson, C.G. Rodrigues, V.M. Stanford, K.A. Rubinson, O.V. Krasilnikov, J.J. Kasianowicz, Proc. Natl. Acad. Sci. U.S.A. 104, 8207 (2007). 44. J.E. Reiner, J.J. Kasianowicz, B.J. Nablo, J.W.F. Robertson, Proc. Natl. Acad. Sci. U.S.A. 107, 12080 (2010). 45. S. Kumar, C. Tao, M. Chien, B. Hellner, A. Balijepalli, J.W.F. Robertson, Z. Li, J.J. Russo, J.E. Reiner, J.J. Kasianowicz et al., Sci. Rep. 2, 684 (2012). 46. C.W. Fuller, S. Kumar, M. Porel, M. Chien, A. Bibillo, P.B. Stranges, M. Dorwart, C. Tao, Z. Li, W. Guo et al., Proc. Natl. Acad. Sci. U.S.A. 113, 5233 (2016).
+47. A.J. Berman, S. Kamtekar, J.L. Goodman, J.M. L ́azaro, M. de Vega, L. Blanco, M. Salas, T.A. Steitz, EMBO J. 26, 3494 (2007). 48. B. Ibarra, Y.R. Chemla, S. Plyasunov, S.B. Smith, J.M. La ́zaro, M. Salas, C. Bustamante, EMBO J. 28, 2794 (2009). 49. G.M. Cherf, K.R. Lieberman, H. Rashid, C.E. Lam, K. Karplus, M. Akeson, Nat. Biotechnol. 30, 344 (2012). 50. E.A. Manrao, I.M. Derrington, A.H. Laszlo, K.W. Langford, M.K. Hopper, N. Gillgren, M. Pavlenok, M. Niederweis, J.H. Gundlach, Nat. Biotechnol. 30, 349 (2012). 51. K.R. Lieberman, G.M. Cherf, M.J. Doody, F. Olasagasti, Y. Kolodji, M. Akeson, J. Am. Chem. Soc. 132, 17961 (2010). 52. K.R. Lieberman, J.M. Dahl, A.H. Mai, M. Akeson, H. Wang, J. Am. Chem. Soc. 134, 18816 (2012). 53. J.M. Dahl, A.H. Mai, G.M. Cherf, N.N. Jetha, D.R. Garalde, A. Marziali, M. Akeson, H. Wang, K.R. Lieberman, J. Biol. Chem. 287, 13407 (2012). 54. K.R. Lieberman, J.M. Dahl, A.H. Mai, A. Cox, M. Akeson, H. Wang, J. Am. Chem. Soc. 135, 9149 (2013). 55. B.S. Glick, Cell 80, 11 (1995). 56. T.C. Elston, Biophys. J. 82, 1239 (2002). 57. M. Faller, M. Niederweis, G.E. Schulz, Science 303, 1189 (2004). 58. M. Muthukumar, C.Y. Kong, Proc. Natl. Acad. Sci. U.S.A. 103, 5273 (2006).
+59. E.L. Cussler, Diffusion: Mass Transfer in Fluid Systems (Cambridge University Press, 2000). 60. M. Muthukumar, Polymer Translocation (Boca Raton: Taylor & Francis, 2011). 61. S. Plimpton, J. Comput. Phys. 117, 1 (1995) http:// lammps.sandia.gov.
+62. A.H. Laszlo, I.M. Derrrington, J.H. Gundlach, Methods Enzymol. 582, 387 (2017).

@@ -1,0 +1,616 @@
+Article
+Liquid Phase Separation Controlled by pH
+Omar Adame-Arana,1 Christoph A. Weber,1,2 Vasily Zaburdaev,3,4 Jacques Prost,5,6 and Frank J€ulicher1,2,7,* 1Max-Planck-Institut fu€r Physik komplexer Systeme, Dresden, Germany; 2Center for Systems Biology Dresden, Dresden, Germany;
+3Friedrich-Alexander Universita€t Erlangen-Nu€rnberg, Erlangen, Germany; 4Max-Planck-Zentrum fu€r Physik und Medizin, Erlangen, Germany;
+5Laboratoire Physico Chimie Curie, Institut Curie, PSL Research University, CNRS UMR168, Paris, France; 6Mechanobiology Institute,
+National University of Singapore, Singapore, Singapore; and 7Cluster of Excellence Physics of Life, Technische Universit€at Dresden, Dresden, Germany
+ABSTRACT We present a minimal model to study the effects of pH on liquid phase separation of macromolecules. Our model describes a mixture composed of water and macromolecules that exist in three different charge states and have a tendency to phase separate. This phase separation is affected by pH via a set of chemical reactions describing protonation and deprotonation of macromolecules, as well as self-ionization of water. We consider the simple case in which interactions are captured by Flory-Huggins interaction parameters corresponding to Debye screening lengths shorter than a nanometer, which is relevant to proteins inside biological cells under physiological conditions. We identify the conjugate thermodynamic variables at chemical equilibrium and discuss the effective free energy at fixed pH. First, we study phase diagrams as a function of macromolecule concentration and temperature at the isoelectric point of the macromolecules. We find a rich variety of phase diagram topologies, including multiple critical points, triple points, and first-order transition points. Second, we change the pH relative to the isoelectric point of the macromolecules and study how phase diagrams depend on pH. We find that these phase diagrams as a function of pH strongly depend on whether oppositely charged macromolecules or neutral macromolecules have a stronger tendency to phase separate. One key finding is that we predict the existence of a reentrant behavior as a function of pH. In addition, our model predicts that the region of phase separation is typically broader at the isoelectric point. This model could account for both in vitro phase separation of proteins as a function of pH and protein phase separation in yeast cells for pH values close to the isoelectric point of many cytosolic proteins.
+INTRODUCTION
+One of the central challenges in biology is to understand the spatial organization of cells. Cells are organized in distinct compartments that provide specific biochemical environments that play a role for many physicochemical processes such as the production of ATP or the assembly of cellular building blocks (1). In many cases, the cell achieves spatial organization of its biochemistry by forming membraneless organelles, such as P granules, stress granules, and centro
+somes (2–4). It has been shown in recent years that many membraneless organelles have liquid-like properties. They are liquid-like condensates composed of proteins and RNA and form via liquid-liquid phase separation (2,5–8). Although some of these compartments persist for longer times, others, such as stress granules, form rapidly in response to stimuli such as changes in temperature, pH changes, or depletion of nutrients (9). The formation of liquid-like condensates can also be reconstituted in vitro using purified proteins (10,11). The formation of protein condensates is also important in other contexts. The cytoplasm of yeast cells was shown to transition from a fluid-like to an arrested solid-like state during nutrient depletion (12). This transition is reversible and
+Submitted November 1, 2019, and accepted for publication July 6, 2020.
+*Correspondence: julicher@pks.mpg.de
+Editor: Rohit Pappu.
+SIGNIFICANCE One of the main features of cells is their ability to stringently control cytosolic pH so that many processes in the cytosol can occur at a fixed pH value. A failure in controlling the pH in yeast cells, for example, leads to a widespread formation of macromolecular assemblies. One likely mechanism responsible for the formation of such assemblies is phase separation. Thus, developing a theoretical understanding of how pH affects liquid-liquid phase separation is of high relevance in biological context. Our manuscript presents a generic treatment of phase separation for systems undergoing chemical reactions, which are, in turn, controlled by pH. Our model provides an important step toward the understanding of pH-controlled protein phase separation in living cells.
+1590 Biophysical Journal 119, 1590–1605, October 20, 2020
+https://doi.org/10.1016/j.bpj.2020.07.044 Ó 2020 Biophysical Society.
+
+
+provides a protective mechanism that helps cells to survive periods of nutrient depletion until conditions improve and nutrients become available again. The biophysical mechanism responsible for this transition has been linked to changes in the cytosolic pH. The effects of pH on yeast cells can be described as follows. During nutrient depletion, a yeast cell does not have sufficient resources to supply proton pumps that are responsible for regulating the intracellular pH. As a result, in an acidic environment, natural for yeast habitat, the pH of the cytoplasm drops, and many cytosolic proteins become insoluble. If the resulting protein condensates occupy a large volume fraction of the cytoplasm, the cytoplasm can transition from a fluid-like to a solid-like arrested state. This observation suggests that the reduction of pH triggers phase separation of proteins from solution. Interestingly, in this case, phase separation is triggered as the pH of the solution moves closer to the isoelectric points of many cytosolic proteins. This raises the question of how pH changes and, in particular, pH values in the vicinity of the isoelectric point promote phase separation. More generally, we want to understand how chemical reactions related to pH couple to phase separation and to discuss how the formation of protein condensates can be regulated by changes in pH. To address this question, we present a simplified thermodynamic framework to study the influence of pH on liquidliquid phase separation in regimes relevant for the formation of protein condensates in cells. The key idea of our framework is to couple a system capable of undergoing phase separation with a set of chemical reactions corresponding to the protonation or deprotonation of water components and macromolecules such as proteins. We consider two types of interactions, namely attractive effective interactions between oppositely charged macromolecules in the presence of counterions and salt and attractive interactions among neutral macromolecules that could be mediated, for example, by van der Waals or hydrophobic interactions. For simplicity, we consider the case of physiological salt concentration relevant to proteins inside cells, where the Debye length is typically smaller than the distance between charges along the macromolecules. In this case, interactions between charges are, to a good approximation, pairwise additive and therefore can be approximately captured by effective Flory-Huggins interaction parameters. Using conservation laws and chemical equilibrium conditions (13,14), we discuss an effective thermodynamic potential describing a system with pH as a thermodynamic variable (13–17). We then use this thermodynamic potential to determine the phase behavior of the system as a function of the molecular properties and pH. We find coexisting phases of different compositions of charged and uncharged macromolecules. We show that the compositions of the coexisting phases can be controlled by changing pH. Our work is related to but different from previous work on complex coacervation of polyelectrolytes (18–21), its dependence on pH
+(22–24), and the thermodynamics of chemical reactions (13,14). The manuscript is organized as follows. We first introduce a set of chemical reactions in which the charge state of a macromolecule is fixed by the pH of the system. We continue by defining the pH and showing its relation to the previously introduced chemical reactions. We then present the thermodynamics of multicomponent mixtures and discuss the parameter choices for our study. Afterwards, we study the thermodynamic equilibrium for a system with fixed pH, whereby using conservation laws, we identify the thermodynamic conjugate variables of the system that we use to construct the corresponding thermodynamic potential for fixed pH. To discuss chemical and phase equilibrium in our model, we introduce new composition variables and thermodynamic fields. We then analyze the phase behavior of the system, first at the isoelectric point and then as pH deviates from it. Finally, we conclude with a discussion of our results.
+METHODS
+Chemical reactions and pH in macromolecular systems
+We study a multicomponent mixture of macromolecules that can exist in three different charge states. Macromolecules with a maximal positive net charge þm are denoted by Mþ, those with maximal negative net charge m by M, and neutral macromolecules are denoted by M. We also consider water molecules H2O, hydronium ions H3Oþ, and hydroxide
+ions OH. We describe both protonation and deprotonation of the macromolecules, as well as the self-ionization of water, with the following chemical reactions:
+M þ m H3Oþ#M þ m H2O; (1a)
+M þ m H3Oþ#Mþ þ m H2O; (1b)
+H3Oþ þ OH#2 H2O: (1c)
+The average charge state of the macromolecules determined from the reactions defined in Eq. 1 is controlled by the pH of the mixture. The pH is defined as (25)
+pH 1⁄4  log10aHþ ; (2)
+with the relative activity of the proton aHþ given by
+aHþ 1⁄4 exp
+mHþ  m0
+Hþ
+kBT
+
+; (3)
+where kB is the Boltzmann constant, T is temperature, mHþ is the chemical
+potential of protons in the system, and m0
+Hþ denotes the chemical potential of protons in a reference state (26). The definition of pH in Eq. 2 refers to the proton activity. Protons in water are typically hydrated (27,28). At chemical equilibrium, the proton hydration reaction Hþ þ H2O # H3Oþ implies the relation mHþ 1⁄4 mH3Oþ  mH2O, where mH3Oþ is the chemical potential of the hydronium ions and mH2O is the chemical potential of water. Therefore, the proton activity (Eq. 3) can be written as
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1591
+
+
+aHþ 1⁄4 exp
+mH3Oþ  mH2O
+
+ m0
+H3Oþ  m0
+H2 O
+
+kBT ; (4)
+where the reference chemical potentials, m0
+H3Oþ and m0
+H2O define the pH scale. Standard choices for the reference chemical potentials are the chemical potential of the hydronium ions m0
+H3Oþ at strong dilution evaluated at a
+standard concentration (n0
+H3Oþ 1⁄4 1 M) and the chemical potential of pure
+water m0
+H2O (26). In the strong dilution limit, the proton activity is aHþ x
+nH3Oþ =n0
+H3Oþ , leading to pHx  log10nH3Oþ, where nH3Oþ denotes the con
+centration of the H3Oþ ions (see Appendix). In this work, we use Eqs. 2 and 4 to define the pH. Next, we describe a thermodynamic framework to quantify the effect of pH on phase-separation behavior in this macromolecular system.
+Thermodynamics of multicomponent mixtures
+We consider an incompressible multicomponent mixture in the (T, P, Ni) ensemble with temperature T, pressure P, and Ni denoting the number of particles of component i in the mixture. The corresponding thermodynamic potential is the Gibbs free energy G(T, P, Ni). The chemical potential is defined by mi 1⁄4 vG=vNi j T;P;Njsi, the entropy is S 1⁄4 vG=vT j P;Ni, and
+the volume of the system is V 1⁄4 vG=vP j T;Ni. By incompressibility, we mean that the molecular volumes of each component, vi 1⁄4 vV=vNi j T;P;Njsi, are independent of pressure and composition. The volume density of the Gibbs free energy is given by g(T, P, ni) 1⁄4 G(T, P, Ni)/V(Ni), where we have introduced the concentrations ni 1⁄4 Ni/V and the volume
+V(Ni) 1⁄4 P
+iviNi. The chemical potentials can then be calculated from the Gibbs free-energy density by
+mi 1⁄4 vi g  X
+k
+vg vnk
+nk
+!
+þ vg
+vni
+: (5)
+We study the multicomponent mixture using a Flory-Huggins mean-field free-energy model in which the Gibbs free-energy density reads (29,30)
+g 1⁄4 kBT
+X
+k
+nk lnðnkvkÞ þ X
+k
+wknk þ X
+k;l
+Lkl
+2 nknl þ P: (6)
+The logarithmic terms stem from the mixing entropy, wk denotes internal free energies of molecules of type k, and the interaction parameters Lkl describe the contribution to the free energy due to molecular interactions. Molecular interactions can outcompete the mixing entropy and cause the emergence of coexisting phases. Using the free-energy density (Eq. 6), the chemical potentials are
+mi 1⁄4 viðP  SÞ þ wi þ kBTðlnðniviÞ þ 1Þ þ X
+k
+Liknk; (7)
+where S is defined by
+S1⁄4X
+k;l
+Lkl
+2 nknl þ kBT
+X
+k
+nk: (8)
+In the multicomponent mixture, we consider that the indices i, k, and l run over the six components of the system, which are the three charge states of the macromolecules M, Mþ, and M as well as the three charge states of water H2O, H3Oþ, and OH. We further consider the molecular volumes of the macromolecules to be all equal, v 1⁄4 vM 1⁄4 vMþ 1⁄4 vM , where we have introduced the macromolecular volume v. We also consider the molec
+ular volumes of water and water ions to be the same, v0 1⁄4 vH2O 1⁄4 vH3Oþ 1⁄4 vOH , and denote them by v0. In our model, we do not explicitly account for the effects of salt and counterions. Salt and counterions neutralize each phase in a phase-separating system, and they lead to effective interactions among macromolecules. To have a minimal number of components, we implicitly capture the effects of salt and counterions by coarse-grained interaction parameters. These coarse-grained interaction parameters in general depend on temperature and pressure but, in our case, can also depend on salt conditions. Note that these interaction parameters also include the effects from counterion release. The presence of salt and counterions screens the electrostatic interactions, thus providing a characteristic length scale of the effective interaction potentials between charged macromolecules. The counterions mediate the interactions between oppositely charged macromolecules, hence leading to an effective interaction between them. These effective interactions between oppositely charged macromolecules are similar to the interactions that govern coacervations of oppositely charged polymers (18–24). Note, however, that in our case, only one species of macromolecules is involved, which in aqueous solution can occur in different charge states. To simplify the description of the effects of pH, we consider the case in which electrostatic interactions among the macromolecules are strongly screened, and thus, interactions are essentially pairwise additive. This is a good approximation for physiological salt concentrations and for in vitro experiments in physiological buffer with Debye length shorter than a nanometer. Attractive interactions between neutral macromolecules are governed by van der Waals interactions. The effective interactions in our system are captured by the interaction matrix Lij. We consider all effective interactions Lij 1⁄4 0 except for those between positively and negatively charged macromolecules, which we choose as LMMþ 1⁄4 LMþM 1⁄4 vce/e and the effective interaction between neutral macromolecules given by LMM 1⁄4 2vcn/e. Here, we have introduced the molecular volumes ratio e 1⁄4 v0/v as well as ce and cn, which are Flory-Huggins interaction parameters characterizing the strength of charge-charge and neutral-neutral interactions, respectively; with this choice, the interaction parameters describe the interaction scale corresponding to a water molecule. Attractive interactions are described by negative values of these interaction parameters, which we will vary in our study of phase behavior. In the following, we study the system at chemical equilibrium for a fixed pH.
+Chemical equilibrium at fixed pH
+We start by stating the conservation laws for a system undergoing the reactions given in Eq. 1 and choose the conserved quantities as independent composition variables at chemical equilibrium. We then use these independent composition variables to identify the thermodynamic conjugated variables at chemical equilibrium. We finalize the section by constructing a thermodynamic potential that describes the system at a fixed pH value.
+Chemical conservation laws
+We consider a system with s different molecular species. If there are r different chemical reactions taking place, there exist c 1⁄4 s  r independent composition variables. Here, s 1⁄4 6, and the number of independent reactions is r 1⁄4 3; therefore, the number of independent composition variables is c 1⁄4 3. These independent composition variables can be chosen as conserved quantities during chemical reaction events. Although the number of independent composition variables is fixed, there is no unique choice of conserved variables (13,14). We choose to use the total number of macromolecules in the system N, the amount of oxygen Ns, and the net charge involved in the chemical reactions Nq (see Appendix), given as
+N 1⁄4 NM þ NM þ NMþ ; (9a)
+Adame-Arana et al.
+1592 Biophysical Journal 119, 1590–1605, October 20, 2020
+
+
+Ns 1⁄4 NH3Oþ þ NOH þ NH2O; (9b)
+Nq 1⁄4 NH3Oþ  NOH þ mðNMþ  NM Þ: (9c)
+Note that the net charge is neutralized by counterions that are not explicitly considered in the simplified model.
+Conjugate thermodynamic variables at chemical equilibrium
+Here, we discuss conditions for chemical equilibrium in terms of the conserved variables defined in Eq. 9 (13,14). We use the variable transformation ðNM; NH3Oþ; NH2OÞ / (N, Ns, Nq) to eliminate NM, NH3Oþ, and NH2O.
+The differential of the Gibbs free energy dG 1⁄4 SdT þ VdP þ P
+i mi dNi after this variable transformation becomes
+dG 1⁄4  S dT þ V dP þ mM dN þ mH2O dNs
+þ mH3Oþ  mH2O
+dNq
+þ mM þ m mH3Oþ  mM  m mH2O
+ dNM
+þ mMþ þ m mH2O  mM  m mH3Oþ
+ dNMþ
+þ mH3Oþ þ mOH  2mH2O
+ dNOH :
+(10)
+If the system has reached chemical equilibrium, the variations dG with respect to changes in the nonconserved composition variables NMþ , NM , and NOH must vanish. As a result, the chemical equilibrium conditions (31) are
+mM þ m mH3Oþ 1⁄4 mM þ m mH2O; (11a)
+mM þ m mH3Oþ 1⁄4 mMþ þ m mH2O; (11b)
+mH3Oþ þ mOH 1⁄4 2 mH2O: (11c)
+Using the chemical equilibrium conditions, the differential of the Gibbs free energy at chemical equilibrium is therefore
+dG 1⁄4  S dT þ V dP þ mM dN þ mH2O dNs
+þ mH3Oþ  mH2O
+dNq; (12)
+which explicitly shows that the Gibbs free energy at chemical equilibrium has the dependence G(T, P, N, Ns, Nq). This allows us to identify pairs of conjugate thermodynamic variables. From Eq. 12, we identify the conjugate thermodynamic variables to the composition variables (N, Ns, Nq) as ðmM; mH2O; mH3Oþ  mH2OÞ, respectively. These conjugate variables are used to obtain Legendre transforms of the thermodynamic potentials at chemical equilibrium (13).
+Thermodynamic ensemble for fixed pH
+We describe the system in an ensemble with pH as a variable using a Legendre transform such that the thermodynamic potential depends on
+mH3Oþ  mH2O:
+GT; P; N; Ns; mH3Oþ  mH2O
+ 1⁄4 G  mH3Oþ  mH2O
+Nq:
+(13)
+The differential of G reads
+dG 1⁄4  SdT þ VdP þ mM dN þ mH2O dNs
+ Nq dmH3Oþ  mH2O
+: (14)
+We now clarify why fixing this chemical potential difference and the temperature sets the pH value of the system. Using Eqs. 2 and 4, we can express the pH as
+pH 1⁄4
+mH3Oþ  mH2O
+
+ m0
+H3Oþ  m0
+H2 O
+
+kBT log10e; (15)
+where it is explicitly shown that the pH of the system is set by the relative chemical potential of hydronium ions with respect to water, mH3Oþ  mH2O, and the temperature T of the system. We can also define the corresponding free energy in the isochoric ensemble as
+F 1⁄4 G  mH3Oþ  mH2O
+Nq  PV; (16)
+which has the following differential form
+dF 1⁄4  SdT  PdV þ mM dN þ mH2O dNs
+ Nq dmH3Oþ  mH2O
+: (17)
+In our system, the volume V can be expressed in terms of the conserved quantities as V 1⁄4 vN þ v0Ns, leading to dNs 1⁄4 dV/v0  vdN/v0. We can then reduce the number of independent variables and rewrite the differential form of F as
+dF 1⁄4  S dT  P dV þ mM dN  Nq dmH3Oþ; (18)
+where we have introduced the exchange chemical potentials mM of neutral macromolecules and mH3Oþ of hydronium ions, as well as the osmotic pressure P, (32,33), which are defined by
+mi 1⁄4 mi  vi
+v0
+mH2O; (19)
+P 1⁄4 P  mH2O
+v0
+; (20)
+where i 1⁄4 M or H3Oþ. The free energy FðT; V; N; mH3OþÞ depends only on the temperature T, the volume V, the total macromolecule particle number N, and the exchange chemical potential of the hydrogen ions mH3Oþ. In addition to introducing the corresponding thermodynamic potential F, which describes an incompressible system with a fixed pH value, we have reduced our multicomponent system description from six components undergoing three independent chemical reactions to an effective binary mixture with the total macromolecule density n 1⁄4 N/V as the only relevant composition variable. We can now ask how the pH affects phase separation.
+Control of phase separation by pH
+In the following, we discuss how the pH controls both chemical and phase equilibrium in our system. We start by discussing the chemical equilibrium conditions (Eq. 11) in terms of newly defined composition variables and thermodynamic fields. After discussing the chemical equilibrium conditions in terms of the pH and the newly defined fields, we provide the conditions for phase equilibrium for a system described by the corresponding thermodynamic potential defined by Eq. 16. We end the section by showing a construction of the coexisting phases for a given choice of parameters.
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1593
+
+
+Thermodynamic fields controlling chemical equilibrium
+We are now interested in discussing how the pH and other parameters influence the chemical equilibrium described by Eq. 11. To do so, we introduce thermodynamic fields and composition variables that allow us to interpret the chemical equilibrium conditions intuitively. Let us first introduce the following composition variables
+n 1⁄4 nMþ þ nM þ nM; (21)
+f 1⁄4 nMþ þ nM
+2n ; (22)
+j 1⁄4 nMþ  nM
+2n : (23)
+These composition variables express the total concentration of macromolecules n, the fraction of charged macromolecules f, and the difference between concentrations of oppositely charged macromolecules relative to the total number of macromolecules j. It is convenient to make a rearrangement of the chemical equilibrium conditions (Eq. 11) as follows:
+mMþ þ mM 1⁄4 2 mM; (24a)
+mMþ  mM 1⁄4 2m mH3Oþ  mH2O
+; (24b)
+mH2O  mOH 1⁄4 mH3Oþ  mH2O; (24c)
+where we see that the right-hand sides of Eqs. 24b and 24c are determined by the pH. We now write the conditions Eqs. 24a and 24b in terms of the composition variables using the expressions of the chemical potentials (Eq. A8 given in the Appendix), leading to
+kBTln f2  j2
+ð1  2fÞ2 þ 2vcenf
+e  4vcnnð1  2fÞ
+e 1⁄4 hf; (25)
+kBTln f þ j
+f  j  2vcenj
+e 1⁄4 hj; (26)
+where we have defined
+hf 1⁄4 2wM  wMþ  wM ; (27)
+hj 1⁄4 2m mH3Oþ  mH2O
+  wMþ þ wM : (28)
+These quantities play the role of fields controlling the chemical equilibrium and phase-separation behavior of the system. The molecular field hf characterizes which of the macromolecular charge states is energetically favored because of their internal free energies wi, whereas the field hj expresses deviations of the pH from its value at the isoelectric point (pI) of the macromolecules. Remember that the isoelectric point is the value of the pH for which macromolecules are, on average, neutral. Thus, in our system, the isoelectric point is defined as the value pI of the pH at which the charged macromolecules obey, nMþ 1⁄4 nM , or equivalently j 1⁄4 0, which implies hj 1⁄4 0 via Eq. 26. Using Eq. 15, we find an expression for the pI value:
+pI 1⁄4 wMþ  wM
+2mkBT  m0
+H3Oþ  m0
+H2O
+kBT
+!
+log10e: (29)
+We can therefore express the field hj in terms of the pH and the pI as follows:
+hj
+kBT 1⁄4 2m
+log10e ðpI  pHÞ; (30)
+which explicitly shows how hj characterizes deviations of the system from its isoelectric point. For given hf and hj, the composition variables f and j can be determined from Eqs. 25 and 26 as a function of the total macromolecule density n, the temperature T, and the pH. One symmetry can be identified in Eqs. 24a and 24b, namely that the system behaves identically under the transformation j / j and hj / hj, which will be reflected in the phase diagrams as a function of deviations from the isoelectric point. This symmetry stems from both, considering that positively and negatively charged macromolecules have the same interaction with the rest of the components as well as from choosing their molecular volumes to be the same. Changing any of the two previously mentioned conditions would break this symmetry. We must note that in a more realistic scenario, there would be differences in solvation of the two different charged states of the macromolecule (34). We find the concentrations of water components by using the chemical equilibrium condition corresponding to the self-ionization of water reaction and Eqs. A8d and A8f given in the Appendix. We then express the concentrations nH3Oþ, nOH , and nH2O in terms of two new fields, hH and hO, which only depend on the molecular properties of the water components and the pH of the system (the definitions of these fields, as well as explicit formulas for the concentration of water components, are provided in the Appendix). We have shown that chemical equilibrium can be fully accounted for by the internal free energies of all species wi, which we take to be constant; the temperature T; the pH (or equivalently the chemical potential difference mH3Oþ  mH2O); and the total macromolecule concentration n. Using Eqs. 25 and 26, we then obtain a free-energy density f ðT; n; mH3OþÞ, from which phase diagrams can be obtained by a Maxwell construction in the total concentration of macromolecules n (see Fig. 1). For a discussion of the coexistence conditions, we refer the reader to the Appendix.
+RESULTS
+Phase diagrams at the isoelectric point
+In this section, we investigate different phase diagrams that can be obtained by varying the temperature and the total number of macromolecules, keeping the system at its isoelectric point. To discuss the effects of temperature, we use a weighted sum of the interaction parameters c 1⁄4 ce þ 4cn, the ratio of interaction parameters l 1⁄4 2cn=ce þ 4cn, and the molecular field hf and rewrite Eq. 25 and Eq. A1 in the following compact way:
+hf 1⁄4 2kBTln f
+ð1  2fÞ þ 2cnðf  lÞ
+e ; (31)
+Adame-Arana et al.
+1594 Biophysical Journal 119, 1590–1605, October 20, 2020
+
+
+vf T; n; mH3Oþ
+ 1⁄4 kBT
+
+2nf lnðnfÞ
+þ nð1  2fÞlnðnð1  2fÞÞ
+þ1
+e ð1  nÞln
+ 1n
+1 þ ehH=kBT þ ehO=kBT
+
+þ ce1n2f2  2lf þ l  2  hfnf
+þ
+
+wM  wH2O
+e
+
+n þ wH2O
+e:
+(32)
+where n 1⁄4 nv is the total macromolecular volume fraction. We further consider attractive interactions c < 0 and l > 0. To construct phase diagrams as a function of temperature, we rescale all the variables that have energy units with kBT0, where T0 is a reference temperature. Free-energy minimization at constant hf, c, l, e, hH, hO, and T, together with a common tangent construction, leads to different possible topologies of phase diagrams, which are summarized in Figs. 2 and 3. For 2c(1/2  l) > e hf or e hf > 2cl, the diagram has the same topology as that of a simple two-component mixture (35) (see Fig. 2, a, d, e, and h). At low temperature,
+the system demixes in a low-density and a high-density phase. For ehf << 2c(1/2  l), the proportion of charged molecules is exponentially small, and the system behaves like a neutral polymer solution. In this case, the system separates into a low-density phase and a high-density phase composed essentially of neutral macromolecules f x 0. The coexistence curve is bell shaped, and by construction, the tie lines are parallel to the n axis. The point at which the tangent is parallel to this axis is a critical point (Fig. 2, a and e). It belongs to the same universality class as a liquid-vapor critical point. For ehf >> 2cl, the concentration of neutral molecules is exponentially small, and the system demixes between a low-density phase and a high-density phase composed essentially of charged molecules f x 1/2. Again, the coexistence curve is bell shaped, and one observes the existence of an isolated critical point (Fig. 2, d and h). In both limits, the mean-field calculation of the critical coordinates can be done analytically. The details are given in the Appendix. In these limits, the critical values are given by
+nb
+c1⁄4
+pffieffi
+1 þ pffieffi ; for f 1⁄4 0 and f 1⁄4 1
+2; (33a)
+a
+c
+b
+FIGURE 1 Chemical equilibrium conditions and free-energy density at chemical equilibrium. Multiple solutions are found for f (a) and j (b) as a function of the total macromolecule volume fraction n, enabling the system to exhibit phase separation between different branches of the chemical equilibrium. The blue solid lines correspond to equilibrium concentrations at which the system remains homogeneous, the orange solid lines represent solutions to the chemical equilibrium relations that are metastable states, and the dotted red line shows the unstable states. (c) Maxwell construction for the dimensionless freeenergy density vf /kBT is shown as a function of the total macromolecule volume fraction; the green line describes the region of macromolecule volume fraction where the system split into two phases, with different compositions given by the green circles. Parameters ce/kBT 1⁄4 3, cn 1⁄4 0, pI  pH 1⁄4 0.2, hf/kBT 1⁄4 10, and ε 1⁄4 0.1 apply to all panels. To see this figure in color, go online.
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1595
+
+
+FIGURE 2 Topologies of the phase diagrams for varying values of the normalized molecular field ~hf 1⁄4 hf/kBT0 defined in Eq. 27, where T0 is a reference temperature. (a–d) Phase diagrams for a system in which charge-charge interactions are slightly stronger than neutral-neutral interactions are given. (e–h) Phase diagrams for a system in which neutral-neutral interactions are slightly stronger than charge-charge interactions are given. The binodals are given by the colored points, which denote coexisting phases. Tie lines (gray solid lines) connect coexisting phases and are horizontal. The regions within the binodals undergo a demixing transition, whereas the regions outside the binodal lines remain well mixed. The critical points at which phases become indistinguishable are denoted by black circles, first-order transition points at which there is a discontinuity in the value of f are denoted by white circles, and triple points are denoted by black diamonds. A thorough explanation of the phase diagrams is given in the main text. Parameters c 1⁄4 8.5 and ε 1⁄4 0.1 apply to all panels. The color bar indicates the value of the charged fraction of macromolecules 2f. To see this figure in color, go online.
+Adame-Arana et al.
+1596 Biophysical Journal 119, 1590–1605, October 20, 2020
+
+
+kTb
+c 1⁄4  2cn
+ð1 þ pffieffi Þ2 ; for f 1⁄4 0; (33b)
+and
+kTb
+c 1⁄4  ce
+2ð1 þ pffieffi Þ2 ; for f 1⁄4 1
+2; (33c)
+where we have used the condition for critical points, v2f =vn2 1⁄4 0 and v3f =vn3 1⁄4 0. We refer hereafter to these coexistence regions as quasibinary regions. For intermediate values of the molecular field, 2c(1/2  l) ( e hf ( 2cl, the possible topologies of phase diagrams are more complex. Increasing the value of hf from
+very large negative values toward positive values leads to the emergence of a second coexistence region (Fig. 2, b and f). This coexistence region, disconnected from the quasibinary region, is bounded by a critical point and it is connected to the n 1⁄4 1 axis at a single point, at which the tie line span vanishes. The transition point corresponds to a first-order transition on the n line, on which f undergoes a discontinuity. A second coexistence region emerges via a critical point, the values of which are given by (Fig. 3, a and d)
+fc 1⁄4 1
+4; (34a)
+kTc 1⁄4  c
+8e; (34b)
+a
+b
+c
+d
+e
+f
+FIGURE 3 Critical behavior on the n 1⁄4 1 line. (a–c) Derivative of the free energy with respect to f for different temperature values is shown. (a) Inflection
+point corresponding to the critical point defined in Eq. 34 is shown as a solid black circle. The black dotted line shows the value of ~hf 1⁄4 ~hc
+fx 23.23. (b) Emergence of a maximum and a minimum for T < Tc is shown; coexisting phases are shown as two colored circles (the color encodes their value of f). (c)
+Derivative of the free-energy density is shown for T/T0 1⁄4 0.2, implying T/Tc << 1. (d–f) Phase diagrams for fixed ~hf 1⁄4 hf/kBT0 in the vicinity of the transition point at n 1⁄4 1 are given. (d) The solid black circle is the isolated critical point defined in Eq. 34 corresponding to (a). (e) The phase coexistence lines shown in blue and red end on the n 1⁄4 1 line at the first-order transition point (open circle) defined in (b). (f) The coexistence region connected to the n 1⁄4 1 axis merges with the quasibinary region, leading to the appearance of two triple points (black diamonds in f). Parameters c 1⁄4 8.5, l 1⁄4 0.2, and ε 1⁄4 0.1 apply to all panels. T0 is a reference temperature with Tc/T0 x 10.6. To see this figure in color, go online.
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1597
+
+
+hf;c 1⁄4 cð2 þ lnð2Þ  8lÞ
+4e ; (34c)
+The two-phase region collapses to one point on the n 1⁄4 1 line in both the first-order and in the second-order scenarios; this results from the existence of only one singularity in f on the n 1⁄4 1 line. Note that hf,c can be either positive or negative, so that one can have a critical point on the n 1⁄4 1 line both in the neutral and in the charged regimes; see Appendix. For some values of hf, with hf > hf,c, the two coexistence regions merge (Fig. 2, c and g). Depending on l, there may be two different generic scenarios. We first explain what happens for l < 1/4. In this case, the two regions merge, giving rise to two triple points (Fig. 3 f). The two triple points have a low-density phase enriched in neutral macromolecules coexisting with both an intermediate phase with a large macromolecule concentration, which is also rich in neutral macromolecules, and with a macromolecule dense phase of essentially charged macromolecules. For e hf > 2c(1/4  l), one triple point and the first-order transition point vanish. This bound for hf is found by solving the coexistence conditions at n 1⁄4 1 for T 1⁄4 0. For increasing values of hf, the remaining triple point moves toward and eventually merges with the critical point of the quasibinary region, leading to a coexistence region that has only one critical point (Fig. 2 c). Finally, for larger values of hf, the system behaves as a binary mixture of charged macromolecules and solvent (Fig. 2 d). In contrast, for l > 1/4 and hf > hf,c, when the two regions merge, there is only one triple point at which two phases that are essentially enriched in charged macromolecules coexist with a high-concentration phase enriched in neutral macromolecules (Fig. 2 g). For larger values of hf, the triple point vanishes together with the first-order transition point at T 1⁄4 0 and e hf 1⁄4 2c(1/ 4  l). This vanishing leads again to the quasibinary mixture of charged macromolecules and solvent (Fig. 2 h). The existence of a transition point on the n 1⁄4 1 line leads to the different topologies of the phase diagrams (Fig. 3). To understand the behavior of this point, we analyze the derivative of the free-energy density with respect to f at n 1⁄4 1, in particular for l 1⁄4 0.2 (Fig. 3, a–c). At the critical temperature, Eq. 34b, there is an inflection point (Fig. 3 a), which translates into a critical point for hf 1⁄4 hf,c at T 1⁄4 Tc (Fig. 3 d). For lower values of the temperature, T < Tc, one finds a first-order transition point at hf > hf,c, at which two phases coexist at n 1⁄4 1 (Fig. 3, b and e). For lower temperatures, the region that extends from the first-order transition point merges with the rest of the phase diagram (Fig. 3 f), and the derivative of the free-energy density becomes increasingly dominated by a linear term in f, given by 2c(f  l)/e (Fig. 3 c). For T 1⁄4 0, there is a corresponding value of the molecular field, e hf 1⁄4 2c(1/4  l), for which we find a solution to the coexistence conditions. For values
+ehf > 2c(1/4  l), there is no longer a transition point at n 1⁄4 1. We only focus on l 1⁄4 0.2 because the behavior of the transition point at n 1⁄4 1 is similar for l > 0.25. Now that we have developed a detailed understanding of phase diagrams at the isoelectric point, we can use the developed framework to study the effects of varying pH.
+Phase separation for varying pH
+Here, we study how deviations in pH with respect to the isoelectric point affect the phase behavior of the system while keeping the temperature constant. To this end, we study phase diagrams as a function of pI  pH (Eq. 30) and the total macromolecular volume fraction n. We construct phase diagrams for different values of the molecular field hf, the interaction strength among charged macromolecules ce, and the interaction strength among neutral macromolecules cn. Varying the pH in our model leads to very characteristic features in the phase diagrams that allow us to distinguish the dominant interaction driving phase separation. Let us first consider the case in which neutral molecules are energetically favored over charged molecules (hf 1⁄4 8, Fig. 4, a–c). In this case, a system with only chargecharge interactions (Fig. 4 a, cn 1⁄4 0) exhibits reentrant behavior when changing the pH where the corresponding domain in the phase diagram is enclosed by two critical points. Beyond these points, phase separation is not possible for any value of the macromolecular volume fraction n, whereas between the critical points, there is a range in n in which phase separation can occur. The degree of such phase separation is maximal at the isoelectric point pH 1⁄4 pI, which is characterized by the largest difference between coexisting phases in their macromolecular volume fraction, as well as in their charged fraction between coexisting phases. Deviating from the isoelectric point corresponds to lowering the amount of one of the charged components (j s 0, Eq. 23). This change in the relative composition between charged macromolecules decreases the interaction term among charged components (proportional to nþn) and thereby lowers their propensity to phase separate. There is a small range in macromolecular volume fractions in which phase separation is absent at the isoelectric point but can be triggered by changing the pH value away from pI. This range strongly increases for stronger interactions among neutral macromolecules (cn more negative, Fig. 4 b). Such behavior for phase separation is unexpected because phase separation occurs despite an asymmetric ratio of the charged macromolecules. It emerges as a consequence of a reduction in the mixing entropy of the macromolecules by moving away from the isoelectric point, which, in turn, allows the system to phase separate at lower values of charged fraction of macromolecules f. Even though the system shows phase separation at lower macromolecular volume fraction, the region of phase separation decreases for increasing deviations from the isoelectric
+Adame-Arana et al.
+1598 Biophysical Journal 119, 1590–1605, October 20, 2020
+
+
+point. Increasing the attraction among neutral macromolecules even further leads to coexisting phases that are approximately composed of neutral macromolecules and solvent in a range of pH close to the isoelectric point (Fig. 4 c). Moreover, two discontinuous phase transition points emerge as the two critical points merge and vanish. In contrast to the previous two cases (Fig. 4, a and b), the broadest range in n in which phase separation occurs is not located at the isoelectric point (Fig. 4 c). We must recognize that having such symmetric phase diagrams for pH deviations below and above the pI is a consequence of our choice of parameters,
+i.e., the charged macromolecules Mþ and M have equal molecular volumes and no interactions with the remaining components. Note that the internal free energies wMþ and wM only affect the value of the pI, not the symmetry of the phase diagrams around the pI. We now discuss the effects of pH variations for a system in which charged macromolecules are energetically favored over neutral ones. We start considering a mixture without neutral-neutral interactions (Fig. 4 d) that exhibits a behavior at the pI resembling a binary mixture of charged macromolecules and solvent (Fig. 2, d and h). For values of pH away
+ad
+e
+f
+b
+c
+FIGURE 4 Phase behavior as a function of pH for fixed interaction strength between charges ce/kBT 1⁄4 3.5 and varying values of the interaction strength cn 1⁄4 cn/kBT between neutral macromolecules. (a–c) Phase diagrams with neutral macromolecules energetically favored (hf/kBT 1⁄4 8) are given. (a) In the absence of neutral-neutral interactions, there is a small region in the diagram where there is reentrant phase-separation behavior. (b) Small values of neutralneutral interactions lead to a reduction of the demixing region. (c) Increasing the neutral-neutral attraction even further, the two critical points merge, and two first-order transition points appear at n 1⁄4 1; these points have a discontinuity in f and j. (d–f) Phase diagrams with charged macromolecules energetically favored (hf/kBT 1⁄4 0) are given. (d) An effective binary mixture at the pI shows a simple mixing behavior while deviating from the isoelectric point. (e) For large enough interactions between neutral macromolecules, a second disconnected region appears; such a region ends in two first-order transition points at n 1⁄4 1. (f) Increasing the neutral-neutral interactions further, the two regions merge, giving rise to a broadening of the demixing region while the critical points vanish and the coexistence region connects to the n 1⁄4 1 line with two first-order transition points at which f and j have a discontinuity. Parameters ε 1⁄4 0.1 and m 1⁄4 1 apply to all panels. The color bar indicates the value of the charged fraction of macromolecules 2f. To see this figure in color, go online.
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1599
+
+
+from the isoelectric point, we observe a monotonic decrease of the macromolecular order parameter, as well as a fairly constant charged fraction composition in both phases until they meet at two symmetric critical points. After switching on an attractive interaction among neutral macromolecules, a second phase-separation region appears at larger values of the total macromolecular volume fraction n (Fig. 4 e). This region is characterized by a high-density phase mostly composed of neutral macromolecules coexisting with a phase rich in charged macromolecules. These two phases meet at two first-order transition points (open symbol, Fig. 4 e). The appearance of this region is a consequence of having an attraction among neutral macromolecules and charged macromolecules, respectively, favoring phase separation dominantly between both, whereas the solvent is of rather similar concentration in the coexisting phases. Interestingly, the two regions behave independently from each other when increasing the attraction between macromolecules because each region is associated with a different solution of chemical equilibrium (Fig. 1). While increasing the attraction further, the two regions merge (Fig. 4 f). This merging leads to a broad region of phase separation corresponding to a large difference in the fraction of charged macromolecules and solvent as well as the vanishing of the two critical points. The high-density phase is made of neutral macromolecules that coexist with a low-density phase composed of solvent and charged macromolecules. We show the behavior of j along the binodal lines in the same phase diagrams as in Fig. 4 in the Appendix. One typical feature of most phase diagrams (Fig. 4, a, b, and d–f) is that the broader region of phase separation exists in the vicinity of the isoelectric point. The region of phase separation shrinks when deviating from the pI because of a decrease in interaction energy among charged macromolecules (Fig. 4, a and d) or in the interaction energy among both charged macromolecules and neutral molecules
+(Fig. 4, b, e, and f). There is only one clear exception among these phase diagrams (Fig. 4 c), in which the phase-separation region slightly increases for pH values away from the isoelectric point. The increase is due to the emergence of another stable chemical branch that lowers the free energy by an increase in the mixing entropy in the low-density phase and increasing the interaction among neutral macromolecules in the high-density phase. One interesting feature of the phase diagrams is that when the neutral-neutral interactions become dominant, i.e., the phase behavior at the isoelectric point is mainly driven by the interaction among neutral macromolecules, we observe the vanishing of the critical points, giving rise to phase diagrams that only have firstorder transitions. The dominant interaction thus defines the topology of the phase diagram as a function of pH. Finally, we study a more realistic scenario in which the maximal net charge of the macromolecules m is chosen to be m 1⁄4 50, which is close to the net maximal charge of some proteins that respond to pH changes and that are found in the so-called stress granules (9,36). The proteins Sup35 and Pab1, which respond to pH changes, have net charges within this range, and the total number of charges is approximately as high as 184 for Sup35. It is known that the net charge of an intrinsically disordered protein in general differs from the estimations that are only based on their amino acid sequence (37). Thus our choice is just a rough estimate of the maximal net charge. In this scenario, for simplicity we only consider interactions between oppositely charged macromolecules, which in this case are given by ce/ e 1⁄4 azkBT, where z is the total number of charges of the macromolecule and a is a factor describing the contribution of each fixed charge of the macromolecules to the interaction (we use the value a 1⁄4 7.5, as reported in (38)). We study the system for three different values of the total number of charges in the macromolecule z and choosing e 1⁄4 0.002 (Fig. 5) motivated by a volume ratio of water molecules
+ab
+FIGURE 5 Binodal lines for different choices of the total number of charges on the macromolecules z with interactions ce/kBT 1⁄4 azε. The shaded region within the binodals is the region where macromolecules undergo a demixing transition, whereas the region outside is where the system remains homogeneously mixed. (a) Phase diagram as a function of the total macromolecule volume fraction n and deviations from the isoelectric point pH  pI is given. (b) The same diagram as in (a) is shown, but as a function of the total macromolecule molar concentration n. Parameters ε 1⁄4 0.002, hf/kBT 1⁄4 10, and a 1⁄4 7.5 apply to both panels. To see this figure in color, go online.
+Adame-Arana et al.
+1600 Biophysical Journal 119, 1590–1605, October 20, 2020
+
+
+and a typical protein. For all values of z considered, there exists a broad region of phase separation at the isoelectric point (Fig. 5). The coexistence becomes broader for increasing values of z because of an increase in the interaction strength. Our minimal model predicts that at the isoelectric point, a mixture of macromolecules with a large total number of charges will phase separate over a large concentration range. Finally, we also show that reducing z can lead to a drastic reduction of the concentration range in which the system undergoes phase separation (Fig. 5 b).
+DISCUSSION
+In this manuscript, we have established a thermodynamic framework to study liquid-liquid phase separation in a system in which the pH is controlled. We started by introducing chemical reactions controlling the charge states of macromolecules, which are in turn determined by the pH value of the mixture. Using conservation laws for a system undergoing chemical reactions, we identified the effective thermodynamic conjugate variables at chemical equilibrium. We then found the relevant thermodynamic variables controlling the pH of the system, namely the chemical potential difference, mH3Oþ  mH2O, and the temperature T. That allowed us to construct the corresponding thermodynamic potential for a system with a fixed pH value by means of a Legendre transform that makes mH3Oþ  mH2O a natural variable of the corresponding free energy. Based on this thermodynamic potential, we showed how the chemical and phase equilibrium are controlled by the pH of the system and calculated the corresponding phase diagrams. We found that phase separation typically occurs around pH values corresponding to the isoelectric point pI. This finding could be relevant to processes in living cells because many cytosolic proteins have a similar isoelectric point. For example, in yeast cells, many proteins exhibit isoelectric points around pH x 5.3 and pH x 9 (12). Thus, our finding of phase separation around the pI is consistent with observations in yeast cells (12), in which many proteins separate from the cytosol once the pH is lowered to pH x 5. Using typical parameters for cellular proteins (Fig. 5), we find
+that phase separation occurs from concentrations ranging from micromolars, corresponding to a typical saturation concentration of phase-separating cellular proteins (9,11),
+to millimolars. Our model is also in agreement with phase separation for a concentration of the order of 1 mM, which is an estimation of the total concentration of proteins in yeast (39). Note that phase separation is lost at both low and high concentrations, which can be understood from the analogy with the quasibinary mixture shown in Fig. 2, a and e. We further predict that upon decreasing pH even more, reentrant behavior leading to a mixed state will be observed. Recently, it was shown that a reduction of intracellular pH below 6.5 leads to the dissolution of keratohyalin granules in skin cells, which is an important step in skin homeostasis (40). Filaggrins are a key protein component of keratohyalin granules. Interestingly, these proteins have a particularly high isoelectric point of about pI x 10 (41). As the pH is reduced, this protein becomes increasingly charged, leading to dissolution of protein condensates, which agrees with our theory. In this work, we have focused on the effects of pH on protein phase separation at thermodynamic equilibrium. However, cells provide a nonequilibrium environment, and phase separation can be affected by active processes. In the future, we will consider extending our approach to such out of equilibrium situations. Moreover, our model could be extended to explicitly account for the densities of salt and counterions to study their impact on the shape of the phase diagrams (42,43). Furthermore, when explicitly keeping counterion densities and relaxing the condition of equal pH values in both phases, the charge neutrality condition leads to the emergence of pH and electric potential differences between coexisting phases (18,44,45). The consequences of these differences in the physical properties and possible functions of protein condensates remain to be studied.
+APPENDIX
+Phase coexistence in the pH ensemble
+We are interested in describing the phase behavior of the system in the pH ensemble. To this end, we make use of the composition variables n, f, and j and the fields hf, hj, hH, and hO. Using Eq. 16, we define the free-energy density f ðT; n; mH3OþÞ 1⁄4 FðT; V; N; mH3OþÞ=V, which reads
+where the functions fðT; n; mH3OþÞ and jðT; n; mH3OþÞ are defined implicitly in Eqs. 25 and 26 in terms of the temperature T, the exchange chemical potential of hydronium ions mH3Oþ, and the total macromolecule density n.
+f T; n; mH3Oþ
+ 1⁄4 kBT
+
+nðf þ jÞlnðvnðf þ jÞÞ þ nðf  jÞlnðvnðf  jÞÞ þ nð1  2fÞlnðvnð1  2fÞÞ
+þ1
+v0
+ð1  vnÞln
+ 1  vn
+1 þ ehH=kBTþhj=2mkBT þ ehO=kBThj=2mkBT
+
+þv
+εcen2f2  j2
+þv
+εcnn2ð1  2fÞ2  hfnf  hjnj þ wMn þ wH2O
+v0
+ð1  vnÞ;
+(A1)
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1601
+
+
+The phase coexistence conditions for this incompressible system at fixed temperature T and at a fixed pH value can be obtained by a Maxwell construction. It follows from Eq. 18 that the exchange chemical potential of neutral macromolecules is given by mM 1⁄4 vf =vn T;mH3Oþ and that the
+osmotic pressure is given by P 1⁄4 f  nvf =vn T;mH3Oþ. Using the free-en
+ergy density f, we write the phase equilibrium conditions describing equal exchange chemical potentials of the neutral macromolecules and equal osmotic pressures in both phases (46):
+mM
+nI 1⁄4 mM
+nII; (A2a)
+mM
+nI 1⁄4 f ðnIIÞ  f ðnIÞ
+nII  nI ; (A2b)
+where the superscripts I, II denote the two coexisting phases. We did not write the explicit dependence of the relative chemical potential mM and of the free-energy density f on the temperature T and on the relative chemical potential mH3Oþ. These conditions correspond to the common tangent construction (46). We can find the coexisting phases by first calculating the values of f and j using Eqs. 25 and 26 (see Fig. 1, a and b), and then by doing a common tangent construction for the free-energy density (Eq. A1) evaluated as a function of the total macromolecule volume fraction n 1⁄4 vn (Fig. 1 c). The phase diagrams can then be readily constructed by repeating the steps described above for different parameter values.
+pH in diluted systems
+We now show that the definition of pH given in Eq. 15 is equivalent to the most commonly used definition pH 1⁄4 log10ðnH3Oþ =n0
+H3Oþ Þ, which only
+applies for ideal solutions of H3Oþ and OH in water. In the absence of macromolecules and considering ideal solution conditions, the chemical potentials of water mH2O and of hydronium ions mH3Oþ can be expressed as
+mH2O 1⁄4 v0P þ wH2O; (A3)
+mH3Oþ 1⁄4 kBTlnv0nH3Oþ
+ þ vH3OþP þ wH3Oþ; (A4)
+where we assumed that the contribution of the ions to the volume V is negligible, i.e., taking the volume fraction of water v0nH2O 1⁄4 1. The stan
+dard chemical potentials m0
+H2O and m0
+H3Oþ are given by the following
+expressions
+m0
+H2O 1⁄4 v0P þ wH2O; (A5)
+m0
+H3Oþ 1⁄4 kBTln
+
+v0n0
+H3 Oþ
+
+þ vH3OþP þ wH3Oþ: (A6)
+Substituting Eqs. A3, A4, A5, and A6 in the definition of pH given in Eq. 15, we obtain
+pH 1⁄4  log10
+nH3Oþ
+n0
+H3 Oþ
+!
+: (A7)
+Chemical potentials
+Here, we write the explicit form of the chemical potentials, which are given by
+mM 1⁄4 kBTðlnðv nMÞ þ 1Þ þ 2 v
+ecnnM þ wM þ vðP  SÞ;
+(A8a)
+mMþ 1⁄4 kBTðlnðv nMþ Þ þ 1Þ þ v
+ecenM þ wMþ þ vðP  SÞ;
+(A8b)
+mM 1⁄4 kBTðlnðv nM Þ þ 1Þ þ v
+ecenMþ þ wM þ vðP  SÞ;
+(A8c)
+mH3Oþ 1⁄4 kBTlnv0nH3Oþ
+ þ 1 þ wH3Oþ þ v0ðP  SÞ;
+(A8d)
+mOH 1⁄4 kBTðlnðv0nOH Þ þ 1Þ þ wOH þ v0ðP  SÞ; (A8e)
+mH2O 1⁄4 kBTðlnðv0nH2OÞ þ 1Þ þ wH2O þ v0ðP  SÞ: (A8f)
+Choice of conserved quantities
+From the reaction scheme (Eq. 1), we identify three conserved components in every chemical reaction, which are
+N 1⁄4 NMþ þ NM þ NM; (A9)
+NH 1⁄4 3NH3Oþ þ mð2NMþ þ NMÞ (A10)
+þNOH þ 2NH2O
+and
+Ns 1⁄4 NH3Oþ þ NOH þ NH2O: (A11)
+The three conserved components are N, the total number of macromolecules; NH, the number of hydrogen atoms; and Ns, is the number of oxygen atoms. We can combine these equations to show that the partial charge involved in the chemical reactions Nq 1⁄4 NH  2Ns  mN is also a constant given by
+Nq 1⁄4 NH3Oþ þ mðNMþ  NM Þ  NOH : (A12)
+Concentration of water and its ions at chemical equilibrium
+Using Eqs. A8d, A8e, and A8f, the chemical potential difference mH3Oþ  mH2O, and Eq. 24c, we introduce two more fields controlling the relative concentrations of hydronium and hydroxide ions with respect to water molecules; these fields obey
+log
+nH3 Oþ
+nH2 O
+
+1⁄4 hH
+kBT þ hj
+2mkBT; (A13)
+Adame-Arana et al.
+1602 Biophysical Journal 119, 1590–1605, October 20, 2020
+
+
+log
+nOH
+nH2 O
+
+1⁄4 hO
+kBT  hj
+2mkBT; (A14)
+where the fields hH and hO are defined by
+hH 1⁄4 wMþ  wM
+2m  wH3Oþ þ wH2O; (A15)
+hO 1⁄4 wM  wMþ
+2m  wOH þ wH2O: (A16)
+We can go further and use the condition v0ns þ vn 1⁄4 1 and Eqs. A13, A14, A15, and A16 to express the concentrations of hydronium ions, hydroxide ions, and water molecules as a function of the total macromolecule density n, temperature T, and pH (or hj), given by
+nH2O 1⁄4 1  vn
+v0ð1 þ ehH=kBTþhj=2mkBT þ ehO=kBThj=2mkBT Þ;
+(A17)
+nH3Oþ 1⁄4 ð1  vnÞ ehH=kBTþhj=2mkBT
+v0ð1 þ ehH=kBTþhj=2mkBT þ ehO=kBThj=2mkBT Þ;
+(A18)
+nOH 1⁄4 ð1  vnÞ ehO=kBThj=2mkBT
+v0ð1 þ ehH=kBTþhj=2mkBT þ ehO=kBThj=2mkBT Þ:
+(A19)
+Critical points at the isoelectric point
+In this section, we calculate some limiting critical values at the isoelectric point, i.e., for systems with j 1⁄4 0 and hj 1⁄4 0.
+Effective binary critical point
+To calculate the critical points describing the effective binary mixture, we first discuss the limits of hf for f / 1/2 and f / 0, which correspond to situations in which macromolecules are only charged or only neutral, respectively. If we consider the limit of hf with f / 1/2,
+lim
+f/12
+hf 1⁄4 lim
+f/12
+
+2kBT ln f
+1  2f þ cnðf  lÞ=e
+ ;
+lim
+f/12
+hf 1⁄4 2ln2  2kBTlim
+f/12
+lnð1  2fÞ þ cn
+e ð1
+2  lÞ;
+lim
+f/12
+hf 1⁄4 N;
+this shows on one hand that large positive values of hf are obtained for values of f approaching 1/2; on the other hand, large negative values of hf are obtained for f approaching 0.
+fli/m0hf 1⁄4  N
+We can study both cases by direct substitution in the free-energy density (Eq. 34). We illustrate the case for f 1⁄4 1/2; in this case, the free-energy density reads
+vf 1⁄4 kBT
+
+nln
+n
+2
+
+þ ð1  nÞ
+e lnð1  nÞ
+
+þ cen2
+4e þ O ðnÞ:
+(A20)
+The linear terms O ðnÞ do not affect the stability of the system; therefore, we are safe to ignore them in our calculation. We evaluate the free-energy density (Eq. A20) at f 1⁄4 1/2 and calculate the chemical potential up to a constant given by
+v df
+dn 1⁄4 kBT
+ ln
+n
+2
+
+þ 1  lnð1  nÞ þ 1
+e þ cen
+2e
+
+: (A21)
+Using Eq. A21 and conditions d2f/dn2 1⁄4 0 and d3f/dn3 1⁄4 0, we find
+nb
+c1⁄4
+pffieffi
+1 þ pffieffi; (A22)
+kBTc 1⁄4  ce
+2ð1 þ pffieffi Þ2: (A23)
+Following the same procedure for a system with f 1⁄4 0 gives
+nb
+c1⁄4
+pffieffi
+1 þ pffieffi; (A24)
+kBTc 1⁄4  2 cn
+ð1 þ pffieffi Þ2: (A25)
+Critical point at n 1⁄4 1
+Here, we calculate the critical value that emerges at n 1⁄4 1. The free-energy density from Eq. 34 evaluated at n 1⁄4 1 is
+vf 1⁄4 kBTð2f ln f þ ð1  2fÞlnð1  2fÞÞ
+þ cf2  2lf þ l  2e  hff þ wM: (A26)
+We first differentiate f with respect to f, which gives
+v vf
+vf 1⁄4 kBTð2 ln f  2 lnð1  2fÞÞ þ 2cðf  lÞ
+
+e  hf:
+(A27)
+The conditions for finding a critical point in this case are v2f =vf2 1⁄4 0 and v3f =vf3 1⁄4 0; these conditions read
+kBTc
+2
+fc
+þ4
+1  2fc
+
+þ 2c=e 1⁄4 0; (A28)
+kBTc  2
+f2
+c
+þ8
+ð1  2fcÞ2
+!
+1⁄4 0: (A29)
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1603
+
+
+Solving Eqs. A28 and A29, we find
+fc 1⁄4 1
+4; (A30)
+kBTc 1⁄4  c
+8e; (A31)
+hf;c 1⁄4 c
+ln2 þ 2  8l 4e
+
+: (A32)
+Phase diagrams as a function of pH
+Here, in Fig. 6, we show the dependence in j of the phase diagrams shown in Fig. 4 in the main text.
+AUTHOR CONTRIBUTIONS
+This was a collaboration of all authors. All authors designed the work and wrote the manuscript.
+ACKNOWLEDGMENTS
+The authors thank Sam Safran for drawing our attention to the recent work by Quiroz et al. (40).
+V.Z. acknowledges financial support from Volkswagen Foundation ‘‘Life?’’ initiative.
+REFERENCES
+1. Alberts, B. 2017. Molecular Biology of the Cell. Garland Science, New York.
+2. Brangwynne, C. P., C. R. Eckmann, ., A. A. Hyman. 2009. Germline P granules are liquid droplets that localize by controlled dissolution/ condensation. Science. 324:1729–1732.
+3. Molliex, A., J. Temirov, ., J. P. Taylor. 2015. Phase separation by low complexity domains promotes stress granule assembly and drives pathological fibrillization. Cell. 163:123–133.
+4. Zwicker, D., M. Decker, ., F. J€ulicher. 2014. Centrosomes are autocatalytic droplets of pericentriolar material organized by centrioles. Proc. Natl. Acad. Sci. USA. 111:E2636–E2645.
+ad
+e
+f
+b
+c
+FIGURE 6 Phase behavior as a function of pH; the color bar indicates the average charge per macromolecule 2mj 1⁄4 mðnMþ  nM Þ/n. Parameters ε 1⁄4 0.1, ce/kBT 1⁄4 3.5, and m 1⁄4 1 apply to all panels. To see this figure in color, go online.
+Adame-Arana et al.
+1604 Biophysical Journal 119, 1590–1605, October 20, 2020
+
+
+5. Brangwynne, C. P. 2013. Phase transitions and size scaling of membrane-less organelles. J. Cell Biol. 203:875–881.
+6. Elbaum-Garfinkle, S., Y. Kim, ., C. P. Brangwynne. 2015. The disordered P granule protein LAF-1 drives phase separation into droplets with tunable viscosity and dynamics. Proc. Natl. Acad. Sci. USA. 112:7189–7194.
+7. Zhu, L., and C. P. Brangwynne. 2015. Nuclear bodies: the emerging biophysics of nucleoplasmic phases. Curr. Opin. Cell Biol. 34:23–30.
+8. Banani, S. F., H. O. Lee, ., M. K. Rosen. 2017. Biomolecular condensates: organizers of cellular biochemistry. Nat. Rev. Mol. Cell Biol. 18:285–298.
+9. Franzmann, T. M., M. Jahnel, ., S. Alberti. 2018. Phase separation of a yeast prion protein promotes cellular fitness. Science. 359:eaao5654.
+10. Patel, A., H. O. Lee, ., S. Alberti. 2015. A liquid-to-solid phase transition of the ALS protein FUS accelerated by disease mutation. Cell. 162:1066–1077.
+11. Saha, S., C. A. Weber, ., A. A. Hyman. 2016. Polar positioning of phase-separated liquid compartments in cells regulated by an mRNA competition mechanism. Cell. 166:1572–1584.e16.
+12. Munder, M. C., D. Midtvedt, ., S. Alberti. 2016. A pH-driven transition of the cytoplasm from a fluid- to a solid-like state promotes entry into dormancy. eLife. 5:e09347.
+13. Alberty, R. A. 1994. Legendre transforms in chemical thermodynamics. Chem. Rev. 94:1457–1482.
+14. Alberty, R. A. 2003. Thermodynamics of Biochemical Reactions. John Wiley and Sons, Hoboken, NJ.
+15. Gong, P., J. Genzer, and I. Szleifer. 2007. Phase behavior and charge regulation of weak polyelectrolyte grafted layers. Phys. Rev. Lett. 98:018302.
+16. Witte, K. N., S. Kim, and Y.-Y. Won. 2009. Self-consistent field theory study of the effect of grafting density on the height of a weak polyelectrolyte brush. J. Phys. Chem. B. 113:11076–11084.
+17. Longo, G. S., M. Olvera de la Cruz, and I. Szleifer. 2011. Molecular theory of weak polyelectrolyte gels: the role of pH and salt concentration. Macromolecules. 44:147–158.
+18. Overbeek, J. T., and M. J. Voorn. 1957. Phase separation in polyelectrolyte solutions; theory of complex coacervation. J. Cell. Physiol. Suppl. 49 (Suppl 1):7–22, discussion, 22–26.
+19. Spruijt, E., A. H. Westphal, ., J. van der Gucht. 2010. Binodal compositions of polyelectrolyte complexes. Macromolecules. 43:64766484.
+20. Zhang, P., K. Shen, ., Z.-G. Wang. 2018. Salt partitioning in complex coacervation of symmetric polyelectrolytes. Macromolecules. 51:5586–5593.
+21. Zhang, P., N. M. Alsaifi, ., Z.-G. Wang. 2018. Polyelectrolyte complex coacervation: effects of concentration asymmetry. J. Chem. Phys. 149:163303.
+22. Jha, P. K., P. S. Desai, ., R. G. Larson. 2014. pH and salt effects on the associative phase separation of oppositely charged polyelectrolytes. Polymers (Basel). 6:1414–1436.
+23. Salehi, A., and R. G. Larson. 2016. A molecular thermodynamic model of complexation in mixtures of oppositely charged polyelectrolytes with explicit account of charge association/dissociation. Macromolecules. 49:9706–9719.
+24. Rathee, V. S., A. J. Zervoudakis, ., J. K. Whitmer. 2018. Weak polyelectrolyte complexation driven by associative charging. J. Chem. Phys. 148:114901.
+25. Buck, R., S. Rondinini, ., G. Wilson. 2002. Measurement of pH. Definition, standards, and procedures (IUPAC Recommendations 2002). Pure Appl. Chem. 74:2169–2200.
+26. Mills, I., T. Cvitas, ., K. Kuchitsu. 1993. Quantities, Units and Symbols in Physical Chemistry. Blackwell Science, Oxford, UK.
+27. Marx, D., M. E. Tuckerman, ., M. Parrinello. 1999. The nature of the hydrated excess proton in water. Nature. 397:601–604.
+28. Headrick, J. M., E. G. Diken, ., K. D. Jordan. 2005. Spectral signatures of hydrated proton vibrations in water clusters. Science. 308:1765–1769.
+29. Huggins, M. L. 1941. Solutions of long chain compounds. J. Phys. Chem. 9:441.
+30. Flory, P. J. 1942. Thermodynamics of high polymer solutions. J. Chem. Phys. 10:51–61.
+31. Callen, H. B. 1985. Thermodynamics and an Introduction to Thermostatistics. John Wiley and Sons, New York.
+32. Gong, P., and I. Szleifer. 2004. Competitive adsorption of model charged proteins: the effect of total charge and charge distribution. J. Colloid Interface Sci. 278:81–90.
+33. Nap, R., P. Gong, and I. Szleifer. 2006. Weak polyelectrolytes tethered to surfaces: effect of geometry, acid–base equilibrium and electrical permittivity. J. Polym. Sci., B, Polym. Phys. 44:2638–2662.
+34. Scheu, R., B. M. Rankin, ., S. Roke. 2014. Charge asymmetry at aqueous hydrophobic interfaces and hydration shells. Angew. Chem. Int. Ed. Engl. 53:9560–9563.
+35. Rubinstein, M., and R. H. Colby. 2003. Polymer Physics. Oxford University Press, Oxford, UK.
+36. Riback, J. A., C. D. Katanski, ., D. A. Drummond. 2017. Stress-triggered phase separation is an adaptive, evolutionarily tuned response. Cell. 168:1028–1040.e19.
+37. Fossat, M. J., and R. V. Pappu. 2019. q-Canonical Monte Carlo sampling for modeling the linkage between charge regulation and conformational equilibria of peptides. J. Phys. Chem. B. 123:6952–6967.
+38. Harries, D., S. May, and A. Ben-Shaul. 2013. Counterion release in membrane–biopolymer interactions. Soft Matter. 9:9268–9284.
+39. Milo, R. 2013. What is the total number of protein molecules per cell volume? A call to rethink some published values. BioEssays. 35:10501055.
+40. Quiroz, F. G., V. F. Fiore, ., E. Fuchs. 2020. Liquid-liquid phase separation drives skin barrier formation. Science. 367:eaax9554.
+41. Dale, B. A., K. A. Resing, and J. D. Lonsdale-Eccles. 1985. Filaggrin: a keratin filament associated protein. Ann. N. Y. Acad. Sci. 455:330–342.
+42. Lytle, T. K., and C. E. Sing. 2017. Transfer matrix theory of polymer complex coacervation. Soft Matter. 13:7001–7012.
+43. Friedowitz, S., A. Salehi, ., J. Qin. 2018. Role of electrostatic correlations in polyelectrolyte charge association. J. Chem. Phys. 149:163335.
+44. Overbeek, J. T. 1956. The Donnan equilibrium. Prog. Biophys. Biophys. Chem. 6:57–84.
+45. Walter, H., and D. E. Brooks. 1995. Phase separation in cytoplasm, due to macromolecular crowding, is the basis for microcompartmentation. FEBS Lett. 361:135–139.
+46. Safran, S. A. 1994. Statistical Thermodynamics of Surfaces, Interfaces, and Membranes. Addison-Wesley, Reading, MA.
+Liquid Phase Separation Controlled by pH
+Biophysical Journal 119, 1590–1605, October 20, 2020 1605

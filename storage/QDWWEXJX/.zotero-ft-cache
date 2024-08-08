@@ -1,0 +1,449 @@
+Binding without folding – the biomolecular function of disordered polyelectrolyte complexes
+Benjamin Schuler1,2, Alessandro Borgia3, Madeleine B Borgia3, Pe ́ tur O Heidarsson4, Erik D Holmstrom5,6, Daniel Nettels1 and Andrea Sottini1
+Recent evidence shows that oppositely charged intrinsically disordered proteins (IDPs) can form high-affinity complexes that involve neither the formation of secondary or tertiary structure nor site-specific interactions between individual residues. Similar electrostatically dominated interactions have also been identified for positively charged IDPs binding to nucleic acids. These highly disordered polyelectrolyte complexes constitute an extreme case within the spectrum of biomolecular interactions involving disorder. Such interactions are likely to be widespread, since sequence analysis predicts proteins with highly charged disordered regions to be surprisingly numerous. Here, we summarize the insights that have emerged from the highly disordered polyelectrolyte complexes identified so far, and we highlight recent developments and future challenges in (i) establishing models for the underlying highly dynamic structural ensembles, (ii) understanding the novel binding mechanisms associated with them, and (iii) identifying the functional consequences.
+Addresses
+1 Department of Biochemistry, University of Zurich, Switzerland 2 Department of Physics, University of Zurich, Switzerland 3 Department of Structural Biology, St. Jude Children’s Research Hospital, Memphis, TN 38105, USA 4 Department of Biochemistry, Science Institute, University of Iceland, Dunhagi 3, 107 Reykjavı ́k, Iceland 5 Department of Molecular Biosciences, University of Kansas, 1200 Sunnyside, Lawrence, KS 66045, USA 6 Department of Chemistry, University of Kansas, 1200 Sunnyside, Lawrence, KS 66045, USA
+Corresponding author: Schuler, Benjamin (schuler@bioc.uzh.ch)
+Current Opinion in Structural Biology 2020, 60:66–76
+This review comes from a themed issue on Folding and binding
+Edited by Shachi Gosavi and Benjamin Schuler
+For a complete overview see the Issue and the Editorial
+Available online 23rd December 2019
+https://doi.org/10.1016/j.sbi.2019.12.006
+0959-440X/ã 2019 Elsevier Ltd. All rights reserved.
+Introduction
+The textbook view of biomolecular interactions typically involves structured macromolecules with well-defined
+interfaces whose precise complementarity enables the tight and specific binding required for biomolecular function. This notion was shaped by decades of progress in structural biology that has revealed atomically detailed views of thousands of complexes between proteins, nucleic acids, and other biomolecules. Considering this information, we now understand many of the mechanisms that drive biomolecular recognition, self-assembly, and cellular function. However, there has been evidence for at least three decades that this notion is incomplete. Already in his 1988 classic “Acid blobs and negative noodles”, Paul Sigler pointed out that studies of highly charged protein segments in transcriptional regulation “suggest a disquieting picture of a conformationally ill-defined polypeptide that can function almost irrespective of sequence” [1].
+The following decades revealed a wide spectrum of biomolecular complexes involving intrinsically disordered proteins (IDPs), sometimes referred to as “fuzzy” complexes [2] (Figure 1). Among the earliest examples were transcription factors that fold upon binding to DNA [3]. This concept of coupled folding and binding was soon extended to protein–protein interactions [4]. The degree of folding can, however, vary widely: In some cases, the IDPs form extensive secondary and tertiary structure upon binding; in other cases, only short segments are involved that either form secondary structure (most commonly a-helices) or bind in extended form (comparable to peptide binding by antibodies), but large parts of the sequence remain disordered [2]. It then became clear that if multiple such binding segments are present in the IDP, their rapid association and dissociation with specific interaction sites on the folded binding partner can result in highly dynamic complexes where the IDP staysalmost completely disordered and forms multivalent, rapidly exchanging interactions involving only transient local ordering [5–11]. However, even in such cases, the site-specific interactions governing the association require van-der-Waals contact and generally form structurally defined complementary interfaces, albeit small and potentially short-lived [7]. But can proteins form functionally relevant complexes even in the complete absence of such structurally defined and site-specific interactions?
+Answering this question has been difficult and controversial, at least in part because of the lack of suitable experimental
+Available online at www.sciencedirect.com
+ScienceDirect
+Current Opinion in Structural Biology 2020, 60:66–76 www.sciencedirect.com
+
+
+methods and theoretical concepts. One of the earliest suggestions of a complex between IDPs involving no formation of structure, the weak homo-oligomerization of the cytoplasmic domain of the T-cell receptor z chain [12], could not be confirmed independently [13]; but since then, more evidence for highly disordered complexes has accumulated. Thomas et al. [14] presented evidence for the interaction between linker histones and the high-mobility group protein B1 (HMGB1) mediated predominantly by the charged disordered regions of the proteins that involved no detectable formation of secondary structure. Recently, the molten-globule-like C-terminal domain of the adapter protein 4.1 has been reported to interact with a disordered 26-residue peptide from the nuclear mitotic apparatus
+protein without the formation of stable structure [15]. Individual amino acid exchanges identified based on molecular dynamics (MD) simulations, especially in hydrophobic stretches of both binding partners, were able to abolish the micromolar binding and thus suggest rather site-specific interactions, but apparently without the
+formation of a persistent interface [15]. Evidence for such disordered complexes has also emerged for the interaction of the disordered chromatin protein NUPR1 and its paralogue NUPR1L with several disordered binding partners, including the nuclear protein prothymosin a and the histone
+acetyl transferase-associated protein MSL1 [16,17]; again, several hydrophobic residues seem to play a key role for binding, indicating site-specificity, albeit in the absence of structure formation.
+Highly disordered polyelectrolyte complexes of IDPs
+An extreme case of an IDP complex showing neither signs of site-specific interactions nor structure formation is that of the linker histone H1.0 (H1) and its nuclear chaperone prothymosin a (ProTa) [18]. H1 is an IDP involved in chromatin condensation by binding to nucleosomes [19,20]; it is highly positively charged and comprises two disordered regions flanking a small folded domain [21]. The abundant nuclear protein ProTa is a fully disordered and highly negatively charged IDP [22,23] involved in chromatin remodeling [24], transcription, cellular proliferation, and oncogenesis [25]. ProTa had previously been shown to bind to H1 in vitro [26] and in vivo [27] and to act as a linker histone chaperone that increases the mobility of H1 in the nucleus [27]. However, given the large fraction of charged residues and the concomitant scarcity of hydrophobic amino acids in both IDPs, the mode of interaction between these two biological polyelectrolytes was entirely unclear.
+Highly disordered polyelectrolyte complexes Schuler et al. 67
+Figure 1
+Increasing disorder in the complex
+Current Opinion in Structural Biology
+The order-to-disorder spectrum of protein complexes. The traditional view of protein binding has focused on the interactions between folded proteins based on highly complementary, well-structured interfaces. It has become increasingly clear, however, that proteins can retain disorder in their bound states [2]. The increasing levels of disorder are illustrated here with the following examples from left to right: Colicin E9 with cognate Im9 (crystal structure, PDB 1EMV); RelA-TAD/CBP-TAZ1 complex (NMR structure, PDB 2LWW); Gcn4 activation domain bound to the mediator co-activator domain 1 of Gal11/med15 (NMR structure, PDB 2LPB); complex of Sic1 with the Cdc4 subunit of ubiquitin ligase (ensemble based on NMR data [98]); complex of H1 and ProTa (ensemble from coarse-grained simulations based on single-molecule FRET data [18]). Highly disordered polyelectrolyte complexes constitute the extreme case, where both binding partners can fully retain their disorder. Stably folded proteins or regions are shown in surface representation. Disordered regions are shown in cartoon representation, with multiple conformations from the NMR structure or the modeled ensemble overlaid. (Figure prepared using PyMOL, Schro ̈ dinger).
+www.sciencedirect.com Current Opinion in Structural Biology 2020, 60:66–76
+
+
+Circular dichroism and NMR spectroscopy revealed no detectable formation of secondary or tertiary structure upon binding (Figure 2a,b). The only clear signatures of binding from NMR were slight changes in chemical shifts, resonance peak intensities, and relaxation times,
+which were most pronounced for residues in regions with the highest charge density. Nevertheless, singlemolecule F  ̈orster resonance energy transfer (FRET) spectroscopy demonstrated a dissociation constant in the low picomolar range at a near-physiological ionic
+68 Folding and binding
+Figure 2
+(a) (b)
+(c)
+(d)
+(e) (f)
+(g)
+(k)
+(j)
+(h) (i)
+(m)
+(n)
+(o)
+(l)
+(p)
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+8.7 8.5 8.3 8.1 0
+0
+1
+0 0.0 0.1 0.2 0.3 0.4
+0.5 10 0.5 10 0.5 1
+1.2
+1.0
+0.8 -400 400 Time (s)
+Time (s)
+00 1 2 3 4
+20
+40
+5 6 7 8 9 10
+τ(ns)
+Photons
+per 10ms
+Normalized
+fluorescence intensity
+Transfer efficiency
+gAA, gDA, gDD
+ensemble kinetics
+single-molecule kinetics
+nsFCS
+0 5 10
+-10
+-20
+15 0
+0
+0
+0
+20 5 10 15
+20
+60
+250 150 50
+25
+0 5 10 15 20 25
+15 20 25
+0.0
+0.0
+0.1
+0.2
+0.4
+0.4
+0.4
+0.1
+0.2
+0.2
+0.2
+0.3
+30 35 40
+R (nm) Time (ns)
+Time steps /1107
+% native hairpin contacts Intermolecular contacts
+simulations experiment
+Gaussian WLC SAW, ν=0.588 SAW-ν
+Simulation
+P(R)
+F(RPH)
+(kcal mol-1)
+r (t)
+RPH (nm)
+Residue i
+Residue j
+Labeling positions
+00
+0
+30
+30
+60
+60
+90
+90
+120
+120
+0 20
+20
+40
+40
+0.6
+0.6
+0.8
+0.8
+1.0
+1.0
+Amino Acid
+Amino Acid
+Nucleotide
+Nucleotide
+dimer
+trimer
+Transfer efficiency
+experiment simulations
+0 0
+0
+0
+20 40 60 80 100 Residue number
+1
+1
+1
+-1
+-1
+-1
+(i)
+Model
+(b)
+0
+1
+Experiment
+(m)1.0
+1.0
+cy
+rim
+Simulation
+10-4
+10-3
+10-2
+10-1
+q (Å-1)
+10-1 100
+10-2
+ΔSCS
+(ppm)
+SCS
+(ppm)
+I (q)
+SAXS
+NMR
+single-molecule FRET
+H1 conc.
+15N (ppm)
+1H (ppm)
+Current Opinion in Structural Biology
+Elucidating the conformational distributions, dynamics, and functions of highly disordered complexes with integrative modeling and simulations. The combination of complementary experimental techniques enables different aspects of structure and dynamics to be probed, for example residue-specific changes in conformation, secondary and tertiary structure from NMR (a,b), overall dimensions from small-angle X-ray scattering SAXS (c), segment-specific intramolecular and intermolecular distance distributions from single-molecule FRET (d), long-range dynamics from nsFCS (e), kinetics of binding and conformational change from ensemble (f) and single-molecule experiments (g). Experimental data can inform the choice of a suitable physical description, such as analytical models from polymer physics and coarse-grained or atomistic simulations. A versatile approach illustrated here are coarse-grained simulations, which combine residue-level interactions (h) with a broad range of accessible timescales, enabling, for example the investigation of structural ensembles (i, principal component analysis of the H1-ProTa complex) and interaction mechanisms (j, folding of single-stranded nucleic acids in the presence of NCD). Simulations can yield a wide range of information, including contact maps (k), intramolecular and intermolecular distance distributions (l), transfer efficiencies (m), interaction potentials of mean force (n), mobility of fluorophores (o), and binding kinetics (p). By quantitative comparison with experiments and parameter optimization, the model can be improved iteratively to achieve a realistic description of the system. Panels a, b, d, e, f, h, i, m, n are from Borgia et al. [18], panels g, j, k, p from Holmstrom et al. [46], panel c from Borgia et al. [99], panel l from Zheng et al. [100], and panel o from Best et al. [101].
+Current Opinion in Structural Biology 2020, 60:66–76 www.sciencedirect.com
+
+
+strength of 165 mM. A mere doubling of the ionic strength, however, reduced the affinity to the micromolar range, and experiments with fragments of H1 showed that the highly charged disordered C-terminal region made by far the largest contribution to binding, reflecting the dominance of electrostatic interactions [18]. In contrast, the small folded domain of H1 was dispensable for high affinity. Measurements with different fluorophores and labeling positions [18] and competition experiments with unlabeled protein (Sottini et al., unpublished) demonstrate that the fluorophores have a negligible effect on the affinity. Nanosecond fluorescence correlation spectroscopy (nsFCS, Figure 2e) [28] revealed pronounced long-range distance dynamics in the complex on the 100-ns timescale, comparable to the chain reconfiguration times of the free proteins and other IDPs [28,29]. All experimental data thus pointed towards a highly disordered and dynamic protein complex. A key step towards understanding the underlying interaction mechanism was to describe the structurally diverse ensemble with a physics-based model.
+The integrative modeling of conformational ensembles based on the combination of experimental data with theory and simulations (Figure 2) has made remarkable progress and ranges from analytical theory and simple models to allatom MD simulations [30,31,32–37]. Given the large size of the H1-ProTa complex, a coarse-grained model turned out to provide the best compromise between molecular detail and computational feasibility [18,38,39]. Each amino acid residue was represented as a single bead with appropriate volume and charge; electrostatic interactions were described by a Coulomb potential including DebyeH  ̈uckel screening; and the folded domain of H1 was stabilized by a structure-based potential. A particularly appealing aspect of this approach is that all parameters of these force field terms are uniquely defined by the model. The single adjustable parameter remaining was the strength of the Lennard-Jones term, which models all remaining short-range interactions and was chosen to be the same for all residues; it could be quantified by globally optimizing the agreement of the simulations with 28 intramolecular and intermolecular single-molecule FRET efficiencies reporting on distributions of distances between pairs of residues (Figure 2d,m) [18]. The resulting simulations illustrate the extreme disorder in the complex (Figures 1 and 2i) and reproduced the high affinity, the diffusion-limited binding kinetics, and the NMR data: The smooth and broad distribution of the average number of contacts made by the residues of ProTa closely resembled the distribution of changes in chemical shifts, peak intensities, and relaxation times upon binding. This comparison provided an independent benchmark of the model and suggests that nonspecific, electrostatically dominated interactions can account for the high affinity of the disordered H1-ProTa complex, reminiscent of a mean-field picture [5], without the need for the persistent
+site-specific interactions required in the classical view of multivalency and related models.
+Recently, another example of this new paradigm of disordered polyelectrolyte interactions with interesting functional implications has been demonstrated for the histone chaperones Asf1 and Vps75 with the Core histone dimer H3:H4 and Rtt109, an enzyme responsible for lysine acetylation in H3 [40]. Employing a combination of NMR, small angle neutron scattering, MD simulations, and integrative modeling, the authors found that one of the disordered and negatively charged C-terminal tails of Vps75 establishes electrostatic interactions with the disordered N-terminal tail of H3 in the cavity of the complex, where the catalytic site of Rtt109 is located (Figure 3b). Remarkably, the electrostatic association does not induce the formation of detectable structure. The authors propose that this type of interaction helps to localize the lysine residues in the H3 tail close to the catalytic site of Rtt109 with minimal loss of conformational entropy and maintains full accessibility for acetylation, a compelling mechanism that may be widespread in the posttranslational modification of IDPs.
+Highly disordered polyelectrolyte complexes between IDPs and nucleic acids
+Considering the nature of highly disordered complexes formed by charged IDPs, it seems plausible that similar kinds of polyelectrolyte complexes can be formed between positively charged IDPs and nucleic acids. Indeed, two cases of this type have recently been reported. The first one involves the disordered C-terminal tail of histone H1.11L (CH1), which exhibits nanomolar affinity to doublestranded DNA comparable in length to the DNA linkers
+between nucleosomes [41]. As demonstrated by NMR spectroscopy, CH1 is not only disordered in the free state but also when bound to DNA (Figure 3d). As in the case of H1 binding to ProTa, the relatively small chemical shift perturbations upon binding were broadly distributed along the sequence, and neither secondary structure propensity core nor heteronuclear NOEs exhibited pronounced changes, suggesting that CH1 remains highly dynamic in the bound state and does not exhibit site-specific interactions with the DNA. A very important implication of this result is that the disordered tails of linker histones such as H1 are likely to remain disordered when bound to the nucleosome, an issue that has been challenging to address quantitatively [42,43]. Stott et al. further investigated the role of phosphorylation at three serine residues of CH1, which did not alter the interaction mechanism but led to a reduction in affinity, an aspect that is expected to be important for cellular regulation by
+posttranslational modifications [41].
+Another recent example of a polyelectrolyte complex between an IDP and nucleic acids is the hepatitis C virus core protein, an intrinsically disordered RNA chaperone
+Highly disordered polyelectrolyte complexes Schuler et al. 69
+www.sciencedirect.com Current Opinion in Structural Biology 2020, 60:66–76
+
+
+with positive net charge that promotes viral genome dimerization [44,45,46] (Figure 3a). Its function primarily involves interactions with single-stranded RNA to facilitate the formation of higher-order structure or larger assemblies [47]. Holmstrom et al. [46] investigated the interaction of the nucleocapsid domain (NCD) of the hepatitis C virus Core protein with several
+single-stranded RNA and DNA sequences. Since NCD assembles into nucleocapsid-like particles with nucleic acids at the sample concentrations required for many ensemble techniques, such as circular dichroism or NMR spectroscopy [45,48], the 1:1 complex was probed at the very low concentrations accessible with single-molecule spectroscopy. nsFCS showed that the
+70 Folding and binding
+Figure 3
+(a)
+(c)
+(d)
+(c)
+(e)
+Vps75 CTAD
+Vps75
+Phosphorylation
+Coacervate-forming complexes
+Phosphorylation (or salt)
+Phase separation
+H3 K56 basic acidic Vps75 E206/E207 H3 K9
+Non-coacervating complexes
+additional CH1
+additional CH1-P
+ψ
+C + AB CAB CAB CB + A
+++
+Current Opinion in Structural Biology
+Highly disordered polyelectrolyte complexes expand the functional repertoire of biomolecular interactions. (a) The positively charged hepatitis C virus Core protein (blue) binds to nucleic acids (red) and locally screens the repulsive charge interactions with an efficiency equivalent to molar salt concentrations [46]. The resulting structure formation (hairpin folding in this example probed by single-molecule FRET) reflects the protein’s function as an RNA chaperone. Figure adapted from Holmstrom et al. [46]. (b) The positively charged disordered tail of histone H3 (blue) forms polyelectrolyte interactions with the negatively charged disordered C-terminal region of its chaperone Vps75 (red), which confines the H3 tail in the central cavity of the complex and promotes the acetylation of specific lysine residues by increasing their proximity to the active site of the acetyltransferase Rtt109 [40]. Figure from Danilenko et al. [40]. (c) Coarse-grained Langevin dynamics simulations show how a polyanion chain invades the complex between two oppositely charged polyelectrolytes and replaces the polyanion by competitive substitution [80]. Figure adapted from Peng and Muthukumar [80]. (d) The polyelectrolyte interactions between the linker histone tail CH1 and DNA are modulated by ionic strength, protein and DNA concentrations, and phosphorylation, which can shift the balance between stoichiometrically defined complexes and coacervation [41]. Similar mechanisms may control nucleosome interactions and regulate chromatin compaction [41,42]. Figure from Turner et al. [41]. (e) The formation of coacervates from positively and negatively charged polyelectrolyte IDPs is a special case of the phase separation facilitated by IDPs [81,84]. The example shows condensed-phase droplet fusion at high concentrations of H1 and ProTa observed by video microscopy (scale bar 50 mm; Borgia et al., unpublished).
+Current Opinion in Structural Biology 2020, 60:66–76 www.sciencedirect.com
+
+
+long-range chain dynamics of free NCD on the 50-ns timescale are retained upon nucleic acid binding, indicating that it remains disordered. In simulations, performed using a coarse-grained model of the
+IDP similar to the one for H1-ProTa [18] and a three-bead-per-nucleotide model of the nucleic acid, both NCD and the single-stranded nucleic acid remained disordered in the complex (Figure 2j). The results showed very good agreement with intramolecular and intermolecular transfer efficiencies obtained from single-molecule FRET experiments and thus strongly support the notion that IDPs and nucleic acids can form highly disordered polyelectrolyte complexes with high affinity. In the case of NCD, the nanomolar binding to the highly flexible single-stranded RNA or DNA leads to a pronounced compaction of the nucleic acids via charge
+screening and can thus promote structure formation [46] (Figure 3a) – indeed the simulations showed that the acceleration of folding rate was entirely explained by the effect of collapsing the chain.
+In summary, the discovery of such extremely disordered yet biologically functional complexes completes the missing upper boundary in the spectrum of biomolecular complexes that involve structural disorder (Figure 1) and further corroborates the importance of IDPs in biology. However, these systems also pose a wide range of new questions and scientific challenges, which are likely to reveal exciting new mechanisms in biomolecular assembly, regulation, and communication in the cell.
+Challenge I: structurally and dynamically realistic models
+Moving forward, the first important challenge will be to advance the methods and concepts for developing realistic models of such highly disordered complexes. The description of IDPs in terms of highly dynamic and structurally diverse conformational ensembles has made tremendous progress in recent years, with models ranging from analytical polymer theory and coarse-grained representa
+tions to all-atom MD simulations [30,31,32,38,49,50]. Increasingly, integrative approaches are utilized that combine or benchmark a molecular model with experimental results, ideally from multiple complementary techniques. Many of these advances can be transferred directly to highly disordered complexes (Figure 2), but they will also require substantial further developments.
+Analytical polymer models have been used very successfully for describing and understanding the physical properties of unfolded and intrinsically disordered proteins, including their intramolecular distance distributions and the response of chain dimensions to solution conditions [29,32,51]. A major advantage of such models is that they can be used for identifying key parameters responsible for the observed behavior by directly fitting experimental results. The theory of polyelectrolyte complexes, however, remains a
+formidable challenge owing to the sequence-dependent long-range correlations within and between the chains and the coupling between polymer charge and counterions [52]. However, some earlier and recent approaches may lend themselves to suitable modifications for describing the conformational distributions within polyelectrolyte complexes [53–55,56].
+At the other extreme in terms of detail are all-atom MD simulations. Impressive recent advances in force field development have started to enable faithful simulations of IDPs [30,31,32,57–63], which should also be applicable to polyelectrolyte complexes. However, given the lack of pronounced minima in the free-energy surfaces of IDPs and the correspondingly subtle balance of forces, fully transferable potentials have been difficult to establish, and adjustments of force field parameters may still be required, for example guided by experimental data [30,31]. Moreover, the computational cost for reaching the required lengthscales and timescales is often prohibitive, especially if solvent is included explicitly. The development of atomistic force fields for IDPs combined with implicit solvent is therefore of great interest [30,32,64]. Since such simulations have been shown to provide important insights into the single-chain properties of highly charged IDPs [65–67], they are also promising for describing polyelectrolyte complexes.
+A third approach of intermediate complexity is the use of coarse-grained models [68] (Figure 2h–j). Even without relying on atomic resolution, they can capture essential aspects of the system, such as the heteropolymeric nature of biomolecules and the corresponding residue-characteristic non-covalent interactions within and between chains, including the electrostatics that dominate polyelectrolyte complexes [18,46,49,69–73]. A major advantage of these models is their lower computational cost, which enables model optimization and conceptual insight by systematic parameter variation and comparison to experimental observables that do not require atomic resolution, such as scattering data, FRET efficiencies, or patterns of NMR signal changes [18,38,46,68] (Figure 2). Moreover, coarse-grained simulations lend themselves to large systems, including complex biomolecular assemblies and even processes approaching mesoscopic scales, such as liquid-liquid phase separation [49,74]. Disadvantages of coarse-grained models are that some of the chemical differences between amino acids or nucleotides are difficult to capture, and that absolute timescales are not easily reproduced, although approximate rescaling can be achieved by comparison to experimental observables [75,76]. Important future developments may be an explicit representation of counterions and solvent, the optimization of residue-based potentials [77] to account for the heteropolymeric nature of proteins, and the extension to large biomolecular assemblies. Nevertheless, all-atom simulations are likely to remain indispensable for
+Highly disordered polyelectrolyte complexes Schuler et al. 71
+www.sciencedirect.com Current Opinion in Structural Biology 2020, 60:66–76
+
+
+addressing aspects that are sensitive to chemical structure, such as site-specific interactions, transient secondary structure formation, local relaxation phenomena that can be compared to NMR experiments [50], or the absolute timescales of dynamics [78].
+Challenge II: novel interaction mechanisms
+The second major challenge will be to identify the mechanistic implications of highly disordered polyelectrolyte complexes and establish appropriate kinetic and thermodynamic binding models. For instance, even in cases where the complementarity of the charges and sizes of two binding partners leads to the preferential formation of 1:1 complexes, as in the case of H1-ProTa, the excess of one binding partner can result in larger oligomers [18]. This behavior is even more pronounced for systems with a substantial charge or size imbalance, as in the binding of CH1 [41] or NCD [46] to nucleic acids.
+One important consequence of such higher-order complexes concerns the interaction kinetics. In the simplest and most commonly employed kinetic models for association-dissociation reactions, only binary complexes occur, and any complex needs to fully dissociate before another association event can take place. As a result, the average dwell time in a complex is independent of the concentration of free binding partner present in solution. Multivalency, however, (of which polyelectrolyte interactions could be considered a limiting case) can facilitate the formation of transient ternary complexes and concentration-dependent dwell times [79]. For H1-ProTa, such a mechanism has recently been shown to accelerate dissociation and exchange between binding partners by orders of magnitude (Sottini et al., unpublished), which explains the previously observed transition from slow exchange between bound and unbound states at single-molecule conditions to fast exchange at NMR concentrations [18]. Coarse-grained simulations illustrate how the underlying process of
+competitive substitution [80] occurs by one polyelectrolyte chain replacing another via a transient ternary complex, and how it is facilitated by the highly dynamic nature of a disordered polyelectrolyte complex (Figure 3c). It is likely that competitive substitution has a pronounced influence on interaction kinetics in the cell, and together with the diffusion-limited association observed for polyelectrolyte complexes such as H1-ProTa [18], it may provide a mechanism of combining high-affinity interactions with rapid kinetics and cellular regulation on a biologically useful timescale.
+A further important consequence of higher-order complex formation concerns the assembly of much larger structures, and ultimately macroscopic liquid-liquid phase separation. Research on biomolecular condensates over the past decade has shown that IDPs are often key
+components for forming biomolecular condensates based on phase separation, such as the nucleolus or stress granules, frequently in combination with RNA [81]. Thus, it may not come as a surprise that polyelectrolyte
+systems such as CH1-DNA [41] (Figure 3d) or H1ProTa (Figure 3e) exhibit liquid-liquid phase separation at sufficiently high concentrations. IDP polyelectrolyte complexes may thus provide an excellent opportunity for investigating the transition from the formation of oligomers with defined stoichiometry to phase separation. Notably, even for synthetic polyelectrolytes, whose association and the resulting phase separation, known as complex coacervation, have been investigated for almost a century [82,83], information about 1:1 complexes, small oligomers, and detailed structural and dynamic properties at the molecular level is largely lacking. Nonetheless, the concepts and methods from polymer and soft matter physics will be invaluable for investigating IDP complexes and phase separation [83–86].
+In view of the promiscuity of charge interactions and the range of possible oligomerization states of polyelectrolyte complexes, a key question for future research will be whether, and if yes, how specificity of this type of biomolecular interactions can be achieved. This issue is particularly prominent in a cellular environment like the nucleus, which is crowded with highly charged proteins and nucleic acids. Polyelectrolyte interactions per se are unlikely to result in high specificity, although some selectivity for certain targets may be encoded in the chain length, the number or density of charges, and their distribution or patterning along the sequence, factors that also affect the conformational distributions within IDPs [32]. Another open question is the detailed interplay between Coulomb interactions and other contributions, for example from hydrophobic residues. Highly charged disordered regions often occur in combination with folded domains in nucleic-acid-binding proteins, where they can increase the affinity of the protein and facilitate its diffusion along the DNA or RNA [87], while specificity is encoded mainly in the folded domains. Similar combinations of folded and disordered binding modules with different roles in biomolecular recognition may also represent an effective and flexible way of modulating protein–protein interactions.
+Furthermore, specificity can be affected by other biological regulation mechanisms, such as cellular localization or synchronized expression of binding partners during relevant stages of development or during the cell cycle. There might even be a role of local fluctuations in cellular ion concentrations [88], since ionic strength changes can have extreme effects on polyelectrolyte complex affinity
+[18,46,89]. It is noteworthy that the driving forces for polyelectrolyte complex formation are often dominated by the large entropy increase from the release of counterions and water, with only small enthalpic contributions,
+72 Folding and binding
+Current Opinion in Structural Biology 2020, 60:66–76 www.sciencedirect.com
+
+
+either positive or negative [69,89,90]. Experimentally, the small reaction heats complicate investigations by isothermal titration calorimetry, and owing to additional signal contributions from oligomer formation or phase separation, a quantitative interpretation of the measurements can be challenging [41,91–93].
+Challenge III: functional implications
+The third major challenge will be to clarify how widespread highly disordered polyelectrolyte complexes are in biology, which types of functions they perform, and in which way their functional repertoire extends beyond the classical concepts of biomolecular interactions. Since sequence analysis indicates that hundreds of proteins in the human proteome alone may participate in such interactions [18], it is likely that we have only seen the tip of the iceberg. Many of these proteins localize to the nucleus, and obvious candidates include the machinery involved in transcription, replication, and regulation, where positively charged disordered regions are highly abundant [42].
+Interesting functional properties have started to emerge from the examples of polyelectrolyte complexes identified to date. Positively charged IDPs can act as macromolecular counterions that screen repulsive charges in nucleic acids with efficiencies equivalent to molar salt concentrations, as in the case of NCD [46], and in this way facilitate RNA or DNA structure formation (Figure 3a). Given the simple underlying physical principle, the same kind of mechanism is likely to affect many protein–nucleic acid interactions in the cell, including the positively charged tails of proteins involved in replication, transcription, and chromatin compaction [94]. On larger scales, the observation of phase separation, or complex coacervation, of highly charged IDPs and nucleic acids [41] (Figure 3d,e) indicates an important role for these mesoscopic assemblies, whose functional relevance is only starting to be understood [81,95]. Post-translational modifications, which are highly abundant in IDPs [96,97], are expected to regulate many of these processes, as illustrated by the sensitivity of phase separation of CH1 and DNA to phosphorylation [41] (Figure 3d). Intrinsic disorder is a way of facilitating access to modifying enzymes [96], and polyelectrolyte interactions can themselves contribute to these mechanisms, as illustrated by the intricate electrostatic interactions between the disordered N-terminal tail of histone H3 and the disordered negatively charged C-terminal tails of its chaperone Vps75 that promote lysine
+acetylation [40] (Figure 3b).
+These exciting recent developments suggest that highly disordered polyelectrolyte complexes may be involved in many cellular processes and can further extend the growing functional repertoire of IDPs. The years ahead will provide ample opportunity for discovering novel molecular mechanisms that contribute to biological
+function and go beyond the textbook notions of biomolecular interactions.
+Author contributions
+All authors contributed to writing this paper.
+Conflict of interest statement Nothing declared
+Acknowledgements
+We thank Robert Best, Katrine Bugge, Aritra Chowdhury, Kingshuk Ghosh, Birthe Kragelund, Davide Mercadante, and Dave Thirumalai for fruitful discussions and comments, and the Swiss National Science Foundation for funding.
+References and recommended reading
+Papers of particular interest, published within the period of review, have been highlighted as:
+ of special interest  of outstanding interest
+1. Sigler PB: Transcriptional activation. Acid blobs and negative noodles. Nature 1988, 333:210-212.
+2. Tompa P, Fuxreiter M: Fuzzy complexes: polymorphism and structural disorder in protein-protein interactions. Trends Biochem Sci 2008, 33:2-8.
+3. Frankel AD, Kim PS: Modular structure of transcription factors: implications for gene regulation. Cell 1991, 65:717-719.
+4. Dyson HJ, Wright PE: Coupling of folding and binding for unstructured proteins. Curr Opin Struct Biol 2002, 12:54-60.
+5. Borg M, Mittag T, Pawson T, Tyers M, Forman-Kay JD, Chan HS: Polyelectrostatic interactions of disordered ligands suggest a physical basis for ultrasensitivity. Proc Natl Acad Sci U S A 2007, 104:9650-9655.
+6. Mittag T, Orlicky S, Choy WY, Tang X, Lin H, Sicheri F, Kay LE, Tyers M, Forman-Kay JD: Dynamic equilibrium engagement of a polyvalent ligand with a single-site receptor. Proc Natl Acad Sci U S A 2008, 105:17772-17777.
+7. Csizmok V, Follis AV, Kriwacki RW, Forman-Kay JD: Dynamic protein interaction networks and new structural paradigms in signaling. Chem Rev 2016, 116:6424-6462.
+8. Olsen JG, Teilum K, Kragelund BB: Behaviour of intrinsically disordered proteins in protein-protein complexes with an emphasis on fuzziness. Cell Mol Life Sci 2017, 74:3175-3183.
+9. Hendus-Altenburger R, Pedraz-Cuesta E, Olesen CW, Papaleo E, Schnell JA, Hopper JT, Robinson CV, Pedersen SF, Kragelund BB: The human Na(+)/H(+) exchanger 1 is a membrane scaffold protein for extracellular signal-regulated kinase 2. BMC Biol 2016, 14:31.
+10. Milles S, Mercadante D, Aramburu IV, Jensen MR, Banterle N, Koehler C, Tyagi S, Clarke J, Shammas SL, Blackledge M et al.: Plasticity of an ultrafast interaction between nucleoporins and nuclear transport receptors. Cell 2015, 163:734-745.
+11. Mittag T, Kay LE, Forman-Kay JD: Protein dynamics and conformational disorder in molecular recognition. J Mol Recognit 2010, 23:105-116.
+12. Sigalov A, Aivazian D, Stern L: Homooligomerization of the
+cytoplasmic domain of the T cell receptor zeta chain and of other proteins containing the immunoreceptor tyrosine-based activation motif. Biochemistry 2004, 43:2049-2061.
+13. Nourse A, Mittag T: The cytoplasmic domain of the T-cell receptor zeta subunit does not form disordered dimers. J Mol Biol 2014, 426:62-70.
+Highly disordered polyelectrolyte complexes Schuler et al. 73
+www.sciencedirect.com Current Opinion in Structural Biology 2020, 60:66–76
+
+
+14. Cato L, Stott K, Watson M, Thomas JO: The interaction of
+HMGB1 and linker histones occurs through their acidic and basic tails. J Mol Biol 2008, 384:1262-1272.
+15. 
+Wu S, Wang D, Liu J, Feng Y, Weng J, Li Y, Gao X, Liu J, Wang W: The dynamic multisite interactions between two intrinsically disordered proteins. Angew Chem Int Ed Engl 2017, 56:7515-7519 The authors combined NMR, single-molecule FRET, and MD simulations to show that two IDPs form a complex with pronounced structural disorder mediated by multiple binding sites, primarily hydrophobic and residue-specific.
+16. Malicet C, Giroux V, Vasseur S, Dagorn JC, Neira JL, Iovanna JL: Regulation of apoptosis by the p8/prothymosin alpha complex. Proc Natl Acad Sci U S A 2006, 103:2671-2676.
+17. Neira JL, Lopez MB, Sevilla P, Rizzuti B, Camara-Artigas A,
+Vidal M, Iovanna JL: The chromatin nuclear protein NUPR1L is intrinsically disordered and binds to the same proteins as its paralogue. Biochem J 2018, 475:2271-2291.
+18. 
+Borgia A, Borgia MB, Bugge K, Kissling VM, Heidarsson PO, Fernandes CB, Sottini A, Soranno A, Buholzer KJ, Nettels D et al.: Extreme disorder in an ultrahigh-affinity protein complex. Nature 2018, 555:61-66 By integrating FRET-based single-molecule techniques, CD and NMR spectroscopy, and molecular simulations, the authors show that two highly charged IDPs, the linker histone H1.0 and its chaperone prothymosin a, form a high-affinity complex without gain of structure. The simulations provide a first detailed view of this highly disordered polyelectrolyte complex as a new paradigm for biomolecular interactions that lack any structured interfaces or site-specific interactions.
+19. Hergeth SP, Schneider R: The H1 linker histones:
+multifunctional proteins beyond the nucleosomal core particle. EMBO Rep 2015, 16:1439-1453.
+20. Harshman SW, Young NL, Parthun MR, Freitas MA: H1 histones: current perspectives and challenges. Nucleic Acids Res 2013, 41:9593-9609.
+21. Hansen JC, Lu X, Ross ED, Woody RW: Intrinsic protein disorder, amino acid composition, and histone terminal domains. J Biol Chem 2006, 281:1853-1856.
+22. Gast K, Damaschun H, Eckert K, Schulze-Forster K, Maurer HR, Muller-Frohne M, Zirwer D, Czarnecki J, Damaschun G:
+Prothymosin alpha: a biologically active protein with random coil conformation. Biochemistry 1995, 34:13211-13218.
+23. Uversky VN, Gillespie JR, Millett IS, Khodyakova AV, Vasiliev AM, Chernovskaya TV, Vasilenko RN, Kozlovskaya GD, Dolgikh DA, Fink AL et al.: Natively unfolded human prothymosin alpha adopts partially folded collapsed conformation at acidic pH. Biochemistry 1999, 38:15009-15016.
+24. Gomez-Marquez J, Rodriguez P: Prothymosin alpha is a
+chromatin-remodelling protein in mammalian cells. Biochem J 1998, 333:1-3.
+25. Mosoian A: Intracellular and extracellular cytokine-like functions of prothymosin alpha: implications for the development of immunotherapies. Future Med Chem 2011, 3:1199-1208.
+26. Papamarcaki T, Tsolas O: Prothymosin alpha binds to histone H1 in vitro. FEBS Lett 1994, 345:71-75.
+27. George EM, Brown DT: Prothymosin alpha is a component of a linker histone chaperone. FEBS Lett 2010, 584:2833-2836.
+28. Schuler B: Perspective: chain dynamics of unfolded and intrinsically disordered proteins from nanosecond fluorescence correlation spectroscopy combined with singlemolecule FRET. J Chem Phys 2018, 149 010901.
+29. Schuler B, Soranno A, Hofmann H, Nettels D: Single-molecule FRET spectroscopy and the polymer physics of unfolded and intrinsically disordered proteins. Annu Rev Biophys 2016, 45:207-231.
+30. 
+Best RB: Computational and theoretical advances in studies of intrinsically disordered proteins. Curr Opin Struct Biol 2017, 42:147-154 Excellent review of recent developments in applying theory and simulation to IDPs on different time-scales and length-scales that illustrates the
+versatility in methods required for describing the properties of disordered proteins and the complementarity with experiments.
+31. 
+Bottaro S, Lindorff-Larsen K: Biophysical experiments and biomolecular simulations: a perfect match? Science 2018, 361:355-360 In this excellent review, the authors summarize recent progress in integrating molecular simulations with experiments, especially for generating ensembles and for validating and improving force fields, a powerful approach that has become essential for biophysical research at the molecular level.
+32. Das RK, Ruff KM, Pappu RV: Relating sequence encoded
+information to form and function of intrinsically disordered proteins. Curr Opin Struct Biol 2015, 32:102-112.
+33. Bonomi M, Heller GT, Camilloni C, Vendruscolo M: Principles of protein structural ensemble determination. Curr Opin Struct Biol 2017, 42:106-116.
+34. Hummer G, Ko ̈ finger J: Bayesian ensemble refinement by replica simulations and reweighting. J Chem Phys 2015, 143 243150.
+35. Leung HT, Bignucolo O, Aregger R, Dames SA, Mazur A,
+Berneche S, Grzesiek S: A rigorous and efficient method to reweight very large conformational ensembles using average experimental data and to determine their relative information content. J Chem Theory Comput 2016, 12:383-394.
+36. Roux B, Weare J: On the statistical equivalence of restrainedensemble simulations with the maximum entropy method. J Chem Phys 2013, 138 084107.
+37. Lindorff-Larsen K, Best RB, DePristo MA, Dobson CM, Vendruscolo M: Simultaneous determination of protein structure and dynamics. Nature 2005, 433:128-132.
+38. Holmstrom ED, Holla A, Zheng W, Nettels D, Best RB, Schuler B: Accurate transfer efficiencies, distance distributions, and ensembles of unfolded and intrinsically disordered proteins from single-molecule FRET. Methods Enzymol 2018, 611:287-325.
+39. Karanicolas J, Brooks CL: The origins of asymmetry in the folding transition states of protein L and protein G. Prot Sci 2002, 11:2351-2361.
+40. 
+Danilenko N, Lercher L, Kirkpatrick J, Gabel F, Codutti L,
+Carlomagno T: Histone chaperone exploits intrinsic disorder to switch acetylation specificity. Nat Commun 2019, 10:3435
+Through a combination of experiments and simulations, this work shows how polyelectrolyte interactions without structure formation between the charged disordered tails of the core histone H3 and the chaperone Vps75 play an important role in aiding the acetylation of specific lysine residues of H3 by the acetyltransferase Rtt109.
+41. 
+Turner AL, Watson M, Wilkins OG, Cato L, Travers A, Thomas JO, Stott K: Highly disordered histone H1-DNA model complexes and their condensates. Proc Natl Acad Sci U S A 2018, 115:11964-11969 This study uses a range of biophysical methods to show that the intrinsically disordered C-terminal tail of linker histone H1 forms a high-affinity polyelectrolyte complex with double-stranded DNA without gain of structure. The authors further establish a link between the phosphorylation state of H1 and its coacervation with DNA, implying a potential mechanism of regulating chromatin compaction.
+42. Gibbs EB, Kriwacki RW: Linker histones as liquid-like glue for chromatin. Proc Natl Acad Sci U S A 2018, 115:11868-11870.
+43. McGinty RK, Tan S: Nucleosome structure and function. Chem Rev 2015, 115:2255-2273.
+44. Cristofari G, Ivanyi-Nagy R, Gabus C, Boulant S, Lavergne JP, Penin F, Darlix JL: The hepatitis C virus Core protein is a potent nucleic acid chaperone that directs dimerization of the viral(+) strand RNA in vitro. Nucleic Acids Res 2004, 32:2623-2631.
+45. 
+Holmstrom ED, Nettels D, Schuler B: Conformational plasticity of hepatitis C virus core protein enables RNA-induced formation of nucleocapsid-like particles. J Mol Biol 2018, 430:2453-2467 Using single-molecule spectroscopy, the authors show that the intrinsically disordered nucleocapsid domain of the hepatitis C virus core protein compacts but remains disordered and retains its 50 ns chain dynamics upon binding viral RNA.
+74 Folding and binding
+Current Opinion in Structural Biology 2020, 60:66–76 www.sciencedirect.com
+
+
+46. 
+Holmstrom ED, Liu ZW, Nettels D, Best RB, Schuler B: Disordered RNA chaperones can enhance nucleic acid folding via local charge screening. Nat Commun 2019, 10
+This study combines single-molecule FRET and coarse-grained simulations to elucidate the functional mechanism of a disordered viral RNA chaperone. The authors demonstrate that the positively charged IDP forms a disordered polyelectrolyte complex with single-stranded nucleic acids and facilitates the formation of compact nucleic acid conformations by acting as a flexible macromolecular counterion that locally screens repulsive electrostatic interactions with an efficiency equivalent to molar salt concentrations.
+47. Ivanyi-Nagy R, Lavergne JP, Gabus C, Ficheux D, Darlix JL: RNA chaperoning and intrinsic disorder in the core proteins of Flaviviridae. Nucleic Acids Res 2008, 36:712-725.
+48. Majeau N, Gagne V, Boivin A, Bolduc M, Majeau JA, Ouellet D, Leclerc D: The N-terminal half of the core protein of hepatitis C virus is sufficient for nucleocapsid formation. J Gen Virol 2004, 85:971-981.
+49. 
+Ruff KM, Pappu RV, Holehouse AS: Conformational preferences and phase behavior of intrinsically disordered low complexity sequences: insights from multiscale simulations. Curr Opin Struct Biol 2019, 56:1-10
+Excellent review summarizing the state-of-the-art in simulations of disordered proteins and regions across a wide range of scale and resolution, with a particular focus on different levels of coarse-graining.
+50. Jensen MR, Zweckstetter M, Huang JR, Blackledge M: Exploring free-energy landscapes of intrinsically disordered proteins at atomic resolution using NMR spectroscopy. Chem Rev 2014, 114:6632-6660.
+51. Thirumalai D, Samanta HS, Maity H, Reddy G: Universal nature of collapsibility in the context of protein folding and evolution. Trends Biochem Sci 2019, 44:675-687.
+52. Muthukumar M: 50th anniversary perspective: a perspective on polyelectrolyte solutions. Macromolecules 2017, 50:9528-9560.
+53. Muthukumar M: Theory of counter-ion condensation on flexible polyelectrolytes: adsorption mechanism. J Chem Phys 2004, 120:9343-9350.
+54. Kumar R, Fredrickson GH: Theory of polyzwitterion conformations. J Chem Phys 2009, 131.
+55. Sawle L, Ghosh K: A theoretical method to compute sequence dependent configurational properties in charged polymers and proteins. J Chem Phys 2015, 143 085101.
+56. 
+Firman T, Ghosh K: Sequence charge decoration dictates coilglobule transition in intrinsically disordered proteins. J Chem Phys 2018, 148 123305 Example of recent progress in analytical heteropolymer theory that combines sequence-specific intra-chain interactions with the three-body interaction term required for describing coil-globule transitions. Advanced approaches of this type may contribute to developing a theoretical description of polyelectrolyte complexes.
+57. Best RB, Zheng W, Mittal J: Balanced protein-water
+interactions improve properties of disordered proteins and non-specific protein association. J Chem Theory Comput 2014, 10:5113-5124.
+58. Piana S, Donchev AG, Robustelli P, Shaw DE: Water dispersion interactions strongly influence simulated structural properties of disordered protein States. J Phys Chem B 2015, 119:5113-5123.
+59. Huang J, Rauscher S, Nawrocki G, Ran T, Feig M, de Groot BL, Grubmuller H, MacKerell AD Jr: CHARMM36m: an improved force field for folded and intrinsically disordered proteins. Nat Methods 2017, 14:71-73.
+60. Robustelli P, Piana S, Shaw DE: Developing a molecular
+dynamics force field for both folded and disordered protein states. Proc Natl Acad Sci U S A 2018, 115:E4758-E4766.
+61. Mercadante D, Milles S, Fuertes G, Svergun DI, Lemke EA,
+Grater F: Kirkwood-buff approach rescues overcollapse of a disordered protein in canonical protein force fields. J Phys Chem B 2015, 119:7975-7984.
+62. Huang J, MacKerell AD Jr: Force field development and simulations of intrinsically disordered proteins. Curr Opin Struct Biol 2018, 48:40-48.
+63. Shrestha UR, Juneja P, Zhang Q, Gurumoorthy V, Borreguero JM, Urban V, Cheng X, Pingali SV, Smith JC, O’Neill HM et al.:
+Generation of the configurational ensemble of an intrinsically disordered protein from unbiased molecular dynamics
+simulation. Proc Natl Acad Sci U S A 2019, 116:20446-20452.
+64. Vitalis A, Pappu RV: ABSINTH: a new continuum solvation model for simulations of polypeptides in aqueous solutions. J Comput Chem 2009, 30:673-699.
+65. Mao AH, Crick SL, Vitalis A, Chicoine CL, Pappu RV: Net charge per residue modulates conformational ensembles of intrinsically disordered proteins. Proc Natl Acad Sci U S A 2010, 107:8183-8188.
+66. Das RK, Pappu RV: Conformations of intrinsically disordered proteins are influenced by linear sequence distributions of oppositely charged residues. Proc Natl Acad Sci U S A 2013, 110:13392-13397.
+67. Wuttke R, Hofmann H, Nettels D, Borgia MB, Mittal J, Best RB, Schuler B: Temperature-dependent solvation modulates the dimensions of disordered proteins. Proc Natl Acad Sci U S A 2014, 111:5213-5218.
+68. Hyeon C, Thirumalai D: Capturing the essence of folding and functions of biomolecules using coarse-grained models. Nat Commun 2011, 2.
+69. Ou Z, Muthukumar M: Entropy and enthalpy of polyelectrolyte complexation: Langevin dynamics simulations. J Chem Phys 2006, 124:154902.
+70. Dignon GL, Zheng W, Kim YC, Best RB, Mittal J: Sequence
+determinants of protein phase behavior from a coarse-grained model. PLoS Comput Biol 2018, 14:e1005941.
+71. Baker CM, Best RB: Insights into the binding of intrinsically disordered proteins from molecular dynamics simulation. Wires Comput Mol Sci 2014, 4:182-198.
+72. Das S, Eisen A, Lin YH, Chan HS: A lattice model of chargepattern-dependent polyampholyte phase separation. J Phys Chem B 2018, 122:5418-5431.
+73. Baul U, Chakraborty D, Mugnai ML, Straub JE, Thirumalai D:
+Sequence effects on size, shape, and structural heterogeneity in intrinsically disordered proteins. J Phys Chem B 2019, 123:3462-3474.
+74. 
+Dignon GL, Zheng WW, Best RB, Kim YC, Mittal J: Relation between single-molecule properties and phase behavior of intrinsically disordered proteins. Proc Natl Acad Sci U S A 2018, 115:9929-9934 Using a coarse-grained model, the authors show that the single-chain properties and the condensed-phase interactions of IDPs are closely related. The results suggest that experiments performed in dilute conditions may be used to predict phase separation, which may also be applicable to polyelectrolyte complex coacervation.
+75. Chavez LL, Onuchic JN, Clementi C: Quantifying the roughness on the free energy landscape: entropic bottlenecks and protein folding rates. J Am Chem Soc 2004, 126:8426-8432.
+76. Best RB, Hummer G: Diffusive model of protein folding dynamics with Kramers turnover in rate. Phys Rev Lett 2006, 96:228104.
+77. Kim YC, Hummer G: Coarse-grained models for simulations of multiprotein complexes: application to ubiquitin binding. J Mol Biol 2008, 375:1416-1433.
+78. Soranno A, Holla A, Dingfelder F, Nettels D, Makarov DE, Schuler B: Integrated view of internal friction in unfolded proteins from single-molecule FRET, contact quenching, theory, and simulations. Proc Natl Acad Sci U S A 2017, 114: E1833-E1839.
+79. Chen TY, Cheng YS, Huang PS, Chen P: Facilitated unbinding via multivalency-enabled ternary complexes: new paradigm for protein-DNA interactions. Acc Chem Res 2018, 51:860-868.
+80. 
+Peng B, Muthukumar M: Modeling competitive substitution in a polyelectrolyte complex. J Chem Phys 2015, 143 243133
+The authors describe the mechanism of competitive substitution between polyelectrolyte chains using coarse-grained simulations. They show how
+Highly disordered polyelectrolyte complexes Schuler et al. 75
+www.sciencedirect.com Current Opinion in Structural Biology 2020, 60:66–76
+
+
+a third chain can associate with a preformed 1:1 complex and replace one of the binding partners in a chain length-dependent and concentrationdependent manner. This facilitated ternary-complex formation has important implications for the kinetic mechanisms of disordered polyelectrolyte complexes.
+81. Banani SF, Lee HO, Hyman AA, Rosen MK: Biomolecular
+condensates: organizers of cellular biochemistry. Nat Rev Mol Cell Biol 2017, 18:285-298.
+82. Bungenberg de Jong HL, Klaar WJ: Colloid chemistry of gliadin separation phenomena. Trans Faraday Soc 1932, 28:0027-0068.
+83. Th  ̈unemann AF, M  ̈uller M, Dautzenberg H, Joanny JFO, Lo ̈ wen H: Polyelectrolyte complexes. Polyelectrolytes with Defined Molecular Architecture II. Springer; 2004:113-171.
+84. Priftis D, Tirrell M: Phase behaviour and complex coacervation of aqueous polypeptide solutions. Soft Matter 2012, 8:9396-9405.
+85. Brangwynne CP, Tompa P, Pappu RV: Polymer physics of intracellular phase transitions. Nat Phys 2015, 11:899-904.
+86. Perry SL: Phase separation: bridging polymer physics and biology. Curr Opin Colloid Interface Sci 2019, 39:86-97.
+87. Vuzman D, Levy Y: Intrinsically disordered regions as affinity tuners in protein-DNA interactions. Mol bioSyst 2012, 8:47-57.
+88. Dubyak GR: Ion homeostasis, channels, and transporters: an update on cellular mechanisms. Adv Physiol Educ 2004, 28:143-154.
+89. 
+Record MT Jr, Anderson CF, Lohman TM: Thermodynamic analysis of ion effects on the binding and conformational equilibria of proteins and nucleic acids: the roles of ion association or release, screening, and ion effects on water activity. Q Rev Biophys 1978, 11:103-178 This milestone review provides a physicochemical foundation for the principles governing electrostatic interactions in proteins, nucleic acids, and their complexes. In particular, the authors describe how the salt dependence of binding and conformational equilibria report on the key role of counterions in these processes.
+90. van der Gucht J, Spruijt E, Lemmers M, Cohen Stuart MA: Polyelectrolyte complexes: bulk phases and colloidal systems. J Colloid Interface Sci 2011, 361:407-422.
+91. Feng H, Zhou BR, Bai Y: Binding affinity and function of the extremely disordered protein complex containing human
+linker histone H1.0 and its chaperone ProTalpha. Biochemistry 2018, 57:6645-6648.
+92. Lounis FM, Chamieh J, Leclercq L, Gonzalez P, Geneste A,
+Prelot B, Cottet H: Interactions between oppositely charged polyelectrolytes by isothermal titration calorimetry: effect of ionic strength and charge density. J Phys Chem B 2017, 121:2684-2694.
+93. Santofimia-Castano P, Rizzuti B, Pey AL, Soubeyran P, Vidal M, Urrutia R, Iovanna JL, Neira JL: Intrinsically disordered
+chromatin protein NUPR1 binds to the C-terminal region of Polycomb RING1B. Proc Natl Acad Sci U S A 2017 http://dx.doi. org/10.1073/pnas.1619932114.
+94. Fuxreiter M, Toth-Petroczy A, Kraut DA, Matouschek A, Lim RY, Xue B, Kurgan L, Uversky VN: Disordered proteinaceous machines. Chem Rev 2014, 114:6806-6843.
+95. Chong SS, Dugast-Darzacq C, Liu Z, Dong P, Dailey GM, Cattoglio C, Heckert A, Banala S, Lavis L, Darzacq X et al.: Imaging dynamic and selective low-complexity domain interactions that control gene transcription. Science 2018, 361.
+96. Uversky VN, Oldfield CJ, Dunker AK: Intrinsically disordered proteins in human diseases: introducing the D2 concept. Annu Rev Biophys 2008, 37:215-246.
+97. Phillips AH, Kriwacki RW: Intrinsic protein disorder and protein modifications in the processing of biological signals. Curr Opin Struct Biol 2020, 60:1-6.
+98. Mittag T, Marsh J, Grishaev A, Orlicky S, Lin H, Sicheri F, Tyers M, Forman-Kay JD: Structure/function implications in a dynamic complex of the intrinsically disordered Sic1 with the Cdc4 subunit of an SCF ubiquitin ligase. Structure 2010, 18:494-506.
+99. Borgia A, Zheng W, Buholzer K, Borgia MB, Schuler A, Hofmann H, Soranno A, Nettels D, Gast K, Grishaev A et al.: Consistent view of polypeptide chain expansion in chemical denaturants from multiple experimental methods. J Am Chem Soc 2016, 138:11714-11726.
+100. Zheng W, Zerze GH, Borgia A, Mittal J, Schuler B, Best RB:
+Inferring properties of disordered chains from FRET transfer efficiencies. J Chem Phys 2018, 148:123329.
+101. Best RB, Hofmann H, Nettels D, Schuler B: Quantitative
+interpretation of FRET experiments via molecular simulation: force field and validation. Biophys J 2015, 108:2721-2731.
+76 Folding and binding
+Current Opinion in Structural Biology 2020, 60:66–76 www.sciencedirect.com

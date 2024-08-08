@@ -1,0 +1,919 @@
+http://www.diva-portal.org
+Postprint
+This is the accepted version of a paper published in Journal of Chemical Theory and Computation. This paper has been peer-reviewed but does not include the final publisher proof-corrections or journal pagination.
+Citation for the original published paper (version of record):
+Roos, K., Wu, C., Damm, W., Reboul, M., Stevenson, J M. et al. (2019)
+OPLS3e: Extending Force Field Coverage for Drug-Like Small Molecules
+Journal of Chemical Theory and Computation, 15(3): 1863-1874
+https://doi.org/10.1021/acs.jctc.8b01026
+Access to the published version may require subscription.
+N.B. When citing this work, cite the original published paper.
+Permanent link to this version:
+http://urn.kb.se/resolve?urn=urn:nbn:se:uu:diva-381094
+
+
+1
+OPLS3e: Extending Force Field Coverage for Drug
+Like Small Molecules
+Katarina Roos2,3, Chuanjie Wu1, Wolfgang Damm1, Mark Reboul1, James M. Stevenson1, Chao
+Lu1, Markus K. Dahlgren1, Sayan Mondal1, Wei Chen1, Lingle Wang1, Robert Abel1, Richard A.
+Friesner2, Edward D. Harder*1
+1Schrodinger, Inc., 120 West 45th Street, New York, New York 10036, United States,
+2Department of Chemistry, Columbia University, 3000 Broadway, New York, New York 10027,
+United States, 3Department of Cell and Molecular Biology, Uppsala University, Biomedical
+Centre, BOX 596, SE-751 24 Uppsala, Sweden
+ABSTRACT
+Building upon the OPLS3 force field we report on an enhanced model, OPLS3e, that further
+extends its coverage of medicinally relevant chemical space by addressing limitations in
+chemotype transferability. OPLS3e accomplishes this by incorporating new parameter types that
+recognize moieties with greater chemical specificity and integrating an on-the-fly parameterization
+approach to the assignment of partial charges. As a consequence, OPLS3e leads to greater
+accuracy against performance benchmarks that assess small molecule conformational propensities,
+solvation and protein-ligand binding.
+
+
+2
+I. Introduction
+Free energy approaches that utilize all-atom molecular dynamics simulations are emerging
+as a powerful tool in the design of new molecules and materials. Spurring interest in these methods
+is the promise of a high degree of predictive accuracy owing to the physical rigor with which these
+methods account for the composite atomistic and configurational complexity of molecular
+systems. In principle, their accuracy is only limited by the ability to achieve adequate phase space
+sampling and by the veracity of the model potential. Because of their speed, the class of
+approximate molecular models commonly referred to as force fields offer a tractable means for
+applying free energy methods to the study of phenomena in complex biological and materials
+systems. A notable example is the application of free energy perturbation theory (FEP) to calculate
+ligand binding potencies in structure-based drug discovery projects.1-5 The adoption of this
+technology in active projects is gaining traction as advances to the technology result in greater
+automation, delivering more robust results with greater expediency.6-11 As the capacity of the
+technology continues to improve and sees greater usage on a wider regime of systems it is
+imperative that the development of the force field continues apace to ensure meaningful and
+predictive results.
+Force fields aim to strike a balance between computational expediency and physical
+salience and accomplish this goal by employing simple potential functions, such as, harmonic
+terms to represent bond vibrations and fixed-point charges to approximate electrostatic
+interactions.12-13 These terms depend explicitly upon sets of empirically determined parameters
+tuned to reproduce pertinent physical properties. Target parameterization data is typically
+comprised of quantum mechanical and experimental data for representative and diverse small
+organic molecules. To be effective, a force field needs to provide an accurate parameterization of
+
+
+3
+all components of the system that can impact a property of interest. For ligand-protein binding, a
+particularly noteworthy challenge is the development of a force field that achieves a uniformly
+high level of accuracy (on the order of 1 kcal/mol) over the many diverse chemistries found within
+drug-like molecules. Early efforts to build force fields for drug-like small molecules have tended
+to focus on parameter generalization.14-17 That is, automating the process by which a set of existing
+parameters can be translated into assignments for any arbitrary ligand. Less effort has been placed
+on building the extensive basis of parameters needed to cover drug-like chemical space at a high
+level of accuracy. The recent development of OPLS318 represents perhaps the largest concerted
+parameterization effort aimed at traversing this space and it forms the starting point for the work
+discussed herein. To review, notable features of the OPLS3 model include:
+1. An improved protein force field.
+2. Extensive parameterization of valence and torsional terms found in drug-like
+molecules supplemented by an automated version of the fitting protocol
+(FFBuilder) used to fill coverage gaps.
+3. Improvements to the charge model including virtual (off-atom centered) sites to
+better represent lone pair and sigma hole charge distributions.
+These advances translated to significant improvements in protein-ligand binding accuracy using
+FEP. Relative to OPLS2005, OPLS3 resulted in a 30% improvement in aggregate RMS error.
+Despite these gains, the current prediction error continues to exceed the expected experimental
+uncertainties by a significant margin, indicating additional room for improvement in the
+technology remains.
+The aim of the work presented herein is to address additional outstanding sources of force
+field error that contribute significantly to the residual FEP error. In particular, we’ve found that
+
+
+4
+sub-optimal parameter transferability across shared chemotypes impacting both the torsion and
+partial charge parameterizations can significantly impact FEP accuracy. To address this, a new
+version of the force field, OPLS3e, has been developed. Notable improvements include:
+• A more accurate and transferable torsional parameterization via an extensive
+optimization of torsion types.
+• Integration of a ligand-specific, on-the-fly partial charge assignment approach.
+The paper is organized as follows. In section 2, we present two representative cases that
+illustrate the source of force field error resulting in significant binding free energy mispredictions.
+Section 3 discusses the OPLS3e development. Part 3.A provides a brief overview, Part 3.B
+presents the new torsion model including the process of refining torsion types, the extended data
+sets that were required to train the model and the performance on conformational energy
+benchmarks. Part 3.C presents the new charge assignment method and also includes a discussion
+of the simple condensed phase data sets used to develop and validate the model. In Section 4 we
+discuss the protein-ligand binding validation. This data set includes a significant extension from
+previous reports,1, 18 with new ligand and receptor data collected with the expressed aim of
+presenting challenging chemotype transferability cases for the force field. Section 5 then
+summarizes the results and discusses future directions.
+II. OPLS3 Force Field Outliers
+Suboptimal assignment of torsion and partial charge parameters can lead to erroneous free
+energy calculations. Panel A of Figure 1 shows an example of an FEP+ misprediction that arose
+in a drug discovery program that was due to sub-optimal torsion parameters (only details that
+directly pertain to the outlier investigation are presented). The ligands differ by a replacement of
+
+
+5
+an amide substituent with an ester. Experimentally, the relative binding free energy of the ligands
+is approximately zero. However, the OPLS3-based FEP+ prediction significantly underestimates
+the amide-pyrrole binding free energy relative to the ester. An indicator of the underlying model
+issue driving the erroneous prediction is shown in Panel B. The top fragment represents the
+substructure of the amide-pyrrole ligand in the FEP calculation. The plot contrasts the associated
+QM and MM potential energy scanning the dihedral angle connecting the amide substituent to the
+pyrrole ring defined by the NCcn atoms (aromatic atoms in lower case). The predominant rotamer
+state in solution corresponds to an NCcn angle ~ 0. The predominant state in the complex
+corresponds to an NCcn angle ~ 180 which brings the NH of the amide and pyrrole into close
+proximity facilitating a bidentate contact with a nearby histidine. As such, to adopt the bioactive
+conformation, the amide-pyrrole derivative needs to pay some degree of conformational work.
+Based on the potential energy comparison to QM, OPLS3 appears to significantly overestimate
+this contribution consistent with the observed under-predicted affinity. To verify this hypothesis,
+we re-ran the binding experiment with a slight modification to OPLS3 (denoted OPLS3*) where
+the amide-pyrrole torsion of 2-amide-3 methyl pyrrole is re-fit to match QM. The associated
+relative amide-to-ester free energy of OPLS3* is -0.23 kcal/mol, in excellent agreement with
+experiment.
+To explain why OPLS3 errs in matching QM for this dihedral, the training set molecule
+used to fit the OPLS3 amide-pyrrole dihedral, is shown in panel B of Figure 1 (bottom fragment).
+Though chemically similar to the ligand substructure of interest, the training set molecule does
+contain two crucial differences that ultimately result in poor quantitative parameter transferability
+to the moiety of interest. The pyrrole nitrogen is capped by a methyl group instead of hydrogen
+and the training set molecule lacks an additional ortho-methyl group. Because both features lie
+
+
+6
+one bond away from the atoms used to define the OPLS3 torsion, the same parameters are assigned
+to both motifs. The modified version of the force field, OPLS3*, which was trained to the 2
+amide-3-pyrrole fragment, shows a similar level of error when applied to the OPLS3 training set
+molecule, further illustrating that a common set of parameters can’t reconcile the energetics of
+both moieties. To resolve this incompatibility issue, the assignment algorithm would need to
+distinguish between these motifs by taking into account an extended chemical regime that includes
+these ortho positioned features.
+Additional examples emerged following a similar theme: differences in chemistry
+unaccounted for by the assigned torsion parameter type lead to sub-optimal energetic
+transferability to a moiety of interest resulting in an FEP+ mis-prediction. However, the chemical
+features driving these errors varied from case to case. In an effort to identify and minimize
+instances like this, in future applications, we set out to systematically refine the chemical basis that
+defines torsion parameter types to better delineate groups that necessitate distinct parameter
+assignments. In section 3 we discuss that effort.
+Our second example illustrates an FEP+ misprediction due to sub-optimal assignment of
+partial charges. We observed poor predictive performance using OPLS3 over a set of inhibitors
+with cyclic amidine and guanidine cores binding to the two catalytic aspartates of Bace-1.19, 20 As
+shown in Figure 2, the predicted binding free energy for replacing an aromatic carbon for a
+nitrogen (aza derivatives) in the amino-isoindole core is underestimated by 3-4 kcal/mol. After
+reviewing the parameters assigned to the amidine motif we noticed that the partial charges of the
+amino-aza-isoindole cores differ significantly and consistently from those of the amino-isoindole
+cores, especially for the amidinium atoms HNC marked in the Figure. We validated this error
+hypothesis by fitting QM charges to the ligands directly following the “OPLS3+QMcharges”
+
+
+7
+method outlined in Section 3C. The fitted partial charges of the amidine motif are in qualitative
+agreement with the OPLS3 charges for the amino-isoindole core, and consistent for the aza
+derivatives. The FEP+ predicted free energy using OPLS3 with these QM fitted charges leads to
+good agreement with experiment (Figure 2).20
+The reason for this OPLS3 error follows from dependencies of the method on the
+composition of the training set. OPLS3 employs a CM1A-BCC based charge model that combines
+Cramer-Truhlar CM1A charges21 with specifically fit bond charge correction terms (BCC). The
+BCC corrections are primarily fit to QM electrostatic potentials (ESP) (using HF/6-31G*) but also
+include additional refinements against experimental solvation free energies22. These BCCs in turn
+depend on the molecule composition of this training set. The OPLS3 training set includes the
+bicyclic core of compound 11. However, the associated aza derivatives are not part of the OPLS3
+training set and the BCCs assigned to the cores in compound 13 and 16 instead fall back to
+parameters based on the next best available match. In this case, the next best match is a
+combination of pyridine and acyclic amidine which transfers poorly to the fused ring substructure
+of interest.
+The example illustrates a general need for better equipping the charge model when it
+encounters ligand substructures that lie outside the force field training set. To address this, we
+develop a ligand-level charge model that assigns partial charges for each new compound based on
+a combination of fitting to QM derived ESP and restraints to OPLS3 and describe a framework
+that can easily be further updated in the future.
+III. OPLS3e Developments
+A. Overview
+
+
+8
+The functional form of the force field and the development of bond stretching, angle bending
+and van der Waals parameters is discussed in the OPLS3 reporting publication18 and remains
+unchanged in OPLS3e. Changes with respect to OPLS3 include revisions to the small molecule
+torsional and charge potentials covered in parts B and C, below.
+B. Refined Torsion Types
+Torsional parameters are needed to describe the quantum mechanical effects associated with
+stereoelectronic effects and resonance structures. They play a critical role in determining molecule
+conformational energies which sensitively impacts protein-ligand binding by modulating the
+conformational work needed for a ligand to adopt its bioactive conformation.23 In OPLS3e, this
+component of the potential is represented by the same truncated Fourier series described previously
+(see eq 1 in reference 18) where the associated V1-4 parameters are determined for each torsion
+type by fitting to model molecule quantum chemical torsion energy profiles.
+The profiles were generated as follows: 1. Force field-based torsion scans (in 30 degree
+increments) are developed from low energy conformers and used as the starting geometries in a
+subsequent QM optimization. 2. The quantum chemical profile is resolved via restrained
+optimization of the molecules at the B3LYP/6-31G* level for each discretized value of the dihedral
+angle. 3. Single point M06-2X/cc-pVTZ(-f) calculations are used to resolve the reference energy
+surface. This represents a change in the QM level used relative to earlier work, which was
+motivated by a benchmark comparison of various QM methods relative to CCSD(T)/CBS,
+summarized in Table S1. This level is used in the fitting of all OPLS3e small molecule torsions
+and is QM reference for all subsequent force field comparisons reported in the paper.
+The most significant change from OPLS3 is in the definition of the constituent torsion types.
+Motivated by erroneous calculations similar to the example discussed in Section 2, we set out to
+
+
+9
+further optimize the type definitions to improve the recognition of chemical environments that
+should be treated as distinct. Our approach can be summarized as follows:
+1. for each OPLS3 dihedral of interest, identify additional model molecules that share the
+same torsion types but differ in their chemical composition;
+2. develop associated quantum chemical torsion profiles for the set of molecules;
+3. test parameter transferability by training to one member of the molecule set and assessing
+the accuracy relative to QM for the other molecules;
+4. identify the distinguishing chemical features that lead to a significant loss in accuracy;
+5. revise the torsion type definitions to encapsulate the new chemical features; and
+6. refit the model with the new basis of torsion types.
+An example illustrating this process is summarized in Table 1. Here, the dihedral of interest
+is the amino rotation of dimethyl aniline. For OPLS3, the training set molecule is the otherwise
+unsubstituted phenyl derivative. The test set includes para substituted methyl, fluoro, chloro,
+amino, hydroxyl, enolate, nitrile and phenyl. The parameter transferability quality is indicated
+by the root mean square error with respect to QM, over the rotamer energy surface, provided for
+each fragment. Good transferability is seen for para-methyl, chloro and phenyl derivatives,
+where the substituents have little impact on the QM barrier to rotation. The π-electron fluoro,
+amino, hydroxyl and enolate donors significantly weaken the QM barrier to rotation. The nitrile
+derivative, which is a π-electron acceptor, significantly strengthens the QM barrier to rotation.
+The trend is consistent with previous spectroscopic studies.24 The impact these substituents have
+on the conjugation properties of the torsion in question is not captured by the force field leading
+to a significant drop in accuracy for these groups. To address this limitation, OPLS3e
+encapsulates this information by delineating its parameter assignment based on the presence of
+
+
+10
+the particular para substituents that significantly impact transferability. As a consequence,
+OPLS3e achieves a RMS error no greater than 0.3 kcal/mol for this data set. To the 11,845
+fragment molecule torsional profiles that constitute the OPLS3 training set18 we added an
+additional 11,161 fragment profiles to conduct similar parameter transferability tests.
+In total, the parameter type refinements made in OPLS3e encompass variations along 4 main
+chemical classes: heteroatom composition, ortho substituents, exocyclic and meta/para
+substituents. Figure 3, shows a representative pair of molecules for each class, with their
+associated rotamer energies. Where in OPLS3, the indicated dihedral parameters are shared for
+each pair, OPLS3e now treats each moiety as distinct. One consequence of refining the definition
+of torsion types to be more chemotype specific is that it impacts to what extent chemical
+substructures will be fully covered by pre-defined well parameterized OPLS3e torsion types. In
+Harder et al. we estimated that the fraction of torsional bonds found in drug-like molecules that
+would match existing trained OPLS3 torsion types was 93%. At this stage of the OPLS3e
+development that estimate dropped to 68%. To recover a comparable level of statistical coverage
+an additional 19,558 torsional profiles, for model molecules with missing coverage, were
+resolved and fit using OPLS3e. That is 30,719 more torsional rotamer sets than what we used
+for developing OPLS3. The concomitant refinements resulted in a total of 146,669 torsion types
+compared to the 48,142 types in OPLS3. And, as with OPLS3, we provide an automated version
+of our fitting protocol (FFBuilder) that can be used to fill in outstanding gaps in OPLS3e
+coverage.
+Table 2 contrasts the rotamer energy RMS error for OPLS2005, OPLS3 and OPLS3e. The
+comparison excludes molecules whose constituent torsion types are not presently covered by
+OPLS3. The evaluation is split by molecules used to train and test OPLS3e. Though OPLS3
+
+
+11
+(RMSE~1 kcal/mol) performed significantly better than its older counterpart, OPLS2005
+(RMSE~2 kcal/mol) the new OPLS3e parameterization performs significantly better
+(RMSE~0.5 kcal/mol).
+C. Ligand-Based On-the-Fly Charge Model
+The OPLS3e charge model retains the same Coulombic fixed charge functional form utilized by
+OPLS3. Additional virtual (off-atom centered) sites for aromatic ring nitrogens and aryl halogens
+(excluding fluorine) that were added to OPLS3 are retained in OPLS3e. The difference with
+respect to OPLS3 is in the method used to assign partial charges. As discussed in Section 2,
+OPLS3 employs a CM1A-BCC scheme that depends on a set of pre-tabulated bond charge
+corrections predominantly fit to recapitulate the HF/6-31G* electrostatic potential of 11,845 model
+compounds with additional refinements against solvation free energies. In general, this model has
+demonstrated an acceptable level of accuracy when applied to molecules that lie outside its training
+set..6-11, 18 However, as evidenced by the Bace-1 outlier shown in Section 2, application to untrained
+heterocycles can prove to be problematic.
+Two approaches that could be applied to ameliorate this issue are: (1) extend the BCC training
+set to include a growing list of heterocycles25 or (2) parameterize the partial charges for each new
+ligand by fitting directly to the target QM data (i.e. HF/6-31G* ESP’s) on-the-fly. Option (1) is
+akin to the approach taken in refining the torsion model. For charges, however, we expect this
+route to present a greater challenge owing to the expansive nature of drug-like chemical space and
+the particular sensitivity of charges to their chemical environment. Because the on-the-fly method
+maximally encapsulates all the pertinent chemical information of the constituent ligands, we’ve
+chosen to focus on this approach. One potential downside is that the compute time required to
+
+
+12
+generate the QM ESP can be prohibitive for certain FF-based applications such as virtual screening
+or small molecule conformational search. However, for MD based applications, such as FEP, the
+requisite assignment time (~10 min) remains small relative to the time required for the production
+simulations.
+Though HF/6-31G* based charges, in general, perform well when combined with the OPLS
+force field, there are a limited set of known chemical moieties where QM based charge fitting does
+not translate well to the condensed phase.26 In OPLS3, this was addressed by additional refinement
+of BCC parameters against available condensed phase data.22 To retain these refinements in
+OPLS3e we use a restrained QM fitting approach, where the reference values are based on OPLS3
+charges and the strength of the restraints can vary by chemical substructure. In principal, this
+would allow the model to hew more closely to this reference for moieties that required additional
+refinements and adapt more freely to QM, otherwise. The restraint values are developed and
+validated against a set of small molecule experimental hydration and transfer free energies. The
+hydration free energy data set is comprised of the Shivakumar et al.22 set of 240 molecules, as well
+as an additional 178 molecules from the FreeSolv database27 selected to cover a variation of
+chemical groups while excluding larger compounds with multiple rotatable bonds. Applying the
+same selection criteria, we further expanded our validation sets to include a sub-set of water
+toluene and water-chloroform transfer free energies from references 28-30. FEP+ solvation free
+energies were calculated by annihilation of the compound from solvent. Simulations times were
+4ns, charge and van der Waals perturbations were run sequentially and transfer free energies were
+calculated as the difference between annihilation free energies in water and in chloroform/toluene
+respectively.
+
+
+13
+As a baseline, we explored a charge model with zero restraints to reference values (OPLS3 using
+QM charges). Results for these solvation free energy benchmarks are shown in Table 3. The error
+of the hydration free energy benchmark was observed to be significantly worse using this model
+versus standard OPLS3 (1.39 kcal/mol versus 1.02 kcal/mol). Upon closer inspection, the
+regression was concentrated in the following functional groups (see Table 4): amines,
+formates/esters, nitros and the indicated sulfur derivatives. Representative fragments for these
+groups are shown in Figure S1. Amines present a well-known issue where the QM ESP derived
+partial charges fail to describe the trend in solvation energies of primary, secondary and tertiary
+amines.26 As discussed previously, OPLS3 has addressed this by further refining parameters
+against additional condensed phase data.
+After iterative empirical testing against condensed phase benchmarks we settled on a two-tier
+restraint scheme, with a relatively large restraint for the functional groups mentioned above and a
+relatively small restraint for everything else. Including low restraints helps ameliorate the
+problems that the partial charges can suffer from the underdetermined nature of fitting to ESP’s
+for ligand sized molecules31 and ensure physically relevant charges (e.g. non-negative hydrogens).
+The hybrid model, OPLS3e, compares well to OPLS3 for hydration free energies and shows a
+marked improvement in the transfer free energy benchmarks (Table 3). In particular, the chemical
+groups identified as problematic to describe with an unrestricted fit to the QM ESP are well
+described in OPLS3e (Table 4). It is important to emphasize here that this scheme is predicated
+on a posteriori knowledge of (and the availability of adequate existing parameters for) the set of
+moieties where QM electrostatic potential fitting leads to poor transferability to the condensed
+phase. This list of moieties will require revision if, with the acquisition of new experimental data,
+additional chemistries are identified that show a similar lack of transferability.
+
+
+14
+We need to further address the preparation of the molecular conformation used to fit the partial
+charges. Because fixed charge models do not explicitly account for intramolecular polarization
+effects, their charge parameters will depend on the particular conformation(s) used when fitting to
+the QM ESP. This is especially pertinent for ligand sized molecules in a FEP+ like context. Here
+we employ the putative bioactive conformation used in the FEP calculation. As an alternative, we
+also attempted an extended conformation (employed by OPLS3 to calculate CM1A charges)22 but
+found better performance using the bioactive conformation. As an initial step before fitting
+charges, the given input molecule geometries are pre-minimized with a torsional constraint, to
+preserve the initially provided conformation while avoiding strain. In principal, systems where
+this fixed charge approach results in parameters that are incongruous with other pertinent ligand
+conformations (eg. in water solvent) would necessitate an electrostatic treatment that explicitly
+accounts for these polarization effects.32,33 However, we note that in the FEP+ systems studied in
+the present work we did not observe significant errors as a consequence of the present
+approximation.
+IV. Application to Protein-Ligand Binding
+In reference 18, we used a large data set of protein-ligand binding FEP calculations to assess the
+impact of improvements made to the force field. Comparing OPLS3 to earlier variants of OPLS
+we observed a significant systematic reduction in FEP RMS error with improvements to the quality
+of the force field. Here we aim to do the same comparison for OPLS3e and OPLS3.
+The data set includes the 8 systems originally reported in reference 1. We also collected
+additional test series designed to more stringently probe challenging chemical transformations akin
+to the outlier cases presented in Section 2. The class of perturbations most commonly associated
+
+
+15
+with both the charge and torsion transferability issues discussed involved changes in composition
+of conjugated ring systems. This addition includes the Chk1, Bace and FXa series first presented
+in Harder et al. Additional ligand series were sourced for FXa from references 34-37,, Bace from
+reference 38 and another series focused on changes to an amidinium core, coordinating the
+catalytic aspartates of Bace in reference 19, excluding compounds with uncertain protonation state
+or multiple possible tautomeric states. A representative ligand for each target is shown in Figure
+4. Additional data sets, representing a similar chemistry focus, was sourced from Schrodinger
+collaboration projects, denoted project A, B, C and D in Table 5. In total 194 additional ligands
+were added to the original 199 ligand benchmark. The final combined data set includes various
+targets and compounds, including examples of kinases, proteases, tyrosine phosphatase, peptidase,
+positive/negative/neutral ligands, and variations of both cores and R-groups.
+The FEP+ protocol was similar to that previously described in reference 1, with a few notable
+differences. All simulations were run for 25ns, instead of 5ns, to improve convergence and enable
+us to focus on force field related differences. For P38, an incomplete loop was modeled in. For
+FXa, after close inspection of crystal structure densities, we noticed an ion binding site close to
+the ligand which was previously assigned as water.34, 36, 37 Consistent with the reported assay
+conditions, we replaced this water with a sodium ion.35, 37 We also refined ligand starting
+geometries using a similar strategy to that discussed in reference 39. When there was ambiguity
+about the pose, such as for symmetric R-groups with meta or ortho substituents that could flip 180
+degrees, we used FEP+ to assess and select the pose with the lowest free energy. Starting pose
+coordinates for ligands and proteins can be found in supplementary material. Associated PDB
+codes are provided in Table S2.
+
+
+16
+The overall RMS error is improved by approximately 20% with OPLS3e. That improvement is
+primarily driven by accuracy improvement in the extended test series. On the original FEP+
+benchmark (rows 1-8), both OPLS3 and OPLS3e perform similarly well. The series that sees the
+greatest improvement using OPLS3e is ProjectC (OPLS3 RMSE = 2.2 kcal/mol, OPLS3e RMSE
+= 0.9 kcal/mol). The improvement is a product of both the improved torsions and charges. An
+example perturbation improved by the OPLS3e torsions is shown in Figure 5. It involves the
+breaking of a fused ring system in the core of the molecule leaving a dangling amide substituent.
+Experimentally, breaking the fused ring results in a 1.5 kcal/mol loss of potency. In contrast,
+OPLS3 predicts a loss of potency of 4.5 kcal/mol. The simulated distribution of the torsion
+connecting the amide substituent to the ring shown in the figure indicates the source of the error.
+In both OPLS3 and OPLS3e, the predominant state in the complex corresponds to a NCcc angle
+of approximately 180 degrees which situates the amide group in the same plane as the parent
+heterocycle and facilitates formation of inter-molecule hydrogen bonds with the backbone of the
+protein. The same conformation is the primary state sampled by OPLS3e in solution. However,
+in OPLS3, the primary state in solution has the plane of the amide group orthogonal to the core
+heterocycle (NCcc=90). Thus, the OPLS3 representation incorrectly suggests that this variant will
+incur an additional conformational strain upon binding which leads to the observed under
+prediction of its affinity versus the experimental reference data.
+Consistent with this trend, the QM and OPLS3e energy required to rotate this group to the
+NCcc=90 state is approx. 14 kcal/mol. OPLS3 under-estimates this energetic penalty by 7
+kcal/mol which leads to the erroneous solvent population observed here. Fixing just the torsion
+issues addresses a significant portion of the OPLS3 error over this series. Using a model that
+combines OPLS3 charges with OPLS3e torsions reduces the series RMSE from 2.2 kcal/mol to
+
+
+17
+1.5 kcal/mol (Table 6). The remaining improvement in accuracy is due to the improved partial
+charge treatment with OPLS3e for the varied heterocyclic systems in this series.
+The set of amidine inhibitors of Bace-1 (Bace_cores) is another data set that shows significant
+improvement with OPLS3e. The data set includes the outlier case discussed in Section 2 and is
+comprised of a set of relatively uncommon heterocyclic cores (Figure 6) that form key interactions
+with catalytic aspartates in the binding site. To accurately reflect how these variations modulate
+the strength of their interaction with the catalytic aspartates, is a challenge for the force field. The
+predictions for this data set are relatively insensitive to the details of the torsion model and are
+primarily driven by changes in OPLS3e to the partial charges.
+The data set consists of two maps: one covering a series of monocyclic compounds (cmpd 1-10)
+and another covering a set of fused bicyclic compounds (cmpd 11-24). For the monocyclic sub
+set the RMS error improves from 1.7 kcal/mol with OPLS3 to 1.3 kcal/mol. The basis for the
+improvement is subtle and manifested over the full data set, illustrating the benefit of OPLS3e for
+novel heterocycle design. For the fused bicyclic subset the RMS error improves from 2.2 kcal/mol
+to 1.5 kcal/mol. The improvement is driven by better partial charge modeling of the aza derivatives
+in the series. Table 7, gives the binding affinity for each unsubstituted pyridyl and pyrmidyl
+derivative in the series relative to the amino-isoindole core (cmpd 11). As discussed in Section 2,
+the poor OPLS3 predictions are a product of poor parameter transferability from the OPLS3
+training set for the n-aryl substituted compounds. OPLS3e addresses this issue by fitting directly
+to QM leading to significantly better performance over this set.
+Despite these improvements the RMS error for the Bace_core data set (1.39 kcal/mol) remains
+quite high. The remaining outlier, which is mainly responsible for the residual error, is cmpd 23.
+As shown in Figure 7, relative to the amino-isoindole core (cmpd 11) cmpd 23 introduces an
+
+
+18
+additional OMe group to the core ring. As indicated in Figure 7, the addition of the OMe
+substituent introduces a significant electron rich moiety in close proximity to ASP228 which leads
+to a significant drop in potency for cmpd 23. However, both OPLS3 and OPLS3e significantly
+over-estimate the associated drop in potency by approx. 3 kcal/mol. In our FEP+ simulations the
+two catalytic aspartates in Bace-1 are assumed to be unprotonated in the holo state, in agreement
+with previous publications.19, 40 However, given the present observation we conjectured that the
+introduction of substituents with significant electronegativity at this position may shift the
+preferred state of ASP228 to be neutral. To test this hypothesis, we estimated the pKa of this
+residue in the presence of both compounds #11 and #23 to be 4 and 7, respectively. The pKa
+protocol is discussed in SI Section 3. Given the associated experimental pH of the assay is 4.5,
+this implies that the neutral form of ASP288 should be predominant for cmpd 23. Correcting the
+predicted binding affinity of cmpd #23 relative to cmpd #11, using Equation S6, gives +2.0
+kcal/mol which is in-line with the experimentally measured value of +2.6 kcal/mol. We are
+presently pursuing strategies to include pKa effects, like this, in FEP+ calculations.
+Likewise, for the monocyclic molecules the binding affinity of core number 5 is still
+overestimated with OPLS3e. All Bace-1 cores in the data set are assumed to have a protonated
+amidine motif both in the protein binding site and in the reference state. Experimental core
+contribution to pKa is lower for core 5 than the other monocycles.19 The same is true for the
+calculated pKa, which for core 5 with two phenyl R-groups is 4.8, close to the assay conditions
+of pH=4.5. There is a possibility that core 5 is unprotonated before binding, which would result in
+an energetic penalty upon binding, and could explain the too high predicted affinity.
+
+
+19
+In summary, there is still room for improvements, but overall OPLS3e performs well for all
+tested systems, and especially contributes a significant improvement to OPLS3 for challenging
+heterocycles.
+V. Conclusion
+We here report the development and validation of a new force field, OPLS3e, that leads to
+improved performance in predicting protein-ligand binding affinities. Over an expansive set of
+protein targets and ligand chemistries, the model achieves a RMS error of approx. 1 kcal/mol. The
+model accomplishes this by addressing limitations in chemotype transferability that affects small
+molecule torsions and charges. Better torsion parameter transferability is achieved with an
+expanded basis of torsion types that distinguish moieties with greater chemical specificity. Better
+charge parameter transferability is achieved by directly fitting ligand specific charges to the target
+QM derived electrostatic potential. Ligand transformations that modulate the composition of
+conjugated heterocycles are particularly sensitive to these effects and display the most pronounced
+accuracy improvements.
+With regards to future development, we anticipate that additional parameter refinements to the
+present development (eg. adding new torsion types) will be necessary as more reference data
+becomes available. We also expect that, as more aggressive explorations of chemical and
+configurational space are enabled by continued advances in sampling efficiency, that will, in turn,
+expose new challenges to the fidelity of the force field. In addition, we are also actively looking
+into accuracy improvements that could be derived from modifications to the functional form of the
+model (eg. multi-dimensional dihedral terms, better VdW terms etc.) and improved treatment of
+regimes of chemical space that lie outside the present testing data (eg. metalloenzymes). Beyond
+improvements to the force field, we are also actively pursuing strategies to account for the impact
+
+
+20
+that changes in protonation state can have in FEP+ calculations. As a basis for prioritizing these
+prospective activities, we continue to investigate outstanding prediction outliers to gain insights
+into the most important improvements that need to be made.
+Figures and Tables
+Figure 1. Left panel shows the experimental and FEP-predicted relative binding free energy in
+kcal/mol between ligands distinguished by the ester-/amide-pyrrole groups. The right panel shows
+the associated potential energy of the NCcn dihedral angle for an amide derivative derived from
+the FEP ligand (top) and the molecule used to train the associated torsion parameters (bottom).
+The predominant state in the complex corresponds to a NCcn angle=180. The predominant state
+in solution corresponds to a NCcn angle=0. OPLS3* is a modified version of OPLS3 that re
+parameterizes the amide-pyrrole dihedral against the fragment analog of the amide-pyrrole
+substructure present in the left ligand.
+
+
+21
+Figure 2. Bace-1 inhibitor charge outliers. Left panel shows full compound 11 in the binding site.
+Bicyclic core variations with OPLS3/QM amidine charges overlaid shown at right. Table
+summarizes the relative experimental and predicted binding free energy of the corresponding full
+compounds to Bace-1 in kcal/mol. The amidine motif forms key hydrogen bonds to the two
+catalytic aspartates of Bace-1. The predicted binding free energy for replacing one or two aromatic
+carbons for nitrogens (13, 16) in the amino-isoindole core (11) is consistently underestimated with
+OPLS3. Ligand series are from reference 19, FEP+ calculations employed the 4DJW structure.
+Table 1. RMS Error of with respect to QM for dimethyl aniline torsion profiles with varying para
+substituents (kcal/mol)a
+Para group OPLS3 parameter typea
+OPLS3e parameter typea
+OPLS3 RMSE
+OPLS3e RMSE
+-H A A 0.0 0.0
+-CH3 A A 0.3 0.3
+
+
+22
+-F A B 0.6 0.0
+-Cl A A 0.1 0.1
+-NH2 A C 1.4 0.0
+-OH A D 1.2 0.1
+-O- A E 4.1 0.2
+-C#N A F 1.8 0.1
+-Ph A A 0.3 0.2
+a Letter symbols represent associated dimethyl aniline parameter type. All molecules share the same type in OPLS3 and the parameter is trained against -H. OPLS3e delineates the assignment for para -F, -NH2, -OH, -O- and -C#N functional groups.
+
+
+23
+Figure 3. Rotamer energy comparisons for molecule pairs along the indicated dihedral. Each pair
+(A-D) is a representative example of the 4 chemical classes impacted by the OPLS3e torsion
+parameter type refinements. In OPLS3, each pair shared the same parameter assignment which
+now differ in OPLS3e.
+Table 2. Torsion profile RMS Error with respect to M06-2X/cc-pVTZ(-f) (kcal/mol)a
+Model all molecules (25890)
+training molecules (20646)
+test molecules: well covered (5244)
+OPLS_2005 1.9 1.9 1.8
+OPLS3 1.2 1.2 1.3
+OPLS3e 0.4 0.3 0.8
+aNumber of molecules for each set is shown in parentheses.
+Table 3. Error summary for hydration free energy results, and transfer free energies to chloroform
+and toluene.
+Data set No. cmpds
+RMSE (kcal/mol)
+OPLS3 OPLS3 + QM charges
+OPLS3e
+Hydration free energies 418 1.02 1.39 0.98
+Water-chloroform transfer free energies 242 1.12 1.10 0.99
+Water-toluene transfer free energies 163 0.93 0.74 0.71
+Table 4. Error summary for hydration free energies of chemical groups assigned high restraints in
+the new ligand based charge model.
+
+
+24
+Chemical Group No.
+cmpds
+RMSE (kcal/mol)
+OPLS3 OPLS3 + QM charges
+OPLS3e
+Amines 55 1.39 2.17 1.30
+Formates/esters 49 0.89 2.04 1.16
+Nitros 29 1.05 1.36 0.80
+Sulfoxides/sulfones
+/sulfates/aryl thiols 5 0.66 2.45 0.76
+
+
+25
+Figure 4. Examples from series of compounds from the extended data set focused on variations of
+heterocycles.
+Table 5. Relative binding free energy results.
+
+
+26
+System
+No.
+cmpds
+Series ref
+No.
+Pert.
+RMSE (kcal/mol)
+OPLS3 OPLS3e
+BACE 36 41 58 1.11 1.10
+CDK2 16 42 25 1.07 1.00
+JNK1 21 43 34 0.81 0.88
+MCL1 42 44 71 1.25 1.17
+P38 34 45 56 0.89 0.88
+PTP1B 23 46 49 0.70 0.63
+Thrombin 11 47 16 0.85 1.08
+Tyk2 16 48, 49 24 0.73 0.65
+FXA 40 14-17 60 1.47 1.29
+CHK1 19 50-55 18 1.20 0.98
+BACE core 23 19 30 1.97 1.39
+BACE
+heterocycles 21 38, 41 28 1.47 1.04
+ProjectA 13 a 11 0.91 0.80
+ProjectB 11 a 18 2.11 1.31
+ProjectC 22 a 28 2.22 0.90
+ProjectD 45 a 63 1.23 1.01
+Total Weighted Average
+393 589 1.29 1.04
+a In-house data.
+
+
+27
+Figure 5. Left panel shows the experimental and FEP-predicted relative binding free energy in
+kcal/mol between ligands distinguished by the breaking of the fused lactam ring from the projectC
+series. The right panel shows the simulated population of the NCcc dihedral angle of the acyclic
+derivative.
+Table 6. ProjectC Relative Binding Free Energy Error
+Model RMSE (kcal/mol)
+OPLS3 2.2
+OPLS3 + New Torsions
+1.5
+OPLS3e 0.9
+
+
+28
+Figure 6. Illustration of the chemical diversity of the challenging monocyclic and bicyclic core
+variations of Bace-1 inhibitors from reference 19. The description of the heterocycle variations
+and their effect on the key interactions were limited with OPLS3 and improved with OPLS3e.
+Table 7. Experimental and FEP Predicted Relative Binding Free Energies for Bace_core ligandsa
+Ligand perturbationa
+ddG (exp.) ddG(OPLS3) ddG(OPLS3e)
+11 → 12 0.7 5.3 2.3
+11 → 13 0.0 4.0 1.0
+11 → 14 0.2 4.0 0.5
+11→ 15 0.5 4.5 1.6
+
+
+29
+11 → 16 0.9 3.3 0.9
+a Specified ligands are illustrated in Figure 6. Free energies in kcal/mol.
+Figure 7. The experimental and FEP-predicted relative binding free energy in kcal/mol between
+ligands distinguished by the indicated substituent change (methoxy for hydrogen). Substitution
+position is in close proximity to ASP228. Tabulated FEP predictions are based on the receptor
+state indicated here where both ASP32 and ASP228 are modeled in their deprotonated form.
+ASSOCIATED CONTENT
+FEP results, input structures and OPLS3e parameters are included with the supplementary
+information.
+AUTHOR INFORMATION
+Corresponding Author
+
+
+30
+* ed.harder@schrodinger.com
+Notes
+K.R. and C.W. contributed equally to this work. The authors declare the following competing
+financial interest(s): R.A.F. has a significant financial stake in, is a consultant for, and is on the
+Scientific Advisory Board of Schrodinger, Inc. K.R. was funded by the Swedish Research Council.
+REFERENCES
+(1) Wang, L.; Wu, Y.; Deng, Y.; Kim, B.; Pierce, L.; Krilov, G.; Lupyan, D.; Robinson, S.;
+Dahlgren, M. K.; Greenwood, J.; Romero, D. L.; Masse, C.; Knight, J. L.; Steinbrecher,
+T.; Beuming, T.; Damm, W.; Harder, E.; Sherman, W.; Brewer, M.; Wester, R.; Murcko,
+M.; Frye, L.; Farid, R.; Lin, T.; Mobley, D. L.; Jorgensen, W. L.; Berne, B. J.; Friesner, R.
+A.; Abel, R. Accurate and Reliable Prediction of Relative Ligand Binding Potency in
+Prospective Drug Discovery by Way of a Modern Free-Energy Calculation Protocol and
+Force Field. J. Am. Chem. Soc. 2015, 137, 2695–2703.
+(2) Zwanzig, R. W. High‐Temperature Equation of State by a Perturbation Method. I.
+Nonpolar Gases. J. Chem. Phys. 1954, 22, 1420–1426.
+(3) Kollman, P. Free Energy Calculations: Applications to Chemical and Biochemical
+Phenomena. Chem. Rev. 1993, 93, 2395–2417.
+(4) Perez, A.; Morrone, J. A.; Simmerling, C.; Dill, K. A. Advances in Free-Energy-Based
+Simulations of Protein Folding and Ligand Binding. Curr. Opin. Struct. Biol. 2016, 36, 25
+31.
+
+
+31
+(5) Hansen, N.; van Gunsteren, W. F. Practical Aspects of Free-Energy Calculations: A
+Review. J. Chem. Theory Comput. 2014, 10, 2632–2647.
+(6) Abel, R.; Wang, L.; Harder, E. D.; Berne, B. J.; Friesner, R. A. Advancing Drug Discovery
+through Enhanced Free Energy Calculations. Acc. Chem. Res. 2017, 50, 1625–1632.
+(7) Abel, R.; Mondal, S.; Masse, C.; Greenwood, J.; Harriman, G.; Ashwell, M. A.; Bhat, S.;
+Wester, R.; Frye, L.; Kapeller, R.; Friesner, R. A. Accelerating Drug Discovery through
+Tight Integration of Expert Molecular Design and Predictive Scoring. Curr. Opin. Struct.
+Biol. 2017, 43, 38–44.
+(8) Ciordia, M.; Pérez-Benito, L.; Delgado, F.; Trabanco, A. A.; Tresadern, G. Application of
+Free Energy Perturbation for the Design of BACE1 Inhibitors. J. Chem. Inf. Model. 2016,
+56, 1856–1871.
+(9) Lovering, F.; Aevazelis, C.; Chang, J.; Dehnhardt, C.; Fitz, L.; Han, S.; Janz, K.; Lee, J.;
+Kaila, N.; McDonald, J.; Moore, W.; Moretto, A.; Papaioannou, N.; Richard, D.; Ryan, M.
+S.; Wan, Z-K.; Thorarensen, A. Imidazotriazines: Spleen Tyrosine Kinase (Syk) Inhibitors
+Identified by Free-Energy Perturbation (FEP). ChemMedChem 2015, 11, 217–233.
+(10) Jorgensen, W. L. Computer-Aided Discovery of Anti-HIV Agents. Bioorg. Med.
+Chem. 2016, 24, 4768–4778.
+(11) Lenselink, E. B.; Louvel, J.; Forti, A. F.; van Veldhoven, J. P. D.; de Vries, H.;
+Mulder-Krieger, T.; McRobb, F. M.; Negri, A.; Goose, J.; Abel, R.; van Vlijmen, H. W.
+T.; Wang, L.; Harder, E.; Sherman, W.; IJzerman, A. P.; Beuming, T. Predicting Binding
+
+
+32
+Affinities for GPCR Ligands Using Free-Energy Perturbation. ACS Omega 2016, 1, 293
+304.
+(12) Hünenberger P. H.; van Gunsteren W. F. Empirical classical interaction functions
+for molecular simulation BT - Computer Simulation of Biomolecular Systems: Theoretical
+and Experimental Applications. In Computer Simulation of Biomolecular Systems; van
+Gunsteren W. F., Weiner P. K., Wilkinson A. J., Eds.; Springer: Dordrecht, Netherlands,
+1997; 3, pp 3-82.
+(13) Darden, T. A. Treatment of Long-Range Forces and Potential. In Computational
+Biochemistry and Biophysics; Becker, O., MacKerell Jr. A.D., Roux, B., Watanabe, M.,
+Eds.; CRC Press: Boca Raton, 2001.
+(14) Halgren, T. A. Merck Molecular Force Field. I. Basis, Form, Scope,
+Parameterization, and Performance of MMFF94. J. Comput. Chem. 2018, 17, 490–519.
+(15) Wang, J.; Wolf, R. M.; Caldwell, J. W.; Kollman, P. A.; Case, D. A. Development
+and Testing of a General Amber Force Field. J. Comput. Chem. 2004, 25, 1157–1174.
+(16) Vanommeslaeghe, K.; Hatcher, E.; Acharya, C.; Kundu, S.; Zhong, S.; Shim, J.;
+Darian, E.; Guvench, O.; Lopes, P.; Vorobyov, I.; Mackerell Jr. A. D. CHARMM General
+Force Field (CGenFF): A Force Field for Drug-like Molecules Compatible with the
+CHARMM All-Atom Additive Biological Force Fields. J. Comput. Chem. 2010, 31, 671
+690.
+(17) Mobley, D.; Bannan, C. C.; Rizzi, A.; Bayly, C. I.; Chodera, J. D.; Lim, V. T.; Lim,
+N. M.; Beauchamp, K. A.; Slochower, D. R.; Shirts, M. R.; Gilson, M. K.; Eastman, P. K.
+
+
+33
+Escaping Atom Types Using Direct Chemical Perception. J. Chem. Theory Comput. 2018,
+14, 6076–6092.
+(18) Harder, E.; Damm, W.; Maple, J.; Wu, C.; Reboul, M.; Xiang, J. Y.; Wang, L.;
+Lupyan, D.; Dahlgren, M. K.; Knight, J. L.; Kaus, J. W.; Cerutti, D.; Krilov, G.; Jorgensen,
+W. L.; Abel, R.; Friesner, R. A. OPLS3: A Force Field Providing Broad Coverage of Drug
+like Small Molecules and Proteins. J. Chem. Theory Comput. 2016, 12, 281–296.
+(19) Roos, K.; Viklund, J.; Meuller, J.; Kaspersson, K.; Svensson, M. Potency
+Prediction of ß-Secretase (BACE-1) Inhibitors Using Density Functional Methods. J.
+Chem. Inf. Model. 2014, 54, 818–825.
+(20) Roos, K.: Friesner, R. A. Comparing Physics Based Methods for Protein-Ligand
+Binding. Manuscript.
+(21) Storer, J. W.; Giesen, D. J.; Cramer, C. J.; Truhlar, D. G. Class IV Charge Models:
+A New Semiempirical Approach in Quantum Chemistry. J. Comput. Aided. Mol. Des.
+1995, 9, 87–110.
+(22) Shivakumar, D.; Harder, E.; Damm, W.; Friesner, R. A.; Sherman, W. Improving
+the Prediction of Absolute Solvation Free Energies Using the Next Generation OPLS Force
+Field. J. Chem. Theory Comput. 2012, 8, 2553–2558.
+(23) Tirado-Rives, J.; Jorgensen, W. L. Contribution of Conformer Focusing to the
+Uncertainty in Predicting Free Energies for Protein−Ligand Binding. J. Med. Chem. 2006,
+49, 5880–5884.
+
+
+34
+(24) Fateley, W. G.; Carlson, G. L.; Bentley, F. F. Phenolic-OH Torsional Frequency as
+a Probe for Studying -Electron Distortions in Aromatic Systems. J. Phys. Chem. 1975,
+79, 199–204.
+(25) Pitt, W. R.; Parry, D. M.; Perry, B. G.; Groom, C. R. Heteroaromatic Rings of the
+Future. J. Med. Chem. 2009, 52, 2952–2963.
+(26) Rizzo, R. C.; Jorgensen, W. L. OPLS All-Atom Model for Amines: Resolution of
+the Amine Hydration Problem. J. Am. Chem. Soc. 1999, 121, 4827–4836.
+(27) Mobley, D. L. Experimental and Calculated Small Molecule Hydration Free
+Energies, 2013. UC Irvine: Department of Pharmaceutical Sciences, UCI.
+http://www.escholarship.org/uc/item/6sd403pz
+(28) Stephens, T. W.; Loera, M.; Quay, A. N.; Chou, V.; Shen, C.; Wilson, A.; Acree
+Jr, W. E.; Acree, W. E.; Abraham, M. H. Correlation of Solute Transfer Into Toluene and
+Ethylbenzene from Water and from the Gas Phase Based on the Abraham Model. Open
+Thermodyn. J 2011, 5, 104–121.
+(29) Sprunger, L. M.; Achi, S. S.; Acree, W. E.; Abraham, M. H.; Leo, A. J.; Hoekman,
+D. Correlation and Prediction of Solute Transfer to Chloroalkanes from Both Water and
+the Gas Phase. Fluid Phase Equilib. 2009, 281, 144–162.
+(30) Abraham, M. H.; Platts, J. A.; Hersey, A.; Leo, A. J.; Taft, R. W. Correlation and
+Estimation of Gas − Chloroform and Water − Chloroform Partition Coefficients by a
+Linear Free Energy Relationship Method. J. Pharm. Sci. 1999, 88, 670–679.
+
+
+35
+(31) Jakalian, A.; Bush, B. L.; Jack, D. B.; Bayly, C. I. Fast, Efficient Generation of
+High-Quality Atomic Charges. AM1-BCC Model: I. Method. J. Comput. Chem. 2000, 21,
+132–146.
+(32) Shi, Y.; Xia, Z.; Zhang, J.; Best, R.; Wu, C.; Ponder, J. W.; Ren, P. Polarizable
+Atomic Multipole-Based AMOEBA Force Field for Proteins. J. Chem. Theory Comput.
+2013, 9, 4046–4063.
+(33) Lopes, P. E. M.; Huang, J.; Shim, J.; Luo, Y.; Li, H.; Roux, B.; MacKerell, Jr. A.
+D. Force Fields for Peptides and Proteins based on the Classical Drude Oscillator. J. Chem.
+Theory Comput. 2013, 9, 5430–5449.
+(34) Yoshikawa, K.; Kobayashi, S.; Nakamoto, Y.; Haginoya, N.; Komoriya, S.;
+Yoshino, T.; Nagata, T.; Mochizuki, A.; Watanabe, K.; Suzuki, M.; . Design, Synthesis,
+and SAR of Cis-1,2-Diaminocyclohexane Derivatives as Potent Factor Xa Inhibitors. Part
+II: Exploration of 6–6 Fused Rings as Alternative S1 Moieties. Bioorg. Med. Chem. 2009,
+17, 8221–8233.
+(35) Yoshikawa, K.; Yokomizo, A.; Naito, H.; Haginoya, N.; Kobayashi, S.; Yoshino,
+T.; Nagata, T.; Mochizuki, A.; Osanai, K.; Watanabe, K.; Kanno, H.; Ohta, T. Design,
+Synthesis, and SAR of Cis-1,2-Diaminocyclohexane Derivatives as Potent Factor Xa
+Inhibitors. Part I: Exploration of 5-6 Fused Rings as Alternative S1 Moieties. Bioorganic
+Med. Chem. 2009, 17, 8206–8220.
+(36) Zbinden, K. G.; Anselm, L.; Banner, D. W.; Benz, J.; Blasco, F.; Décoret, G.;
+Himber, J.; Kuhn, B.; Panday, N.; Ricklin, F.; Risch, P.; Schlatter, D.; Stahl, M.; Thomi,
+
+
+36
+S.; Unger, R.; Haap, W. Design of Novel Aminopyrrolidine Factor Xa Inhibitors from a
+Screening Hit. Eur. J. Med. Chem. 2009, 44, 2787–2795.
+(37) Chan, C.; Borthwick, A. D.; Brown, D.; Burns-Kurtis, C. L.; Campbell, M.;
+Chaudry, L.; Chung, C-w.; Convery, M. A.; Hamblin, J. N.; Johnstone, L.; Kelly, H. A.;
+Kleanthous, S.; Patikis, A.; Patel, C.; Pateman, A. J.; Senger, S.; Shah, G. P.; Toomey, J.
+R.; Watson, N. S.; Weston, H. E.; Whitworth, C.; Young, R. J.; Zhou, P. J. Factor Xa
+Inhibitors: S1 Binding Interactions of a Series of N-{(3S)-1-[(1S)-1-Methyl-2-Morpholin
+4-Yl-2-Oxoethyl]-2-Oxopyrrolidin-3-Yl}Sulfonamides. J. Med. Chem. 2007, 50, 1546
+1557.
+(38) Truong, A. P.; Probst, G. D.; Aquino, J.; Fang, L.; Brogley, L.; Sealy, J. M.; Hom,
+R. K.; Tucker, J. A.; John, V.; Tung, J. S.; Pleiss, M. A.; Konradi, A. W.; Sham, H. L.;
+Dappen, M. S.; Toth, G.; Yao, N.; Brecht, E.; Pan, H.; Artis, D. R.; Lany, R.; Bova, M. P.;
+Sinha, S.; Yednock, T. A.; Zmolek, W.; Quinn, K. P.; Sauer, J-M. Improving the
+Permeability of the Hydroxyethylamine BACE-1 Inhibitors: Structure–Activity
+Relationship of P2′ Substituents. Bioorg. Med. Chem. Lett. 2010, 20, 4789–4794.
+(39) Kaus, J. W.; Harder, E.; Lin, T.; Abel, R.; McCammon, J. A.; Wang, L. How To
+Deal with Multiple Binding Poses in Alchemical Relative Protein–Ligand Binding Free
+Energy Calculations. J. Chem. Theory Comput. 2015, 11, 2670–2679.
+(40) Swahn, B.; Holenz, J.; Kihlström, J.; Kolmodin, K.; Lindström, J.; Plobeck, N.;
+Rotticci, D.; Sehgelmeble, F.; Sundström, M.; Berg, S. Von; Falting, J.; Georgievska, B.;
+Gustavsson, S.; Neelissen, J.; Ek, M.; Olsson, L-L.; Berg, S. Aminoimidazoles as BACE
+
+
+37
+1 Inhibitors : The Challenge to Achieve in Vivo Brain Efficacy. Bioorg. Med. Chem. Lett.
+2012, 22, 1854–1859.
+(41) Cumming, J. N.; Smith, E. M.; Wang, L.; Misiaszek, J.; Durkin, J.; Pan, J.; Iserloh,
+U.; Wu, Y.; Zhu, Z.; Strickland, C.; Voigt, J.; Chen, X.; Kennedy, M. E.; Kuvelkar, R.;
+Hyde, L. A.; Cox, K.; Favreau, L.; Czarniecki, M. F.; Greenlee, W. J.; McKittrick, B. A.;
+Parker, E. M.; Stamford, A. W. Structure Based Design of Iminohydantoin BACE1
+Inhibitors: Identification of an Orally Available, Centrally Active BACE1 Inhibitor.
+Bioorg. Med. Chem. Lett. 2012, 22, 2444–2449.
+(42) Hardcastle, I. R.; Arris, C. E.; Bentley, J.; Boyle, F. T.; Chen, Y.; Curtin, N. J.;
+Endicott, J. A.; Gibson, A. E.; Golding, B. T.; Griffin, R. J.; Jewsbury, P.; Menyerol, J.;
+Mesguiche, V.; Newell, D. R.; Noble, M. E.; Pratt, D. J.; Wang, L. Z.; Whitfield, H. J. N2
+Substituted O6-Cyclohexylmethylguanine Derivatives: Potent Inhibitors of Cyclin
+Dependent Kinases 1 and 2. J. Med. Chem. 2004, 47, 3710–3722.
+(43) Szczepankiewicz, B. G.; Kosogof, C.; Nelson, L. T. J.; Liu, G.; Liu, B.; Zhao, H.;
+Serby, M. D.; Xin, Z.; Liu, M.; Gum, R. J.; Haasch, D. L.; Wang, S.; Clampit, J. E.;
+Johnson, E. F.; Lubben, T. H.; Stashko, M. A.; Olejniczak, E. T.; Sun, C.; Dorwin, S. A.;
+Haskins, K.; Abad-Zapatero, C.; Fry, E. H.; Hutchins, C. W.; Sham, H. L.; Rondinone, C.
+M.; Trevillyan, J. M. Aminopyridine-Based c-Jun N-Terminal Kinase Inhibitors with
+Cellular Activity and Minimal Cross-Kinase Activity. J. Med. Chem. 2006, 49, 3563–3580.
+(44) Friberg, A.; Vigil, D.; Zhao, B.; Daniels, R. N.; Burke, J. P.; Garcia-Barrantes, P.
+M.; Camper, D.; Chauder, B. A.; Lee, T.; Olejniczak, E. T.; Fesik, S. W. Discovery of
+
+
+38
+Potent Myeloid Cell Leukemia 1 (Mcl-1) Inhibitors Using Fragment-Based Methods and
+Structure-Based Design. J. Med. Chem. 2013, 56, 15–30.
+(45) Goldstein, D. M.; Soth, M.; Gabriel, T.; Dewdney, N.; Kuglstatter, A.; Arzeno, H.;
+Chen, J.; Bingenheimer, W.; Dalrymple, S. A.; Dunn, J.; Farrell, R.; Frauchiger, S.; La
+Fargue, J.; Ghate, M.; Graves, B.; Hill, R. J.; Li, F.; Litman, R.; Loe, B.; McIntosh, J.;
+McWeeney, D.; Papp, E.; Park, J.; Reese, H. F.; Roberts, R. T.; Rotstein, D.; San Pablo,
+B.; Sarma, K.; Stahl, M.; Sung, M.-L.; Suttman, R. T.; Sjogren, E. B.; Tan, Y.; Trejo, A.;
+Welch, M.; Weller, P.; Wong, B. R.; Zecic, H. Discovery of 6-(2,4-Difluorophenoxy)-2
+[3-Hydroxy-1-(2-Hydroxyethyl)Propylamino]-8-Methyl-8H-Pyrido[2,3-d]Pyrimidin-7
+One (Pamapimod) and 6-(2,4-Difluorophenoxy)-8-Methyl-2-(Tetrahydro-2H-Pyran-4
+Ylamino)Pyrido[2,3-d]Pyrimidin-7(8H)-One (R1487) as Orally Bioavailible and Highly
+Selective Inhibitors of p38 Mitogen-Activated Protein Kinase. J. Med. Chem. 2011, 54,
+2255–2265.
+(46) Wilson, D. P.; Wan, Z.-K.; Xu, W.-X.; Kirincich, S. J.; Follows, B. C.; Joseph
+Mccarthy, D.; Foreman, K.; Moretto, A.; Wu, J.; Zhu, M.; Binnun, E.; Zhang, Y.-L.; Tam,
+M.; Erbe, D. V.; Tobin, J.; Xu, X.; Leung, L.; Shilling, A.; Tam, S. Y.; Mansour, T. S.;
+Lee, J. Structure-Based Optimization of Protein Tyrosine Phosphatase 1B Inhibitors: From
+the Active Site to the Second Phosphotyrosine Binding Site. J. Med. Chem. 2007, 50,
+4681–4698.
+(47) Baum, B.; Mohamed, M.; Zayed, M.; Gerlach, C.; Heine, A.; Hangauer, D.; Klebe,
+G. More than a Simple Lipophilic Contact: A Detailed Thermodynamic Analysis of
+Nonbasic Residues in the S1 Pocket of Thrombin. J. Mol. Biol. 2009, 390, 56–69.
+
+
+39
+(48) Liang, J.; Tsui, V.; Van Abbema, A.; Bao, L.; Barrett, K.; Beresini, M.;
+Berezhkovskiy, L.; Blair, W. S.; Chang, C.; Driscoll, J.; Eigenbrot, C.; Ghilardi, N.;
+Gibbons, P.; Halladay, J.; Johnson, A.; Kohli, P. B.; Lai, Y.; Liimatta, M.; Mantik, P.;
+Menghrajani, K.; Murray, J.; Sambrone, A.; Xiao, Y.; Shia, S.; Shin, Y.; Smith, J.; Sohn,
+S.; Stanley, M.; Ultsch, M.; Zhang, B.; Wu, L. C.; Magnuson, S. Lead Identification of
+Novel and Selective TYK2 Inhibitors. Eur. J. Med. Chem. 2013, 67, 175–187.
+(49) Liang, J.; van Abbema, A.; Balazs, M.; Barrett, K.; Berezhkovsky, L.; Blair, W.;
+Chang, C.; Delarosa, D.; DeVoss, J.; Driscoll, J.; Eigenbrot, C.; Ghilardi, N.; Gibbons, P.;
+Halladay, J.; Johnson, A.; Kohli, P. B.; Lai, Y.; Liu, Y.; Lyssikatos, J.; Mantik, P.;
+Menghrajani, K.; Murray, J.; Peng, I.; Sambrone, A.; Shia, S.; Shin, Y.; Smith, J.; Sohn,
+S.; Tsui, V.; Ultsch, M.; Wu, L. C.; Xiao, Y.; Yang, W.; Young, J.; Zhang, B.; Zhu, B.-y.;
+Magnuson, S. Lead Optimization of a 4-Aminopyridine Benzamide Scaffold To Identify
+Potent, Selective, and Orally Bioavailable TYK2 Inhibitors. J. Med. Chem. 2013, 56,
+4521–4536.
+(50) Lin, N.-H.; Xia, P.; Kovar, P.; Park, C.; Chen, Z.; Zhang, H.; Rosenberg, S. H.;
+Sham, H. L. Synthesis and Biological Evaluation of 3-Ethylidene-1,3-Dihydro-Indol-2
+Ones as Novel Checkpoint 1 Inhibitors. Bioorg. Med. Chem. Lett. 2006, 16, 421–426.
+(51) Huang, S.; Garbaccio, R. M.; Fraley, M. E.; Steen, J.; Kreatsoulas, C.; Hartman,
+G.; Stirdivant, S.; Drakas, B.; Rickert, K.; Walsh, E.; Hamilton, K.; Buser, C. A.;
+Hardwick, J. Mao, X.; Abrams, M.; Beck, S.; Tao, W.; Lobell, R.; Laura Sepp-Lorenzino,
+L.; Yan, Y.; Ikuta, M.; Murphy, J. Z.; Sardana, V.; Munshi, S.; Kuo, L.; Reillyd, M.;
+
+
+40
+Mahand, E. Development of 6-Substituted Indolylquinolinones as Potent Chek1 Kinase
+Inhibitors. Bioorg. Med. Chem. Lett. 2006, 16, 5907–5912.
+(52) Oza, V.; Ashwell, S.; Almeida, L.; Brassil, P.; Breed, J.; Deng, C.; Gero, T.;
+Grondine, M.; Horn, C.; Ioannidis, S.; Liu, D.; Lyne, P.; Newcombe, N.; Pass, M.; Read,
+J.; Ready, S.; Rowsell, S.; Su, M.; Toader, D.; Vasbinder, M.; Yu, D.; Yu, Y.; Xue, Y.;
+Zabludoff, S.; Janetka, J. Discovery of Checkpoint Kinase Inhibitor (S)-5-(3
+Fluorophenyl)-N-(Piperidin-3-Yl)-3-Ureidothiophene-2-Carboxamide (AZD7762) by
+Structure-Based Design and Optimization of Thiophenecarboxamide Ureas. J. Med. Chem.
+2012, 55, 5130–5142.
+(53) Zhao, L.; Zhang, Y.; Dai, C.; Guzi, T.; Wiswell, D.; Seghezzi, W.; Parry, D.;
+Fischmann, T.; Siddiqui, M. A. Design, Synthesis and SAR of Thienopyridines as Potent
+CHK1 Inhibitors. Bioorg. Med. Chem. Lett. 2010, 20, 7216–7221.
+(54) Tao, Z-F.; Wang, L.; Stewart, K. D.; Chen, Z.; Gu, W.; Bui, M-H.; Merta, P.;
+Zhang, H.; Kovar, P.; Johnson, E.; Park, C.; Judge, R.; Rosenberg, S.; Sowin, T.; Lin, N
+H. Structure-Based Design, Synthesis, and Biological Evaluation of Potent and Selective
+Macrocyclic Checkpoint Kinase 1 Inhibitors. J. Med. Chem. 2007, 50, 1514–1527.
+(55) Huang, X.; Cheng, C. C.; Fischmann, T. O.; Duca, J. S.; Yang, X.; Richards, M.;
+Shipps, G. W. Discovery of a Novel Series of CHK1 Kinase Inhibitors with a Distinctive
+Hinge Binding Mode. ACS Med. Chem. Lett. 2012, 3, 123–128.
+
+
+41
+Table of Contents Graphic
+OPLS3e: Extending Force Field Coverage for Drug-Like Small Molecules
+Katarina Roos, Chuanjie Wu, Wolfgang Damm, Mark Reboul, James M. Stevenson, Chao Lu,
+Markus K. Dahlgren, Sayan Mondal, Wei Chen, Lingle Wang, Robert Abel, Richard A. Friesner,
+Edward Harder

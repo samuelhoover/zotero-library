@@ -1,0 +1,168 @@
+Counterion and pH-Mediated Structural Changes in Charged Biopolymer Gels
+Ferenc Horkay*,1, Peter J. Basser1, Anne-Marie Hecht2, and Erik Geissler2
+1Section on Tissue Biophysics and Biomimetics, Program in Physical Biology, Eunice Kennedy Shriver National Institute of Child Health and Human Development, National Institutes of Health, 13 South Drive, Bethesda, MD 20892, USA
+2Laboratoire de Spectrométrie Physique CNRS UMR 5588, Université J. Fourier de Grenoble, B.P.87, 38402 St Martin d’Hères cedex, France
+Summary
+DNA solutions and gels exhibit a wide range of phenomena, many of which have not yet been fully understood. In the presence of multivalent counterions, attraction between charged DNA strands occurs. Increasing the concentration of multivalent ions leads to a decrease of the osmotic pressure, and a sufficiently high ion concentration results in the precipitation of the polymer. Replacing the monovalent counterions by hydrogen ions (decreasing the pH) also produces a marked decrease of the osmotic pressure, and at low pH a phase transition takes place. In this paper we analyze osmotic swelling pressure measurements and small-angle neutron scattering (SANS) measurements made on chemically cross-linked DNA gels swollen in near physiological salt solutions. The effect of calcium ions is compared with that of decreasing the pH of the equilibrium salt solution. We demonstrate that both the concentration dependence of the osmotic pressure and the SANS response of DNA gels display significant differences in the two cases.
+Keywords
+DNA gel; osmotic pressure; small-angle neutron scattering; ion exchange; volume transition
+Introduction
+Biopolymer molecules in aqueous solution exhibit various conformations, which depend on the environmental conditions, such as the pH, the ionic strength and the temperature. If the formation of intermolecular contacts between the polymer segments and the solvent molecules is energetically favorable, the polymer chains expand in solution. In the opposite case, when the solvent has less affinity for the polymer segments, the chains coil up into a compact sphere to minimize contact with solvent molecules. For example, proteins adopt one of the following states: compact globule, random coil or native state. Transitions among these conformations are possible and can be induced by changing the environmental conditions.
+It is known that changes in DNA conformation regulate important biological processes such as replication, transcription and transfection.[1-4] It is also known that high valence cations bind to the phosphate groups of the DNA molecule and reduce the electrostatic repulsion between these groups. The reduction of the repulsion makes it possible to bend the DNA to
+*horkay@helix.nih.gov.
+NIH Public Access
+Author Manuscript
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+Published in final edited form as: MacromolSymp. 2010 May ; 291-292(1): 354–361. doi:10.1002/masy.201050542.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+form compact, folded structures, which are important for storing long DNA molecules in the nucleus.[5]
+The properties of polyelectrolyte solutions and gels are not well understood. Simple models, such as the Flory-Huggins theory and the scaling theory that provide successful description for neutral polymers, cannot be easily extended to charged systems, mainly due to the longrange electrostatic (Coulomb) interaction between the charged groups on the polymer backbone, and due to the presence of the counterions in the solution.
+Here we report the results of a systematic study on the effect of the pH and the salt concentration on the osmotic pressure and small-angle neutron scattering (SANS) response of DNA gels. In these gels, a volume transition can be induced by either (i) adding high valence cations or (ii) decreasing the pH in the supernatant equilibrium solution phase. We are interested in identifying differences between the osmotic and structural properties of DNA gels in the two cases.
+Theory
+Thermodynamic Considerations
+The free energy, ΔF, of a charged polymer gel is given as a sum of three terms[6]
+(1)
+where ΔFmix, ΔFel, and ΔFionare the mixing, elastic, and ionic contributions to the free
+energy, respectively. It follows from eq. 1 that the osmotic swelling pressure should contain mixing πmix, elastic πel, and ionic πion contributions, due to polymer-solvent mixing,
+network chain elasticity, and the Donnan potential, respectively.
+In the context of the scaling theory[7] of gel swelling, πmix and πel can be expressed as
+functions of the polymer volume fraction φ and are given by
+(2)
+and
+(3)
+where A, B, nand mare constants. The value of the exponent ndepends on the thermodynamic quality of the solvent [for uncharged flexible polymer chains n≈ 9/4 (good solvent condition) and n= 3 (theta condition)]. According to the classical James-Guth theory of rubber elasticity m= 1/3.[8] The constant A = RT/v, where Ris the gas constant, Tthe absolute temperature, and v the molar volume of the solvent. The constant B = CRTν, where
+νis the concentration of the elastic chains and the prefactor C depends on the topology of the network.
+Due to the presence of permanent crosslinks, the swollen network behaves like a semipermeable membrane, i.e. the concentration of mobile ions in the gel is different from that in the surrounding salt solution. The osmotic contribution of the swelling pressure generated by the Donnan potential[6] is then given by
+(4)
+Horkay et al. Page 2
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+where ciand ci* are the concentration of the iionic species inside and outside the swollen
+network, respectively.
+In the presence of a large amount of added salt, the electrostatic interactions are screened, and the ionic term is not expected to play a significant role. However, residual ionic interactions may modify the mixing free energy term.
+Small-angle Neutron Scattering
+SANS is a well-suited technique for studying the structure of materials in the size range between 1 nm and about 500 nm. For semidilute polymer solutions, the scattering response can be described by an Ornstein-Zernike formula
+(5)
+where I(0) is the scattering intensity at q = 0, ξ is the polymer-polymer correlation length,
+and qis the scattering vector [q= 4π/λsin(θ/2), λis the wavelength of the incident
+radiation and θ the scattering angle].
+The scattering intensity from gels contains another contribution due to structural features frozen in by the cross-links.[9.11] Thus, the gel signal is given by
+(6)
+where the functional form of the second term F(q)is defined by the details of the gel structure.
+Experimental
+Gel Preparation
+DNA gels were prepared from deoxyribonucleic acid sodium salt (Sigma).[12] The
+molecular weight determined by ultracentrifugation was 1.3 × 106 g mol−1. DNA solutions (concentration: 3% w/w) were crosslinked with ethylene glycol diglycidyl ether at pH = 9.0 using TEMED to adjust the pH. After gelation, the gels were washed with deionized water, and swollen in NaCl solution (nearly physiological condition). The pH in the surrounding liquid phase was adjusted with HCl solution. The concentration of the CaCl2 in the
+equilibrium NaCl solution was gradually increased from 0 to 1 mM.
+Small-angle Neutron Scattering
+SANS measurements were performed on DNA gels on the NG3 instrument[13] at the National Institute of Standards and Technology (NIST, Gaithersburg, Maryland, USA). Gel samples were placed into standard NIST sample cells. The sample cell consisted of 1 mm thick quartz windows separated by a 2 mm thick spacer. The q-range explored was 0.002
+Å−1 ≤ q≤ 0.2 Å−1, and counting times from 20 minutes to 2 hours were used. D2O was the
+solvent. After radial averaging, detector response and cell window scattering were applied. The neutron scattering intensities were calibrated using absolute intensity standards. All experiments were carried out at 25 ± 0.1°C.
+Osmotic Swelling Pressure and Elastic Modulus Measurements
+Swelling pressure measurements were made by equilibrating the DNA gels with aqueous
+poly(vinyl pyrrolidone) (Mn = 29 × 103 g mol−1) solutions of known osmotic pressure. The
+Horkay et al. Page 3
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+penetration of the polymer into the swollen network was prevented by a semipermeable membrane.[14,15]
+Elastic (shear) modulus measurements were carried out on cylindrical gel samples using a TA.XT2I HR Texture Analyser (Stable Micro Systems, UK).[12] Swollen networks were uniaxially compressed (at constant volume) between two parallel flat plates. The stressstrain isotherms were determined in the range of deformation ratio 0.7 < Λ < 1. The data were analyzed using the relation[8]
+(7)
+where Gis the shear modulus and σis the nominal stress (related to the undeformed crosssection of the gel cylinder). The absence of volume change and barrel distortion was checked by measuring the dimensions of the deformed and undeformed gel cylinders.
+Results and Discussion
+Figure 1 shows the variation of the DNA volume fraction as a function of the pH and the CaCl2 concentration.
+These measurements were made in 40 mM NaCl solutions. The data clearly indicate that both decreasing the pH and increasing the calcium ion concentration induce volume transitions in DNA gels. The transition occurs around pH ≈ 1.2 and cCaCl2 = 0.3 mM,
+respectively. In the vicinity of the transition, the volume of the gel sharply changes with both the pH and the CaCl2 concentration. The figure also shows the dependence of the DNA
+volume fraction on the NaCl concentration of the equilibrium solution (lowest curve). With increasing NaCl concentration, the volume fraction of the DNA increases smoothly and continuously, without any abrupt changes.
+Figure 2 shows the SANS spectra of a DNA gel measured in D2O at different NaCl
+concentrations. For small values of q, the scattering curves exhibit common features. In the
+q-range below 0.008 Å−1, the scattering intensity I(q)decreases with increasing qaccording
+to the negative fourth power law, I(q)∝ q−4. This q-dependence corresponds to the so-called Porod law,[16] and indicates that the surface of the DNA clusters is smooth. At higher values of q, the shape of the scattering curves shows significant differences depending on the NaCl concentration. In the salt-free solution, the scattering spectrum exhibits a distinct correlation peak. This behavior is typical of polyelectrolyte solutions and gels.[17-21] In the
+present DNA gel, the salt-free correlation peak is located at q≈ 0.07 Å−1, corresponding to
+an average distance of d= 2π/q= 90 Å between the charged domains. Ions screen the charges, and, with increasing NaCl concentration, the polyelectrolyte peak is shifted towards
+lower values of q. In this gel, the correlation peak moves from q≈ 0.07 Å−1 (without salt) to
+q≈ 0.04 Å−1 (as a shallow peak) in 10 mM NaCl solution, indicating that the size of the charged domains increases by roughly 80%. In 40 mM NaCl solution, the polyelectrolyte
+peak has completely disappeared and only a shoulder is observed at q≈ 0.04 Å−1.
+The SANS data of the gels swollen in NaCl solutions (cNaCl ≥ 40 mM) can be analyzed
+using eq. 6 that reproduces the main characteristic features of the scattering curves. The continuous curves through the data points are least-squares fits to eq. 6. In the curvefitting
+equation, the second term was approximated by F(q)= aq−4, where ais a constant. The values obtained for the correlation length ξ vary in the range 10 Å < ξ < 12 Å, indicating that the thermodynamic concentration fluctuations are governed by the concentration of the polymer rather than that of the NaCl.
+Horkay et al. Page 4
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+In Figure 3 are displayed the SANS spectra of DNA gels just below the volume transition. In these gels, the NaCl concentration was set at 100 mM and either the pH or the calcium
+concentration was varied. In both cases in the intermediate q-range (0.008 Å−1 < q< 0.8
+Å−1) the scattering intensity is significantly enhanced relative to the SANS intensity measured in 100 mM NaCl at pH = 7. This behavior is expected when a phase transition is approached. However, at low and high values of q, the SANS spectra are bearly affected either by changing the pH or adding Ca ions. At low qthe scattering response is dominated by large-scale structures, while at high qthe scattering experiment probes the local geometry of the DNA chains. The present results show that neither the clusters nor the structure of the DNA molecules is significantly influenced by the ionic composition of the surrounding salt solution.
+Upon closer inspection of the SANS spectra, we can see that the shape of the scattering curves is different in the two cases. At low pH, the scattering response of DNA gels is similar to that of the corresponding neutral system (pH = 7, cNaCl = 100 mM). However, in
+the presence of calcium ions, the SANS intensity displays a characteristic q−1 dependence in the intermediate q-range, indicating that the monovalent/divalent ion-exchange favors the formation of linearly aligned assemblies. This observation is consistent with previous results reported for poly(acrylic acid) gels swollen in salt solutions containing both monovalent and divalent cations.[20,21]
+Osmotic pressure measurements have been made to gain insight into the thermodynamic changes occurring in the course of the volume transition. Figure 4 shows the variation of the osmotic pressure as a function of the polymer volume fraction for DNA gels swollen in 40 mM NaCl solution at different values of pH (Fig. 4a) and calcium ion concentrations (Fig. 4b). In the double-logarithmic representation all the curves are linear over the whole concentration range explored, indicating that the simple power-law (eq. 2) holds for all gels independently of the pH and salt concentration.
+However, the variation of the power-law exponent non approaching the transition is opposite in the two cases: nincreases with decreasing pH and decreases with increasing calcium ion concentration. In these DNA gels, the pH dependence of nis similar to the transition from good to poor solvent condition in neutral gels. This similarity suggests that the thermodynamic properties are dominated by short-range van der Waals interactions. The influence of calcium ions on the molecular conformation and osmotic properties appear to be significantly different from that of the pH. The observed difference may be related to the difference between the binding of H-ions and divalent counterions. Replacement of sodium ions by hydrogen or calcium ions modifies the ion distribution and the thermodynamic interactions in the polymer-solvent system. In weak polyelectrolytes the small hydrogen ions are relatively strongly bound. As the pH decreases the degree of protonation increases and the polyelectrolyte gel behaves almost like an uncharged polymer in poor solvent. When divalent ions are introduced into the gel they displace condensed monovalent cations. Recent measurements made by anomalous small-angle X-ray scattering indicate that divalent counterions are located in the immediate vicinity of the oppositely charged poyelectrolyte chains.[22,23] As a result of the competitive ion-exchange process condensed divalent counterions neutralize the polyelectrolyte molecules, and at higher divalent salt concentration volume transition occurs. The SANS spectra indicate the formation of linearly aligned regions in calcium containing DNA gels below the volume transition, probably due to residual electrostatic repulsion between the charged groups along the DNA strands.
+Horkay et al. Page 5
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+Conclusion
+We demonstrate that DNA gels swollen in near-physiological NaCl solution undergo a volume transition by adding calcium ions or decreasing the pH. The volume change is large and can be induced by a small change in calcium ion concentration around 0.3 mM or pH around pH ≈ 1.2. The SANS spectra of DNA gels in the absence of added salt display a correlation peak, characteristic of weak polyelectrolyte systems. As the salt concentration increases the peak is shifted towards lower values of qand merges with the low-qclustering feature. In the intermediate q-range the SANS intensity increases with both increase of calcium ion concentration and decrease of pH in the external solution. The SANS results also reveal the presence of linearly aligned regions in calcium-containing DNA gels. The dependence of the osmotic pressure on the DNA concentration exhibits a simple power-law behavior at each salt concentration and pH. As the pH decreases the power-law exponent increases, as expected for the transition from good to poor solvent condition in neutral polymer systems. However, with increasing calcium ion concentration the power-law exponent decreases as the volume transition is approached.
+Acknowledgments
+This research was supported by the Intramural Research Program of the NICHD, NIH. The authors acknowledge the support of the National Institute of Standards and Technology, U.S. Department of Commerce for providing access to the NG3 small angle neutron scattering instrument used in this experiment. This work utilized facilities supported in part by the National Science Foundation under Agreement No. DMR-0454672.
+References
+[1]. Goodman SD, Nash HA. Nature. 1989; 341:251–254. [PubMed: 2528697] [2]. Muller HP, Varmus HE. EMBO J. 1994; 13:4704–4714. [PubMed: 7925312] [3]. Perez-Martin J, Espinosa M. J. Mol. Biol. 1994; 241:7–17. [PubMed: 8051709] [4]. Parvin JD, McCormick RJ, Sharp PA, Fisher DE. Nature. 1995; 373:724–727. [PubMed: 7854460] [5]. Akao T, Fukumoto T, Ihara H, Ito A. FEBS Lett. 1996:215–218. [PubMed: 8706920] [6]. Flory, PJ. The Principles of Polymer Chemistry. Cornell University Press; Ithaca, NY: 1953. [7]. de Gennes, PG. Scaling Concepts in Polymer Physics. Cornell University Press; Ithaca, NY: 1979. [8]. Treloar, LRG. The Physics of Rubber Elasticity. Clarendon Press; Oxford: 1976. [9]. Soni VK, Stein RS. Macromolecules. 1990; 23:5257. [10]. Mallam S, Horkay F, Hecht AM, Rennie AR, Geissler E. Macromolecules. 1991; 24:543–548. [11]. Horkay F, Hecht AM, Mallam S, Geissler E, Rennie AR. Macromolecules. 1991; 24:2896–2902. [12]. Horkay F, Basser PJ. Biomacromolecules. 2004; 5:232. [PubMed: 14715031]
+[13]. NIST Cold Neutron Research Facility, NG3 and NG7 30-m. SANS Instruments Data Acquisition Manual. Jan. 1999 [14]. Horkay F, Zrinyi M. Macromolecules. 1982; 15:1306. [15]. Vink H. Eur. Polym. J. 1971; 7:1411.
+[16]. Porod, G. Small Angle X-ray Scattering. Glatter, O.; Kratky, O., editors. Academic Press; London: 1982.
+[17]. Prabhu VM, Muthukumar M, Wignall GW, Melnichenko YB. J. Chem. Phys. 2003; 119:40854098. [18]. Hammouda B, Horkay F, Becker M. Macromolecules. 2005; 38:2019. [19]. Horkay F, Hammouda B. Colloid Polym. Sci. 2008; 286:611–620. [20]. Horkay F, Grillo I, Basser PJ, Hecht AM, Geissler E. J. Chem. Phys. 2002; 117:9103. [21]. Horkay F, Basser PJ, Hecht AM, Geissler E. Polymer. 2005; 46:4242.
+[22]. Horkay F, Hecht AM, Rochas C, Basser PJ, Geissler E. J. Chem. Phys. 2006; 125:234904. [PubMed: 17190574]
+Horkay et al. Page 6
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+[23]. Horkay F, Basser PJ, Hecht AM, Geissler E. Macromol. Symp. 2007; 256:80–87.
+Horkay et al. Page 7
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+Figure 1.
+Variation of the DNA volume fraction φ with the calcium ion concentration (lower x-axis) and the pH (upper x-axis) in 40 mM NaCl solution. The lowest curve shows the dependence of φ on the NaCl concentration over the concentration range from 0 to 400 mM NaCl (pH = 7, cCaCl2 = 0 mM).
+Horkay et al. Page 8
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+Figure 2.
+SANS intensity from DNA gels in equilibrium with solutions containing NaCl (0, 10, 40 and 100 mM). The continuous curves through the data points of the gels swollen in 40 mM NaCl
+and 100 mM NaCl solutions show the least squares fits to eq. 6 with F(q)= aq−4.
+Horkay et al. Page 9
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+Figure 3.
+SANS intensity from DNA gels in equilibrium with solutions containing 100 mM NaCl at pH =7 (∇), 100 mM NaCl at pH = 1.5 (○), and 100 mM NaCl + 0.2 mM CaCl2 (×) at pH =
+7.
+Horkay et al. Page 10
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+Figure 4a.
+Dependence of the osmotic pressure of DNA gels on the polymer volume fraction at different values of pH in 40 mM NaCl solution. The dashed lines are least-squares fits to eq. 2. The value of the power-law exponent nvaries in the range 2.1 (pH = 7) < n< 2.9 (pH = 1.5).
+Horkay et al. Page 11
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+
+
+Figure 4b.
+Dependence of the osmotic pressure of DNA gels on the polymer volume fraction at different CaCl2 concentrations in 40 mM NaCl solution. The dashed lines are least-squares
+fits to eq. 2. The value of the power-law exponent nvaries in the range 2.1 (cCaCl2 = 0) > n>
+1.5 (cCaCl2 = 0.2 mM).
+Horkay et al. Page 12
+MacromolSymp. Author manuscript; available in PMC 2012 October 31.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript

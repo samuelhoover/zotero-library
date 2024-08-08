@@ -1,0 +1,2010 @@
+1981
+Progress and challenges in the synthesis of sequence
+controlled polysaccharides
+Giulio Fittolani1,2, Theodore Tyrikos-Ergas1,2, Denisa Vargová1,
+Manishkumar A. Chaube1 and Martina Delbianco*1
+Review Open Access
+Address: 1Department of Biomolecular Systems, Max Planck Institute of Colloids and Interfaces, Am Mühlenberg 1, 14476 Potsdam, Germany and 2Department of Chemistry and Biochemistry, Freie Universität Berlin, Arnimallee 22, 14195 Berlin, Germany
+Email: Martina Delbianco* - martina.delbianco@mpikg.mpg.de
+* Corresponding author
+Keywords: enzymes; glycans; polysaccharides; synthesis; well-defined polymers
+Beilstein J. Org. Chem. 2021, 17, 1981–2025. https://doi.org/10.3762/bjoc.17.129
+Received: 21 May 2021 Accepted: 22 July 2021 Published: 05 August 2021
+This article is part of the thematic issue "Polymer chemistry: fundamentals and applications".
+Guest Editor: B. V. K. J. Schmidt
+© 2021 Fittolani et al.; licensee Beilstein-Institut. License and terms: see end of document.
+Abstract
+The sequence, length and substitution of a polysaccharide influence its physical and biological properties. Thus, sequence con
+trolled polysaccharides are important targets to establish structure–properties correlations. Polymerization techniques and enzy
+matic methods have been optimized to obtain samples with well-defined substitution patterns and narrow molecular weight distribu
+tion. Chemical synthesis has granted access to polysaccharides with full control over the length. Here, we review the progress
+towards the synthesis of well-defined polysaccharides. For each class of polysaccharides, we discuss the available synthetic ap
+proaches and their current limitations.
+Introduction
+Polysaccharides are an abundant class of natural polymers that
+play important roles in the biosphere by structurally supporting
+plants, providing energy to animals, and regulating a variety of
+biological processes [1]. Their versatility and diversity result in
+a wide range of properties exploited for commercial purposes.
+Chemical modifications permit to broaden their applications
+even further. Additionally, polysaccharides can be converted
+into useful chemicals upon biodegradation [2,3], contributing to
+the sustainable development of future materials.
+Despite polysaccharides’ utility, there are limitations associated
+with their exploitation. Extraction from natural sources is
+laborious, low yielding, and provides heterogeneous mixtures
+that hamper characterization, reproducibility, and quality
+control. Small contaminations can heavily affect the
+polysaccharides’ material and biological properties. This
+issue became dramatic when contaminated batches of heparin
+caused many deaths during the so called “heparin crisis” in
+2008 [4].
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1982
+Figure 1: Overview of the methods available for the synthesis of polysaccharides. For each method, advantages (green) and disadvantages (red) are highlighted. Polymerization techniques (A and B) generate mixtures of compounds with non-uniform distribution of molecular weight (MW). In contrast, chemical synthesis (C) produces well-defined polysaccharides, but it is time-consuming. Automated Glycan Assembly (AGA) increases the efficiency of chemical synthesis by automating cycles of coupling and deprotection on a solid support (D).
+In addition, the heterogeneity of naturally sourced samples
+poses a severe bottleneck to the molecular characterization
+of polysaccharides that dwarfs in comparison to other
+biomolecules like peptides and nucleic acids. Establishing struc
+ture–property correlations is key to understanding polysaccha
+rides’ function in nature and translate this knowledge into
+tailor-made materials.
+Synthesis (i.e., chemical, enzymatic, or through polymerization)
+offers the opportunity to access polysaccharides with well
+defined composition, length, and substitution. These com
+pounds are ideal probes to study polysaccharides at the molecu
+lar level and identify structure–property correlations. Access to
+synthetic polysaccharides facilitated the correlation of chemical
+structure with molecular conformations [5,6], intermolecular
+interactions [7,8], and biological response [9]. Nevertheless, the
+complexity and diversity of polysaccharides makes synthetic
+processes extremely laborious and time consuming. Several
+aspects are crucial to plan a successful polysaccharide synthe
+sis. Properly designed starting materials and/or catalysts are re
+quired to ensure regio- and stereocontrol during glycosidic bond
+formation. Control over the polysaccharide length (degree of
+polymerization, DP) and regioselective insertion of modifica
+tions or branches are additional challenges. Three main ap
+proaches are available (Figure 1): A) enzymatic polymerization
+[10-17], B) chemical polymerization [18], C) chemical synthe
+sis.
+The use of enzymes has undeniable advantages because it offers
+the possibility to use unprotected sugars as substrates and
+guarantees remarkable control of the regio- and stereoselectivi
+ty during glycosylation. Mono- or oligosaccharides bearing a
+reactive leaving group (LG, e.g., phosphate, fluoride,
+nucleotide) are polymerized by the enzyme to form the desired
+polysaccharide (Figure 1A). Several classes of enzymes are
+available, including hydrolases, phosphorylases, sucrases,
+glycosyltransferases, and glycosynthases [19-22]. An excellent
+overview of the enzymes available for polysaccharide synthesis
+and their mode of action was recently published [11]. Despite
+the numerous advantages of this approach, limited enzyme
+availability as well as their high specificity narrowed the
+substrate scope. Generally, the highly specific enzyme
+reactive site tolerates only small modifications, hampering
+the formation of unnatural polymers. Low glycosylation
+yields and product hydrolysis represent additional hurdles
+associated with enzymatic synthesis of polysaccharides [23].
+With this approach, homopolymers are often obtained as
+non-uniform samples, because the enzymes cannot distinguish
+between acceptors with different lengths in the reaction mix
+ture.
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1983
+Chemical polymerization is often performed by ring-opening of
+the respective anhydrosugar (Figure 1B) or polycondensation
+reactions. This approach is highly valuable to generate long
+chains in short time, allowing for the introduction of unnatural
+modifications. However, the control over the length and substi
+tution pattern remains poor. To ensure good regio- and stereose
+lectivity, the starting material, often a polycyclic compound, has
+to be designed with suitable protecting groups (PGs). These
+structures can be quite challenging to prepare. Moreover, prob
+lems can occur during the removal of the PGs, since partially
+deprotected compounds can generate insoluble aggregates [24].
+Incomplete deprotection and residual PGs can largely affect the
+properties of the obtained polymer.
+Chemical synthesis provides compounds with well-defined
+length and substitution pattern (Figure 1C), but requires a sub
+stantial synthetic effort. For this reason, only few examples of
+long polysaccharides prepared by chemical synthesis are avail
+able. Properly designed building blocks (BBs) are needed, often
+prepared following numerous synthetic steps. In general, BBs
+are equipped with a reactive anomeric LG to allow for glycosyl
+ation and suitable PGs to ensure regio- and stereocontrol [25].
+Even though, in most cases, BB preparation follows straightfor
+ward protection/deprotection strategies, the low selectivity and
+yield of certain transformations [26,27] can limit the scope of
+this approach. The desired polysaccharide is generally assem
+bled following a linear or a convergent approach. In the former,
+the desired BBs are added sequentially to the growing polysac
+charide chain via a series of glycosylation reactions. In contrast,
+a convergent approach (also known as fragment coupling)
+allows connecting pre-assembled oligosaccharide blocks.
+To decrease the synthetic time required for the chemical synthe
+sis of polysaccharides, automated techniques have been
+developed [28-31]. Automated glycan assembly (AGA)
+connects monosaccharide BBs on a solid support following
+a linear approach (Figure 1D). Cycles of glycosylation and
+selective deprotection are iteratively performed to access
+the desired polysaccharide with full control over the length and
+the monosaccharide sequence [32]. Upon completion of the
+assembly, the desired product is released from the solid support
+and subjected to global deprotection. Similar to chemical poly
+merization, the removal of the PGs is a significant bottleneck.
+Additionally, several transformations remain challenging due to
+the poor reactivity or limited stereocontrol of certain BBs [33
+37].
+To overcome some limitations of the individual methods, a
+combination of methods is sometimes exploited. A classic ex
+ample is chemoenzymatic synthesis, in which synthetic BBs are
+employed to direct the enzymatic synthesis towards the desired
+polysaccharide target.
+In this review, we discuss the recent efforts towards the synthe
+sis of well-defined polysaccharides, with particular focus on
+how to control the length and the substitution pattern. Each
+section describes a class of polysaccharides based on a particu
+lar monosaccharide backbone (Figure 2). For each class, we
+discuss the specific challenges associated with their synthesis
+and we highlight the methods that were developed to overcome
+such bottlenecks. We aim to provide guidelines for the synthe
+sis of a target polysaccharide, as well as to identify the
+remaining bottlenecks associated with each class of polysaccha
+rides. For this reason, the synthesis of polysaccharides based on
+a highly heterogeneous backbone will not be discussed [38-40].
+Such syntheses are specific to the single polysaccharide target
+and only applicable to that particular sequence.
+Each chapter focuses on recent literature describing the synthe
+sis of oligo- and polysaccharides longer than hexasaccharides.
+Shorter oligomers are discussed when they represent a key step
+towards the synthesis of the corresponding polysaccharide.
+Polymers based on a sugar backbone connected via glycosidic
+linkages are analyzed, excluding glycopolymers and other
+mimetics. Extraction methodologies or post-extraction modifi
+cations are not discussed.
+Review Glucose-based polysaccharides Cellulose
+Cellulose is a polymer consisting of glucose units connected by
+β(1–4) glycosidic bonds. It is mainly found in two allomorphs 
+Cellulose I (natural) and Cellulose II (synthetic) – that differ in
+the orientation of the individual chains and in the number of
+hydrogen bonds in the crystalline structures [42,43]. In Cellu
+lose I, the chains are oriented parallel, whereas in Cellulose II
+antiparallel. Natural cellulose is produced by cellulose
+synthases [44-46]. As the chain gets elongated, microfibrils are
+formed. Such fibrils are the main structural components of the
+plant cell-wall, together with hemicelluloses [47]. Because of
+the high abundance and biodegradability [48-52], cellulosic ma
+terials have found multiple industrial applications [53].
+Synthesis and utilization, as well as a better understanding of
+cellulose’s properties are hindered by its poor solubility in most
+solvents. Relatively short oligomers with DPs of 6–10 tend to
+aggregate and precipitate out of solution [54], making isolation
+of pure samples troublesome. Much effort has been put to tune
+the synthetic conditions and produce long and uniform polysac
+charides. Solvent systems like DMAc/LiCl or quaternary am
+monium electrolytes are able to dissolve cellulose and could
+overcome the precipitation issues during synthesis [55,56];
+however, these systems are not always compatible with reac
+tion conditions [57]. The developments of synthetic cellulose
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1984
+Figure 2: Overview of the classes of polysaccharides discussed in this review. Each section deals with polysaccharides built on the same monosaccharide backbone. Representation following the Symbol Nomenclature For Glycans (SNFG) [41].
+until the year 2005 were discussed in a previous review [58],
+therefore we will focus only on recent reports. A detailed
+discussion on the synthesis of cellulose oligomers by enzy
+matic depolymerization [59] and phosphorylase [60] can be
+found elsewhere.
+The first successful enzymatic synthesis of cellulose was re
+ported by Kobayashi in 1991 [61]. Since then, a plethora of en
+zymes [62] and substrates [63] were developed, aiming to
+narrow the dispersion of molecular weight (MW), increase the
+DP, or control the molecular organization of the resulting mate
+rial (Scheme 1). Enzymatic polymerization of cellobiose fluo
+ride 1 was achieved using a cellulase produced from Tricho
+derma viride (Scheme 1A). The DP of the acetylated product
+was shown to be at least 22. Using a purified version of this en
+zyme, it was possible to obtain a synthetic analogue of Cellu
+lose I [64].
+A rough control of DPs (between 5 and 14) could be obtained
+tuning the concentration of glucose (2a) or cellobiose (2b)
+primer acceptor [65]. Polymerization conducted under macro
+molecular crowding conditions using water-soluble polymers
+produced hydrogels consisting of cellulose and gelatin networks
+[54,66-69]. A study of the self-assembly of cellulose chains at
+the active site of the enzyme suggested that diffusion of the
+aggregated molecules and the monomers around the active
+center dictates the DP that can be obtained by enzymatic poly
+merization [70,71]. This could be the reason causing enzymatic
+reactions to stop after a certain chain length, as the active site
+becomes overcrowded. Thus, by modifying the reaction medi
+um, a better control over the DP may be achieved.
+Longer cellulose chains (DP > 100) were obtained using
+DMAc/LiCl as reaction solvent and a cellulose surfactant com
+plex, even though in low yields (2–5%). This approach circum
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1985
+Scheme 1: Enzymatic and chemical polymerization approaches provide cellulose oligomers with a non-uniform distribution of MW. A) Cellulose oligomers can be synthesized using cellobiose fluoride 1 and cellulase. Other enzymes like cellodextrin phosphorylase (CDP) or cellobiose phosphorylase (CBP) use glucose (2a) or cellobiose (2b) primer respectively and glucose phosphate 3. B) Synthesis of cellulose by ROP from protected orthoester 4 promoted by Lewis acid (LA) or base (B).
+vented the precipitation of the water-insoluble oligomers and
+allowed for chain elongation [72,73]. This methodology was
+improved employing a protic co-catalyst system to yield
+DP > 120 in a 26% conversion [74]. Generally, an acid catalyst
+would promote the hydrolysis of the glycosidic bond. In this
+system, the SEE was hydrolytically inactive and the acid cataly
+sis activated the C-1 at the reducing end efficiently to promote
+chain-elongation.
+Immobilized catalysis provided cellulose analogues with very
+high crystallinity. A synthetic mutant enzyme of endoglucanase
+II [75] was cross-linked by bis-nitrilotriacetic acid yielding
+fibrous cellulose [76]. Cross-linked enzymes are believed to
+arrange their catalytic core domains and promote the formation
+of cellulose with high crystallinity. A similar principle was also
+demonstrated on a self-assembled monolayer [77]. Mimicking
+the natural cellulose synthases machinery can be foreseen to
+provide synthetic Cellulose I.
+Some enzymes offer the flexibility to produce modified cellu
+lose structures. Cellulose oligomers with fluorine substitution at
+C-2, C-3 or C-6 position were prepared by cellodextrin phos
+phorylases [78]. Mono- or multi-fluorinated compounds were
+obtained in good yields (30–47%) with average DPs ranging
+from 9 to 15. The multifluorinated compound crystallized in a
+new cellulose allomorph. AFM and TEM images confirmed the
+formation of long platelets for monofluorinated compounds,
+similar to those observed for cellulose [67,79], while the multi
+fluorinated compound formed considerably shorter platelets.
+Cellulose–xylan [80] and cellulose–chitin [81] hybrids were
+also obtained upon enzymatic polymerization of the respective
+dimers. An amino or azido functionality in the C-6 position
+allows for further modifications, for example by click-chem
+istry [82]. These results show that enzymatic methods can be
+powerful approaches also to create unnatural polysaccharide
+materials. Nevertheless, the inherent selectivity of the enzymes
+limits these approaches to particular patterns and modifications.
+To access a broader scope of cellulose modifications, chemical
+polymerization is a more suitable option. Ring-opening poly
+merization (ROP) of orthoesters 4 (Scheme 1B) is an estab
+lished procedure for the synthesis of β(1–4)-glucopyranan struc
+tures. The first chemical synthesis of stereoregular cellulose
+was achieved by ROP of 3,6-dibenzyl-protected 4 catalyzed by
+Ph3CBF4 [83]. The protected polymer 5 was obtained in 2 h in
+62% yield and an average DP of 19.3. The benzyl (Bn) group
+seems to be essential for the selective transformation [84].
+Several derivatives were prepared in a similar fashion
+(Scheme 1B), including the 6-deoxy [85], 13C-labelled [24],
+ʟ-Glc [86], and ethyl/methyl analogues [87-89]. Depending on
+the methyl/ethyl content, it was possible to tune the solubility of
+the polymer in water. 6-O-Methyl- and 6-O-ethyl-celluloses
+were poorly soluble in water, in contrast to heterogeneous poly
+mers with an increased content of ethyl groups. Even though the
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1986
+Scheme 2: AGA of a collection of cellulose analogues obtained using BBs 6–9. Specifically placed modifications prevented the formation of insoluble aggregates resulting in higher isolated yields. The AGA cycle includes coupling (NIS/TfOH), capping (Ac2O) and Fmoc deprotection (piperidine or Et3N).
+methyl/ethyl content could be adjusted using different ratios of
+the respective BBs, no control over the substitution pattern
+could be achieved. Removal of the Bn PG posed a bottleneck,
+requiring repeated treatments at high pressures and tempera
+tures. Allyl groups provided a valid alternative and could be re
+moved with palladium chloride at 60 °C in 4 hours [90].
+Chemical synthesis grants full control over the polymer length,
+avoiding non-uniform dispersions of MW obtained by polymer
+ization. Polymers with virtually any possible pattern of modifi
+cation can be prepared. Strategically introduced PGs can be
+selectively removed to insert a branch or a chemical modifica
+tion. However, to date, this approach has suffered dramatically
+from the severe aggregation and insolubility of cellooligosac
+charides, permitting to obtain only relatively short structures in
+low yields. To overcome this issue, the products were con
+verted and studied as their acetate analogues, as in the case of a
+cellulose 20mer obtained with a convergent approach [91,92].
+To date, the longest well-defined cellulose analogue produced
+via chemical synthesis is a 12mer (13, Scheme 2), obtained in a
+2% yield due to formation of insoluble aggregates during the
+deprotection step, resulting in loss of product during purifica
+tion [93]. 13 was obtained by AGA as part of a collection of
+substituted compounds, obtained in much higher yields. Specifi
+cally placed substituents including methyl, fluorine, and
+carboxymethyl groups, prevented the formation of insoluble
+aggregates by disrupting hydrogen-bond networks. Dramatic
+differences in the conformation (e.g., radius of gyration and
+glycosidic bond conformation) and aggregation behaviour (i.e.,
+crystallinity and solubility) were observed for compounds with
+the same degree but different pattern of substitution, under
+scoring the importance of pure and well-defined polysaccha
+rides for proper structure–property characterization. For exam
+ple, compounds with an alternated methylation pattern resulted
+in quasi-linear structures, whereas more bent geometries were
+observed with a block wise arrangement of methyl groups. As
+chemical synthesis offers high flexibility in terms of manipula
+tion, non-carbohydrate moieties can be exploited to guide the
+geometry of the resulting compounds. β(1–4)-Linked glucose
+chains were connected parallel via an anthraquinone moiety to
+give synthetic Cellulose I [94].
+Overall, enzymatic synthesis is an established procedure to
+obtain non-uniform cellulose oligo- and polysaccharides. Some
+success was achieved using additives and molecular crowding
+conditions; however, this approach remains limited by product
+insolubility and enzyme flexibility. ROP allowed for the intro
+duction of modifications in the structure, thus providing a first
+step towards structure–properties correlations. Yet, the substitu
+tion pattern remains random. Cellulose analogues were ob
+tained with full control over the length and substitution pattern
+by chemical synthesis, albeit in low yields. Selective disruption
+of intra- and intermolecular hydrogen bonds suggested that
+modifications can be designed to prevent precipitation and
+guide cellulose assembly.
+Xyloglucans
+Xyloglucans (XGs) are based on a β(1–4)-Glc backbone deco
+rated with xylopyranose branches, which can be further substi
+tuted at the C-2 position by a β-linked galactose or a α-ʟ-fucose
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1987
+Figure 3: Chemical structure of the different branches G, X, L, F commonly found in XGs. Names are given following the established nomenclature [100].
+Scheme 3: AGA of XG analogues with defined side chains. The AGA cycle includes coupling (TMSOTf), Fmoc deprotection (Et3N), PMB deprotection (DDQ) and Lev deprotection (hydrazine).
+unit (Figure 3). XGs are abundant components of the plant cell
+wall, where they are believed to interact with cellulose
+promoting the integrity of the plant wall [95]. However, a recent
+study suggested that XGs are not essential for the creation of
+the cellulose network [96].
+The complexity and diversity of XGs hinder isolation from
+natural sources and complicates their description. A significant
+effort was put towards the development of enzymes for selec
+tive introduction of the side chains [97,98]. A detailed overview
+of the enzymatic strategies to generate artificial plant cell wall
+polymers was recently published [11,99]. Here, we describe the
+methods available to access well-defined XG oligo- and poly
+saccharides.
+The first solution phase synthesis of a nonasaccharide repeating
+unit was realized using a convergent approach [101]. The
+process was later simplified using AGA and several XG oligo
+saccharides were prepared [102]. Representative examples are
+19 and 20 (Scheme 3) [103], as well as the galactose-contain
+ing compounds 21 and 22 [104]. These compounds permitted to
+study XG recognition by plant cell-wall antibodies. To avoid
+performing the challenging 1,2-cis glycosylation that would
+generate a mixture of anomers in AGA, the α(1–6) linkage be
+tween glucose and xylose was pre-installed in the disaccharide
+BB 16 (Scheme 3, highlighted in red) [104]. The orthogonal
+levulinoyl (Lev) and p-methoxybenzyl (PMB) PGs could be
+selectively cleaved to allow for chain elongation and for intro
+duction of the Gal unit at the C-2 of the xylopyranose, respec
+tively.
+An alternative approach utilized natural sourced XLLG tetrasac
+charide, which was obtained from tamarind seed XG via enzy
+matic digestion. This compound was then chemically trans
+formed to the corresponding glycosyl donors (4-methoxy
+phenyl- or fluoro-glycoside) to chemoenzymatically produce
+complex XGs. Compounds with different substitution patterns
+were obtained using a glycosynthase from Humicola insolens
+[105,106]. This approach produced polysaccharides with con
+trolled substitution, but no control over the length [107].
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1988
+Figure 4: Synthetic strategies and issues associated to the formation of the β(1–3) linkage.
+Similarly, XG fragments prepared by enzymatic degradation of
+XGs were converted to the fluoride donors and used in the
+subsequent glycosynthase-catalyzed transformations. (XXXG)3,
+(XLLG)3, and XXXG-GGGG-XXXG were prepared to study
+interactions with bacterial microcrystalline cellulose [108]. The
+glycosyl fluoride donors were also polymerized to give
+(XXXG)n and (XLLG)n with MW up to 12000 [109]. The syn
+thesis of the highly branched (XLFG)n polysaccharides re
+quired the additional fucosyltransferase AtFUT1 to introduce
+the fucose residues [110].
+Even though the complexity of plant polysaccharides hinders
+their synthesis, these compounds are highly desirable to dissect
+the different interactions taking place in the plant cell-wall.
+Recognition of the branched oligomers by glycosynthases
+proved to be limited and more enzymes are needed to broaden
+applications and generate uniform polymers. Chemoenzymatic
+methods provided XG oligo- and polymers, but are laborious,
+requiring several synthetic steps for the synthesis of the
+glycosyl donors.
+β(1–3)-Glucans
+β(1–3)-Glucans, linear or with β(1–6) appendances, are present
+in the cell-wall of fungi and yeasts, and are major polysaccha
+rides in brown seaweeds (laminarins) [111]. Due to their
+immunostimulating, antibacterial and antitumor activities, linear
+and branched β(1–3)-glucans have become interesting synthetic
+targets. Since several reports highlighted the correlation be
+tween chain length and biological activity, significant effort has
+been put to chemically synthesize β(1–3)-glucans with well
+defined lengths.
+In contrast to β(1–4)-glucans (i.e., cellulose), β(1–3)-glucans
+with a DP up to 20 can be dissolved in water [112], simplifying
+the synthetic process. Several oligosaccharides have been pre
+pared to identify the best PG pattern ensuring a proper balance
+between BB reactivity, stereoselectivity, and simplicity of
+deprotection [113-125]. Ester groups are commonly employed
+at C-2 position to ensure anchimeric assistance during glycosyl
+ation (Figure 4). However, the O-2 acyl group on the glycosyl
+acceptor hinders the 3-O-glycosylation sterically and electroni
+cally [126]. The decreased nucleophilicity of the C-3 hydroxy
+acceptor could lead to poor stereoselectivity [127]. This issue
+becomes even more dramatic when 2,4-di-O-acyl groups are
+present, sometimes leading to exclusive formation of α-anomers
+[128,129]. PGs like 2-O-ADMB (4-acetoxy-2,2-dimethylbu
+tanoate) [130] or 2,2’-O-benzylidene [131] were introduced to
+solve this issue. Several reports highlighted the importance of
+the 4,6-O-benzylidene group on the glycosyl donor and the
+acceptor for the stereoselective formation of the β(1–3) linkage
+(Figure 4) [132].
+Interestingly, oligomers bearing several 4,6-O-benzylidene
+groups show anomalously small coupling constants for some of
+the C-1 hydrogens. NMR [133] and X-ray [134] studies
+revealed that, for some residues, the 4,6-O-benzylidene group
+stabilizes a boat conformation (1,4B or B2,5), in contrast to the
+standard chair (4C1). This unexpected conformation did not
+affect the stereoselectivity of the glycosylation, permitting the
+preparation of linear β(1–3)-glucans of different lengths (6mer,
+8mer, 10mer and 12mer) following a convergent preactivation
+based iterative strategy [135]. These compounds were subse
+quently conjugated to keyhole limpet hemocyanin, revealing
+that the length of the glucans affected the immunogenic proper
+ties. A pre-activation-based iterative one-pot glycosylation
+method was also employed to access different branched struc
+tures having β(1–3)- and β(1–6)-linked Glc appendances on a
+β(1–3) backbone [136].
+To date, the longer β(1–3)-glucans [137,138] were obtained
+using a 2-O-acylated donor, to ensure β-selectivity, followed by
+deacylation and use of the resulting 2,3-diol as acceptor in the
+following glycosylation [131]. A regioselective glycosylation
+strategy was developed to obtain a collection of linear glucans
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1989
+Scheme 4: Convergent synthesis of β(1–3)-glucans using a regioselective glycosylation strategy.
+(8mer to 16mer) (Scheme 4), as well as a branched 9mer and
+17mer [137,138]. A similar strategy based on the regioselective
+glycosylation of a 2,3-diol 4,6-O-benzylidene acceptor
+permitted to access various β(1–3)-glucans, ranging from trimer
+to 13mer [126]. Regioselectivity was also achieved using a
+gold-catalyzed glycosylation, to give a linear β(1–3)-linked
+11mer and a branched 14mer in a convergent manner [139].
+Collection of linear as well as branched β(1–3)-glucans with
+defined lengths could be prepared by AGA [140-142]. The poor
+nucleophilicity of the C-3 hydroxy group on the glycosyl
+acceptor required the use of more reactive glycosyl phosphate
+donors and, in some cases, a double glycosylation cycle
+[118,143].
+Longer structures, albeit with no control over the DP, could be
+prepared via chemoenzymatic polymerization of α-lami
+naribiosyl fluoride donors catalyzed by the mutated barley
+β(1–3)-glucanase [144,145]. Linear β(1–3)-glucans with DP of
+30–40 appeared as lamellar, hexagonal crystals. Electron and
+X-ray diffraction studies revealed that long β(1–3)-glucan struc
+tures adopt a parallel, triple helical structures [146]. A
+glycosynthase derived from Bacillus licheniformis could poly
+merize glycosyl fluoride donors to prepare artificial mixed
+linkage β-glucans with an average molecular mass of
+10–15 kDa [147].
+The better solubility of β(1–3)-glucans, compared to the β(1–4)
+analogues, has permitted the chemical or enzymatic synthesis of
+long polysaccharides. Still, the poor nucleophilicity of the
+hydroxy group at C-3, in the presence of a C-2 ester PG, could
+decrease the efficiency of chemical synthesis. Hence, there is
+scope for new strategies to provide anchimeric assistance, with
+out affecting the nucleophilicity of the hydroxy group at C-3.
+β(1–6)-Glucans
+The formation of the β(1–6)-glycosidic bond poses less synthe
+tic challenges than the β(1–3) bond. The primary C-6 hydroxy
+group is more nucleophilic than the secondary hydroxy group at
+C-3 and β-selectivity is easily achieved with the help of
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1990
+Scheme 5: DMF-mediated 1,2-cis glycosylation. A) General mechanism and B) examples of α-glucans prepared using this approach.
+anchimeric assistance provided by a 2-O-acyl functionality.
+Despite these advantages, the synthesis of β(1–6)-Glc polysac
+charides appears only in few reports [148,149], with short
+oligomers being prepared mainly to prove new methodologies
+[31,150-155].
+The synthesis of structures longer than hexasaccharides suffered
+from poor solubility during the deprotection step, likely due to
+the formation of aggregates resulting from particular secondary
+structures adopted by the partially protected intermediates
+[156]. The replacement of a single Glc unit with a Man unit was
+sufficient to disrupt this secondary structure and significantly
+increased the isolated yield of the final compounds. Molecular
+dynamic (MD) simulations predicted a compact helical confor
+mation for the fully deprotected compound, confirmed by NMR
+studies on a collection of 13C-labelled hexamers [157]. Similar
+issues during deprotections were not observed when the β(1–6)
+backbone was substituted with β(1–3) branches [158-166] and
+long oligomers could be synthesized on solid support [157,166]
+or in solution phase using block coupling [165].
+α-Glucans
+In contrast to the relatively simple formation of a 1,2-trans
+glycosidic bond using participating group at C-2, the construc
+tion of 1,2-cis glycosidic bonds is a long-standing challenge in
+the field of glycochemistry [167]. The formation of 1,2-cis Glc
+linkages is particularly relevant, as α(1–4)-glucans form the
+backbone of starch, with the linear amylose and the branched
+amylopectin, and α(1–3)-glucans are related to fungal patho
+genicity in plants [168]. Only few options can aid the stereose
+lective construction of 1,2-cis glycosidic bonds. In general,
+stereocontrol can be obtained either by fine tuning of PGs at
+C-3, C-4 or C-6 positions, or by making use of participating sol
+vents [37,167]. 3-O-acyl and 6-O-acyl groups are commonly
+employed to remotely participate in the glycosylation and
+promote α-selectivity [169,170]. This strategy permitted to
+prepare oligosaccharides having multiple α-glycosidic linkages
+by AGA [171].
+Additional strategies include the dehydrative glycosylation of
+glucosyl hemiacetal [172] or the halide-catalyzed in situ
+anomerization of glucosyl iodide donors that yielded α(1–6)
+hexaglucans [173]. The halide-catalyzed in situ anomerization
+approach was efficient in solid phase as well as in solution
+phase synthesis. The participating (S)-(phenylthiomethyl)
+benzyl chiral auxiliary at the C-2 position of the glucosyl donor
+permitted the solid phase synthesis of a branched pentaglucan
+having a α(1–3) branch on an α(1–6) backbone [174]. Boron
+mediated aglycon delivery (BMAD) with the use of a diboron
+catalyst allowed for regio-, as well as stereoselective glycosyla
+tion to achieve an α(1-3)-pentaglucoside [175]. Regioselective
+1,2-cis-glycosylation could also be achieved by boron-cata
+lyzed coupling via a SNi-type mechanism [176]. Hydrogen
+bond-mediated aglycon delivery (HAD) with the aid of a 4-O
+picoloyl (Pico) group offered an interesting method to achieve
+multiple α-glucosidic linkages. However, the efficacy of the
+HAD diminished with the increased bulk of the glycosyl
+acceptor [177].
+In general, even though several elegant approaches were re
+ported, the construction of multiple α-linkages remains chal
+lenging, in particular with the increasing size of the acceptor.
+The nucleophilic additive glycosylation-based approach
+(Scheme 5A) offers the opportunity to install multiple 1,2-cis
+glycosidic bonds by converting the glycosyl donor 30 into a less
+reactive adduct 31. DMF-mediated glycosylations permitted
+access to long structures based on multiple α(1–4) linkages 33
+and 34 [178] and α(1–3) linkages 35 [179] (Scheme 5B). The
+short oligosaccharide 36 having α(1–2) linkages was also pre
+pared, however, in this case, the stereoselectivity diminished
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1991
+Scheme 6: Synergistic glycosylation strategy employing a nucleophilic modulation strategy (TMSI and Ph3PO) in combination with the O-6-Lev remote anchimeric assistance. A) General glycosylation mechanism. B) Synthesis of linear α(1–6)-glucan 11mer and 30mer. C) AGA of starch and glycogen oligo- and polysaccharides. The AGA cycle includes coupling (NIS/TfOH), capping (Ac2O), Fmoc deprotection (Et3N), and Lev deprotection (hydrazine).
+with the increasing length of the oligosaccharide, possibly due
+to steric hindrance [180].
+The nucleophilic modulation strategy in combination with the
+O-6-Lev remote anchimeric assistance could further improve
+the stereoselectivity of the 1,2-cis glycosylations, leading to the
+synthesis of long linear α-glucans 43 (11mer and 30mer) having
+multiple 1,2-cis glycosidic linkages (Scheme 6A and 6B) [181].
+The remote anchimeric assistance from ester groups at C-3 and
+C-6 on thioglucoside BBs 44 and 45 permitted the AGA of
+linear 46a,b and branched 47–49 glucans with multiple 1,2-cis
+linkages (Scheme 6C) [182].
+To avoid the chemical formation of this challenging bond,
+natural compounds containing 1,2-cis linkages could be
+exploited. α-, β- and γ-cyclodextrins offered a good starting ma
+terial to prepare stereoselectively a 6-O-methylated α(1–4)
+glucopolysaccharides consisting of 6–20 monomer units
+[183,184]. As alternative, stereoselectivity can be achieved with
+enzymes. Glucan phosphorylase is commonly employed to
+produce linear amylose polysaccharides with the desired aver
+age MW by changing the glucose monophosphate/amylose
+primer ratio [185]. This approach permitted the preparation of
+amylose with narrow MW distribution, amylose hybrids, and
+amylose-functionalized materials [186]. Linear and branched
+oligosaccharides with mixed α(1–3) and α(1–4) linkages were
+synthesized using a glucansucrase from Lactobacillus reuteri
+[187,188].
+Even though several chemical methods are available for the for
+mation of 1,2-cis linkages, only few are unaffected by the in
+creasing size of the target molecule. The recently published
+synergistic approach that combines remote anchimeric assis
+tance and nucleophilic modulation permitted access to long
+linear α-glucans [181]. The implementation of a similar strategy
+in AGA has already shown promising results [182] and could
+fuel the production of well-defined polysaccharides based on
+multiple 1,2-cis-glycosidic linkages.
+Xylose-based polysaccharides
+Xylans are abundant polysaccharides mainly found in plants or
+in mammalian cells as proteoglycans [189,190]. They partici
+pate in the formation of the cell-wall by interacting with cellu
+lose microfibrils [191], however, these interactions lack a mo
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1992
+Scheme 7: Different approaches to produce xylans. A) Polymerization techniques including ROP, and B) enzymatic polymerization yielded nonuniform homopolymers. C) Chemical synthesis following a convergent approach provided short oligomers with control over DP.
+lecular description [192]. Some evidences suggest that the
+xylan–cellulose interaction depends on the xylan substitution
+pattern [193].
+Natural xylans contain β(1–4), β(1–3) or a combination of
+β(1–4)- and β(1–3)-linked β-ᴅ-xylopyranosyl units. Rarely,
+α(1–3) glycosidic linkages are present [194]. These backbones
+are often partially acetylated or appended with sugar side
+chains, mainly ʟ-arabinose, fucose, galactose and 4-O-methyl
+glucuronic acid [195]. In general, low substituted xylans are
+forming insoluble aggregates, whereas heavily substituted
+xylans are highly soluble in water [196,197]. Minor changes to
+the xylan structure can dramatically affect their crystallinity and
+solubility [198], highlighting the importance of obtaining well
+defined samples.
+Cationic ROP of anhydrosugars was the pioneering approach
+for the preparation of synthetic, unnatural xylans. Polyxylofu
+rans with (1–5) and (3–5) linkages were described [199,200]. In
+most cases, non-uniform polysaccharides were obtained, as in
+the case of α(1–5)-xylans, prepared in up to 93% yields and DP
+between 45 to 477 (Scheme 7A) [201]. Enzymatic polymeriza
+tion is generally performed using glycosyl fluorides as sub
+strates, which are structurally related to the natural glycosyl en
+zyme intermediate [202]. β-Xylobiosyl fluoride donors, selec
+tively recognized by the cellulase from Trichoderma viride,
+afforded xylans containing exclusively β(1–4) linkages in 72%
+yield [203]. Compounds with DP higher than 23 constituted the
+insoluble fraction (37% yield) (Scheme 7B). The combination
+of XynB2-catalyzed dimerization of α-ᴅ-xylopyranosyl fluoride
+and subsequent polymerization by XynA helped to overcome
+the bottleneck of poor substrate-recognition of longer oligosac
+charides by glycosynthases [204]. Still, the polymer was ob
+tained with a wide range of DP between 6–100. Shorter Xyl
+chains with up to 12 units were reported using a retaining
+xylanase from Cellulomonas fimi [202].
+Well-defined xylan oligosaccharides were obtained by chemi
+cal synthesis following convergent or sequential glycosylation
+approaches. These well-defined xylans allowed establishing
+correlations between the substitution pattern, length, and macro
+scopic properties (i.e., crystallinity, solubility, interactions with
+other polysaccharides). To date, the longest xylans reported are
+10mers [205], although there is in principle no reason hindering
+the synthesis of longer structures. A convergent approach is
+often employed to avoid tedious purification of unreacted
+acceptors from the products, resulting from incomplete glyco
+sylation. Peracetylated thioglycoside donors 52 were reacted
+with 4-methylbenzoylated (MBz) acceptors 53, following NIS/
+AgOTf activation (Scheme 7C). Upon global deprotection, a
+collection of well-defined oligoxylans with 4–10 monosaccha
+ride units was obtained [205]. A convergent approach was also
+employed to prepare a β(1–3)-Xyl hexamer, an analogue of
+xylans found in algae cell-walls [206]. TMSOTf promoted the
+glycosylation of the Bz-protected disaccharide acceptor with the
+Bz-protected tetrasaccharide trichloroacetimidate donor. Al
+though not yet reported, the authors suggested that this method
+can be extended to the synthesis of longer oligomers in a gram
+scale.
+To avoid purifications after each glycosylation step, oligoxy
+lans were produced by AGA on solid support (Scheme 8A)
+[207,208]. The iterative addition of monosaccharide BBs and
+the use of orthogonal PGs permitted to control the length and
+pattern of substitution. A collection of linear β(1–4)-ᴅ-xylan
+chains and with α(1–3)-ʟ-arabinofuranosyl branches was
+quickly assembled to identify the binding epitopes of mono
+clonal antibodies. These oligomers, together with other well
+defined analogues obtained by chemoenzymatic synthesis, were
+converted to the respective glycosyl fluoride and used for enzy
+matic polymerization catalyzed by XynAE265G (Scheme 8B)
+[7]. This approach generated polymers 62a–g with well-defined
+substitution patterns. Differences in solubility were observed for
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1993
+Scheme 8: A) Synthesis of arabinofuranosyl-decorated xylan oligosaccharides using AGA. Representative compounds are reported. The AGA cycle includes coupling (NIS/TfOH for thioglycosides and TMSOTf for glycosyl phosphates), Fmoc deprotection (Et3N) and Nap deprotection (DDQ). Azmb = 2-(azidomethyl)benzoyl. B) Chemoenzymatic synthesis of arabinofuranosyl-decorated xylan polymers with well-defined substitution patterns.
+certain patterns, affecting the efficiency of polymerization and
+the DPs of the resulting polymers. Linear xylan precipitated
+with a MW of 9.2 kDa. Arabinofuranosyl xylans substituted at
+the C-2 or C-3 position of every third residue, formed crys
+talline aggregates. The authors speculated that a threefold
+helical screw conformation might enable the regular interaction
+of individual chains. The arabinose pattern also played a role in
+the interaction with cellulose, with the crystalline compound
+62c that did not adsorb to cellulose, in contrast to 62b, which
+adsorbed irreversibly. The high adsorption of 62b was associat
+ed with its twofold helical screw conformation, only accessible
+with this substitution pattern.
+Overall, chemical and enzymatic polymerization are faster than
+chemical synthesis, however, non-uniform xylans are always
+generated. The chemoenzymatic approach permitted to prepare,
+for the first time, arabinose-substituted polymers with a defined
+substitution pattern. Although still lacking control over the
+polymer length, these compounds underscored the importance
+of well-defined polysaccharides to understand the microscopic
+properties of natural xylans and fuel advancements in plant cell
+wall biology [102].
+Glucosamine-based polysaccharides Chitin and chitosan
+Chitin is a linear polysaccharide composed of β(1–4)-linked
+2-acetamido-2-deoxy-ᴅ-glucopyranose (GlcNAc) repeating
+units, which mainly exists in the exoskeleton of crustaceans and
+insects, as well as in the cell-wall of fungi [209,210]. Chitosan,
+its partially N-deacetylated analogue, has vast industrial appli
+cations in coating materials, cosmetics and pharmaceuticals
+[211]. Owing to their superior biological and mechanical prop
+erties, chitin and chitosan are used in fibers, gels, sponges,
+films, beads, and nanoparticles [212]. Tunable stiffness, solu
+bility, and transparency can be obtained by tuning of the DP and
+fraction of acetylation (FA).
+Chitooligosaccharides (COS: β(1–4)-linked oligomers of
+GlcNAc and/or GlcN) have gained popularity due to their
+exceptional antimicrobial, antitumor, and immune modulatory
+activities [29,213-217]. Methods to obtain well-defined COS
+with controlled size and substitution pattern are highly desir
+able, because DP and FA affect the physicochemical properties
+of the COS [218,219]. A size-dependent immune recognition
+was verified in plant chitin receptors as well as in toll-like re
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1994
+Scheme 9: Chemoenzymatic synthesis of COS utilizing a lysozyme-catalyzed transglycosylation reaction followed by the deprotection of N-chloroacetate.
+ceptors (TLR2) [220]. Moreover, the PA can tune the biologi
+cal activity, as demonstrated using partially acetylated COS ob
+tained by enzymatic degradation of chitosan promoted by
+hydrolases [221].
+Chemical degradation of chitin promoted by acid treatment
+[222-228] or using chitinases and chitosanases [229-231] gener
+ates mixtures of short COS, which requires tedious purification
+steps. Furthermore, degradation of natural chitin often lacks
+proper control over the pattern of acetylation (PA). Acetolysis
+also often leads to heterogeneous mixtures [232-235]. A con
+trolled acetolysis of chitin, followed by the one-pot trans-N
+trifluoroacetylation of peracetylated chitooligomers, could effi
+ciently generate 1,2-(2-trifluoromethyloxazoline) donors. These
+reactive compounds were employed to construct different
+length COS, from dimer to hexamer [236].
+Synthetic COS were prepared following chemical or enzymatic
+polymerization, albeit with poor control over size and substitu
+tion pattern. Classical methods include chitinase-catalyzed
+assembly via ring-opening polyaddition of N,N’-diacetylchito
+biose oxazoline derivatives [237-239] or self-condensation of
+N-phthalimide protected thioglycoside [240]. Enzymatic poly
+merization promoted by hydrolases is an interesting option to
+produce long COS from shorter oligomers [241]. After cleaving
+the glycosidic linkage, the enzyme remains attached to the new
+reducing end of the oligomer, releasing the cleaved part. Subse
+quently, the oligomer is transferred to another COS acceptor,
+forming a new glycosidic bond [216]. Various enzymes have
+been successfully employed, including β-N-acetyl
+hexosaminidase [242], lysozyme (Scheme 9) [243], and endo
+chitinase [244-246]. With these approaches, structures with a
+DP up to 13 could be accessed. Genetically engineered transgly
+cosylating hydrolases were employed to polymerize chemically
+activated oligosaccharide substrates [216]. These chemoenzy
+matic approaches are often based on glycosynthase-type GH18
+or GH19 chitinases and produce mixture of COS with different
+lengths [237,243,247-250].
+Chemical synthesis offers the possibility to generate well
+defined COS, but it is to date underexploited. The poor reactivi
+ty of the C-4 hydroxy group of the glucosamine BB, and the
+need of orthogonal PGs on the nitrogen atom to control the PA
+are the main bottlenecks [251]. The β-directing N-phthaloyl
+(N-Phth) PG was installed in trichloroacetimidate donors to
+synthesize fully deacetylated COS up to 12mer. After each
+glycosylation step, the 4-methoxyphenyl group at the anomeric
+position was oxidatively removed and the resulting hemiacetal
+was transformed into the trichloroacetimidate glycosyl donor
+for the next glycosylation step [252]. An orthogonal glycosyla
+tion strategy was developed to alternately stitch N-Phth-pro
+tected thioglycoside donors and N-Phth-protected fluoride
+donors to obtain COS up to 7mer (Scheme 10) [253]. Similarly,
+trichloroacetimidate and thioglycoside donors permitted the
+synthesis of short COS [254]. Upon assembly, the N-Phth PGs
+were removed with hydrazine under reflux and the free amino
+groups were acetylated to obtain the fully N-acetylated COS
+[255].
+Control over the pattern of N-acetylation was for the first time
+achieved using two monosaccharides bearing an azido (N3) and
+a N-Phth moieties as precursors of the free and N-acetylated
+amino group, respectively [256]. The stereoselectivity of the
+glycosylation reaction between the C-2 azido donor 71 and
+N-Phth 72 acceptor met with little success, lowering the yield of
+the desired anomer significantly. The obtained disaccharide was
+converted to the trichloroacetimidate donor and used in a
+[2 + 2] glycosylation, affording the tetramer 74 with an alter
+nated N-acetyl pattern (Scheme 11A) [257]. Partially N-acety
+lated COS dimer and tetramer were obtained exploiting the
+orthogonality of the azide and N-Troc groups [258]. β-Selec
+tivity during the glycosylation with the C-2 azido trichloroacet
+imidate donor 75 was controlled by SN2 displacement of the
+α-trichloroacetimidate LG upon activation with BF3·OEt2 in
+CH2Cl2/n-hexane (3:2) (Scheme 11B). The orthogonal
+N-trichloroacetyl (N-TCA) and N-benzyloxycarbonyl (N-Cbz)
+PGs permitted the synthesis of chitobioses with different PA.
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1995
+Scheme 12: AGA of well-defined COS with different PA using two orthogonally protected BBs. The AGA cycle includes coupling (TMSOTf), capping (Ac2O), and Fmoc deprotection (piperidine).
+Scheme 10: Synthesis of COS using an orthogonal glycosylation strategy based on the use of two different LGs.
+N-TCA groups could be converted into N-acetates upon reduc
+tion with tributyltin hydride and azobisisobutyronitrile (AIBN),
+and the N-Cbz groups were removed to liberate the free amino
+groups during hydrogenolysis over Pd/C [259].
+A collection of well-defined COS with defined DP and PA was
+prepared by AGA [93,157,260]. The automated solid-phase ap
+Scheme 11: Orthogonal N-PGs permitted the synthesis of COS with different PA.
+proach required only two BBs with the amino group protected
+either with the N-TCA 79 or with the N-Cbz group 80
+(Scheme 12). Compounds 81–85 served as standards to explore
+the conformational space of COS with different PA. NMR anal
+ysis and MD simulations revealed the importance of the
+deacetylated residues, with the free amino group able to stabi
+lize new geometries.
+Many more N-protecting groups [217,261] are available and
+could generate COS with defined PA, however, to date most of
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1996
+Scheme 13: A) AGA of β(1–6)-N-acetylglucosamine hexasaccharide and dodecasaccharide. AGA includes cycles of coupling (NIS/TfOH) and Fmoc deprotection (piperidine). B) Convergent synthesis of a β(1–3)-glucosamine pentasaccharide.
+them have shown significant drawbacks, decreasing the reactiv
+ity of the BB during glycosylation or complicating the deprotec
+tion steps. Orthogonality and stability become particularly
+crucial when the goal is the multistep synthesis of long COS.
+Other glucosamine-based polysaccharides
+Other polymers of glucosamine based on the β(1–3) or β(1–6)
+linkages exist, but have gained less synthetic attention. Never
+theless, β(1–6)-linked GlcN oligosaccharides may act as poten
+tial antitumor and immunostimulating agents [262] and could
+become important synthetic targets. The synthesis of a β(1–6)
+linked 9mer was demonstrated, using an isopropyl thioglyco
+side donor [262]. Convergent [262] as well as linear iterative
+[263] approaches were reported. A block coupling approach
+enabled access to a collection of free amino or N-acetylated
+structures up to 11mer [264]. Intramolecular glycosylation be
+tween a thioglycoside and a free C-6 hydroxy group at the non
+reducing end enabled the synthesis of β(1–6)-glucosamine
+macrocyclic compounds [265]. The iterative glycosylation of
+N-Phth protected 2-deoxy-2-aminothioglycosides allowed for
+the combinatorial synthesis of short oligoglucosamines having
+β(1–6) and/or β(1–4)-linkages [263]. Automated solution-phase
+synthesis of β(1–6)-glucosamine oligosaccharides, ranging from
+tri- to hexasaccharide, was obtained via iterative electrochemi
+cal assembly [266]. A solid-phase automated approach deliv
+ered β(1–6)-glucosamine hexasaccharide 87a and dodecasac
+charide 87b (Scheme 13A) [267]. β(1–3)-Oligomer 90 was pre
+pared as chitin mimetics (Scheme 13B). Despite the subtle
+differences in the conformational behavior of the two ana
+logues (β(1–3) vs β(1–4) oligomers), it was observed that the
+β(1–3)-mimetic was still recognized by wheat germ agglutinin
+and a chitinase enzyme, and could act as a moderate inhibitor of
+chitin hydrolysis [268].
+Mannose- and rhamnose-based polysaccharides
+Due to the structural analogies between Rha (both ᴅ and ʟ) and
+Man, we describe the polysaccharides based on these two units
+in the same section. From a chemical point of view mannose
+and rhamnose are ‘double-faced’ monosaccharides, as chemi
+cally constructing α-linkage is relatively easy, whereas β-link
+ages are still considered a major challenge in carbohydrate
+chemistry (Figure 5). While long α-mannosides could be
+accessed either by chemical synthesis or by polymerization
+approaches, only relatively short β-mannan analogues could
+be synthesized to date. In addition, limited enzymatic ap
+proaches exist to assist with the synthesis of mannans and rham
+nans.
+α-Mannans
+Mannans are widespread in nature, as constituents of the plant
+cell-wall (β-mannans, based on the β(1–4)-Man linkage), or on
+the surface of yeast and pathogens (α-mannans, where α(1–2),
+α(1–3), and α(1–6) linkages can be found). No enzyme has been
+reported for the synthesis of α-mannosides. Similarly, polymeri
+zation approaches remain to date underrepresented.
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1997
+Figure 6: Implementation of a capping step after each glycosylation cycle for the AGA of a 50mer oligomannoside 91. Uncapped 50mer and 49mer deletion sequence are eluted with virtually the same retention time. The capped 49mer (i.e., C-6 O-acetylated) is instead readily separated from the desired 50mer.
+Figure 5: ‘Double-faced’ chemistry exemplified for ᴅ-Man and ʟ-Rha. Constructing β-Man linkages is considerably more challenging than constructing α-Man. β-Rha linkages present an additional challenge as PG-directed 1,2-cis glycosylations are not viable.
+α-Mannosides can be reliably prepared through chemical glyco
+sylation, which is in general highly α-stereoselective. Construc
+tion of the 1,2-trans linkage of α-mannosides is conventionally
+achieved with [142,157,269], or even without [270], neigh
+boring group participation (e.g., Ac, Bz). The favorable
+anomeric effect ensures efficient glycosylation reactions. The
+synthesis of α-mannosides is widely established, allowing the
+chemical synthesis of the longest polysaccharide to date (i.e.,
+151mer). To speed up and simplify the solution phase synthesis
+of long and well-defined polymannosides, iterative coupling
+strategies are generally adopted [271,272]. Two monosaccha
+rides are coupled yielding a disaccharide, which is parted and
+converted to the new donor and acceptor. This process is
+repeated iteratively allowing for an exponential length growth,
+while maintaining control over the elongation. Beside more
+common LGs such as phosphates, thioethers, and imidates,
+ynenoate donors activated using Au(I) catalysis were success
+fully employed in an iterative strategy, enabling the synthesis of
+a 32mer [272]. The construction of α(1–6)-mannans (up to
+10mer) bearing α(1–2)-Man branches was also accomplished
+using phosphate, N-phenyltrifluoroacetimidate or n-pentenyl
+orthoester donors [273,274].
+An approach using a (cationic) ROP method using tricyclic
+orthoester Man BBs considerably reduced the time needed for
+the stereoselective synthesis of linear α(1–6)-mannans (ranging
+from 5mer to 20mer) [275]. The biggest advantage of this ap
+proach is the easy scalability, up to a gram scale. However, this
+strategy is limited to one type of linkage (i.e., only α(1–6) link
+ages) and does not allow for access to mannans with defined
+length.
+Total syntheses of mannose polysaccharides including a 30mer
+[276], 50mer [277] and 100mer [278] were achieved by AGA.
+Key optimizations including tuning of the PGs [277], adjust
+ment of coupling time and temperature [278], and introduction
+of a capping step [279] permitted to drastically improve overall
+yields and to simplify the purification (Figure 6). The 100mer
+93 was obtained with a calculated average stepwise yield of
+98.75% (Scheme 14). Long α-mannosides have the advanta
+geous feature of being highly soluble due to the high flexibility
+of α(1–6)-Man backbone, facilitating the deprotection and
+purification steps [157].
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1998
+Scheme 14: AGA enabled the synthesis of a linear α(1–6)-mannoside 100mer 93 within 188 h and with an average stepwise yield of 98.75%. The AGA cycle includes glycosylation (NIS, TfOH), capping (Ac2O), and Fmoc deprotection (piperidine).
+Scheme 15: The 151mer branched polymannoside was synthesized by a [30 + 30 + 30 + 30 + 31] fragment coupling. AGA enabled the synthesis of the α-mannoside 30mer donor fragment 96 and the branched 31mer acceptor fragment 95.
+Naturally occurring mannosides, such as lipomannans found on
+the cell surface of mycobacteria, normally consist of a α(1–6)
+mannan core substituted with α(1–2) branches, commonly intro
+duced exploiting orthogonal PGs (e.g., Fmoc and Lev)
+[269,280,281]. These compounds could be prepared entirely on
+a solid support, or following a solution-phase fragment (or
+block) coupling. In this case, the branch produced by AGA, em
+ploying a traceless linker [118], was converted into a glycosyl
+donor and coupled to the mannan acceptor to create a dendron
+like structure. To overcome the high steric hindrance of both
+coupling partners, careful optimization of the LG and the reac
+tion temperature was imperative [118,278,280,282]. A
+[31 + 30 + 30 + 30 + 30] fragment coupling allowed assem
+bling a 151mer polymannoside 97, the biggest synthetic poly
+saccharide obtained to date (Scheme 15). Switching from a
+N-trichloroacetimidate to a less reactive fluoride donor and
+screening of the suitable activator was key to the success of the
+coupling. As synthetic polymannosides have now reached the
+size of macromolecules, new challenges are arising in terms of
+purification and characterization. Gel permeation chromatogra
+phy (GPC) and advanced high-resolution MS analysis are being
+developed to address the need of these new available com
+pounds [278,283].
+β-Mannans and β-mannuronans
+In contrast to α-Man linkages, the construction of β-Man glyco
+sidic linkages is a major challenge (Figure 5). Absence of the
+anomeric effect in the β-product and steric repulsion of the C-2
+axial substituent make β-selectivity hard to achieve. Even
+though, several methods have been developed to construct
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+1999
+Figure 7: PG stereocontrol strategy to obtain β-mannosides. A) The mechanism of the β-mannosylation reaction is thought to proceed through a contact ion pair (CIP) in which the triflate anion shields the α-face favoring the nucleophile attack from the β-face. The solvent separated ion pair (SSIP) scenario is disfavored due to the benzylidene group locking the C5–C6 bond in the tg conformation which destabilizes the oxocarbenium ion. For a thorough explanation of the mechanism we refer to the original publication [289]. B) Examples of β-mannosides synthesized using the 4,6-O-benzylidene directed β-mannosylation strategy. C) Chain elongation beyond the trisaccharide level for β(1–2)-analogues presented a significant drop in yield and β-stereoselectivity due to the conformation of acceptor 103.
+β-Man glycosidic linkages, the majority of them focused on the
+construction of a single β-Man linkage [284,285]. Hydrogen
+bond-mediated aglycone delivery (HAD) was recently em
+ployed to construct a β(1–3) 2-O-acetyl-6-deoxy-mannohep
+topyranose 4mer with excellent β-selectivity [286]. PG stereo
+control by means of 4,6-O-benzylidene is to date the most
+applied chemical strategy to construct β-mannosides [270]. In a
+first stage, the donor (either a sulfoxide or a thioglycoside) is
+pre-activated at low temperature with triflate-based activators.
+After this step, the acceptor is added, leading to preferential for
+mation of the β-mannoside [287]. The high stereoselectivity is
+thought to derive from the high stability of the α-triflate inter
+mediate, which dissociates generating a contact ion pair (CIP).
+In the CIP, the triflate anion shields the α-face, allowing for the
+preferential attack of the nucleophile from the β-face
+(Figure 7A). The 4,6-O-benzylidene group disfavors the com
+plete dissociation of the α-triflate to the corresponding solvent
+separated ion pair (SSIP), preventing the formation of the
+α-Man product [288,289].
+Various β-mannosides (up to 8mer) with β(1–2), β(1–4) [290]
+as well as mixed linkages β(1–3)/β(1–4) [291] were prepared
+with high stereoselectivity (α:β ratio ca. 1:9) using PG stereo
+control (Figure 7B, 99–101). Interestingly, the synthesis of
+β(1–2) analogues suffered from a drastic decrease in stereose
+lectivity (α:β ratio drop to ca. 1:4) and yield as the chain was
+elongated beyond the 3mer stage (Figure 7C). This observation
+was ascribed to the characteristic conformation of the protected
+β(1–2)-trisaccharide acceptor 103, in which a compact helical
+structure caused severe hindrance impacting the reactivity and
+stereoselectivity [290,292]. This issue was not observed with
+the β(1–4)-mannosides due to their more linear rod-like shape.
+Overall, the wide variety of β-mannosides prepared under
+scored the versatility of the 4,6-O-benzylidene directed
+β-mannosylation to construct the challenging β-Man linkage.
+Some limitations of the method occur when large Man donors
+are used, especially when bulky substituents are present at C-3
+position (α:β ratio can drop to 1.5:1) [291]. To date, the sulf
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2000
+Scheme 16: A) Mechanism of 1,2-cis stereoselective glycosylation using ManA donors. Once the ManA donor is activated, the C-5 carboxylate stabilizes the oxocarbenium ion in a 3H4 conformation which favors formation of β-ManA linkages. B) Series of β(1–4)-oligomannuronates synthesized using AGA and ManA donors. The AGA cycle includes coupling (TfOH) and Lev deprotection (hydrazine). C) β(1–4)-Man and β(1–4)-ManA oligosaccharides prepared using fluorous-tag (FTag) assisted automated synthesis.
+oxide donor pre-activation protocol and the low temperatures
+needed (−78 to −60 °C) posed technical challenges to the imple
+mentation of this method in AGA. Thus, carboxybenzyl donors
+bearing a minimally intrusive PG at C-3 were employed in a
+protocol that does not require pre-activation [293]. However,
+only trisaccharides with β(1–4)/β(1–3) mixed linkage could be
+isolated after challenging purification steps, indicating that
+major limitations still exist for the AGA of β-mannosides.
+Since stereoselectivity and yield are sensitive to the acceptor
+conformation and nucleophilicity, the synthesis of some classes
+of compounds remain hindered. To circumvent the challenge of
+β-mannosylation using large donors, an indirect approach was
+followed to construct β(1–4)-mannosides up to 8mer. The high
+β-stereoselectivity of β-glucosylation was exploited in a [4 + 4]
+fragment coupling. The subsequent C-2 epimerization, via an
+oxidation–reduction step, converted the β-Glc into a β-Man
+[294]. Similarly, an indirect approach using Glc orthoester
+donors was applied for the synthesis of a 8mer based on β(1–2)
+Man linkages. The newly formed β-Glc was converted to
+β-Man by Swern oxidation of the hydroxy group at C-2, fol
+lowed by reduction of the carbonyl group [295]. Other indirect
+methods to synthesize β(1–2)-mannosides were also reported
+using donors bearing a ketone functionality at C-2 (ulosyl
+donors) which require a reduction step to obtain Man [296,297].
+High β-selectivities were observed for mannuronic acid (ManA)
+donors [298-301]. This result is thought to derive from
+the unusual 3H4 conformation of the oxocarbenium ion interme
+diate, stabilized by the pseudo-axial C-5 carboxylate
+(Scheme 16A) [299,301]. The ManA donor enabled the conver
+gent assembly of β(1–4)-ManA oligosaccharides up to 5mer,
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2001
+with a α:β ratio of about 1:10 (in 50–70% yields) [299]. Impor
+tantly, yield and β-stereoselectivity were not affected by the size
+of the coupling partners, a key feature that makes this method
+ology attractive to access long polysaccharides. This approach
+was implemented in AGA to generate a collection of
+mannuronic acid oligomers, ranging from 4mer to 12mer
+(Scheme 16B, 106a–c) [302]. Key steps were the choice of the
+temporary PGs (i.e., Lev), the LG (N-phenyltrifluoroacetimi
+date), activation system (TfOH), and the coupling temperatures
+(−40 °C) used for BB 105. An average 90% yield per step with
+excellent β-stereoselectivity was observed. A solution-phase ap
+proach allowed to reduce the amount of required donor
+(1–2 equiv compared to 9 equiv) and to couple big fragments
+(i.e., [4 + 4] and [8 + 8] glycosylations) without a significant
+loss in β-stereoselectivity. A β(1–4)-ManA 16mer was pre
+pared using this highly convergent and iterative approach [303].
+The high β-stereoselectivity of ManA donors was capitalized to
+access β(1–4)-Man 6mer 110, after reduction of carboxylate
+moieties of β(1–4)-ManA 6mer 107 (Scheme 16C) [304]. The
+fast assembly of a β(1–4)-ManA 6mer 107 (75% average yield
+per step) was achieved by automated solution-phase synthesis
+with the help of fluorous solid phase extraction (FSPE). Reduc
+tion of the carboxylic acid moieties was achieved by diisobutyl
+aluminium hydride (DIBAL-H) treatment.
+Enzymatic approaches to access β-mannans are scarce in the lit
+erature. The enzymatic synthesis of β(1–4)-mannans (up to DP
+7) was reported using glycosynthase mutants of the
+β-mannanase from Cellvibrio japonicas. α-Mannobiosyl fluo
+ride donors were coupled to a Glc acceptor, to obtain the
+desired product, albeit in a relatively low yield (5% for the
+7mer) [305]. Recently, β(1–4)-mannans were synthesized using
+a thermoactive glycoside phosphorylase from Thermotoga
+maritima that catalyzed the reversible degradation of manno
+sides by phosphorolysis. An initial screening of temperature and
+pH, using the α-ᴅ-mannose 1-phosphate donor (αMan1P) and
+ᴅ-mannose as the acceptor, identified optimal conditions (pH
+6.0 and 60 °C), yielding mixtures of oligomers with a DP of 2
+to 6. When a β(1–4)-mannoside 6mer was employed as
+acceptor, higher DP could be reached. The longest oligomers
+(DP between 7 and 16) precipitated into lamellar crystals with a
+diffraction pattern typical of mannan I [306].
+ManA-based polysaccharides are abundant component of algi
+nates, often found as mixed polymers with α(1–4)-ʟ-GulA (i.e.,
+guluronic acid). These naturally occurring anionic polysaccha
+rides are found in algae and some bacteria [307]. The two
+monosaccharides can be arranged in the polymer in different
+patterns (i.e., MM, GG, or MG domains where M stands for
+ManA and G for GulA). To date chemical synthesis is the only
+Figure 8: A) The preferred 4H3 conformation of the gulosyl oxocarbenium ion favors the attack of the alcohol from the α-face. B) Key disaccharide BB 111 used for the solution phase synthesis of alginate oligosaccharides and representative structures obtained.
+way to access well-defined alginate oligosaccharides as enzy
+matic synthesis has suffered from the complexity of the en
+zymes involved [308]. The chemical construction of α(1–4)-ʟ
+Gul linkages is facilitated by the intrinsic tendency of Gul
+donors to form 1,2-cis glycosidic linkages (α:β ratios >10:1).
+The 4H3 conformation adopted preferentially by the Gul
+oxocarbenium intermediate favors the attack of the nucleophile
+from the α-face, leading to a 1,2-cis glycosylation (Figure 8A).
+In contrast, GulA donors were found to be less α-stereoselec
+tive [301,309,310]. Therefore, the most frequently adopted
+strategies involve highly α-stereoselective glycosylations using
+Gul donors and subsequent oxidation to obtain GulA [310].
+With this strategy, alginate oligomers (i.e., 7mer) with mixed
+sequence were prepared. The solution phase synthesis was per
+formed by sequential addition of a disaccharide BB 111 with
+the α(1–4) GulA glycosidic linkage pre-installed (α(1–4) gulo
+sylation followed by C-6 oxidation). The ManA unit provided
+high β-stereoselectivity (α:β >1:20) (Figure 8B). This strategy,
+while avoiding late-stage oxidations, suffered from the poor re
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2002
+Scheme 17: AGA of type I rhamnans up to 16mer using disaccharide BB 115 and CNPiv PG. The AGA cycle includes coupling (TfOH) and Lev deprotection (hydrazine).
+activity of the axial OH-4 of GulA resulting in low glycosyla
+tion yields for longer analogues (i.e., 30–42%). In addition, the
+acceptor reactivity was found to be highly sensitive to subtle
+modifications in remote positions of the acceptor [309,311],
+highlighting the importance of the – often overlooked 
+acceptor three-dimensional structure.
+Rhamnans
+Long repetitive polysaccharides constituted of ʟ-Rha (i.e.,
+rhamnans) are found in bacteria, plants, and algae but are absent
+in animals [312]. The enantiomer ᴅ-Rha is less common, only
+found in the capsule of some bacterial species. Linear repetitive
+rhamnans can be classified in type I (alternated α(1–3)/α(1–2)
+ʟ-Rha residues) or type II (linear α(1–3)-ʟ-Rha residues) and
+can be variously sulfated.
+Very few examples of enzymatic or polymerization methods
+have been reported to prepare this class of compounds. In
+contrast, from a chemical standpoint constructing α-rhamnans
+does not present significant challenges. Similar to Man, Rha
+donors benefit from the favorable anomeric effect and neigh
+boring group participation, generally achieved with C-2 O-acyl
+groups (e.g., Ac, Bz, Piv), which secures highly stereoselective
+1,2-trans glycosylations (Figure 5) [270,313-318]. Even in
+absence of neighboring group participation α-stereoselectivity is
+achieved [319,320].
+α-Rhamnans chemical synthesis suffers from PG migration.
+This issue has been observed when constructing α(1–3) link
+ages, since C-2 O-Ac groups are prone to migrate from the axial
+O-2 to the equatorial O-3 of ʟ-Rha [313,314,321,322].
+Replacing the Ac group with benzoyl (Bz) [315], pivaloyl (Piv),
+or cyano-pivaloyl (CNPiv) [313,314] groups prevented acyl
+migration. In particular, CNPiv was developed to avoid the
+harsh conditions generally required for Piv removal and could
+be easily cleaved either by hydrogenolysis [313] or methanoly
+sis [314]. Type I rhamnans up to 16mer (116a–e) were pre
+pared by AGA using disaccharide BB 115 (Scheme 17) [314].
+Type I and II α-rhamnans were also successfully assembled
+following solution-phase approaches by stepwise elongation of
+the rhamnan chain using orthogonally protected disaccharide
+BBs. The range of orthogonal PGs used (i.e., PMB, Bz, Nap,
+Bn) suggested the possibility to generate rhamnan structures
+with different sulfation patterns [315,316]. Orthogonality of
+PGs was also exploited to introduce β(1–3)-GlcNAc branches
+on a type I rhamnan 8mer backbone, common in bacterial
+α-rhamnans [317].
+In analogy to mannose, β-rhamnosylation is a highly chal
+lenging reaction. However, while the β-mannosylation reaction
+can benefit from 4,6-O-benzylidene PG stereocontrol, β-rham
+nosylation cannot [323]. To date, only few reports of successful
+β-rhamnans synthesis are available, mostly limited to short
+oligosaccharides [324].
+Polysaccharides based on a mixed mannose–rhamnose backbone
+The lack of enzymatic approaches to construct the often unique
+linkages found in bacterial polysaccharides makes chemical
+synthesis the only amenable way to access these molecules.
+Generally, the repeating unit containing the challenging linkage
+is prepared and used in iterative glycosylation approaches
+enabling exponential growth, while maintaining control over the
+polysaccharide length.
+Recently, the synthesis of large bacterial polysaccharides con
+taining ᴅ-Man, and ᴅ/ʟ-Rha mixed structures was reported
+[325,326]. The O-antigen of Bacteroides vulgatus consisted of
+alternating α(1–3)-ʟ-Rha and β(1–4)-ᴅ-Man linkages. The effi
+cient α-rhamnosylation reaction was exploited to elongate the
+chain by iterative glycosylations, while the challenging β(1–4)
+Man was installed at the disaccharide level (117) using the 4,6
+O-benzylidene directed β-mannosylation (Figure 9A). The
+exponential growth, up to the 128mer (118a–h), was enabled by
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2003
+Figure 9: Key BBs for the synthesis of the O-antigen of Bacteroides vulgatus up to a 128mer (A) and the CPS of Clostridium bolteae up to 18mer (B). The most challenging 1,2-cis glycosidic linkage is installed in the key BBs and highly stereoselective 1,2-trans α-rhamnosylation or α-mannosylation were exploited for elongation.
+o-alkynylbenzoate donors [327] and the use of two orthogonal
+PG at the reducing and non-reducing end (i.e., p-methoxy
+phenyl (PMP) and tert-butyldimethylsilyl (TBS) groups, respec
+tively). The glycosylation reactions proved robust, with only a
+slight drop in yield (i.e., 74% compared to ca. 90%) for the
+[64 + 64] glycosylation. Issues during the final deprotection
+steps, due to poor solubility and reducing end degradation
+[294], lowered the isolated yield to 15% for the longest ana
+logues [325].
+The capsular polysaccharide (CPS) of Clostridium bolteae,
+consisting of alternating α(1–4)-ᴅ-Man and β(1–3)-ᴅ-Rha, was
+targeted to showcase a methodology to construct β-ᴅ-Rha link
+ages. Similar to the above approach, the disaccharide BB 119
+including the challenging β(1–3)-ᴅ-Rha glycosidic linkage was
+initially prepared (Figure 9B). The efficient α-mannosylation
+reaction was exploited to further elongate the chain in a sequen
+tial manner. Three different strategies were screened for the
+construction of the dimer: i) β-rhamnosylation through a pre-ac
+tivation strategy, ii) 4,6-O-benzylidene directed β-mannosyl
+ation and subsequent C-6 deoxygenation to provide ᴅ-Rha,
+iii) indirect approach using 6-deoxy-ᴅ-Glc in a 1,2-trans glyco
+sylation and subsequent C-2 epimerization to give ᴅ-Rha.
+Strategies ii) and iii) successfully formed the β(1–3)-ᴅ-Rha
+linkage of the disaccharide BB. A series of sequential glycosyl
+ations enabled the solution-phase assembly of oligosaccharides
+up to 18mer (120a–i) in excellent yields (80–90% per
+coupling). The deprotection (i.e., methanolysis and hydro
+genolysis) proved to be challenging for longer analogues due to
+the degradation of the oligosaccharides in the acidic solvent
+chosen for hydrogenolysis. A neutral solvent mixture permitted
+to obtain the compounds, even though in low yield compared to
+shorter analogues [326].
+Galactose-based polysaccharides
+Enzymatic and polymerization approaches are not so common
+for galactopyranose-based polysaccharides and are limited to
+the construction of single glycosidic linkages [328]. In contrast,
+bacterial enzymes capable of constructing galactofuranose
+based polysaccharides have been widely studied and offer the
+unique possibility to tune the chain length. Additionally, chemi
+cal synthesis can reliably afford both α-Gal and β-Gal polysac
+charides.
+β-Galactans
+Galactans and arabinogalactans, together with arabinans, are the
+three types of side chains in the pectin RG-I domain
+[99,329,330]. The backbone of type I galactans is made of
+β(1–4)-linked Gal residues, while type II galactans are highly
+branched polysaccharides composed of β(1–3)- or β(1–6)
+linked Gal residues [99].
+β-Galactosylation is easily achieved by neighboring group par
+ticipation. The main challenge of type I galactans is the low re
+activity of the axial hydroxy group at C-4 of the Gal residues.
+Type I galactans up to 7mer (121a–c) have been prepared em
+ploying C-2 O-Piv or O-Ac PG and either n-pentenyl or thiogly
+coside LG (Figure 10) [331-333]. Steric bulk around the unreac
+tive C-4 OH was minimized by using Bn or allyl (All) ethers at
+C-3 and C-6 positions [331]. Removal of Piv, despite requiring
+harsh conditions (LiOH in MeOH under reflux or Et4NOH in
+THF under reflux), yielded the desired product in good yield
+(70–90%). In contrast, removal of allyl (All) PG was more chal
+lenging, requiring extensive optimization [331]. The use of Nap
+to mask the hydroxy groups at C-4 or C-6 allowed for the late
+stage installation of arabinan side chains [332]. AGA was em
+ployed to assemble a collection of type I galactans using three
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2004
+Figure 11: A) The DTBS PG stabilizes the 3H4 conformation of the Gal oxocarbenium ion favoring the attack of the alcohol from the α-face in a SN1 manner. B) Key BBs used in the synthesis of galactosaminogalactans bearing the α-directing DTBS PG.
+different Gal BBs equipped with Fmoc as a temporary PG to
+allow for chain elongation. Lev could be selectively removed to
+install ʟ-arabinose branches at the C-3. The low reactivity of the
+hydroxy group at C-4 required a double cycle of glycosylation
+and negatively impacted the final yields [334].
+Figure 10: Examples of type I and type II galactans synthesized to date.
+The easy formation of β-Gal linkages and the excellent reactivi
+ty of the primary hydroxy group at C-6 considerably simplified
+the synthesis of type II galactans. Solution-phase synthesis pro
+vided long β(1–6)-galactans, bearing α(1–2)- or α(1–3)-linked
+ʟ-arabinofuranose side-chains [335-338]. A stepwise elonga
+tion (i.e., [4 + 12] then [4 + 16]) proved successful to construct
+a 20mer β(1–6)-galactan, bearing arabinose side chains [338]
+(123, Figure 10).
+Only shorter synthetic oligomers based on a β(1–3)-Gal back
+bone could be obtained (122a,b). A collection of linear and
+branched type II galactans was synthesized by solution-phase
+methods. To minimize PG migration, the use of thioglycoside
+disaccharide donors bearing a participating Piv ester at C-2
+position was the key [339]. Similar structures were obtained by
+AGA [340]. In both cases, orthogonal PG were necessary
+for the installation of either β(1–6)-Gal or α(1–3)-Araf
+branches.
+α-Galactans and α-galactosaminogalactans
+In contrast to the challenging formation of other 1,2-cis link
+ages, α-galactosylation can be reliably obtained using Kiso’s
+di-tert-butylsilylene (DTBS)-directed α-stereoselective method
+ology (Figure 11A). Upon activation, the galacto-type oxocar
+benium adopts a 4H3 conformation, preferentially attacked from
+the α-face in a SN1 mechanism due to the steric bulk of the
+DTBS group. The 4H3 conformation is stabilized by through
+space electron donation from the DTBS group. Complete
+α-stereoselectivity is often preserved, even in presence of C-2
+participating PGs [341,342].
+This methodology was elegantly implemented for the synthesis
+of galactosaminogalactans, linear heteropolysaccharide found in
+the cell-wall of the fungus Aspergillus fumigatus (Figure 11B)
+[343,344]. Natural galactosaminogalactans are composed of
+Gal, GalN, and GalNAc arranged in a random pattern impeding
+their isolation from natural sources. A sequential strategy using
+BBs 124, 125, and 126 afforded a collection of α(1–4)-Gal,
+α(1–4)-GalN, α(1–4)-GalNAc, including mixed structures. The
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2005
+Figure 12: Homogalacturonan oligosaccharides synthesized to date. Access to different patterns of methyl-esterification could be controlled using BBs 133a and 133b bearing different C-6 PGs (i.e., Ac or PMP).
+use of the highly reactive N-phenyltrifluoroacetimidate glycosyl
+donors 126 proved to be crucial to generate long oligosaccha
+rides. Chain elongation was achieved by DTBS removal and
+selective benzoylation of the OH at C-6, yielding the free C-4
+hydroxy group to be used as acceptor in the next glycosylation.
+Good yields (80–90%) and excellent α-stereoselectivities were
+obtained for the construction of oligomers up to 12mer (127,
+128, 129a–d, 130a–d, 131a–d). The deprotection of α(1–4)-Gal
+8mer and 9mer suffered from low yields (20–30%), due to low
+solubility in water. Higher yields were obtained for more
+soluble analogues [343,344].
+The pectin domain homogalacturonan (HG) consists of a linear
+backbone of α(1–4)-GalA residues in which the C-6 carboxyl
+ate moiety can exist as methyl ester, generating different
+patterns [99,329,330]. While the stereoselective construction of
+the α(1–4) linkages did not pose a significant challenge, the
+poor acceptor reactivity due to the presence of the carboxylate
+moiety often translated into low yield [99]. HG analogues (up to
+a 12mer, 132a,b) were successfully synthesized by solution
+phase synthesis (Figure 12). Solvent participation with Gal fluo
+ride donors (activated with SnCl2, AgClO4) ensured high
+α-stereoselectivities. The Gal residues were converted to GalA
+by selective hydrolysis of the Ac ester at C-6 and a two-step ox
+idation (i.e., Swern oxidation followed by treatment with
+NaClO2 in aqueous acidic conditions) [345,346]. An alternative
+oxidation protocol (Dess–Martin periodinane/NaClO2) was
+applied to synthesize HG fragments with different methylation
+patterns (134a–d). Two orthogonal PGs (Ac and PMP) were
+installed at C-6 of the α(1–4)-Gal fragments, allowing for selec
+tive oxidation (Figure 12). Methylation (with TMSCHN2) or
+benzylation (with PhCHN2) of the carboxylic acid allowed to
+differentiate between the carboxylic acids and obtain the methyl
+ester or the carboxylic acid, respectively [347,348]. Overall,
+while requiring more PG manipulations, the post-glycosylation
+oxidation strategy proved to be higher yielding compared to a
+procedure using GalA donors [349].
+Galactofuranose-based polysaccharides
+The cell wall of mycobacteria contains galactofuranose (Galf)
+based polysaccharides that play various functional roles based
+on their length [350]. These polymers are biosynthesized in a
+length-controlled manner by complex enzymatic machineries.
+However, to date, the molecular mechanism for chain length
+control remains poorly understood [351].
+The galactan found in Mycobacterium tuberculosis is composed
+of 20–40 Galf residues connected via alternated β(1–5)- and
+β(1–6)-linkages. The in vitro enzymatic synthesis of these
+galactans has been reported using galatofuranosyltransferase
+(GlfT2) from Mycobacterium tuberculosis, UPD-Galf donor,
+and acceptor 135c (Figure 13). The resulting polysaccharide
+showed a product distribution unbalanced towards larger poly
+mers (up to 27mer), with a narrow distribution centered on the
+21mer. The nature and length of the lipidic part was a key pa
+rameter to control the in vitro polymerization. While 135a and
+135b did not function as efficient acceptors, longer galactans
+with distribution centered on the 41mer could be obtained
+tuning the lipid length (acceptor 135d) [352]. The mechanism
+of galactan length control may differ consistently between the
+in vitro and in vivo setting as the interplay between the GlfT2
+enzyme, the plasma membrane and other proteins involved in
+transport across the membrane play a crucial role in length
+control [353,354]. Recently, it was reported that a mutation on
+the GlfT2 enzyme enabled the regulation of the galactan chain
+length (4mer or 11mer with a relatively narrow distribution)
+[350]. These examples suggest a potential avenue to produce
+length-controlled polysaccharides via glycoengineering
+[351,354,355].
+The main challenges associated to the chemical construction of
+alternated β(1–5)- and β(1–6)-linked ᴅ-Galf residues are the
+complexity of Galf BB synthesis. Especially for Galf, the lower
+thermodynamic stability compared to its pyranosic counterpart,
+makes BBs synthesis more complex [356-359]. Common ap
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2006
+Figure 14: The poor reactivity of acceptor 137 hindered a stepwise synthesis of the linear galactan backbone at the 3mer stage. In contrast, acceptor 136 proved to be more reactive.
+Scheme 18: AGA of a linear β(1–5) and β(1–6)-linked galactan 20mer. The AGA cycle includes coupling (NIS/TfOH), capping (Ac2O) and Fmoc deprotection (DBU).
+Figure 13: GlfT2 from Mycobacterium tuberculosis catalyzes the sequential addition of UPD-Galf donor to a growing galactan chain composed of alternated β(1–5)- and β(1–6)-linked ᴅ-Galf.
+proaches to access Gal in the furanose form involved dithio
+acetal cyclization using iodine and an alcohol [358] or a
+recently reported pyranoside-into-furanoside (PIF) rearrange
+ment [360]. Frequent O-5→O-6 ester migration is observed in
+basic media. The migration could be reduced by using morpho
+line, instead of piperidine, during the Fmoc deprotection permit
+ting the synthesis of a 7mer upon stepwise chain elongation
+[358,359]. Other approaches employing Lev as a temporary PG
+yielded a 14mer galactan [361]. Interestingly, while a good re
+activity of acceptor 136 was observed, the poor reactivity of
+acceptor 137 hindered the stepwise synthesis of the linear back
+bone, already at the 3mer stage (Figure 14). This poor reactivi
+ty was ascribed to the unfavorable conformation adopted by
+137. This problem was solved by building the galactan back
+bone from the non-reducing end to the reducing end [358].
+Galactan fragments, up to 20mer, were prepared by AGA
+(Scheme 18). When BBs 138a and 139a were used, several
+problems were encountered such as poor solubility, aggrega
+tion of the growing chain on the solid support and instability.
+Switching to BBs 138b and 139b bearing disarming Bz groups
+solved the issue and enabled the assembly of galactans up to
+20mer 140 [362].
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2007
+Fucose-based polysaccharides
+Fucans are a class of ionic polysaccharides present on the cell
+wall of marine brown algae, mainly constituted of repeating
+ʟ-fucose units [363]. They are heavily sulfated and connected
+through α(1–3) or α(1–4) linkages [364]. Several orthogonal
+PGs are required to access different sulfation patterns present in
+fucans. Long structures (up to 16mer) with α(1–3) connectivity
+were obtained by iterative couplings of dimers and tetrasaccha
+rides units [365]. Donors bearing 4-O-benzoyl, in combination
+with the 3-O-Ac and 2-O-Bn groups, enhanced the α-selectivity
+through remote participation. To date, only short tetramers con
+taining both types of α-linkages have been reported [366].
+Arabinose-based polysaccharides
+Arabinans, repetitive polysaccharides containing arabinofura
+nose (Araf), are major constituents of both plant cell-wall and of
+mycobacterial cell-wall, with the important difference that
+plants contain ʟ-Araf, while bacteria ᴅ-Araf [367]. Mycobacte
+rial arabinans are composed of a linear backbone of α(1–5)-ᴅ
+Araf with α(1–3) branches, which can be further elongated with
+linear α(1–5)-ᴅ-Araf residues. Similarly, plant arabinans consist
+of α(1–5)-ʟ-Araf bearing α(1–3) and/or α(1–2) branches.
+A variety of strategies have been reported to synthesize these
+compounds. Most of them show several common features. Bz
+groups are the most commonly used neighboring participating
+groups to ensure stereoselectivity, affording the linear α(1–5)-ᴅ
+Araf backbone. Convergent strategies are commonly employed
+[368]. As an alternative approach, cationic ROP using 1,2,5
+orthobenzoate BBs and Lewis acid catalysis (i.e., SnCl4 or
+TMSOTf) could generate mixtures of linear α(1–5)-arabinans
+(up to 25mer) [369-371]. Using 1,2,5-orthopivaloate BBs, linear
+α(1–5) arabinans with DP up to 91 could be prepared [372].
+Tuning the polymerization conditions gave mono-, di-, and tri
+saccharide thioglycoside Araf BBs, that were used to assemble
+defined linear arabinans (up to 8mer) [373].
+When constructing branched arabinans, convergent approaches
+involving fragment coupling, rather than sequential elongation,
+are preferred. Steric hindrance at the arabinan acceptor was
+found to be the limiting factor during the installation of the
+α(1–3)-arabinan branches. Small Araf donors enabled the instal
+lation of C-3 branches in a 12mer [374,375]. Larger structures
+(up to 22mer) were synthesized by convergent fragment cou
+pling [376,377]. Key to the success of these syntheses was the
+early stage installation of the α(1–3) branches and the single
+β(1–2)-linked Araf at the non-reducing end. Trichloroacetimi
+dates were chosen as reactive LGs for the most challenging
+couplings (i.e., [12 + 3 + 3], and [12 + 5 + 5]). To avoid the
+removal of a large number of Bn groups at the last stage of the
+synthesis, Bz groups were chosen as the sole PGs for the frag
+ments [376]. The reactivity of Araf permitted the implementa
+tion of milder glycosylation conditions; 1,2-propargyl
+orthoester donors and alkynyl carbonate donors, activated using
+a Au(I) catalyst in presence of AgOTf, were employed in the
+convergent synthesis of a 25mer. The glycosylation could be
+carried out at room temperature [368,378-380]. Shorter
+branched structures (up to 6mer) could be assembled by AGA
+using thioglycoside donors [281,381].
+Fewer examples exist for the chemical synthesis of ʟ-arabinans.
+A convergent assembly of a α(1–5)-linked 8mer was
+accomplished with ʟ-Araf N-trichloroacetimidate donors.
+Regioselective glycosylation of the primary alcohol at C-5 on
+partially protected acceptors was possible, simplifying BB prep
+aration. However, this reaction was shown to be highly
+acceptor-dependent and worked best only for Araf acceptors
+[382,383].
+Recently, the synthesis of the whole complex arabinogalactan
+polysaccharide 92mer was reported. A linear 30mer backbone
+of alternated β(1–5)- and β(1–6)-linked ᴅ-Galf residues bearing
+two branched 31mer arabinan was assembled in a convergent
+approach. Two equivalents of a branched arabinan donor (bear
+ing α(1–5) and α(1–3) linkages) were coupled to a linear
+galactofuranose (30mer) backbone acceptor in a [31 + 31 + 30]
+glycosylation step (Figure 15).
+The three fragments were assembled following one-pot proto
+cols, in which the donor was pre-activated at low temperature
+(stoichiometric pTsCl/AgOTf at −78 °C) and then the acceptor
+was added [154]. Upon completion of the reaction, the newly
+formed compound was subjected to the same pre-activation
+protocol and employed in the following step without intermedi
+ate purification. In this way, the alternated linear β(1–5)- and
+β(1–6)-linked ᴅ-Galf 30mer fragment was quickly obtained via
+a five-component one-pot glycosylation [6 + 6 + 6 + 6 + 6].
+Each 6mer was itself generated via a six-component one-pot
+protocol. Similarly, branched arabinofuranose fragment 145
+was assembled following a six-component one-pot glycosyla
+tion [7 x 2 + 5 + 6 + 6] (Scheme 19). To avoid late-stage
+installation of challenging linkages, the β(1–2)-Araf terminal
+residues were installed at an early stage using a 3,5-TIPDS
+protected (3,5-O-tetraisopropyldisiloxanylidene) Araf donor
+[384].
+The three fragments were finally connected using the benzene
+sulfinylmorpholine/triflic anhydride (BSM/Tf2O) activator
+system. Despite the impressive size of the molecule, no issues
+were encountered in the final deprotection steps (75% yield),
+permitting to obtain 92mer arabinogalactan polysaccharide 140
+[385].
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2008
+Figure 15: The 92mer arabinogalactan was synthesized using a [31 + 31 + 30] fragment coupling between a 31mer arabinan donor (Araf31) and a 30mer galactan acceptor (Galf30).
+Scheme 19: Synthesis of the branched arabinofuranose fragment using a six component one-pot synthesis. i) TTBP, 4 Å MS, DCM, pTolSCl, AgOTf then 143, −78 °C to room temperature. ii) pTolSCl, AgOTf then 144, −78 °C to room temperature. iii) pTolSCl, AgOTf then 144, −78 °C to room temperature.
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2009
+Figure 16: A) Chemical structure and SNFG of the representative disaccharide units forming the GAG backbones, and B) representative examples of synthetic disaccharides used for the preparation of HS analogues.
+Glycosaminoglycans (GAGs)
+Ionic polysaccharides are ubiquitous in living organisms where
+they regulate a multitude of cell functions. The ionic moieties
+control the shape of such compounds by promoting repulsive
+and attractive interactions [9]. Glycosaminoglycans (GAGs) are
+the major structural components of the extracellular matrix
+(ECM) in mammals. GAGs are linear, negatively charged poly
+saccharides composed mainly of repeating disaccharide units
+(Figure 16A) [386]. The anionic backbone, bearing sulfate
+moieties (except for hyaluronans), is responsible for their inter
+actions with a plethora of proteins and the regulation of a large
+number of biological processes [387-389]. GAGs are water
+retaining polysaccharides, thus modulating the hydration and
+the water homeostasis in tissues [390].
+GAGs can be obtained from animal sources (e.g., chondroitin
+sulfate is extracted from shark cartilage), albeit in heterogen
+eous mixtures that hampered quality control and reproducibility
+[391]. The heterogeneous nature of these samples is particular
+ly problematic because the spatial orientation of the sulfate
+groups (sulfation code) [392,393] and the length of the polysac
+charide chain affects the structural and biological features of
+GAGs. This became obvious during the “heparin crisis” in
+2008, when batches of heparin, contaminated with oversulfated
+chondroitin sulfate, entered the marketplace causing the life of
+hundreds of people [4]. This episode underscored the urgency to
+develop reliable methods to access well-defined GAGs, with
+full control over substitution pattern and chain length. Well
+defined GAGs are also valuable standards to uncover the mech
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2010
+Scheme 20: Degradation of natural heparin and heparosan generated valuable disaccharides 150 and 151 that can be further converted into four disaccharide BBs 152–155 to assemble well-defined structures.
+anism of action of heparin-like drugs (e.g., fondaparinux)
+[394,395].
+Heparin and heparan sulfate
+Among GAGs, heparin (H), heparan sulfate (HS), and heparin
+like structures have been studied extensively due to their bio
+logical relevance [389]. HS binds to over hundred proteins
+depending on sulfation pattern and chain length. Generally, a
+minimal length (in most cases an octasaccharide) is required to
+trigger specific biological events, including interaction with
+cytokines and chemokines growth factors [396].
+Due to their structural complexity, the synthesis of H/HS poses
+multiple challenges (Figure 17) [397]. The formation of the 1,2
+cis linkage in the GlcN-GlcA repeating units cannot be directed
+with neighboring group participation. A plethora of PGs has
+been used to ensure or enhance α-stereoselectivity, through
+remote participation and/or electronic effects. In addition, or
+thogonal PGs should also be strategically placed to allow for the
+subsequent regioselective sulfation. This requirement becomes
+particularly challenging considering the multiple steps needed
+to generate the rare ʟ-idose unit. Another bottleneck arises from
+the lability of the sulfate groups in both acidic and basic condi
+tions, limiting PG manipulations or functional group transfor
+mations. Thus, the removal of the PG must be carefully planned
+to avoid small pH fluctuations. Not last, purification
+and detection of highly sulfated structures is troublesome
+[398,399].
+Figure 17: Synthetic challenges associated to the H/HS synthesis.
+The significant efforts of the last 20 years resulted in synthetic
+methods to access various BBs for the assembly of heparin and
+heparan oligosaccharides. Considerable success has been ob
+tained in making the core dimers IdoA-GlcN that can be further
+assembled to give longer oligomers [400-404]. Still, most
+methods suffered from lengthy and laborious processes (18–29
+steps) and low yields that precluded scalability (Figure 16B).
+Recently, a clever approach suggested the controlled hydrolysis
+of commercially available heparin and heparosan polymers to
+overcome the challenges associated with the chemical synthesis
+of the disaccharide cores (Scheme 20) [405]. NMR spectrosco
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2011
+Scheme 21: A) The one-step conversion of cyanohydrin 156 to ʟ-iduronamide 157 represent the key step for the synthesis of BB 158. B) Synthesis of long heparin-like structures using iterative coupling strategies.
+py revealed that, after acid hydrolysis, both polymers produced
+one type of dimer as the major product (e.g., A-B or B-A).
+Epimerization strategies (i.e., GlcA→IdoA) granted access
+to the other two dimers present in HS. The introduction of
+orthogonal PGs and selective sulfation, provided a set of
+disaccharides in high yields (9% overall) to be used in the syn
+thesis of well-defined heparin-like structures. To date, this scal
+able and efficient approach was applied to the synthesis of
+tetramers.
+Impressive results in terms of scalability were achieved starting
+from the diastereomerically pure cyanohydrin 156 that was
+quantitatively converted to ʟ-iduronamide 157 [406]. Upon suit
+able PG manipulations, compound 157 was transformed into
+acceptor 158 that enabled the formation of the challenging
+α(1–4) glycosidic linkage with the 2-azidoglucoside donor
+(Scheme 21). The synthesis of a 12mer was achieved using iter
+ative couplings of compound 159. Cleavage of the ester PGs,
+O-sulfonation, azide reduction and debenzylation, followed by
+final N-sulfonation permitted the first gram-scale synthesis of a
+heparin-related 12mer 161 [407].
+A similar iterative strategy, using tetrasaccharide BB 162 [408],
+led to the successful synthesis of a collection of protected HS
+analogues, from 16mer to 40mer [409]. The use of tetrasaccha
+ride 162 permitted to reduce the number of purification steps
+after each iterative coupling and improve the overall yields.
+From this collection, the 20mer was further transformed into
+two homogeneous HS-like oligosaccharides 164 and 165 with
+different sulfation patterns (Scheme 21B).
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2012
+Despite these impressive results, chemical methods based on
+repetitive coupling steps, deprotections, and purifications are
+extremely labor demanding. Enzymatic synthesis offers an al
+ternative approach to shorten these lengthy procedures. Never
+theless, a purely enzymatic approach has been proven inade
+quate for the synthesis of long GAGs, because it generates ill
+defined mixtures of oligomers with different lengths [410]. A
+chemoenzymatic approach could be the ideal solution to prepare
+well-defined heparin structures [399]. Key to a successful
+chemoenzymatic route is to design a sequence that resembles
+the in vivo biosynthesis. Bacterial glycosyltransferases
+(GTases) KfiA and PmHS2 are commonly used for the elonga
+tion of a starting disaccharide using UDP-GlcNAc 169 and
+UDP-GlcA 168 activated sugar donors [411]. N- and O-sulfo
+transferases (STases) catalyze the regioselective insertion of the
+sulfate moieties using 3’-phosphoadenosine 5’-phosphosulfates
+(PAPS). To facilitate the detection and the purification steps,
+the acceptor could be covalently attached to a UV detectable
+chromophore, such as para-nitrophenol [412] (p-NP), or a fluo
+rous tag [413]. Chemical modifications, tolerated by the en
+zyme, were used to overcome particular bottlenecks of the
+purely enzymatic approach. For example, while the natural sub
+strate for KfiA (UDP-GlcNAc 168) proved very stable to N-de
+acetylation, the unnatural donor [414,415] UDP-GlcNTFA 167
+could be efficiently N-deacylated under mild basic conditions,
+permitting subsequent regioselective N-sulfation. Variation on
+the chemical backbone were catalyzed by C5-epimerase (C5
+epi), able to convert GlcA into IdoA and vice versa [416].
+Recent studies revealed that C5-epi recognizes specific binding
+domains, promoting reversible or irreversible epimerization
+[417]. Following these paths, low-molecular-weight heparins
+(LMWH) were produced in a gram scale. Longer structures (up
+to 21mer, 172a–d) were also accessible (Scheme 22A) [418].
+Still, the preparation of structures containing a large number of
+IdoA2S-GlcNS6S remains problematic. A random epimeriza
+tion may happen in the presence of C5-epi, leading to ill
+defined mixtures of GlcA and IdoA in the final product. A
+pioneering strategy demonstrated that epimerization could be
+successfully controlled with the selective introduction of a 6-O
+methyl ether on a GlcN residue (Scheme 22B) [419]. Three
+model hexasaccharides 173, 174, and 175 demonstrated how
+single site substitutions can be key to direct enzymatic modifi
+cations and generate knowledge on enzyme specificity.
+Others GAGs
+Chondroitin sulfate (CS) is comprised of β(1–4)-linked
+N-acetyl-ᴅ-galactosamine (ᴅ-GalNAc) and β(1–3)-linked
+ᴅ-glucuronic acid (ᴅ-GlcA) repeating units (Figure 16A).
+Dermatan sulfate, also named chondroitin sulfate B, is an ana
+logue of CS, having IdoA instead of the GlcA repeating unit. In
+analogy to heparin and HS, the sulfation pattern dictates the
+interaction with other biomolecules resulting in important bio
+logical functions such as cell proliferation, tissue morphogen
+esis, and wound repair [420].
+To date, the longest CS chain chemically synthesized was a
+24mer [421]. To ensure stereocontrol, the nitrogen on the GalN
+unit was equipped with a participating PG, which can be after
+wards easily removed to release the free amine. The screening
+of different disaccharide donors revealed that the di-4,6-O-acet
+ylated GalNTFA gave the desired β-selectivity. However, the
+formation of a stable oxazoline side-product during the glyco
+sylation of bigger and less reactive acceptors limited this ap
+proach. Replacement of TFA with TCA and use of Bn groups
+instead of the electron withdrawing esters limited the formation
+of the oxazoline side-product. Iterative couplings of dimer 179
+allowed for the synthesis of the protected 24mer (Scheme 23).
+The cleavage of the Lev groups liberated the hydroxy groups
+that were sulfated using SO3·NEt3. Different methods were
+attempted for the removal of the TCA groups, which proved to
+be very stable. Finally, a concentrated ammonia solution
+permitted the cleavage of the twelve TCA moieties to give com
+pound 181, after hydrogenolysis.
+A total of 15 CS oligosaccharides with different sulfation
+patterns, ranging from trisaccharides to nonasaccharides, were
+enzymatically synthesized to investigate their biological func
+tion [422]. The glycosyl transferase KfoC [423], extracted from
+the E. coli K4 strain, permitted to transfer both UDP-GalNAc
+and UDP-GlcA. The backbone could be prepared in a gram
+scale, thanks to the UDP-sugars obtained from cheap starting
+materials. This approach proved to be highly divergent, because
+KfoC tolerated the unnatural substrate GalNTFA, which could
+be chemically transformed to either an amine or an azide for
+further functionalization. A collection of well-defined oligosac
+charides with natural and unnatural sulfation patterns were pro
+duced on multi-milligram scales.
+Hyaluronic acid (HA) is the only non-sulfated GAG and is
+composed of alternating GlcA and GlcNAc residues connected
+through β(1–3) and β(1–4) glycosidic linkages, respectively
+(Figure 16A). HA is a major component of the extracellular
+matrix and is involved in many essential biological processes
+[424] such as cell adhesion, cell migration, and wound healing.
+Its mode of action is length-dependent; thus much effort has
+been put to obtain defined hyaluronans of different lengths. The
+low reactivity of the GlcA as glycosyl donor is the major syn
+thetic challenge, generally overcome by the use of the more
+reactive Glc donor followed by a post-glycosylation oxidation
+to convert it to GlcA. Issues associated to GlcNAc concern the
+protection of the amino group: TCA, commonly used to direct
+the formation of the β-linkages through participation, often led
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2013
+Scheme 22: A) Chemoenzymatic synthesis of heparin structures, using different types of UDP activated natural and unnatural monosaccharides. The steps follow the in vivo biosynthesis of such compounds. B) Selective epimerization of hexasaccharides 173, 174, and 175 revealed how single-site methylation can affect the function of C5-epi.
+Scheme 23: Synthesis of the longest synthetic CS chain 181 (24mer) using donor 179 and acceptor 180 in an iterative approach.
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2014
+Scheme 24: AGA of a collection of HA with different lengths. The AGA cycle includes coupling (TfOH) and Lev deprotection (hydrazine).
+to the formation of less reactive oxazolines. The use of
+TMSOTf suppressed the formation of this side product
+and allowed for the synthesis of a 10mer in moderate yields
+[425].
+A collection of hyaluronans, ranging from trimers to 15mer, has
+been synthesized in an automated fashion on a solid-support
+[426]. Disaccharide 182 was prepared in a multigram scale from
+compound 183. The C-4 and C-6 hydroxy groups of GlcNAc
+were masked as silyl ethers, providing ketals with excellent
+stability to acidic conditions. A first glycosylation with mono
+mer 183 ensured high yield of the first coupling to the solid
+support. Iterative couplings with dimer 182 gave the protected
+hyaluronans with well-defined lengths that were liberated from
+the solid support and subjected to global deprotection to give
+184a–c (Scheme 24).
+HA oligomers were prepared chemoenzymatically, using
+PmHAS, a unique class of bacterial enzymes that catalyze the
+addition of both UDP-GlcNAc and UDP-GlcA monosaccha
+rides [427]. Short oligomers (2-4mers) were obtained after step
+wise enzymatic couplings, controlling the acceptor/donor molar
+ratio. These oligomers served as synthons for the one-pot poly
+merization. HA polymers formed from short length acceptors
+displayed a very narrow MW distribution, as confirmed by
+multi-angle light scattering experiments. The same strategy was
+applied for the synthesis of homogeneous chondroitin polymers
+and other derivatives [428].
+Keratan sulfate (KS) consists of a N-acetyllactosamine back
+bone (Figure 16) [429]. Different types of KS are present in the
+cornea, cartilage, and brain, named KS I, KS II and KS III, re
+spectively [430]. Despite some encouraging results, the synthe
+sis of long KS is, to date, not reported. A chemoenzymatic ap
+proach allowed for the step-by-step elongations of the back
+bone, but remained limited to tetrasaccharides [431]. Hexasac
+charides with different sulfation pattern were obtained by AGA
+[432]. The low reactivity of the donor and the acceptor as the
+chain length increases has limited the formation of longer struc
+tures.
+Overall, GAGs with well-defined composition, patterns and
+lengths are needed to unlock the “sulfation code” and establish
+structure–function correlations. Recent advances in chemical
+and chemoenzymatic synthesis permitted the preparation of
+impressive targets. Still, most procedures are lengthy and low
+yielding, suffering from low reactivity or poor selectivity as the
+polysaccharide chain grows. New automated procedures as well
+as highly selective enzymatic transformations should be imple
+mented to provide valuable alternatives to naturally sourced
+GAGs.
+Conclusion
+Exploitation of polysaccharides has always relied on mixtures
+of compounds extracted from natural sources. Much effort has
+been put to understand how sequence, length, and substitution
+pattern affect polysaccharides’ biological and material proper
+ties [93,221,350]. Therefore, well-defined polysaccharide sam
+ples become essential probes to establish structure–property
+correlations and for reproducible biological studies
+[93,221,350]. Polysaccharides with well-defined chemical
+structures can be prepared synthetically following three main
+approaches: i) enzymatic methods, ii) polymerization, and
+iii) chemical synthesis. These approaches are complementary to
+each other, offering advantages and limitations. Thus, in most
+cases, the choice of the more suitable methods depends on the
+desired application.
+Enzymatic and chemoenzymatic methods showed enormous
+potential for the synthesis of some classes of polysaccharides
+(i.e., GAGs). The main advantages are the simple synthetic
+protocols (no PGs required) and the high regio- and stereoselec
+tivity, typical of enzymes. In contrast, the high specificity of the
+enzymes hampers the introduction of unnatural moieties and
+limits the scope of these methods. To date, not all glycosidic
+linkages are accessible and repetitive polymers are often ob
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2015
+tained as mixtures with a non-uniform dispersion of MW. The
+combination of enzymatic methods with chemical strategies
+(i.e., chemoenzymatic methods) offers a valuable alternative to
+generate precision polysaccharides [399]. Synthetically pro
+duced oligomers can be enzymatically polymerized to obtain
+artificial polymers with well-defined branching pattern [7].
+Being able to control the polysaccharide length remains the next
+challenge. The inspiration could come from length-controlled
+biosynthetic pathways [351,354,355].
+Polymerization approaches allowed growing large synthetic
+polysaccharides in short time and are easily scalable. However,
+only few types of glycosidic linkages are accessible and mix
+tures of different chain lengths are often generated. Recently re
+ported methods for polymerization in confined space could
+improve the control over the chain length [433-435].
+Chemical synthesis enabled the preparation of well-defined
+polysaccharides, but is labor-intensive, requiring several pro
+tected monosaccharide BBs and, to date, it suffered from poor
+scalability. Recently achieved total syntheses (i.e., 92mer [385]
+and 128mer [325]) showed that long and well-defined polysac
+charides could be accessed. With automated platforms, long
+polysaccharides could be obtained routinely (i.e., 100mer and
+151mer [278]), considerably reducing the lengthy synthetic
+protocols traditionally needed for solution phase methods. Still,
+only some classes of polysaccharides have been synthesized,
+often relying on the relatively easy installation of 1,2-trans
+glycosidic bonds. In contrast, the formation of multiple 1,2-cis
+glycosidic bonds remains highly challenging. New highly selec
+tive methods have been developed [167,178,285], however,
+only few proved to be applicable to the synthesis of long poly
+saccharides. Additionally, the low reactivity of particular BBs
+(e.g., uronic acids for the synthesis of GAGs) hampered the
+establishment of efficient synthetic protocols. A major limita
+tion encountered in many reports of polysaccharide total synthe
+sis is the decreased reactivity of large donors and acceptors.
+This issue is, to date, poorly predictable, due to the little know
+ledge on the conformation of protected glycans. Computational
+methods are expected to help the understanding of the reactivi
+ty for such complex molecules. While chemical ligation proto
+cols enabled the total synthesis of proteins [436], similar
+methods are still lacking for polysaccharides and fragment cou
+pling often requires broad screenings of LGs, solvents, and acti
+vation systems.
+Aggregation is another major bottleneck that can drastically de
+crease the yield of polysaccharide synthesis and can occur
+either at the fully protected stage, during an intermediate stage
+[156,157] (i.e., semiprotected stage) or at the final deprotected
+stage [93,344].
+Upon assembly of the protected polysaccharide target, either by
+polymerization or chemical synthesis, the removal of the PGs
+often proved to be challenging. Aggregation [93,156,157,437],
+degradation (both during methanolysis [93] and hydrogenolysis
+[294,325,326]), substituent migration [322,438] or cleavage are
+among the most common issues encountered. The development
+of better PGs that can be removed quantitatively is highly desir
+able. Particular effort should be put towards the development of
+novel N-PGs considering the many drawbacks of the currently
+employed ones [251,261]. Novel PGs [439] and more suitable
+solvent systems [440] could alleviate some of these problems.
+The purification and characterization of long polysaccharides
+poses an additional challenge, especially for ionic polysaccha
+rides [398,441]. As the size of synthetic polysaccharides ap
+proaches the size of macromolecules, the implementation of
+novel analytical and purifications techniques becomes neces
+sary [283].
+Overall, structural precision has become an important goal in
+polymer science as it is crucial to achieve novel properties or to
+fully understand complex architectures [442,443]. Automated
+techniques and solid-phase methods have become popular to
+generate polymers with full control over the sequence, length,
+and substitution [444,445]. These approaches, despite being
+time consuming and in most cases not yet scalable, represent
+the only amenable way to obtain structure–property correla
+tions. Oligomers able to maintain the properties of longer poly
+meric structures could become a valuable target to fill the gap
+between small molecule and polymer science [446]. The same
+trend is true for polysaccharides. Well-defined polysaccharides
+could become essentials in biology where batch-to-batch repro
+ducibility is imperative. Oligosaccharides with controlled
+lengths will be required to induce particular biological
+responses and automated techniques could grant access to
+collection of pure compounds for screening. Full control on the
+polysaccharide length and sequence will also be key to control
+the aggregation of these compounds and create nanomaterials
+with defined dimensions [447].
+Funding
+We thank the Max Planck Society, the MPG-FhG Cooperation
+Project Glyco3Dysplay and the German Federal Ministry of
+Education and Research (BMBF, grant number 13XP5114) for
+generous financial support.
+ORCID® iDs
+Giulio Fittolani - https://orcid.org/0000-0001-6201-3454 Denisa Vargová - https://orcid.org/0000-0001-9923-7080 Manishkumar A. Chaube - https://orcid.org/0000-0001-9027-5275 Martina Delbianco - https://orcid.org/0000-0002-4580-9597
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2016
+References
+1. Varki, A.; Cummings, R. D.; Esko, J. D.; Stanley, P.; Hart, G. W.; Aebi, M.; Darvill, A. G.; Kinoshita, T.; Packer, N. H.; Prestegard, J. H.; Schnaar, R. L.; Seeberger, P. H. Essentials of Glycobiology, 3rd ed.; Cold Spring Harbor Laboratory Press: Cold Spring Harbor, NY, USA, 2017. 2. de Moura, F. A.; Macagnan, F. T.; da Silva, L. P. Int. J. Food Sci. Technol. 2015, 50, 275–281. doi:10.1111/ijfs.12681 3. Verendel, J. J.; Church, T. L.; Andersson, P. G. Synthesis 2011, 1649–1677. doi:10.1055/s-0030-1260008 4. Guerrini, M.; Beccati, D.; Shriver, Z.; Naggi, A.; Viswanathan, K.; Bisio, A.; Capila, I.; Lansing, J. C.; Guglieri, S.; Fraser, B.; Al-Hakim, A.; Gunay, N. S.; Zhang, Z.; Robinson, L.; Buhse, L.; Nasr, M.; Woodcock, J.; Langer, R.; Venkataraman, G.; Linhardt, R. J.; Casu, B.; Torri, G.; Sasisekharan, R. Nat. Biotechnol. 2008, 26, 669–675. doi:10.1038/nbt1407 5. Anggara, K.; Zhu, Y.; Delbianco, M.; Rauschenbach, S.; Abb, S.; Seeberger, P. H.; Kern, K. J. Am. Chem. Soc. 2020, 142, 21420–21427. doi:10.1021/jacs.0c09933 6. Wu, X.; Delbianco, M.; Anggara, K.; Michnowicz, T.; Pardo-Vargas, A.; Bharate, P.; Sen, S.; Pristl, M.; Rauschenbach, S.; Schlickum, U.; Abb, S.; Seeberger, P. H.; Kern, K. Nature 2020, 582, 375–378. doi:10.1038/s41586-020-2362-1 7. Senf, D.; Ruprecht, C.; Kishani, S.; Matic, A.; Toriz, G.; Gatenholm, P.; Wågberg, L.; Pfrengle, F. Angew. Chem., Int. Ed. 2018, 57, 11987–11992. doi:10.1002/anie.201806871 8. Kittle, J. D.; Qian, C.; Edgar, E.; Roman, M.; Esker, A. R. ACS Omega 2018, 3, 14004–14012. doi:10.1021/acsomega.8b01750 9. Zhang, Q.; Gimeno, A.; Santana, D.; Wang, Z.; Valdés-Balbin, Y.; Rodríguez-Noda, L. M.; Hansen, T.; Kong, L.; Shen, M.; Overkleeft, H. S.; Vérez-Bencomo, V.; van der Marel, G. A.; Jiménez-Barbero, J.; Chiodo, F.; Codée, J. D. C. ACS Cent. Sci. 2019, 5, 1407–1416. doi:10.1021/acscentsci.9b00454 10. Armstrong, Z.; Withers, S. G. Biopolymers 2013, 99, 666–674. doi:10.1002/bip.22335 11. Smith, P. J.; Ortiz-Soto, M. E.; Roth, C.; Barnes, W. J.; Seibel, J.; Urbanowicz, B. R.; Pfrengle, F. ACS Sustainable Chem. Eng. 2020, 8, 11853–11871. doi:10.1021/acssuschemeng.0c03622 12. Perugino, G.; Cobucci-Ponzano, B.; Rossi, M.; Moracci, M. Adv. Synth. Catal. 2005, 347, 941–950. doi:10.1002/adsc.200505070 13. Kobayashi, S.; Uyama, H.; Kadokawa, J., Eds. Enzymatic
+Polymerization towards Green Polymer Chemistry; Green Chemistry and Sustainable Technology; Springer International Publishing: Singapore, 2019. doi:10.1007/978-981-13-3813-7 14. Faijes, M.; Planas, A. Carbohydr. Res. 2007, 342, 1581–1594. doi:10.1016/j.carres.2007.06.015 15. Shoda, S.-i.; Uyama, H.; Kadokawa, J.-i.; Kimura, S.; Kobayashi, S. Chem. Rev. 2016, 116, 2307–2413. doi:10.1021/acs.chemrev.5b00472 16. Kobayashi, S.; Makino, A. Chem. Rev. 2009, 109, 5288–5353. doi:10.1021/cr900165z 17. Kadokawa, J.-i. Chem. Rev. 2011, 111, 4308–4345. doi:10.1021/cr100285v 18. Xiao, R.; Grinstaff, M. W. Prog. Polym. Sci. 2017, 74, 78–116. doi:10.1016/j.progpolymsci.2017.07.009 19. Mackenzie, L. F.; Wang, Q.; Warren, R. A. J.; Withers, S. G. J. Am. Chem. Soc. 1998, 120, 5583–5584. doi:10.1021/ja980833d 20. Danby, P. M.; Withers, S. G. ACS Chem. Biol. 2016, 11, 1784–1794. doi:10.1021/acschembio.6b00340
+21. Hayes, M.; Pietruszka, J. Molecules 2017, 22, 1434. doi:10.3390/molecules22091434 22. Cobucci-Ponzano, B.; Moracci, M. Nat. Prod. Rep. 2012, 29, 697. doi:10.1039/c2np20032e 23. Wang, L.-X.; Huang, W. Curr. Opin. Chem. Biol. 2009, 13, 592–600. doi:10.1016/j.cbpa.2009.08.014 24. Adelwöhrer, C.; Takano, T.; Nakatsubo, F.; Rosenau, T. Biomacromolecules 2009, 10, 2817–2822. doi:10.1021/bm9006612 25. Tokatly, A. I.; Vinnitskiy, D. Z.; Ustuzhanina, N. E.; Nifantiev, N. E. Russ. J. Bioorg. Chem. 2021, 47, 53–70. doi:10.1134/s1068162021010258 26. Kaeothip, S.; Demchenko, A. V. Carbohydr. Res. 2011, 346, 1371–1388. doi:10.1016/j.carres.2011.05.004 27. Jeanneret, R. A.; Johnson, S. E.; Galan, M. C. J. Org. Chem. 2020. doi:10.1021/acs.joc.0c02045 28. Pardo-Vargas, A.; Delbianco, M.; Seeberger, P. H. Curr. Opin. Chem. Biol. 2018, 46, 48–55. doi:10.1016/j.cbpa.2018.04.007 29. Panza, M.; Pistorio, S. G.; Stine, K. J.; Demchenko, A. V. Chem. Rev. 2018, 118, 8105–8150. doi:10.1021/acs.chemrev.8b00051 30. Hsu, C.-H.; Hung, S.-C.; Wu, C.-Y.; Wong, C.-H. Angew. Chem., Int. Ed. 2011, 50, 11872–11923. doi:10.1002/anie.201100125 31. Panza, M.; Stine, K. J.; Demchenko, A. V. Chem. Commun. 2020, 56, 1333–1336. doi:10.1039/c9cc08876h 32. Seeberger, P. H. Acc. Chem. Res. 2015, 48, 1450–1463. doi:10.1021/ar5004362 33. Chang, C.-W.; Lin, M.-H.; Chan, C.-K.; Su, K.-Y.; Wu, C.-H.; Lo, W.-C.; Lam, S.; Cheng, Y.-T.; Liao, P.-H.; Wong, C.-H.; Wang, C.-C. Angew. Chem., Int. Ed. 2021, 60, 12413–12423. doi:10.1002/anie.202013909 34. van der Vorm, S.; Hansen, T.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. Chem. Sci. 2017, 8, 1867–1875. doi:10.1039/c6sc04638j
+35. Crich, D. J. Am. Chem. Soc. 2021, 143, 17–34. doi:10.1021/jacs.0c11106 36. Fraser-Reid, B.; Cristóbal López, J., Eds. Reactivity Tuning in Oligosaccharide Assembly; Topics in Current Chemistry, Vol. 301; Springer: Berlin, Heidelberg, 2011. doi:10.1007/978-3-642-20914-7 37. Hettikankanamalage, A. A.; Lassfolk, R.; Ekholm, F. S.; Leino, R.; Crich, D. Chem. Rev. 2020, 120, 7104–7151. doi:10.1021/acs.chemrev.0c00243 38. Matsuzaki, Y.; Ito, Y.; Nakahara, Y.; Ogawa, T. Tetrahedron Lett. 1993, 34, 1061–1064. doi:10.1016/s0040-4039(00)77492-2 39. Petitou, M.; Duchaussoy, P.; Driguez, P.-A.; Hérault, J.-P.; Lormeau, J.-C.; Herbert, J.-M. Bioorg. Med. Chem. Lett. 1999, 9, 1155–1160. doi:10.1016/s0960-894x(99)00155-9
+40. Pozsgay, V. Tetrahedron: Asymmetry 2000, 11, 151–172. doi:10.1016/s0957-4166(99)00553-4 41. Varki, A.; Cummings, R. D.; Aebi, M.; Packer, N. H.; Seeberger, P. H.; Esko, J. D.; Stanley, P.; Hart, G.; Darvill, A.; Kinoshita, T.; Prestegard, J. J.; Schnaar, R. L.; Freeze, H. H.; Marth, J. D.; Bertozzi, C. R.; Etzler, M. E.; Frank, M.; Vliegenthart, J. F.; Lütteke, T.; Perez, S.; Bolton, E.; Rudd, P.; Paulson, J.; Kanehisa, M.; Toukach, P.; Aoki-Kinoshita, K. F.; Dell, A.; Narimatsu, H.; York, W.; Taniguchi, N.; Kornfeld, S. Glycobiology 2015, 25, 1323–1324. doi:10.1093/glycob/cwv091
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2017
+42. Rojas, O. J. In Cellulose Chemistry and Properties: Fibers, Nanocelluloses and Advanced Materials; Rojas, O. J., Ed.; Advances in Polymer Science, Vol. 271; Springer International Publishing: Cham, Switzerland, 2016. doi:10.1007/978-3-319-26015-0 43. O’Sullivan, A. C. Cellulose 1997, 4, 173–207. doi:10.1023/a:1018431705579 44. Atalla, R. H. Science 1998, 282, 591. doi:10.1126/science.282.5389.591a
+45. Delmer, D. P. Annu. Rev. Plant Physiol. Plant Mol. Biol. 1999, 50, 245–276. doi:10.1146/annurev.arplant.50.1.245
+46. Brown, R. M., Jr. J. Macromol. Sci., Part A: Pure Appl. Chem. 1996, 33, 1345–1373. doi:10.1080/10601329608014912 47. Rajinipriya, M.; Nagalakshmaiah, M.; Robert, M.; Elkoun, S. ACS Sustainable Chem. Eng. 2018, 6, 2807–2828. doi:10.1021/acssuschemeng.7b03437 48. Klemm, D.; Kramer, F.; Moritz, S.; Lindström, T.; Ankerfors, M.; Gray, D.; Dorris, A. Angew. Chem., Int. Ed. 2011, 50, 5438–5466. doi:10.1002/anie.201001273 49. Habibi, Y.; Lucia, L. A.; Rojas, O. J. Chem. Rev. 2010, 110, 3479–3500. doi:10.1021/cr900339w 50. Moon, R. J.; Martini, A.; Nairn, J.; Simonsen, J.; Youngblood, J. Chem. Soc. Rev. 2011, 40, 3941–3994. doi:10.1039/c0cs00108b 51. Thomas, B.; Raj, M. C.; B, A. K.; H, R. M.; Joy, J.; Moores, A.; Drisko, G. L.; Sanchez, C. Chem. Rev. 2018, 118, 11575–11625. doi:10.1021/acs.chemrev.7b00627 52. Schurz, J. Prog. Polym. Sci. 1999, 24, 481–483. doi:10.1016/s0079-6700(99)00011-8 53. Li, T.; Chen, C.; Brozena, A. H.; Zhu, J. Y.; Xu, L.; Driemeier, C.; Dai, J.; Rojas, O. J.; Isogai, A.; Wågberg, L.; Hu, L. Nature 2021, 590, 47–56. doi:10.1038/s41586-020-03167-7 54. Serizawa, T.; Fukaya, Y.; Sawada, T. Polym. J. 2018, 50, 799–804. doi:10.1038/s41428-018-0057-3 55. Burchard, W. Cellulose 2003, 10, 213–225. doi:10.1023/a:1025160620576 56. Potthast, A.; Rosenau, T.; Buchner, R.; Röder, T.; Ebner, G.; Bruglachner, H.; Sixta, H.; Kosma, P. Cellulose 2002, 9, 41–53. doi:10.1023/a:1015811712657 57. Kostag, M.; Gericke, M.; Heinze, T.; El Seoud, O. A. Cellulose 2019, 26, 139–184. doi:10.1007/s10570-018-2198-0
+58. Kobayashi, S. J. Polym. Sci., Part A: Polym. Chem. 2005, 43, 693–710. doi:10.1002/pola.20662 59. Billès, E.; Coma, V.; Peruch, F.; Grelier, S. Polym. Int. 2017, 66, 1227–1236. doi:10.1002/pi.5398 60. Nidetzky, B.; Zhong, C. Biotechnol. Adv. 2020, 107633. doi:10.1016/j.biotechadv.2020.107633 61. Kobayashi, S.; Kashiwa, K.; Kawasaki, T.; Shoda, S.-i. J. Am. Chem. Soc. 1991, 113, 3079–3084. doi:10.1021/ja00008a042 62. Hiraishi, M.; Igarashi, K.; Kimura, S.; Wada, M.; Kitaoka, M.; Samejima, M. Carbohydr. Res. 2009, 344, 2468–2473. doi:10.1016/j.carres.2009.10.002 63. Hattori, T.; Ogata, M.; Kameshima, Y.; Totani, K.; Nikaido, M.; Nakamura, T.; Koshino, H.; Usui, T. Carbohydr. Res. 2012, 353, 22–26. doi:10.1016/j.carres.2012.03.018 64. Lee, J. H.; Brown, R. M.; Kuga, S.; Shoda, S.-i.; Kobayashi, S. Proc. Natl. Acad. Sci. U. S. A. 1994, 91, 7425–7429. doi:10.1073/pnas.91.16.7425 65. Pylkkänen, R.; Mohammadi, P.; Arola, S.; de Ruijter, J. C.; Sunagawa, N.; Igarashi, K.; Penttilä, M. Biomacromolecules 2020, 21, 4355–4364. doi:10.1021/acs.biomac.0c01162
+66. Hata, Y.; Sawada, T.; Marubayashi, H.; Nojima, S.; Serizawa, T. Langmuir 2019, 35, 7026–7034. doi:10.1021/acs.langmuir.9b00850 67. Yataka, Y.; Sawada, T.; Serizawa, T. Langmuir 2016, 32, 10120–10125. doi:10.1021/acs.langmuir.6b02679 68. Serizawa, T.; Fukaya, Y.; Sawada, T. Langmuir 2017, 33, 13415–13422. doi:10.1021/acs.langmuir.7b03653 69. Hata, Y.; Kojima, T.; Koizumi, T.; Okura, H.; Sakai, T.; Sawada, T.; Serizawa, T. ACS Macro Lett. 2017, 6, 165–170. doi:10.1021/acsmacrolett.6b00848 70. Hashimoto, T.; Tanaka, H.; Koizumi, S.; Kurosaki, K.; Ohmae, M.; Kobayashi, S. Biomacromolecules 2006, 7, 2479–2482. doi:10.1021/bm0605255 71. Tanaka, H.; Koizumi, S.; Hashimoto, T.; Kurosaki, K.; Kobayashi, S. Macromolecules 2007, 40, 6304–6315. doi:10.1021/ma070699u 72. Egusa, S.; Kitaoka, T.; Goto, M.; Wariishi, H. Angew. Chem., Int. Ed. 2007, 46, 2063–2065. doi:10.1002/anie.200603981 73. Egusa, S.; Kitaoka, T.; Igarashi, K.; Samejima, M.; Goto, M.; Wariishi, H. J. Mol. Catal. B: Enzym. 2010, 67, 225–230. doi:10.1016/j.molcatb.2010.08.010 74. Egusa, S.; Goto, M.; Kitaoka, T. Biomacromolecules 2012, 13, 2716–2722. doi:10.1021/bm3006775 75. Nakamura, I.; Makino, A.; Sugiyama, J.; Ohmae, M.; Kimura, S. Int. J. Biol. Macromol. 2008, 43, 226–231. doi:10.1016/j.ijbiomac.2008.05.007 76. Nakamura, I.; Makino, A.; Horikawa, Y.; Sugiyama, J.; Ohmae, M.; Kimura, S. Chem. Commun. 2011, 47, 10127–10129. doi:10.1039/c1cc14202j 77. Nakamura, I.; Horikawa, Y.; Makino, A.; Sugiyama, J.; Kimura, S. Biomacromolecules 2011, 12, 785–790. doi:10.1021/bm101394j 78. Andrade, P.; Muñoz‐García, J. C.; Pergolizzi, G.; Gabrielli, V.; Nepogodiev, S. A.; Iuga, D.; Fábián, L.; Nigmatullin, R.; Johns, M. A.; Harniman, R.; Eichhorn, S. J.; Angulo, J.; Khimyak, Y. Z.; Field, R. A. Chem. – Eur. J. 2021, 27, 1374–1382. doi:10.1002/chem.202003604 79. Serizawa, T.; Kato, M.; Okura, H.; Sawada, T.; Wada, M. Polym. J. 2016, 48, 539–544. doi:10.1038/pj.2015.125 80. Fujita, M.; Shoda, S.-i.; Kobayashi, S. J. Am. Chem. Soc. 1998, 120, 6411–6412. doi:10.1021/ja980893j 81. Kobayashi, S.; Makino, A.; Matsumoto, H.; Kunii, S.; Ohmae, M.; Kiyosada, T.; Makiguchi, K.; Matsumoto, A.; Horie, M.; Shoda, S.-I. Biomacromolecules 2006, 7, 1644–1656. doi:10.1021/bm060094q 82. Codera, V.; Edgar, K. J.; Faijes, M.; Planas, A. Biomacromolecules 2016, 17, 1272–1279. doi:10.1021/acs.biomac.5b01453 83. Nakatsubo, F.; Kamitakahara, H.; Hori, M. J. Am. Chem. Soc. 1996, 118, 1677–1681. doi:10.1021/ja953286u 84. Kamitakahara, H.; Hori, M.; Nakatsubo, F. Macromolecules 1996, 29, 6126–6131. doi:10.1021/ma960488h 85. Hori, M.; Nakatsubo, F. Macromolecules 2001, 34, 2476–2481. doi:10.1021/ma001652a 86. Yagura, T.; Ikegami, W.; Kamitakahara, H.; Takano, T. Cellulose 2020, 27, 9755–9766. doi:10.1007/s10570-020-03512-z 87. Kamitakahara, H.; Funakoshi, T.; Nakai, S.; Takano, T.; Nakatsubo, F. Cellulose 2009, 16, 1179–1185. doi:10.1007/s10570-009-9339-4 88. Kamitakahara, H.; Funakoshi, T.; Takano, T.; Nakatsubo, F. Cellulose 2009, 16, 1167–1178. doi:10.1007/s10570-009-9332-y 89. Sakakibara, K.; Takano, T.; Nakatsubo, F. Cellulose 2011, 18, 105–115. doi:10.1007/s10570-010-9461-3 90. Karakawa, M.; Kamitakahara, H.; Takano, T.; Nakatsubo, F. Biomacromolecules 2002, 3, 538–546. doi:10.1021/bm015656e 91. Nishimura, T.; Nakatsubo, F. Cellulose 1997, 4, 109–130. doi:10.1023/a:1018423503762
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2018
+92. Nishimura, T.; Nakatsubo, F. Tetrahedron Lett. 1996, 37, 9215–9218. doi:10.1016/s0040-4039(96)02186-7 93. Yu, Y.; Tyrikos‐Ergas, T.; Zhu, Y.; Fittolani, G.; Bordoni, V.; Singhal, A.; Fair, R. J.; Grafmüller, A.; Seeberger, P. H.; Delbianco, M. Angew. Chem., Int. Ed. 2019, 58, 13127–13132. doi:10.1002/anie.201906577 94. Murty, K. V. S. N.; Xie, T.; Bernet, B.; Vasella, A. Helv. Chim. Acta 2006, 89, 675–730. doi:10.1002/hlca.200690068 95. Hayashi, T.; Marsden, M. P. F.; Delmer, D. P. Plant Physiol. 1987, 83, 384–389. doi:10.1104/pp.83.2.384 96. Kuki, H.; Yokoyama, R.; Kuroha, T.; Nishitani, K. Plants 2020, 9, 629. doi:10.3390/plants9050629 97. Culbertson, A. T.; Ehrlich, J. J.; Choe, J.-Y.; Honzatko, R. B.;
+Zabotina, O. A. Proc. Natl. Acad. Sci. U. S. A. 2018, 115, 6064–6069. doi:10.1073/pnas.1801105115 98. Urbanowicz, B. R.; Bharadwaj, V. S.; Alahuhta, M.; Peña, M. J.; Lunin, V. V.; Bomble, Y. J.; Wang, S.; Yang, J.-Y.; Tuomivaara, S. T.; Himmel, M. E.; Moremen, K. W.; York, W. S.; Crowley, M. F. Plant J. 2017, 91, 931–949. doi:10.1111/tpj.13628 99. Kinnaert, C.; Daugaard, M.; Nami, F.; Clausen, M. H. Chem. Rev. 2017, 117, 11337–11405. doi:10.1021/acs.chemrev.7b00162 100.Fry, S. C.; York, W. S.; Albersheim, P.; Darvill, A.; Hayashi, T.; Joseleau, J.-P.; Kato, Y.; Lorences, E. P.; Maclachlan, G. A.; McNeil, M.; Mort, A. J.; Grant Reid, J. S.; Seitz, H. U.; Selvendran, R. R.; Voragen, A. G. J.; White, A. R. Physiol. Plant. 1993, 89, 1–3. doi:10.1111/j.1399-3054.1993.tb01778.x 101.Sakai, K.; Nakahara, Y.; Ogawa, T. Tetrahedron Lett. 1990, 31, 3035–3038. doi:10.1016/s0040-4039(00)89019-x 102.Bartetzko, M. P.; Pfrengle, F. ChemBioChem 2019, 20, 877–885. doi:10.1002/cbic.201800641 103.Dallabernardina, P.; Schuhmacher, F.; Seeberger, P. H.; Pfrengle, F. Org. Biomol. Chem. 2016, 14, 309–313. doi:10.1039/c5ob02226f 104.Dallabernardina, P.; Ruprecht, C.; Smith, P. J.; Hahn, M. G.; Urbanowicz, B. R.; Pfrengle, F. Org. Biomol. Chem. 2017, 15, 9996–10000. doi:10.1039/c7ob02605f 105.Fauré, R.; Saura-Valls, M.; Brumer, H.; Planas, A.; Cottaz, S.; Driguez, H. J. Org. Chem. 2006, 71, 5151–5161. doi:10.1021/jo0525682 106.Fauré, R.; Cavalier, D.; Keegstra, K.; Cottaz, S.; Driguez, H. Eur. J. Org. Chem. 2007, 4313–4319. doi:10.1002/ejoc.200700395 107.Piens, K.; Henriksson, A.-M.; Gullfot, F.; Lopez, M.; Fauré, R.; Ibatullin, F. M.; Teeri, T. T.; Driguez, H.; Brumer, H. Org. Biomol. Chem. 2007, 5, 3971–3978. doi:10.1039/b714570e 108.Lopez, M.; Fort, S.; Bizot, H.; Buléon, A.; Driguez, H. Carbohydr. Polym. 2012, 88, 185–193. doi:10.1016/j.carbpol.2011.11.085 109.Gullfot, F.; Ibatullin, F. M.; Sundqvist, G.; Davies, G. J.; Brumer, H. Biomacromolecules 2009, 10, 1782–1788. doi:10.1021/bm900215p 110.Spadiut, O.; Ibatullin, F. M.; Peart, J.; Gullfot, F.; Martinez-Fleites, C.; Ruda, M.; Xu, C.; Sundqvist, G.; Davies, G. J.; Brumer, H. J. Am. Chem. Soc. 2011, 133, 10892–10900. doi:10.1021/ja202788q 111.Descroix, K.; Ferrieres, V.; Jamois, F.; Yvin, J.-C.; Plusquellec, D. Mini-Rev. Med. Chem. 2006, 6, 1341–1349. doi:10.2174/138955706778993058 112.Ogawa, Y.; Noda, K.; Kimura, S.; Kitaoka, M.; Wada, M. Int. J. Biol. Macromol. 2014, 64, 415–419. doi:10.1016/j.ijbiomac.2013.12.027 113.Elsaidi, H. R. H.; Paszkiewicz, E.; Bundle, D. R. Carbohydr. Res. 2015, 408, 96–106. doi:10.1016/j.carres.2015.03.007
+114.Adamo, R.; Hu, Q.-Y.; Torosantucci, A.; Crotti, S.; Brogioni, G.; Allan, M.; Chiani, P.; Bromuro, C.; Quinn, D.; Tontini, M.; Berti, F. Chem. Sci. 2014, 5, 4302–4311. doi:10.1039/c4sc01361a 115.Adamo, R.; Tontini, M.; Brogioni, G.; Romano, M. R.; Costantini, G.; Danieli, E.; Proietti, D.; Berti, F.; Costantino, P. J. Carbohydr. Chem. 2011, 30, 249–280. doi:10.1080/07328303.2011.604453 116.Huang, G.-L.; Mei, X.-Y.; Liu, M.-X. Carbohydr. Res. 2005, 340, 603–608. doi:10.1016/j.carres.2005.01.015 117.Huang, G.-L.; Mei, X.-Y.; Liu, M.-X.; Liu, T.-C. Bioorg. Med. Chem. Lett. 2004, 14, 6027–6029. doi:10.1016/j.bmcl.2004.09.076 118.Le Mai Hoang, K.; Pardo-Vargas, A.; Zhu, Y.; Yu, Y.; Loria, M.; Delbianco, M.; Seeberger, P. H. J. Am. Chem. Soc. 2019, 141, 9079–9086. doi:10.1021/jacs.9b03769 119.Yashunsky, D. V.; Tsvetkov, Y. E.; Nifantiev, N. E. Carbohydr. Res. 2016, 436, 25–30. doi:10.1016/j.carres.2016.11.005 120.Yang, G.; Kong, F. Carbohydr. Res. 2005, 340, 39–48. doi:10.1016/j.carres.2004.11.005 121.Zhao, W.; Yang, G.; Kong, F. Carbohydr. Res. 2003, 338, 2813–2823. doi:10.1016/j.carres.2003.08.003 122.Zeng, Y.; Kong, F. Carbohydr. Res. 2003, 338, 2359–2366. doi:10.1016/j.carres.2003.08.004 123.Tanaka, H.; Amaya, T.; Takahashi, T. Tetrahedron Lett. 2003, 44, 3053–3057. doi:10.1016/s0040-4039(03)00553-7 124.Yang, G.; Kong, F. Synlett 2000, 1423–1426. doi:10.1055/s-2000-7646 125.Egusa, K.; Kusumoto, S.; Fukase, K. Eur. J. Org. Chem. 2003, 3435–3445. doi:10.1002/ejoc.200300248 126.Yashunsky, D. V.; Tsvetkov, Y. E.; Grachev, A. A.; Chizhov, A. O.; Nifantiev, N. E. Carbohydr. Res. 2016, 419, 8–17. doi:10.1016/j.carres.2015.10.012 127.Yang, F.; He, H.; Du, Y.; Lü, M. Carbohydr. Res. 2002, 337, 1165–1169. doi:10.1016/s0008-6215(02)00122-2 128.Ning, J.; Zhang, W.; Yi, Y.; Yang, G.; Wu, Z.; Yi, J.; Kong, F. Bioorg. Med. Chem. 2003, 11, 2193–2203. doi:10.1016/s0968-0896(03)00118-4 129.Zeng, Y.; Ning, J.; Kong, F. Tetrahedron Lett. 2002, 43, 3729–3733. doi:10.1016/s0040-4039(02)00584-1 130.Yu, H.; Williams, D. L.; Ensley, H. E. Tetrahedron Lett. 2005, 46, 3417–3421. doi:10.1016/j.tetlet.2005.03.099 131.He, H.; Yang, F.; Du, Y. Carbohydr. Res. 2002, 337, 1673–1678. doi:10.1016/s0008-6215(02)00276-8 132.Takeo, K.; Maki, K.; Wada, Y.; Kitamura, S. Carbohydr. Res. 1993, 245, 81–96. doi:10.1016/0008-6215(93)80061-i 133.Jamois, F.; Ferrières, V.; Guégan, J.-P.; Yvin, J.-C.; Plusquellec, D.; Vetvicka, V. Glycobiology 2005, 15, 393–407. doi:10.1093/glycob/cwi020 134.Mo, K.-F.; Li, H.; Mague, J. T.; Ensley, H. E. Carbohydr. Res. 2009, 344, 439–447. doi:10.1016/j.carres.2008.12.014 135.Liao, G.; Zhou, Z.; Burgula, S.; Liao, J.; Yuan, C.; Wu, Q.; Guo, Z. Bioconjugate Chem. 2015, 26, 466–476. doi:10.1021/bc500575a 136.Liao, G.; Burgula, S.; Zhou, Z.; Guo, Z. Eur. J. Org. Chem. 2015, 2942–2951. doi:10.1002/ejoc.201500229 137.Tanaka, H.; Kawai, T.; Adachi, Y.; Hanashima, S.; Yamaguchi, Y.; Ohno, N.; Takahashi, T. Bioorg. Med. Chem. 2012, 20, 3898–3914. doi:10.1016/j.bmc.2012.04.017 138.Tanaka, H.; Kawai, T.; Adachi, Y.; Ohno, N.; Takahashi, T. Chem. Commun. 2010, 46, 8249–8251. doi:10.1039/c0cc03153d 139.Hamagami, H.; Adachi, Y.; Ohno, N.; Tanaka, H. Asian J. Org. Chem. 2019, 8, 411–416. doi:10.1002/ajoc.201800726
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2019
+140.Weishaupt, M. W.; Hahm, H. S.; Geissner, A.; Seeberger, P. H. Chem. Commun. 2017, 53, 3591–3594. doi:10.1039/c7cc00520b 141.Weishaupt, M. W.; Matthies, S.; Seeberger, P. H. Chem. – Eur. J. 2013, 19, 12497–12503. doi:10.1002/chem.201204518 142.Plante, O. J.; Palmacci, E. R.; Seeberger, P. H. Science 2001, 291, 1523–1527. doi:10.1126/science.1057324 143.Dallabernardina, P.; Schuhmacher, F.; Seeberger, P. H.; Pfrengle, F. Chem. – Eur. J. 2017, 23, 3191–3196. doi:10.1002/chem.201605479 144.Fairweather, J. K.; Hrmova, M.; Rutten, S. J.; Fincher, G. B.; Driguez, H. Chem. – Eur. J. 2003, 9, 2603–2610. doi:10.1002/chem.200304733 145.Montel, E.; Hrmova, M.; Fincher, G. B.; Driguez, H.; Cottaz, S. Aust. J. Chem. 2009, 62, 575. doi:10.1071/ch08517 146.Hrmova, M.; Imai, T.; Rutten, S. J.; Fairweather, J. K.; Pelosi, L.; Bulone, V.; Driguez, H.; Fincher, G. B. J. Biol. Chem. 2002, 277, 30102–30111. doi:10.1074/jbc.m203971200 147.Perez, X.; Faijes, M.; Planas, A. Biomacromolecules 2011, 12, 494–501. doi:10.1021/bm1013537 148.Yashunsky, D. V.; Karelin, A. A.; Tsvetkov, Y. E.; Nifantiev, N. E. Carbohydr. Res. 2018, 455, 18–22. doi:10.1016/j.carres.2017.11.001 149.Wang, H.-R.; Li, Z.-L.; Ning, J.; Kong, F.-Z. Chin. J. Chem. 2003, 21, 944–949. doi:10.1002/cjoc.20030210744 150.Sittel, I.; Tran, A.-T.; Benito-Alifonso, D.; Galan, M. C. Chem. Commun. 2013, 49, 4217–4219. doi:10.1039/c2cc37164b 151.Manmode, S.; Kato, M.; Ichiyanagi, T.; Nokami, T.; Itoh, T. Asian J. Org. Chem. 2018, 7, 1802–1805. doi:10.1002/ajoc.201800345 152.Smith, R.; Müller-Bunz, H.; Zhu, X. Org. Lett. 2016, 18, 3578–3581. doi:10.1021/acs.orglett.6b01572 153.Pistorio, S. G.; Nigudkar, S. S.; Stine, K. J.; Demchenko, A. V. J. Org. Chem. 2016, 81, 8796–8805. doi:10.1021/acs.joc.6b01439 154.Huang, X.; Huang, L.; Wang, H.; Ye, X.-S. Angew. Chem., Int. Ed. 2004, 43, 5221–5224. doi:10.1002/anie.200460176 155.Hashihayata, T.; Ikegai, K.; Takeuchi, K.; Jona, H.; Mukaiyama, T. Bull. Chem. Soc. Jpn. 2003, 76, 1829–1848. doi:10.1246/bcsj.76.1829 156.Yu, Y.; Gim, S.; Kim, D.; Arnon, Z. A.; Gazit, E.; Seeberger, P. H.; Delbianco, M. J. Am. Chem. Soc. 2019, 141, 4833–4838. doi:10.1021/jacs.8b11882 157.Delbianco, M.; Kononov, A.; Poveda, A.; Yu, Y.; Diercks, T.; Jiménez-Barbero, J.; Seeberger, P. H. J. Am. Chem. Soc. 2018, 140, 5421–5426. doi:10.1021/jacs.8b00254 158.Yi, Y.; Zhou, Z.; Ning, J.; Kong, F.; Li, J. Synthesis 2003, 0491–0496. doi:10.1055/s-2003-37644 159.Tanaka, H.; Adachi, M.; Tsukamoto, H.; Ikeda, T.; Yamada, H.; Takahashi, T. Org. Lett. 2002, 4, 4213–4216. doi:10.1021/ol020150+ 160.Nicolaou, K. C.; Winssinger, N.; Pastor, J.; DeRoose, F. J. Am. Chem. Soc. 1997, 119, 449–450. doi:10.1021/ja963482g 161.Yamada, H.; Harada, T.; Takahashi, T. J. Am. Chem. Soc. 1994, 116, 7919–7920. doi:10.1021/ja00096a068 162.Fügedi, P.; Birberg, W.; Garegg, P. J.; Pilotti, Å. Carbohydr. Res. 1987, 164, 297–312. doi:10.1016/0008-6215(87)80137-4 163.Ossowski, P.; Pilotti, A.; Garegg, P. J.; Lindberg, B. J. Biol. Chem. 1984, 259, 11337–11340. doi:10.1016/s0021-9258(18)90866-5 164.Ossowski, P.; Pilotti, Å.; Garegg, P. J.; Lindberg, B. Angew. Chem., Int. Ed. Engl. 1983, 22, 793–794. doi:10.1002/anie.198307931 165.Ning, J.; Yi, Y.; Kong, F. Tetrahedron Lett. 2002, 43, 5545–5549. doi:10.1016/s0040-4039(02)01143-7
+166.Nicolaou, K. C.; Watanabe, N.; Li, J.; Pastor, J.; Winssinger, N. Angew. Chem., Int. Ed. 1998, 37, 1559–1561.
+doi:10.1002/(sici)1521-3773(19980619)37:11<1559::aid-anie1559>3.0 .co;2-e 167.Nigudkar, S. S.; Demchenko, A. V. Chem. Sci. 2015, 6, 2687–2704. doi:10.1039/c5sc00280j 168.Geoghegan, I.; Steinberg, G.; Gurr, S. Trends Microbiol. 2017, 25, 957–967. doi:10.1016/j.tim.2017.05.015 169.Komarova, B. S.; Orekhova, M. V.; Tsvetkov, Y. E.; Beau, R.; Aimanianda, V.; Latgé, J.-P.; Nifantiev, N. E. Chem. – Eur. J. 2015, 21, 1029–1035. doi:10.1002/chem.201404770 170.Komarova, B. S.; Tsvetkov, Y. E.; Nifantiev, N. E. Chem. Rec. 2016, 16, 488–506. doi:10.1002/tcr.201500245 171.Hahm, H. S.; Hurevich, M.; Seeberger, P. H. Nat. Commun. 2016, 7, 12482. doi:10.1038/ncomms12482 172.Hirooka, M.; Koto, S. Bull. Chem. Soc. Jpn. 1998, 71, 2893–2902. doi:10.1246/bcsj.71.2893 173.Lam, S. N.; Gervay-Hague, J. Carbohydr. Res. 2002, 337, 1953–1965. doi:10.1016/s0008-6215(02)00227-6 174.Boltje, T. J.; Kim, J.-H.; Park, J.; Boons, G.-J. Nat. Chem. 2010, 2, 552–557. doi:10.1038/nchem.663 175.Tomita, S.; Tanaka, M.; Inoue, M.; Inaba, K.; Takahashi, D.; Toshima, K. J. Org. Chem. 2020, 85, 16254–16262. doi:10.1021/acs.joc.0c02093 176.Tanaka, M.; Nakagawa, A.; Nishi, N.; Iijima, K.; Sawa, R.; Takahashi, D.; Toshima, K. J. Am. Chem. Soc. 2018, 140, 3644–3651. doi:10.1021/jacs.7b12108 177.Yasomanee, J. P.; Demchenko, A. V. Angew. Chem., Int. Ed. 2014, 53, 10453–10456. doi:10.1002/anie.201405084 178.Wang, L.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. J. Am. Chem. Soc. 2018, 140, 4632–4638. doi:10.1021/jacs.8b00669 179.Wang, L.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. Eur. J. Org. Chem. 2019, 1994–2003. doi:10.1002/ejoc.201800894 180.Wang, L.; Berni, F.; Enotarpi, J.; Overkleeft, H. S.; van der Marel, G.; Codée, J. D. C. Org. Biomol. Chem. 2020, 18, 2038–2050. doi:10.1039/d0ob00240b 181.Zhang, Y.; He, H.; Chen, Z.; Huang, Y.; Xiang, G.; Li, P.; Yang, X.; Lu, G.; Xiao, G. Angew. Chem., Int. Ed. 2021, 60, 12597–12606. doi:10.1002/anie.202103826 182.Zhu, Y.; Delbianco, M.; Seeberger, P. H. J. Am. Chem. Soc. 2021, 143, 9758–9768. doi:10.1021/jacs.1c02188 183.Meppen, M.; Wang, Y.; Cheon, H.-S.; Kishi, Y. J. Org. Chem. 2007, 72, 1941–1950. doi:10.1021/jo061990v 184.Cheon, H.-S.; Lian, Y.; Kishi, Y. Org. Lett. 2007, 9, 3327–3329. doi:10.1021/ol071334x 185.Ohdan, K.; Fujii, K.; Yanase, M.; Takaha, T.; Kuriki, T. Biocatal. Biotransform. 2006, 24, 77–81. doi:10.1080/10242420600598152 186.Nishimura, T.; Akiyoshi, K.
+Wiley Interdiscip. Rev.: Nanomed. Nanobiotechnol. 2017, 9, e1423. doi:10.1002/wnan.1423 187.Meng, X.; Pijning, T.; Dobruchowska, J. M.; Yin, H.; Gerwig, G. J.; Dijkhuizen, L. Sci. Rep. 2016, 6, 35261. doi:10.1038/srep35261 188.Meng, X.; Dobruchowska, J. M.; Gerwig, G. J.; Kamerling, J. P.; Dijkhuizen, L. Carbohydr. Res. 2015, 414, 85–92. doi:10.1016/j.carres.2015.07.011 189.Timell, T. E. Adv. Carbohydr. Chem. 1964, 19, 247–302. doi:10.1016/s0096-5332(08)60284-2
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2020
+190.Thorsheim, K.; Siegbahn, A.; Johnsson, R. E.; Stålbrand, H.; Manner, S.; Widmalm, G.; Ellervik, U. Carbohydr. Res. 2015, 418, 65–88. doi:10.1016/j.carres.2015.10.004 191.Ebringerová, A.; Heinze, T. Macromol. Rapid Commun. 2000, 21, 542–556. doi:10.1002/1521-3927(20000601)21:9<542::aid-marc542>3.0.co;2-7 192.Busse-Wicher, M.; Grantham, N. J.; Lyczakowski, J. J.; Nikolovski, N.; Dupree, P. Biochem. Soc. Trans. 2016, 44, 74–78. doi:10.1042/bst20150183 193.Grantham, N. J.; Wurman-Rodrich, J.; Terrett, O. M.; Lyczakowski, J. J.; Stott, K.; Iuga, D.; Simmons, T. J.; Durand-Tardif, M.; Brown, S. P.; Dupree, R.; Busse-Wicher, M.; Dupree, P. Nat. Plants (London, U. K.) 2017, 3, 859–865. doi:10.1038/s41477-017-0030-8 194.Santibáñez, L.; Henríquez, C.; Corro-Tejeda, R.; Bernal, S.; Armijo, B.; Salazar, O. Carbohydr. Polym. 2021, 251, 117118. doi:10.1016/j.carbpol.2020.117118 195.Köhnke, T.; Östlund, Å.; Brelid, H. Biomacromolecules 2011, 12, 2633–2641. doi:10.1021/bm200437m 196.Bosmans, T. J.; Stépán, A. M.; Toriz, G.; Renneckar, S.; Karabulut, E.; Wågberg, L.; Gatenholm, P. Biomacromolecules 2014, 15, 924–930. doi:10.1021/bm4017868 197.Linder, Å.; Bergman, R.; Bodin, A.; Gatenholm, P. Langmuir 2003, 19, 5072–5077. doi:10.1021/la0341355 198.Timell, T. E. J. Am. Chem. Soc. 1959, 81, 4989–4994. doi:10.1021/ja01527a054 199.Uryu, T.; Koyama, Y.; Matsuzaki, K. J. Polym. Sci., Polym. Lett. Ed. 1979, 17, 673–678. doi:10.1002/pol.1979.130171009 200.Uryu, T.; Koyama, Y.; Matsuzaki, K. Makromol. Chem. 1984, 185, 2099–2107. doi:10.1002/macp.1984.021851005 201.Uryu, T.; Yamanouchi, J.; Hayashi, S.; Tamaki, H.; Matsuzaki, K. Macromolecules 1983, 16, 320–326. doi:10.1021/ma00236a030 202.Kim, Y.-W.; Fox, D. T.; Hekmat, O.; Kantner, T.; McIntosh, L. P.; Warren, R. A. J.; Withers, S. G. Org. Biomol. Chem. 2006, 4, 2025. doi:10.1039/b601667g 203.Kobayashi, S.; Wen, X.; Shoda, S.-i. Macromolecules 1996, 29, 2698–2700. doi:10.1021/ma951552i 204.Ben-David, A.; Bravman, T.; Balazs, Y. S.; Czjzek, M.; Schomburg, D.; Shoham, G.; Shoham, Y. ChemBioChem 2007, 8, 2145–2151. doi:10.1002/cbic.200700414 205.Takeo, K.; Ohguchi, Y.; Hasegawa, R.; Kitamura, S. Carbohydr. Res. 1995, 278, 301–313. doi:10.1016/0008-6215(95)00259-6 206.Chen, L.; Kong, F. Carbohydr. Res. 2002, 337, 2335–2341. doi:10.1016/s0008-6215(02)00285-9 207.Schmidt, D.; Schuhmacher, F.; Geissner, A.; Seeberger, P. H.; Pfrengle, F. Chem. – Eur. J. 2015, 21, 5709–5713. doi:10.1002/chem.201500065 208.Senf, D.; Ruprecht, C.; de Kruijff, G. H. M.; Simonetti, S. O.; Schuhmacher, F.; Seeberger, P. H.; Pfrengle, F. Chem. – Eur. J. 2017, 23, 3197–3205. doi:10.1002/chem.201605902 209.Khoushab, F.; Yamabhai, M. Mar. Drugs 2010, 8, 1988–2012. doi:10.3390/md8071988 210.Kurita, K. Mar. Biotechnol. 2006, 8, 203–226. doi:10.1007/s10126-005-0097-5 211.Rinaudo, M. Prog. Polym. Sci. 2006, 31, 603–632. doi:10.1016/j.progpolymsci.2006.06.001 212.Azuma, K.; Izumi, R.; Osaki, T.; Ifuku, S.; Morimoto, M.; Saimoto, H.; Minami, S.; Okamoto, Y. J. Funct. Biomater. 2015, 6, 104–142. doi:10.3390/jfb6010104
+213.Xu, H.; Shen, B.; Qiao, M.; Linhardt, R. J.; Zhang, X. Carbohydr. Polym. 2021, 258, 117672. doi:10.1016/j.carbpol.2021.117672 214.Shoueir, K. R.; El-Desouky, N.; Rashad, M. M.; Ahmed, M. K.; Janowska, I.; El-Kemary, M. Int. J. Biol. Macromol. 2021, 167, 1176–1197. doi:10.1016/j.ijbiomac.2020.11.072 215.Bonin, M.; Sreekumar, S.; Cord-Landwehr, S.; Moerschbacher, B. M. Int. J. Mol. Sci. 2020, 21, 7835. doi:10.3390/ijms21217835 216.Naqvi, S.; Moerschbacher, B. M. Crit. Rev. Biotechnol. 2017, 37, 11–25. doi:10.3109/07388551.2015.1104289 217.Yang, Y.; Yu, B. Tetrahedron 2014, 70, 1023–1046. doi:10.1016/j.tet.2013.11.064 218.Wattjes, J.; Sreekumar, S.; Richter, C.; Cord-Landwehr, S.; Singh, R.; El Gueddari, N. E.; Moerschbacher, B. M. React. Funct. Polym. 2020, 151, 104583. doi:10.1016/j.reactfunctpolym.2020.104583 219.Cord-Landwehr, S.; Richter, C.; Wattjes, J.; Sreekumar, S.; Singh, R.; Basa, S.; El Gueddari, N. E.; Moerschbacher, B. M. React. Funct. Polym. 2020, 151, 104577. doi:10.1016/j.reactfunctpolym.2020.104577 220.Fuchs, K.; Cardona Gloria, Y.; Wolz, O.-O.; Herster, F.; Sharma, L.; Dillen, C. A.; Täumer, C.; Dickhöfer, S.; Bittner, Z.; Dang, T.-M.; Singh, A.; Haischer, D.; Schlöffel, M. A.; Koymans, K. J.; Sanmuganantham, T.; Krach, M.; Roger, T.; Le Roy, D.; Schilling, N. A.; Frauhammer, F.; Miller, L. S.; Nürnberger, T.; LeibundGut‐Landmann, S.; Gust, A. A.; Macek, B.; Frank, M.; Gouttefangeas, C.; Dela Cruz, C. S.; Hartl, D.; Weber, A. N. EMBO Rep. 2018, 19, e46065. doi:10.15252/embr.201846065 221.Basa, S.; Nampally, M.; Honorato, T.; Das, S. N.; Podile, A. R.; El Gueddari, N. E.; Moerschbacher, B. M. J. Am. Chem. Soc. 2020, 142, 1975–1986. doi:10.1021/jacs.9b11466 222.Osorio-Madrazo, A.; David, L.; Trombotto, S.; Lucas, J.-M.; Peniche-Covas, C.; Domard, A. Biomacromolecules 2010, 11, 1376–1386. doi:10.1021/bm1001685 223.Einbu, A.; Grasdalen, H.; Vårum, K. M. Carbohydr. Res. 2007, 342, 1055–1062. doi:10.1016/j.carres.2007.02.022 224.Einbu, A.; Vårum, K. M. Biomacromolecules 2007, 8, 309–314. doi:10.1021/bm0608535
+225.Vårum, K. Carbohydr. Polym. 2001, 46, 89–98. doi:10.1016/s0144-8617(00)00288-5 226.Tømmeraas, K.; Vårum, K. M.; Christensen, B. E.; Smidsrød, O. Carbohydr. Res. 2001, 333, 137–144. doi:10.1016/s0008-6215(01)00130-6 227.Defaye, J.; Gadelle, A.; Pedersen, C. Carbohydr. Res. 1994, 261, 267–277. doi:10.1016/0008-6215(94)84023-7 228.Capon, B.; Foster, R. L. J. Chem. Soc. C 1970, 1654–1655. doi:10.1039/j39700001654 229.Kidibule, P. E.; Santos-Moriano, P.; Jiménez-Ortega, E.; Ramírez-Escudero, M.; Limón, M. C.; Remacha, M.; Plou, F. J.; Sanz-Aparicio, J.; Fernández-Lobato, M. Microb. Cell Fact. 2018, 17, 47. doi:10.1186/s12934-018-0895-x 230.Vaaje-Kolstad, G.; Horn, S. J.; Sørlie, M.; Eijsink, V. G. H. FEBS J. 2013, 280, 3028–3049. doi:10.1111/febs.12181 231.Horn, S. J.; Sorbotten, A.; Synstad, B.; Sikorski, P.; Sorlie, M.; Varum, K. M.; Eijsink, V. G. H. FEBS J. 2006, 273, 491–503. doi:10.1111/j.1742-4658.2005.05079.x 232.Aam, B. B.; Heggset, E. B.; Norberg, A. L.; Sørlie, M.; Vårum, K. M.; Eijsink, V. G. H. Mar. Drugs 2010, 8, 1482–1517. doi:10.3390/md8051482
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2021
+233.Nishimura, S.-I.; Kuzuhara, H.; Takiguchi, Y.; Shimahara, K. Carbohydr. Res. 1989, 194, 223–231. doi:10.1016/0008-6215(89)85021-9 234.Inaba, T.; OhgushiI, T.; Iga, Y.; Hasegawa, E. Chem. Pharm. Bull. 1984, 32, 1597–1603. doi:10.1248/cpb.32.1597 235.Barker, S. A.; Foster, A. B.; Stacey, M.; Webber, J. M. J. Chem. Soc. 1958, 2218–2227. doi:10.1039/jr9580002218 236.Despras, G.; Alix, A.; Urban, D.; Vauzeilles, B.; Beau, J.-M. Angew. Chem., Int. Ed. 2014, 53, 11912–11916. doi:10.1002/anie.201406802 237.Alsina, C.; Faijes, M.; Planas, A. Carbohydr. Res. 2019, 478, 1–9. doi:10.1016/j.carres.2019.04.001 238.Makino, A.; Ohmae, M.; Kobayashi, S. Macromol. Biosci. 2006, 6, 862–872. doi:10.1002/mabi.200600128 239.Sakamoto, J.; Sugiyama, J.; Kimura, S.; Imai, T.; Itoh, T.; Watanabe, T.; Kobayashi, S. Macromolecules 2000, 33, 4155–4160. doi:10.1021/ma000230y 240.Hashimoto, H.; Abe, Y.; Horito, S.; Yoshimura, J. J. Carbohydr. Chem. 1989, 8, 307–311. doi:10.1080/07328308908048012 241.Crout, D. H. G.; Vic, G. Curr. Opin. Chem. Biol. 1998, 2, 98–111. doi:10.1016/s1367-5931(98)80041-0 242.Singh, S.; Gallagher, R.; Derrick, P. J.; Crout, D. H. G. Tetrahedron: Asymmetry 1995, 6, 2803–2810. doi:10.1016/0957-4166(95)00370-5 243.Akiyama, K.; Kawazu, K.; Kobayashi, A. Carbohydr. Res. 1995, 279, 151–160. doi:10.1016/0008-6215(95)00288-x 244.Purushotham, P.; Podile, A. R. J. Bacteriol. 2012, 194, 4260–4271. doi:10.1128/jb.06473-11 245.Madhuprakash, J.; Tanneeru, K.; Purushotham, P.; Guruprasad, L.; Podile, A. R. J. Biol. Chem. 2012, 287, 44619–44627. doi:10.1074/jbc.m112.400879 246.Usui, T.; Matsui, H.; Isobe, K. Carbohydr. Res. 1990, 203, 65–77. doi:10.1016/0008-6215(90)80046-6 247.Ohnuma, T.; Tanaka, T.; Urasaki, A.; Dozen, S.; Fukamizo, T. J. Biochem. 2019, 165, 497–503. doi:10.1093/jb/mvy123 248.Sirimontree, P.; Suginta, W.; Sritho, N.; Kanda, Y.; Shinya, S.;
+Ohnuma, T.; Fukamizo, T. Biosci., Biotechnol., Biochem. 2014, 78, 2014–2021. doi:10.1080/09168451.2014.948373 249.Ohnuma, T.; Fukuda, T.; Dozen, S.; Honda, Y.; Kitaoka, M.; Fukamizo, T. Biochem. J. 2012, 444, 437–443. doi:10.1042/bj20120036 250.Kohri, M.; Kobayashi, A.; Noguchi, M.; Kawaida, S.-i.; Watanabe, T.; Shoda, S.-i. Holzforschung 2006, 60, 485–491. doi:10.1515/hf.2006.080 251.Crich, D.; Dudkin, V. J. Am. Chem. Soc. 2001, 123, 6819–6825. doi:10.1021/ja010086b 252.Kuyama, H.; Nakahara, Y.; Nukada, T.; Ito, Y.; Nakahara, Y.; Ogawa, T. Carbohydr. Res. 1993, 243, C1–C7. doi:10.1016/0008-6215(93)84095-n 253.Kanie, O.; Ito, Y.; Ogawa, T. J. Am. Chem. Soc. 1994, 116, 12073–12074. doi:10.1021/ja00105a066 254.Yudina, O. N.; Tsvetkov, Y. E.; Nifantiev, N. E. Russ. Chem. Bull. 2015, 64, 2932–2941. doi:10.1007/s11172-015-1250-6 255.Yudina, O. N.; Tsvetkov, Y. E.; Nifantiev, N. E. Russ. Chem. Bull. 2016, 65, 2937–2942. doi:10.1007/s11172-016-1681-8 256.Kawada, T.; Yoneda, Y. Monatsh. Chem. 2009, 140, 1245–1250. doi:10.1007/s00706-009-0172-0 257.Kawada, T.; Yoneda, Y. Monatsh. Chem. 2009, 140, 1251–1256. doi:10.1007/s00706-009-0174-y
+258.Bedini, E.; Cirillo, L.; Marchetti, R.; Basso, S.; Tufano, D.; Molinaro, A.; Parrilli, M. Synlett 2013, 25, 365–370. doi:10.1055/s-0033-1340323 259.Barroca-Aubry, N.; Pernet-Poil-Chevrier, A.; Domard, A.; Trombotto, S. Carbohydr. Res. 2010, 345, 1685–1697. doi:10.1016/j.carres.2010.05.010 260.Tyrikos‐Ergas, T.; Bordoni, V.; Fittolani, G.; Chaube, M. A.; Grafmüller, A.; Seeberger, P. H.; Delbianco, M. Chem. – Eur. J. 2021, 27, 2321–2325. doi:10.1002/chem.202005228 261.Enugala, R.; Carvalho, L. C. R.; Dias Pires, M. J.; Marques, M. M. B. Chem. – Asian J. 2012, 7, 2482–2501. doi:10.1002/asia.201200338 262.Yang, F.; Du, Y. Carbohydr. Res. 2003, 338, 495–502. doi:10.1016/s0008-6215(02)00494-9 263.Yamago, S.; Yamada, T.; Maruyama, T.; Yoshida, J.-i. Angew. Chem., Int. Ed. 2004, 43, 2145–2148. doi:10.1002/anie.200353552 264.Gening, M. L.; Tsvetkov, Y. E.; Pier, G. B.; Nifantiev, N. E. Carbohydr. Res. 2007, 342, 567–575. doi:10.1016/j.carres.2006.08.010 265.Gening, M. L.; Titov, D. V.; Grachev, A. A.; Gerbst, A. G.; Yudina, O. N.; Shashkov, A. S.; Chizhov, A. O.; Tsvetkov, Y. E.; Nifantiev, N. E. Eur. J. Org. Chem. 2010, 2465–2475. doi:10.1002/ejoc.200901275 266.Nokami, T.; Hayashi, R.; Saigusa, Y.; Shimizu, A.; Liu, C.-Y.; Mong, K.-K. T.; Yoshida, J.-i. Org. Lett. 2013, 15, 4520–4523. doi:10.1021/ol402034g 267.Kröck, L.; Esposito, D.; Castagner, B.; Wang, C.-C.; Bindschädler, P.; Seeberger, P. H. Chem. Sci. 2012, 3, 1617–1622. doi:10.1039/c2sc00940d 268.Morando, M.; Yao, Y.; Martín-Santamaría, S.; Zhu, Z.; Xu, T.; Cañada, F. J.; Zhang, Y.; Jiménez-Barbero, J. Chem. – Eur. J. 2010, 16, 4239–4249. doi:10.1002/chem.200902860 269.Hölemann, A.; Stocker, B. L.; Seeberger, P. H. J. Org. Chem. 2006, 71, 8071–8088. doi:10.1021/jo061233x 270.Cai, F.; Wu, B.; Crich, D. Stereocontrolled Synthesis of Mannans and Rhamnans. Advances in Carbohydrate Chemistry and Biochemistry; Elsevier: Amsterdam, Netherlands, 2009; pp 251–309. doi:10.1016/s0065-2318(09)00006-7 271.Cheon, H.-S.; Lian, Y.; Kishi, Y. Org. Lett. 2007, 9, 3323–3326. doi:10.1021/ol0713335 272.Li, X.; Li, C.; Liu, R.; Wang, J.; Wang, Z.; Chen, Y.; Yang, Y. Org. Lett. 2019, 21, 9693–9698. doi:10.1021/acs.orglett.9b03851 273.Jayaprakash, K. N.; Lu, J.; Fraser-Reid, B. Angew. Chem. 2005, 117, 6044–6048. doi:10.1002/ange.200500505 274.Sawettanai, N.; Leelayuwapan, H.; Karoonuthaisiri, N.; Ruchirawat, S.; Boonyarattanakalin, S. J. Org. Chem. 2019, 84, 7606–7617. doi:10.1021/acs.joc.8b02944 275.Leelayuwapan, H.; Kangwanrangsan, N.; Chawengkirttikul, R.; Ponpuak, M.; Charlermroj, R.; Boonyarattanakalin, K.; Ruchirawat, S.; Boonyarattanakalin, S. J. Org. Chem. 2017, 82, 7190–7199. doi:10.1021/acs.joc.7b00703 276.Calin, O.; Eller, S.; Seeberger, P. H. Angew. Chem., Int. Ed. 2013, 52, 5862–5865. doi:10.1002/anie.201210176 277.Naresh, K.; Schumacher, F.; Hahm, H. S.; Seeberger, P. H. Chem. Commun. 2017, 53, 9085–9088. doi:10.1039/c7cc04380e 278.Joseph, A. A.; Pardo-Vargas, A.; Seeberger, P. H. J. Am. Chem. Soc. 2020, 142, 8561–8564. doi:10.1021/jacs.0c00751 279.Yu, Y.; Kononov, A.; Delbianco, M.; Seeberger, P. H. Chem. – Eur. J. 2018, 24, 6075–6078. doi:10.1002/chem.201801023
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2022
+280.Sahloul, K.; Lowary, T. L. J. Org. Chem. 2015, 80, 11417–11434. doi:10.1021/acs.joc.5b02083 281.Pardo-Vargas, A.; Bharate, P.; Delbianco, M.; Seeberger, P. H. Beilstein J. Org. Chem. 2019, 15, 2936–2940. doi:10.3762/bjoc.15.288 282.van der Vorm, S.; Hansen, T.; van Hengst, J. M. A.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. Chem. Soc. Rev. 2019, 48, 4688–4706. doi:10.1039/c8cs00369f 283.Nicolardi, S.; Joseph, A. A.; Zhu, Q.; Shen, Z.; Pardo-Vargas, A.; Chiodo, F.; Molinaro, A.; Silipo, A.; van der Burgt, Y. E. M.; Yu, B.; Seeberger, P. H.; Wuhrer, M. Anal. Chem. (Washington, DC, U. S.) 2021, 93, 4666–4675. doi:10.1021/acs.analchem.1c00239 284.Sasaki, K.; Tohda, K. Tetrahedron Lett. 2018, 59, 496–503. doi:10.1016/j.tetlet.2017.12.077 285.Li, Q.; Levi, S. M.; Jacobsen, E. N. J. Am. Chem. Soc. 2020, 142, 11865–11872. doi:10.1021/jacs.0c04255 286.Geng, X.; Wang, G.; Guo, Z.; Gu, G. J. Org. Chem. 2020, 85, 2369–2384. doi:10.1021/acs.joc.9b03085 287.Crich, D. Acc. Chem. Res. 2010, 43, 1144–1153. doi:10.1021/ar100035r 288.Crich, D.; Sun, S. Tetrahedron 1998, 54, 8321–8348. doi:10.1016/s0040-4020(98)00426-8 289.Crich, D.; Chandrasekera, N. S. Angew. Chem., Int. Ed. 2004, 43, 5386–5389. doi:10.1002/anie.200453688 290.Crich, D.; Banerjee, A.; Yao, Q. J. Am. Chem. Soc. 2004, 126, 14930–14934. doi:10.1021/ja047194t 291.Crich, D.; Li, W.; Li, H. J. Am. Chem. Soc. 2004, 126, 15081–15086. doi:10.1021/ja0471931 292.Crich, D.; Li, H.; Yao, Q.; Wink, D. J.; Sommer, R. D.; Rheingold, A. L. J. Am. Chem. Soc. 2001, 123, 5826–5828. doi:10.1021/ja015985e 293.Codée, J. D. C.; Kröck, L.; Castagner, B.; Seeberger, P. H. Chem. – Eur. J. 2008, 14, 3987–3994. doi:10.1002/chem.200701864 294.Ohara, K.; Lin, C.-C.; Yang, P.-J.; Hung, W.-T.; Yang, W.-B.; Cheng, T.-J. R.; Fang, J.-M.; Wong, C.-H. J. Org. Chem. 2013, 78, 6390–6411. doi:10.1021/jo4005266 295.Mathew, F.; Mach, M.; Hazen, K.; Fraser-Reid, B. Synlett 2003, 1319–1322. doi:10.1055/s-2003-40350 296.Nitz, M.; Purse, B. W.; Bundle, D. R. Org. Lett. 2000, 2, 2939–2942. doi:10.1021/ol0061743 297.Nitz, M.; Bundle, D. R. J. Org. Chem. 2001, 66, 8411–8423. doi:10.1021/jo010570x 298.van den Bos, L. J.; Dinkelaar, J.; Overkleeft, H. S.; van der Marel, G. A. J. Am. Chem. Soc. 2006, 128, 13066–13067. doi:10.1021/ja064787q 299.Codée, J. D. C.; van den Bos, L. J.; de Jong, A.-R.; Dinkelaar, J.; Lodder, G.; Overkleeft, H. S.; van der Marel, G. A. J. Org. Chem. 2009, 74, 38–47. doi:10.1021/jo8020192 300.Hansen, T.; Lebedel, L.; Remmerswaal, W. A.; van der Vorm, S.; Wander, D. P. A.; Somers, M.; Overkleeft, H. S.; Filippov, D. V.; Désiré, J.; Mingot, A.; Bleriot, Y.; van der Marel, G. A.; Thibaudeau, S.; Codée, J. D. C. ACS Cent. Sci. 2019, 5, 781–788. doi:10.1021/acscentsci.9b00042 301.Dinkelaar, J.; de Jong, A. R.; van Meer, R.; Somers, M.; Lodder, G.; Overkleeft, H. S.; Codée, J. D. C.; van der Marel, G. A. J. Org. Chem. 2009, 74, 4982–4991. doi:10.1021/jo900662v 302.Walvoort, M. T. C.; van den Elst, H.; Plante, O. J.; Kröck, L.; Seeberger, P. H.; Overkleeft, H. S.; van der Marel, G. A.;
+Codée, J. D. C. Angew. Chem., Int. Ed. 2012, 51, 4393–4396. doi:10.1002/anie.201108744
+303.Pan, D.; Zhang, L.; Hua, Q.; Yang, Y. Org. Biomol. Chem. 2019, 17, 6174–6177. doi:10.1039/c9ob01254k 304.Tang, S.-L.; Pohl, N. L. B. Org. Lett. 2015, 17, 2642–2645. doi:10.1021/acs.orglett.5b01013 305.Jahn, M.; Stoll, D.; Warren, R. A. J.; Szabó, L.; Singh, P.; Gilbert, H. J.; Ducros, V. M.-A.; Davies, G. J.; Withers, S. G. Chem. Commun. 2003, 1327–1329. doi:10.1039/b302380j 306.Grimaud, F.; Pizzut-Serin, S.; Tarquis, L.; Ladevèze, S.; Morel, S.; Putaux, J.-L.; Potocki-Veronese, G. Biomacromolecules 2019, 20, 846–853. doi:10.1021/acs.biomac.8b01457 307.Pawar, S. N.; Edgar, K. J. Biomaterials 2012, 33, 3279–3305. doi:10.1016/j.biomaterials.2012.01.007 308.Beswick, L.; Ahmadipour, S.; Dolan, J. P.; Rejzek, M.; Field, R. A.; Miller, G. J. Carbohydr. Res. 2019, 485, 107819. doi:10.1016/j.carres.2019.107819 309.Zhang, Q.; van Rijssel, E. R.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. Eur. J. Org. Chem. 2016, 2393–2397. doi:10.1002/ejoc.201600336 310.Dinkelaar, J.; van den Bos, L. J.; Hogendorf, W. F. J.; Lodder, G.; Overkleeft, H. S.; Codée, J. D. C.; van der Marel, G. A. Chem. – Eur. J. 2008, 14, 9400–9411. doi:10.1002/chem.200800960 311.Zhang, Q.; van Rijssel, E. R.; Walvoort, M. T. C.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. Angew. Chem., Int. Ed. 2015, 54, 7670–7673. doi:10.1002/anie.201502581 312.Giraud, M.-F.; Naismith, J. H. Curr. Opin. Struct. Biol. 2000, 10, 687–696. doi:10.1016/s0959-440x(00)00145-7 313.Geert Volbeda, A.; Reintjens, N. R. M.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. Eur. J. Org. Chem. 2016, 5282–5293. doi:10.1002/ejoc.201600956 314.Geert Volbeda, A.; van Mechelen, J.; Meeuwenoord, N.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. J. Org. Chem. 2017, 82, 12992–13002. doi:10.1021/acs.joc.7b02511 315.Tanaka, H.; Hamaya, Y.; Nishiwaki, N.; Ishida, H. Carbohydr. Res. 2018, 455, 23–31. doi:10.1016/j.carres.2017.11.005 316.Kohout, V. R.; Pohl, N. L. B. Carbohydr. Res. 2019, 486, 107829. doi:10.1016/j.carres.2019.107829 317.Zhang, J.; Kong, F. Tetrahedron 2003, 59, 1429–1441. doi:10.1016/s0040-4020(03)00075-9 318.Palmacci, E. R.; Plante, O. J.; Hewitt, M. C.; Seeberger, P. H. Helv. Chim. Acta 2003, 86, 3975–3990. doi:10.1002/hlca.200390331 319.Bedini, E.; Parrilli, M.; Unverzagt, C. Tetrahedron Lett. 2002, 43, 8879–8882. doi:10.1016/s0040-4039(02)02237-2 320.Bedini, E.; De Castro, C.; Erbs, G.; Mangoni, L.; Dow, J. M.; Newman, M.-A.; Parrilli, M.; Unverzagt, C. J. Am. Chem. Soc. 2005, 127, 2414–2416. doi:10.1021/ja0452166 321.Werz, D. B.; Seeberger, P. H. Angew. Chem., Int. Ed. 2005, 44, 6315–6318. doi:10.1002/anie.200502615 322.Govindarajan, M. Carbohydr. Res. 2020, 497, 108151. doi:10.1016/j.carres.2020.108151 323.Rai, D.; Kulkarni, S. S. Org. Biomol. Chem. 2020, 18, 3216–3228. doi:10.1039/d0ob00297f 324.Crich, D.; Bowers, A. A. Org. Lett. 2006, 8, 4327–4330. doi:10.1021/ol061706m 325.Zhu, Q.; Shen, Z.; Chiodo, F.; Nicolardi, S.; Molinaro, A.; Silipo, A.; Yu, B. Nat. Commun. 2020, 11, 4142. doi:10.1038/s41467-020-17992-x 326.Cai, J.; Hu, J.; Qin, C.; Li, L.; Shen, D.; Tian, G.; Zou, X.; Seeberger, P. H.; Yin, J. Angew. Chem., Int. Ed. 2020, 59, 20529–20537. doi:10.1002/anie.202007209
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2023
+327.Yu, B. Acc. Chem. Res. 2018, 51, 507–516. doi:10.1021/acs.accounts.7b00573 328.Koeller, K. M.; Wong, C.-H. Chem. Rev. 2000, 100, 4465–4494. doi:10.1021/cr990297n
+329.Pfrengle, F. Curr. Opin. Chem. Biol. 2017, 40, 145–151. doi:10.1016/j.cbpa.2017.09.010 330.Nepogodiev, S. A.; Field, R. A.; Damager, I. Approaches to Chemical Synthesis of Pectic Oligosaccharides. Annual Plant Reviews; Wiley-Blackwell: Oxford, UK, 2010; Vol. 41, pp 65–92. doi:10.1002/9781444391015.ch3 331.Lichtenthaler, F. W.; Oberthür, M.; Peters, S. Eur. J. Org. Chem. 2001, 3849–3869. doi:10.1002/1099-0690(200110)2001:20<3849::aid-ejoc3849>3.0.co;2 -q 332.Andersen, M. C. F.; Kračun, S. K.; Rydahl, M. G.; Willats, W. G. T.; Clausen, M. H. Chem. – Eur. J. 2016, 22, 11543–11548. doi:10.1002/chem.201602197 333.Andersen, M. C. F.; Boos, I.; Kinnaert, C.; Awan, S. I.; Pedersen, H. L.; Kračun, S. K.; Lanz, G.; Rydahl, M. G.; Kjærulff, L.; Håkansson, M.; Kimbung, R.; Logan, D. T.; Gotfredsen, C. H.; Willats, W. G. T.; Clausen, M. H. Org. Biomol. Chem. 2018, 16, 1157–1162. doi:10.1039/c7ob03035e 334.Bartetzko, M. P.; Schuhmacher, F.; Seeberger, P. H.; Pfrengle, F. J. Org. Chem. 2017, 82, 1842–1850. doi:10.1021/acs.joc.6b02745 335.Zeng, Y.; Li, A.; Kong, F. Tetrahedron Lett. 2003, 44, 8325–8329. doi:10.1016/j.tetlet.2003.08.087 336.Li, A.; Kong, F. Carbohydr. Res. 2004, 339, 1847–1856. doi:10.1016/j.carres.2004.05.007 337.Li, A.; Zeng, Y.; Kong, F. Carbohydr. Res. 2004, 339, 673–681. doi:10.1016/j.carres.2003.11.006 338.Li, A.; Kong, F. Bioorg. Med. Chem. 2005, 13, 839–853. doi:10.1016/j.bmc.2004.10.035 339.Andersen, M. C. F.; Boos, I.; Ruprecht, C.; Willats, W. G. T.; Pfrengle, F.; Clausen, M. H. J. Org. Chem. 2017, 82, 12066–12084. doi:10.1021/acs.joc.7b01796 340.Bartetzko, M. P.; Schuhmacher, F.; Hahm, H. S.; Seeberger, P. H.; Pfrengle, F. Org. Lett. 2015, 17, 4344–4347. doi:10.1021/acs.orglett.5b02185 341.Imamura, A.; Ando, H.; Korogi, S.; Tanabe, G.; Muraoka, O.; Ishida, H.; Kiso, M. Tetrahedron Lett. 2003, 44, 6725–6728. doi:10.1016/s0040-4039(03)01647-2 342.Imamura, A.; Matsuzawa, N.; Sakai, S.; Udagawa, T.; Nakashima, S.; Ando, H.; Ishida, H.; Kiso, M. J. Org. Chem. 2016, 81, 9086–9104. doi:10.1021/acs.joc.6b01685 343.Kazakova, E. D.; Yashunsky, D. V.; Krylov, V. B.; Bouchara, J.-P.; Cornet, M.; Valsecchi, I.; Fontaine, T.; Latgé, J.-P.; Nifantiev, N. E. J. Am. Chem. Soc. 2020, 142, 1175–1179. doi:10.1021/jacs.9b11703 344.Zhang, Y.; Gómez‐Redondo, M.; Jiménez‐Osés, G.; Arda, A.; Overkleeft, H. S.; Marel, G. A.; Jiménez‐Barbero, J.; Codée, J. D. C. Angew. Chem., Int. Ed. 2020, 59, 12746–12750. doi:10.1002/anie.202003951 345.Nakahara, Y.; Ogawa, T. Carbohydr. Res. 1989, 194, 95–114. doi:10.1016/0008-6215(89)85010-4 346.Nakahara, Y.; Ogawa, T. Carbohydr. Res. 1990, 205, 147–159. doi:10.1016/0008-6215(90)80135-p 347.Clausen, M. H.; Madsen, R. Chem. – Eur. J. 2003, 9, 3821–3832. doi:10.1002/chem.200204636 348.Clausen, M. H.; Jørgensen, M. R.; Thorsen, J.; Madsen, R. J. Chem. Soc., Perkin Trans. 1 2001, 543–551. doi:10.1039/b006981g
+349.van den Bos, L. J.; Codée, J. D. C.; Litjens, R. E. J. N.; Dinkelaar, J.; Overkleeft, H. S.; van der Marel, G. A. Eur. J. Org. Chem. 2007, 3963–3976. doi:10.1002/ejoc.200700101 350.Justen, A. M.; Hodges, H. L.; Kim, L. M.; Sadecki, P. W.; Porfirio, S.; Ultee, E.; Black, I.; Chung, G. S.; Briegel, A.; Azadi, P.; Kiessling, L. L. Sci. Adv. 2020, 6, eaba4015. doi:10.1126/sciadv.aba4015 351.King, J. D.; Berry, S.; Clarke, B. R.; Morris, R. J.; Whitfield, C. Proc. Natl. Acad. Sci. U. S. A. 2014, 111, 6407–6412. doi:10.1073/pnas.1400814111 352.May, J. F.; Splain, R. A.; Brotschi, C.; Kiessling, L. L.
+Proc. Natl. Acad. Sci. U. S. A. 2009, 106, 11851–11856. doi:10.1073/pnas.0901407106 353.Wheatley, R. W.; Zheng, R. B.; Richards, M. R.; Lowary, T. L.; Ng, K. K. S. J. Biol. Chem. 2012, 287, 28132–28143. doi:10.1074/jbc.m112.347484 354.Savková, K.; Huszár, S.; Baráth, P.; Pakanová, Z.; Kozmon, S.; Vancová, M.; Tesařová, M.; Blaško, J.; Kaliňák, M.; Singh, V.; Korduláková, J.; Mikušová, K. Proc. Natl. Acad. Sci. U. S. A. 2021, 118, e2023663118. doi:10.1073/pnas.2023663118 355.Woodward, R.; Yi, W.; Li, L.; Zhao, G.; Eguchi, H.; Sridhar, P. R.; Guo, H.; Song, J. K.; Motari, E.; Cai, L.; Kelleher, P.; Liu, X.; Han, W.; Zhang, W.; Ding, Y.; Li, M.; Wang, P. G. Nat. Chem. Biol. 2010, 6, 418–423. doi:10.1038/nchembio.351 356.Peltier, P.; Euzen, R.; Daniellou, R.; Nugier-Chauvin, C.; Ferrières, V. Carbohydr. Res. 2008, 343, 1897–1923. doi:10.1016/j.carres.2008.02.010 357.Houseknecht, J. B.; Lowary, T. L. Curr. Opin. Chem. Biol. 2001, 5, 677–682. doi:10.1016/s1367-5931(01)00265-4 358.Completo, G. C.; Lowary, T. L. J. Org. Chem. 2008, 73, 4513–4525. doi:10.1021/jo800457j 359.Argunov, D. A.; Krylov, V. B.; Nifantiev, N. E. Org. Lett. 2016, 18, 5504–5507. doi:10.1021/acs.orglett.6b02735 360.Krylov, V. B.; Argunov, D. A.; Vinnitskiy, D. Z.; Verkhnyatskaya, S. A.; Gerbst, A. G.; Ustyuzhanina, N. E.; Dmitrenok, A. S.; Huebner, J.; Holst, O.; Siebert, H.-C.; Nifantiev, N. E. Chem. – Eur. J. 2014, 20, 16516–16522. doi:10.1002/chem.201405083 361.Joe, M.; Lowary, T. L. Can. J. Chem. 2016, 94, 976–988. doi:10.1139/cjc-2016-0416 362.Sabbavarapu, N. M.; Seeberger, P. H. J. Org. Chem. 2021, 86, 7280–7287. doi:10.1021/acs.joc.1c00505
+363.Mourão, P. Trends Cardiovasc. Med. 1999, 9, 225–232. doi:10.1016/s1050-1738(00)00032-3 364.Berteau, O.; Mulloy, B. Glycobiology 2003, 13, 29R–40R. doi:10.1093/glycob/cwg058 365.Ustyuzhanina, N.; Krylov, V.; Grachev, A.; Gerbst, A.; Nifantiev, N. Synthesis 2006, 4017–4031. doi:10.1055/s-2006-950333 366.Arafuka, S.; Koshiba, N.; Takahashi, D.; Toshima, K. Chem. Commun. 2014, 50, 9831–9834. doi:10.1039/c4cc03544e 367.Liu, K.; Wang, L.; Guo, Z. J. Carbohydr. Chem. 2019, 38, 414–469. doi:10.1080/07328303.2019.1630841 368.Mishra, B.; Manmode, S.; Panda, R. R. A.; Hotha, S. Eur. J. Org. Chem. 2017, 4794–4802. doi:10.1002/ejoc.201700712 369.Podvalnyy, N. M.; Abronina, P. I.; Zdorovenko, E. L.; Chizhov, A. O.; Zinin, A. I.; Torgov, V. I.; Kononov, L. O. Russ. Chem. Bull. 2014, 63, 497–500. doi:10.1007/s11172-014-0459-0 370.Podvalnyy, N. M.; Chizhov, A. O.; Zinin, A. I.; Kononov, L. O. Carbohydr. Res. 2016, 431, 25–32. doi:10.1016/j.carres.2016.05.009 371.Leelayuwapan, H.; Ruchirawat, S.; Boonyarattanakalin, S. Carbohydr. Polym. 2019, 206, 262–272. doi:10.1016/j.carbpol.2018.10.048
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2024
+372.Hori, M.; Nakatsubo, F. Macromolecules 2000, 33, 1148–1151. doi:10.1021/ma9915172 373.Panova, M. V.; Podvalnyy, N. M.; Okun, E. L.; Abronina, P. I.; Chizhov, A. O.; Kononov, L. O. Carbohydr. Res. 2018, 456, 35–44. doi:10.1016/j.carres.2017.11.002 374.Lu, J.; Fraser-Reid, B. Chem. Commun. 2005, 862–864. doi:10.1039/b413694b 375.Fraser-Reid, B.; Lu, J.; Jayaprakash, K. N.; López, J. C. Tetrahedron: Asymmetry 2006, 17, 2449–2463. doi:10.1016/j.tetasy.2006.09.008 376.Joe, M.; Bai, Y.; Nacario, R. C.; Lowary, T. L. J. Am. Chem. Soc. 2007, 129, 9885–9901. doi:10.1021/ja072892+ 377.Ishiwata, A.; Ito, Y. J. Am. Chem. Soc. 2011, 133, 2275–2291. doi:10.1021/ja109932t 378.Thadke, S. A.; Mishra, B.; Islam, M.; Pasari, S.; Manmode, S.; Rao, B. V.; Neralkar, M.; Shinde, G. P.; Walke, G.; Hotha, S. Nat. Commun. 2017, 8, 14019. doi:10.1038/ncomms14019 379.Islam, M.; Shinde, G. P.; Hotha, S. Chem. Sci. 2017, 8, 2033–2038. doi:10.1039/c6sc04866h 380.Pasari, S.; Manmode, S.; Walke, G.; Hotha, S. Chem. – Eur. J. 2018, 24, 1128–1139. doi:10.1002/chem.201704009 381.Kandasamy, J.; Hurevich, M.; Seeberger, P. H. Chem. Commun. 2013, 49, 4453–4455. doi:10.1039/c3cc00042g 382.Du, Y.; Pan, Q.; Kong, F. Synlett 1999, 1648–1650. doi:10.1055/s-1999-3170 383.Du, Y.; Pan, Q.; Kong, F. Carbohydr. Res. 2000, 329, 17–24. doi:10.1016/s0008-6215(00)00159-2 384.Ishiwata, A.; Akao, H.; Ito, Y. Org. Lett. 2006, 8, 5525–5528. doi:10.1021/ol062198j 385.Wu, Y.; Xiong, D.-C.; Chen, S.-C.; Wang, Y.-S.; Ye, X.-S. Nat. Commun. 2017, 8, 14851. doi:10.1038/ncomms14851 386.Mende, M.; Bednarek, C.; Wawryszyn, M.; Sauter, P.; Biskup, M. B.; Schepers, U.; Bräse, S. Chem. Rev. 2016, 116, 8193–8255. doi:10.1021/acs.chemrev.6b00010 387.Yu, M.; Zhang, T.; Zhang, W.; Sun, Q.; Li, H.; Li, J.-p. Front. Mol. Biosci. 2021, 7, 628551. doi:10.3389/fmolb.2020.628551 388.Zhang, Q.; Chen, C. Z.; Swaroop, M.; Xu, M.; Wang, L.; Lee, J.; Wang, A. Q.; Pradhan, M.; Hagen, N.; Chen, L.; Shen, M.; Luo, Z.; Xu, X.; Xu, Y.; Huang, W.; Zheng, W.; Ye, Y. Cell Discovery 2020, 6, 80. doi:10.1038/s41421-020-00222-5 389.Ricard-Blum, S.; Lisacek, F. Glycoconjugate J. 2017, 34, 339–349. doi:10.1007/s10719-016-9747-2 390.Mattson, J. M.; Turcotte, R.; Zhang, Y. Biomech. Model. Mechanobiol. 2017, 16, 213–225. doi:10.1007/s10237-016-0811-4 391.Badri, A.; Williams, A.; Linhardt, R. J.; Koffas, M. A. G. Curr. Opin. Biotechnol. 2018, 53, 85–92. doi:10.1016/j.copbio.2017.12.018 392.Gama, C. I.; Tully, S. E.; Sotogaku, N.; Clark, P. M.; Rawat, M.; Vaidehi, N.; Goddard, W. A., III; Nishi, A.; Hsieh-Wilson, L. C. Nat. Chem. Biol. 2006, 2, 467–473. doi:10.1038/nchembio810 393.Habuchi, H.; Habuchi, O.; Kimata, K. Glycoconjugate J. 2004, 21, 47–52. doi:10.1023/b:glyc.0000043747.87325.5e 394.Zhang, X.; Pagadala, V.; Jester, H. M.; Lim, A. M.; Pham, T. Q.; Goulas, A. M. P.; Liu, J.; Linhardt, R. J. Chem. Sci. 2017, 8, 7932–7940. doi:10.1039/c7sc03541a 395.Wang, Z.; Hsieh, P.-H.; Xu, Y.; Thieker, D.; Chai, E. J. E.; Xie, S.; Cooley, B.; Woods, R. J.; Chi, L.; Liu, J. J. Am. Chem. Soc. 2017, 139, 5249–5256. doi:10.1021/jacs.7b01923 396.Arnold, K.; Liao, Y.-E.; Liu, J. Biomedicines 2020, 8, 503. doi:10.3390/biomedicines8110503
+397.Lee, J.-C.; Lu, X.-A.; Kulkarni, S. S.; Wen, Y.-S.; Hung, S.-C. J. Am. Chem. Soc. 2004, 126, 476–477. doi:10.1021/ja038244h 398.Miller, R. L.; Guimond, S. E.; Schwörer, R.; Zubkova, O. V.; Tyler, P. C.; Xu, Y.; Liu, J.; Chopra, P.; Boons, G.-J.; Grabarics, M.; Manz, C.; Hofmann, J.; Karlsson, N. G.; Turnbull, J. E.; Struwe, W. B.; Pagel, K. Nat. Commun. 2020, 11, 1481. doi:10.1038/s41467-020-15284-y 399.Liu, J.; Linhardt, R. J. Nat. Prod. Rep. 2014, 31, 1676–1685. doi:10.1039/c4np00076e 400.Hu, Y.-P.; Lin, S.-Y.; Huang, C.-Y.; Zulueta, M. M. L.; Liu, J.-Y.; Chang, W.; Hung, S.-C. Nat. Chem. 2011, 3, 557–563. doi:10.1038/nchem.1073 401.Muñoz-García, J. C.; López-Prados, J.; Angulo, J.; Díaz-Contreras, I.; Reichardt, N.; de Paz, J. L.; Martín-Lomas, M.; Nieto, P. M. Chem. – Eur. J. 2012, 18, 16319–16331. doi:10.1002/chem.201202770 402.Dai, X.; Liu, W.; Zhou, Q.; Cheng, C.; Yang, C.; Wang, S.; Zhang, M.; Tang, P.; Song, H.; Zhang, D.; Qin, Y. J. Org. Chem. 2016, 81, 162–184. doi:10.1021/acs.joc.5b02468 403.Zong, C.; Venot, A.; Li, X.; Lu, W.; Xiao, W.; Wilkes, J.-S. L.; Salanga, C. L.; Handel, T. M.; Wang, L.; Wolfert, M. A.; Boons, G.-J. J. Am. Chem. Soc. 2017, 139, 9534–9543. doi:10.1021/jacs.7b01399 404.Dey, S.; Wong, C.-H. Chem. Sci. 2018, 9, 6685–6691. doi:10.1039/c8sc01743c 405.Pawar, N. J.; Wang, L.; Higo, T.; Bhattacharya, C.; Kancharla, P. K.; Zhang, F.; Baryal, K.; Huo, C.-X.; Liu, J.; Linhardt, R. J.; Huang, X.; Hsieh‐Wilson, L. C. Angew. Chem., Int. Ed. 2019, 58, 18577–18583. doi:10.1002/anie.201908805 406.Hansen, S. U.; Baráth, M.; Salameh, B. A. B.; Pritchard, R. G.; Stimpson, W. T.; Gardiner, J. M.; Jayson, G. C. Org. Lett. 2009, 11, 4528–4531. doi:10.1021/ol901723m 407.Hansen, S. U.; Miller, G. J.; Jayson, G. C.; Gardiner, J. M. Org. Lett. 2013, 15, 88–91. doi:10.1021/ol303112y 408.Hansen, S. U.; Miller, G. J.; Cole, C.; Rushton, G.; Avizienyte, E.; Jayson, G. C.; Gardiner, J. M. Nat. Commun. 2013, 4, 2016. doi:10.1038/ncomms3016 409.Hansen, S. U.; Miller, G. J.; Cliff, M. J.; Jayson, G. C.; Gardiner, J. M. Chem. Sci. 2015, 6, 6158–6164. doi:10.1039/c5sc02091c 410.Zhang, X.; Lin, L.; Huang, H.; Linhardt, R. J. Acc. Chem. Res. 2020, 53, 335–346. doi:10.1021/acs.accounts.9b00420 411.Xu, Y.; Masuko, S.; Takieddin, M.; Xu, H.; Liu, R.; Jing, J.; Mousa, S. A.; Linhardt, R. J.; Liu, J. Science 2011, 334, 498–501. doi:10.1126/science.1207478 412.Xu, Y.; Cai, C.; Chandarajoti, K.; Hsieh, P.-H.; Li, L.; Pham, T. Q.; Sparkenbaugh, E. M.; Sheng, J.; Key, N. S.; Pawlinski, R.; Harris, E. N.; Linhardt, R. J.; Liu, J. Nat. Chem. Biol. 2014, 10, 248–250. doi:10.1038/nchembio.1459 413.Zong, C.; Venot, A.; Dhamale, O.; Boons, G.-J. Org. Lett. 2013, 15, 342–345. doi:10.1021/ol303270v 414.Masuko, S.; Bera, S.; Green, D. E.; Weïwer, M.; Liu, J.; DeAngelis, P. L.; Linhardt, R. J. J. Org. Chem. 2012, 77, 1449–1456. doi:10.1021/jo202322k 415.Weïwer, M.; Sherwood, T.; Green, D. E.; Chen, M.; DeAngelis, P. L.; Liu, J.; Linhardt, R. J. J. Org. Chem. 2008, 73, 7631–7637. doi:10.1021/jo801409c 416.Li, J.-p.; Hagner-McWhirter, Å.; Kjellén, L.; Palgi, J.; Jalkanen, M.; Lindahl, U. J. Biol. Chem. 1997, 272, 28158–28163. doi:10.1074/jbc.272.44.28158 417.Sheng, J.; Xu, Y.; Dulaney, S. B.; Huang, X.; Liu, J. J. Biol. Chem. 2012, 287, 20996–21002. doi:10.1074/jbc.m112.359885
+
+
+Beilstein J. Org. Chem. 2021, 17, 1981–2025.
+2025
+418.Xu, Y.; Pempe, E. H.; Liu, J. J. Biol. Chem. 2012, 287, 29054–29061. doi:10.1074/jbc.m112.358523 419.Lu, W.; Zong, C.; Chopra, P.; Pepi, L. E.; Xu, Y.; Amster, I. J.; Liu, J.; Boons, G.-J. Angew. Chem., Int. Ed. 2018, 57, 5340–5344. doi:10.1002/anie.201800387
+420.Yamada, S.; Sugahara, K. Curr. Drug Discovery Technol. 2008, 5, 289–301. doi:10.2174/157016308786733564 421.Ramadan, S.; Li, T.; Yang, W.; Zhang, J.; Rashidijahanabad, Z.; Tan, Z.; Parameswaran, N.; Huang, X. ACS Cent. Sci. 2020, 6, 913–920. doi:10.1021/acscentsci.9b01199 422.Li, J.; Su, G.; Liu, J. Angew. Chem., Int. Ed. 2017, 56, 11784–11787. doi:10.1002/anie.201705638 423.Sugiura, N.; Shimokata, S.; Minamisawa, T.; Hirabayashi, J.; Kimata, K.; Watanabe, H. Glycoconjugate J. 2008, 25, 521–530. doi:10.1007/s10719-008-9105-0 424.Köwitsch, A.; Zhou, G.; Groth, T. J. Tissue Eng. Regener. Med. 2018, 12, e23–e41. doi:10.1002/term.2398 425.Lu, X.; Kamat, M. N.; Huang, L.; Huang, X. J. Org. Chem. 2009, 74, 7608–7617. doi:10.1021/jo9016925 426.Walvoort, M. T. C.; Volbeda, A. G.; Reintjens, N. R. M.; van den Elst, H.; Plante, O. J.; Overkleeft, H. S.; van der Marel, G. A.; Codée, J. D. C. Org. Lett. 2012, 14, 3776–3779. doi:10.1021/ol301666n 427.Fu, X.; Shang, W.; Wang, S.; Liu, Y.; Qu, J.; Chen, X.; Wang, P. G.; Fang, J. Chem. Commun. 2017, 53, 3555–3558. doi:10.1039/c6cc09431g 428.Wang, Y.; Li, S.; Xu, X.; Tan, Y.; Liu, X.-w.; Fang, J. Carbohydr. Polym. 2020, 232, 115822. doi:10.1016/j.carbpol.2019.115822
+429.Pomin, V. H. Int. J. Biol. Macromol. 2015, 72, 282–289. doi:10.1016/j.ijbiomac.2014.08.029 430.Ohmae, M.; Yamazaki, Y.; Sezukuri, K.; Takada, J.
+Trends Glycosci. Glycotechnol. 2019, 31, E129–E136. doi:10.4052/tigg.1830.1e 431.Ohmae, M.; Sakaguchi, K.; Kaneto, T.; Fujikawa, S.-i.; Kobayashi, S. ChemBioChem 2007, 8, 1710–1720. doi:10.1002/cbic.200700252 432.Hahm, H. S.; Broecker, F.; Kawasaki, F.; Mietzsch, M.; Heilbronn, R.; Fukuda, M.; Seeberger, P. H. Chem 2017, 2, 114–124. doi:10.1016/j.chempr.2016.12.004 433.Kobayashi, Y.; Horie, Y.; Honjo, K.; Uemura, T.; Kitagawa, S. Chem. Commun. 2016, 52, 5156–5159. doi:10.1039/c6cc01357k 434.Holerca, M. N.; Peterca, M.; Partridge, B. E.; Xiao, Q.; Lligadas, G.; Monteiro, M. J.; Percec, V. J. Am. Chem. Soc. 2020, 142, 15265–15270. doi:10.1021/jacs.0c07912 435.Begum, S.; Hassan, Z.; Bräse, S.; Tsotsalas, M. Langmuir 2020, 36, 10657–10673. doi:10.1021/acs.langmuir.0c01832 436.Dawson, P. E.; Kent, S. B. H. Annu. Rev. Biochem. 2000, 69, 923–960. doi:10.1146/annurev.biochem.69.1.923 437.Kuir, D.; Guillemineau, M.; Auzanneau, F.-I. J. Org. Chem. 2015, 80, 5004–5013. doi:10.1021/acs.joc.5b00405 438.Lassfolk, R.; Rahkila, J.; Johansson, M. P.; Ekholm, F. S.; Wärnå, J.; Leino, R. J. Am. Chem. Soc. 2019, 141, 1646–1654. doi:10.1021/jacs.8b11563 439.Asano, S.; Tanaka, H.-N.; Imamura, A.; Ishida, H.; Ando, H. Org. Lett. 2019, 21, 4197–4200. doi:10.1021/acs.orglett.9b01372 440.El Seoud, O. A.; Koschella, A.; Fidale, L. C.; Dorn, S.; Heinze, T. Biomacromolecules 2007, 8, 2629–2647. doi:10.1021/bm070062i 441.Shi, X.; Huang, Y.; Mao, Y.; Naimy, H.; Zaia, J.
+J. Am. Soc. Mass Spectrom. 2012, 23, 1498–1511. doi:10.1007/s13361-012-0429-4
+442.Solleder, S. C.; Schneider, R. V.; Wetzel, K. S.; Boukis, A. C.; Meier, M. A. R. Macromol. Rapid Commun. 2017, 38, 1600711. doi:10.1002/marc.201600711 443.Aksakal, R.; Mertens, C.; Soete, M.; Badi, N.; Du Prez, F. Adv. Sci. 2021, 8, 2004038. doi:10.1002/advs.202004038 444.Martens, S.; Van den Begin, J.; Madder, A.; Du Prez, F. E.; Espeel, P. J. Am. Chem. Soc. 2016, 138, 14182–14185. doi:10.1021/jacs.6b07120 445.Al Ouahabi, A.; Charles, L.; Lutz, J.-F. J. Am. Chem. Soc. 2015, 137, 5629–5635. doi:10.1021/jacs.5b02639 446.Genabeek, B.; Lamers, B. A. G.; Hawker, C. J.; Meijer, E. W.; Gutekunst, W. R.; Schmidt, B. V. K. J.
+J. Polym. Sci. (Hoboken, NJ, U. S.) 2021, 59, 373–403. doi:10.1002/pol.20200862 447.Govindaraju, T.; Avinash, M. B. Nanoscale 2012, 4, 6102–6117. doi:10.1039/c2nr31167d
+License and Terms
+This is an Open Access article under the terms of the
+Creative Commons Attribution License
+(https://creativecommons.org/licenses/by/4.0). Please note
+that the reuse, redistribution and reproduction in particular
+requires that the author(s) and source are credited and that
+individual graphics may be subject to special legal
+provisions.
+The license is subject to the Beilstein Journal of Organic
+Chemistry terms and conditions:
+(https://www.beilstein-journals.org/bjoc/terms)
+The definitive version of this article is the electronic one
+which can be found at:
+https://doi.org/10.3762/bjoc.17.129

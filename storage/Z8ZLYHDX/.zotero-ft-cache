@@ -1,0 +1,558 @@
+—
+<<
+LINCS: A Linear Constraint Solver for
+Molecular Simulations
+BERK HESS,1 HENK BEKKER,2 HERMAN J. C. BERENDSEN,1 JOHANNES G. E. M. FRAAIJE1
+1Bioson Research Institute, Lab of Biophysical Chemistry, University of Groningen, Nijenborgh 4, 9747 AG Groningen, The Netherlands
+2Department of Computer Science, University of Groningen, Groningen, The Netherlands
+Received 12 January 1996; accepted 15 February 1997
+ABSTRACT: In this article, we present a new LINear Constraint Solver
+Ž.
+LINCS for molecular simulations with bond constraints. The algorithm is inherently stable, as the constraints themselves are reset instead of derivatives of the constraints, thereby eliminating drift. Although the derivation of the algorithm is presented in terms of matrices, no matrix matrix multiplications are needed and only the nonzero matrix elements have to be stored, making the method useful for very large molecules. At the same accuracy, the LINCS algorithm is three to four times faster than the SHAKE algorithm. Parallelization of the algorithm is straightforward. Q 1997 John Wiley & Sons, Inc. J Comput Chem 18: 1463]1472, 1997
+Keywords: constraints; molecular dynamics; Langevin dynamics; SHAKE
+Introduction
+n classical molecular simulation methods, such
+I
+Ž.
+as molecular dynamics MD or Langevin dy
+Ž.
+namics LD , the time step is limited by bond oscillations. These oscillations have a relatively high frequency and low amplitude. By replacing the bond vibrations with holonomic constraints the time step in molecular simulations can be increased by a factor of four. Constraints are often considered a more faithful representation of the
+Correspondence to: J. G. E. M. Fraaije
+physical behavior of bond vibrations, which are almost exclusively in their vibrational ground state. Because bonds in molecules are coupled, resetting coupled constraints after an unconstrained update is a nonlinear problem. Many algorithms have been proposed for solving this problem. The most widely used algorithm for large molecules is SHAKE.1 For small molecules, SETTLE is a faster
+2Ž
+algorithm. Both these methods reset bonds and
+.
+angles to prescribed values by moving the bonded particles parallel to the old bond directions. SETTLE solves this problem analytically, but for larger molecules this is too complicated. SHAKE is an iterative method. Sequentially all the bonds are set
+()
+Journal of Computational Chemistry, Vol. 18, No. 12, 1463 ]1472 1997 Q 1997 John Wiley & Sons, Inc. CCC 0192-8651 / 97 / 121463-10
+
+
+HESS ET AL.
+to the correct length. Because the bonds are coupled, this procedure has to be repeated until the desired accuracy is reached. The number of iterations can be decreased using overrelaxation.3 SHAKE is simple and numerically stable because it resets all constraints within a prescribed tolerance. It has been shown that, when the iteration is carried to convergence, SHAKE in combination with Verlet is symplectic and time reversible.4 SHAKE has the drawback that no solutions may be found when displacements are large: because the coupled bonds are handled one by one, correcting one bond may tilt a coupled bond so far that the method does not converge. Due to its iterative nature it is difficult to parallelize SHAKE.5 Therefore, there is need for a fast, reliable constraint algorithm in molecular simulations. The constraint problem reduces to a linear matrix equation if the second derivatives of the constraint equations are set to zero. However, in a finite discretization scheme corrections are necessary to achieve accuracy and stability. Several algorithms have been proposed, including the EEM method of Edberg et al.,6 who applied a penalty function; a modification of EEM by Baranyai and Evans,7 applying damping corrections, and the ‘‘noniterative SHAKE’’ method of Yoneya et al.,8, 9 approximating the constraint equations rather than their second derivatives. In this article we present a new LINear Con
+Ž.
+straint Solver LINCS for molecular simulations with bond constraints. LINCS is similar to EEM with a few practical differences. We have implemented an efficient solver for the matrix equation, a velocity correction that prevents rotational lengthening and a length correction that improves accuracy and stability. The LINCS algorithm is worked out in detail for application to a leap-frog or Verlet-type algorithm for molecular dynamics. The application to position Langevin dynamics is briefly discussed. The sparse constraint coupling matrix is inverted using a power series, which converges rapidly because the constraining influence is relatively local; therefore, parallelization of the algorithm is straightforward. The resulting method is three to four times faster than SHAKE at the same accuracy.
+Projection Method
+We consider a system of N particles, with posi
+Ž.
+tions given by a 3 N vector r t . The equations of
+motion are given by Newton’s law:
+d2 r y1 Ž .
+sM f 1
+2
+dt
+where f is the 3 N force vector and M is a 3 N = 3 N diagonal matrix, containing the masses of the particles. In general, a system is constrained by K time-independent constraint equations:
+Ž. Ž .
+g r s 0 i s 1, . . . , K 2
+i
+As shown by Bekker10 the constrained system can still be described by 3 N second-order differential equations in Cartesian coordinates. The proof runs as follows. The system is constrained according to the principle of least action.11 In this approach, the constraints are added as a zero term to the potential
+Ž. Ž .
+V r , multiplied by Lagrange multipliers l t :
+i
+d2r ≠
+Ž . Ž.
+yM s V y l ? g 3
+2 ≠r
+dt
+A new notation is introduced for the gradient matrix of the constraint equations, which appears on the right-hand side of:
+≠gh Ž .
+Bs 4
+hi ≠ri
+Notice that B is a K = 3 N matrix, it contains the
+Ž.
+directions of the constraints. Eq. 3 can now be simplified to give:
+d2r T Ž .
+yM q B l q f s 0 5
+2
+dt
+Because the constraint equations are zero, the first and second derivatives of the constraints are also zero:
+dg dr
+Ž.
+sB s0 6
+dt dt
+d2 g d2 r dB dr
+Ž.
+sB q s0 7
+2 2 dt dt
+dt dt
+Ž . y1
+To solve for l , left-multiply eq. 5 with BM ,
+Ž.
+and use eq. 7 to get:
+dB dr y1 T y1 Ž .
+q BM B l q BM f s 0 8
+dt dt
+1464 VOL. 18, NO. 12
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+LINCS
+Thus, the constraint forces are:
+y1
+T T y1 T y1
+Ž.
+B l s yB BM B BM f dB dr
+y1
+T y1 T
+Ž . Ž.
+y B BM B 9
+dt dt
+Ž.
+Substituting this into eq. 5 gives the constrained equations of motion. Using the abbreviation T s
+y1 T Ž y1 T .y1
+M B BM B these are:
+d2 r dB dr
+y1
+Ž . Ž.
+s I y TB M f y T 10
+2 dt dt
+dt
+I y TB is a projection matrix that sets the constrained coordinates to zero, BMy1 f is a K vector of second derivatives of the bond lengths in the direction of the bonds, T is a 3 N = K matrix that transforms motions in the constrained coordinates into motions in Cartesian coordinates, without changing the equations of motion of the uncon
+Ž.
+strained coordinates. The last term in eq. 10 represents centripetal forces caused by rotating bonds. If the constraints are satisfied in the starting con
+Ž.
+figuration, eq. 10 will conserve the constraints.
+Constrained Leap-Frog Algorithm
+A straightforward discretization in a leap-frog method uses a half-timestep difference between the discretization of the first and last derivatives in
+Ž.
+eq. 10 :
+11
+v yv
+nq ny
+2 2 y1
+Ž.
+s IyT B M f
+nn n
+Dt
+B yB
+n ny1 Ž .
+1
+y T v 11
+n ny 2
+Dt r yr
+nq1 n Ž .
+1
+s v 12
+nq 2
+Dt
+Ž. 1
+The discretization of the last term in eq. 11 at tny 2
+is the actual linearization of the problem. Because
+Ž.
+the right-hand side of eq. 11 does not depend on
+1
+t , the new velocities can be calculated directly.
+nq 2
+However, the half-timestep difference removes the correction for centripetal forces. This correction has
+Ž.
+to be done afterwards. If, in eq. 11 , the term
+1
+B v is zero, the equation simplifies to:
+ny 1 ny 2
+Ž . y1 Ž .
+11
+v s I y T B v q D t M f 13
+Ž.
+nq n n ny n
+22
+and because I y T B is the projection matrix that
+nn
+1
+sets the constrained coordinates to zero, B v s
+n nq 2
+0. This proves that the velocities in the bond direc
+Ž.
+1
+tions stay at zero. Thus, if we set B v s 0, eq. 13
+02 Ž.
+can be used instead of eq. 11 . The derived algorithm is correct, but not stable. Numerical errors can accumulate, which leads to drift, because the second derivatives of the constraints were set to zero instead of the constraints themselves. This problem can be overcome by making a small change to the expression for the constraint forces. For holonomic constraints the constraint equations can be chosen as:
+Ž . < i1 i2 < Ž .
+g r s r y r y d s 0 i s 1, . . . , K 14
+ii
+where d is the length of the bond between atoms
+i
+i and i , and the vectors with superscripts are the
+12
+positions of atoms. To get a stable and efficient
+Ž.
+algorithm a term is added to eq. 13 :
+Ž . y1
+11
+v s I y T B v q Dt M f
+Ž.
+nq n n ny n
+22
+1
+Ž . Ž.
+y T B r y d 15
+n nn
+Dt
+The added term should physically be zero, as it is the real distance between bounded atoms minus the prescribed bond lengths. Of course, in a simulation, this term is almost never exactly zero, so adding this term eliminates accumulation of numerical errors and makes the method stable. Sub
+Ž. Ž.
+stituting eq. 15 into eq. 12 gives the constrained new positions:
+2 y1
+Ž . Ž.
+1
+r s I y T B r q Dt v q Dt M f
+ž/
+nq 1 n n n ny n
+2
+Ž.
+q T d 16
+n
+This is actually how the method is implemented. It calculates the new positions as in the unconstrained case. Then it sets the components of the distances in the direction stored in B exactly to
+n
+the prescribed lengths. The new velocity is calcu
+Ž.
+lated from the positions with eq. 12 . The corresponding Verlet algorithm is derived by substitut
+Ž. Ž.
+1
+ing v from eq. 12 into eq. 16 .
+ny 2
+The main drawback of the method presented so far is that it does not set the real bond lengths to the prescribed lengths, but the projection of the new bonds onto the old directions of the bonds. Thus, the bond lengths are increased by a factor 1rcos u, where u is the angle over which a bond rotates in one timestep. In an ‘‘average’’ MD simulation of a protein or peptide with a 2-fs timestep
+Ž.
+the relative deviation is 0.0005 rms . Notice that the error over n steps is still 0.0005, because accumulation of errors is prevented by adding the
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1465
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+HESS ET AL.
+correction term. To get a higher accuracy another projection can be applied, again using the old bond directions. To correct for the rotation of bond i, the projection of the bond on the old direction is set to:
+2 2 Ž.
+'
+p s 2 d y l 17
+i ii
+where l is the bond length after the first projec
+i
+tion. The corrected positions are:
+U Ž . Ž.
+r s I y T B r q T p 18
+nq 1 n n nq1 n
+Figure 1 shows a schematic picture of how the algorithm works for one bond. For proteins with a
+Ž.
+2-fs timestep the relative accuracy is 0.000001 rms . The error is not zero, because bonds are rotated slightly due to the coupling. So, actually, this correction procedure should be iterative, but the accuracy after one iteration is high enough for all purposes. The constraints cannot be reset by moving atoms in the old bond directions in the extreme case that for a certain bond l 2 is larger than
+i
+2 d2. However, setting p to zero results in a ‘‘solu
+ii
+tion’’ with bondlengths that are as close as possible to the prescribed lengths. Just like SHAKE, LINCS calculates the new constrained positions from the old positions and the new unconstrained positions. Thus, the same methods can be used to calculate the virial and free energy differences. However, the free energy
+calculation for the constraints can be implemented simply and efficiently in the LINCS algorithm. The formulas are given in the Appendix.
+Implementation
+Ž.
+Eq. 16 is of the shape:
+Ž . unc
+r s IyT B r qT d
+nq 1 n n nq1 n
+y1
+unc y1 y1 T unc
+Ž .Ž .
+sr yM B B M B B r yd
+nq 1 n n n n nq1
+Ž.
+19
+where r unc are the new positions after an uncon
+nq 1
+strained update. Half of the CPU time goes to inverting the constraint matrix B My1 BT, which
+nn
+has to be done every timestep. This K = K matrix has 1rm q 1rm on the diagonal. The off-diago
+ii
+12
+nal elements are only nonzero when two bonds are connected, then the element is cos frm , where m
+cc
+is the mass of the atom connecting the two bonds and f is the angle between the bonds. To make the inversion easier, a K = K matrix S is introduced, which is the inverse square root of the diagonal of B My1 BT:
+nn
+11 1 1
+S s Diag q , . . . , q
+((
+mm m m
+ž/
+11 K K
+12 1 2
+Ž.
+20
+FIGURE 1. Schematic picture showing the three position updates needed for one timestep. The dashed line is the old
+1
+2 22
+()
+bond of length d, the solid lines are the new bonds. l = d cos u and p = 2d y l .
+1466 VOL. 18, NO. 12
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+LINCS
+This matrix is used to convert the diagonal elements of the coupling matrix to one
+y1 y1
+y1 T y1 y1 T y1
+Ž. Ž.
+B M B s SS B M B S S
+nn nn
+y1
+y1 T
+Ž.
+s S SB M B S S
+nn
+y1
+Ž . Ž.
+s S I y A S 21
+n
+The matrix A is symmetric and sparse and has
+n
+zeros on the diagonal. Thus, a simple trick can be used to calculate the inverse:
+y1 2 3
+Ž . Ž.
+I y A s I q A q A q A q ??? 22
+n nnn
+This inversion method is only valid if the absolute values of all the eigenvalues of A are smaller
+n
+than one. In molecules with only bond constraints the connectivity is so low that this will always be true, even if ring structures are present. Problems can arise in angle-constrained molecules. By constraining angles with additional distance constraints multiple small ring structures are introduced. This gives a high connectivity, leading to large eigenvalues. For example, the largest eigenvalue for angle-constrained butane is 0.8, but for angle-constrained pentane this is 1.2. However, the projection method itself is still applicable, if the constraint coupling matrix is inverted with another method. The inversion through an expansion is efficient, because the inverse itself is not needed, only the product of the inverse with a vector. This product can be calculated without multiplying matrices.
+iq1 Ž i .
+A a can be written as A A a , showing that this
+n nn
+product can be calculated by multiplying vectors with A n. The error made by truncating the series expan
+Ž.
+sion in eq. 22 is quite clear. The first power of A n gives the coupling effects of neighboring bonds. The second power gives the coupling effects over a distance of two bonds, not only between bonds that are separated by one bond, but also the feedback of a bond on itself through neighboring bonds. The third power gives the third order coupling effects and so on. So, truncating the series after a specified number of terms means neglecting all higher order coupling effects. In molecules with
+bond angles closer to 90T than to 0T or 180T, like proteins, the sum can be truncated after four terms. Little storage is needed, because only the nonzero elements of A have to be stored. B can be stored
+nn
+in a 3 K array and some extra arrays are needed for temporary storage. Pseudo code for the algorithm is given in the Appendix. The optimized FOR
+TRAN code is implemented as a subroutine in the GROMACS software package.12, 13
+Parallelization
+The inversion through a series expansion also makes parallelization easy. In one timestep, the bonds only influence each other when they are separated by fewer bonds than the highest order in the expansion; with the correction for the rotation this number is doubled. Because of this local coupling a decomposition method can be applied. This can be illustrated by a simple example. Consider a linear bond-constrained molecule of 100 atoms to be simulated on a two-processor computer, using rotation correction and an expansion
+Ž .y1
+to the second order of the matrix I y A . Be
+n
+cause the order of the expansion is two, bonds influence each other over a distance of, at most,
+Ž.
+2) 2 q 1 s 6. The forces can be calculated as in the unconstrained case, but the update of the positions and call of the LINCS algorithm must be done for atom 1 to 56 and 44 to 100 on processors 1 and 2, respectively. After the update only the positions of atoms 1 to 50 should be passed from processor 1 to processor 2, as the new positions of atoms 51 to 56 on processor 1 are not accurate. The same holds for atoms 44 to 49 on processor 2. The result of this parallel procedure is identical to the single-processor case. For branched molecules like proteins the same procedure can be used.
+Position Langevin Dynamics
+Consider a system of N overdamped particles. The equations of motion are given by a position Langevin equation:
+dr y1 y1 Ž .
+'
+s G f q 2 G k T h 23
+b
+dt
+where G is the friction matrix and h a 3 N noise vector with no time correlation, Gaussian distributed with ms 0, and ss 1. The algorithm can be derived analogously to the second order case. The result is:
+y1 y1
+Ž. '
+r s I y T B Dt G f q 2 Dt G k T h
+ž/
+nq 1 n n n b
+Ž.
+q T d 24
+n
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1467
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+HESS ET AL.
+y1 T Ž y1 T .y1
+where T s G B B G B . An attractive
+n nn n
+property of the projection matrix P s I y T B is
+nn
+that P 2 s P, thus the square root of the projection matrix is the projection matrix itself. This relation
+Ž.
+is used in eq. 24 because the noise must be multiplied by the square root of the operator that works on the force. When the friction matrix, G, is diagonal, the implementation for leap-frog MD can be used, with the masses replaced by friction coefficients. The projection algorithm can also be applied to Monte Carlo simulations, because the distribution of the unconstrained coordinates is not affected by the projection.
+Results
+A large test system was used to test how the accuracy of the constraints depends on the order of
+Ž.
+expansion 22 and to compare the speed of the LINCS algorithm with the SHAKE algorithm. Re
+Ž
+sults are given for 1-ps MD runs on lysozyme 129
+.
+residue, 1345 bond constraints with the GROMACS package. The protein was solvated in a box of 4535 water molecules and 8 Cly ions, with Lennard]Jones cut-off of 1 nm and a twin-range
+Ž.
+Coulomb cut-off 1 and 1.8 nm . The water was constrained with the SETTLE algorithm. After energy minimization and 2-ps equilibration, test runs of 500 steps of 2 fs were performed. The test runs took 1300 seconds on one processor of an R8000 PowerChallenge. Table I and Figure 2 show the results for LINCS and SHAKE. Both routines use
+FIGURE 2. The CPU time for the constraint algorithms in lysozyme plotted as a function of the accuracy; that is, the relative deviation of the constraints averaged over 500 steps. The dashed lines show the maximum deviation and the solid lines show the rms deviation for SHAKE and for LINCS.
+optimized FORTRAN code. Notice that the difference between the maximum deviation and the rms deviation is a factor 2 for SHAKE and a factor 4 for LINCS. Some runs were also performed without water, giving almost the same accuracy and CPU time for the constraint algorithms as with water
+TABLE I.
+( y)
+Relative Deviation of Constraints in Lysozyme Solvated in 4535 Water Molecules and 8 Cl Ions
+a
+Averaged Over 500 Steps.
+Time ()
+Algorithm Order Max. dev. rms. dev. s
+LINCS 2 0.004 9 0.000 59 1.8 (no rotation 4 0.004 8 0.000 49 2.0 )
+correction 8 0.004 9 0.000 47 2.4
+LINCS 2 0.000 32 0.000 082 2.2 4 0.000 088 0.000 023 2.5 8 0.000 016 0.000 003 8 3.3
+SHAKE 0.001 0 0.000 48 5.3 0.000 10 0.000 052 8.4 0.000 010 0.000 005 5 12.4
+a Maximum and the rms deviation shown for SHAKE and for LINCS both without and with rotation correction. The water was ()
+constrained with SETTLE. The second column shows the order after which expansion 22 is truncated. The last column shows the total CPU time for the constraint algorithms. The total run time is 1300 seconds. Vacuum runs give almost identical numbers for the accuracy and CPU time of the constraint algorithms. The total run time of the vacuum system is about 90 seconds.
+1468 VOL. 18, NO. 12
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+LINCS
+TABLE II.
+Accuracy of Constraints and Total Energy in a 32-Residue b a b Peptide Using LINCS and SHAKE.a
+Etotal
+Constraints Drift rmsf E rmsf
+kin
+( ) ( ) () ()
+Algorithm Order rms dev. kJ / mols kJ / mol kJ / mol
+LINCS 2 0.000 088 y10.26 1.21 39 4 0.000 027 y1.67 1.24 41 8 0.000 004 9 0.25 1.23 41
+SHAKE 0.000 089 y6.81 1.23 39 0.000 027 y1.80 1.24 41 0.000 004 9 0.14 1.27 41
+a ()
+All entries are averages over eight vacuum runs in single precision of 4 ps 2000 steps of 2 fs with different starting structures, ()
+without temperature and pressure coupling and without cut-off. The second column shows the order after which expansion 22 is truncated. The third column shows the rms of the relative deviation of the constraints. The fourth column shows the slope of a straight line fitted to the total energy. The last columns show the rms fluctuations in the total and the kinetic energy.
+Ž.
+data not shown , but with a total run time of 90 seconds. A small test system was used to test the accuracy of the simulation as a function of the accuracy of the constraints. A 32-residue bab peptide was chosen, which could be simulated in vacuo without cut-off. Simulations in single precision of 4 ps were performed without temperature and pressure coupling to check the conservation of total energy. The tolerance for SHAKE was chosen such that the rms of the relative deviation of the constraints was equal to the LINCS case. Table II shows the results for different accuracies of the constraints for LINCS and SHAKE; each entry is averaged over eight runs of 4 ps. The accuracy of the constraints only influences the drift, not the fluctuations around the drift. Except for the second-order expansion there is little difference between LINCS and SHAKE.
+Discussion
+LINCS and SHAKE both solve the same nonlinear problem: resetting coupled constraints after an unconstrained update. Just like SHAKE, LINCS is time reversible, because convergence can be obtained by including more matrices in the expansion and using multiple rotation corrections. In single precision one rotation correction is enough to get structures that only differ in machine precision with those obtained by SHAKE. The results show that the LINCS algorithm is three to four times faster than the SHAKE algorithm. In addi
+tion, LINCS has broader convergence conditions that SHAKE, and it can be easily parallelized. The latter is of major importance for simulations of large molecules on parallel computers. For efficient parallelization each molecule must be distributed over several processors, which prevents the straightforward use of the iterative SHAKE routine. Not only will the LINCS algorithm itself decrease the CPU time, but better load balancing of other routines can be achieved as well. In the case of a protein in water on one processor the CPU time for the constraint algorithm is negligible in comparison with the total run time, but LINCS still has the advantage that it has better convergence properties than SHAKE. In vacuo, the decrease in total CPU time can be up to 10%. The algorithm has also been tested on peptides and smaller molecules such as benzene, giving the same three- to four-fold decrease in CPU time. With position Langevin dynamics, SHAKE will not converge for large time steps. When LINCS is used the timestep is no longer limited by the constraint algorithm but rather by physical conditions.
+Appendix
+VIRIAL AND FREE ENERGY CALCULATION
+The virial formulas are given for the case without periodic boundary conditions, for a more detailed description see Allen and Tildesley.14 The
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1469
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+HESS ET AL.
+3 = 3 virial tensor, J, is defined as:
+N
+1 i i Ž.
+J s y r m f 25
+Ý tot
+2i
+where f i is the total force working on atom i and
+tot
+r i is the position of atom i, m denotes a direct product. For a constrained system at time t the
+n
+virial is:
+Ni
+1 m Dr
+in
+i i Ž.
+J s y r m f q 26
+Ý
+n nn 2
+ž/
+2 Dt
+i
+where f i is the unconstrained force working on
+n
+atom i at time t . The Dr term in the expression
+nn
+for the constraint force is given by:
+2 y1
+Ž . Ž.
+1
+Dr s r y r q D t v q D t M f 27
+ž/
+n nq1 n ny n
+2
+One way to calculate the free energy difference between two systems or two states of a system is
+to make the Hamiltonian an analytical function of a coupling parameter a, where a s 0 corresponds to system A and a s 1 to system B.15 The constraint distances may be a function of the coupling parameter:
+Ž. Ž . Ž .
+d a s 1 y a d q ad 28
+AB
+where d and d are the lengths of the constraints
+AB
+in system A and B, respectively. For the contribution of the constraints to the free energy, F con, the derivative with respect to a of the added term to
+Ž.
+the potential in eq. 3 is needed:
+con Ž .
+d F ≠ l ? g ≠g
+s y s yl ?
+d a ≠a ≠a
+Ž . Ž.
+s yl ? d y d 29
+BA
+The discretized Lagrange multipliers are already calculated by the LINCS algorithm.
+PSEUDO CODE
+()
+LINCS x, xp, invmass, K, nrec, atom1, atom2, length, ncc, cmax, con, Sdiag, coef []
+a x N, 3 old positions of the atoms, N is the number of atoms []
+a xp N, 3 input: new unconstrained positions, a output: the constrained positions []
+a invmass N inverse masses of the atoms a K number of constraints a nrec order after which the power series is truncated []
+a atom1 K first atom of the constraint []
+a atom2 K second atom of the constraint []
+a length K length of the bond []
+a ncc K number of constraints connected to a constraint a cmax maximum number of constraints coupled to one constraint []
+a con K, cmax index of the constraints connected to a constraint [ ] ( [ ] [ ])
+a Sdiag K 1 / sqrt invmass atom1 + invmass atom2 [ ] [ ] [ ] [ ] [ [ ]]
+a coef K, cmax coef i, j = sign)invmass c )Sdiag i )Sdiag con i, j , []
+a c is the atom coupling constraints i and con i, j , [ ] [ [ ]] [ ] [ [ ]]
+a sign = y1 if atom1 i = atom1 con i, j or atom2 i = atom2 con i, j a else sign = 1 { []
+real B K, 3 a directions of the constraints []
+real A K, cmax a normalized constraint coupling matrix []
+real rhs 2, K a right hand side of the matrix equation, a two arrays needed to iterate []
+real sol K a solution array of the matrix equation int i, j, k, n, a1, a2 real len, p
+for i = 1 to K { for j = 1 to 3 { [ ] [ [] ] [ [] ] }
+B i, j = x atom1 i , j y x atom2 i , j
+1470 VOL. 18, NO. 12
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+LINCS
+( ( [ ]) ( [ ]) ( [ ]))
+len = sqrt sqr B i, 1 + sqr B i, 2 + sqr B i, 3 for j = 1 to 3 { [] [] }
+B i, j = B i, j / len }
+for i = 1 to K { []
+for n = 1 to ncc i { []
+k = con i, n [ ] [ ] ( [ ] [ ] [ ] [ ] [ ] [ ]) }
+A i, n = coef i, n ) B i, 1 )B k, 1 + B i, 2 )B k, 2 + B i, 3 )B k, 3 []
+a1 = atom1 i []
+a2 = atom2 i [ ] [ ] ( [ ] ( [ ] [ ])
+rhs 1, i = Sdiag i ) B i, 1 ) xp a1, 1 y xp a2, 1 + [ ] ( [ ] [ ])
+B i, 2 ) xp a1, 2 y xp a2, 2 + [ ] ( [ ] [ ]) [ ])
+B i, 3 ) xp a1, 3 y xp a2, 3 y length i [] [ ]
+sol i = rhs 1, i }
+()
+call SOLVE xp, invmass, K, nrec, atom1, atom2, ncc, con, Sdiag, B, rhs, sol
+a CORRECTION FOR ROTATIONAL LENGTHENING
+for i = 1 to K { []
+a1 = atom1 i []
+a2 = atom2 i ( ( [ ]) ( [ ] [ ])
+p = sqrt 2)sqr length i y sqr xp a1, 1 y xp a2, 1 y ( [ ] [ ])
+sqr xp a1, 2 y xp a2, 2 y ( [ ] [ ]))
+sqr xp a1, 3 y xp a2, 3 [ ] [] ( [] )
+rhs 1, i = Sdiag i ) length i y p [] [ ]
+sol i = rhs 1, i }
+()
+call SOLVE xp, invmass, K, nrec, atom1, atom2, ncc, con, Sdiag, B, rhs, sol }
+()
+SOLVE xp, invmass, K, nrec, atom1, atom2, ncc, con, Sdiag, B, rhs, sol { int i, j, n, rec, w, a1, a2
+w=2 for rec = 1 to nrec { for i = 1 to K { []
+rhs w, i = 0 []
+for n = 1 to ncc i { [ ] [ ] [ [ ]] [ [ ]] }
+rhs w, i = rhs w, i + A i, con i, n )rhs 3 y w, con i, n [] [] [ ]
+sol i = sol i + rhs w, i }
+w=3yw }
+for i = 1 to K { []
+a1 = atom1 i []
+a2 = atom2 i for j = 1 to 3 { [ ] [ ] [ ] [ ] [] []
+xp a1, j = xp a1, j y invmass a1 )B i, j )Sdiag i )sol i [ ] [ ] [ ] [ ] [] [] }
+xp a2, j = xp a2, j + invmass a2 )B i, j )Sdiag i )sol i } }
+JOURNAL OF COMPUTATIONAL CHEMISTRY 1471
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+HESS ET AL.
+References
+1. J. P. Ryckaert, G. Ciccotti, and H. J. C. Berendsen, J. Com
+Ž.
+put. Phys., 23, 327 1977 . 2. S. Miyamoto and P. A. Kollman, J. Comput. Chem., 13, 952
+Ž.
+1992 . 3. E. Barth, K. Kuczera, B. Leimkuhler, and R. D. Skeel, J.
+Ž.
+Comput. Chem., 16, 1192 1996 .
+4. B. J. Leimkuhler and R. D. Skeel, J. Comput. Phys., 112, 117
+Ž.
+1994 . 5. S. E. DeBolt and P. A. Kollman, J. Comput. Chem., 14, 312
+Ž.
+1993 . 6. R. Edberg, D. J. Evans, and G. P. Morriss, J. Chem. Phys., 84,
+Ž.
+6933 1986 .
+Ž.
+7. A. Baranyai and D. J. Evans, Mol. Phys., 70, 53 1990 . 8. M. Yoneya, H. J. C. Berendsen, and K. Hirasawa, Mol.
+Ž.
+Simul. 13, 395 1994 .
+9. J. T. Slusher and P. T. Cummings, Mol. Simul., 18, 213
+Ž.
+1996 .
+10. H. Bekker, Molecular Dynamics Simulation Methods Revised, Ph.D. thesis, University of Groningen, Groningen, The Netherlands, 1996. 11. L. Landau and E. Lifshitz, Mechanics, Pergamon Press, Oxford, 1961. 12. H. J. C. Berendsen, D. van der Spoel, and R. van Drunen,
+Ž.
+Comput. Phys. Commun., 19, 43 1995 .
+13. D. van der Spoel, H. J. C. Berendsen, A. R. van Buuren, E. Apol, P. J. Meulenhoff, A. L. T. M. Sijbers, and R. van Drunen, GROMACS User Manual, Nijenborgh 4, 9747 AG Groningen, The Netherlands, 1995. Internet: http:// rugmd0.chem.rug.nl / ; gmx.
+14. M. P. Allen and D. J. Tildesley, Computer Simulations of Liquids, Oxford Science Publications, Oxford, 1987.
+15. W. F. van Gunsteren, In Computer Simulation of Biomolecular Systems, Theoretical and Experimental Applications: Successes and Problems, W. F. van Gunsteren and P. Weiner, Eds., Escom, Leiden, 1989, p. 27.
+1472 VOL. 18, NO. 12
+1096987x, 1997, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/(SICI)1096-987X(199709)18:12<1463::AID-JCC4>3.0.CO;2-H by University Of Massachusetts, Wiley Online Library on [20/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

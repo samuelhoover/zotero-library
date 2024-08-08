@@ -1,0 +1,419 @@
+1646 IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS, VOL. 28, NO. 7, JULY 2017
+Structural Minimax Probability Machine
+Bin Gu, Member, IEEE, Xingming Sun, Senior Member, IEEE, and Victor S. Sheng, Senior Member, IEEE
+Abstract— Minimax probability machine (MPM) is an interesting discriminative classifier based on generative prior knowledge. It can directly estimate the probabilistic accuracy bound by minimizing the maximum probability of misclassification. The structural information of data is an effective way to represent prior knowledge, and has been found to be vital for designing classifiers in real-world problems. However, MPM only considers the prior probability distribution of each class with a given mean and covariance matrix, which does not efficiently exploit the structural information of data. In this paper, we use two finite mixture models to capture the structural information of the data from binary classification. For each subdistribution in a finite mixture model, only its mean and covariance matrix are assumed to be known. Based on the finite mixture models, we propose a structural MPM (SMPM). SMPM can be solved effectively by a sequence of the second-order cone programming problems. Moreover, we extend a linear model of SMPM to a nonlinear model by exploiting kernelization techniques. We also show that the SMPM can be interpreted as a large margin classifier and can be transformed to support vector machine and maxi–min margin machine under certain special conditions. Experimental results on both synthetic and real-world data sets demonstrate the effectiveness of SMPM.
+Index Terms— Bayes learning, finite mixture models, kernel methods, second-order cone programming (SOCP), structural learning.
+I. INTRODUCTION
+F
+OR binary classification, generative and discriminative approaches are two kinds of approaches which are widely known. Generative approaches try to find an optimal representation of two-class data by keeping as much information as possible. The label (positive or negative) chosen for a new sample is the one whose model fits the sample the best. Typical generative approaches include Gaussian mixture model [1], naive Bayes [2], hidden Markov models [3], and so on. Discriminative methods are concerned with defining the
+Manuscript received August 11, 2015; revised March 16, 2016; accepted March 19, 2016. Date of publication April 14, 2016; date of current version June 15, 2017. This work was supported in part by the National Natural Science Foundation of China under Grant 61232016, Grant 61202137, Grant U1536206, Grant U1405254, Grant 61573191, and Grant 61572259, in part by the U.S. National Science Foundation under Grant IIS-1115417, in part by the Jiangsu Provincial Key Laboratory of Big Data Analysis Techniques under Project KXK1405, and in part by the Priority Academic Program Development within the Jiangsu Higher Education Institutions. (Corresponding author: Bin Gu.)
+B. Gu and X. Sun are with the Jiangsu Engineering Center of Network Monitoring, Nanjing University of Information Science and Technology, Nanjing 210044, China, and also with the School of Computer and Software, Nanjing University of Information Science and Technology, Nanjing 210044, China (e-mail: jsgubin@nuist.edu.cn; sunnudt@163.com). V. S. Sheng is with the Department of Computer Science, University of Central Arkansas, Conway, AR 72035 USA (e-mail: ssheng@uca.edu). Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org. Digital Object Identifier 10.1109/TNNLS.2016.2544779
+boundary between two categories directly. Typical discriminative approaches include support vector machine (SVM) [4], neural network [5], Gaussian processes [6], and so on. As mentioned in [4], a famous quote in favor of discriminative approaches is: one should solve the classification problem directly and never solve a more general problem as an intermediate step. It has often been argued that the classifiers from the discriminative approaches often achieve higher testing accuracy than the classifiers from the generative approaches [4], [7] for a lot of application domains. Nonetheless, the generative approaches also have several advantages. One of the advantages is that the generative approaches can absorb implicit prior knowledge. Thus, it is highly desirable to design a discriminative classifier based on generative prior knowledge, which utilizes the advantages of generative and discriminative approaches. As far as we know, a lot of discriminative algorithms based on generative prior knowledge have been proposed. According to different types of generative prior knowledge, these algorithms can be divided into following two types. 1) One type is distribution-based algorithms (or called parametric algorithms). 2) Another type is moments-based constrained algorithms (or called nonparametric algorithms) [8]. The distribution-based algorithms first assume that there exists an appropriate distribution function (e.g., the Gaussian distribution [9], the elliptical distribution [10], and so on) to fit the distribution of the data, and then estimate the parameters of the distribution within a maximum likelihood framework [11]. A typical paradigm is the discriminant analysis (DA) classifier [11], [12]. A classical DA classifier [11] assumes that the data of each class come from a Gaussian distribution. If both classes have the same covariance matrix, a linear DA classifier [12] can be derived by minimizing expected misclassification. Otherwise, a quadratic DA classifier [9] can be obtained. Specially, in order to efficiently exploit the structural information of data, both Hastie and Tibshirani [13] and Halbe and Aladjem [14] used a Gaussian mixture model to fit each class, and proposed two extended versions of the DA classifier. The moments-based constrained algorithms [8] construct a Bayes classifier based on a set of class-conditional distributions that are with the constraints of the moments. For example, Lanckriet et al. [15] proposed minimax probability machine (MPM), based on the constraints of the first and second moments for each class-conditional distribution. MPM minimizes the worst case classification error rate, with respect to any choice of class-conditional distributions that satisfy the given moment constraints. Strohmann and Grudic [16]
+2162-237X © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+GU et al.: SMPM 1647
+Fig. 1. Decision hyperplanes calculated by the MPM and a desired classifier incorporating the data’s structural information.
+extended MPM to regression. Ghaoui et al. [17] and Kwok et al. [18] extended MPM to the problem of novelty detection. Bhattacharyya [19] extended MPM to feature selection. Huang et al. [20] proposed minimum error MPM (MEMPM) by removing the equality constraint on the classification error rates from MPM. As we know, distributionbased algorithms [9], [11]–[14] cast doubts on the generality and validity of a parametric generative model. However, the moments-based constrained algorithms [15]–[20] avoid such a weakness, because no any assumption is made on the form of the distribution function. In this paper, we mainly focus on the popular MPM. In many real-world applications, such as network intrusion detection [21], handwritten character recognition [22], and human face detection [23], there widely exist homogeneous groups (or clusters) in the data. Fig. 1 shows an example of the data with the homogeneous groups, where + and · denote the positive and negative classes, respectively, and each class is generated from a mixture of two Gaussian distributions. Thus, the positive and negative classes have two homogeneous groups, respectively. More specifically, the two classes have approximately perpendicular trends of data occurrence. In this paper, we call the information of homogeneous groups as the structural information of data. As mentioned in [24] and [25], the structural information of data is an effective way to represent prior knowledge, and has been found to be vital for designing a good classifier for different real-world problems. We have introduced the concept of structural information to data. To characterize in what scope a certain classifier distinguishes data, Yeung et al. [24] gave a definition of homospace (see Definition 1 or the relevant definition in [24]). According to the definition of homospace, we know that the homospaces of MPM are both the classes. Thus, the structured degree (see Definition 2 or the relevant definition in [24]) of MPM is small. As shown in Fig. 1, because MPM does not sufficiently utilize the obvious structural information, its derived decision planes (denoted by the dashed line) is near to
+the · class and far from the + class. The derived decision plane deviates from the approximately vertical trend of the two class data. A more reasonable linear decision plane should be the one, as shown in Fig. 1 (solid line). This boundary has almost a parallel orientation to the + class data trend, and at the same time, relatively far from the · class. Thus, to handle the structural data effectively, it is highly desirable to propose an improved version of MPM, which incorporates the structural information of data. In this paper, we propose an improved version of MPM that can incorporate the structural information of data, called structural MPM (SMPM). We believe that SMPM can have a significant improvement on the classification accuracy after appropriately utilizing the structural information of data. In particular, we first use two finite mixture models to capture the structural information of both classes. For each subdistribution in a finite mixture model, only the mean and the covariance matrix are assumed to be known. Then, we propose our SMPM based on the finite mixture models, which can be solved through a binary search procedure by solving a sequence of the second-order cone programming (SOCP) problems. Based on the linear model of SMPM, we also propose a nonlinear SMPM model by exploiting kernelization techniques. Finally, we show that the SMPM can be interpreted as a large margin classifier and can be transformed to SVM and M4 under certain special conditions. The experimental results on both the synthetic and real-world data sets demonstrate the effectiveness of SMPM. The rest of this paper is organized as follows. In Section II-A, we first provide a brief review of MPM and a finite mixture model and, then, explain our proposed SMPM based on MPM and the finite mixture model. In Section III, we provide some alternative views of SMPM. The experimental setup, results, and discussions are presented in Sections IV and V. Finally, the conclusion is drawn in Section VI.
+II. STRUCTURAL MINIMAX PROBABILITY MACHINE
+As mentioned above, there should be an improvement on the classification accuracy of MPM after appropriately utilizing the structural information of data. In order to propose an improved version of MPM that incorporates the structural information of data, we first review MPM in Section II-A and, then, introduce the finite mixture model in Section II-B. Based on MPM and the finite mixture model, we propose our SMPM in Section II-C. Finally, we give the kernelized version of SMPM in Section II-D.
+A. Brief Review of MPM
+Given the means (x ̄ and y ̄) and covariance matrices (x and y) for two classes, respectively, MPM attempts to determine a hyperplane aT z = b (a ∈ Rn \{0}, z ∈ Rn, b ∈ R), as shown in Fig. 1. In particular, as mentioned in [15], the hyperplane separates the two classes of points with a maximal probability with respect to all distributions having the means and covariance matrices. Thus, the formulation of MPM is
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+1648 IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS, VOL. 28, NO. 7, JULY 2017
+written as follows:
+max
+α,a=0,b α s.t. inf
+x∼( ̄x,x) Pr{aT x ≥ b} ≥ α
+inf
+y∼( ̄y,y) Pr{aT y ≤ b} ≥ α (1)
+where the notation x ∼ (x ̄, x) refers to a class distribution, which has the prescribed mean x ̄ and covariance x, but otherwise arbitrary; likewise to y. α represents the lower bound of the accuracy for future data, namely, the worst case accuracy. Future points z for which aT z ≥ b are then classified as the class x; otherwise, they are judged as the class y. This derived decision hyperplane is claimed to minimize the worst case (maximal) probability of misclassification or the error rate of future data.
+B. Finite Mixture Model
+As shown in Fig. 1, there obviously exist several homogeneous clusters in the data. To characterize in what scope a certain classifier distinguishes data, Yeung et al. [24] introduced the definition of homospace as follows. Definition 1: Suppose a training set T can be divided into I partitions, i.e., H1, . . . , HI , where H1 ∪ · · · ∪ HI = T and Hi ∩ H j = ∅, i, j = 1, . . . , I and i = j . If data points in each partition Hi are considered by the classifier C to share the same distribution trend, which can empirically be measured by the covariance matrix, these partitions, i.e., H1, . . . , HI , are called homospaces of the classifier C for the training set T . As mentioned in Definition 1, each partition Hi shares the same distribution trend. It means that the distribution of the whole data consists of several subdistributions. Thus, the distribution for each class can be presented by a finite mixture model as follows:
+p(x) =
+I ∑
+i =1
+πi pi (x )
+s.t.
+I ∑
+i =1
+πi = 1, πi ≥ 0, i = 1, . . . , I (2)
+where p(x) denotes the distribution of a class within the entire data, pi (x) denotes the subdistribution for a homogeneous cluster, and I denotes the number of subdistributions in a class.
+C. SMPM
+As mentioned in Section II-B, the finite mixture model is an effective way to represent the distribution of the data with the structural information. To incorporate the structural information of data in MPM, we propose SMPM. We first provide the formulation of SMPM based on the finite mixture model and MPM and, then, provide a convex formulation for SMPM. Finally, we design a binary search algorithm to solve the convex optimization problem of SMPM. 1) Formulation of SMPM: As mentioned in the formulation (1), MPM assumes that the distribution of each class follows a prescribed mean and covariance, but otherwise arbitrary. Based on Definition 1, MPM assumes that the number of homospaces is one for each class, which is inconsistent
+with the assumption that a structural data set has multiple homogeneous groups. In other words, the data information used in MPM is less than the information provided by the structural data. Thus, the decision hyperplane given by MPM does not necessarily minimize the worst case error rate of future data for the structural data. To handle the structural data in MPM effectively, we use the finite mixture model to reformulate the original MPM. In particular, we assume that there are Ix > 0 subdistributions for the class associated with x, and Iy > 0 subdistributions for the class associated with y. For each subdistribution, only its mean and covariance are known. Based on the principle of MPM, maximizing the expected worst case accuracy for future data, we propose SMPM as follows:
+max
+α,a=0,b α
+s.t. inf
+xk ∼( ̄xk ,xk )
+Pr{aT xk ≥ b} ≥ α, k = 1, . . . , Ix
+inf
+yk ∼( ̄yk ,yk )
+Pr{aT yk ≤ b} ≥ α, k = 1, . . . , Iy (3)
+where xk , yk , x ̄k , y ̄k ∈ Rn, and xk , yk ∈ Rn×n.1 x ̄k and xk (y ̄k and yk ) are the mean and covariance matrix with respect to the kth subdistribution of the class associated with x (y). xk (yk) denotes the random vector representing the kth subdistribution of the class x (y). The term α is the worst case (minimal) classification probability of future data points for a subdistribution, and SMPM maximizes the expected
+worst case accuracy ∑i=Ix
+i πi α = α and ∑i=Iy
+i πi α = α for the classes associated with x and y, respectively. To discuss the ability of SMPM to distinguish data structures, we introduce the definition of the structured degree which was first proposed in [24] as follows. Definition 2: Suppose a training set T with dimension d is represented by the covariance information, i.e., P1, . . . , PJ , of J disjoint partitions of T , namely, P1, . . . , PJ . Assume the homospaces of the classifier C for T are H1, . . . , HI with covariance matrices H1 , . . . , HI , and  is a small positive number. The structured degree (sd) of classifier C for the training set T can be estimated by2
+sdC (T ) =
+∑
+xi ∈T
+(
+1− 1
+d2
+∑d s =1
+∑d
+t=1 Dxi (s, t)
+)
+|T | . (4)
+Remark: As shown in (1), the homospace Hi of MPM is calculated from all the samples within a class, while Pj is computed from compact globular clusters. Thus, the difference between Hi and Pj is large, and the structured degree is small. As shown in (3), the homospace of SMPM is consistent with the unit that the data samples are inherently structured. Thus, the structured degree of SMPM would mount up to the highest possible value 1.
+1For simplicity, we also assume that xk and yk are positive definite,
+similar to [15]. Otherwise, we can make them positive definite by adding a small positive amount to their diagonal elements. 2 Dxi (s, t) = 1, if existing j and k, such that xi ∈ Pj ∩ Hk and
+|Pj (s, t) − Hk (s, t)| > . Otherwise Dxi (s, t) = 0.
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+GU et al.: SMPM 1649
+2) Convex Formulation of SMPM: In this section, we will transform the optimization problem (3) to a convex formulation. As shown in (3), the constraints in the optimization problem need to compute the infimums over all the possible distributions with the mean x ̄k and covariance matrix xk . Directly computing infimums over all the possible distributions is not easy. Thus, we first introduce Lemma 1 (proved in [15]), which can eliminate the computation of the infimums. Lemma 1: Given a = 0 and b, such that aT y ̄k ≤ b and α ∈ [0, 1), the condition
+inf
+yk ∼( ̄yk ,yk
+) Pr{aT yk ≤ b} ≥ α
+holds if and only if b − aT y ̄k ≥ κ(α)(aT yk a)1/2 with
+κ(α) = (α/1 − α)1/2.
+Based on Lemma 1, the optimization problem (3) can be transformed as follows:
+max
+α,a=0,b α
+s.t. − b + aT x ̄k ≥ κ(α)
+√
+aT xk a, k = 1, . . . , Ix
+b − aT y ̄k ≥ κ(α)
+√
+aT yk a, k = 1, . . . , Iy. (5)
+The optimization problem (5) is not convex because of the constraint a = 0. In order to provide a convex optimization problem, we first give Definition 3 to describe the linear separability of SMPM and, then, give Theorem 1 to transform (5) into a convex optimization problem (6).
+Definition 3 (Linear Separability of SMPM): Let {x ̄1, . . . , x ̄ Ix } and {y ̄1, . . . , y ̄ Iy } be two sets of means for all homospaces of the two classes associated with x and y, respectively. {x ̄1, . . . , x ̄ Ix } and {y ̄1, . . . , y ̄ Iy } are linearly separable to SMPM, if there exist a ∈ Rn, b ∈ R, and ε > 0, such that every mean x ̄k of the class x satisfies −b + aT x ̄k ≥ ε, and every mean y ̄k of the class y satisfies b − aT y ̄k ≥ ε. Based on Definition 3, we give Theorem 1, which transforms the nonconvex problem (5) into a convex optimization problem (6). Theorem 1: If {x ̄1, . . . , x ̄ Ix } and {y ̄1, . . . , y ̄ Iy } are linearly separable to SMPM, the optimal hyperplane a∗T z = b∗ of the optimization problem (5) can be determined by the following convex optimization problem:
+max
+α,a,b α
+s.t. − b + aT x ̄k ≥ κ(α)
+√
+aT xk a, k = 1, . . . , Ix
+b − aT y ̄k ≥ κ(α)
+√
+aT yk a, k = 1, . . . , Iy
+aT (x ̄1 − y ̄1) = 1. (6)
+3) Solving the Convex Optimization Problem: To solve the convex optimization problem (6), we will propose a binary search procedure. Before presenting the binary search procedure, we first define a convex feasibility problem F (α) for (6)
+Algorithm 1 Binary Search Algorithm for SMPM Input : The means and covariance matrices of all homospaces for two classes {(x ̄1, x1 ), . . . , (x ̄ Ix , xIx )},
+{(y ̄1, y1 ), . . . , (y ̄ Iy , yIy )}, a small positive
+value ε. Output: The decision hyperplane a∗T z = b∗, the optimal
+worst-case classification probability α∗.
+1 Initialize αlower = 0, αupper = 1; 2 while αupper − αlower > ε do
+3 αnow = αupper +αlower
+2;
+4 if find a feasible solution a, b of F (αnow) then
+5 αlower = αnow; 6 else
+7 αupper = αnow;
+8 end 9 end 10 return a∗ (a∗ = a), b∗ (b∗ = b) and α∗ (α∗ = αnow).
+as follows:
+Find a, b
+s.t. − b + aT x ̄k ≥ κ(α)
+√
+aT xk a, k = 1, . . . , Ix
+b − aT y ̄k ≥ κ(α)
+√
+aT yk a, k = 1, . . . , Iy
+aT (x ̄1 − y ̄1) = 1. (7)
+If {x ̄1, . . . , x ̄ Ix } and {y ̄1, . . . , y ̄ Iy } are linearly separable to SMPM, it is obvious that the convex feasibility problem F (0) is feasible, and F (1) is infeasible. The convex feasibility problem F (α) for all α with α ∈ (0, 1) can be solved by SOCP solvers, e.g., SeDuMi [26]. Based on the convex feasibility problem F (α), we give the relationship of F (α) and the optimal worst case classification probability α∗ of the optimization problem (6), as shown in Theorem 2. The detailed proof of Theorem 2 is presented in Appendix B. Theorem 2: Assuming {x ̄1, . . . , x ̄ Ix } and {y ̄1, . . . , y ̄ Iy } are linearly separable for SMPM, and α∗ is the optimal worst case classification probability of the optimization problem (6). The convex feasibility problem F (α) is feasible if α ≤ α∗, and F (α) is infeasible if α > α∗. According to Theorem 2, we can search an upper bound and a lower bound to approach the optimal worst case classification probability α∗. Thus, we propose a binary search algorithm (see Algorithm 1) to approach the upper and lower bounds of α∗. The binary search algorithm casts the SMPM optimization problem (6) to a sequence of SOCP problems. In particular, Algorithm 1 searches a bounded interval by repeatedly dividing the bounded interval in half, beginning with an interval covering the whole region, i.e., setting αlower = 0 and αupper = 1 initially. If F (αupper + αlower/2) is feasible, we narrow the bounded interval to the upper half. Otherwise, we narrow it to the lower half. We repeatedly check until the bounded interval is less than a small positive value. Next, we give the time complexity analysis for Algorithm 1. As indicated in [27], if the SOCP is solved based on the
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+1650 IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS, VOL. 28, NO. 7, JULY 2017
+interior-point methods (e.g., SeDuMi), it contains a worst case complexity of O(n3). Thus, with the similar analysis of [27], we can have that the total complexity of Algorithm 1 would be O((Ix + Iy)n3 + log(1/ε)n3) ≈ O((Ix + Iy)n3), if the convex feasibility problem F (α) is solved by SeDuMi. Although the time complexity is relatively large, Algorithm 1 can still be solved in polynomial time.
+D. Kernelization
+As mentioned in (6), Algorithm 1 only considers the linearly separable case of SMPM. To handle the linearly nonseparable case, this section describes the kernelization of SMPM. In particular, we map n-dimensional data points into a highdimensional reproducing kernel Hilbert space (RKHS) R f [28] by a mapping function φ : Rn → R f . Thus, the SMPM finds a linear classifier in the RKHS R f . The corresponding linear classifier in RKHS is represented as aT φ(z) = b, where a, φ(z) ∈ R f , and b ∈ R, which would handle the linearly nonseparable case in the original space Rn. Note that the linear classifier in the RKHS corresponds to a nonlinear hyperplane in the original space. Assume that the training data points of the kth homospace
+associated with the class x are represented by {xk
+i }Nxk
+i=1. The training data points mapped in the RKHS are represented by {φ(xk
+i )}Nxk
+i=1. Similarly, the training data points of the kth homospace associated with the class y are represented by
+{yk
+i }Nyk
+i=1. And the training data points mapped in RKHS are
+represented by {φ(yk
+i )}Nyk
+i=1. Thus, the distributions for φ(xk
+i)
+and φ(yk
+i ) can be represented as
+φ(xk ) ∼ (φ(xk), φ(xk)), k ∈ {1, . . . , Ix}
+φ(yk ) ∼ (φ(yk), φ(yk)), k ∈ {1, . . . , Iy}
+where φ(xk ) and φ(xk) (φ(yk ) and φ(yk)) are the mean and covariance matrix with respect to the kth subdistribution of the class associated with φ(xk
+i ) (φ(yk
+i )).
+Thus, the optimization problem (5) of SMPM in the RKHS can be written as
+max
+α,a=0,b α
+s.t. − b + aT φ(xk) ≥ κ(α)
+√
+aT φ(xk )a, k = 1, . . . , Ix
+b − aT φ(yk) ≥ κ(α)
+√
+aT φ(yk)a, k = 1, . . . , Iy. (8)
+Although the formulation (8) is written in the RKHS, the computation is still not easy because of the curse of high dimensionality in the RKHS [4]. To make the formulation (8) work, we present the optimization and the final decision hyperplane in a kernel form, specifically an inner product form K (z1, z2) = 〈φ(z1), φ(z2)〉. Lemma 2 demonstrates that the optimal a in the problem (8) lies in the space spanned by the training points, provided that the suitable estimates of means and covariance matrices are applied therein.3 Based on Lemma 2, Theorem 3 gives the kernelization of SMPM.
+3The detailed proof of Lemma 2 can be found in [15, Corollary 5].
+Lemma 2: If the estimates of means and covariance matrices of all homospaces for two classes are given as
+φ(xk ) =
+N∑xk
+i =1
+λi φ(xk
+i
+)
+φ(yk ) =
+N∑yk
+i =1
+λi φ(yk
+i
+)
+φ(xk ) =
+N∑xk
+i =1
+k i
+(φ(xk
+i
+) − φ(xk))(φ(xk
+i
+) − φ(xk ))T
+φ(yk ) =
+N∑yk
+i =1
+k i
+(φ(yk
+i
+) − φ(yk))(φ(yk
+i
+) − φ(yk ))T
+the optimal a in the optimization problem (8) lies in the space spanned by the training points. According to Lemma 2, we obtain the means and covariance matrices of all homospaces for two classes as the following plug-in estimates:
+φ(xk ) =
+N∑xk
+i =1
+1
+Nxk
+φ(xk
+i
+) (9)
+φ(yk ) =
+N∑yk
+i =1
+1
+Nyk
+φ(yk
+i
+) (10)
+φ(xk ) = 1
+Nxk
+N∑xk
+i =1
+(φ(xk
+i
+) − φ(xk))(φ(xk
+i
+) − φ(xk))T (11)
+φ(yk ) = 1
+Nyk
+N∑yk
+i =1
+(φ(yk
+i
+) − φ(yk))(φ(yk
+i
+) − φ(yk))T. (12)
+The optimal a can be written as
+a=
+I∑x
+k=1
+N∑xk
+i =1
+θk
+i φ(xk
+i
+)+
+I∑y
+k=1
+N∑yk
+j =1
+βk
+j φ(yk
+j
+) (13)
+where the coefficients θ k
+i , βk
+j ∈ R, i = 1, . . . , Nxk ,
+j = 1, . . . , Nyk . Thus, by simply substituting (13) and four plug-in estimates (9)–(12) into (8), we can obtain the kernelization of SMPM (i.e., Theorem 3).
+Theorem 3: If {φ(x1), . . . , φ(xIx )} and {φ(y1), . . . , φ(yIy )} are linearly separable to SMPM in the RKHS, the optimal
+hyperplane ∑N
+i=1 γi K (zi , z) = b of the optimization problem (8) can be determined by the following convex optimization problem:
+max
+α,γ ,b α
+s.t. − b+γ T k ̃xk ≥ κ(α)
+√ 1
+Nxk
+γ T K ̃ T
+xk K ̃ xk γ, k = 1, . . . , Ix
+b−γ T k ̃yk ≥ κ(α)
+√ 1
+Nyk
+γ T K ̃ T
+yk K ̃ yk γ, k = 1, . . . , Iy
+γ T (k ̃ x1 − k ̃y1 ) = 1. (14)
+Note that the notations in the formulation (14) are defined in Table I.
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+GU et al.: SMPM 1651
+TABLE I
+NOTATIONS USED IN THE KERNELIZATION OF SMPM
+III. ALTERNATIVE VIEWS OF SMPM
+In this section, we first show that SMPM can be interpreted as a large margin classifier, and further show that SMPM can be transformed into two typical large margin classifiers, i.e., SVM and M4, under certain special conditions.
+A. Geometric Interpretation of SMPM
+As mentioned in the formulation (3), SMPM is proposed by maximizing the expected worst case accuracy for future data, which is obviously a probability interpretation. In this section, we give a geometric interpretation of SMPM. Before giving the geometric interpretation of SMPM, we first introduce Definition 4, which gives the Mahalanobis distance of the center of a homospace from a hyperplane. Definition 4: The Mahalanobis distance of the center of a homospace with a mean x ̄ and a covariance matrix x from a hyperplane aT z = b is defined as
+ρ(x ̄, x; a, b) = |aT x ̄ − b|
+√
+aT xa . (15)
+Based on (15), we can give the geometric interpretation to the Mahalanobis distance ρ(x ̄, x; a, b) as: the minimum Mahalanobis distance of all points in the hyperplane to the center of homospace. As shown in Fig. 2, there are a homospace and four parallel hyperplanes. The Mahalanobis distances of the center of the homospace from four parallel hyperplanes are 1, 2, 3, and 4, respectively. Note that the point in a hyperplane with the minimum Mahalanobis distance is the point of tangency, where the hyperplane and the ellipsoid (centered around the mean and its shape determined by the covariance matrix) meet. With Definition 4, we can give the geometric interpretation to the optimization problem (5): maximizing the minimum
+Fig. 2. Geometric interpretation of the Mahalanobis distance of a center of homospace from a hyperplane.
+Mahalanobis distance for all homospaces of two classes. More specifically, because κ(α) increases monotonically with α, maximizing α is equivalent to maximizing κ(α). Thus, letting ρ = κ(α), the optimization problem (5) can be changed as
+max
+ρ,a=0,b ρ
+s.t. −b + aT x ̄k
+√aT xk a ≥ ρ, k = 1, . . . , Ix
+b − aT y ̄k
+√
+aT yk a
+≥ ρ, k = 1, . . . , Iy. (16)
+From the optimization problem (16) and Definition 4, we can find that the decision hyperplane of SMPM tries to maximize the minimum Mahalanobis distance for all homospaces of
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+1652 IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS, VOL. 28, NO. 7, JULY 2017
+Fig. 3. Geometric interpretation of the decision hyperplane produced by SMPM.
+two classes. As shown in Fig. 3, there are two homospaces for each class. Given a decision hyperplane, there exists a minimum Mahalanobis distance for each class. When the minimum Mahalanobis distance (2.53, as shown in Fig. 3) of the class associated with x is equal to the one of the class associated with y, the maximal of the minimum Mahalanobis distances, as denoted in (16), is obtained. Based on the analysis mentioned above, SMPM can be interpreted as a large margin classifier.
+B. Link With SVM and M4
+As mentioned above, SMPM can be interpreted as a large margin classifier. In this section, we compare SMPM with two typical large margin classifiers, i.e., SVM and M4. Note that we only discuss the linear separable case here. The conclusion is that SMPM can be transformed into SVM and M4 under certain special conditions.
+1) Link With SVM: Let {xi }Nx
+i=1 and {yi }Ny
+i=1 be the training data points of the classes corresponding to x and y, respectively. If one assumes that each data point is a homospace, i.e., Ix = Nx and Iy = Ny, and the covariance matrices of all homospaces are the identity matrix I, the optimization problem (5) can be written as
+max
+α,a=0,b α
+s.t. − b + aT xi ≥ κ(α)‖a‖, i = 1, . . . , Nx b − aT yi ≥ κ(α)‖a‖, i = 1, . . . , Ny . (17)
+In (17), it can be found that the magnitude of a does not influence the optimization. Without loss of generality, we assume κ(α)‖a‖ = 1. Similar to (16), the optimization problem (17) can be changed as
+ma,ibn
+1
+2 ‖a‖2
+s.t. − b + aT xi ≥ 1, i = 1, . . . , Nx
+b − aT yi ≥ 1, i = 1, . . . , Ny (18)
+which is the formulation of SVM in the linear separable case. Thus, if each data point is a homospace with the covariance matrices as the identity matrix I, SMPM degenerates to SVM.
+2) Link With M4: If one assumes that each data point of two classes is a homospace, i.e., Ix = Nx and Iy = Ny , and further assumes that the covariance matrices of all homospaces associated with the class x are x and the covariance matrices of all homospaces associated with the class y are y, the optimization problem (5) can be written as
+max
+α,a=0,b α
+s.t. − b + aT xi ≥ κ(α)√
+aT xa, i = 1, . . . , Nx
+b − aT yi ≥ κ(α)
+√
+aT ya, i = 1, . . . , Ny . (19)
+Let ρ = κ(α), similar to (16), the optimization problem (19) can be changed as
+max
+ρ,a=0,b ρ
+s.t. −b + aT xi
+√
+aT xa ≥ ρ, i = 1, . . . , Nx
+b − aT yi
+√
+aT ya
+≥ ρ, i = 1, . . . , Ny . (20)
+The optimization problem (20) is exactly the optimization problem of M4 [27] in the linear separable case. This means that the SMPM degenerates to M4 under certain conditions.
+IV. EXPERIMENTAL SETUP
+This section presents the experimental setup mainly from three aspects: 1) the design of experiments; 2) the details about the implementation of the experiments; and 3) the data sets used in the experiments. Next, we give the detailed description for each aspect.
+A. Design of Experiments
+As mentioned before, SMPM can improve the classification accuracy, compared with MPM, if a data set has structural information, which is not considered in MPM. To verify the advantage of SMPM, we first exploit the structural information for each data set and, then, compare the classification accuracies of SMPM with other moments-based constrained classifiers (i.e., MPM and MEMPM) and structured large margin machine (SLMM) [24]. In addition, we also compare the running time of SMPM, MPM, MEMPM, and SLMM. In order to exploit the structural information, we calculate the mean and covariance matrix for each cluster on the training set. More specifically, we first use Ward’s hierarchical clustering [29]4 to detect the clusters for each class on the training set, and then compute the mean and covariance matrix for each cluster. In order to compare the classification accuracies of SMPM with other moments-based constrained classifiers, we compute the classification accuracies of SMPM and MPM. MEMPM is
+4Because the clusters derived from Ward’s hierarchical clustering are compact and spherical [24], which provides a meaningful basis for the calculation of covariance matrices, Ward’s hierarchical clustering is adopted to detect clusters. In particular, Ward’s linkage between the clusters in RKHS is computed as the method in [24]. Finally, the number of clusters is determined by the L method in [30].
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+GU et al.: SMPM 1653
+an important moments-based constrained algorithm, so we also compute the classification accuracy of MEMPM for comparisons. Besides the moments-based constrained classifiers, we also compare SMPM with SLMM. Note that SLMM incorporates the covariance of each homogeneous group into SVM.
+B. Implementation
+We implemented our SMPM in MATLAB.5 We used the MATLAB source code developed in [20] for the implementations of MPM and MEMPM. We also implemented SLMM in MATLAB. All experiments are performed on a 2.5-GHz Intel Core i5 machine with 8-GB RAM, running MATLAB 7.10. For kernel, the linear kernel K (z1, z2) = z1 · z2 and the Gaussian kernel K (z1, z2) = exp(−‖z1 − z2‖2/2σ 2) are used in our experiments. For the parameter σ in the Gaussian kernel and the regularization parameter C in SLMM, a fivefold cross validation with a two-step grid search strategy is used to determine these optimal values [31]. The initial search is done on a 20 coarse grid linearly spaced in the region {log2 σ | − 9 ≤ log2 σ ≤ 10} (or {log2 C| − 9 ≤ log2 C ≤ 10}), followed by a fine search on a 20 uniform grid linearly spaced by 0.1 in the log2 σ (or log2 C) space. We used the out-of-sample testing for comparing the classification accuracies of SMPM, MEMPM, MPM, and SLMM. In particular, we randomly partitioned each data set into 80% training and 20% test data sets. For the training data set, the means and the covariance matrices of all homogeneous clusters and two classes in SMPM, MPM, and MEMPM are obtained directly by the plug-in estimations, respectively. The prior probability θ in MEMPM is given by the proportion of the data associated with x in the training data set. On the testing data set, we compared the performance of SMPM, MEMPM, MPM, and SLMM in both the linear and Gaussian kernels. The final results are averaged over 20 random partitions. For the robustness of SMPM, we especially remove the clusters with a small number of samples during Ward’s hierarchical clustering. This is because a cluster with a small number of samples could be the one resulted by outliers with a high possibility. It may drop the performance of SMPM. In our experiments, a cluster is removed during Wards hierarchical clustering, if the corresponding number of samples in a cluster is less than or equal to min{N/k2, 4}, where N is the number of entire samples during the clustering, k is the number of clusters, and · is the ceiling function mapping a real number to the smallest following integer.
+C. Data Sets
+We used one synthetic data set and six real-world data sets to conduct experiments. The detailed descriptions for the synthetic data set and the real-world data sets are stated as follows. 1) Synthetic Data Set: We synthetically generate four clusters of 2-D Gaussian data for two classes, and each cluster has 40 sample points. As shown in Fig. 4, the
+5Our MATLAB code for SMPM is available at https://sites.google.com/ site/jsgubin/our-software-codes.
+Fig. 4. Experimental results on a synthetic data set. Dashed-dotted red line: decision hyperplane produced by MPM. Dotted red line: decision hyperplane produced by MEMPM. Their optimal worst case classification probabilities are 0.874 and 0.888, respectively. However, the optimal worst case classification probability given by the decision hyperplane (the solid red line) of our SMPM is improved to 0.941, due to incorporating the structural information of data.
+TABLE II
+SUMMARY OF SIX REAL-WORLD DATA SETS
+TABLE III
+NUMBER OF CLUSTERS FOR POSITIVE (+) AND NEGATIVE (−) CLASSES, RESPECTIVELY, ON EACH DATA SET. FOR EACH ENTRY, THE LEFT NUMBER STANDS FOR THE RESULT ON THE LINEAR KERNEL, AND THE RIGHT NUMBER STANDS FOR THE RESULT ON THE GAUSSIAN KERNEL
+two clusters associated with the class x are generated with
+means and covariance matrices as ([ −19
+19
+], [ 6.8 5.1
+5.1 6.8
+]) and
+([ −9 9
+], [ 6.8 5.1
+5.1 6.8
+]), respectively. Meanwhile, the other two clusters associated with the class y are generated with
+means and covariance matrices as ([ −8.5
+−15
+], [ 6.8 −5.1
+−5.1 6.8
+]) and
+([ 8−.55
+], [ 6.8 −5.1
+−5.1 6.8
+]), respectively. 2) Real-World Data Sets: Table II shows the six real-world data sets (i.e., Breast Cancer, Ionosphere, Pima Diabetes, Heart Disease, Vote, and Spine) used in the experiments. The first five are benchmark data sets obtained from the UCI machine learning repository [32]. The last one is collected by us. It is to diagnose degenerative disk disease depending on five image texture features quantified from magnetic resonance imaging, where 157 records were marked normal and 193 records were marked abnormal by an experienced radiologist.
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+1654 IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS, VOL. 28, NO. 7, JULY 2017
+TABLE IV
+OPTIMAL WORST CASE CLASSIFICATION PROBABILITY α, θ α + (1 − θ )β , AND THE TEST ACCURACY COMPARED WITH MPM, MEMPM, AND SLMM IN THE LINEAR SETTING
+TABLE V
+OPTIMAL WORST CASE CLASSIFICATION PROBABILITY α, θ α + (1 − θ )β , AND THE TEST ACCURACY COMPARED WITH MPM, MEMPM, AND SLMM WITH THE GAUSSIAN KERNEL
+V. EXPERIMENTAL RESULTS AND DISCUSSION
+A. Evaluations on the Synthetic Data Set
+To verify that the SMPM model achieves a more reasonable decision hyperplane due to appropriately incorporating the structural information of data, we conduct experiments on a synthetic data set. As shown in Fig. 4, a solved decision hyperplane given by MPM is plotted as a dashed-dotted red line. A solved decision hyperplane given by MEMPM is plotted as a dotted red line and an SMPM decision hyperplane is plotted as a solid red line. Intuitively, the SMPM decision hyperplane makes better use of the structural information of data, which is verified by the optimal worst case classification probability of the three models. In particular, the optimal worst case classification probability of the MPM decision hyperplane is 0.874, and the one of the MEMPM decision hyperplane is 0.888. However, the one of the decision hyperplane of SMPM is improved to 0.941 due to incorporating the structural information of data.
+B. Evaluations on Real-World Data Sets
+We use Ward’s hierarchical clustering to detect the clusters for two classes of each data set on the linear kernel and the Gaussian kernel. The results for the positive and negative classes are shown in Table III. From the results, it is easy to see that all of the data sets have the structural information. This structural information, i.e., the mean and covariance matrix for each cluster, can be computed directly after performing Ward’s hierarchical clustering. The classification accuracies of SMPM, MEMPM, MPM, and SLMM are summarized in Tables IV and V for the linear setting and the Gaussian kernel, respectively. From the tables, we can find that our SMPM demonstrates better performance
+than MPM in both the linear setting and the Gaussian kernel on all data sets. This is because all data sets more or less have the structural information (shown in Table III) even in the kernel space, as shown in Table III. SMPM is an improved version of MPM to incorporate the structural information of data. Thus, it is reasonable that the SMPM has better performance than MPM. From the tables, we also find that the SMPM has better performance than the MEMPM on some data sets, but not on all data sets. It is mainly because SMPM forces the worst case accuracies of all homogeneous clusters for two classes to be equal, which is proved unnecessary in [20]. However, MEMPM removes the equality constraint on the worst case accuracies for two classes. Thus, MEMPM may have better performance than SMPM. From the tables, we also find that the accuracy bounds, namely, α in SMPM, are increased in the Gaussian kernel, compared with the ones in the linear setting. This verifies the advantage of the kernelized SMPM over the linear SMPM. In addition, the results show that the SMPM has the similar performance with the SLMM. We further discuss this in the following paragraph. Fig. 5 shows the running time (in seconds) of SMPM, MPM, MEMPM, and SLMM on the Breast Cancer, Diabetes, and Spine data sets with the linear setting and the Gaussian kernel, respectively. The results demonstrate that our SMPM runs almost as fast as MPM and MEMPM in the linear setting, and a little slower than MPM and MEMPM in the Gaussian kernel. In particular, SMPM scales well with respect to the size of training set in the linear setting and the Gaussian kernel. This is because the complexity of SMPM depends on the dimensionality of a in (6) [or γ in (14)] and the number of clusters in the data set. The number of clusters in the data set is relatively stable with the increment of the size of the data set. Thus, the running time of SMPM in the linear setting
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+GU et al.: SMPM 1655
+Fig. 5. Running time of SMPM, MPM, MEMPM, and SLMM (in seconds) on three real-world data sets. (a) Breast Cancer data set. (b) Diabetes data set. (c) Spine data set.
+is steady, and the running time of SMPM with the Gaussian kernel scales well with respect to the size of the training set. The results also show that SLMM is the lowest one in both the linear setting and the Gaussian kernel, and does not scale well with respect to the size of the training set. Thus, SLMM must spend much more time to achieve the similar test accuracy with SMPM. If a data set is large and the computational time is limited, SMPM should be the first choice for classifying the data set with the structural information. In addition, SMPM can tell us how large the Bayesian accuracy can be under the worst case conditions, which is beyond the ability of SLMM.
+VI. CONCLUSION
+The structural information of data is vital for designing classifiers in real-world problems. In this paper, we proposed an improved version of MPM that can incorporate the structural information of data. In particular, we first used two finite mixture models to capture the structural information of both classes. For each subdistribution in a finite mixture model, only the mean and the covariance matrix are assumed to be known. Then, we proposed our SMPM based on the finite mixture models, which can be solved through a binary search procedure by solving a sequence of SOCP problems. Based on the linear model of SMPM, we further proposed a nonlinear SMPM model by exploiting kernelization techniques. Finally, we show that SMPM can be interpreted as a large margin classifier and can be transformed into SVM and M4 under certain special conditions. The experimental results on both the synthetic and real-world data sets demonstrate the effectiveness of SMPM. This paper mainly focuses on two-category classification. We believe that the structural information also exists in other learning tasks (e.g., one-class learning [15], [33], ordinalclass learning [31], [34], multiclass learning [35], [36], and so on). In the future, we plan to extend SMPM to one-class learning [15], [33], ordinal-class learning [31], [34], multiclass learning [35], [36], and other learning tasks. Although the binary search procedure can solve SMPM effectively, the running time is not fast enough especially when the training data size (or the feature size) is large. Thus, we hope to find more efficient ways to solve SMPM rather than binary searching. As mentioned in (3), SMPM forces the worst case
+accuracies for two classes to be equal. This constraint is unnecessary, which was proved in [20]. In the future, we plan to remove the equality constraint on the worst case accuracies for two classes, from SMPM, and apply the method to analyze the images of synthetic aperture radar [37] and vehicle [38].
+APPENDIX
+A. Proof of Theorem 1
+Proof: Assume that α∗ is the optimal worst case classification probability of (5) or (6). We first prove that α∗ of (6) is less than or equal to α∗ of (5). Based on this conclusion, we can prove that the optimal hyperplane of (5) can be determined by the optimization problem (6). To obtain that α∗ of (6) is less than or equal to α∗ of (5), we prove that the feasible space of (6) is included by the one of (5). Since x ̄1 = y ̄1, otherwise it contradicts with the linear separable assumption of SMPM. Thus, aT (x ̄1 − y ̄1) = 1 implies a = 0. Therefore, the feasible space of (6) is included by the one of (5). Assume that α, a, and b are the optimal solution of the optimization problem (5). It is easy to verify that α, (a/aT (x ̄1 − y ̄1)), and (b/aT (x ̄1 − y ̄1)) are not only a feasible solution of (6), but also the optimal solution of (6). Thus, the optimal hyperplane problem can be determined by the optimization problem (6). This completes the proof.
+B. Proof of Theorem 2
+Proof: Let α∗, a∗, and b∗ be the optimal solution of the optimization problem (6). Because κ(α) increases monotonically with α, it is easy to verify that a∗ and b∗ are also a feasible point of F (α) for all values of α with α < α∗. It means that F (α) is feasible for all values of α with α < α∗. Assume that F (α) is also feasible for a value of α with α > α∗. We can have that the optimization problem (6) has a less optimal objective, which contradicts the premise that α∗ is the optimal worst case classification probability. Thus, F (α) is infeasible for all values of α with α > α∗. This completes the proof.
+ACKNOWLEDGMENT
+The authors would like to thank the Editor and anonymous reviewers for their constructive comments and suggestions.
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.
+
+
+1656 IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS, VOL. 28, NO. 7, JULY 2017
+REFERENCES
+[1] M. A. T. Figueiredo and A. K. Jain, “Unsupervised learning of finite mixture models,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 24, no. 3, pp. 381–396, Mar. 2002. [2] I. Rish, “An empirical study of the naive Bayes classifier,” in Proc. IJCAI Workshop Empirical Methods AI, 2001, pp. 41–46.
+[3] L. R. Rabiner, “A tutorial on hidden Markov models and selected applications in speech recognition,” in Readings in Speech Recognition. San Francisco, CA, USA: Morgan Kaufmann, 1990, pp. 267–296. [4] V. N. Vapnik, Statistical Learning Theory. New York, NY, USA: Wiley, 1998.
+[5] C. M. Bishop, Neural Networks for Pattern Recognition. London, U.K.: Oxford Univ. Press, 1995. [6] C. E. Rasmussen and C. K. I. Williams, Gaussian Processes for Machine Learning. Cambridge, MA, USA: MIT Press, 2006. [7] J. A. Lasserre, “Hybrids of generative and discriminative methods for machine learning,” Ph.D. dissertation, Queens’ College, Univ. Cambridge, Cambridge, U.K., 2008. [8] B. A. Frigyik and M. R. Gupta, “Bounds on the Bayes error given moments,” IEEE Trans. Inf. Theory, vol. 58, no. 6, pp. 3606–3612, Jun. 2012. [9] S. Srivastava, M. R. Gupta, and B. A. Frigyik, “Bayesian quadratic discriminant analysis,” J. Mach. Learn. Res., vol. 8, pp. 1277–1305, Jun. 2007. [10] A. Epshteyn and G. DeJong, “Generative prior knowledge for discriminative classification,” J. Artif. Intell. Res., vol. 27, pp. 25–53, Dec. 2006. [11] G. J. McLachlan, Discriminant Analysis and Statistical Pattern Recognition. New York, NY, USA: Wiley, 2005. [12] E. Pe ̧kalska and B. Haasdonk, “Kernel discriminant analysis for positive definite and indefinite kernels,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 31, no. 6, pp. 1017–1032, Jun. 2009. [13] T. Hastie and R. Tibshirani, “Discriminant analysis by Gaussian mixtures,” J. Roy. Statist. Soc. B (Methodol.), vol. 58, no. 1, pp. 155–176, 1996. [14] Z. Halbe and M. Aladjem, “Regularized mixture discriminant analysis,” Pattern Recognit. Lett., vol. 28, no. 15, pp. 2104–2115, 2007. [15] G. R. G. Lanckriet, L. El Ghaoui, C. Bhattacharyya, and M. I. Jordan, “A robust minimax approach to classification,” J. Mach. Learn. Res., vol. 3, pp. 555–582, Mar. 2002. [16] T. Strohmann and G. Z. Grudic, “A formulation for minimax probability machine regression,” in Proc. Adv. Neural Inf. Process. Syst., 2002, pp. 769–776. [17] L. E. Ghaoui, M. I. Jordan, and G. R. Lanckriet, “Robust novelty detection with single-class MPM,” in Proc. Adv. Neural Inf. Process. Syst., 2002, pp. 905–912. [18] J. T. Kwok, I. W.-H. Tsang, and J. M. Zurada, “A class of singleclass minimax probability machines for novelty detection,” IEEE Trans. Neural Netw., vol. 18, no. 3, pp. 778–785, May 2007. [19] C. Bhattacharyya, “Second order cone programming formulations for feature selection,” J. Mach. Learn. Res., vol. 5, pp. 1417–1433, Dec. 2004. [20] K. Huang, H. Yang, I. King, M. R. Lyu, and L. Chan, “The minimum error minimax probability machine,” J. Mach. Learn. Res., vol. 5, pp. 1253–1286, Dec. 2004. [Online]. Available: https://www. cse.cuhk.edu.hk/irwin.king/software/mempm
+[21] S. Northcutt and J. Novak, Network Intrusion Detection: An Analyst’s Handbook, 3rd ed. Thousand Oaks, CA, USA: New Riders Publishing, 2002. [22] R. Plamondon and S. N. Srihari, “Online and off-line handwriting recognition: A comprehensive survey,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 22, no. 1, pp. 63–84, Jan. 2000. [23] E. Osuna, R. Freund, and F. Girosit, “Training support vector machines: An application to face detection,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), Jun. 1997, pp. 130–136.
+[24] D. S. Yeung, D. Wang, W. W. Ng, E. C. C. Tsang, and X. Wang, “Structured large margin machines: Sensitive to data distributions,” Mach. Learn., vol. 68, pp. 171–200, Aug. 2007. [25] H. Xue, S. Chen, and Q. Yang, “Structural regularized support vector machine: A framework for structural large margin classifier,” IEEE Trans. Neural Netw., vol. 22, no. 4, pp. 573–587, Apr. 2011. [26] J. F. Sturm, “Using SeDuMi 1.02, a MATLAB toolbox for optimization over symmetric cones,” Optim. Methods Softw., vol. 11, nos. 1–4, pp. 625–653, 1999. [27] K. Huang, H. Yang, I. King, and M. R. Lyu, “Learning large margin classifiers locally and globally,” in Proc. 21st Int. Conf. Mach. Learn. (ICML), New York, NY, USA, 2004, p. 51.
+[28] B. Schölkopf and A. J. Smola, Learning With Kernels—Support Vector Machines, Regularization, Optimization, and Beyond. Cambridge, MA, USA: MIT Press, 2001. [29] J. H. Ward, Jr., “Hierarchical grouping to optimize an objective function,” J. Amer. Statist. Assoc., vol. 58, no. 301, pp. 236–244, 1963. [30] S. Salvador and P. Chan, “Determining the number of clusters/segments in hierarchical clustering/segmentation algorithms,” in Proc. 16th IEEE Int. Conf. Tools Artif. Intell. (ICTAI), Nov. 2004, pp. 576–584.
+[31] B. Gu, V. S. Sheng, K. Y. Tay, W. Romano, and S. Li, “Incremental support vector learning for ordinal regression,” IEEE Trans. Neural Netw. Learn. Syst., vol. 26, no. 7, pp. 1403–1416, Jul. 2015. [32] A. Frank and A. Asuncion. (2010). UCI Machine Learning Repository. [Online]. Available: http://archive.ics.uci.edu/ml [33] F. Dufrenois “A one-class kernel Fisher criterion for outlier detection,” IEEE Trans. Neural Netw. Learn. Syst., vol. 26, no. 5, pp. 982–994, May 2015. [34] B. Gu, J.-D. Wang, and T. Li, “Ordinal-class core vector machine,” J. Comput. Sci. Technol., vol. 25, no. 4, pp. 699–708, Jul. 2010. [35] C.-W. Hsu and C.-J. Lin, “A comparison of methods for multiclass support vector machines,” IEEE Trans. Neural Netw., vol. 13, no. 2, pp. 415–425, Mar. 2002. [36] P. González et al., “Multiclass support vector machines with exampledependent costs applied to plankton biomass estimation,” IEEE Trans. Neural Netw. Learn. Syst., vol. 24, no. 11, pp. 1901–1905, Nov. 2013. [37] H. Zhang, Q. M. J. Wu, T. M. Nguyen, and X. Sun, “Synthetic aperture radar image segmentation by modified Student’s t-mixture model,” IEEE Trans. Geosci. Remote Sens., vol. 52, no. 7, pp. 4391–4403, Jul. 2014. [38] X. Wen, L. Shao, W. Fang, and Y. Xue, “Efficient feature selection and classification for vehicle detection,” IEEE Trans. Circuits Syst. Video Technol., vol. 25, no. 3, pp. 508–517, Mar. 2015.
+Bin Gu (M’08) received the B.S. and Ph.D. degrees in computer science from the Nanjing University of Aeronautics and Astronautics, Nanjing, China, in 2005 and 2011, respectively. He joined the School of Computer and Software, Nanjing University of Information Science and Technology, Nanjing, in 2010, as a Lecturer. He was promoted to Associate Professor in 2014. He was a Post-Doctoral Fellow with the University of Western Ontario, London, ON, Canada, from 2013 to 2015. His current research interests include machine learning, data mining, and medical image analysis.
+Xingming Sun (SM’07) received the B.S. degree in mathematics from Hunan Normal University, Changsha, China, in 1984, the M.S. degree in computing science from the Dalian University of Science and Technology, Dalian, China, in 1988, and the Ph.D. degree in computer science from Fudan University, Shanghai, China, in 2001. He is currently a Professor with the College of Computer and Software, Nanjing University of Information Science and Technology, Nanjing, China. His current research interests include network and information security, digital watermarking, cloud computing security, and wireless network security.
+Victor S. Sheng (SM’14) received the Ph.D. degree in computer science from the University of Western Ontario, London, ON, Canada, in 2007. He was an Associate Research Scientist and an NSERC Post-Doctoral Fellow in information systems with the Stern Business School, New York University, New York, NY, USA. He is currently an Assistant Professor with the Department of Computer Science, University of Central Arkansas, Conway, AR, USA, and the Founding Director of the Data Analytics Laboratory. His current research interests include data mining, machine learning, and related applications. Prof. Sheng is a member of the IEEE Computer Society. He is a PC Member for a number of international conferences and a Reviewer for several international journals. He received the Best Paper Award Runner-Up from KDD in 2008, and the best paper award from ICDM in 2011.
+Authorized licensed use limited to: University of Massachusetts Amherst. Downloaded on March 21,2024 at 15:49:37 UTC from IEEE Xplore. Restrictions apply.

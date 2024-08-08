@@ -1,0 +1,419 @@
+Lawrence Berkeley National Laboratory LBL Publications
+Title
+Computational Screening of Nanoporous Materials for Hexane and Heptane Isomer Separation
+Permalink
+https://escholarship.org/uc/item/88k268r1
+Journal
+Chemistry of Materials, 29(15)
+ISSN
+0897-4756
+Authors
+Chung, Yongchul G Bai, Peng Haranczyk, Maciej et al.
+Publication Date 2017-08-08
+DOI
+10.1021/acs.chemmater.7b01565
+Peer reviewed
+eScholarship.org Powered by the California Digital Library University of California
+
+
+Computational Screening of Nanoporous Materials for Hexane and Heptane Isomer Separation
+Yongchul G. Chung,†,§,■ Peng Bai,⊥,■ Maciej Haranczyk,# Karson T. Leperi,† Peng Li,‡
+Hongda Zhang,† Timothy C. Wang,‡ Tim Duerinck,†,∥ Fengqi You,□ Joseph T. Hupp,‡,●
+Omar K. Farha,‡,▽ J. Ilja Siepmann,*,⊥,¶ and Randall Q. Snurr*,†
+†Department of Chemical and Biological Engineering and ‡Department of Chemistry, Northwestern University, Evanston, Illinois 60208, United States
+§School of Chemical and Biomolecular Engineering, Pusan National University, 46241 Busan, South Korea
+⊥Department of Chemical Engineering and Materials Science and ¶Department of Chemistry and Chemical Theory Center, University of Minnesota, Minneapolis, Minnesota 55455, United States
+#Computational Research Division, Lawrence Berkeley National Laboratory, One Cyclotron Road, MS 50F-1650, Berkeley, California 94720, United States
+∥Department of Chemical Engineering, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Elsene, Belgium
+□Robert Frederick Smith School of Chemical and Biomolecular Engineering, Cornell University, Ithaca, New York 14853, United States
+●Materials Science Division, Argonne National Laboratory, 9700 South Cass Avenue, Argonne, Illinois 60439, United States
+▽Department of Chemistry, Faculty of Science, King Abdulaziz University, Jeddah 22254, Saudi Arabia
+*
+S Supporting Information
+ABSTRACT: Computational high-throughput screening was carried out to assess a large number of experimentally reported metal−organic frameworks (MOFs) and zeolites for their utility in hexane isomer separation. Through the work, we identified many MOFs and zeolites with high selectivity (SL+M > 10) for the group of n-hexane, 2-methylpentane, and 3methylpentane (linear and monobranched isomers) versus 2,2dimethylbutane and 2,3-dimethylbutane (dibranched isomers). This group of selective sorbents includes VICDOC (Fe2(BDP)3), a MOF with triangular pores that is known to exhibit high isomer selectivity and capacity. For three of these structures, the adsorption isotherms for a 10-component mixture of hexane and heptane isomers were calculated. Subsequent simulations of column breakthrough curves showed that the DEYVUA MOF exhibits a longer process cycle time than VICDOC MOF or MRE zeolite, which are previously reported, high-performing materials, illustrating the importance of capacity in designing MOFs for practical applications. Among the identified candidates, we synthesized and characterized a MOF in a new copper form with high predicted adsorbent capacity (qL+M > 1.2 mol/L) and
+moderately high selectivity (SL+M ≈ 10). Finally, we examined the role of pore shape in hexane isomer separations, especially of triangular-shaped pores. We show through the potential energy surface and three-dimensional siting analyses that linear alkanes do not populate the corners of narrow triangular channels and that structures with nontriangular pores can efficiently separate hexane isomers. Detailed thermodynamic analysis illustrates how differences in the free energy of adsorption contribute to shapeselective separation in nanoporous materials.
+■
+INTRODUCTION
+Hexane isomers differ significantly in their research octane number (RON), with the two dibranched isomers having the best ratings and the linear isomer having the lowest. Similar differences are also found for heptane isomers, but the increase in the carbon number leads to a downward shift in the RON compared to the hexane isomers. A viable strategy to upgrade hexane mixtures produced from oil refineries is to separate the dibranched species from the linear or monobranched ones, followed by isomerization of the latter. However, the separation of hexane isomers is an extremely challenging task because the
+vapor pressures and polarizabilities of the isomers are very close, leaving conventional techniques (such as distillation) ineffective for this purpose. Alternatively, the separation of hexane isomers could be achieved using solid adsorbents by exploiting the differences in their degrees of branching, which could create differences in the adsorption strengths of these molecules inside the solid adsorbent materials. Current
+Received: April 16, 2017 Revised: July 5, 2017 Published: July 5, 2017
+Article
+pubs.acs.org/cm
+© 2017 American Chemical Society 6315 DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+This is an open access article published under an ACS AuthorChoice License, which permits copying and redistribution of the article or any adaptations for non-commercial purposes.
+
+
+adsorptive separation technologies (e.g., those using zeolites) can only differentiate linear alkanes from mono- and dibranched alkanes, but the desired operation is to efficiently separate the dibranched isomers from both linear and monobranched alkanes. Metal−organic frameworks (MOFs) are a class of porous crystalline solids that are self-assembled by combining metal
+salts and organic linkers.1−5 They are promising for applications
+ranging from gas storage and separations6 to chemical sensing7
+and catalysis.8 MOFs are tunable materials in that the shape and size of their interior pores can be engineered with unprecedented precision by choosing a suitable combination of building blocks for the synthesis. Because of this versatility, MOFs with channels of many distinct types have been synthesized and reported in the literature. Recently, Long and co-workers demonstrated that Fe2(BDP)3 (denoted as
+VICDOC in the Cambridge Structural Database, BDP2− = 1,4-benzenedipyrazolate), a MOF with one-dimensional, triangular-shaped channels, can perform the hexane isomer
+separation with high specificity and capacity.9 They suggested that MOFs are advantageous for isomer separation because they “offer pore geometries that are not available in zeolites or other porous materials, facilitating distinct types of shape-based molecular separation”. Their experimental breakthrough measurements show an efficient separation of an equimolar mixture of hexane isomers (and also heptane isomers) based on their degree of branching. In comparison to previous computational screening of nearly 100 MOFs and zeolites by
+Dubbeldam and co-workers,10 Fe2BDP3 exhibits the highest selectivity and very good capacity. Krishna and co-workers have investigated the hexane isomer separation performance in five
+selected zeolite structures using molecular simulation,11 and Denayer and co-workers have investigated C5−C8 alkane separation performance in Zeolite Beta, ZSM-5, ZSM-22,
+Zeolite Y, and Mordenite using experimental techniques.12 Peralta and co-workers have reported a new inorganic/organic hybrid solid called IM-22, which can separate monobranched
+isomers from dibranched isomers under dynamic conditions.13 However, the vast majority of MOFs and zeolites have not been examined for hexane isomer separation, which creates the opportunity to discover sorbent materials with even higher selectivity and capacity than Fe2BDP3, but it is challenging to test, experimentally or computationally, all known MOFs and zeolites. High-throughput computational screening has previously been used to examine MOFs and zeolites for gas storage and chemical separations applications but is usually limited to small, rigid molecules as encountered in greenhouse gas sequestra
+tion,14,15 methane or hydrogen storage applications,16,17 or Xe/
+Kr separations.18,19 Recently, Bai and co-workers used largescale computational resources to screen zeolites for the separation of linear and branched alkanes in the diesel and lubricant range (with 18−30 carbon atoms) and for ethanol
+purification from aqueous solution.20 In this report, we carried out high-throughput computational screening under industrially relevant conditions to quickly identify new adsorbent materials for hexane isomer separation, and we performed detailed calculations to elucidate the role of channel shape in the separation. To identify top-performing materials with established synthesis protocols, which can accelerate the experimental realization of materials that are identified through computational screening, molecular simulations were carried out on databases containing experimentally
+determined structures of MOFs and zeolites, namely the Computation-Ready, Experimental (CoRE) MOF database
+Version 1.0,21 and the International Zeolite Association
+(IZA)22 database, respectively. The computational screening was carried out in two stages: first, the Henry’s law constants of the five hexane isomers were computed using Widom particle insertions for 5109 CoRE MOFs and 402 IZA zeolites; second, configurational-bias sampling grand canonical Monte Carlo (CB-GCMC) simulations were carried out for the subset of structures with Henry’s region isomer selectivity greater than 10 and pores with a diameter larger than 4 Å (to ensure that the structures allow for diffusion of hexane isomers into and out of the materials). Column breakthrough simulations were subsequently carried out to compare high-performing sorbent materials discovered from the CB-GCMC simulations. We also tested the validity of the design rule suggested by Long and coworkers regarding triangular channels. They suggested that linear hexane molecules can more easily “wedge along the triangular corners of the structure” than the branched isomers can, leading to preferential adsorption of less branched isomers. However, our results show that the pores of Fe2BDP3 are too small to allow molecules into the acute corners and that nontriangular pores can also display high selectivity for linear and monobranched hexane isomers over dibranched species. Our analysis also shows that the free energy of adsorption of the isomers calculated at low loading can be used as a descriptor for future design and screening of adsorbent
+materials for separation of hexane and other alkane isomers.
+■
+METHODS
+Crystal Structures. Crystal structures for the simulations were collected from the CoRE MOF database 1.0 and the IZA database, which contain 5109 known MOFs and 402 zeolite structures, respectively. Each crystal structure from the CoRE MOF database has a unique identifier, called a REFCODE, assigned by the Cambridge Crystallographic Data Centre (CCDC), whereas the crystal structures from the IZA database are labeled with a threecapital letter structure code assigned by the IZA, based on the rules set
+up by an IUPAC Commission on Zeolite Nomenclature.23 Note that the total number of structures in the IZA is larger than the total number of known zeolite structure types (225 to date) because the database includes zeolite structures that have been experimentally determined as well as idealized structures. A numerical suffix of zero is assigned to the idealized structures, and a suffix greater than zero is assigned to experimentally determined zeolite structures of the same natural tiling (e.g., MRE-0 is an idealized zeolite and MRE-1 is an experimentally determined zeolite structure). The pore limiting diameter (PLD) and gravimetric surface area (GSA) were computed
+for all structures using the Zeo++ open source program.24,25 Computational Model. Each of the ten alkane isomers was represented by a group of six or seven united atoms (UA) where the intra- and intermolecular interaction parameters were taken from the
+TraPPE-UA force field.26 The Universal Force Field (UFF)27 and
+TraPPE-zeo force field28 were used to model the framework atoms in the MOFs and zeolites, respectively. The van der Waals (vdW) interactions were modeled using the Lennard−Jones (LJ) 12−6 potential:
+σσ
+=ε −
+⎡
+⎣
+⎢⎢
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+⎤
+⎦
+⎥⎥
+V rr
+4
+ij ij
+ij
+ij
+ij
+ij
+12 6
+(1)
+where rij is the distance between sites i and j, and σ and ε are the LJ
+well-depth and size parameters. LJ parameters for sites of different
+types were computed using the Lorentz−Berthelot29 combining rules. Adsorbate−adsorbate and adsorbate−zeolite interactions were truncated at 14 Å with analytical tail-corrections applied for interactions
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6316
+
+
+beyond this cutoff distance (per the prescriptions of the corresponding force fields), while adsorbate-MOF interactions were truncated at 12.8
+Å for consistency with previous work.21 Simulation cells were expanded to include multiple unit cells of the sorbent when needed to follow the minimum image convention with respect to the vdW cutoff distances. The zeolites were modeled as all-silica structures: P and Al atoms in IZA structures were modeled with the same LJ parameters as Si atoms since they surround Si in the same row of the periodic table. All framework atoms were held fixed during the simulations. Computational Methods. Configurational-bias Monte Carlo
+simulations in the grand canonical ensemble (CB-GCMC)26,30,31 were carried out to compute the single component isotherms for each
+hexane isomer at p = 10−5, 10−4, 10−3, 10−2, 10−1, 1, 10, and 100 bar at T = 433 K and the uptake of an equimolar five-component mixture at ptot = 1 bar and T = 433 K. The chemical potentials used as inputs for the simulations were determined from separate calculations in the isobaric−isothermal (NpT) ensemble. In addition to center-of-mass translations and rigid-body rotations, the coupled-decoupled config
+urational-bias Monte Carlo algorithm26 was used to sample the conformational degrees of freedom as well as for GCMC insertion/ deletion moves. Molecule-type identity switches were used to enhance
+sampling for the mixtures.32 200 000 MC steps were used for each state point along the single-component isotherms, while 1.6 × 106 MC steps were used for the mixture simulations using MCCCS-MN
+software.33 Henry’s law constants for each compound in all adsorbent structures were calculated using the Widom particle insertion
+method34 with the configurational-bias algorithm. Averages were obtained from 100 000 trial insertions using the RASPA 1.8.5
+software.35 Screening Procedure. Two filtering criteria were used to reduce the total number of structures for CB-GCMC simulations to a smaller set: first, the pore limiting diameter (PLD) of the structure should be larger than 4 Å, which is slightly larger than the van der Waals diameter of methane (3.8 Å); second, the selectivity based on the ratio of Henry’s law constants should be larger than 10, or less than 0.1. The selectivities for linear and monobranched hexane isomers from CBGCMC simulations and Widom particle insertion simulations are defined here as follows:
+=
+++
++
++
+⎜⎟
+⎜⎟
+⎜ ⎟⎜ ⎟
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+⎛ ⎝
+⎞ ⎠
+⎛ ⎝
+⎞ ⎠ ⎛ ⎝
+⎞ ⎠
+⎛ ⎝
+⎞ ⎠
+S
+q p
+q p
+q p
+q p
+q p
+LM
+nC
+nC
+MP
+MP
+MP
+MP
+DMB
+DMB
+DMB
+DMB
+6
+6
+2
+2
+3
+3
+22
+22
+23
+23 (2)
+= ++
++
+S+ K K K
+KK
+2 3
+()
+()
+H nC H MP H MP
+H DMB H DMB
+L M,Henry
+, 6 ,2 ,3
+,22 ,23 (3)
+where qi is the loading of component i for a given partial pressure of
+the component, pi, during GCMC simulations and KH,i is the Henry’s
+law constant for component i. The selectivities defined in this manner (SL+M > 1) correspond to a normal hierarchy, where the linear molecule adsorbs preferentially, then the monobranched isomers, and
+the lowest adsorption is for dibranched molecules.10 Some structures exhibit a reverse hierarchy (SL+M < 1), where the dibranched isomers are preferentially adsorbed over monobranched and linear molecules. Structures with normal adsorption hierarchy are more desirable from the operational perspective of the separation unit since the adsorption selectivity and the diffusional selectivity complement one another, that is, n-hexane isomer adsorbs more strongly and diffuses faster through the channel system. For simplicity, we rank the materials based on the selectivity defined based on the normal hierarchy in adsorption in this work. On the basis of these two criteria, we created a short list of CoRE MOF and IZA zeolite structures (318 CoRE MOFs and 183 IZA zeolites) for which we carried out detailed CB-GCMC simulations. Breakthrough Simulation. Column breakthrough simulations were carried out for selected nanoporous materials based on the GCMC simulation results to compare their potential for industrial separation applications. For breakthrough simulations, we assumed
+plug-flow conditions of the five-component mixtures through a fixedbed under isothermal conditions. The local partial pressure of each component, along with the total pressure of the column, was calculated
+using the following partial differential equations:36,37
+νε
+ερ
+∂
+∂ = −∂
+∂− − ∂
+∂
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+p p RT q
+tt
+()
+z
+1
+ii i
+(4)
+∑
+νε
+ερ
+∂
+∂ = −∂
+∂−− ∂
+∂
+=
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+P P RT q
+tt
+() z
+1
+i
+n i
+1
+comp
+(5)
+where t is the time, z is the axial position along the adsorbing bed, ν is the interstitial velocity, pi is the partial pressure of component i, P is
+the total pressure, ε is the bed void fraction, ρ is the crystal density of sorbent, and qi is the loading of component i. The interstitial velocity is
+calculated using Darcy’s equation:
+με ε
+∂
+∂= −
+⎜⎟
+⎛ ⎝
+⎞ ⎠
+P
+zr v
+150 4( )
+1
+p
+2
+2
+(6)
+where rp is the particle radius, and μ is the fluid viscosity. The linear driving force model is used to describe the uptake into the sorbent materials:
+∂
+∂ = *−
+q
+t k (q q )
+i
+i i i (7)
+where ki is the mass-transfer coefficient for component i, and qi* is the equilibrium loading of component i at the local bulk gas partial pressures. Equilibrium loadings under multicomponent conditions
+were calculated using the Ideal Adsorbed Solution Theory (IAST)38 with single-component isotherms from GCMC as inputs. Further information about the breakthrough simulations is provided in the
+Supporting Information Section 3.
+■
+RESULTS AND DISCUSSION
+Selectivities for a five-component equimolar mixture of hexane isomers were computed for 318 CoRE MOFs and 183 IZA zeolites. Figure 1a compares the selectivities at T = 433 K obtained from the Widom particle insertion calculations against those from CB-GCMC mixture simulations at Ptotal = 1 bar for both CoRE MOF and IZA structures. Thirty out of 318 CoRE MOF structures did not adsorb dibranched isomers, in which case we assigned an arbitrary value of selectivity of 106. Most structures from both databases show good agreement between SL+M and SL+M Henry, covering a very wide range of isomer
+selectivities. The selectivity based on the ratio of Henry’s law constants (SL+M Henry) overpredicts the selectivity based on the CB-GCMC simulations (SL+M) by at least an order of magnitude for 10% of the CoRE MOF structures (31 out of 318). For zeolites, the correlation between SL+M Henry and SL+M
+is significantly better. There are several potential reasons for the discrepancies between the two selectivities: (i) adsorbate− adsorbate interactions could dominate at the state point of interest (1 bar and 433 K), and (ii) there could be different Henry’s regimes (different pressure ranges) for different adsorbate molecules. A detailed discussion is provided in the Supporting Information Section S4. Experimental measurement of mixture isotherms is challenging; therefore, a common approach is to use the IAST to estimate the mixture isotherms based on experimentally measured single-component isotherms as inputs. To validate if this common approach is applicable for a wide range of selectivities and materials, the five-component mixture selectivities based on IAST (SIAST L+M) were calculated for 63 CoRE MOFs and 12 IZA zeolites using the single component isotherms obtained from CB-GCMC simulations. The
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6317
+
+
+structures were chosen so that the data set covers the entire range of isomer selectivity investigated in this work. As illustrated in Figure 1b, the selectivities obtained from IAST show very good agreement with the SL+M values computed from CB-GCMC simulations. At high isomer selectivity, we see some deviation between the IAST prediction and the CB-GCMC simulation results. There could be various reasons for the failure of IAST to predict mixture selectivity obtained from direct mixture simulation, but one such reason is an inaccurate estimation of the saturation loading of hexane isomers from simulation. For example, saturation loading is not reached for the dibranched isomers in CAN-1 even at 100 bar, which leads to large uncertainty in the saturation loading values used in the dual-site Langmuir model. We determined that the uncertainties in the saturation loading are primarily responsible for the large deviations between SL+M and SL+M, IAST for some structures in Figure 1 (see Supporting Information Section 5 for more detailed discussion).
+Another metric for the separation performance of an adsorbent is its capacity. In Figure 2, we plot the isomer selectivities as a function of gravimetric and volumetric capacity of the normal and monobranched isomers. Here, the capacity of adsorbent is defined as
+=++
+q+ q q q
+3
+LM
+nC6 2MP 3MP
+(8)
+where qi denotes the gravimetric or volumetric uptake of isomer i. From the results presented in Figure 2, it appears that the structures that exhibit high selectivity generally have low capacity, that is, there is a trade-off between isomer selectivity and capacity. This is expected because the structures with higher capacity are the ones with larger pores, and a significant portion of the space in large pores (e.g., away from the pore walls) does not provide selective adsorption. We note, however, that there are MOFs and zeolites that can separate hexane isomers based on size-exclusion, where dibranched isomers are not adsorbed inside the pore at all due to size-restriction. The lists of MOFs and zeolites that can size-exclude dibranched
+Figure 1. Comparison between hexane isomer selectivities (T = 433 K and piso = 0.2 bar for each of the five isomers) predicted by three
+approaches differing in computational expense. (a) Selectivity based on the ratio of Henry’s law constants (SL+M,Henry) versus selectivity
+from a five-component CB-GCMC simulation (SL+M); (b) selectivity from IAST calculations based on pure-component CB-GCMC simulations (SL+M IAST) versus SL+M. Blue and red data points denote CoRE MOFs and IZA zeolites, respectively. Magenta diamonds and squares highlight VICDOC (Fe2BDP3) and DEYVUA, respectively. Yellow diamonds and squares highlight SVR-1 and MRE-1, respectively. Structures that show no uptake of both dibranched hexane isomers are assigned an arbitrary value of 106.
+Figure 2. Mixture selectivities (SL+M) from CB-GCMC simulations as a function of: (a) gravimetric capacity, qL+M (mol/kg); (b) volumetric capacity, qL+M (mol/L). Blue and red data points denote CoRE MOFs and IZA zeolites, respectively. Magenta diamonds and squares highlight VICDOC (Fe2BDP3) and DEYVUA, respectively. Yellow diamonds and squares highlight SVR-1 and MRE-1, respectively. Data points with SL+M = 106 do not adsorb dibranched isomers.
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6318
+
+
+isomers and their corresponding linear and monobranched uptake at 433 K are provided in the Supporting Information Section 6. Although separation based on the size-exclusion principle is the most straightforward way to separate the isomers, the main drawbacks of MOFs and zeolites that can size-exclude dibranched isomers are their limited capacity and, likely, slow uptake for linear and, particularly, monobranched isomers. For example, when we examined all the MOFs and zeolites that show separation based on size-exclusion of dibranched isomers, we found that the capacity of these sorbent materials (as defined in eq 8) arises primarily from uptake of linear alkanes with only a minor contribution from the uptake of monobranched isomers. See Tables S5 and S6. Top-Performing Zeolites. The results for zeolites with high selectivity and volumetric capacity values greater than 0.1 mol/L are listed in Table 1. Our computational approach can
+correctly identify the observed trends from experiments for hexane isomer separation in well-known zeolites. For example, experimental measurements show that MFI zeolite (ZSM-5)
+can selectively adsorb linear hexane isomers over dibranched
+hexane isomers,39 and our calculation results show that MFI-1 selectively adsorbs linear and monobranched hexane isomers over dibranched hexane isomers. Denayer and co-workers
+reported reverse selectivity of MWW (MCM-22),40 and our simulation also correctly shows the reverse selective trend in MWW-0. CFI-type zeolite (CIT-5) has been patented by
+Chevron for its reverse selective nature,41 and our simulation predictions show the reverse selectivity in this material as well. More importantly, our computational approach was able to identify a few less well-known zeolites with significantly higher hexane isomer selectivity (and for some zeolites, higher
+capacity) than MFI. ATO (AlPO4-31), MRE (ZSM-48),42,43
+CAN, SVR (SSZ-7444), and STW (SU-32)45 are zeolites that show higher hexane isomer selectivity. Among the highperforming zeolites, MRE has been experimentally tested for its shape selective capability between n-hexane and one of the
+dibranched isomers (2,2-dimethylbutane)39 and was also identified by Bai and co-workers as a top candidate for separating linear and branched alkanes for a hydroisomerization
+process.20 Our computational screening shows that MRE is an excellent candidate for the hexane isomer separation as well. ATO is a zeolite with one-dimensional 12-ring pores, first
+reported in 1992.46 The structure has not been tested for alkane separation. CAN-1 is a zeolite first reported by Linus Pauling in
+193047 and has not been investigated for hexane isomer separation. The other two high-performing zeolites are SVR and STW. To the best of our knowledge, these zeolites have not been tested for hexane isomer separation, partly because SVR and STW are relatively recent additions to the family of
+zeolites (both first reported in 2008).44,45 Given the excellent agreement between experiment and simulation trends for hexane isomer separation observed in other zeolites (e.g., MFI, MWW, and CFI), we anticipate that experimental synthesis and testing of these high-performing zeolites will lead to useful results.
+Table 1. Selected Zeolitesa
+framework type code SL+M qL+M (mol/kg) qL+M (mol/L)
+ATO-1 6800 (1500) 0.195 (0.001) 0.370 (0.002) MRE-1 5200 (3500) 0.169 (0.001) 0.335 (0.001) CAN-1 1170 (190) 0.209 (0.001) 0.355 (0.002) SVR-1 46 (4) 0.296 (0.004) 0.517 (0.006) STW-0 40.4 (1.9) 0.279 (0.004) 0.456 (0.007) MFI-1 5.2 (0.2) 0.216 (0.005) 0.388 (0.008) BEA-1 1.53 (0.04) 0.350 (0.003) 0.528 (0.005) MWW-0 0.837 (0.21) 0.205 (0.003) 0.326 (0.006) CFI-1 0.295 (0.007) 0.073 (0.001) 0.133 (0.002)
+aSL+M, qL+M results are obtained from CB-GCMC simulations. Values in parentheses are the standard errors of the mean from 16 block averages from CB-GCMC simulation.
+Table 2. Selected CoRE MOFs with SL+M > 10 and qL+M > 0.60 mol/kga
+CSD REFCODEb SL+M qL+M (mol/kg) qL+M (mol/L)
+experimental gravimetric surface area from
+literature (m2/g)
+gravimetric surface area calculated using
+geometric probe (m2/g)
+LIFWOO48 >106 0.75 (0.007) 0.808 (0.008) -c 765 HICVOG49 >106 0.723 (0.005) 0.909 (0.006) 370 669 VICDOC
+(Fe2(BDP)3)9 830 (260) 0.636 (0.008) 0.729 (0.010) 1230 499
+XUNGUJ50 213 (66) 0.637 (0.005) 0.659 (0.005) 190 760 AFITEP51 78.4 (20.5) 0.809 (0.011) 0.865 (0.012) 200d 840 UFATEA0152 50.1 (7.8) 0.647 (0.007) 0.790 (0.008) 178 540 CIVTEH53 38.4 (6.56) 0.674 (0.008) 0.715 (0.009) 268 787 OHAKIS54 34.7 (10.2) 0.661 (0.015) 0.811 (0.018) -c 650 BIFKEI55 29.6 (2.67) 0.855 (0.016) 0.873 (0.016) 28 1371 NEJSOM56 28.2 (4.85) 0.675 (0.011) 0.757 (0.012) -c 1051 HEKTAU57 22.4 (3.45) 0.740 (0.013) 0.827 (0.015) 151 983 GAYGAQ58 21.4 (2.69) 0.631 (0.008) 0.835 (0.011) 314 676 ULUVUT59 14.7 (0.94) 0.698 (0.011) 0.802 (0.013) 355 1205 DEYVUA60 12.5 (0.51) 1.246 (0.011) 1.198 (0.011) 403 1940 IXURID61 11.6 (1.54) 0.724 (0.015) 0.833 (0.017) -c 1034 EZUCIM62 10.4 (1.04) 0.852 (0.014) 0.855 (0.013) 870 1238
+aSL+M and qL+M data are obtained from CB-GCMC simulations. Experimental surface areas are taken from the literature, and geometric surface areas
+are computed using Zeo++ with high-accuracy setting (-ha flag) and hard sphere probe with diameter of 3.68 Å (comparable to the van der Waals
+diameter of N2). Structures that do not adsorb di-branched isomers are assigned an arbitrary selectivity of >106. bCSD REFCODEs of structures
+without experimental gas sorption data are listed in the Supporting Information Section S7 (Table S7). cThe original paper reports gas sorption data
+but does not report BET or Langmuir surface area. dLangmuir surface area calculated based on CO2 adsorption at 273 K.
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6319
+
+
+Top-Performing CoRE MOFs. The computational screening was also able to identify high-performing MOFs that can discriminate between monobranched isomers and dibranched isomers with relatively high value of qL+M. MOFs are generally more porous (higher void fraction) than zeolites and thus have relatively higher values of qL+M than zeolites, which can be important from the process configuration perspective. Highperforming CoRE MOFs and their physical properties are listed in Table 2. Note that the majority of the MOFs in the table have calculated gravimetric surface areas that are significantly higher than experimental surface areas (except for Fe2BDP3). The differences are largely due to incomplete activation of MOF pores.63 One of top-performing CoRE MOFs from the
+list is VICDOC (chemical formula: Fe2(BDP)3), which has been recently reported by Long and co-workers for its exceptional hexane isomer selectivity (SL+M ≈ 2,000) and
+high capacity (qL+M ≈ 0.67 mol/kg).9 It is encouraging that our screening procedure could identify this MOF as having high hexane isomer selectivity (SL+M ≈ 830) and capacity (qL+M ≈ 0.64 mol/kg). Note that two of the structures listed in Table 2 are not able to adsorb dibranched isomers due to size restriction (i.e., pores are too small for dibranched isomer to fit), so the separation between mono- and dibranched isomers occurs based on size-exclusion of dibranched isomers. In theory, MOFs that can separate monobranched isomers from dibranched isomers via size-exclusion of dibranched isomers are
+Figure 3. Visualization of high-performing adsorbent materials for hexane isomer separation: (a) DEYVUA, (b) VICDOC, and (c) MRE-1. Black spheres are carbon atoms, white spheres are hydrogen atoms, red spheres are oxygen atoms, blue spheres are nitrogen atoms, purple spheres are either zinc (for panel a) or iron (for panel b) atoms, and yellow spheres are silicon atoms; (d−f) visualization of pore networks of DEYVUA, VICDOC, and MRE-1 with the probe diameter of 4, 3, and 4 Å, respectively; (g−i) visualization of the pore networks of DEYVUA, VICDOC, and
+MRE-1 from different angles, respectively. The poreblazer program was used to visualize the pore networks.64
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6320
+
+
+highly desirable. However, MOFs and zeolites that can sizeexclude dibranched isomers do not adsorb enough monobranched isomers, and therefore, we focus our efforts on identifying MOFs that can separate hexane isomers based on the competitive adsorption between mono- and dibranched isomers. By focusing on these MOFs, we can assess the connection between the channel shape and selectivity. Among the top candidate MOFs in Table 2, DEYVUA is an attractive synthetic target for practical applications because the gravimetric and volumetric capacities of this MOF exceed 1.0 mol/kg and 1.0 mol/L, respectively, which is almost double the capacity of VICDOC. From the CB-GCMC simulations, we find that the hexane isomer selectivity in this MOF is above 10, which is considered good.
+Pore Networks in High-Performing Structures. On the basis of CB-GCMC simulations, we chose three adsorbent structures (2 MOFs and 1 zeolite) and visualized the pore networks of these high-performing structures (Figure 3). The visualization shows that the pores in DEYVUA are highly interconnected, whereas the pores in VICDOC and MRE-1 are one-dimensional and relatively straight.
+Additional CB-GCMC Calculations. To further investigate the general alkane isomer separation capability of highperforming nanoporous materials investigated in this work, we carried out CB-GCMC simulations to model an equimolar 10-component mixture of C6 and C7 isomers for the pressure range from 1 Pa to 1 000 000 Pa at 433 K. One structure from the IZA (MRE-1) and one structure from the CoRE MOF database (DEYVUA) were chosen because these sorbent materials have a good combination of selectivity and capacity, and simulations were carried out for VICDOC as a comparison. Figure 4 shows that DEYVUA, VICDOC, and MRE-1 can effectively distinguish different branched isomers based on the degree of branching for both C6 and C7 isomers. In general, the adsorption isotherm for the C7 isomers is shifted upward compared to the corresponding C6 isomer at the same absolute pressure (but different reduced pressure compared to their saturated vapor pressures). Of these three structures, Fe2(BDP)3 and MRE-1 show a better preferential sorption of the linear and monobranched isomers over the dibranched
+isomers. For VICDOC, the uptakes within the group of the four monobranched isomers and the group of the four dibranched isomers are similar, whereas the uptakes within these two groups are more spread out for MRE-1.
+Breakthrough Simulations. We carried out column breakthrough simulations to compare the performance of adsorbent materials with different values of selectivity and capacity and to understand how the trade-off between these metrics affects the overall performance. The column breakthrough simulations were performed with the single-component isotherms obtained from the CB-GCMC simulations as inputs, and constant values of feed velocity, void fraction of bed, and bed length were used for fair comparison among different adsorbent materials (see Section S3 for more details). We have also used the same value of diffusion coefficient for different adsorbent materials for a given hexane isomer species. Mixture thermodynamics was calculated using IAST. The column breakthrough simulation results (Figure 5a−c) demonstrate that DEYVUA can efficiently separate hexane isomers based on their degree of branching; the dibranched isomers elute after 40 s, followed by the monobranched species eluting after 400 and 500 s for 3MP and 2MP, respectively, and n-hexane at ∼1340 s, with a clear separation among the three isomer classes. For VICDOC, the dibranched isomers elute almost instantaneously (3 s), 3MP and 2MP elute at 65 and 160 s, respectively, followed by elution of n-hexane at 783 s. Thus, there is less separation (in absolute time) between the diand monobranched isomers in VICDOC. For MRE-1, the diand monobranched species elute together, giving no effective separation. For use below, we define the breakthrough time, tb, as the time when the outlet mole fraction of the fastest eluting molecules reaches 10% of the inlet mole fraction. For DEYVUA, tb is 40 s, for VICDOC it is 3 s, and for MRE-1 tb is less than 2 s. The longer tb for DEYVUA can be attributed to its high capacity (qL+M) because hexane isomers have more
+“space” to explore inside the bed for such a case. To evaluate the effectiveness in producing high RON gasoline additive, we compared the RON values produced from the three sorbent materials based on the breakthrough simulation results. Figure 5d demonstrates that DEYVUA can
+Figure 4. Adsorption isotherms obtained from CB-GCMC simulation for an equimolar 10-component alkane mixture, which consists of n-hexane (nC6, black circle), 2-methylpentane (2MP, red diamond), 3-methylpentane (3MP, red circle), 2,2-dimethylbutane (22DMB, blue circle), 2,3dimethylbutane (23DMB, blue diamond), n-heptane (nC7, hollow circle), 2-methylhexane (2MH, red hollow diamond), 3-methylhexane (3MH, red hollow circle), 2,2-dimethylpentane (22DMP, blue hollow circle), and 2,3-dimethylpentane (23DMP, blue hollow diamond) at 433 K in (a) DEYVUA (Cu), (b) VICDOC, and (c) MRE-1.
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6321
+
+
+produce high-octane fuels with an increased “cycle time” (defined in the Figure 5 caption) compared to VICDOC and MRE-1 for a pressure swing adsorption process. A longer cycle time can reduce the operating cost of the separation unit because a smaller number of cycles is needed to produce a given amount of product, and each cycle requires energy to regenerate the column. The cycle times are 471, 211, and 0 s for DEYVUA, VICDOC, and MRE-1, respectively. For MRE-1, the product stream quickly falls below RON = 92, which means that the material cannot be used to produce high-octane gasoline even though the selectivity and capacity obtained from GCMC simulations suggests the material is an excellent candidate for such application. The mismatch between the CB-GCMC and the breakthrough simulation results is because
+the results from CB-GCMC simulation are only based on equilibrium consideration, whereas the results from breakthrough simulations are based on both equilibrium and masstransfer considerations. In a breakthrough column, the gas phase and solid adsorbent phases do not necessarily reach equilibrium because the time it takes for two phases to reach equilibrium will depend on the mass-transfer coefficient of hexane isomers into the adsorbent material. This effect is not captured during CB-GCMC simulations, and thus, the mismatch between predicted performance between CBGCMC and the breakthrough simulations. Nevertheless, the longer cycle time of DEYVUA suggests that the operational cost of DEYVUA may be significantly lower compared to VICDOC.
+Figure 5. Column breakthrough simulation results and research octane number. (a) DEYVUA, (b) VICDOC, (c) MRE-1, (d) research octane number (RON) estimated from simulated column breakthrough results. RON values are shown only after the breakthrough time, tb, which is the time when the outlet mole fraction of dibranched isomers reaches 10% of inlet mole fraction of dibranched isomers. Mole fraction values reported correspond to the column outlet and reflect the total stream including the carrier gas (helium). RON values are calculated based on the following equation: RON(t) = (xnC6(t)RONnC6) + (x2MP(t)RON2MP) + (x3MP(t)RON3MP) + (x22DMB(t)RON22DMB) + (x23DMB(t)RON23DMB)) where xi(t) is
+the mole fraction of the ith component at time t; the initial sharp rise seen for DEYVUA reflects the displacement of carrier gas by hexane isomers. Black and red arrows represent the “cycle time”, which is arbitrarily defined as the difference between tb and time at which RON of product stream falls below 92, for DEYVUA and VICDOC, respectively. MRE-1 has negligible cycle time (<0.1 s). Dotted line indicates RON = 92. For VICDOC and MRE-1, the curves for 22DMB and 23DMB overlap with one another. Parameters used for the calculations are listed in the Supporting Information Section 3.
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6322
+
+
+The cycle time is also impacted by the mass transfer coefficient between the bulk gas phase and the adsorbent phase. For example, if the mass transfer coefficient is extremely low (i.e., small diffusion coefficient), these molecules will travel through the column very rapidly, and the adsorbent inside the packed bed column will not be able to adsorb the molecules quickly enough. In the context of hexane isomer separation, dibranched isomers will break through immediately if only the dibranched isomers have extremely low diffusion coefficients, which could act favorably in terms of increasing the cycle time (i.e., lower operating cost). However, if the diffusion coefficients of mono- and linear hexane isomers are also extremely low, these low-octane isomers will break through immediately as well and decrease the cycle time (i.e., higher operating cost). The pore network in DEYVUA is corrugated (see Supporting Information Figure S22), and it is possible that dibranched isomers will not be able to diffuse through the pores. A sensitivity analysis of the breakthrough simulations to variations in the diffusion coefficients is provided in the Supporting Information Section S8.
+Synthesis of DEYVUA. Encouraged by both CB-GCMC and breakthrough simulation predictions, we synthesized DEYVUA based on the synthesis protocol from the original literature.60 However, we found that the MOF is relatively flexible due to the coordination between the linker and the secondary building block where a nitrogen atom binds to the coordinately unsaturated zinc metal center. Since the original structure is based on a Zn-paddlewheel, we hypothesized that the synthesis of an isoreticular MOF based on the Cupaddlewheel could stabilize the framework and minimize the effect of flexibility in adsorption measurements. The experimental nitrogen isotherms (Supporting Information Figure S15) show that the newly synthesized, isoreticular DEYVUA (Cu) is stable and we were able to achieve 92.7% activation. However, for adsorption of 3MP (measured at 298 K), we observed a large difference between simulated and measured single component isotherms. On the basis of the observation, we did not further pursue the experiments for measuring other isomers. Details of the synthesis of Zn-paddlewheel and Cupaddlewheel based DEYVUA and the comparison between
+Figure 6. Visualization of the cross-sectional area of VICDOC, CAN-1, and MRE-1. Visualization of the potential energy surface (left) and density maps of different hexane isomers (right) in a channel of: (a) VICDOC (PLD = 4.1 Å), (b) CAN-1 (PLD = 4.4 Å), and (c) MRE-1 (PLD = 4.9 Å). The potential energy surface was calculated using a UA methyl probe from the TraPPE force field (σ = 3.75 Å; ε/kB = 98 K or ε = 0.815 kJ/mol). For visual clarity, unfavorable positive potential energy values are shown in the same color (red). The spread between tick marks in both x- and yaxes corresponds to 1 Å. The clouds in the density maps are calculated from the locations of each of the six UA beads forming the hexane isomers (top rows) and also the center of mass of the molecules (bottom rows). The VTK visualization software was used to generate the density maps where the positions of each UA bead or the centers-of-mass of molecules were recorded every 500 Monte Carlo cycles (1 cycle = max (N, 20) moves, that is, the larger of N or 20, where N is the number of adsorbate molecules in the system).
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6323
+
+
+experimental and simulated isotherms are provided in the Supporting Information Sections S9 and S10. Role of Channel Shape. We analyzed our simulation results to understand better the role of channel shape (e.g., acute corners) and whether channel shape is a good molecularlevel descriptor that can be used to further design new materials for hexane isomer separation. As discussed above, VICDOC can perform the separation with high efficiency, and Long and co-workers attributed this to the triangular shape of its channel because of “the varying abilities of the isomers to wedge along the triangular corners of the structure”. To probe this idea, we computed the potential energy surface (PES) of a TraPPE-UA methyl group in the channel of VICDOC (Figure 6a). The PES indicates that the most favorable location for the UA methyl is at the center of the triangular channel, and not in the corners as suggested by Long and co-workers. The density distributions of individual UA beads and the center-of-mass (CoM) for the hexane isomers during the CB-GCMC simulations were calculated and are also displayed in Figure 6a. For the linear isomer, we find that the individual UA beads are concentrated at the center of the channel. In fact, CoM positions of all five hexane isomers are found at the center of the channel, which is direct evidence that none of the hexane isomers can fit near the acute corners of the triangular pore, and the channel can only fit a single hexane isomer for a given cross-section. This point is further illustrated in Supporting Information Section 11 (see Supporting Information Figure S17). Our density map demonstrates that the positions of the UA beads move away from the center and toward the corners of the triangular channel as the degree of branching increases for hexane isomers. The results provide new insight about the ability of VICDOC to separate hexane isomers and the observed difference in the experimental heats of adsorption among hexane isomers in this material. To illustrate that the acute corners are not necessary to achieve high hexane isomer selectivity, we carried out similar analyses on two IZA zeolites
+with high isomer selectivity and “circular” channels. Figure 6b and c show the PES and density maps for the CAN and MRE zeolites, which illustrate how nontriangular pores can also carry out hexane separation with high efficiency by providing a suitable confinement. Thermodynamic Analysis. Since the triangular channel shape is not responsible for hexane isomer separation, we sought to understand the underlying mechanism for this separation. Since we observed good agreement between the Henry selectivity and the GCMC selectivity, and the Henry selectivity is related to the free energy of adsorption at low loading, one possibility is that the difference in the free energy of adsorption at low loading among the hexane isomers leads to the separation. To test this, we calculated the Helmholtz free energy of adsorption at low loading (ΔAads,i) for each hexane isomer for selected MOFs and zeolites. The values are summarized in Table 3. The structures are divided into three categories: highly selective (SL+M > 100), moderately selective
+(SL+M > 5), and reverse selective (SL+M < 1). In addition, ΔAads,i
+values are decomposed into ΔHads,i and − TΔSads,i terms. For highly selective and moderately selective structures, we observed a clear trend in the strength of ΔAads,i and ΔHads,i
+for different hexane isomers based on their degree of branching, such that ΔAads,i and ΔHads,i values are largest in magnitude for n-hexane followed by monobranched isomers and dibranched isomers, respectively. For these systems, both enthalpic and entropic factors favor adsorption of isomers with fewer branches. In most cases, the enthalpic term contributes about 70−80% to the free energy difference governing the separation of the branched isomers from n-hexane. The outliers from this rule are 3MP in VICDOC, where the entropic contribution is about twice as large as the enthalpic contribution, and 3MP and 23DMB in MFI-1, where the entropic contribution is less than 2%, and 22DMB in MFI-1, where the entropic term has the opposite sign of the overall free energy difference presumably because of preference orientation of these branched isomers to
+Table 3. Thermodynamic Properties Obtained from Widom Particle Insertion Simulations for Adsorption of Hexane Isomers at
+433 K in Selected CoRE MOFs and Zeolites from Tables 1 and 2a
+ID MRE-1 CAN-1 VICDOC DEYVUA MFI-1 MWW-0 CFI-1
+GCMC selectivity 5188 1167 832 12.5 5.2 0.837 0.295
+n-hexane ΔHads −77.8 −70.5 −83.2 −72.3 −67.5 −54.0 −53.6 −TΔSads +41.9 +37.6 +51.1 +37.8 +36.9 +30.1 +24.3 ΔAads −32.3 −29.3 −28.5 −30.9 −27.0 −20.3 −25.7 2MP ΔHads −68.5 (71%) −59.1 (85%) −75.5 (70%) −68.7 (69%) −65.4 (72%) −52.5 (−380%) −53.7 (50%) −TΔSads +45.7 (29%) +39.6 (15%) +54.4 (30%) +39.4 (31%) +37.7 (28%) +28.2 (480%) +24.2 (50%) ΔAads −19.2 −15.9 −17.5 −25.7 −24.1 −20.7 −25.9 3MP ΔHads −62.4 (74%) −57.8 (64%) −79.1 (34%) −67.1 (70%) −62.4 (100%) −53.3 (−33%) −54.0 (57%) −TΔSads +47.4 (26%) +41.7 (24%) +59.1 (66%) +40.0 (30%) +36.9 (0%) +27.3 (133%) +24.0 (43%) ΔAads −11.4 −12.5 −16.4 −23.5 −21.9 −22.4 −26.4 23DMB ΔHads −45.5 (79%) −45.2 (82%) −52.9 (87%) −62.4 (71%) −59.6 (98%) −58.4 (66%) −54.6 (50%) −TΔSads +50.4 (21%) +43.3 (18%) +55.5 (13%) +41.8 (29%) +37.1 (2%) +27.8 (34%) +23.3 (50%) ΔAads +8.5 +1.7 +6.2 −17.0 −18.9 −27.0 −27.7 22DMB ΔHads −36.7 (95%) −37.7 (92%) −51.9 (92%) −60.0 (72%) −60.0 (115%) −56.9 (48%) −53.8 (11%) −TΔSads +43.9 (5%) +39.5 (18%) +54.0 (8%) +42.6 (28%) +35.9 (−15%) +27.0 (52%) +22.7 (89%) ΔAads +10.8 +5.4 +5.7 −13.8 −20.5 −26.3 −27.5
+aEnthalpy (ΔHads,i) and entropy (−TΔSads,i) of adsorption and the free energy of adsorption (ΔAads) are in units of kJ/mol. ID is the identification code (framework type for IZA zeolites and CSD REFCODE for CoRE MOFs). The structures are sorted from left to right based on the selectivity from CB-GCMC simulations. The structures are divided into three categories: highly selective (SL+M > 100), moderately selective (SL+M > 5), and reverse selective (SL+M < 1). See Supporting Information Section 12 for detailed discussion of how the thermodynamic properties were calculated.
+The numbers in parentheses give the relative enthalpic and entropic contributions for the separation (ΔΔAads) of each branched isomer versus n
+hexane. Here,% = (ΔXnC6 − ΔXiso)/(ΔAnC6 − ΔAiso), where X is either H or TS.
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6324
+
+
+the channel intersection. Although it may come as a surprise that entropic factors play a smaller role in governing adsorption selectivity in these isomer separations in narrow channel sorbents, n-hexane in the gas phase possesses considerable conformational entropy that is lost when the channels force the molecule into a predominantly all-trans conformation, whereas the branched isomers have less conformational flexibility. Thus, greater loss of conformational entropy counteracts the greater “wiggle” room that n-hexane finds in these channels. Interestingly, hexane isomers in reverse selective structures (e.g., MWW and CFI zeolites) show less clear trends regarding the relative importance of enthalpic and entropic terms, suggesting that these properties are not suitable descriptors to screen and design reverse selective structures for hexane isomers. For instance, the enthalpic terms for 2MP and 3MP are larger in magnitude but has the opposite sign as the overall free energy difference with respect to n-hexane in MWW zeolite, but the free energy difference in CFI zeolite is in the order of ∼1 kJ/mol for all hexane isomers. For highly selective nanoporous materials (MRE-1, CAN-1, and VICDOC), ΔAads,i for the dibranched isomers is positive, that is, adsorption is unfavorable compared to the gas phase. The large decrease in the enthalpy of adsorption for dibranched isomers compared to n-hexane is likely due to unfavorable interactions (repulsive forces) between the methyl branches of 23DMB and 22DMB with the pore wall, that is, the channels are too small for these molecules (see Supporting Information Section 11 and Figure S23). Note that the analysis is performed for the low-loading limit; different separation mechanisms, such as configurational entropy or size entropy, may become dominant at higher coverages as has been shown for MFI
+zeolite.65
+■
+CONCLUSIONS
+In this work, we performed high-throughput computational screening to evaluate large numbers of nanoporous MOFs and zeolites for the separation of hexane and heptane isomers at industrially relevant conditions. The ratio of Henry’s law constants for hexane isomers and a pore size cutoff were used in the first pass to select 501 candidate structures that were further explored through full-scale CB-GCMC adsorption simulations to obtain their isomer selectivity and capacity, which in turn were used to identify synthetic targets. The results from CBGCMC simulations show that the ratio of Henry’s law constants can be used as an effective descriptor to estimate the hexane isomer selectivity at industrially relevant conditions. Moreover, the computational screening could identify 22 highperforming nanoporous materials including a MOF with triangular channels synthesized by Long and co-workers. This MOF (VICDOC) has very high capacity and was hypothesized in the literature to provide strong binding of linear hexane molecules near its acute corners. Our computational screening was able to identify a MOF (DEYVUA) that has twice the capacity of VICDOC, with reasonably high hexane isomer selectivity (SL+M > 10). DEYVUA, VICDOC, and MRE-1 were further investigated for the separation of a 10-component mixture through CB-GCMC simulations over a range of pressures, and the results show that these sorbents can efficiently separate the 10-component mixture. Column breakthrough simulations were carried out for DEYVUA, VICDOC, and MRE-1 to compare the recycle time and RON production in these sorbent materials. Among these three sorbents, DEYVUA is predicted to offer the longest cycle time. Finally,
+we showed that triangular channels with acute corners are not necessary for high-performing hexane separation materials and triangular pore shape is not a good molecular-level descriptor for the design of new materials for this application. Through potential energy surface analyses and density maps, we demonstrated that the separation can also be achieved in circular-shaped channels that provide suitable confinement for hexane isomers. To illustrate the molecular-level mechanism that drives the separation, we computed the free energies of adsorption and performed a thermodynamic analysis at low loading for the hexane isomers. This analysis shows that ΔΔHads contributes about 70−90% of the free energy difference governing separation in these systems at 433 K. The contribution of Δ(−TΔSads) is relatively small because adsorption leads to a greater loss of conformational flexibility for linear and monobranched isomers, but greater loss of translational entropy for dibranched isomers in tight confinement. It is interesting that MOFs generally possess much higher volumetric capacities than zeolites due to their significantly lower framework density. For MOFs to be used in an industrial setting, the mechanical, thermal, and chemical stability of the MOF must be first evaluated and tested. It may be possible that some of the predicted top-performing MOFs may not be able to withstand operating condition for hexane isomer separation. However, new MOFs with improved chemical and mechanical stabilities are continually reported in the literature,66 and the molecular level insights gained from this contribution could facilitate the design of new MOFs with improved stability. Nevertheless, this computational work demonstrates that a high-throughput screening workflow can readily identify highperforming nanoporous materials for the separation of complex mixtures of isomers, and detailed analyses from molecular simulation can provide molecular-level insights that can be used to design new materials for large, flexible molecule separation.
+■
+ASSOCIATED CONTENT
+*
+S Supporting Information
+The Supporting Information is available free of charge on the ACS Publications website at DOI: 10.1021/acs.chemmater.7b01565.
+Physical and chemical properties of hexane isomers; dualsite Langmuir model parameters for CoRE MOFs and IZA zeolites used for IAST calculations; details of breakthrough simulations; discrepancies between SL+M and SL+M Henry; discrepancies between SL+M and SL+M IAST; CoRE MOFs and zeolites with size-exclusion for dibranched isomers; high-performing CoRE MOFs without reported gas sorption data; sensitivity tests for breakthrough simulations; synthesis, activation, and adsorption measurement of DEYVUA; N2 and 3MP measurements in DEYVUA; analysis of geometric confinement in VICDOC (Fe2(BDP)3); analysis of free energy of adsorption for hexane isomer separation; structure of DEYVUA; effect of solvent molecule evacuation on adsorption properties in VICDOC; additional potential energy surface and density plots (PDF) IAST DSL parameters (ZIP)
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6325
+
+
+■ AUTHOR INFORMATION
+Corresponding Authors
+*E-mail: snurr@northwestern.edu. *E-mail: siepmann@umn.edu.
+ORCID
+Yongchul G. Chung: 0000-0002-7756-0589 Peng Bai: 0000-0002-6881-4663 Timothy C. Wang: 0000-0002-2736-2488 Fengqi You: 0000-0001-9609-4299 Joseph T. Hupp: 0000-0003-3982-9812 Omar K. Farha: 0000-0002-9904-9845 J. Ilja Siepmann: 0000-0003-2534-4507 Randall Q. Snurr: 0000-0003-2925-9246
+Author Contributions
+■Y.G.C. and P.B. contributed equally to this work. Y.G.C. calculated Henry’s constants for all nanoporous materials, computed potential energy surfaces, collected density maps for selected materials, and performed thermodynamic analyses. P.B. performed all CB-GCMC simulations for hexane and heptane isomers. M.H. carried out geometric analyses. P.L. synthesized DEYVUA under the guidance of J.T.H. and O.K.F. K.T.L. performed breakthrough simulations under the supervision of F.Y. and R.Q.S. H.Z. carried out IAST calculations for selected MOFs and zeolites. T.C.W. and T.D. measured 3MP uptake in DEYVUA under the guidance of J.T.H. and O.K.F. J.I.S. and R.Q.S. designed and supervised the computational work. Y.G.C., P.B., J.I.S., and R.Q.S. wrote the paper with contributions from all authors.
+Notes
+The authors declare the following competing financial interest(s): R.Q.S., J.T.H., and O.K.F. have a financial interest in the start-up company NuMat Technologies, which is seeking to commercialize metal-organic frameworks.
+■
+ACKNOWLEDGMENTS
+This research was supported by the U.S. Department of Energy, Office of Basic Energy Sciences, Division of Chemical Sciences, Geosciences and Biosciences under Award No. DEFG0212ER16362 and used resources of the Argonne Leadership Computing Facility (ALCF) at Argonne National Laboratory, which is supported by the Office of Science of the Department of Energy under Contract No. DE-AC02-06CH11357. For experimental work at Northwestern, O.K.F. and J.T.H. gratefully acknowledge support from the U.S. Department of Energy, Office of Basic Energy Sciences, Division of Chemical Sciences, Geosciences and Biosciences under Award No. DEFG02-08ER15967. This research was supported in part through the computational resources and staff contributions provided for the Quest high-performance computing facility (project allocation: p20663) at Northwestern University, which is jointly supported by the Office of the Provost, the Office for Research, and Northwestern University Information Technology. Additional computer resources were provided by the Minnesota Supercomputing Institute. Y.G.C. was partially supported by Basic Science Research Program through the National Research Foundation of Korea (NRF) funded by the Ministry of Education (NRF-2016R1D1A1B03934484) Y.G.C. also thanks Prof. David Dubbledam (University of Amsterdam) for providing initial simulation input files for hexane/heptane isomer simulations.
+■
+REFERENCES
+(1) Yaghi, O. M.; Li, H.; Eddaoudi, M.; O’Keeffe, M. Design and synthesis of an exceptionally stable and highly porous metal-organic framework. Nature 1999, 402, 276−279. (2) O’Keeffe, M.; Peskov, M. A.; Ramsden, S. J.; Yaghi, O. M. The Reticular Chemistry Structure Resource (RCSR) Database of, and Symbols for, Crystal Nets. Acc. Chem. Res. 2008, 41, 1782−1789. (3) Ferey, G. Hybrid porous solids: past, present, future. Chem. Soc. Rev. 2008, 37, 191−214. (4) Zhou, H. C.; Kitagawa, S. Metal-Organic Frameworks (MOFs). Chem. Soc. Rev. 2014, 43, 5415−5418.
+(5) Slater, A. G.; Cooper, A. I. Function-led design of new porous materials. Science 2015, 348, 6238. (6) Li, J. R.; Sculley, J.; Zhou, H. C. Metal-Organic Frameworks for Separations. Chem. Rev. 2012, 112, 869−932. (7) Kreno, L. E.; Leong, K.; Farha, O. K.; Allendorf, M.; Van Duyne, R. P.; Hupp, J. T. Metal-Organic Framework Materials as Chemical Sensors. Chem. Rev. 2012, 112, 1105−1125. (8) Lee, J.; Farha, O. K.; Roberts, J.; Scheidt, K. A.; Nguyen, S. T.; Hupp, J. T. Metal-organic framework materials as catalysts. Chem. Soc. Rev. 2009, 38, 1450−1459. (9) Herm, Z. R.; Wiers, B. M.; Mason, J. A.; van Baten, J. M.; Hudson, M. R.; Zajdel, P.; Brown, C. M.; Masciocchi, N.; Krishna, R.; Long, J. R. Separation of Hexane Isomers in a Metal-Organic Framework with Triangular Channels. Science 2013, 340, 960−964. (10) Dubbeldam, D.; Krishna, R.; Calero, S.; Yazaydin, A. O. Computer-Assisted Screening of Ordered Crystalline Nanoporous Adsorbents for Separation of Alkane Isomers. Angew. Chem., Int. Ed. 2012, 51, 11867−11871. (11) Krishna, R.; van Baten, J. M. Screening of zeolite adsorbents for separation of hexane isomers: A molecular simulation study. Sep. Purif. Technol. 2007, 55, 246−255.
+(12) Denayer, J. F.; Souverijns, W.; Jacobs, P. A.; Martens, J. A.; Baron, G. V. High-temperature low-pressure adsorption of branched C-5-C-8 alkanes on zeolite beta, ZSM-5, ZSM-22, zeolite Y, and mordenite. J. Phys. Chem. B 1998, 102, 4588−4597. (13) Peralta, D.; Chaplais, G.; Simon-Masseron, A.; Barthelet, K.; Pirngruber, G. D. Separation of C-6 Paraffins Using Zeolitic Imidazolate Frameworks: Comparison with Zeolite 5A. Ind. Eng. Chem. Res. 2012, 51, 4692−4702.
+(14) Lin, L. C.; Berger, A. H.; Martin, R. L.; Kim, J.; Swisher, J. A.; Jariwala, K.; Rycroft, C. H.; Bhown, A. S.; Deem, M. W.; Haranczyk, M.; Smit, B. In silico screening of carbon-capture materials. Nat. Mater. 2012, 11, 633−641. (15) Haldoupis, E.; Nair, S.; Sholl, D. S. Finding MOFs for Highly Selective CO2/N-2 Adsorption Using Materials Screening Based on Efficient Assignment of Atomic Point Charges. J. Am. Chem. Soc. 2012, 134, 4313−4323. (16) Wilmer, C. E.; Leaf, M.; Lee, C. Y.; Farha, O. K.; Hauser, B. G.; Hupp, J. T.; Snurr, R. Q. Large-scale screening of hypothetical metalorganic frameworks. Nat. Chem. 2011, 4, 83−89. (17) Colon, Y. J.; Fairen-Jimenez, D.; Wilmer, C. E.; Snurr, R. Q. High-Throughput Screening of Porous Crystalline Materials for Hydrogen Storage Capacity near Room Temperature. J. Phys. Chem. C 2014, 118, 5383−5389. (18) Sikora, B. J.; Wilmer, C. E.; Greenfield, M. L.; Snurr, R. Q. Thermodynamic analysis of Xe/Kr selectivity in over 137 000 hypothetical metal-organic frameworks. Chem. Sci. 2012, 3, 2217− 2223. (19) Simon, C. M.; Mercado, R.; Schnell, S. K.; Smit, B.; Haranczyk, M. What Are the Best Materials To Separate a Xenon/Krypton Mixture? Chem. Mater. 2015, 27, 4459−4475. (20) Bai, P.; Jeon, M. Y.; Ren, L. M.; Knight, C.; Deem, M. W.; Tsapatsis, M.; Siepmann, J. I. Discovery of optimal zeolites for challenging separations and chemical transformations using predictive materials modeling. Nat. Commun. 2015, 6, 5912. (21) Chung, Y. G.; Camp, J.; Haranczyk, M.; Sikora, B. J.; Bury, W.; Krungleviciute, V.; Yildirim, T.; Farha, O. K.; Sholl, D. S.; Snurr, R. Q. Computation-Ready, Experimental Metal-Organic Frameworks: A
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6326
+
+
+Tool To Enable High-Throughput Screening of Nanoporous Crystals. Chem. Mater. 2014, 26, 6185−6192.
+(22) Baerlocher, C.; McCusker, L. B. Database of Zeolite Structures, http://www.iza-structure.org/databases/, (accessed July 2014). (23) Barrer, R. M. Chemical Nomenclature and Formulation of Compositions of Synthetic and Natural Zeolites. Pure Appl. Chem. 1979, 51, 1091−1100. (24) Willems, T. F.; Rycroft, C.; Kazi, M.; Meza, J. C.; Haranczyk, M. Algorithms and tools for high-throughput geometry-based analysis of crystalline porous materials. Microporous Mesoporous Mater. 2012, 149, 134−141. (25) Pinheiro, M.; Martin, R. L.; Rycroft, C. H.; Haranczyk, M. High accuracy geometric analysis of crystalline porous materials. CrystEngComm 2013, 15, 7531−7538. (26) Martin, M. G.; Siepmann, J. I. Novel configurational-bias Monte Carlo method for branched molecules. Transferable potentials for phase equilibria. 2. United-atom description of branched alkanes. J. Phys. Chem. B 1999, 103, 4508−4517.
+(27) Rappe, A. K.; Casewit, C. J.; Colwell, K. S.; Goddard, W. A.; Skiff, W. M. UFF, a Full Periodic-Table Force-Field for Molecular Mechanics and Molecular-Dynamics Simulations. J. Am. Chem. Soc. 1992, 114, 10024−10035. (28) Bai, P.; Tsapatsis, M.; Siepmann, J. I. TraPPE-zeo: Transferable Potentials for Phase Equilibria Force Field for All-Silica Zeolites. J. Phys. Chem. C 2013, 117, 24375−24387. (29) Maitland, G. Intermolecular Forces: Their Origin and Determination; Clarendon Press, 1981. (30) Siepmann, J. I.; Frenkel, D. Configurational Bias Monte-Carlo a New Sampling Scheme for Flexible Chains. Mol. Phys. 1992, 75, 59− 70. (31) Frenkel, D.; Mooij, G. C. A. M.; Smit, B. Novel Scheme to Study Structural and Thermal-Properties of Continuously Deformable Molecules. J. Phys.: Condens. Matter 1992, 4, 3053−3076.
+(32) Martin, M. G.; Siepmann, J. I. Predicting multicomponent phase equilibria and free energies of transfer for alkanes by molecular simulation. J. Am. Chem. Soc. 1997, 119, 8921−8924. (33) Siepmann, J. I.; Martin, M. G.; Chen, B.; Wick, C. D.; Stubbs, J. M.; Potoff, J. J.; Eggimann, B. L.; Mcgrath, M. J.; Zhao, X. S.; Anderson, K. E.; Rafferty, J. L.; Rai, N.; Maerzke, K. A.; Keasler, S. J.; Bai, P.; Fetisov, E. O.; Shah, M. S.; Chen, Q. P.; Dejaco, R. F.; Chen, J. L. Monte Carlo for Complex Chemical Systems 16.1; University of Minnesota: Minneapolis, MN, 2016. (34) Widom, B. Some Topics in the Theory of Fluids. J. Chem. Phys. 1963, 39, 2808−2812. (35) Dubbeldam, D.; Calero, S.; Ellis, D. E.; Snurr, R. Q. RASPA: molecular simulation software for adsorption and diffusion in flexible nanoporous materials. Mol. Simul. 2016, 42, 81−101.
+(36) Yang, R. T. Adsorbents: Fundamentals and Applications; John Wiley & Sons Inc., 2003. (37) Ruthven, D. M., Farooq, S.; Knaebel, K. S. Pressure Swing Adsorption; VCH Publisher, 1994. (38) Myers, A. L.; Prausnitz, J. M. Thermodynamics of Mixed-Gas Adsorption. AIChE J. 1965, 11, 121−127. (39) Gump, C. J.; Noble, R. D.; Falconer, J. L. Separation of hexane isomers through nonzeolite pores in ZSM-5 zeolite membranes. Ind. Eng. Chem. Res. 1999, 38, 2775−2781.
+(40) Denayer, J. F. M.; Ocakoglu, R. A.; Arik, I. C.; Kirschhock, C. E. A.; Martens, J. A.; Baron, G. V. Rotational entropy driven separation of alkane/isoalkane mixtures in zeolite cages. Angew. Chem., Int. Ed. 2005, 44, 400−403.
+(41) Maesen, T.; Harris, T. Process for Producing High RON Gasoline Using CFI Zeolite. Patent US7037422 B2, 2006. (42) Lobo, R. F.; van Koningsveld, H. New description of the disorder in zeolite ZSM-48. J. Am. Chem. Soc. 2002, 124, 13222− 13230. (43) Schlenker, J. L.; Rohrbaugh, W. J.; Chu, P.; Valyocsik, E. W.; Kokotailo, G. T. The Framework Topology of Zsm-48 - a High Silica Zeolite. Zeolites 1985, 5, 355−358.
+(44) Baerlocher, C.; Xie, D.; McCusker, L. B.; Hwang, S. J.; Chan, I. Y.; Ong, K.; Burton, A. W.; Zones, S. I. Ordered silicon vacancies in the framework structure of the zeolite catalyst SSZ-74. Nat. Mater. 2008, 7, 631−635. (45) Tang, L. Q.; Shi, L.; Bonneau, C.; Sun, J. L.; Yue, H. J.; Ojuva, A.; Lee, B. L.; Kritikos, M.; Bell, R. G.; Bacsik, Z.; Mink, J.; Zou, X. D. A zeolite family with chiral and achiral structures built from the same building layer. Nat. Mater. 2008, 7, 381−385. (46) Bennett, J. M.; Kirchner, R. M. The structure of calcined AIP4− 31: A new framework topology containing one-dimensional 12-ring pores. Zeolites 1992, 12, 338−342. (47) Pauling, L. The Structure of Some Sodium and Calcium Aluminosilicates. Proc. Natl. Acad. Sci. U. S. A. 1930, 16, 453−459. (48) Lin, M. J.; Jouaiti, A.; Kyritsakas, N.; Hosseini, M. W. Molecular tectonics: control of interpenetration in cuboid 3-D coordination networks. CrystEngComm 2011, 13, 776−778. (49) Pan, J.; Jiang, F. L.; Yuan, D. Q.; Shan, X. C.; Wu, M. Y.; Zhou, K.; Gai, Y. L.; Li, X. J.; Hong, M. C. The 3D porous metal-organic frameworks based on bis(pyrazinyl)-trizole: structures, photoluminescence and gas adsorption properties. CrystEngComm 2013, 15, 5673− 5680. (50) Abrahams, B. F.; Grannas, M. J.; Hudson, T. A.; Robson, R. A Simple Lithium(I) Salt with a Microporous Structure and Its Gas Sorption Properties. Angew. Chem., Int. Ed. 2010, 49, 1087−1089. (51) Gadzikwa, T.; Zeng, B. S.; Hupp, J. T.; Nguyen, S. T. Ligandelaboration as a strategy for engendering structural diversity in porous metal-organic framework compounds. Chem. Commun. 2008, 3672− 3674. (52) Cortijo, M.; Herrero, S.; Jimenez-Aparicio, R.; Perles, J.; Priego, J. L.; Torralvo, M. J.; Torroba, J. Hybrid Polyfunctional Systems Based on Nickel(II) Isonicotinate. Eur. J. Inorg. Chem. 2013, 2013, 2580− 2590. (53) Yang, W.; Lin, X.; Jia, J.; Blake, A. J.; Wilson, C.; Hubberstey, P.; Champness, N. R.; Schroder, M. A biporous coordination framework with high H-2 storage density. Chem. Commun. 2008, 359−361. (54) Aijaz, A.; Barea, E.; Bharadwaj, P. K. Diamondoid ThreeDimensional Metal-Organic Framework Showing Structural Transformation with Guest Molecules. Cryst. Growth Des. 2009, 9, 4480− 4486. (55) Mathivathanan, L.; Torres-King, J.; Primera-Pedrozo, J. N.; Garcia-Ricard, O. J.; Hernandez-Maldonado, A. J.; Santana, J. A.; Raptis, R. G. Selective CO2 Adsorption on Metal-Organic Frameworks Based on Trinuclear Cu-3-Pyrazolato Complexes: An Experimental and Computational Study. Cryst. Growth Des. 2013, 13, 2628−2635. (56) Sakata, Y.; Furukawa, S.; Kondo, M.; Hirai, K.; Horike, N.; Takashima, Y.; Uehara, H.; Louvain, N.; Meilikhov, M.; Tsuruoka, T.; Isoda, S.; Kosaka, W.; Sakata, O.; Kitagawa, S. Shape-Memory Nanopores Induced in Coordination Frameworks by Crystal Downsizing. Science 2013, 339, 193−196. (57) Wen, L. L.; Ke, X. H.; Qiu, L.; Zou, Y.; Zhou, L.; Zhao, J. B.; Li, D. F. Assembly of Two Porous Cadmium(II) Frameworks: Selective Adsorption and Luminescent Property. Cryst. Growth Des. 2012, 12, 4083−4089. (58) Pettinari, C.; Tabacaru, A.; Boldog, I.; Domasevitch, K. V.; Galli, S.; Masciocchi, N. Novel Coordination Frameworks Incorporating the 4,4 ′-Bipyrazolyl Ditopic Ligand. Inorg. Chem. 2012, 51, 5235−5245. (59) Panda, T.; Pachfule, P.; Chen, Y. F.; Jiang, J. W.; Banerjee, R. Amino functionalized zeolitic tetrazolate framework (ZTF) with high capacity for storage of carbon dioxide. Chem. Commun. 2011, 47, 2011−2013. (60) Liu, B.; Li, Y. P.; Hou, L.; Yang, G. P.; Wang, Y. Y.; Shi, Q. Z. Dynamic Zn-based metal-organic framework: stepwise adsorption, hysteretic desorption and selective carbon dioxide uptake. J. Mater. Chem. A 2013, 1, 6535−6538. (61) Liu, X. M.; Xie, L. H.; Lin, J. B.; Lin, R. B.; Zhang, J. P.; Chen, X. M. Flexible porous coordination polymers constructed from 1,2-bis(4pyridyl)hydrazine via solvothermal in situ reduction of 4,4 ′-azopyridine. Dalton Trans. 2011, 40, 8549−8554.
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6327
+
+
+(62) Kanoo, P.; Haldar, R.; Cyriac, S. T.; Maji, T. K. Coordination driven axial chirality in a microporous solid assembled from an achiral linker via in situ C-N coupling. Chem. Commun. 2011, 47, 11038− 11040. (63) Mondloch, J. E.; Karagiaridi, O.; Farha, O. K.; Hupp, J. T. Activation of metal-organic framework materials. CrystEngComm 2013, 15, 9258−9264. (64) Sarkisov, L.; Harrison, A. Computational structure characterisation tools in application to ordered and disordered porous materials. Mol. Simul. 2011, 37, 1248−1257.
+(65) Torres-Knoop, A.; Dubbeldam, D. Exploiting Large-Pore MetalOrganic Frameworks for Separations through Entropic Molecular Mechanisms. ChemPhysChem 2015, 16, 2046−2067. (66) Howarth, A. J.; Liu, Y. Y.; Li, P.; Li, Z. Y.; Wang, T. C.; Hupp, J.; Farha, O. K. Chemical, thermal and mechanical stabilities of metalorganic frameworks. Nat. Rev. Mater. 2016, 1, 15018.
+Chemistry of Materials Article
+DOI: 10.1021/acs.chemmater.7b01565 Chem. Mater. 2017, 29, 6315−6328
+6328

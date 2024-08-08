@@ -1,0 +1,1127 @@
+arXiv:1609.08205v1 [q-bio.BM] 26 Sep 2016
+Random-phase-approximation theory for sequence-dependent, biologically functional
+liquid-liquid phase separation of intrinsically disordered proteins
+Yi-Hsuan Lina,b, Jianhui Song✩a,c, Julie D. Forman-Kayb,a, Hue Sun Chana,c,∗
+aDepartment of Biochemistry, University of Toronto, 1 King’s College Circle, Toronto, Ontario M5S 1A8, Canada bMolecular Structure and Function Program, Hospital for Sick Children, 686 Bay Street, Toronto, ON M5G 0A4, Canada cDepartment of Molecular Genetics, University of Toronto, Toronto, 1 King’s College Circle, Ontario M5S 1A8, Canada
+Abstract
+Intrinsically disordered proteins (IDPs) are typically low in nonpolar/hydrophobic but relatively high in polar, charged, and aromatic amino acid compositions. Some IDPs undergo liquid-liquid phase separation in the aqueous milieu of the living cell. The resulting phase with enhanced IDP concentration can function as a major component of membraneless organelles that, by creating their own IDP-rich microenvironments, stimulate critical biological functions. IDP phase behaviors are governed by their amino acid sequences. To make progress in understanding this sequence-phase relationship, we report further advances in a recently introduced application of random-phase-approximation (RPA) heteropolymer theory to account for sequence-specific electrostatics in IDP phase separation. Here we examine computed variations in phase behavior with respect to block length and charge density of model polyampholytes of alternating equal-length charge blocks to gain insight into trends observed in IDP phase separation. As a real-life example, the theory is applied to rationalize/predict binodal and spinodal phase behaviors of the 236-residue N-terminal disordered region of RNA helicase Ddx4 and its charge-scrambled mutant for which experimental data are available. Fundamental differences are noted between the phase diagrams predicted by RPA and those predicted by mean-field Flory-Huggins and Overbeek-Voorn/Debye-H ̈uckel theories. In the RPA context, a physically plausible dependence of relative permittivity on protein concentration can produce a cooperative effect in favor of IDP-IDP attraction and thus a significant increased tendency to phase separate. Ramifications of these findings for future development of IDP phase separation theory are discussed.
+1. Introduction
+Globular proteins have been the predominant focus of structural biology since the folded myoglobin structure was revealed by X-ray crystallography in 1958 [1]. However, while many proteins need to fold to a relatively fixed structure for biological activity, it is now clear — after more than one and a half decade of intense research [2–6] that intrinsically disordered proteins (IDPs) perform key functions in cellular processes [7–16]. This advance led to the recognition that different biological functions can be bestowed upon protein conformations of various degrees of flexibility [8]. Many IDPs do “fold” or become otherwise ordered upon binding to their folded partners [6]. Recently, an IDP was found to fold by phosphorylation as a regulatory switch [17]. But IDPs can also form “fuzzy complexes” [18], i.e., they remain largely disordered even when they are functionally bound, as exemplified by the interaction between the IDP cyclin dependent kinase inhibitor
+✩Present address: School of Polymer Science and Engineering, Qingdao University of Science and Technology, Shandong, China. ∗Corresponding author
+Email address: chan@arrhenius.med.toronto.edu (Hue Sun
+Chan)
+Sic1 and the ubiquitin ligase SCFCdc4 [19–21]. Although IDP conformations are largely disordered, their ensemble distributions are not random. Like globular proteins, their behaviors are governed by their amino acid sequences [13]. In this respect, functional IDPs entail a type of biomolecular self-organization that is perhaps even more challenging to comprehend physico-chemically than the self-assembly of globular proteins. More recently, a previously unexpected function of IDPs was discovered. Some IDPs have been found to be the main constituents of functional membraneless organelles in the living cell, the assembly and disassembly of which is apparently underpinned by liquid-liquid IDP phase separation [22–36]. Such IDP phase behaviors are sequencedependent [30, 36] and may be regulated posttranslationally such as by phosphorylation of germ plasm component proteins in P granules [29] and by arginine methylation of Ddx4N1 organelles [30]. Droplets of these IDP-rich phase are fundamentally different from amyloids [16, 37] and condensed phases of folded globular proteins [38–44]. Membraneless organelles include nuceloli, Cajal bodies, and stress granules. They are a form of cell compartmentalization, creating their peculiar microenvironments [34, 35] that play critical roles in cellular integrity, homeostasis, gene regulation and the cell cycle. Examples include
+Preprint submitted to Elsevier 2016/09/22
+
+
+the RNA and protein-rich P granules in the germ cell of Caenorhabditis elegans [22, 29] and the RNA-protein (RNP) stress granules induced by exposing human (HeLa) cells to arsenate [32]. Because of the central role of membraneless organelles in cell cycle regulation and thus the disease process of cancer, and that RNP aggregates are often associated with neurodegenerative diseases, a better understanding of the biophysics of IDP phase separation is not only of fundamental biological interest but also of tremendous medical relevance. Unlike globular proteins, the role of hydrophobic interactions [45] are significantly less dominant in IDPs, which generally contains fewer nonpolar but more polar, charged, and aromatic residues than globular proteins ([46–48] and references therein). Many IDPs may be regarded as polyampholytes — heteropolymers with both positively and negatively charged monomer units [49, 50]. Dimensions of individual IDP molecules are affected not only by their total charges [51] but also sequence arrangement of charges [52]; their response to denaturant is different from that of unfolded globular proteins [53]. Liquid-liquid phase separation of IDPs is sensitive to the charge pattern along their chain sequences as well [54]. This is evident from recent experiments on the DEAD-box RNA helicase Ddx4 [30] and the Nephrin intracellular domain [36] showing different phase behaviors from their respective charge-scrambled mutants [30, 36]. These behaviors may in principle be addressed by explicit-chain simulations [55]. For computational tractability as well as conceptual advances, however, it is useful to develop an analytical theory of polymer solutions for IDP phase behaviors, notwithstanding the approximate and simplistic nature of all analytical theories of complex systems [43]. In view of the experimental observations, a desirable feature of such theories is to afford an account of sequence-dependent long-range electrostatic interactions that goes beyond classical Flory-Huggins (FH) theory [56–58], as the latter is strictly speaking only suited for short-range, contact-like interactions such as those arising from hydrophobicity [59]. A variety of analytical theories for electrolytes and charged polymers have been put forth during the last nearly one century since the 1923 publication of the Debye-H ̈uckel (DH) theory that accounts for the nonideality of electrolyte solutions [60]. DH theory, or equivalently the linearized Poisson-Boltzmann (PB) equation, has been applied to electrolyte and polyelectrolyte systems with identical or nonidentical ions [61, 62]. The PB equation has since been augmented, e.g., by incorporating van der Waals forces, to construct more enriched theories such as that of Derjaguin, Landau, Verwey, and Overbeek (DLVO theory, 1941, 1948) to rationalize the stability of lyophobic (solvent averting) colloid [63, 64]. Subsequently, theories that go beyond the mean-field PB equation such as the closure relations to solve the Wertheim-Ornstein-Zernike (WOZ) equation [62, 65, 66], e.g. the hypernetted-chain/meanspherical approximation (HNC/MSA) ([67] and references therein) and the Percus-Yevick approximation [68], as well
+as the random phase approximation (RPA) [69, 70], were devised to model various electrolyte systems, including globular polyions as well as flexible polyelectrolytes and polyampholytes [62, 66, 71–76]. Although the main concern of many of these theories has been uniformly charged polyelectrolytes, the charge pattern on flexible polyampholytes has not escaped recognition as having a significant impact on the conformational distribution of individual chains as well as multiple-chain phase properties [49, 50]. Based on beyond-DH formulations that take into account chain connectivity, theories such as RPA [73, 77, 78] and HNC/MSA [75, 76, 79] have been applied to study polyampholyte systems. However, such effort has not been widely pursued, likely because of a lack of experimental impetus. In the absence of a chemical process comparable to the cellular apparatus capable of synthesizing specific amino acid sequences accurately, synthesis of nonbiological polyampholytes with specific sequences is extremely difficult if not impossible. In such synthesis, often only the initial conditions can be controlled, resulting in a polymerization process that can only be monitored at the level of thermal average [50]. Consequently, research on nonbiological polyampholytes has focused on either the ensemble average of all possible random sequences [49, 77, 78] or simple block polyampholytes with a strictly alternating [77], diblock [73], or four-block charge patterns [79, 80]. As far as charge effects in biomolecules are concerned, the Overbeek-Voorn (OV, 1957) theory [81] is a rudimentary approach that combines DH theory with FH conformational entropy [58, 69]. OV theory has been applied to rationalize behavior of various complex coacervations, e.g. between albumin and acacia [82] as well as between whey proteins and gum arabic [83, 84]. Beyond-mean-field theories have also been applied to model phase separation of folded globular proteins in aqueous solutions, wherein protein molecules are treated as spheres with no or few internal degrees of freedom, similar to the idealized folded states in earlier mean-field models for electrostatic effects in protein folding and stability [85, 86]. These include, but are not limited to, RPA [38], perturbation theories [39, 40] and, notably, a recent application Wertheim’s thermodynamic perturbation theory (TPT1) [87] by Vlachy and coworkers to rationalize protein aggregation induced by salt as well as the liquid-liquid co-existence curve of folded lysozyme and γ IIIa-crystallin solutions [44]. One of the goals of these studies has been to better understand crystallization of globular proteins for X-ray crystallography, including under harsh conditions with non-physiological pH and salt concentrations [88]. Effects of specific amino acid sequences were not considered in these approaches. The recent discovery of biologically functional IDPs as individual molecules and also collectively via phaseseparation has sparked a renewed interest in polymer solution theories [27, 33, 89, 90]. For instance, Sawle and Ghosh developed an analytical formulation to account for sequence-specific electrostatic effects on the dimension of
+2
+
+
+individual polyampholytes [89], providing predictions consistent with prior atomic simulation results [52]. In this context, we recently outlined an approach to apply RPA theory to model sequence-specific long-range electrostatic effects in IDP phase separation [91]. Compared to the mean-field FH [26, 27, 30], DH and OV [33] theories that have been applied or advocated for the study of IDP phase separation, our approach has the advantage of treating chain connectivity rather explicitly and hence it allows for a direct, unambiguous input of the charge pattern along the chain sequence into the theory [70, 73, 74]. The approach has been applied to the 236-residue IDP fragment Ddx4N1 of Ddx4, a protein required for the assembly and maintenance of membraneless organelles that are essential for germ cell development in mammals, worms and flies [30, 92]. Our theory is successful in rationalizing the experimentally observed salt-dependent phase separation of Ddx4N1 as well as the drastically different phase behaviors of Ddx4N1 and a charge scrambled mutant Ddx4N1CS [91]. The new results reported below are further development of this theory, including detailed comparisons with meanfield FH and OV/DH approaches, and exploration of extensions of the theory that may provide deeper physical insights into the fascinating phenomenon of biologically functional IDP liquid-liquid phase separation in general.
+2. A sequence-specific RPA theory for polypeptide charge patterns
+As described recently [91], our theory is for aqueous solutions of neutral or nearly-neutral polyampholytes such as Ddx4N1 with small monovalent counterions and salt, and is based on previous RPA methods [73, 77]. (For simplicity of notation, Ddx4N1 and its mutant are sometimes referred to simply as “Ddx4” in the discussion below when the meaning is obvious from the context). Each polyampholyte chain is composed of N amino acid residues (monomers) with charges {σi} = {σ1, σ2, . . . , σN } given in units of the electronic charge e (σi = ±1 or 0). Using the same notation as in [91], ρm, ρc, and ρs are, respectively, the average number densities of the monomers of the polyampholytes, counterions, and salt in a total solution volume V , where ρc = ρm |∑
+i σi| /N because the number of counterions is
+equal to the total net charge of polyampholytes. A major part of the configurational entropy of the system is based on the FH lattice model [58, 69], in which spatial volume is partitioned into lattice sites each with a volume a3, which is of order of an individual solvent molecule; thus the total number of lattice sites is M = V /a3. The total free energy F per lattice site in units of kBT is given by
+f ≡ F a3
+V kBT = −s + fint, (1)
+where kB is Boltzmann’s constant and T is absolute temperature, −s is the entropic contribution to free energy
+from FH consideration, and fint accounts for the effective solvent-mediated interactions in the system. The fint term is modeled under an RPA framework [91], which provides a beyond-mean-field, approximate account of local density fluctuations. RPA may be applied to any form of two-body interactions in principle. In this paper, however, we are interested in situations of polyampholyte phase separation where electrostatics is the dominant enthalpic contribution. Although fint is often characterized as “enthalpic” for terminological simplicity [91], it is useful to keep in mind that effective solvent-mediated interactions such as hydrophobicity can be temperature dependent [93] and therefore contain entropic contributions. As will be discussed below, the present RPA form of fint also contains entropic contributions from chain connectivity.
+2.1. Entropy in a size-dependent mean-field lattice model
+Most formulations of FH [58], including recent applications to IDP phase separation [30, 91], assume for simplicity that a solvent molecule is of the same size of a monomer of the polymer of interest, each occupying a single lattice site. Numerical results presented in this paper were obtained using the same assumption. However, it is useful for future development of theory to consider here a generalization of the FH approach that is capable of accounting for solvent, monomers, salt ions, and counterions of different sizes. Based on a detailed consideration of the physical meaning of the entropy term in the FH formulation [94] (especially discussion relating to Figs. 4 and 5 in this reference), a generalized FH configurational entropy of a collection of m different types of polymers labeled by i = 1, 2, . . . , m, each with Ni monomers of size ria3 — where individual solvent molecules, counterion and salt ions are regarded as special cases of polymers with Ni = 1 — may be derived as follows. (Note that the meaning of index i here is different from that in some other parts of the paper where it is used to label the monomers along a polymer. The meaning of “dummy” summation indices should always be clear from the context nonetheless.) Without loss of generality, a value of a3 can always be chosen such that all ri’s are integers or as close to being so as desired. In such a system, the total number of lattice sites is given by
+M= V
+a3 =
+m
+∑
+i=1
+riniNi. (2)
+where ni is the number of type-i polymer molecules in the solution. We may now define the number density of type-i monomer in units of 1/a3 as
+φi = ρia3 = niNi
+M , (3)
+which allows rewriting Eq. (2) as
+m
+∑
+i=1
+riφi = 1. (4)
+3
+
+
+Note that φi is not the volume fraction [91] when ri 6= 1. Following the argument in the original derivation of FH [58], we separate configurational entropy S = kB ln Ω into a term arising from the translational freedom of the first monomer (or center of mass) of each polymer (ΩCM) and another term accounting for the conformational freedom of each polymer with a fixed position for the first monomer or center of mass (Ωconf ) such that Ω = ΩCMΩconf . The translational term corresponds to the number of ways of arranging ∑
+i ni monomers each being the first monomer
+of a polymer, which equals
+ΩCM = M !
+(M − ∑m
+i=1 ni)! ∏m
+i=1 ni! (5)
+when all ri = 1. As for the conformational term, we first recall the standard derivation for the case of ri = 1 for all i on a lattice with z nearest neighboring sites for each lattice site. The decreasing probability of inserting an additional monomer without violating excluded volume, as the lattice is filled, is taken into account in a mean-field manner:
+Ωconf = (z − 1)N1
+N2 −1
+∏
+l=0
+(
+1−
+∑m
+i=1 ni + l
+M
+)
+= (z − 1)N1
+M N2
+(
+M−
+m
+∑
+i=1
+ni
+)
+!,
+(6)
+where N1 = N2 = ∑
+i ni(Ni − 1) is the total number of
+lattice sites (monomers) to be inserted after the position of the first monomer of each polymer has been fixed by the procedure described by Eq. (5). In the generalized system with different ri’s, each monomer in a type-i polymer consists of ri lattice sites and is here assumed to have no internal degrees of freedom [94]. The placement of each of these monomers on the lattice may be seen as a series of successive attempted occupation of ri neighboring lattice sites in a unique order (hence no z − 1 factor) that is consistent with the shape of the monomer and without violation of excluded volume. In order to account for the possible violation of excluded volume when the second and other lattice sites representing the first monomer of each polymer (when ri > 1) are placed after the first site has been positioned via the process described in Eq. (5), the expression needs to be modified:
+ΩCM →
+
+
+∑m
+i=1 ni(ri−1)−1
+∏
+l=0
+(
+1−
+∑m
+i=1 ni + l
+M
+)
+
+ ΩCM
+= (M − ∑m
+i=1 ni)!
+(M − ∑m
+i=1 niri)!M ∑m
+i=1 ni(ri−1) ΩCM .
+(7)
+The same consideration implies that the total number of lattice sites N2 to be filled in for the process described by Ωconf in Eq. (6) is now modified to
+N2 =
+m
+∑
+i=1
+ni(riNi − 1), (8)
+with a corresponding modification to Eq. (6):
+Ωconf → (z − 1)∑m
+i=1 ni(Ni−1)
+M ∑m
+i=1 niri(Ni−1) (M −
+m
+∑
+i=1
+niri)!. (9)
+By combining Eqs. (5), (7), and (9), we arrive at the expression for the total number of FH microstates for the generalized case:
+Ω = ΩCMΩconf = M !
+∏m
+i=1 nk!
+(z − 1)∑m
+i=1 ni(Ni−1)
+M ∑m
+i=1 ni(riNi−1) . (10)
+Thus the negative configurational entropy per lattice site
+−s = − 1
+M ln Ω =
+m
+∑
+i=1
+ni
+M ln ni + (terms linear in ni)
+=
+m
+∑
+i=1
+φi
+Ni
+ln φi + (terms linear in φi)
+(11) is obtained by applying Stirling’s approximation ln x! ≈ x ln x − x for x ≫ 1 (in which case the percentage error of
+omitting the ln √2πx term in the approximation is negligible). It follows that the mixing entropy is given by
+∆s({φi}) =s({φi})− ∑
+i′=1
+ri′ φi′ s({φi′ = 1/ri′ , φi6=i′ = 0})
+=
+m
+∑
+i=1
+φi
+Ni
+ln(φi ri ).
+(12) As shown in Appendix A, terms of the form (φi/Ni) ln ri in Eq. (12) that are linear in φk have no effect on phase separation. Therefore, for application to phase separation, we may drop these terms and choose the totally demixed configuration as the reference state, then use the mixing entropy expression
+− s = φm
+N ln φm + φc ln φc + 2φs ln φs + φw ln φw (13)
+as the generalized FH entropy term in Eq. (1) for a system of polyampholytes, counterions, and salt. Here rm, rc, and rs, are size factors, respectively, for monomers of the polyampholytes, counterions, and salt ions, rw and φw are, respectively, the size factor and number density of water, satisfying
+rwφw = 1 − rmφm − rcφc − 2rsφs (14)
+by virtue of Eq. (4).
+2.2. RPA treatment of electrostatics
+Derivation of RPA electrostatic energy of polyelectrolyte solutions is well documented [70, 74, 95]. We include here for completeness the steps we took to apply RPA to our polyampholyte system, providing some details for the theory we outlined recently [91].
+4
+
+
+RPA theory neglects all but the trivial zeroth-order and two-body correlation of density fluctuation. Consider a system of different types of monomers (labeled as 1,2,3, ...) with densities ρ(1)(r), ρ(2)(r), ρ(3)(r)... that are functions of spatial position r. When the correlation among the densities is accounted for only up to the two-body level, the partition function Z can be expressed as a path integral of all possible density profiles in terms of their Fouriertransformed fluctuations, viz.,
+Z=
+∫
+D|ρk〉 exp
+
+− 1
+2V
+∑
+k6=0
+〈ρ−k |Aˆk |ρk 〉
+
+ , (15)
+where k here is the wave number (for all three dimensions of the reciprocal space of any finite volume V ), and all variables are Fourier transformed except V which is the total volume of the solution system, appeared here as the normalizing factor for ∑
+k. The matrix Aˆk accounts
+for two-body interactions between arbitrary Fourier transformed densities ρ(i)
+k and ρ(j)
+k of monomer types i and j;
+Aˆk may correspond to any interaction/correlation that de
+pends only on the relative position r−r′ of ρ(r) and ρ(r′) in real space. Fourier transformations of density fluctuations are represented by the column vector
+|ρk〉i ≡ ρ(i)
+k (16)
+and 〈ρ−k| = (|ρk〉∗)T is the conjugate row vector. The path integral in Eq. (15) is over all monomer types, and over all wave numbers except k = 0, i.e.,
+D|ρk〉 =
+m
+∏
+i=1
+∏
+k6=0
+dρ(i)
+k . (17)
+The k = 0 term is omitted because
+ρ(i)
+k=0 =
+∫
+d3rρ(i)(r) = ni (18)
+is the total number of type-i monomers, which is a constant that does not contribute to density fluctuation [96]. In the absence of interactions among the monomers,
+Aˆk accounts only for geometric constraints such as chain
+connectivity, in which case Aˆk is the inverse of the bare
+two-body correlation matrix Gˆk, viz.,
+Ak = Gˆ−1
+k . (19)
+This relationship is readily verified by recalling that the two-body correlation is defined by the density conjugate field h(i)
+k via the partition function
+Z(|hk〉) =
+∫
+D|ρk〉e− ∑
+k6=0( 1
+2V 〈ρ−k |Aˆk|ρk 〉+〈h−k|ρk〉)
+= exp
+
+
+V 2
+∑
+k6=0
+〈h−k|Aˆ−1
+k |hk〉
+
+.
+(20)
+The correlation function itself is defined as
+〈ρ(i)
+k ρ(j)
+−k〉 = V
+(Gˆk
+)
+ij , (21)
+where the V factor appears because of translational invariance. Since the correlation function can be determined as the second-order derivative of ln Z(|hk〉),
+〈ρ(i)
+k ρ(j)
+−k〉 = ∂2 ln Z
+∂ h(i)
+k ∂h(j)
+−k
+∣ ∣ ∣ ∣
+∣h(i)
+k =h(j)
+−k =0
+=V
+(Aˆ−1
+k
+)
+ij , (22)
+Eq. (19) follows from Eqs. (21) and (22). In our system of polyampholytes and monomeric ions,
+the matrix elements of Gˆk can be classified into four categories: bare monomer-monomer (MM), ion-ion (II), and monomer-ion (MI) correlations with their respective ma
+trices GˆMM, GˆII, GˆMI. Accordingly, Gˆk can be arranged as
+Gˆk =
+( GˆMM(k) GˆMI(k)
+GˆIM(k) GˆII(k)
+)
+, (23)
+where GˆIM = GˆTMI. In general, all four correlation sub
+matrices depend on the configurational constraints in the system. For example, crosslinking in polymer gels [95, 97] or ion condensation in charged polymer systems [98] can result in non-trivial correlations. Here we restrict to a simple RPA model of charged polymers and ions [70, 74, 77] that treats all molecules as Gaussian chains or monomeric particles with no excluded volume. (Excluded volume is accounted for separately in a mean-field manner by the FH configurational entropy term.) In this case, correlation exists only among monomers belonging to the same polymer because of chain connectivity. Consequently, all
+matrix elements of GˆMI and GˆIM are zero. In other words, there are no monomer-ion correlations in the model. The ion-ion correlation is the sum of the self-correlation of all ions, given by the 2 × 2 diagonal matrix
+GˆII(k) = ρˆI =
+( ρ+ 0 0 ρ−
+)
+, (24)
+where ρ± are the densities of positive and negative ions, (ρ+, ρ−) = (ρs+ρc, ρs) or (ρs, ρs+ρc) when the net polyampholyte charge is, respectively, negative or positive [91]. Finally, the monomer-monomer correlation matrix is calculated as the product of the structure factor of a Gaussian chain and polymer density,
+GˆMM(k) = (ρm/N )GˆM(k), (25)
+where the matrix elements of GˆM(k) is given by
+GˆM(k)ij = 〈ei~k·(~xi−~xj)〉 = e−(kb)2|i−j|/6, (26)
+with b being the length of polymeric links of the Gaussian chains, and 〈...〉 representing average over all possible
+polymer conformations. The matrix element (GˆM(k))ij accounts for the correlation between the ith and jth monomers
+5
+
+
+in a Gaussian chain [69, 96, 99]. Taken together, the above considerations lead to a block diagonal form for the bare correlation matrix:
+Gˆk =
+( (ρm/N )GˆM(k) 0 0 ρI
+)
+. (27)
+We now proceed to add inter-monomer interactions into the system. RPA assumes that the interactions are weak such that the Gaussian-chain geometry described in
+the bare correlation matrix Gˆ remains a good approximation for the polyampholytes. In general, sequence dependence of conformational distribution, which is expected physically [52], may be treated approximately by replacing the (bare) Kuhn length b by a sequence-dependent renormalized Kuhn length [89]. For tractability, however,
+here we assume that Gˆ is sequence independent. Under
+this assumption, for any given interaction matrix Uˆk = uˆk/(kBT ), its perturbative effect on the partition func
+tion can be calculated as the average of exp(−Uˆk) over all Gaussian-chain configurations,
+Zu =
+∫ D|ρk〉 exp
+(
+−1
+2V
+∑
+k6=0 〈ρ−k |(Gˆ −1
+k + Uˆk)|ρk〉
+)
+∫ D|ρk〉 exp
+(
+−1
+2V
+∑
+k6=0 〈ρ−k |Gˆ −1
+k |ρk〉
+)
+× exp
+(
+−1
+2V 〈ρk=0|Uˆk=0|ρk=0〉
+)
+≡ Z(u1)Z(u2) .
+(28)
+Since all eigenvalues of Gˆ−1
+k and Gˆ−1
+k + Uˆk are positive
+for Coulomb interaction, the path integrals in Eq. (28) can be calculated by Gaussian integrations to yield
+Z(u1) =
+∏
+k6=0
+√
+det
+(Gˆ −1
+k +Uˆk
+)
+∏
+k6=0
+√
+det
+(Gˆ−1
+k
+)
+=
+∏
+k6=0
+√
+det
+(
+1 + Gˆ k Uˆk
+)
+.
+(29) The Z(u2) factor for k = 0 depends on the interaction potential U . For Coulomb interaction, the neutrality of the system requires [95]
+∑
+ij
+ρ(i)
+k=0U ij
+k=0ρ(j)
+k=0 ∝ (∑ i
+niqi)2 = 0, (30)
+and thus Z(u2) = exp(0) = 1 . (31)
+We hereafter consider fel for Coulomb interaction as the fint term in Eq. (1) and calculate it as the logarithm of Z(u1) divided by the total number of lattice sites V /a3:
+fel = − a3
+V ln Z(u1) = a3
+2V
+∑
+k6=0
+ln[det(1 + GˆkUˆk)] . (32)
+In doing so, we are using Zu in Eq. (28) as the partition function of the system. This is appropriate for phase
+separation studies because it amounts to choosing as reference state a noninteracting system that does not phase separate and whose partition function is given by the denominator of the first line of Eq. (28). Approximating the summation in Eq. (32) as an integration, (1/V ) ∑
+k→
+∫ d3k/(2π)3 [95, 96], and subtracting the self electrostatic energy of all charges to eliminate unphysical “ultraviolet” divergences at k → ∞ [77, 95, 97, 100], we arrive at the RPA formula [95, 97, 98]
+fel = 1
+2
+∫ d3(ka)3 (2π)3
+{
+ln[det(1 + GˆkUˆk)] − Tr(ρˆ Uˆk)
+}
+.
+(33) As in [91], here we consider a Coulomb potential with a short-range physical cutoff on the scale of monomer size [95, 97], U (r) = lB(1 − e−r/b)
+r , (34)
+where r is spatial distance between electric charges. In k-space, this becomes
+Uˆk = 4πlB
+k2[1 + (kb)2] |q〉〈q| ≡ λ(k)|q〉〈q| , (35)
+where lB = e2/(4πǫ0ǫrkBT ) is the Bjerrum length, ǫ0 is vacuum permittivity, ǫr is relative permittivity (dielectric constant) governing the interaction, |q〉 is the column vector for the charges of the monomers and monovalent ions, and 〈q| ≡ |q〉T is the transposed row vector, with components qi = σi for 1 ≤ i ≤ N , qN+1 = 1, and qN+2 = −1. The determinant in Eq. (33) can now be simplified as
+det(1 + GˆkUˆk) =1 + λ(k)〈q|Gˆk|q〉
+=1 + λ(k)
+(
+2ρs +ρc+ ρm
+N 〈σ|GˆM(k)|σ〉
+)
+(36)
+by using Sylvester’s identity det(Iˆμ + AˆBˆ) = det(Iˆν + BˆAˆ) where Aˆ and Bˆ are, respectively, any μ × ν and ν × μ
+matrices and Iˆμ and Iˆν are, respectively, μ × μ and ν × ν identity matrices [70]. The second term in Eq. (36) is a linear function of ρm, and
+ln[det(1 + GˆkUˆk)] k→∞
+−−−−→ λ(k)〈q|Gˆk|q〉. (37)
+This limiting property allows us to replace the trace in
+Eq. (33) by λ(k)〈q|Gˆk|q〉 to facilitate numerical integration for fel [74]. As will be discussed in Sec. 2.3 and Appendix A, the additional term linear in ρm has no effect on phase separation. As in [91], a set of dimensionless variables are introduced for our analysis. First, a reduced temperature is defined by rescaling temperature with electrostatic energy,
+T ∗ ≡ b/lB = 4πǫ0ǫrkBT b/e2 . (38)
+In addition, the fel integration is rewritten in terms of the
+reduced wave number k ̃ = kb. We notice that GˆM(k) is a
+function of kb and thus we rewrite it as GˆM(k ̃). Together
+6
+
+
+N=240, n=48, L=5, σ=0.2, strictly alternating
+N=240, n=24, L=10, σ=0.1, strictly alternating
+N=240, n=12, L=20, σ=0.05, strictly alternating
+N=240, n=6, L=40, σ=0.025, strictly alternating
+Ddx4N1 , the1-236 residues of wild-type Ddx4
+Ddx4N1CS , the1-236 residues of charge-scrambled Ddx4
+N=120, n=4, L=30, σ=1
+N=120, n=4, L=30, σ=0.5
+N=160, n=4, L=40, σ=0.5
+N=160, n=4, L=40, σ=1
+N=240, n=4, L=60, σ=1
+N=240, n=4, L=60, σ=0.5
+N=320, n=4, L=80, σ=1, first 240 residues
+N=320, n=4, L=80, σ=0.5, first 240 residues
+N=320, n=8, L=40, σ=1, first 240 residues
+N=320, n=8, L=40, σ=0.5, first 240 residues
+N=320, n=16, L=20, σ=1, first 240 residues
+N=320, n=16, L=20, σ=0.5, first 240 residues
+N=320, n=32, L=10, σ=1, first 240 residues
+N=320, n=32, L=10, σ=0.5, first 240 residues
+Figure 1: Sequences studied in the present work. Monomers (residues) are depicted as small squares. Each colored square is a monomer with a positive (red) or negative (blue) electronic charge. Neutral monomers are white. For the two Ddx4 sequences, red monomers correspond to either arginine (R) or lysine (K); blue monomers correspond to either aspartic (D) or glutamic (E) acid [30, 92]. N is chain length (number of monomers), n, the number of charged blocks, L, length of an individual block, and σ, the fraction of monomers that are charged. The first 14 sequences are studied in Fig. 4, the next four sequences in Fig. 5, and the last two sequences in Figs. 6, 9, and 12. For the N = 320 sequences, only the first 240 monomers are included in this figure. The other 80 monomers of each of these sequences follow the same charge pattern of the first 240 monomers shown.
+7
+
+
+φm
+f
+104 × (f + 1.23546φm)
+φ
+s1
+φ
+s2
+φb1 φb2
+Figure 2: The f (φm) function [Eq. (1)] at T ∗ = 1/3.5 = 0.286 in our RPA model for Ddx4N1 [91] minus −1.23546φm, where −1.23546 is the slope of the secant from φm = 0 to 0.05. f (φm) itself is shown in the inset. φs1, φs2 are the two spinodal points satisfying fe′′l(φm) = 0, whereas φb1, φb2 are the two binodal points sharing a
+common tangent. The f values for these four φm’s are marked by circles. The subtraction of a term linear in φm from f (φm) serves to better exhibit its curvature, which is less apparent visually without the subtraction (inset). The two shaded boxes mark two regions of f (φm) that are further analyzed, respectively, in Fig.3b and 3c.
+with the rescaled densities φm = ρma3, φc = ρca3, and
+φs = ρsa3, fel may be expressed in terms of dimensionless variables only,
+fel =
+∫ dk ̃k ̃2
+4π2
+{1
+η ln
+[
+1 + ηG(k ̃)
+]
+− G(k ̃)
+}
+, (39)
+where η = (b/a)3 is the ratio between the cube of polymer link length and water molecular size when rw = 1, and
+G(k ̃) = 4π
+k ̃2[1 + k ̃2]T ∗
+(
+2φs +φc + φm
+N 〈σ|GˆM(k ̃)|σ〉
+)
+. (40)
+Using numerical integration of Eq. (39) for fint = fel in Eq. (1) and the FH configurational entropy expression in Eq. (13) for −s, this formulation is applied below to study the phase behaviors of the sequences in Fig. 1.
+2.3. Determination of phase boundaries
+We first use the RPA model for Ddx4N1 with rm = rc = rs = rw = 1 [91] as an example to illustrate the procedure used to determine phase boundaries (Figs. 2 and 3) and to highlight qualitative differences between RPA and FH phase behaviors (cf. Fig. 4 of [27]). The charge pattern of Ddx4N1 is provided in Fig. 1. Using the configurational entropy and interaction terms in Eqs. (13) and (39), the free energy of Ddx4N1 solution is a function of polyampholyte and salt densities,
+f = f (φm, φs) . (41)
+Whether concentrations (φm, φs) result in phase separation depends on the local curvature of f on the φm − φs plane. We consider only the salt-free (φs = 0) case in Figs. 2 and 3. The function f exhibits two local minima (Fig. 2), one at φm ≈ 0.005 (Fig. 3a), the other at φm ≈ 0.052 (Fig. 3c). Two points in Fig. 2, φm = φs1, φs2, satisfy
+f ′′ ≡ d2f
+dφ2m
+= 0 . (42)
+The free energy is a concave function (f ′′ < 0) between
+these two points. Consider two concentrations φ(m1) < φ(m2) within this region. Any φm in between these two concen
+trations, i.e., φ(m1) ≤ φm ≤ φ(m2), can be written as
+φm = v1φ(m1) + v2φ(m2) , (43)
+where the weight factors v1,v2 satisfy 0 ≤ v1, v2 ≤ 1. A homogeneous concentration φm is not stable in the concave region because its free energy is higher than the free energy f ̄ of two phase-separated (demixed) concentrations φ(m1) and φ(m2),
+f ̄ = v1f (φ(m1)) + v2f (φ(m2)) < f (v1φ(m1) + v2φ(m2)) , (44)
+as can be seen in Fig. 3b by comparing the free energy values along the secant from φ(m1) to φ(m2) and f itself. In contrast, in a region with f ′′ > 0, the homogeneous phase is seen to be more favorable by using the same consideration (Fig. 3c). The f ′′ < 0 condition defines the spinodal phase separation region in which the demixed state is globally more favorable. For systems with more than two relevant molecular components, i.e. f = f ({φk}), the spinodal condition Eq. (42) is generalized to
+det Fˆ = 0 , Fˆij = ∂2f ({φk})
+∂φi∂φj
+. (45)
+As is conventional, the phase boundaries in [91] are coexistence curves satisfying the binodal condition, which corresponds to the equality of chemical potentials across phase boundaries, and therefore may be determined graphically by constructing a common tangent (Fig. 2) – because chemical potentials are by definition derivatives of free energy with respect to number of molecules. Specifically, the binodal concentrations (φαm, φβm) for two separate phases α, β is determined by the conditions
+f ′(φαm) =f ′(φβm) , (46a)
+f (φαm) − φαmf ′(φαm) =f (φβm) − φβmf ′(φβm), (46b)
+where f ′(φm) = ∂f /∂φm. These two equations uniquely
+define the common tangent of f (φm) at φαm and φβm [27,
+101, 102], as illustrated by the example in Fig. 2 with φαm
+and φβm corresponding to φb1 and φb2. While the spinodal region necessitates global phase separation across the entire solution, phase separation can occur locally in binodal regions (e.g., for bulk concentration φm in the regions
+8
+
+
+f (φ(1)
+m)
+f (φ(2)
+m)
+f (v1φ(1)
+m + v2φ(2)
+m)
+v1f (φ(1)
+m ) + v2f (φ(2)
+m)
+v1
+v2
+φ(1)
+m φ(2)
+m
+f (φ(1)
+m)
+f (φ(2)
+m)
+f (v1φ(1)
+m + v2φ(2)
+m)
+v1f (φ(1)
+m ) + v2f (φ(2)
+m)
+v1
+v2 φ(1)
+m φ(2)
+m
+(a) (b)
+104 × (f + 1.23546φm)
+φ
+m
+(c)
+φb1
+φ
+s1
+Figure 3: Phase stability of the RPA model for Ddx4 [91]. Shown here are enlarged parts of the f (φm) function in Fig. 2. (a) Zoom-in display of the low-φm minimum of f (φm) near the origin. (b) The convex region of f (φm) satisfying Eq. (44). (c) The concave region near the second minimum of f (φm). This region satisfies the inequality reverse to that of Eq. (44).
+φb1 < φm < φs1 and φs2 < φm < φb2 in Fig. 2). In these regions, strong local fluctuations into the spinodal region can be metastable, resulting in small liquid droplets with a different concentration. Generalizations of the bionodal conditions in Eq. (46) are provided in Appendix A. It should be noted that salt concentration φs is taken to be uniform (constant across phase boundaries) here and in [91]. This need not be the case in general. Indeed, twophase electrostatic coacervation in systems consisting of two, three, and four types of charged molecules have been well studied under the framework of DH theory [101, 103105]. Previous research, however, suggests that change in salt concentration is insignificant upon biological coacervation [81, 104]. We therefore assume for simplicity that the phase behavior of our model polyampholyte system does not involve fluctuation in salt concentration.
+3. Phase behaviors of salt-free block polyampholytes
+To better understand the physical consequences of our RPA model and to delineate its differences with FH theory in detail, we extend our previous analysis [91] of simple salt-free (ρs = 0) solutions of polyampholytes consisting of n alternating charge blocks (labeled by α, β = 1, 2, . . . , n) with length L = N/n. The charge density in each block
+is σblock
+α = (−1)α−1σ, i.e., a charge per 1/σ monomers (Fig. 1). For simplicity, we assume, as before [91], that all monomers are of identical size, i.e. rm = rc = rs = 1, and the polymer link length is equal to the solvent length scale, i.e., b = a [η = 1, Eq. (39)].
+The correlation matrix GˆM(k ̃) for these highly regular charge patterns is reduced to an n×n matrix for the blocks,
+Gˆblock
+M (k). The diagonal terms of Gˆblock
+M,
+Gˆblock
+M (k)αα =
+L
+∑
+i,j=1
+σiσj e−(kb)2|i−j|/6 , (47)
+account for intra-block correlations. Because only the (1 + l/σ)th (l = 0, 1, 2, ...) residues are charged, as illustrated
+by the second sequence in Fig. 1, the summation of Gˆblock
+M
+becomes
+Gˆ block
+M (k)αα =
+Lσ
+∑
+i,j=1
+e−(kb)2|i−j|/(6σ), (48)
+in which the i and j labels only go through the charged
+residues. The Gˆblock
+M (k)αα is then calculated in terms of
+ζ ≡ exp(−(kb)2/(6σ)) as
+Gˆ block
+M (k)αα =Lσ + 2
+Lσ
+∑
+j=1
+Lσ
+∑
+i=j+1
+ζ i−j
+=1 + ζ
+1 − ζ Lσ − 2ζ(1 − ζLσ)
+(1 − ζ)2 ,
+(49)
+where the Lσ term corresponds to the self-correlation of each charged monomer. The off-diagonal terms account for inter-block correlations, of which the lower triangular components (α > β) are
+Gˆblock
+M (k ̃)α>β =
+αLσ
+∑
+i=(α−1)Lσ+1
+βLσ
+∑
+j=(β−1)Lσ+1
+ζ i−j
+= ζ(α−1)Lσ+1(1 − ζLσ)
+1 − ζ × ζ−(β−1)Lσ−1(1 − ζ−Lσ)
+1 − ζ−1
+=ζ
+(1 − ζ)2 ζ(α−β−1)Lσ(1 − ζLσ)2
+(50)
+and the upper triangular part is given by switching α and β, resulting in the general expression
+Gˆblock
+M (k)αβ = ζ
+(1 − ζ)2 ζ(|α−β|−1)Lσ(1 − ζLσ)2 . (51)
+In the same vein, |σ〉 is grouped into n components
+with σα = (−1)α−1. The RPA contribution from GˆM is
+then calculated by summing all Gˆblock
+M (k) elements with
+9
+
+
+alternating ±1 weight factors, yielding
+〈σ|GˆM(k)|σ〉
+= nGˆblock
+M (k)αα + 2
+n
+∑
+β=1
+n
+∑
+α=β+1
+(−1)α−β Gˆ block
+M (k)αβ
+= 1+ζ
+1 − ζ nLσ − 2ζ
+(1 − ζ)2 (1 − ζLσ)n
++ 2ζ1−Lσ
+(1 − ζ)2 (1 − ζLσ)2
+n
+∑
+β=1
+n
+∑
+α=β+1
+(−ζ Lσ )α−β
+=N
+[
+σ1 + ζ
+1−ζ − 1
+L
+4ζ (1 − ζ)2
+( 1 − ζLσ
+1 + ζLσ
+)]
++ 2ζ
+(1 − ζ)2
+( 1 − ζLσ
+1 + ζLσ
+)2
+(1 − (−1)nζNσ) .
+(52)
+Here we begin by using these formulas to examine phase separation of neutral block polyampholytes (n even and thus ρc = 0). The general trend shown in Fig. 4 is that polyampholytes with greater N , fewer n, and greater σ phase separate at higher temperature T ∗. Specifically, when the number of charge blocks, n, is fixed, the critical temperature Tc∗r (maximum T ∗ of the phase boundary) increases whereas the critical volume fraction (concentration) φcr (= φm at Tc∗r) decreases as the block length L
+increases (Fig. 4a). This Tc∗r → ∞, φcr → 0 trend as N = nL → ∞ with fixed n is consistent with previous reports for short diblock polyampholytes [79, 80]. In the limit of N → ∞, the first term in Eq. (52), which diverges at k → 0, dominates the integration for fel. As a result, fel is in the form of the Eq. (5) in Ref. [77] with
+λ = 1, proportional to φ3m/2 as in Debye-H ̈uckel theory but with an infinitely large prefactor. In this limit, the block number n becomes irrelevant and the system behaves just like a solution of diblock polyampholytes with N → ∞, in which electrostatic interaction is so strong that the RPA is broken. Diblock polyampholytes are expected to form structural aggregates [72, 77]. We note that this fel is much stronger than the Debye-H ̈uckel theory for electrostatic coacervation that expects an fel with a finite prefactor [81]. If the chain length N is fixed, when L decreases (i.e. n increases), the first term in Eq. (52) is unchanged, but the second term increases, and the third term slightly decreases. In the limit of N ≫ 1, only the first two O(N ) terms are relevant, which yield a decreasing contribution to fel when L decreases. As shown in Fig. 4, a smaller Tc∗r thus results from more but shorter charge blocks, qualitatively consistent with experiment on the charge-scramble mutant Ddx4N1CS [30]. The increase of n will ultimately arrive at the strictly alternating polyampholyte, in which the polyampholyte contribution to fel integration is given by substituting L = 1/σ in Eq. (52) to give
+1
+N 〈σ|GˆM(k)|σ〉 = 1 − ζ
+1+ζσ+ 1
+N
+2ζ(1 − (−1)nζNσ)
+(1 + ζ)2 . (53)
+T*
+T*
+φ
+m φm
+N=320
+N=240 N=160
+N=120 N=120
+N=160
+N=240
+N=320
+n=4
+n=8
+n=16 n=32 n=32
+n=16
+n=8
+n=4
+(a) (b)
+(c) (d)
+n=4 σ=1
+n=4
+σ = 0.5
+N = 320
+σ=1
+N = 320
+σ = 0.5
+Figure 4: Binodal phase boundaries for neutral salt-free polyampholytes with diffirent combinations of N , n, and σ: (a, b) N = 120, 160, 240, and 320; n = 4. (c, d) N = 320, n = 4, 8, 16, and 32. (a, c) σ = 1. (b, d) σ = 0.5. The dots mark the critical points. Longer polyampholytes (larger N ) with fewer blocks (smaller n) and higher charge densities (higher σ) have stronger tendencies to phase separate.
+In the limit of N → ∞, only the first term in Eq. (53) remains. As this term converges to 0 when k → 0, the fel behavior in low φm can be evaluated by expanding Eq. (39)
+using ln(1 + x) ≈ 1 + x − x2/2! + ... to the second order of φm, yielding
+fel∞ ≈ − (6σ) 3
+2
+2
+∫ dk′k′2
+4π2
+(
+4πφm
+6k′2(1 + 6σk′2)T ∗
+1 − e−k′2
+1 + e−k′2
+)2
+≡ − χe∞l φ2m
+(54) with k′2 = (kb)2/6σ. The electrostatic energy now becomes a quadratic term of polymer concentration. Thus, the N → ∞ alternating polymers are interacting in terms of an effective FH interaction with the FH χ parameter
+χe∞l = (6σ) 3
+2
+18T ∗2
+∫ dk′
+k′2(1 + 6σk′2)2
+(
+1 − e−k′2
+1 + e−k′2
+)2
+. (55)
+For weakly charged polyampholytes, σ ≪ 1. Thus, the (1 + 6σ′k′2) factor in Eq. (55) can be approximated to 1 as if the short range cutoff is irrelevant, resulting in
+χe∞l ≈ 0.687σ3/2T ∗−2, (56)
+which is equivalent to Eq. (3) in Ref. [77]. The critical point, however, does not obey the FH re
+sult that φcr ≈ 1/√N and χe∞l = 0.5. First, the second
+O(1/N ) term in Eq. (53) enhances fel, and thus φcr is smaller than the FH result. Even without considering this 1/N term in fel, an approximate description of these RPA results by a FH framework is still not applicable because FH does not take into account higher order terms of φm.
+10
+
+
+0 0.02 0.04 0.06 0.08 0.1
+0.02
+0.03
+0.04
+0.05
+0.06
+0.07
+0.08
+T*
+φ
+m
+σ = 0.025
+σ = 0.05
+σ = 0.1
+σ = 0.2
+Figure 5: Phase diagrams for strictly alternating polyampholytes with N = 240 and σ = 0.025, 0.05, 0.1, and 0.2, corresponding to n = 6, 12, 24, and 48, respectively. Critical points are marked by the gray circles. Smaller σ leads to lower φcr and lower T ∗.
+In the calculation of critical point, both the second and third order derivatives of free energy have to be zero. As FH only includes interactions up to O(φ2m), the third order derivative of interaction energy must be zero. The exact fel in RPA, however, can be expanded further,
+fel∞(φm) = fel∞(φm = 0) − 1
+2 Aφ2m + 1
+6 Bφ3m + O(φ4m), (57)
+where A = 2χe∞l and B = ∂3fel(φm = 0)/∂φ3m is given by
+B = 2(6σ) 3
+2
+∫ dk′k′2
+4π2
+(
+4π 6k′2(1 + 6σk′2)T ∗
+1 − e−k′2
+1 + e−k′2
+)3
+,
+(58) which in the limit of σ ≪ 1 becomes
+B ≈ 1.187σ3/2T ∗−3. (59)
+Noted that χe∞l = 0.5 in Eq. (56) would result in T ∗ ∼
+σ3/4 and thus B ∼ σ−3/4 & 1, contradicting with the requirement of B ≈ 0 in FH theory. Because the third order derivative of fel as well as the finite-size effect from N and σ are not negligible in our RPA model, the FH inference based on Eq. (56) does not lead to the correct critical point. In Appendix B we describe a semi-analytic solution for critical point in the limit of N → ∞ for any σ. Phase diagrams of a series of strictly alternating polyampholytes with identical N are shown in Fig. 5. In contrast to the decreasing Tc∗r and increasing φcr with increasing number of charge blocks n when charge density σ is fixed (Fig. 4c,d), when the charge per block is fixed as in Fig. 5, both Tc∗r and φcr increase with increasing number of charge blocks n. In other words, whereas the variations of Tc∗r and φcr in Fig. 4 impact phase separa
+tion in the same direction, the variations of Tc∗r and φcr for strictly alternating polyampholytes in Fig. 5 are such that they have opposite effects on the tendency of the solution to phase separate.
+T*
+φ
+m
+Ddx4N1
+Ddx4N1CS
+Figure 6: The salt-free phase diagrams for the two Ddx4 sequences in our RPA theory. Solid lines are binodal boundaries that have been shown in [91], dashed lines are spinodal boundaries. Gray circles mark the critical points. In this theory, Tc∗r of Ddx4N1CS is ≈ 1/3 that of Ddx4N1.
+4. Comparison of RPA and other analytical models for Ddx4 phase separation
+4.1. The RPA model
+We have applied our RPA theory to Ddx4 by considering the exact amino acid sequences of residues 1–236 of wildtype Ddx4 (Ddx4N1) and its charge-scrambled mutant (Ddx4N1CS) [30] (Fig. 1) to compute their binodal [91] and spinodal boundaries (Fig. 6). In this calculation, we assume for simplicity rm = rc = rs = η = 1. We have considered the general size-dependent formulation in Sec. 2.1 with reasonable variations in monomer sizes and found that the variations we tested only resulted in shifts of the phase boundaries in the vertical (T ∗) direction without much alternation of their overall shapes. Consistent with the experimental observation that Ddx4N1 phase separates but Ddx4N1CS does not [30], Fig. 6 indicates that Ddx4N1CS with its scrambled charged pattern has a critical temperature Tc∗r that is only about 1/3 that of the wildtype in our RPA model [91]. However, the critical concentration φcr of Ddx4N1CS is larger, not smaller, than
+that of the wildtype. This trend of (Tc∗r, φcr) variation is reminiscent of the σ dependence of strictly alternating polyampholytes in Fig. 5. The coexistence of two phases in Ddx4N1 solution has been characterized experimentally by a dramatic change of turbidity by lowering temperature – presumably as the system crosses the binodal boundary – when numerous droptlets with relatively higher concentration of Ddx4 are formed (Fig. 3D in Ref. [30]). Global spinodal phase separation of Ddx4N1 solution has also been observed by rapid increase in concentration, probably quenching the system well into the spinodal regime. In this case, no spherical droplets were formed. Instead, the condensed regions extended and then merged into a giant network (Fig. 7).
+11
+
+
+Figure 7: Spinodal behavior of Ddx4. The montage shown was obtained by drying a droplet of Ddx4 in aqueous buffer solution and recorded using a 10x objective. The time lapse between successive frames (from left to right) was 0.32 second. The edge of the circular drying droplet was on the top of the frame though well out of view. Consequently, evaporation and hence increase in Ddx4 concentration was proceeding from top to bottom, resulting in the upper parts reaching the spinodal regime before the lower parts of the frame (courtesy Timothy J. Nott, unpublished).
+4.2. Proposed analytical models for IDP phase separation
+We now proceed to compare models that have been either applied to [30, 91] or proposed for [33] the study of IDP phase separation. These include the FH [30] and RPA [91] models for Ddx4, and the OV/DH approach advocated in a recent review on the polymer physics of intracellular phase transitions [33]. All these models are mean-field at one level in that they all incorporate the classical FH lattice derivation of configurational entropy described here in Sec. 2.1, which considers only bulk polymer concentration and ignores all local density fluctuation. However, the way interactions within and among polymers are treated is quite different in these models. In both FH and OV/DH, the amino acid residues in polypeptides are treated as independent monomers. Chain connectivity is only accounted for in a mean-field manner in the derivation of configuration entropy (the (z − 1) factors in Eq. (6); but this factor is irrelevant to phase separation). But chain connectivity is neglected entirely in the interaction term, precluding these theories from addressing sequence-dependent interactions directly. For example, the FH model for Ddx4 in [30] uses a single overall FH χ parameter as an average interaction strength. It does not distinguish between charged and uncharged residues. Moreover, the derivation of FH assumes that interactions are of short-range, point-contact type [58, 69]. As such, the applicability of FH to long-range Coulomb interactions may be limited, as is evident from the difference in φm dependence between its interaction term and that of OV/DH (see below). The OV/DH approach recognizes charged and neutral residues so as to apply electrostatic interaction only to the former, but it does not distinguish between positive and negative charges. Only the total number of charged monomers, counterions, and salt ions can be parametrized [60]. Thus, in contrast to the RPA approach that offers a direct treatment of charge pattern along the polypeptide sequence [91], effects of charge pattern are absent in FH and OV/DH models. The consequences of the assumptions in these models are examined below by applying them to the salt-dependent phase behavior of Ddx4N1.
+To compare the model results with experiment, we equate a3 with the volume of a single water molecule in all calculation below. Accordingly, the volume fraction of amino acid residues is given by φm = 236[Ddx4]/(55.5 M) because [H2O] = 55.5 M. We restrict our consideration to salt concentrations φs = 0.0018, 0.0027, 0.0036, and 0.0054, which correspond, respectively, to [NaCl]=100, 150, 200, and 300 mM [91] that have been investigated experimentally [30]. To faciliate comparison with the experimental phase diagrams in Fig. 4 of [30], special focus is placed on the range of [Ddx4]=0 – 400μM.
+4.3. Flory-Huggins (FH) model
+FH model has been applied to analyze experimental data of Ddx4 phase separation [30]. This particular model supposes that Coulomb interaction contributes to attraction between all residue pairs, and the effect of salt is a screening effect that decreases this general attraction. Following the description of the model in Supplemental Information of [30], we conducted the calculation anew, arriving at a set of parameters that provide a reasonably good fit to the experimental data (Fig. 8a, inset). Our fitted parameters were obtained by first fixing ∆H0 and ǫr to values consistent with those in [30]. The resulting parameters differ from theirs, however, probably because there can be more than one optimum for such a multiple-parameter fit. Nonetheless, in agreement with [30], we found within the [NaCl] range studied that the entropic contribution ∆S to the FH χ parameter is always negative, meaning that entropy favors phase separation. The full FH phase diagrams are provided in Fig. 8a. Three features are notable. First, the FH phase boundaries always concave downward, whereas RPA phase boundaries are S-shaped with inflection points, i.e., part of it convex downward (Fig. 6). Second, FH predicts a salt
+independent critical concentration, φcr ≈ 1/√N . Third, the FH phase boundaries of different salt concentrations cross at T ≈ 100◦C, exhibiting opposite tendency above and below this temperature. These features, which are testable by experiment in principle, are not presented in
+12
+
+
+T(◦C)
+[Ddx4](mM)
+100mM 150mM
+200mM
+300mM
+100mM
+200mM
+150mM
+300mM
+T(◦C)
+[Ddx4](mM)
+100mM 150mM
+200mM
+300mM
+100mM
+150mM
+300mM
+200mM
+(a) (b)
+Figure 8: Salt-dependent phase diagrams of Ddx4N1 predicted by different theories and their comparison with experimental [NaCl] dependence. Binodal and spinodal boundaries are shown, respectively, as solid and dashed lines. Critical points are marked by gray circles. Experimental data [30] are included in the insets for comparison (symbols; same color code). (a) FH theory in Ref. [30] as described in the Supplemental Information of this reference. The fitting parameters are ∆H0 = 78 J mol−1, ǫr = 50, rd = 8.4354 ̊A, ∆S0 = −10.4922 J mol−1K−1, and B0 = −0.19549 (the last two parameters are for Eq. [S20] of [30] in the form of ∆S = ∆S0 + B0R ln([NaCl]/55.5), where [NaCl] is in M). The
+critical point is always at φcr ≈ 1/√N and χcr ≈ 0.5 + 1/√N because these values are fixed in the FH model [69]. (b) DH theory given by fDH in Eq. (60); ǫr = 59.5 is used to convert T ∗ to T (◦C) to fit the experimental data.
+the corresponding RPA phase boundaries, as will be discussed in Sec. 4.5 below.
+4.4. The Overbeek-Voorn/Debye-H ̈uckel (OV/DH) model
+The OV/DH model is based on the linearized PoissonBoltzmann equation, which self-consistently calculates the screening effect of monomeric ions [61, 81]. To apply DH to polyampholytes such as Ddx4, we count all charged residues as independent monomeric ions and calculate the electrostatic energy as
+fDH = − 1
+12π
+( 4π[(φm/N )(∑
+i |σi| + | ∑
+i σi|) + 2φs] T∗
+)3/2
+.
+(60) In salt-free solution, the OV/DH model entails an interaction ∝ φ3m/2, instead of ∝ φ2m in FH. as noted recently in the context of IDP phase separation [33]. Because ∂2φ3m/2/∂φ2m ∼ φ−1/2
+m , it predicts a φm dependence that is much sharper than the corresponding constant term in FH. This feature reflects the long-range nature of electrostatic interactions and allows phase separation to occur under much more dilute concentrations. To compare OV/DH model predictions with experiment, values for the link length scale b and dielectric constant ǫr are needed in Eq. (38) to convert the reduced
+temperature T ∗ in the model to actual temperature. As in our previous RPA work, we take b to be the Cα-Cα virtual bond length 3.8 ̊A, and let ǫr be a fitting parameter [91], as ǫr of an aqueous protein solution can vary widely between ≈ 2 and 80 [106–108]. A dielectric constant ǫr = 59.5
+resulted from fitting with experimental data (Fig. 8b, inset). The corresponding DH phase diagrams are provided in Fig. 8b. In comparison with the FH phase diagrams in Figs. 8a, OV/DH predicts lower Tc∗r and salt-dependent φcr instead of the salt-independent φcr in FH. Unlike FH, the phase boundaries of OV/DH model do not cross each other.
+4.5. An augmented RPA model
+We recently applied RPA and an augmented RPA+FH model to the salt-dependent phase behavior of Ddx4N1 [91], focusing only on the low [Ddx4] regime for which experimental data are available (Fig. 9, insets). Here we extend that theoretical study to explore essentially the entire binodal and spindoal boundaries of Ddx4N1 at four [NaCl]’s (Fig. 9), and compare their properties with the FH and OV/DH theories discussed above. Our RPA model for Coulomb interaction may be viewed as a one-step improvement from the DH model. As described in Sec. 2, RPA treats polymers as Gaussian chains without excluded volume. It allows a direct plug-in of any given charge pattern onto the chain sequence. Different charge patterns distribute their interactions over the Gaussian-chain conformations differently. Therefore, despite the approximations involved in RPA [70, 72], it does provide an account of sequence dependence that is absent in the FH and OV/DH approaches. In particular, RPA allows us to rationalize and gain insights into the different behaviors of Ddx4N1 and Ddx4N1CS (Fig. 6) [91], which is not possible, at least not in any conceptually clear manner,
+13
+
+
+T*
+[Ddx4](mM)
+100mM
+150mM
+200mM
+300mM
+100mM
+150mM
+200mM
+300mM
+T(◦C)
+[Ddx4](mM)
+100mM
+150mM
+200mM
+300mM
+100mM 150mM
+200mM
+300mM
+(a) (b)
+Figure 9: (a) Theoretical phase diagrams of Ddx4N1 with different [NaCl]’s, computed by (a) Eq. (33), the RPA-only theory, and (b) Eq. (33) with Eq. (61), the RPA+FH theory. Binodal and spinodal boundaries are shown, respectively, as solid and dashed lines. Critical points are marked by gray circles. The two insets highlight the phase behavior for small Ddx4 concentration for which experimental data are availabe [30] (shown as symbols with the same color code in the inset of (b)). Data in the insets were provided previously [91] and are included here for completeness.
+for FH and OV/DH. In the special case when the polymer length in RPA is equal to one, RPA is reduced to DH. Similar to the OV/DH phase boundaries in Fig. 8b, the RPA phase boundaries of different [NaCl]’s calculated using Eq. (33) do not cross each other (Fig. 9a). Notably, the RPA phase boundaries are S-shaped, unlike the inverted U-shaped curves in FH (Fig.8a). For the OV/DH model, the spinodal boundaries are also clearly S-shaped; some of the binodal boundaries are also slightly S-shaped (Fig.8b), but not as pronounced as for the RPA and RPA+FH models. S-shaped phase boundaries in RPA models have also been reported in polyelectrolyte systems, and have been proposed in those cases as a consequence of formation of a polymer network in the solution [74]. In the context of IDP phase separation, S-shaped phase boundaries may help rationalize the possibility of having a relatively low IDP concentration even in the phase-separated IDP-rich phase. So far our RPA+FH theory has only been tested within a very narrow low concentration range for which experimental data are available (inset of Fig. 9b). More extensive experimental data and numerical simulations will be needed to test the theoretically predicted phase boundary to the right of the critical point. As we have pointed out in [91], while RPA rationalizes the trend of salt dependence (Fig. 9a, inset), RPA by itself does not account for the effect quantitatively. For this reason and the physical consideration that short-range aromatic cation-π and π-π interactions [109, 110] are important for IDP interactions in general [12, 30, 33, 111113] and play a significant role in Ddx4 phase separation in particular [30], we constructed an RPA+FH model by
+augmenting the fel in Eq. (33) with the following saltindependent FH interaction term,
+fFH = χφm(1 − φm) =
+( εh
+T ∗ + εs
+)
+φm(1 − φm) , (61)
+such that the fint in the total free energy f in Eq. (1) becomes
+fint = fel + fFH . (62)
+Here εh and εs are the enthalpic and entropic contributions, respectively, to the FH interaction parameter χ. By treating εh and εs as global fitting parameters, a reasonably good fit is achieved with experimental results for all four available [NaCl] values [30] (Fig. 9b, inset) by using a value of ǫr = 29.5 which is physically plausible for a lowconcentration IDP solution (see Sec. 5 below). The overall shapes of the phase boundaries remain largely unchanged vis-`a-vis those predicted by RPA (cf. Fig. 9a and b). Similar to the OV/DH model (Fig. 8b), the critical concentration increases with increasing salt in both the RPA and RPA+FH models, in contrast to the salt-independet critical concentration predicted by FH (Fig. 8a). As we have discussed previously, the fitted εh = 0.15 and εs = −0.3 used to produce Fig. 9b may be rationalized to an extent by considering the strength of cation-π interactions as well as the expected loss of sidechain conformational entropy upon formation of such contacts [91]. Of course, given that RPA is an approximate approach, fFH may also serve to correct inaccuracies in the pureRPA theory. Finally, it is noteworthy that our fitted entropic free energy εs = −0.3 is negative, which means that the entropy in the FH χ parameter is positive (because of
+14
+
+
+(a) (b)
+Figure 10: Estimating effective dielectric constants for IDP-water mixtures by consideration of a simple parallel plate capacitor. Here the IDP material is depicted by the shaded areas and water is represented by the white space. The electric capacitance of configurations (a) and (b) are identical irrespective of the dispersion of the IDP material as long as the total width of IDP material is constant over the entire area of the parallel plates (i.e., always constituting φm of the distance between the plates). This consideration allows the effective dielectric constant of the mixture in (a) to be determined by standard application of Gauss’ law to (b) under the assumption that the plates are sufficiently large such that edge effects are negligible, as presented in elementary physics textbooks (see, e.g., [114]).
+the −T factor needed to convert entropy to free energy). Hence the entropy in our FH χ disfavors phase separation whereas that in the FH model in Sec. 4.3 favors phase separation. Nonetheless, the two results are not necessarily inconsistent because there are additional contributions to
+conformational entropy in the RPA fel, namely the Gˆk in Eq. (33) that accounts for conformational freedom of Gaussian chains.
+5. Possible cooperativity-enhancing effects of concentration dependent relative permittivity
+In all the theories considered above, the relative permittivity, or dielectric constant ǫr, is considered to be a constant throughout the solution irrespective of whether the system has phase separated. However, because proteins have very different relative permittivity (ǫr ≈ 2 – 4) from that of bulk water (ǫr ≈ 80) [108], ǫr is expected to depend on IDP concentration. Although a thorough examination of this issue is beyond the scope of this work, here we take a first step to explore how a concentrationdependent ǫr(φm) might affect phase properties. One way to estimate the effective ǫr of a mixture of protein (IDP) and water is to consider a pair of infinitely large charged slabs (an electric capacitor) with protein and solvent in between. For a solution in which protein volume ratio is φm and water is 1−φm, the electric field E between the two slabs is given by Gauss’ law [114]:
+ǫ0E = φm
+σ
+ǫp
++ (1 − φm) σ
+ǫw
+≡σ
+ǫeff
+, (63)
+where σ is the charge density on the slabs and ǫp, ǫw are the relative permittivity, respectively, of protein and water. It
+φ
+m
+Charged-slab
+Clausius-Mossotti
+Effective ǫr
+Figure 11: Charged-slab and Clausius-Mossotti models for concentration-dependent relative permittivity. The ǫr(φm) plotted here are the ǫeff functions given in Eqs. (64) and (65) for ǫp = 4 and ǫw = 80. The two models predict similar φm dependence.
+follows that the effective relative permittivity is given by
+ǫeff (φm) = ǫpǫw
+φmǫw + (1 − φm)ǫp
+. (64)
+We expect this expression to be quite general because for a given φm, application of Gauss’ law leads to the same ǫeff, almost – albeit not entirely – irrespective of the configuration of the mixture of the two media, as is illustrated in Fig. 10. An alternative estimate of ǫeff is by considering the dipole moments and molecular polarizabilities of water and protein components and apply the Clausius-Mossotti equation [115], which leads to
+ǫeff (φm) = 1 + 2[(1 − φm)γw + φmγp]
+1 − [(1 − φm)γw + φmγp] , (65)
+where
+γw ≡ ǫw − 1
+ǫw + 2 , γp ≡ ǫp − 1
+ǫp + 2 , (66)
+are proportional to the molecular polarizabilities of water and protein, respectively. The dependences of ǫeff on φm estimated from the two approaches are very similar (Fig. 11), buttressing our expectation that the predicted trend is robust. Interestingly, ǫeff decreases sharply from that of bulk water for relative small φm. For instance, ǫeff decreases from 80 to ≈ 20 for φm ≈ 20%. This effect is significant because according to our RPA+FH model (Fig. 9b), φm for the condensed phase of Ddx4 at 60◦C
+and [NaCl]= 100mM is ≈ 40 × 10−3 × 236/55.5 = 17%, suggesting that an IDP-concentration-dependent relative permittivity should contribute to a more complete physical account. We now incorporate this effect into our RPA theory by replacing lB in Eq. (35) by lB = e2/(4πǫ0ǫr(φm)kBT ),
+15
+
+
+T∗
+0
+φ
+m
+[Ddx4](mM)
+charged-slab
+Clausius-Mossotti
+Constant εr = 29.5
+Figure 12: The salt-free phase diagrams of the two ǫr(φm) models in Eqs. (64) and (65) for Ddx4N1. Solid and dashed lines are, respectively, binodal and spinodal boundaries. IDP and water relative permittivity of ǫp = 4 and ǫw = 80, respectively, are used to calculate ǫr(φm) in both the charged-slab and Clausius-Mossotti models.
+where ǫr(φm) is given by Fig. 11 and, in place of the re
+duced temperature T ∗ in Eq. (38), define another reduced temperature T0∗ in terms of vacuum permittivity ǫ0, viz.,
+T0∗ ≡ 4πǫ0kBT b/e2 . (67)
+In addition, because G in Eq. (39) is no longer linear in φm because of ǫr(φm), it cannot be used as the last term in the curly brackets of Eq. (39) for the sole purpose of subtracting out unphysical ultraviolet divergences because including a G not linear in φm would affect phase properties. Consequently, for the case with ǫr(φm), we must derive the dimensionless fel directly from Eq. (33), yielding
+fel =
+∫ dk ̃k ̃2
+4π2
+{1
+η ln
+[
+1 + ηG1(k ̃)
+]
+− G2(k ̃)
+}
+, (68)
+where, instead of G in Eq. (40), we now have G1 for the determinant and G2 for the trace,
+G1(k ̃) = 4π
+k ̃2[1 + k ̃2]T0∗ǫr(φm)
+(
+2φs +φc + φm
+N 〈σ|GˆM(k ̃)|σ〉
+)
+,
+(69a)
+G2(k ̃) = 4π
+k ̃2[1 + k ̃2]T0∗ǫr(φm)
+(
+2φs +φc + φm
+N
+∑
+i
+|σi |
+)
+.
+(69b)
+Fig. 12 compares the salt-free phase diagrams predicted by this new theory with that obtained using our original RPA theory with φm-independent ǫr = 29.5. The result indicates that IDP-concentration-dependent ǫr can lead to dramatic shifts of phase boundaries. Relative to the constant-ǫr model, both ǫr(φm) models have a significantly higher critical temperature and thus a much higher
+tendency to phase separate. At a qualitative level, the phase-separation enhancing effect of ǫr(φm) is not difficult to understand. As ǫr(φm) decreases with increasing φm (Fig. 11), electrostatic interactions favoring formation of a concentrated phase become even stronger with increasing φm than if ǫr is a constant. This increases the favorability of the concentrated phase, and amounts to a form of many-body electrostatic mechanism that enhances phase transition cooperativity, playing a role similar in effect, though not necessarily in origin, to various many-body mechanisms in cooperative protein folding [116, 117]. This exploratory study has thus demonstrated the potential importance of ǫr(φm)-related effects. However, many aspects of these effects, such as possible distance dependence of relative permittivity [108, 118], remain to be investigated. When these issues are addressed in the future, attention should also be paid to the possibility that the tendency for cooperative condensation may be overestimated by using a mean-field concentration φm [119], because such cooperativity is likely to be attentuated when constraints from chain connectivity are fully taken into account.
+6. Conclusion
+In summary, we have presented in some detail a general analytical RPA theory to account for sequence-specific electrostatic effects on polyampholyte phase separation, and demonstrated its utility by applying our theory to Ddx4. Using Ddx4 as an example, we have compared the predicted phase behaviors of RPA and an augmented RPA model with those predicted by FH or OV/DH theories, identifying several salient differences. We have also outlined IDP concentration-dependent relative permittivity as a potentially productive direction for theoretical progress. The predicted phase properties by all of the theories documented here are testable by future experiments. In the study of IDP phase separation, because direct simulations of multiple-polymer systems are computationally costly, tractable analytical theories are extremely useful for conceptual development, physical insights, and generating new ideas for experiment. However, direct computer simulations of phase separation are indispensable, because they are necessary for checking the validity of the assumptions and approximations in analytical models [120]. RPA assumes uniform densities of counterions and salts. As such it is not expected to be adequate in situations when counterion condensation is significant, such as in the recently observed sequence-dependent coacervation of the Nephrin intracellular domain [36]. Computer simulations and further development of analytical theory, such as the incorporation of formulations that are capable of accounting for effective correlations beyond second order in density fluctuations [89, 121], would be needed in future attempts to address such behaviors. We deem it fitting to dedicate this paper to the celebration of Professor Vojko Vlachy’s seventieth birthday. Among many of his scientific achievements, Vojko has made
+16
+
+
+seminal contributions to the theory of liquid-liquid phase separation of folded proteins [38] and electrostatic effects in molecular liquids [62]. In view of the recent discovery of polyampholytic IDP phase separation as a major physical basis for membraneless organelles, his pioneering work will no doubt be instructive for future theoretical endeavors to decipher these novel, fascinating biological phenomena. By the same token, experimental techniques that have been applied to study phase separation of folded proteins, such as applications of hydrostatic pressure [122–124] to investigate phase separation of folded lysozyme [41, 42], may also be brought to bear to enrich our biophysical understanding of sequence-dependent IDP phase separation.
+Acknowledgements
+We thank Andy Baldwin, Kingshuk Ghosh, Lewis Kay, and Rohit Pappu for helpful discussions, and Timothy Nott for the spinodal decomposition images in Fig.7. H.S.C. wishes to take this opportunity to express his gratitude to Ken Dill for introducing him to theoretical studies of biopolymers thirty years ago when they first met in late 1986. This work was supported by a Canadian Cancer Society Research Institute grant to J.D.F.-K. and H.S.C. and a Canadian Institutes of Health Research grant to H.S.C. We are grateful to SciNet of Compute Canada for their generous allotment of computational resources.
+Appendix A. The general binodal condition for an arbitrary number of solute components
+For a solution with m types of molecules labeled by i with length (number of monomers) Ni and monomer size ri, and the number of type-i molecules being ni, the total
+number of lattice sites M = ∑m
+k=1 rknkNk and the free
+energy per site may be expressed as a function f ({φk}) of the m − 1 independent densities φi defined in Eqs. (3) and (4). Note that there are only m − 1 independent φi’s (i = 1, 2, . . . , m − 1) because of Eq. (14). The molecule labels are chosen such that i = m for the water solvent. The chemical potential μi of type-i molecules in units of kBT is the derivative of the free energy F ({φk}) = M f ({φk}) in Eq. (1) with respect to the number ni of
+type-i molecules [94, 99, 103]:
+μi
+kB T = 1
+kB T
+∂F ({φk}) ∂ni
+= ∂M f ({φk})
+∂ni =∂ ∑
+k rknkNk
+∂ni
+f + M ∂f ({φk})
+∂ni
+=riNif + M
+m−1
+∑
+j=1
+∂f ∂φj
+dφj dni
+=riNif + M
+m−1
+∑
+j=1
+∂f ∂φj
+(
+δij
+Nj
+M − njNj riNi
+M2
+)
+=Ni
+
+rif + tifi′ − ri
+m−1
+∑
+j=1
+φj fj′
+
+,
+(A.1) where δij is the Kronecker symbol, δij = 1 for i = j; δij = 0 for i 6= j, the symbol ti = 1 for 1 ≤ i ≤ m − 1 and
+0 for i = m, and fi′ = ∂f /∂φi is the first-order derivative of f with respect to φi. When molecules of type i are carrying
+charges with valance zi and the Coulomb potential is ψα in phase α, the electrochemical potential
+ηiα = μiα + zieψα (A.2)
+is the relevant variable for determining the binodal boundary [103]. When the system is demixed to nph different phases in equilibrium, the chemical, or more generally the electrochemical potentials in all phases have to be identical. In other words,
+μ(1)
+i + zieψ(1) = μ(2)
+i + zieψ(2) = ... = μ(nph)
+i + zieψ(nph) (A.3) for all 1 ≤ i ≤ m molecule types. This condition provides m(nph − 1) equations for a total of nph(m − 1) den
+sities/concentrations φiα of all molecule types in all different phases. The maximum number of separated phases nph,max for a set of environmental conditions such as temperature, pressure, etc. is then given by m(nph,max−1) = nph,max(m−1), implying nph,max = m which, as expected, satisfies Gibbs’ phase rule [125]. For nph < m, multi
+ple sets of {φαm} are allowed, with the sets forming an (m − nph)-dimensional surface in the (m − 1)-dimensional φ-space. We now apply the above general formulation to our polyampholyte system with at most nph = 2 separated phases and five different molecule types: polyampholytes with length N , size rm, and concentration (density) φm; counterions of size rc, concentration φc; positive and negative salt ions with size rs, concentration φs± = φs; and water of size rw and φw = (1 − rmφm − rcφc − 2rsφs)/rw [Eq. (14)]. Instead of considering only two concentrations φm and φs as in our discussion of the spinodal condition for our previous Ddx4 model [91] in Eq. (41), here we consider all five concentrations separately for the more general case in which zi’s can be different and the system as a whole may not be electrically neutral. Substituting the five
+17
+
+
+molecule types for the φi’s in Eq. (A.1) and subtracting the equation for μw from other ηi equations in Eq. (A.3), we arrive at the following equations for binodal (coexistence) conditions between phases α and β (α, β = 1, 2), in obvious notation:
+f ′mα + σeψα = f ′mβ + σeψβ, (A.4a)
+fc′α − sign(σ)eψα = fc′β − sign(σ)eψβ, (A.4b)
+fs′α+ + eψα = f ′β
+s+ + eψβ, (A.4c)
+fs′α− − eψα = f ′β
+s− − eψβ, (A.4d)
+f α − φαmf ′mα − φcαfc′α−φsα+fs′α+ − φsα−fs′α−
+= f β − φβmf ′mβ − φcβ fc′β − φβ
+s+f ′β
+s+ − φβ
+s−f ′β
+s−, (A.4e)
+where σ = (1/N ) ∑N
+i=1 σi is the overall average charge
+density of the polyampholyte. Thus, when the neutrality condition is applied, φc = |σ|φm. The above five conditions can be further simplified for our RPA model by evaluating each of the f ′s using the expressions for s and fel in Eqs. (13) and (39), resulting in a free energy that depends only on two concentrations, f = f (φm, φs). The corresponding binodal conditions are merged into three equations:
+Eq. (A.4a) + σ × Eq. (A.4b) :
+∂f (φm, φs) ∂φm
+∣ ∣ ∣ ∣α
+= ∂f (φm, φs)
+∂φm
+∣ ∣ ∣ ∣β
+, (A.5a)
+Eq. (A.4c) + Eq. (A.4d) :
+∂f (φm, φs) ∂φs
+∣ ∣ ∣ ∣α
+= ∂f (φm, φs)
+∂φs
+∣ ∣ ∣ ∣β
+, (A.5b)
+Eq. (A.4e) :
+f α − φαm
+∂f (φm, φs) ∂φm
+∣ ∣ ∣ ∣α
+− φsα
+∂f (φm, φs) ∂φs
+∣ ∣ ∣ ∣α
+= f β − φβm
+∂f (φm, φs) ∂φm
+∣ ∣ ∣ ∣β
+− φsβ
+∂f (φm, φs) ∂φs
+∣ ∣ ∣ ∣β
+. (A.5c)
+Note that all linear terms of φm and φs in (φm, φi) have no effect in Eq. (A.5) because they only add an equal constant to both sides of Eqs. (A.5a) and (A.5b) and they cancel out by themselves on each side of Eq. (A.5c). The conditions in Eq. (A.5) are equations for the common tangent of free energy function f (φm, φs) at two points
+α = (φαm, φsα) and β = (φβm, φsβ). Because there are only
+three equations in Eq. (A.5) for the four variables φαm, φβm,
+φsα, and φsβ, the common-tangent pair (α, β) is not unique
+determined. A given temperature T ∗ is consistent with a series of (α, β). These common-tangent sets constitute a closed contour on the φm–φs surface as the binodal boundary [104]. A system with a set of original bulk concentrations O = (φ0m, φs0) inside the contour will phase separate
+to two regions with concentrations (φαm, φsα), (φβm, φsβ) such that O, α, β are on the same common tangent. In other words, a fourth equation for solving a unique set of (α, β) is provided by the initial concentrations.
+Appendix B. Critical points of strictly alternating polyampholytes in the N → ∞ limit
+In the limit of N → ∞, the parameters A and B in Eq. (57) can be expressed as
+A =Ar(σ)σ3/2T ∗−2, (B.1a)
+B =Br(σ)σ3/2T ∗−3, (B.1b)
+where Ar and Br are functions of σ via the following integrals,
+Ar(σ) =
+√8
+3
+∫∞
+0
+dk′
+k′2(1 + 6σk′2)2
+(
+1 − e−k′2
+1 + e−k′2
+)2
+(B.2a)
+Br(σ) =
+√ 128
+27 π
+∫∞
+0
+dk′
+k′4(1 + 6σk′2)3
+(
+1 − e−k′2
+1 + e−k′2
+)3
+.
+(B.2b)
+As σ → 0, Ar → 1.374 and Br → 1.187, as has been shown in Eqs. (56) and (59). For general σ ≤ 1, Ar and Br become much smaller because of the short range cutoff
+(1 + 6σk′2). To self-consistently solve the critical point, we calculate the derivatives of free energy f = −s + fel∞,
+∂2f ∂ φ2m
+∣ ∣ ∣
+∣φm=φcr,T ∗=Tc∗r
+= 0 and ∂3f
+∂ φ3m
+∣ ∣ ∣
+∣φm=φcr,T ∗=Tc∗r
+= 0,
+(B.3) with the fel∞ in Eq. (57), yielding
+1
+N φcr
++1
+1 − φcr
+− Ar
+σ3/2
+Tc∗r2
++ Br
+σ3/2
+Tc∗r3
+φcr = 0 , (B.4a)
+−1
+N φc2r
++1
+(1 − φcr)2 + Br
+σ3/2
+Tc∗r3
+= 0 . (B.4b)
+We first substitute Eq. (B.4b) into Eq. (B.4a) for the Br term to obtain
+Ar
+σ3/2
+Tc∗r2
+=2
+N φcr
++1
+1 − φcr
+− φcr
+(1 − φcr)2 , (B.5)
+then we simultaneously express 1/Tc∗r by Eqs. (B.4b) and (B.5) to arrive at the following two equalities:
+1
+Tc∗r
+=
+[( 2
+N φcr
++1
+1 − φcr
+− φcr
+(1 − φcr)2
+)1
+σ3/2 Ar (σ)
+]1/2
+=
+[( 1
+N φc2r
+−1
+(1 − φcr)2
+)1
+σ3/2 Br (σ)
+]1/3
+.
+(B.6) Now φcr can first be solved numerically using the second
+equality. Then Tc∗r can be solved by substituting the φcr value into the first equality.
+18
+
+
+σ φcr (s-a) φcr (num) Tc∗r (s-a) Tc∗r (num) 0.025 0.00669 0.00909 0.02833 0.03260 0.05 0.00880 0.01126 0.04148 0.04601 0.1 0.01111 0.01361 0.05634 0.06091 0.2 0.01354 0.01604 0.07136 0.07578
+Table B.1: The critical point parameters φcr and Tc∗r of N = 240 strictly alternating polyampholytes, calculated by the semi-analytic method (s-a) in Eq. (B.6) and the numerical method (num) described in Sec. 2.3. The deviation of the semi-analytic results from the numerical results increases as σ decreases.
+We provide in Table B.1 the critical points of N = 240 strictly alternating polyampholytes calculated semianalytically by pursuing numerical solutions to the analytic Eq. (B.6) and compare them with the numerical results computed by the method described in Sec. 2.3. For σ = 0.2, the present semi-analytic (s-a) method provides a reasonable approximation, with 20% and 6% deviations in φcr and Tc∗r, respectively. Both approaches yielded φcr val
+ues that are much smaller than the 1/√240 = 0.06 value one might otherwise expect from FH. Interestingly, however, their Tc∗r are close to the FH prediction of Tc∗r = 0.03 – 0.06 for the different σ values tested.
+References
+References
+[1] J. C. Kendrew, G. Bodo, H. M. Dintzis, R. G. Parrish, H. Wyckoff, A three-dimensional model of the myoglobin molecule obtained by x-ray analysis, Nature 181 (1958) 662666. [2] V. N. Uversky, J. R. Gillespie, A. L. Fink, Why are natively unfolded proteins unstructured under physiologic conditions?, Proteins 41 (3) (2000) 415–427. [3] A. K. Dunker, J. D. Lwason, C. J. Brown, R. M. Williams, P. Romero, J. S. Oh, C. J. Oldfield, A. M. Campen, C. R. Ratliff, K. W. Hipps, J. Ausio, M. S. Nissen, R. Reeves, C. H. Kang, C. R. Kissinger, R. W. Bailey, M. D. Griswold, M. Chiu, E. C. Garner, Z. Obradovic, Intrinsically disordered proteins, J. Molecular Graphics & Modelling 19 (1) (2001) 26–59. [4] P. Tompa, Intrinsically unstructured proteins, Trends Biochem. Sci. 27 (10) (2001) 527–533. [5] K. Gunasekaran, C. J. Tsai, S. Kumar, D. Zanuy, R. Nussinov, Extended disordered proteins: targeting function with less scaffod, Trends Biochem. Sci. 28 (2) (2003) 81–85. [6] H. J. Dyson, P. E. Wright, Intrinsically unstructured proteins and their functions, Nature Rev. Mol. Cell Biol. 6 (3) (2005) 197–208. [7] P. Tompa, Intrinsically unstructured proteins: a 10-year recap, Trends Biochem. Sci. 37 (2012) 509–516. [8] J. A. Marsh, S. A. Teichmann, J. D. Forman-Kay, Probing the diverse landscape of protein flexibility and binding, Curr. Opin. Struct. Biol. 22 (2012) 643–650. [9] J. D. Forman-Kay, T. Mittag, From sequence and forces to structure, function, and evolution of intrinsically disordered proteins, Structure 21 (9) (2013) 1492–1499. [10] R. van der Lee, M. Buljan, B. Lang, R. J. Weatheritt, G. W. Daughdrill, A. K. Dunker, M. Fuxreiter, J. Gough, J. Gsponer, D. T. Jones, et al., Classification of intrinsically disordered regions and proteins, Chem. Rev. 114 (13) (2014) 6589–6631. [11] Z. Liu, Y. Huang, Advantages of proteins being disordered, Protein Sci. 23 (5) (2014) 539–550.
+[12] T. Chen, J. Song, H. S. Chan, Theoretical perspectives on nonnative interactions and intrinsic disorder in protein folding and binding, Curr. Opin. Struct. Biol. 30 (2015) 32–42. [13] R. K. Das, K. M. Ruff, R. V. Pappu, Relating sequence encoded information to form and function of intrinsically disordered proteins, Curr. Opin. Struct. Biol. 32 (2015) 102–112. [14] P. E. Wright, H. J. Dyson, Intrinsically disordered proteins in cellular signalling and regulation, Nat. Rev. Mol. Cell Biol. 16 (2015) 18–29. [15] V. Csizmok, A. V. Follis, R. W. Kriwacki, J. D. FormanKay, Dynamic protein interaction networks and new structural paradigms in signaling, Chem. Rev. 116 (11) (2016) 6424–6462. [16] H. Wu, M. Fuxreiter, The structure and dynamics of higherorder assemblies: Amyloids, signalosomes, and granules, Cell 165 (5) (2016) 1055–1066. [17] A. Bah, R. M. Vernon, Z. Siddiqui, M. Krzeminski, R. Muhandiram, C. Zhao, N. Sonenberg, L. E. Kay, J. D. Forman-Kay, Folding of an intrinsically disordered protein by phosphorylation as a regulatory switch, Nature 519 (2015) 106–109. [18] P. Tompa, M. Fuxreiter, Fuzzy complexes: Polymorphism and structural disorder in protein-protein interactions, Trends Biochem. Sci. 33 (2008) 2–8. [19] P. Nash, X. Tang, S. Orlicky, Q. Chen, F. B. Gertler, M. D. Mendenhall, F. Sicheri, T. Pawson, M. Tyers, Multisite phosphorylation of a CDK inhibitor sets a threshold for the onset of DNA replication, Nature 414 (2001) 514–521. [20] M. Borg, T. Mittag, T. Pawson, M. Tyers, J. D. Forman-Kay, H. S. Chan, Polyelectrostatic interactions of disordered ligands suggest a physical basis for ultrasensitivity, Proc. Natl. Acad. Sci. USA 104 (2007) 9650–9655. [21] T. Mittag, J. Marsh, A. Grishaev, S. Orlicky, H. Lin, F. Sicheri, M. Tyers, J. D. Forman-Kay, Structure/function implications in a dynamic complex of the intrinsically disordered Sic1 with the Cdc4 subunit of an SCF ubiquitin ligase, Structure 18 (2010) 494–506. [22] C. P. Brangwynne, C. R. Eckmann, D. S. Courson, A. Rybarska, C. Hoege, J. Gharakhani, F. Ju ̈licher, A. A. Hyman, Germline P granules are liquid droplets that localize by controlled dissolution/condensation, Science 324 (2009) 17291732. [23] M. Dundr, T. Misteli, Biogenesis of nuclear bodies, Cold Spring Harb. Perspect. Biol. 2 (12) (2010) a000711. [24] P. Li, S. Banjade, H.-C. Cheng, S. Kim, B. Chen, L. Guo, M. Llaguno, J. V. Hollingsworth, D. S. King, S. F. Banani, P. S. Russo, Q. Jiang, B. T. Nixon, M. K. Rosen, Phase transitions in the assembly of multivalent signalling proteins, Nature 483 (2012) 336–340. [25] M. Kato, T. W. Han, S. Xie, K. Shi, X. Du, L. C. Wu, H. Mirzaei, E. J. Goldsmith, J. Longgood, J. Pei, N. V. Grishin, D. E. Frantz, J. W. Schneider, S. Chen, L. Li, M. R. Sawaya, D. Eisenberg, R. Tycko, S. L. McKnight, Cell-free formation of RNA granules: Low complexity sequence domains form dynamic fibers within hydrogels, Cell 149 (2012) 753–767. [26] C. F. Lee, C. P. Brangwynne, J. Gharakhani, A. A. Hyman, F. Ju ̈licher, Spatial organization of the cell cytoplasm by position-dependent phase separation, Phys. Rev. Lett. 111 (8) (2013) 088101. [27] A. A. Hyman, C. A. Weber, F. Ju ̈licher, Liquid-liquid phase separation in biology, Annu. Rev. Cell. Dev. Biol. 30 (2014) 39–58. [28] J. A. Toretsky, P. E. Wright, Assemblages: Functional units formed by cellular phase separation, J. Cell. Biol. 206 (2014) 579–588. [29] J. T. Wang, J. Smith, B. C. Chen, H. Schmidt, D. Rasoloson, A. Paix, L. B. G, D. Calidas, E. Betzig, G. Seydoux, Regulation of RNA granule dynamics by phosphorylation of serine-rich, intrinsically disordered proteins in C. elegans, eLife 3 (2014) e04591. [30] T. J. Nott, E. Petsalaki, P. Farber, D. Jervis, E. Fussner, A. Plochowietz, T. D. Craggs, D. P. Bazett-Jones, T. Paw
+19
+
+
+son, J. D. Forman-Kay, A. J. Baldwin, Phase transition of a disordered nuage protein generates environmentally responsive membraneless organelles, Mol. Cell. 57 (5) (2015) 936–947. [31] S. Elbaum-Garfinkle, Y. Kim, K. Szczepaniak, C. C.-H. Chen, C. R. Eckmann, S. Myong, C. P. Brangwynne, The disordered P granule protein LAF-1 drives phase separation into droplets with tunable viscosity and dynamics, Proc. Natl. Acad. Sci. USA 112 (23) (2015) 7189–7194. [32] S. Kroschwald, S. Maharana, D. Mateju, L. Malinovska, E. Nuske, I. Poser, D. Richter, S. Alberti, Promiscuous interactions and protein disaggregases determine the material state of stress-inducible RNP granules, eLife 4 (2015) e06807. [33] C. P. Brangwynne, P. Tompa, R. V. Pappu, Polymer physics of intracellular phase transitions, Nat. Phys. 11 (2015) 899–904. [34] T. J. Nott, T. D. Craggs, A. J. Baldwin, Membraneless organelles can melt nucleic acid duplexes and act as biomolecular filters, Nature Chem. 8 (2016) 569–575. [35] S. F. Banani, A. M. Rice, W. B. Peeples, Y. Lin, S. Jain, R. Parker, M. K. Rosen, Compositional control of phaseseparated cellular bodies, Cell 166 (2016) 651–663. [36] C. W. Pak, M. Kosno, A. S. Holehouse, S. B. Padrick, A. Mittal, R. Ali, A. A. Yunus, D. R. Liu, R. V. Pappu, M. K. Rosen, Sequence determinants of intracellular phase separation by complex coacervation of a disordered protein, Mol. Cell 63 (2016) 72–85. [37] T. P. J. Knowles, M. Vendruscolo, C. M. Dobson, The amyloid state and its association with protein misfolding diseases, Nat. Rev. Mol. Cell Biol. 15 (2014) 384–396. [38] V. Vlachy, H. W. Blanch, J. M. Prausnitz, Liquid-liquid phase separations in aqueous solutions of globular proteins, AlChE J. 39 (1993) 215–223. [39] R. P. Sear, Phase behavior of a simple model of globular proteins, J. Chem. Phys. 111 (10) (1999) 4800–4806. [40] F. W. Tavares, J. M. Prausnitz, Analytical calculation of phase diagrams for solutions containing colloids or globular proteins, Colloid Polym. Sci. 282 (6) (2004) 620–632. [41] M. A. Schroer, J. Markgraf, D. C. F. Wieland, C. J. Sahle, J. M ̈oller, M. Paulus, M. Tolan, R. Winter, Nonlinear pressure dependence of the interaction potential of dense protein solutions, Phys. Rev. Lett. 106 (1) (2011) 178102. [42] J. M ̈oller, S. Grobelny, J. Schulze, S. Bieder, A. Steffen, M. Erlkamp, M. Paulus, M. Tolan, R. Winter, Reentrant liquidliquid phase separation in protein solutions at elevated hydrostatic pressures, Phys. Rev. Lett. 112 (2) (2014) 028101. [43] J. Prausnitz, The fallacy of misplaced concreteness, Biophys. J. 108 (3) (2015) 453–454. [44] M. Kastelic, Y. V. Kalyuzhnyi, B. Hribar-Lee, K. A. Dill, V. Vlachy, Protein aggregation in salt solutions, Proc. Natl. Acad. Sci. USA (2015) 6766–6770. [45] K. A. Dill, Dominant forces in protein folding, Biochemistry 29 (1990) 7133–7155. [46] Z. Dosztanyi, V. Csizmok, P. Tompa, I. Simon, IUPred: web server for the prediction of intrinsically unstructured regions of proteins based on estimated energy content, Bioinformatics 21 (16) (2005) 3433–3434. [47] B. Xue, R. L. Dunbrack, R. W. Williams, A. K. Dunker, V. N. Uversky, PONDR-Fit: A meta-predictor of intrinsically disordered amino acids, Biochim. Biophys. Acta 1804 (4) (2010) 966–1010. [48] V. N. Uversky, The intrinsic disordered alphabet. III. Dual personality of serine, Intrinsically Disordered Proteins 3 (1) (2015) 1–21. [49] P. G. Higgs, J.-F. Joanny, Theory of polyampholyte solutions, J. Chem. Phys. 94 (2) (1991) 1543–1554. [50] A. V. Dobrynin, R. H. Colby, M. Rubinstein, Polyampholytes, J. Polym. Sci. Part B Polym. Phys. 42 (2004) 3513–3538. [51] S. Mu ̈ller-Sp ̈ath, A. Soranno, V. Hirschfeld, H. Hofmann, S. Ru ̈egger, L. Reymond, D. Nettels, B. Schuler, Charge interactions can dominate the dimensions of intrinsically disordered proteins, Proc. Natl. Acad. Sci. USA 107 (33) (2010) 14609–14614.
+[52] R. K. Das, R. V. Pappu, Conformations of intrinsically disordered proteins are influenced by linear sequence distributions of oppositely charged residues, Proc. Natl. Acad. Sci. USA 110 (33) (2013) 13392–13397. [53] J. Song, G. N. Gomes, C. C. Gradinaru, H. S. Chan, An adequate account of excluded volume is necessary to infer compactness and asphericity of disordered proteins by Fo ̈rster resonance energy transfer, J. Phys. Chem. B 119 (2015) 1519115202. [54] F. G. Quiroz, A. Chilkoti, Sequence heuristics to encode phase behaviour in intrinsically disordered protein polymers, Nat. Mater. 14 (11) (2015) 1164–1171. [55] K. M. Ruff, T. S. Harmon, R. V. Pappu, CAMELOT: A machine learning approach for coarse-grained simulations of aggregation of block-copolymeric protein sequences, J. Chem. Phys. 143 (2) (2015) 243123. [56] M. L. Huggins, Solutions of long chain compounds, J. Chem. Phys. 9 (1941) 440. [57] P. J. Flory, Thermodynamics of high polymer solutions, J. Chem. Phys. 10 (1942) 51–61. [58] P. J. Flory, Principles of Polymer Chemistry, Cornell University Press, 1953. [59] H. S. Chan, K. A. Dill, Polymer principles in protein structure and stability, Annu. Rev. Biophys. Biophys. Chem. 20 (1991) 447–490. [60] P. Debye, H. E, Zur Theorie der Elektrolyte. I. Gefrierpunktserniedrigung und verwandte erscheinungen (The theory of electrolytes. I. Lowering of freezing point and related phenomena), Physikalische Zeitschrift 24 (1923) 185–206. [61] M. R. Wright, An Introduction to Aqueous Electrolyte Solutions, John Wiley & Sons, 2007. [62] V. Vlachy, Ionic effects beyond Poisson-Boltzmann theory, Annu. Rev. Phys. Chem. 50 (1999) 145–165. [63] B. Derjaguin, L. Landau, Theory of the stability of strongly charged lyophobic sols and of the adhesion of strongly charged particles in solutions of electrolytes, Acta physicochim. URSS 14 (6) (1941) 633–662. [64] E. J. W. Verwey, J. T. G. Overbeek, Theory of the Stability of Lyophobic Colloids, Elsevier, Amsterdam, 1948. [65] H. L. Friedman, A course in statistical mechanics, PrenticeHall, 1985. [66] M. S. Wertheim, Fluids with highly directional attractive forces. III. Multiple attraction sites, J. Stat. Phys. 42 (3) (1986) 459–476. [67] L. Blum, Theory of electrified interfaces, J. Phys. Chem. 81 (2) (1977) 136–147. [68] M. S. Wertheim, Exact solution of the Percus-Yevick integral equation for hard spheres, Phys. Rev. Lett. 10 (8) (1963) 321323. [69] P.-G. de Gennes, Scaling Concepts in Polymer Physics, Cornell University Press, 1979. [70] V. Y. Borue, I. Y. Erukhimovich, A statistical theory of weakly charged polyelectrolytes: fluctuations, equation of state and microphase separation, Macromolecules 21 (1988) 3240–3249. [71] J. Rescic, V. Vlachy, A. D. J. Haymet, Highly asymmetric electrolytes: beyond the hypernetted chain integral equation, J. Am. Chem. Soc. 112 (1990) 3398–3401. [72] V. Y. Borue, I. Y. Erukhimovich, A statistical theory of globular polyelectrolyte complexes, Macromolecules 23 (1990) 36253632. [73] P. Gonzalez-Mozuelos, M. Olvera de la Cruz, Random phase approximation for complex charged systems: Application to copolyelectrolytes (polyampholytes), J. Chem. Phys. 100 (1) (1994) 507–517. [74] K. A. Mahdi, M. Olvera de la Cruz, Phase diagrams of salt-free polyelectrolyte semidilute solutions, Macromolecules 33 (2000) 7649–7654. [75] O. Bernard, L. Blum, Thermodynamics of a model for flexible polyelectrolytes in the binding mean spherical approximation, J. Chem. Phys. 112 (1) (2000) 7227–7237. [76] J. W. Jiang, L. Blum, O. Bernard, J. M. Prausnitz, Thermody
+20
+
+
+namic properties and phase equilibria of charged hard sphere chain model for polyelectrolyte solutions, Mol. Phys. 99 (1) (2001) 1121–1128. [77] J. Wittmer, A. Johner, J. F. Joanny, Random and alternating polyampholytes, EPL 24 (1993) 263–268. [78] A. V. Dobrynin, Fluctuation theory of charged AB-random copolymers, J. Phys. II 5 (8) (1995) 1241–1253. [79] J. Jiang, J. Feng, H. Liu, Y. Hu, Phase behavior of polyampholytes from charged hard-sphere chain model, J. Chem. Phys. 124 (14) (2006) 144908–144908. [80] D. W. Cheong, A. Z. Panagiotopoulos, Phase behaviour of polyampholyte chains from grand canonical Monte Carlo simulations, Mol. Phys. 103 (2005) 3031–3044. [81] J. T. G. Overbeek, M. J. Voorn, Phase separation in polyelectrolyte solutions. Theory of complex coacervation, J. Cell. Compar. Physl. 49 (1957) 7–26. [82] C. Schmitt, C. Sanchez, S. Desobry-Banon, J. Hardy, Structure and technofunctional properties of protein-polysaccharide complexes: a review, Critical reviews in food science and nutrition 38 (8) (1998) 689–753. [83] F. Weinbreck, R. de Vries, P. Schrooyen, C. G. de Kruif, Complex coacervation of whey proteins and gum arabic, Biomacromolecules 4 (2) (2003) 293–303. [84] C. Schmitt, S. L. Turgeon, Protein/polysaccharide complexes and coacervates in food systems, Advances in colloid and interface science 167 (1-2) (2011) 63–70. [85] D. Stigter, D. O. V. Alonso, K. A. Dill, Protein stability: Electrostatics and compact denatured states, Proc. Natl. Acad. Sci. USA 88 (1991) 4176–4178. [86] K. A. Dill, D. Stigter, Modeling protein stability as heteropolymer collapse, Adv. Protein. Chem. 46 (1995) 59–104. [87] M. S. Wertheim, Fluids with highly directional attractive forces. I. Statistical thermodynamics, Journal of Statistical Physics 35 (1) (1984) 19–34. [88] Y. Zhang, P. S. Cremer, The inverse and direct Hofmeister series for lysozyme, Proc. Natl. Acad. Sci. USA 106 (36) (2009) 15249–15253. [89] L. Sawle, K. Ghosh, A theoretical method to compute sequence dependent configurational properties in charged polymers and proteins, J. Chem. Phys. 143 (2015) 085101. [90] A. Vovk, C. Gu, M. G. Opferman, L. E. Kapinos, R. Y. H. Lim, R. D. Coalson, D. Jasnow, A. Zilman, Simple biophysics underpins collective conformations of the intrinsically disordered proteins of the Nuclear Pore Complex, eLife 5 (2016) e10785. [91] Y.-H. Lin, J. D. Forman-Kay, H. S. Chan, Sequence-specific polyampholyte phase separation in membraneless organelles, Phys. Rev. Lett., accepted for publication; available as arXiv1605.09019 [q-bio.BM] . [92] L. Liang, W. Diehl-Jones, P. Lasko, Localization of vasa protein to the Drosophila pole plasm is independent of its RNAbinding and helicase activities, Development 120 (5) (1994) 1201–1211. [93] K. A. Dill, D. O. V. Alonso, K. Hutchinson, Thermal stabilities of globular proteins, Biochemistry 28 (1989) 5439–5449. [94] H. S. Chan, K. A. Dill, Solvation: Effects of molecular size and shape, J. Chem. Phys. 101 (1994) 7007–7026. [95] A. V. Ermoshkin, M. Olvera de la Cruz, Gelation in strongly charged polyelectrolytes, J. Polym. Sci. Part B Polym. Phys. 42 (2004) 766–776. [96] M. Doi, S. F. Edwards, The Theory of Polymer Dynamics, Clarendon Press, Oxford, UK, 1986. [97] A. V. Ermoshkin, M. Olvera de la Cruz, Polyelectrolytes in the presence of multivalent ions: gelation versus segregation, Phys. Rev. Lett. 90 (12) (2003) 125504. [98] A. V. Ermoshkin, M. Olvera de la Cruz, A modified random phase approximation of polyelectrolyte solutions, Macromolecules 36 (20) (2003) 7824–7832. [99] A. Y. Grosberg, A. R. Khokhlov, Statistical Physics of Macromolecules, AIP: Woodbury, NY, 1994. [100] C. Itzykson, J.-B. Zuber, Quantum Field Theory, McGrawHill, Inc., New York, 1980.
+[101] M. J. Voorn, Complex coacervation. II. Thermodynamic calculations on a specific model, with application to two component systems, Recl. Trav. Chim. Pays-Bas 75 (4) (1956) 405–426. [102] M. Rubinstein, R. H. Colby, Polymer Physics, Oxford University Press, Oxford, UK, 2003. [103] M. J. Voorn, Complex coacervation. I. General theoretical considerations, Recl. Trav. Chim. Pays-Bas 75 (3) (1956) 317–330. [104] M. J. Voorn, Complex coacervation. III. Thermodynamic calculations on three-component systems, Recl. Trav. Chim. Pays-Bas 75 (4) (1956) 427–446. [105] M. J. Voorn, Complex coacervation: IV. Thermodynamic calculations on four-component systems, Recl. Trav. Chim. PaysBas 75 (8) (1956) 925–937. [106] J. W. Pitera, M. Falta, W. F. van Gunsteren, Dielectric properties of proteins from simulation: the effects of solvent, ligands, pH, and temperature, Biophys. J 80 (6) (2001) 2546–2555. [107] A. Warshel, P. K. Sharma, M. Kato, W. W. Parson, Modeling electrostatic effects in proteins, Biochim. Biophys. Acta 1764 (11) (2006) 1647–1676. [108] A. R. Leach, Molecular Modeling. Principles and Applications (p.170), Addison Wesley Longman Limited, Singapore, 1996. [109] J. C. Ma, D. A. Dougherty, The cation-π interaction, Chem. Rev. 97 (1997) 1303–1324. [110] E. A. Meyer, R. K. Castellano, F. Diederich, Interactions with aromatic rings in chemical and biological recognition, Angew. Chem. Int. Ed. Engl. 42 (11) (2003) 1210–1250. [111] J. Song, S. C. Ng, P. Tompa, K. A. W. Lee, H. S. Chan, Polycation-π interactions are a driving force for molecular recognition by an intrinsically disordered oncoprotein family, PLoS Comput. Biol. 9 (2013) e1003239. [112] H. B. Schmidt, D. G ̈orlich, Nup98 FG domains from diverse species spontaneously phase-separate into particles with nuclear pore-like permselectivity, eLife 4 (2015) e04251. [113] R. M. Vernon, P. J. Farber, J. D. Forman-Kay, Planar π interactions: an overlooked feature in proteins and relevance to phase separation, (in preparation) . [114] I. S. Grant, W. R. Phillips, Electromagnetism (pp.53–58), John Wiley & Sons Ltd., Chichester, U.K., 1975. [115] J. D. Jackson, Classical Electrodynamics, 2nd ed (pp.154–155), John Wiley & Sons, Inc., New York, 1975. [116] A. Badasyan, Z. Liu, H. S. Chan, Probing possible downhill folding: Native contact topology likely places a significant constraint on the folding cooperativity of proteins with ∼ 40 residues, J. Mol. Biol. 384 (2008) 512–530. [117] H. S. Chan, Z. Zhang, S. Wallin, Z. Liu, Cooperativity, localnonlocal coupling, and nonnative interactions: Principles of protein folding from coarse-grained models, Annu. Rev. Phys. Chem. 62 (2011) 301–326. [118] M. Y. Shen, K. F. Freed, A simple method for faster nonbonded force evaluations, J. Comput. Chem. 26 (2005) 691–698. [119] R. Wang, Z.-G. Wang, Theory of polymer chains in poor solvent: Single-chain structure, solution thermodynamics, and Θ point, Macromolecules 47 (2014) 4094–4102. [120] G. Orkoulas, S. K. Kumar, A. Z. Panagiotopoulos, Monte Carlo study of coulombic criticality in polyelectrolytes, Phys. Rev. Lett. 90 (4) (2003) 048303. [121] M. Muthukumar, Double screening in polyelectrolyte solutions: Limiting laws and crossover formulas, J. Chem. Phys. 105 (12) (1996) 5183–5199. [122] C. A. Royer, R. Winter, Protein hydration and volumetric properties, Curr. Opin. Colloid Interface Sci. 16 (2011) 568571. [123] J. L. Silva, A. C. Oliveira, T. C. R. G. Vieira, G. A. P. de Oliveira, M. C. Suarez, D. Foguel, Protein hydration and volumetric properties, Chem. Rev. 114 (2014) 7239–7267. [124] C. L. Dias, H. S. Chan, Pressure-dependent properties of elementary hydrophobic interactions: Ramifications for activation properties of protein folding, J. Phys. Chem. B 118 (2014) 7488–7509. [125] P. Atkins, J. de Paula, Physical Chemistry, W H Freeman & Co., NY, 9 edn., 2009.
+21

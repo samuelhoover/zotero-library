@@ -1,0 +1,988 @@
+Blind search for complex chemical pathways
+using Harmonic Linear Discriminant Analysis
+Valerio Rizzi,†,‡,⊥ Dan Mendels,†,‡,¶,⊥ Emilia Sicilia,§ and Michele
+Parrinello∗,†,‡,‖
+†Department of Chemistry and Applied Biosciences, ETH Zurich, c/o USI Campus, Via
+Giuseppe Buffi 13, CH-6900, Lugano, Ticino, Switzerland
+‡Facolt`a di Informatica, Istituto di Scienze Computazionali, Universit`a della Svizzera italiana
+(USI), Via Giuseppe Buffi 13, CH-6900, Lugano, Ticino, Switzerland
+¶Institute for Molecular Engineering, University of Chicago, Chicago, Illinois 60637, United
+States
+§Dipartimento di Chimica e Tecnologie Chimiche, Universit`a della Calabria, 87036 Rende (CS),
+Italy
+‖Istituto Italiano di Tecnologia (IIT), Via Morego, 30, 16163 Genova GE, Italy
+⊥Contributed equally to this work
+E-mail: parrinello@phys.chem.ethz.ch
+August 1, 2019
+Abstract
+Disentangling the mechanistic details of a chemical reaction pathway is a hard prob
+lem that often requires a considerable amount of chemical intuition and a component
+of luck. Experiments struggle in observing short-life metastable intermediates, while
+computer simulations often rely upon a good initial guess. In this work, we propose
+1
+arXiv:1904.06276v2 [physics.chem-ph] 31 Jul 2019
+
+
+a method that, from the simulations of a reactant and a product state, searches for re
+action mechanisms connecting the two by exploring the configuration space through
+metadynamics, a well known enhanced molecular dynamics method. The key quan
+tity underlying this search is based on the use of an approach called Harmonic Linear
+Discriminant Analysis which allows a systematic construction of collective variables.
+Given the reactant and product states, we choose a set of descriptors capable of
+discriminating between the two states. In order not to prejudge the results, generic
+descriptors are introduced. The fluctuations of the descriptors in the two states are
+used to construct collective variables. We use metadynamics in an exploratory mode
+to discover the intermediates and the transition states that lead from reactant to
+product. The search is at first conducted at a low theory level. The calculation is
+then refined and the energy of the intermediates and transition states discovered
+during metadynamics is computed again using a higher level of theory.
+The method’s aim is to offer a simple reaction mechanism search procedure that
+helps in saving time and is able to find unexpected mechanisms that defy well estab
+lished chemical paradigms. We apply it to two reactions, showing that a high level of
+complexity can be hidden even in seemingly trivial and small systems. The method
+can be applied to larger systems, such as reactions in solution or catalysis.
+2
+
+
+Introduction
+Reactions lie at the heart of Chemistry. Unveiling their mechanisms is of paramount
+importance for a vast number of applications such as increasing rates, yields, selectivity
+and, ultimately, for optimizing reaction conditions at a low energy cost and, hopefully,
+without jeopardizing the environment. Although experimental techniques can shed
+light on a large variety of aspects pertaining to chemical reactions, information about
+the mechanisms coming from experiments is limited because structures and energies of
+short-life intermediates and transition states continue to be experimentally elusive. In
+contrast, computational methodologies do not suffer from such limitations and allow the
+investigation of events at the atomic level and at the femtosecond timescale. Neverthe
+less, their use in the search for reaction pathways still needs human input in the form of
+an extensive chemical knowledge and intuition.
+The standard procedures for mapping a chemical reaction are known to be hard and
+tedious, as a mix of chemical intuition, patience and a component of luck is required
+for properly taking into account and describing all the elementary steps composing the
+whole mechanism. The large dimensionality of the reaction space quickly makes track
+ing the multiple atomic movements a daunting task, even for very small systems. Over
+the years, numerous automated computational procedures have been developed with
+the ambitious aim of helping to elucidate reaction mechanisms in several and diverse
+systems.1–8 A large subset of these methods finds connecting pathways between reac
+tants and products by carrying out a search along the Minimum Energy Path (MEP),9–13
+but these methods suffer from the inability to take into account entropic contributions.
+In addition, their effectiveness9–13 often relies on an initial guess for the reaction path
+way14 or on the preliminary knowledge of intermediate states. When such input is not
+available, these methods might tend to locate the geometrically shortest pathways be
+tween reactants and products, rather than those characterized by lower barriers for the
+transition under examination.2
+3
+
+
+Methods that perform their search on the system’s Free Energy Surface (FES), thus
+including entropic contributions, have also been introduced.1,9,10,13,15,16 Such methods
+exploit ab-initio molecular dynamics (MD) simulations directly, for example by running
+simulations at elevated temperatures or adding artificial forces to induce reaction activ
+ity.15 However, while such methods are able to discover reactions in a given system and
+a posteriori map their corresponding mechanisms, they may alter the system FES of the
+process,15 be limited to unimolecular17 or bimolecular reactions1 or are unable to focus
+on a single specific reaction.15,16,18–20
+In this paper we propose a new approach that helps to speed up the discovery of
+complex reaction mechanisms, using a minimal amount of information. The method
+only requires MD simulations of the reactant (R) and product (P) states. Based on this
+information, a search is carried out along the direction that maximally separates R and
+P. This direction is determined through a recently developed methodology, Harmonic
+Linear Discriminant Analysis (HLDA), that only uses the thermally induced fluctuations
+in the reactant and the product state.
+States R and P are identified by a set of descriptors whose fluctuations are used to
+define the HLDA collective variable (CV). In the spirit of the present work that aims
+at obtaining an automatic procedure, we define a set of general descriptors, especially
+suited at monitoring the bond breaking and bond forming processes that take place
+in chemical reactions. The physical picture underpinning HLDA is the classical one
+of the rare event scenario in which there are two states separated by a high barrier
+and the system undergoes transitions between them. The HLDA variable is optimized
+to distinguish the two states and can be used in conjunction with enhanced sampling
+methods, such as Metadynamics (MetaD), to accelerate the transition rate between states.
+While in other papers21–25 the HLDA CV has been shown to succeed in mapping the
+FES of a variety of chemical reactions, in this paper we want to show that the HLDA
+procedure can be applied in a more general and exploratory mode. Here, in order to go
+4
+
+
+Figure 1: A two dimensional illustration of the rational underlying the proposed HLDA
+method. Using this method, the system is encouraged to move from the reactant state R
+in a perpendicular direction to the HLDA hyper-plane, depicted in dashed line. Given
+the very uneven landscape which characterizes a chemical system reaction network, the
+system, rather than explore its own phase space indiscriminately, is encouraged to follow
+low free energy pathways leading, potentially through metastable intermediate states, to
+the product state P.
+from state R to P, the system has to cross a number of possibly unknown intermediate
+states. If the FES needs to be reconstructed, a common strategy is to use MetaD in con
+junction with a gentle bias deposition to encourage back and forth transitions between
+basins. In contrast, for the aim of this work, we use a more aggressive schedule in or
+der to achieve a rapid exploration of configuration space. The choice of an intense bias
+deposition has the consequence to promote forward reactions along the HLDA variable,
+while hindering backward reactions, forcing the system to find a path connecting state
+R and P.
+In order to get an intuitive grasp of this reaction exploration procedure, we can take
+a look at Fig. 1 where, on an hypothetical FES, the pathway from state R to P has to
+go through an intermediate metastable state. In the same picture, we show one HLDA
+5
+
+
+derived surface in which the CV has a constant value. By construction, the HLDA vari
+able ensures that state R and P are optimally separated when projected into the direction
+orthogonal to the constant CV planes. Chemical reaction pathways occupy a very small
+fraction of the system FES landscape, especially if the FES is embedded in a high dimen
+sional space of descriptors. In this landscape, the energy barriers surrounding state R
+tend to be very high as the process of bond breaking and forming is costly. It is reason
+able to assume that in the general direction indicated by HLDA lies a chemical reaction
+pathway whose barrier is lower.
+Therefore, depositing bias in the HLDA CV direction favors an exploration of a num
+ber of paths which is analogous to a sweep of configurational space in the region between
+the two states. Eventually, after a long enough exploration time, this sweep pushes the
+system across a barrier. This transition is analogous to entering a trap: the system is
+encouraged to proceed forward along the HLDA direction as it is surrounded by high
+barriers and is discouraged to go back because of the previous bias deposition. The trap
+is akin to a funnel in configuration space as, while the system approaches the transition
+state, the number of available configurations at a given temperature is reduced.
+In the simplest case, the reaction from state R to P occurs and the real-time trajectory
+of the transition indicates a possible pathway. On the other hand, if a transition to an
+intermediate occurs, two scenarios are possible depending on whether or not the HLDA
+variable is able to discriminate the newly found state. In the first case, the simulation
+can proceed forward, continue its exploration along the HLDA variable and eventually
+progress further. In the second case, it is recommendable to stop the simulation and
+include information about the intermediate state in the next set of simulations, either by
+iterating the HLDA procedure between the newly found intermediate and state P or by
+running multiclass HLDA.22 In the examples studied below we explore both possibili
+ties.
+The level of electronic accuracy of the calculations is deliberately kept at a low level
+6
+
+
+out of computational expediency. Besides, given the fact that the MetaD procedure has
+been accelerated, it is not possible to obtain converged FES from the HLDA simulations.
+Instead, we can extract from the trajectories intermediate and transition state geometries.
+This information is fed into a standard quantum-chemical code that allows to raise the
+level of electronic structure theory to the required level. Such static simulations help in
+quantitatively mapping the reaction energy profiles and obtain an optimized estimate of
+the corresponding intermediate and transition states structure.
+The input from HLDA attenuates one of the main stumbling blocks of standard ap
+proaches: the need for a guess of the reaction pathway. This limitation manifests itself
+even for some of the smallest systems and its resolution often requires a significant
+amount of human time and chemical intuition. The HLDA discovery helps in reducing
+the time consuming aspect, while requiring close to no chemical intuition. Furthermore,
+it is able to observe unexpected paths that defy conventional chemical paradigms, as it
+does not need rely upon any guess.
+In order to test the method, we applied it to two multi-molecular reactions in gas
+phase and we found that in both cases it was able to unveil the reaction mechanisms
+rationalizing all the information reported in the literature as shown by the sequence
+of intermediates. Static quantum-mechanical simulations carried out starting from the
+HLDA result confirmed that the reaction path goes through the intercepted intermedi
+ates and provided a better estimation of the corresponding energy barriers.
+Methods
+MetaD26–28 is one of the key elements in our reaction discovery procedure as it allows
+accelerating the sampling of rare events in molecular dynamics simulations. The more
+advanced Well-Tempered version of MetaD29 improves the capability of mapping Free
+Energy Surfaces, but is not needed for our exploratory purposes. Here we use the
+7
+
+
+original version as discussed in26,27 and, for completeness, we recall its main features.
+In this version, a bias potential V(s) that is a function of a set of Ns collective variables
+(CVs) s(R) is introduced to steer the system away from local minima and cross energy
+barriers. The bias potential is built iteratively, usually by depositing Gaussian kernels at
+fixed time intervals during the dynamics. The form of such kernel at the n-th iteration is
+G(s, sn) = W exp
+(
+−
+kN= ∑s1
+(sk − skn)2
+2 σ2
+)
+(1)
+where W indicates the height of the Gaussian, σ its standard deviation and skn represents
+the value of the k-th CV at the n-th iteration.
+A limitation of MetaD is that it does not scale well with an increasing number of CVs
+(usually not more than two), so the choice of few optimal CVs is crucial for the ability to
+investigate rare events such as chemical reactions. This choice is very time consuming
+and often requires a profound knowledge on the reaction at hand. Moreover, when
+the unknown reaction involves the concerted movement of several atoms, guessing an
+effective CV quickly becomes an insormountable task as the system size grows.
+The aim of this paper is to employ the recently developed HLDA method21 and
+devise a fairly general procedure that allows a reaction pathway to be reconstructed
+with a minimum of human effort and without prior knowledge. The HLDA method
+acts as a dimensionality reduction tool, by determining from a set of descriptors d(R) a
+single CV sH(R) that optimally separates free energy minima. That variable can be used
+as a CV in MetaD, simplifying the kernel in Eq. 1 into G(sH, snH) = W exp ( (sH−snH)2
+2 σ2
+).
+The method’s success still depends very much on the suitability of the descriptors,
+but it does not present any significant limitation on the number of descriptors Nd. This
+improvement allows the choice of a rather general descriptor set, that is not reaction
+specific anymore and can be used in a number of different reactions. Before introducing
+our proposal for such a set, we provide a brief overview of the HLDA method itself.
+8
+
+
+Given a set of descriptors d(R), the HLDA procedure requires their statistical distri
+bution from unbiased simulations in the R and P states. The expectation values μR and
+μP of the descriptors and the multivariate covariance matrices ΣR and ΣP between every
+couple of descriptors are the input for the HLDA procedure.
+From these elements, HLDA builds a CV that corresponds to the direction W in the
+Nd-dimensional descriptor space that best separates state R and P.21 The direction W is
+computed by maximizing the ratio between the system so-called between class Sb and
+within class Sw scatter matrices. The former is estimated by the square of the distances
+between the projected means, and can be written as WTSbW with
+Sb = (μR − μP) (μR − μP)T . (2)
+The latter is estimated from the harmonic average of the two states covariance matrices
+ΣR(P), WTSwW where
+Sw = 1
+1
+ΣR + 1
+ΣP
+. (3)
+The HLDA objective function, which has the form of a Rayleigh ratio
+J (W) = WTSbW
+WTSwW (4)
+is then maximized by
+W∗ = Sw−1 (μR − μP) . (5)
+which, at last, yields the HLDA CV
+sH(R) = (μR − μP)T ( 1
+ΣR + 1
+ΣP
+)
+d(R). (6)
+With the help of expression (6), for any configuration R and its descriptor values d(R),
+one is able to calculate the corresponding HLDA variable sH(R). The last element miss
+9
+
+
+ing is the selection of a suitable descriptor set d(R).
+In principle, any quantity that captures the fluctuations of state R and P and is able
+to separate them could be chosen as a descriptor. However, in the present context, it is
+preferable that the set of descriptors is determined through a general strategy that does
+not prejudge the outcome of the simulation. The set that we propose in this work can
+be used quite generally for a large variety of chemical reactions and could eventually be
+further generalized and extended.
+It is based on the concept of coordination number (CN), a quantity that takes the dis
+tances between groups of atoms and evaluates the presence of bonds through a switching
+function with a finite width. We use the expression
+qij(rij) = 1 − ( rri0j
+)n
+1 − ( rri0j
+)m (7)
+where rij measures the distance between atoms i and j, the parameter r0 is calibrated
+in accordance with a typical bond length (if a bond is present) and n and m determine
+the steepness of the switching function. It has been observed that a rather soft switch
+ing function30 that presents a non-zero signal even at large distances is a good choice.
+Following this prescription, for our examples we have chosen n = 6 and m = 8.
+In a chemical reaction, bonds can be broken or formed, and, as a consequence, the
+CN between the atoms involved can increase or decrease accordingly. Out of the atom
+specific qij, we want to construct descriptors that are permutationally invariant so as not
+to prejudge the reaction mechanism by a targeted variable. For this reason, in a system
+that is composed of NS species, we introduce the following set of 2NS2 descriptors. For
+every couple of atomic species A − B, we compute the minimum and the maximum CN
+dA−B
+min (R) = λmin
+(
+log i∈∑A
+exp
+(
+λmin
+∑j∈B qij
+))−1
+(8)
+10
+
+
+dA−B
+max (R) = λmax log i∈∑A
+exp
+( ∑j∈B qij
+λmax
+)
+(9)
+where λmin = 20 and λmax = 0.02 are constants that regulate the sharpness of the
+functions.
+It is natural to assume that bond forming processes tend to occur when the distance
+rij between two unbound atoms i ∈ A and j ∈ B gets shorter and qij(rij) gets larger, so the
+dynamics of dA−B
+max would be able to capture such an event. Analogously, dA−B
+min would be
+suitable to describe bond breaking processes. Our strategy consists of taking all couples
+of atomic species and use expressions (8) and (9) as our general set of descriptors d(R).
+We point out that this set also includes couples of the same species such as dA−A
+max(min) and
+all permutations, as in principle dA−B
+max(min) 6= dB−A
+max(min).
+If NA is the number of atoms in the systems belonging to species A and NB the one
+corresponding to species B, this procedure is valid in the case of NA > 2 and NB > 2. If
+NA = 2, it would make no sense taking both the maximum and minimum in dA−A
+max(min)
+as they would be identical, so only one of them is used as a descriptor. Furthermore,
+if NA = 1, descriptors of the form A − A would be meaningless, while dA−B
+max ≈ dA−B
+min ,
+so only one of the two is included. In some cases, excluding the CN of Hydrogen with
+itself is preferable given that Hydrogen molecule bonds are very short and tend to play
+an overly dominant role in the search dynamics.
+The presence of a fairly large set of descriptors, is beneficial to the reaction discov
+ery process as it allows to conduct the search in a multi-dimensional space. The most
+important descriptors for a reaction would present large contributions in the expression
+(6), while descriptors with little relevance would provide near-zero contribution.
+It is good practice to normalize every descriptor dk by its maximum value in both
+states during the unbiased dynamics Dk = maxR,P (dk(R)), so that the amplitude of
+the respective fluctuations is comparable. The standardized form of each descriptor
+11
+
+
+k = 1, . . . , Nd can then be written as
+dˆk(R)R(P) = dk(R)R(P)
+Dk . (10)
+A problem that can arise is that a large set of descriptors may present a degree of
+correlation which can interfere with the HLDA procedure. Usually, a sign that correla
+tion is interfering with the HLDA procedure is that most of the components of vector
+(μR − μP)T ( 1
+ΣR + 1
+ΣP
+) from Eq. 6 are close to zero. To ensure that correlations are
+correctly filtered out, the application of a filtering protocol such as the singular-value
+decomposition (SVD) is recommended. This screening is applied to the two covariance
+matrices ΣR(P). According to SVD, these matrices can be written as
+ΣR(P) = UR(P)SR(P)VR∗(P) (11)
+where UR(P) and VR(P) are unitary Nd × Nd matrices, while SR(P) is a diagonal non
+negative real-valued Nd × Nd matrix. Its diagonal values are known as singular values
+and they measure correlations, with the smallest ones corresponding to the most corre
+lated descriptors. By setting the smallest Nf singular values to zero, we build the new
+diagonal matrices S ̃R(P) and, from them, we obtain the filtered covariance matrices
+Σ ̃ R(P) = UR(P)S ̃R(P)VR∗(P). (12)
+By inserting them in Eq. 6, we obtain a filtered HLDA CV
+s ̃H(R) = (μR − μP)T (  ̃Σ1R + Σ ̃1P
+) dˆ(R). (13)
+We can start exploring the reaction pathway by applying a bias to s ̃H, running MetaD
+simulations from the reactant state. In Fig. 3 in the Results section, we will show
+12
+
+
+the dynamics of the HLDA variable during an unbiased and a MetaD simulation. To
+encourage the exploration away from state R in the direction of P, we tend to choose
+a frequent bias deposition with a high W in Eq. 1. Simulations are run until a sharp
+change of s ̃H is observed, indicating a reactive activity. If, upon inspection, the newly
+found state does not correspond to the expected reaction product state, we indicate two
+possible routes.
+If the HLDA variable value of the newly found state does not overlap with the fi
+nal reaction product, the MetaD simulation can proceed forward on its route towards
+discovery. On the other hand, if there is a significant overlap, the procedure can be it
+erated. In that case, the newly discovered state is utilized as a new effective reactant
+and a new HLDA variable is constructed linking it to the product state. The procedure
+can be repeated, if needed, for successive metastable states, until the system reaches the
+final product state. Another possibility is to employ multiclass HLDA,22 a procedure
+in which the newly found state is used together with the reactant and product states to
+determine two maximal separation HLDA directions. These directions can then be used
+as CVs in MetaD. The concomitant bias of multiple CVs makes the computational cost
+grow significantly, so such approach is limited to a only a few CVs, typically two.
+The trajectory obtained during the MetaD simulation can be employed to extract a
+guess for the transition states. One can choose a set of configurations located within the
+sharp HLDA variable transitions and perform a committor analysis on them. This analy
+sis consists of running short unbiased simulations starting from each of these configura
+tions and counting the number of transitions forward and backward. The configurations
+that present a roughly equal number of these transitions represent a good estimate for
+the geometry of the corresponding transition state.
+At last, our guess for the intermediate and the transition states can be fed to a higher
+accuracy electronic structure calculation to obtain the reaction energetic profile and the
+optimized geometries corresponding to the full reaction pathway. The accuracy of such
+13
+
+
+Run unbiased simulations of state R and P
+Calculate R/P and R/P Determine sHLDA Apply SVD filtering
+Perform MetaD simulations starting from R by biasing sHLDA
+Has the system reached a new state?
+Is the new state P?
+Run static simulations to optimize geometries and determine the reaction energetics
+Is the new state well resolved by sHLDA?
+no continue
+yes
+yes
+no
+yes
+Replace the original state R with the newly found state
+no*
+Figure 2: Protocol of a typical HLDA reaction search between state R and P. The starting
+point is framed in blue, while the desired end point is framed in red. At the step with *,
+the multiclass HLDA can also alternatively be used (see SI for details).
+calculation can be tuned to the desired precision. So, in summary, the whole reaction
+pathway search procedure typically follows the protocol in Fig. 2.
+Computational details
+We performed the HLDA simulations with the ab-initio molecular dynamics code CP2K,31
+using the PBE functional32 and a DZVP basis set. The temperature was kept constant at
+400 K through a velocity rescaling thermostat with a time constant of 50 fs.33 The typical
+length for the preliminary unbiased runs was about 100 ps. The PLUMED plugin34 was
+used for performing MetaD with the HLDA CV. Further details about such simulations
+can be found in the Supporting Information.
+The static quantum-mechanical calculations were performed employing the Gaus
+sian09 software package35 in the framework of the density functional theory. The hybrid
+three-parameters B3LYP36,37 functional was used. For the description of I atoms, the
+relativistic compact Stuttgart/Dresden effective core potential38 was adopted together
+with its split valence basis set. The standard 6-311G** basis set of Pople was employed
+for the rest of the atoms. Vibrational analysis for each optimized stationary point was
+14
+
+
+carried out to determine its minimum or saddle point nature and to calculate zero-point
+vibrational energy corrections. For all intercepted transition states the vibrational mode
+associated with the imaginary frequency was carefully checked to correspond to the
+correct movement of the involved atoms. Furthermore, the IR39,40 method was used to
+assess that the localized TSs correctly connect to the corresponding minima along the
+imaginary mode of vibration. Enthalpies and Gibbs free energies were calculated at 298
+K and 1 atm from total energies, including zero-point and thermal corrections, using
+standard statistical procedures.41
+Results
+The first reaction that we used to test the method is
+2NO + 2H2 −→ N2 + 2H2O. (14)
+Nitric oxide (NO), a very stable compound having a bond dissociation energy of more
+than 600 kJ/mol, is one of the most relevant air pollutants that appear as a byproduct
+of combustion processes and has to be removed from effluent stream by reduction. To
+achieve this aim, a catalyst and a reducing agent are required, but a number of its known
+reaction channels tend to produce further pollutants. Todays increased environmental
+awareness makes studying NO decomposition for its abatement particularly significant,
+with a special focus on the search for pollutant free mechanisms.
+Its reduction by H2 has been studied for decades42–44 and it has recently seen a surge
+of interest45,46 as the most desirable of its three reaction channels, leading to N2 and H2O
+formation, has zero environmental impact.43 This reaction has been thoroughly investi
+gated in presence of an assisting transition metal catalyst,45,46 whereas the reaction in the
+gas phase was examined only in a joint theoretical and experimental work.47 Theoretical
+modeling suggests the step HNO + NO −→ N2O + OH to be the rate-controlling one.
+15
+
+
+(a) (b)
+Figure 3: In (a), dynamics of the HLDA variable for unbiased simulations of 2NO + 2H2
+(in blue) and N2 + 2H2O (in red). In (b), dynamics of the HLDA variable in a MetaD
+simulation starting from 2NO + 2H2 and, after crossing into two intermediates, reaching
+N2 + 2H2O.
+It is also worth mentioning that, for calculating the reaction rate, the previous kinetic
+data by Hinshelwood and co-workers48 suggesting that the reaction is third-order with
+−d[NO]/dt = k[H2][NO]2, was used. Here we apply the HLDA procedure as described
+in the Methods section to gain a better understanding of the reaction mechanism.
+In Fig. 3 (a), the unbiased dynamics of the reactant state 2NO + 2H2 (in blue) and the
+product state N2 + 2H2O (in red) is presented. The extent of the thermal fluctuations is
+limited and the HLDA variable is able to separate the two states effectively. In Fig. 3 (b),
+we show the HLDA variable dynamics in the following MetaD simulation. In the SI we
+show the corresponding dynamics of the four most relevant descriptors by weight in the
+HLDA linear combination.
+Starting from the reactants, as time grows, the bias deposition proceeds and the s ̃H
+presents larger and larger fluctuations, which correspond to the nitric oxide molecules
+approaching each other and trying to form the metastable dimer compound ONNO.
+The component needed for further stabilizing ONNO is the intervention of a hydrogen
+molecule that, by splitting and distributing one hydrogen atom at one end of ONNO and
+one on N, leads to the formation of the intermediate state HONNHO + H2 (in green).
+16
+
+
+Early experimental work on a metal catalyst49 suggested that the dimer of NHO is the
+most likely intermediate in the reduction of nitric oxide and a ”likely precursor to the
+formation of N2O”. Furthermore, HONNHO was identified as an intermediate in the
+aqueous reaction that leads to the formation of N2O.
+Since the HLDA variable could distinguish the intermediate from the final product
+state, we let the MetaD simulation continue its exploration. In the next step, the hy
+drogen atom bound to N hops on the oxygen atom at the end of the chain triggering
+a cleavage of the corresponding N − O bond and the release of H2O. The resulting
+new intermediate state N2O + H2O + H2 (in yellow) is again distinguished from the fi
+nal state and is also known experimentally to be an intermediate in the reaction in the
+presence of a metal catalyst.43,44 As the MetaD simulation proceeds further, we observe
+another reaction where H2 approaches the oxygen atom in N2O and, by splitting, leads
+to the final product state N2 + 2H2O. Remarkably, a complete pathway of the whole
+reaction, including its two intermediate states could thus be obtained in a single MetaD
+simulation.
+Using the information from MetaD simulations, we run static quantum-mechanical
+calculations obtaining the free energy profile shown in Fig. 4. We expect some inaccura
+cies in the quantitative description of the energetics of such reaction as a huge amount
+of theoretical investigations dealing with nitrogen oxides structures and thermodynamic
+quantities50,51 demonstrated that DFT calculations give only approximate estimates of
+such properties.
+Particularly, for the description of the structure and energetics of the NO dimer, an
+exemplary system of strong non-dynamic correlation, high-level ab-initio computational
+methods should be used for providing more reliable results comparable with experimen
+tal data.52 Using as zero reference energy the adduct formed by the H2 and NO reacting
+species, the first step of the process is the endothermic, by 100.7 kJ/mol, formation of the
+trans isomer of the ONNO dimer preluding to the reaction with one of the H2 molecules.
+17
+
+
+2NO +2H2
+0
+TS2
+N2O+H2O +H2
+TS1
+ONNO +2H2
+400
+200
+TS3
+N2+2H2O
+100.7
+-538.2
+HONNHO +H2
+-200
+-400
+-600
+-1.7
+280.1
+137.3
+-240.9
+6.3
+Figure 4: Free energy profile (in kJ/mol) describing the 2NO + 2H2 reaction obtained
+using DFT B3LYP static calculations. Along the reaction path, the structures of all inter
+mediates and transition states are also sketched.
+The height of the barrier for the transition state TS1, corresponding to the splitting of
+the H2 molecule and the formation of two new H − O and H − N bonds is 179.3 kJ/mol.
+The formed HONNHO intermediate lies only 1.7 kJ/mol below the entrance channel.
+In the next step the H atom bound to nitrogen is transferred to the oxygen atom of
+the OH group to release water and form the NNO moiety. The energetic cost for the
+corresponding TS2 transition state is 139.0 kJ/mol, whereas the corresponding products
+together with the remaining H2 molecule lie 240.9 kJ/mol below the reactants energy.
+The final step, that appears to be the rate-controlling step, leads to the formation of the
+final products, N2 + H2O, surmounting an energy barrier of 247.2 kJ/mol. The negative
+frequency confirming the nature of first order saddle point of the intercepted structure
+corresponds to the breaking of the H − H bond and formation of two new O − H bonds,
+causing the detachment of a second water molecule. The whole reaction is calculated to
+18
+
+
+2ICl+H2
+0
+TS2
+TS1
+200
+100
+TS3
+148.2
+-100
+-200
+50
+150
+50
+-50
+-250
+IClH+HICl
+ClIHCl+HI
+HI+HCl+ICl
+TS4
+TS5
+ClIHI+HCl
+2HCl+I2
+87.3 90.1
+2.1 7.2
+-142.2
+-38.6 -47.6
+-19.7
+-212.1
+Figure 5: Free energy profile (in kJ/mol) describing the 2ICl + H2 reaction obtained using
+DF B3LYP static calculations. Along the reaction path, the structures of all intermediates
+and transition states are also sketched.
+be exothermic by 538.2 kJ/mol. It is worth underlining that such a reaction step sequence
+agrees with both the mechanism hypothesized in49 and the third-order expression of the
+reaction rate reported in.48
+As a second example, we choose a paradigmatic reaction that appears often in chem
+istry textbooks
+H2 + 2ICl −→ 2HCl + I2 (15)
+to demonstrate how reaction orders and reaction rate expressions cannot be inferred sim
+ply from the reaction equation. It is a common practice, therefore, to deduce the reaction
+mechanism from the rate law determined experimentally. We will show that, behind its
+apparent simplicity, reaction 15 hides a challenging and rich reaction mechanism which
+we are able to deduce without the need to use any experimental information.
+19
+
+
+Most works in the literature53–55 date back to the 1970s-1980s and study its simpler
+analogous starting from H + ICl, commenting on the asymmetry in the prevalent forma
+tion of HCl + I instead of HI + Cl. The most relevant difference with those studies is that
+in our case the reactant state includes a H2 molecule. Intuition says that the cleavage of
+the H − H bond is necessary for the reaction to proceed, but it is not obvious how this
+should occur.
+We performed the HLDA procedure and proceeded with MetaD simulations starting
+from reactant and the product state. The dynamics of the HLDA variable during the un
+biased and the MetaD simulations is presented in the SI. We observed a reaction leading
+state 2HCl + I2 into the stable intermediate state HI + HCl + ICl. There is no guarantee
+that the newly found states are well resolved by the HLDA CV used to discover them, as
+that variable has no prior information about them. In fact, in this case the intermediate
+state was not resolved effectively by the original HLDA variable. Therefore, continu
+ing the MetaD simulations biasing the same variable would be fruitless, as a further
+deposition of bias would not contribute anymore for the exploration towards the final
+state.
+In this case one could either iterate the HLDA procedure determining a CV between
+the intermediate and the original final state or perform a multiclass HLDA. Here we
+chose the latter option (see SI for details). Multiclass HLDA includes information about
+all three states and separates them, generating 2 CVs. A MetaD simulation was per
+formed biasing both CVs and their dynamics is presented in the SI. The simulation
+revealed the mechanism connecting H2 + 2ICl with the metastable state ClIHI + HCl
+and then HI + HCl + ICl. Static calculations confirmed the mechanism and were used
+to create the reaction scheme in Fig. 5.
+The whole reaction proceeds as follows. Starting from the reactant state, the first
+step involves a cleavage of the H2 molecule assisted by the two ICl molecules that align
+to receive one H each, as is shown in TS1 in Fig. 5. This leads to the formation of
+20
+
+
+a metastable compound ClIHCl along with an intact HI molecule, which, after a few
+picoseconds, react further. We verified with unbiased simulations that ClIHCl + HI at
+our temperature is metastable and spontaneously decays into HI + HCl + ICl. Successive
+static calculations confirmed that the barrier for this reaction is very low, about 5 kJ/mol.
+The underlying reaction mechanism is quite complex as it involves the donation of
+an H atom from HI to Cl and the capture of another H from ClIHCl. This triggers the
+cleavage of a ICl bond and the formation of the intermediate state HI + HCl + ICl. We
+also intercepted an alternative TS involving only the ClIHCl molecule. It featured the
+shift of the H atom from I to Cl, which caused the cleavage of an ICl bond.
+Then, the reaction proceeds via a mechanism akin to the previous one. Through a
+double proton exchange, a metastable state ClIHI + HCl is formed. As before, unbiased
+simulations confirmed its spontaneous decay towards the final product state. Metady
+namics simulations observed transitions into the final product state through two chan
+nels analogous to the previous ones. TS5 in Fig. 5 shows the bi-molecular one, as all
+the attempts to locate a TS for the tri-molecular mechanism via static calculations were
+unsuccessful.
+The richness of the multiple atomic bonds rearrangements makes the investigated
+reaction a paradigmatic example of how the method is able to capture the complexity
+that hides behind seemingly trivial elements such as the nature of the initial and final
+states. Detailed insights are provided that can be translated into a precise sequence of
+steps.
+Conclusions
+In this paper we present a method that is able to guess a chemical reaction pathway
+using a minimum amount of information about the reactant and the product states. We
+showed its capability by applying it to two reactions and finding the intermediates and
+21
+
+
+the transition states involved in the mechanism. The method is general as it conducts
+its search for reaction pathways in free energy space, naturally taking into account en
+tropic effects, and it can be applied to other kinds of multi-molecular reactions. We are
+currently working on its application to homogeneously and heterogeneously catalyzed
+reactions and reactions in a solvent. Investigations carried out adopting such a strat
+egy might lead to the always desired control and fine tuning of chemical reactions by
+preliminary energy-saving and environmental-friendly in silico experiments.
+Acknowledgement
+We acknowledge the Swiss National Science Foundation Grant Nr. 200021 169429/1 and
+the European Union Grant No. ERC-2014-AdG-670227/VARMET for funding. Calcula
+tions were carried out on the ETH Zu ̈ rich cluster Euler.
+Supporting Information Available
+The following files are available free of charge.
+The file Supporting info.pdf contains further details about the simulations.
+22
+
+
+References
+(1) Maeda, S.; Morokuma, K. Finding Reaction Pathways of Type A + B X: Toward
+Systematic Prediction of Reaction Mechanisms. J. Chem. Theory Comput. 2011, 7,
+2335–2345.
+(2) Maeda, S.; Ohno, K.; Morokuma, K. Systematic exploration of the mechanism of
+chemical reactions: the global reaction route mapping (GRRM) strategy using the
+ADDF and AFIR methods. Phys. Chem. Chem. Phys. 2013, 15, 3683.
+(3) Pietrucci, F.; Saitta, A. M. Formamide reaction network in gas phase and solution
+via a unified theoretical approach: Toward a reconciliation of different prebiotic
+scenarios. Proc. Natl. Acad. Sci. 2015, 112, 15030–15035.
+(4) Pietrucci, F.; Aponte, J. C.; Starr, R.; P ́erez-Villa, A.; Elsila, J. E.; Dworkin, J. P.;
+Saitta, A. M. Hydrothermal Decomposition of Amino Acids and Origins of Prebiotic
+Meteoritic Organic Compounds. ACS Earth Sp. Chem. 2018, 2, 588–598.
+(5) Pe ́rez de Alba Ort ́ız, A.; Tiwari, A.; Puthenkalathil, R. C.; Ensing, B. Advances in
+enhanced sampling along adaptive paths of collective variables. J. Chem. Phys. 2018,
+149, 072320.
+(6) Bergeler, M.; Simm, G. N.; Proppe, J.; Reiher, M. Heuristics-Guided Exploration of
+Reaction Mechanisms. J. Chem. Theory Comput. 2015, 11, 5712–5722.
+(7) Simm, G. N.; Vaucher, A. C.; Reiher, M. Exploration of Reaction Pathways and
+Chemical Transformation Networks. J. Phys. Chem. A 2019, 123, 385–399.
+(8) Grimme, S. Exploration of Chemical Compound, Conformer, and Reaction Space
+with Meta-Dynamics Simulations Based on Tight-Binding Quantum Chemical Cal
+culations. J. Chem. Theory Comput. 2019, 15, 2847–2862.
+23
+
+
+(9) E, W.; Ren, W.; Vanden-Eijnden, E. String method for the study of rare events. Phys.
+Rev. B 2002, 66, 052301.
+(10) E, W.; Ren, W.; Vanden-Eijnden, E. Finite Temperature String Method for the Study
+of Rare Events . J. Phys. Chem. B 2005, 109, 6688–6693.
+(11) Henkelman, G.; Uberuaga, B. P.; Jo ́ nsson, H. A climbing image nudged elastic band
+method for finding saddle points and minimum energy paths. J. Chem. Phys. 2000,
+113, 9901–9904.
+(12) Peters, B.; Heyden, A.; Bell, A. T.; Chakraborty, A. A growing string method for
+determining transition states: Comparison to the nudged elastic band and string
+methods. J. Chem. Phys. 2004, 120, 7877–7886.
+(13) Mallikarjun Sharada, S.; Zimmerman, P. M.; Bell, A. T.; Head-Gordon, M. Auto
+mated transition state searches without evaluating the hessian. J. Chem. Theory Com
+put. 2012, 8, 5166–5174.
+(14) Borrero, E.; Dellago, C. Avoiding traps in trajectory space: Metadynamics enhanced
+transition path sampling. Eur. Phys. J. Spec. Top. 2016, 225, 1609–1620.
+(15) Wang, L.-P.; McGibbon, R. T.; Pande, V. S.; Martinez, T. J. Automated Discovery
+and Refinement of Reactive Molecular Dynamics Pathways. J. Chem. Theory Comput.
+2016, 12, 638–649.
+(16) Shiga, M.; Tuckerman, M. E. Finding Free-Energy Landmarks of Chemical Reac
+tions. J. Phys. Chem. Lett. 2018, 9, 6207–6214.
+(17) Mu ̈ ller, E. M.; de Meijere, A.; Grubmu ̈ ller, H. Predicting unimolecular chemical
+reactions: Chemical flooding. J. Chem. Phys. 2002, 116, 897–905.
+(18) Dewar, M. J. S.; Healy, E. F.; Stewart, J. J. P. Location of transition states in reaction
+mechanisms. J. Chem. Soc. Faraday Trans. 2 1984, 80, 227.
+24
+
+
+(19) Pietrucci, F.; Andreoni, W. Graph Theory Meets Ab Initio Molecular Dynamics:
+Atomic Structures and Transformations at the Nanoscale. Phys. Rev. Lett. 2011, 107,
+085504.
+(20) Fu, C. D.; Pfaendtner, J. Lifting the Curse of Dimensionality on Enhanced Sampling
+of Reaction Networks with Parallel Bias Metadynamics. J. Chem. Theory Comput.
+2018, 14, 2516–2525.
+(21) Mendels, D.; Piccini, G.; Parrinello, M. Collective Variables from Local Fluctuations.
+J. Phys. Chem. Lett. 2018, 9, 2776–2781.
+(22) Piccini, G.; Mendels, D.; Parrinello, M. Metadynamics with Discriminants: a Tool
+for Understanding Chemistry. J. Chem. Theory Comput. 2018, 14, 5040–5044.
+(23) Mendels, D.; Piccini, G.; Brotzakis, Z. F.; Yang, Y. I.; Parrinello, M. Folding a Small
+Protein Using Harmonic Linear Discriminant Analysis. 2018, 1–10.
+(24) Rizzi, V.; Polino, D.; Sicilia, E.; Russo, N.; Parrinello, M. The Onset of Dehydrogena
+tion in Solid Ammonia Borane: An Ab-Initio Metadynamics Study. Angew. Chemie
+Int. Ed. 2019,
+(25) Zhang, Y.-Y.; Niu, H.; Piccini, G.; Mendels, D.; Parrinello, M. Improving collective
+variables : The case of crystallization Improving collective variables : The case of
+crystallization. 2019, 094509.
+(26) Laio, A.; Parrinello, M. Escaping free-energy minima. Proc. Natl. Acad. Sci. U. S. A.
+2002, 99, 12562–6.
+(27) Barducci, A.; Bussi, G.; Parrinello, M. Well-Tempered Metadynamics: A Smoothly
+Converging and Tunable Free-Energy Method. Phys. Rev. Lett. 2008, 100, 020603.
+(28) Valsson, O.; Tiwary, P.; Parrinello, M. Enhancing Important Fluctuations: Rare
+25
+
+
+Events and Metadynamics from a Conceptual Viewpoint. Annu. Rev. Phys. Chem.
+2016, 67, 159–184.
+(29) Dama, J. F.; Parrinello, M.; Voth, G. A. Well-Tempered Metadynamics Converges
+Asymptotically. Phys. Rev. Lett. 2014, 112, 240602.
+(30) Bonomi, M.; Branduardi, D.; Gervasio, F. L.; Parrinello, M. The Unfolded Ensemble
+and Folding Mechanism of the C-Terminal GB1 β-Hairpin. J. Am. Chem. Soc. 2008,
+130, 13938–13944.
+(31) VandeVondele, J.; Krack, M.; Mohamed, F.; Parrinello, M.; Chassaing, T.; Hutter, J.
+Quickstep: Fast and accurate density functional calculations using a mixed Gaus
+sian and plane waves approach. Comput. Phys. Commun. 2005, 167, 103–128.
+(32) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient Approximation Made
+Simple. Phys. Rev. Lett. 1996, 77, 3865–3868.
+(33) Bussi, G.; Donadio, D.; Parrinello, M. Canonical sampling through velocity rescal
+ing. J. Chem. Phys. 2007, 126, 014101.
+(34) Tribello, G. A.; Bonomi, M.; Branduardi, D.; Camilloni, C.; Bussi, G. PLUMED 2:
+New feathers for an old bird. Comput. Phys. Commun. 2014, 185, 604–613.
+(35) Frisch, M. J. Gaussian 09. 2010.
+(36) Lee, C.; Yang, W.; Parr, R. G. Development of the Colle-Salvetti correlation-energy
+formula into a functional of the electron density. Phys. Rev. B 1988, 37, 785–789.
+(37) Becke, A. D. Density-functional thermochemistry. III. The role of exact exchange. J.
+Chem. Phys. 1993, 98, 5648–5652.
+(38) Andrae, D.; Haussermann, U.; Dolg, M.; Stoll, H.; Preuss, H. Energy-adjustedab ini
+tio pseudopotentials for the second and third row transition elements. Theor. Chim.
+Acta 1990, 77, 123–141.
+26
+
+
+(39) Fukui, K. Formulation of the reaction coordinate. J. Phys. Chem. 1970, 74, 4161–4163.
+(40) Gonzalez, C.; Schlegel, H. B. An improved algorithm for reaction path following. J.
+Chem. Phys. 1989, 90, 2154–2161.
+(41) McQuarrie, D. A.; Simon, J. D. Molecular Thermodynamics; University Science Books:
+Sausalito, CA, 1999.
+(42) Galvagno, S. Chemical reactivity of supported gold IV. Reduction of NO by H2. J.
+Catal. 1978, 55, 178–190.
+(43) Echigoya, E. Fundamental studies on the catalytic removal of nitrogen monoxide
+using reducing agents. J. Japan Pet. Inst. 1980, 23, 223–232.
+(44) Lee, J. Infrared spectroscopic study of NO reduction by H2 on supported gold
+catalysts. J. Catal. 1986, 102, 207–215.
+(45) Bai, Y.; Mavrikakis, M. Mechanistic Study of Nitric Oxide Reduction by Hydrogen
+on Pt(100) (I): A DFT Analysis of the Reaction Network. J. Phys. Chem. B 2018, 122,
+432–443.
+(46) Pham, T. N.; Sugiyama, M.; Muttaqien, F.; Putra, S. E. M.; Inagaki, K.; Son, D. N.;
+Hamamoto, Y.; Hamada, I.; Morikawa, Y. Hydrogen Bond-Induced Nitric Oxide
+Dissociation on Cu(110). J. Phys. Chem. C 2018, 122, 11814–11824.
+(47) Diau, E. W.; Halbgewachs, M. J.; Smith, A. R.; Lin, M. C. Thermal reduction of NO
+by H2: Kinetic measurement and computer modeling of the HNO + NO reaction.
+Int. J. Chem. Kinet. 1995, 27, 867–881.
+(48) Hinshelwood, C. N.; Mitchell, J. W. The reaction of nitric oxide with hydrogen and
+with deuterium. J. Chem. Soc. 1936, 378.
+(49) Gonzalez, R. HNO as an intermediate in the catalytic reduction of nitric oxide. J.
+Catal. 1970, 17, 116–118.
+27
+
+
+(50) Say  ́os, R.; Valero, R.; Anglada, J. M.; Gonz ́alez, M. Theoretical investigation of the
+eight low-lying electronic states of the cis - and trans -nitric oxide dimers and its iso
+merization using multiconfigurational second-order perturbation theory (CASPT2).
+J. Chem. Phys. 2000, 112, 6608–6624.
+(51) Taguchi, N.; Mochizuki, Y.; Ishikawa, T.; Tanaka, K. Multi-reference calculations of
+nitric oxide dimer. Chem. Phys. Lett. 2008, 451, 31–36.
+(52) Glendening, E. D.; Halpern, A. M. Ab initio calculations of nitrogen oxide reactions:
+Formation of N2O2, N2O3, N2O4, N2O5, and N4O2 from NO, NO2, NO3, and
+N2O. J. Chem. Phys. 2007, 127, 164307.
+(53) McDonald, J. D.; LeBreton, P. R.; Lee, Y. T.; Herschbach, D. R. Molecular Beam
+Kinetics: Reactions of Deuterium Atoms with Halogen Molecules. J. Chem. Phys.
+1972, 56, 769–788.
+(54) Grosser, J.; Haberland, H. Reactive scattering of hydrogen and deuterium atoms
+from halogen molecules. Chem. Phys. 1973, 2, 342–351.
+(55) Loewenstein, L. M.; Anderson, J. G. Rate and product measurements for the reac
+tions of hydroxyl with molecular iodine and iodine chloride at 298 K: separation of
+gas-phase and surface reaction components. J. Phys. Chem. 1985, 89, 5371–5379.
+28
+
+
+Supporting information. Blind search for complex
+chemical pathways using Harmonic Linear
+Discriminant Analysis
+Valerio Rizzi,†,‡,⊥ Dan Mendels,†,‡,¶,⊥ Emilia Sicilia,§ and Michele
+Parrinello∗,†,‡,‖
+†Department of Chemistry and Applied Biosciences, ETH Zurich, c/o USI Campus, Via
+Giuseppe Buffi 13, CH-6900, Lugano, Ticino, Switzerland
+‡Facolt`a di Informatica, Istituto di Scienze Computazionali, Universit`a della Svizzera italiana
+(USI), Via Giuseppe Buffi 13, CH-6900, Lugano, Ticino, Switzerland
+¶Institute for Molecular Engineering, University of Chicago, Chicago, Illinois 60637, United
+States
+§Dipartimento di Chimica e Tecnologie Chimiche, Universit`a della Calabria, 87036 Rende (CS),
+Italy
+‖Istituto Italiano di Tecnologia (IIT), Via Morego, 30, 16163 Genova GE, Italy
+⊥Contributed equally to this work
+E-mail: parrinello@phys.chem.ethz.ch
+August 1, 2019
+1
+arXiv:1904.06276v2 [physics.chem-ph] 31 Jul 2019
+
+
+Metadynamics simulations
+In the first reaction
+2NO + 2H2 −→ N2 + 2H2O. (1)
+we performed unbiased simulations for the reactant and the product state, respectively
+for 75 ps and 100 ps. The simulations were run in a cubic box with edge length 15  ̊A and
+periodic boundary conditions. To prevent the molecules from reaching the box edges
+and possibly interacting with unwanted periodic images, we confined them in a smaller
+region through harmonic restraints described by the potential k(x − a)2 where k = 200
+kJ mol−1  ̊A−2, a = 9  ̊A and x is the maximum distance between couples of atomic species.
+We applied the restraint between couples of nitrogen atoms, oxygen atoms and nitrogen
+and hydrogen atoms.
+The HLDA procedure was run on the descriptor set based on the coordination num
+ber (CN) expression from Eq. 7 in the main text
+qij(rij) = 1 − ( rri0j
+)n
+1 − ( rri0j
+)m (2)
+where n = 6, m = 8 and r0 depends on the typical bond length between atoms i and j.
+We tend to set it about 0.3  ̊A larger than the typical bond length to optimize the region
+of effectiveness of the switching function. For every couple of atomic species A and B in
+the system, the maximum dA−B
+max and minimum dA−B
+min of the CN is taken, according to Eq.
+8-9 in the main text, except for the trivial case when one or two atoms belong to each
+species, as detailed in the main text. We point out that dA−B
+max(min) 6= dB−A
+max(min), therefore
+both cases have to be included.
+In this reaction, we used a set of Nd = 14 descriptors: (dN−N, dO−O, dN−O
+max , dN−O
+min ,
+dO−N
+max , dO−N
+min , dN−H
+max , dN−H
+min , dH−N
+max , dH−N
+min , dO−H
+max , dO−H
+min , dH−O
+max , dH−O
+min ) with a corresponding
+set of r0 = (1.5, 1.7, 1.6, 1.6, 1.6, 1.6, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4)  ̊A.
+2
+
+
+We applied the SVD decomposition to the covariance matrices by setting Nf = 1
+singular value to zero and determined the HLDA linear combination of descriptors that
+generated the filtered HLDA CV s ̃H. The coefficients of the descriptors linear com
+bination were (-0.39547, 0.06121, -0.20744, 0.60671, -0.11341, 0.47938, 0.02201, -0.03897,
+-0.00129, 0.00439, 0.03726, -0.13914, -0.08409, -0.39524). We then performed a meta
+dynamics simulation starting from the reactant state by biasing s ̃H with the Gaussian
+kernels from Eq. 1 with W = 3 kJ/mol, σ = 0.05 kJ/mol and a deposition rate of one
+Gaussian every 100 timesteps. The hill height values were chosen as usual with MetaD
+simulations to be in the ballpark of 1 kT. Given the computational cost of ab-intio simu
+lations and the exploratory aim of the method, to reduce the total cost of the simulations
+we choose higher than usual hill heights and deposition frequency to enable a quicker
+exploration of configuration space.
+The dynamics of the HLDA CV during the metadynamics simulation is shown in
+Fig. 2 (b) in the main text. The corresponding dynamics of the most relevant descriptors
+is presented in Fig. 1. Descriptor dN−N is very effective at describing the first step of
+the reaction from 2NO + 2H2 (in blue) to HONNHO + H2 (in green) as it captures the
+formation of a bond between the nitrogen atoms, dN−O
+min and dO−N
+min capture the following
+step where N2O + H2O + H2 (in yellow) forms with the cleavage of a N − O bond, while
+dH−O
+min is able to describe the formation of a second water molecule during the last reaction
+step leading to N2 + 2H2O (in red).
+In the second example, we considered reaction
+H2 + 2ICl −→ 2HCl + I2. (3)
+We ran unbiased simulations of the reactant and product state lasting respectively 54 and
+43 ps. The simulations were run in the same cubic box as in the previous example and the
+same harmonic restraint was applied, this time acting on the maximum distance between
+3
+
+
+(a) (b)
+(c) (d)
+Figure 1: The dynamics of the four most relevant non-normalized descriptors by weight
+in the HLDA linear combination during the MetaD simulation starting from 2NO + 2H2.
+In (a) there is dN−N, in (b) dN−O
+min , in (c) dO−N
+min and in (d) dH−O
+min .
+couples of hydrogen and chlorine atoms, hydrogen and iodine atoms and couples of
+iodine and chlorine atoms.
+The descriptors set was made of Nd = 15 descriptors: (dH−H, dI−I, dCl−Cl, dH−Cl
+max ,
+dH−Cl
+min , dCl−H
+max , dCl−H
+min , dH−I
+max , dH−I
+min , dI−H
+max , dI−H
+min , dI−Cl
+max , dI−Cl
+min , dCl−I
+max , dCl−I
+min ) with a set of r0 =
+(1.1, 3.0, 2.3, 1.6, 1.6, 1.6, 1.6, 1.9, 1.9, 1.9, 1.9, 2.6, 2.6, 2.6, 2.6)  ̊A.
+After the application of the SVD filtering with Nf = 2, the resulting linear combi
+nation of descriptors that generated the filtered HLDA CV was (0.7435, -0.0278, -0.3230,
+0.0052, -0.4295, -0.0315, -0.3276, -0.0540, 0.0093, 0.0297, 0.0162, 0.1870, -0.0130, 0.0911,
+0.0412). The dynamics of the HLDA CV for the reactant (in blue) and the product state
+(in blue) is presented in Fig. 2 (a).
+We set up exploratory metadynamics simulations starting from both the reactant and
+4
+
+
+(a) (b)
+Figure 2: In (a), dynamics of the HLDA CV for unbiased simulations of H2 + 2ICl (in
+blue) and 2HCl + I2 (in red). In (b), dynamics of the HLDA variable in a MetaD sim
+ulation starting from 2HCl + I2 which forms the intermediate state HI + HCl + ICl (in
+yellow).
+the product state, with W = 1.5 kJ/mol, σ = 0.05 kJ/mol and a deposition rate of one
+Gaussian every 100 timesteps. In Fig. 2 (b) it is shown the dynamics of the HLDA CV in a
+simulation starting from 2HCl + I2 (in red). The simulation discovered the intermediate
+state HI + HCl + ICl (in yellow), but it was stopped after reaching 200 ps simulation
+time as the HLDA CV almost reached the value of the H2 + 2ICl unbiased state.
+We performed a further unbiased simulation on the intermediate lasting 58 ps with
+the aim of using it to improve the following simulations. We then applied multiclass
+HLDA by including the newly found intermediate and determined two HLDA CVs: s ̃H1
+with linear combination coefficients (-0.4446, 0.0049, 0.0288, 0.1219, 0.0686, 0.0886, 0.0323,
+0.1243, 0.0676, -0.0530, -0.0781, 0.4969, 0.3439, -0.4511, -0.4189) and s ̃H2 with coefficients
+(-0.0450, 0.0427, 0.2969, -0.4559, 0.4762, -0.0061, 0.1473, -0.3869, -0.1632, 0.2848, 0.2102,
+-0.0487, 0.2557, -0.2622, -0.1160).
+The dynamics of s ̃H1 and s ̃H2 during the unbiased simulations is presented in Fig.
+3 (a) and (c) respectively. Subsequent metadynamics simulations were run biasing both
+CVs with analogous deposition parameters as before. The dynamics of the two HLDA
+CVs during this MetaD simulation is shown in Fig. 3 (b) and (d) respectively. We
+5
+
+
+(a)
+(b)
+(c) (d)
+Figure 3: In (a) and (c), dynamics of the two HLDA CVs during unbiased simulations
+of H2 + 2ICl (in blue), HI + HCl + ICl (in yellow) and 2HCl + I2 (in red). In (b) and (d),
+the corresponding dynamics of the same HLDA variables during a MetaD simulation
+starting from H2 + 2ICl.
+observed a reaction from H2 + 2ICl (in blue) into the metastable state ClIHI + HCl (in
+green) which further reacts into the known intermediate HI + HCl + ICl (in yellow), thus
+completing the mechanism scheme.
+6
