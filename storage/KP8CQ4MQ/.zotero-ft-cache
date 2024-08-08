@@ -1,0 +1,444 @@
+Annual Review of Condensed Matter Physics
+Polyelectrolyte Complex Coacervates: Recent Developments and New Frontiers
+Artem M. Rumyantsev,1 Nicholas E. Jackson,1,2 and Juan J. de Pablo1,2
+1Pritzker School of Molecular Engineering, University of Chicago, Chicago, Illinois 60637, USA; email: depablo@uchicago.edu 2Center for Molecular Engineering, Argonne National Laboratory, Lemont, Illinois 60439, USA
+Annu. Rev. Condens. Matter Phys. 2021. 12:155–76
+First published as a Review in Advance on November 23, 2020
+The Annual Review of Condensed Matter Physics is online at conmatphys.annualreviews.org
+https://doi.org/10.1146/annurev-conmatphys042020-113457
+Copyright © 2021 by Annual Reviews. All rights reserved
+Keywords
+polyelectrolyte complex coacervates, binodals, sequence-controlled polymers, polymer dynamics, microphase separation
+Abstract
+Polyelectrolyte complex coacervates represent a wide class of materials with applications ranging from coatings and adhesives to pharmaceutical technologies. They also underpin multiple biological processes, which are only now beginning to be deciphered. The means by which molecular-scale architecture propagates into macroscopic structure, thermodynamics, and dynamics in complex coacervates is of central concern in physics, chemistry, biology, and materials science. How does polyion charge sequence dictate thermodynamic behavior? How does one tailor rheology or interfacial tension using macromolecular architecture? What emergent functionality from polymer complex coacervates has biological consequences? Recent developments in coacervate science shed light on many of these issues and raise exciting new challenges for the close integration of theory, simulations, and experiment.
+155
+
+
+1. INTRODUCTION
+Solutions of oppositely charged polyelectrolytes (PEs) can undergo associative phase separation into a highly diluted supernatant phase and a condensed polymer-rich phase, known as a polyelectrolyte complex coacervate (PECC). Recent interest in PECCs has been sparked by their relevance in a variety of biological contexts, including intracellular organization, as well as their importance in numerous technologies. Membrane-less organelles formed from PECC act as stress granules in cytoplasm and nucleoli; Cajal and promyelocytic leukemia bodies in the nucleus are the direct result of macromolecular liquid–liquid phase separation (LLPS), with both containing RNA and proteins (1–4). Furthermore, complex coacervation is believed to have played an important role in the origin of life, namely in the early stages of prebiotic evolution. Following the idea of Oparin (5), coacervate droplets are currently considered as a model for protocells—even in the absence of membranes, they provide not only compartmentalization necessary for efficient chemical catalysis but also selective molecular uptake and retention, due to the difference in their dielectric constant as compared with the outer medium (6–8). The potential applications of PECCs are vast and motivate a thorough understanding of their underlying chemical and macromolecular design principles. PECCs are used as additives, emulsifiers, and rheology modifiers in a broad array of industrial products, cosmetics, and food science applications (9, 10). Biomimetic adhesives, inspired by sandcastle worms that secrete PECCs capable of binding sand grains (11), have inspired the development of PECCs in the context of advanced underwater adhesives (12, 13), an extremely challenging application area for conventional soft materials. The use of PECCs as optoelectronic materials emerged for both sensing applications and harvesting artificial light for solar energy applications (14, 15). The tunability of PECCs and their similarity to biological compartmentalization materials provides an impetus for the design of PECC-core micelles relevant to ionic drug and gene delivery (16, 17). This range of applications serves to underscore the need for a rigorous understanding of their behavior. Considerable progress has been made with experiments (18) and theory (19). In this review, we have sought to distill some of the most recent developments related to PECCs and have tried to outline the emerging frontiers in these areas. Due to space limitations, this work is not meant to provide a comprehensive review of all work in the field. Highlighted works have been selected to showcase recent developments that reflect our own interests. We encourage readers to explore the literature cited here and any associated references to gain a fuller perspective of PECCs.
+2. MACROSCOPIC THERMODYNAMICS OF POLYELECTROLYTE COMPLEX COACERVATES
+2.1. Liquid Coacervates and Solid Complexes
+In solutions of oppositely charged PEs, complexation of polyanions and polycations leads to the formation of a polymer-rich phase and a highly diluted supernatant phase. The properties of the condensed phase depend on the chemistry of the PEs and can be controlled by external conditions, e.g., salt concentration and temperature (20, 21). When this polymer-rich phase is in thermodynamic equilibrium, it exhibits properties consistent with those of a homogeneous, elastic liquid, including optical transparency; this phase is referred to as a PECC. The PECC phase can be envisioned as a semidilute solution, composed of two oppositely charged PE species, that is, mediated by dynamically rearranging ion pairs between many distinct polymer chains (19). In contrast, solid PE complexes consist of stiff or rubber-like precipitates that are opaque due to intrinsic inhomogeneities (22). PE complexes are typically assumed to be in a kinetically arrested glassy state (22–24).
+156 Rumyantsev • Jackson • de Pablo
+
+
+a b Solid complex
+25 μmm 25 μm
+Liquid coacervate
+Soolliidd
+0 0..55 1 1..55 2
+Coacervate (elastic liquid)
+oacervate (elastic liquid)
+Solution (liquid)
+ou (liquid)
+[KBr] (M)
+Figure 1
+(a) Phase separation in the solution of oppositely charged polyelectrolytes leads to the formation of either solid precipitants or liquid coacervates. At high salt concentrations, the solution is uniphase. Panel a adapted with permission from Reference 20; copyright 2014 American Chemical Society. (b) Microscopy images of solid complexes and liquid coacervates formed from oppositely charged polypeptides. Panel b adapted from Reference 25.
+An illustrative example of a PECC involves the complexation of poly(styrenesulfonate) (PSS) and poly(diallyldimethylammonium) (PDADMA). It has been shown that the state of the assemblies can be tuned continuously via the concentration of salt (KBr) in solution (20, 21). Figure 1a demonstrates that low salt concentrations, below 1.3 M, favor the formation of solid PSS-PDADMA complexes, whereas higher salt concentrations favor the formation of the PECC phase. Furthermore, above a threshold salt concentration (1.8 M), associative phase separation is no longer observed and the solution is one-phase. Representative microscopy images of solid precipitants and liquid coacervate droplets are shown in Figure 1b. The physics of the complex-to-coacervate transition continues to be characterized (26). The concept of intrinsic and extrinsic ionic pairs has been proposed (24, 27, 28) to qualitatively explain this phenomenon. Intrinsic (cross-chain; 29) ion pairs that form between charges in oppositely charged polyions induce a strong binding between them. Extrinsic ion pairs are those that exist between the charge in a polyion and an oppositely charged salt ion. Upon addition of salt, a decreasing fraction of intrinsic ion pairs is responsible for the continuous crossover between a rigid glassy complex and a liquid coacervate. This transition is accompanied by a dramatic decrease in viscosity and storage/loss moduli, because only intrinsic ion pairs serve as physical cross-links between PE chains (20). The theoretical treatment of switching between solid and liquid states is complicated by (a) the nonequilibrium nature of solid complexes, (b) their inhomogeneity, and (c) the strong role of the PE chemistry, i.e., the importance of non-Coulomb interactions such as π –π , π –ion, and hydrophobic interactions (26, 30).
+2.2. Binodals of Complex Coacervation
+The equilibrium nature of PECCs has allowed for considerable progress in their experimental and theoretical characterization. Because salt addition and temperature changes are the primary external parameters controlling complex coacervation, binodals in terms of polymer concentration (volume fraction) versus salt concentration (31–33) or temperature (34) are of primary interest. To construct the experimental binodals of coacervation, a fraction (≈10%) of polyanions or polycations can be labeled with a fluorescent dye to measure the extinction of the coexistent liquid phases (31, 32). Similar approaches employ UV–vis absorption spectroscopy to quantify the content of polymer in the coexisting phases without labeling (34, 35). These spectroscopic methods,
+www.annualreviews.org • Coacervates 157
+
+
+ab
+Salt volume fraction (φS)
+Polymer volume fraction (φP)
+ξ
+0.03
+0.02
+0.01
+0.00 0.0 0.1
+N = 100
+0.2 0.3
+TGA Salt resistance MD simulation
+Figure 2
+(a) Binodals of complex coacervation from TGA, salt resistance experiments, and MD simulations. Panel a adapted with permission from Reference 33; copyright 2018 American Chemical Society. (b) Scaling picture of the salt-free PECC. The correlation length within the coacervate, ξ , is equal to the electrostatic blob size (Equation 1). Statistics of the PEs within the blobs are unperturbed by Coulomb interactions and controlled by the solvent quality, whereas the chain of blob quasimonomers is always Gaussian. Panel b adapted with permission from Reference 37; copyright 2018 American Chemical Society. Abbreviations: MD, molecular dynamics; TGA, thermogravimetric analysis; PE, polyelectrolyte; PECC, polyelectrolyte complex coacervate.
+however, do not provide access to the salt partitioning. To quantify the content of salt in the coexisting phases, Tirrell and coworkers used thermogravimetric analysis (TGA) to first evaporate water from supernatant and coacervate samples at 110°C, then combusted and thereby removed the organic polymer at 600°C (33, 36). Weight measurements taken during the heating process allowed these authors to construct the coacervation binodals shown in Figure 2a. In PECCs of poly-L-lysine/poly(glutamic acid) pairs and NaCl salt, the coacervate is slightly enriched with small ions at low salt concentrations, as seen in Figure 2a; as salt concentration increases, the partitioning changes and salt ions prefer the supernatant phase (33). This nonmonotonic dependence of salt partitioning is consistent with theoretical predictions (38–41). Generally speaking, theory (38–40, 42) and computer simulations (33, 43) show that salt partitioning is controlled by the interplay of two opposing factors. First, electrostatic interactions favor salt absorption by the coacervate because of stronger charge correlations due to the connectivity of charges in PEs (37–40, 44). Second, hard-core repulsions between salt ions and polymer chains facilitate salt depletion (38–40, 42, 43). The main conclusion is that salt partitioning strongly depends on molecular features, such as the relative volumes of salt ions and monomers, chain stiffness, and density of the salt-free coacervate (39, 40, 42, 43).
+2.3. Internal Structure of Coacervates
+In PECCs formed from flexible polyanions and polycations with equal linear charge densities, the internal structure is analogous to that of a semidilute solution of neutral polymers. The correlation length (mesh size) within the coacervate is controlled by the balance between Coulomb attractions of PEs and their short-range repulsions. For PEs with low fractions of ionic monomers, f  1, Coulomb interactions are less than kBT per charge, and can be linearized, allowing for the development of analytical theories that account for the internal structure of the PECC. The scaling picture of PECCs shown in Figure 2b was first developed by Rubinstein and coworkers (45, 46), who proposed that the salt-free coacervate can be described as a melt of oppositely charged electrostatic blobs. An electrostatic blob is the largest fragment of PE whose
+158 Rumyantsev • Jackson • de Pablo
+
+
+Random phase approximation
+(RPA): a theoretical framework for calculation of the fluctuation-induced correction to the mean-field (saddle point) free energy of, e.g., Coulomb interactions
+Small-angle X-ray scattering (SAXS): experimental technique providing access to the mesoscopic (1–100 nm) structure of materials via elastic scattering of X-rays at small scattering angles
+Small-angle neutron scattering (SANS): experimental technique providing access to the mesoscopic (1–100 nm) structure of materials via elastic scattering of neutrons at small scattering angles
+conformations are unperturbed by Coulomb interactions, implying that the energy of Coulomb attraction–repulsion between neighboring charged blobs is on the order of the thermal energy, kBT (47). Each blob is preferentially surrounded by oppositely charged counterparts due to electrostatic correlations. Electrostatic attraction between blobs is then balanced by short-range repulsions with an excess energy kBT per blob, as in neutral semidilute solutions. The size of the correlation length therefore coincides with the electrostatic blob size (37, 45, 46, 48),
+ξ  a (u f 2)− ν
+2−ν , 1.
+where u = lB/a = e2/εakBT is the reduced solvent Bjerrum length, and a is the statistical segment length. Here, the Flory exponent, ν, is equal to 1/2 and 0.588 in  and athermal solvents, respectively, due to the ideal-coil and swollen chain statistics within the blobs, at r < ξ . At larger lengths, r > ξ , polyions exhibit Gaussian statistics irrespective of the solvent quality because they can be treated as chains of electrostatic blobs in a melt of blobs in which Coulomb interactions are screened. The salt-free coacervate density is on the order of the density within the electrostatic blob (37, 45, 46, 48),
+φ  (u f 2) 3ν−1
+2−ν , 2.
+and increases with the increasing content of ionic groups, f, and the strength of Coulomb interactions, u. Because the mean-field free energy of Coulomb interactions in PECCs is zero owing to their electroneutrality, rigorous field-theoretic considerations at the level of the random phase approximation (RPA; 37, 49), first implemented by Borue & Erukhimovich (44), are required to confirm scaling laws 1 and 2. Furthermore, scaling arguments can be extended to the case of salt-added coacervates, in which scaling and RPA predictions are also in agreement (37, 50). For instance, the coacervate density for infinitely long chains in a  solvent is inversely proportional to the salt concentration, φ  f 2/cs, at high salt concentrations (37, 48, 50). The addition of salt also causes an increase in ξ (37, 48, 50), whereas conformations of polyions are unchanged both inside and outside the correlation volume (37). Scattering studies on PECCs generally confirm the scaling picture of coacervates (51, 52) despite the latter only being rigorous for weakly charged PEs, f  1. Small-angle X-ray scattering (SAXS) studies of salt-free coacervates of poly-L-lysine (PLL) and racemic poly(L,D-glutamic acid) show an intensity decay I ∼ q−1.7 in the high q range, at q  1/ξ (51). This result is in agreement with the scaling prediction I ∼ q−1/ν, with ν = 0.588 for coacervates in a good solvent; swollen-coil statistics of polypeptides within electrostatic blobs are provided by the polypeptide’s hydrophilic nature (51). Small-angle neutron scattering (SANS) measurements on salt-added poly(acrylic acid)-poly(N,N-dimethylaminoethyl methacrylate) coacervates containing deuterated chains were used to derive the structure factor of single chains (52). This structure factor can be approximated by the Debye function, indicating Gaussian conformations of PEs both inside and outside the correlation volume of the coacervate (52), in accordance with the scaling predictions for  solvent. Schlenoff and coworkers, however, have reported a SANS intensity power law I(q) ∼ q−1.7 from nonoverlapping deuterated chains within the salt-added PSS-PDADMA coacervates, implying swollen-coil statistics for the polyions at length scales exceeding the correlation length ξ (21).
+2.4. Coacervate–Supernatant Interfacial Tension
+The interfacial properties of coacervates control complexation-driven self-assembly (e.g., the formation of complex coacervate core micelles) (53, 54). They also play a key role in functional properties of critical importance to many applications (12, 13). Interfacial tension at the
+www.annualreviews.org • Coacervates 159
+
+
+Field-theoretic simulations (FTS): the exact numerical solution of the field-theoretic problem via calculation of the full partition function for a given effective Hamiltonian
+interface of the coexisting salt-free coacervate and supernatant phases is usually on the order of ≈1 mN/m (55–57). This value is remarkably low compared to the surface tension of water (≈70 mN/m) and to the interfacial tension between water and oil (e.g., ≈50 mN/m for alkanes) (58). A low coacervate–supernatant surface tension is a consequence of (a) the composition of the PECC phase containing >50 vol. % of water (33) and (b) the hydrophilic nature of ionic groups in PEs. Of key importance to the development of PECC is understanding and controlling the magnitude of the surface tension as a function of molecular characteristics. The scaling picture of PECCs shown in Figure 2 provides simple estimates for the surface tension in salt-free cases. Because each interfacial blob has half the number of neighbors compared to the bulk, its excess interfacial energy is on the order of kBT. The blob occupies an interfacial area ξ 2, and the surface tension reads as (37, 45, 46, 48)
+γ  kBT
+ξ 2  kBT
+a2
+(u f 2) 2ν
+2−ν , 3.
+with RPA considerations supporting this scaling law (37, 59). Combining Equations 2 and 3, one can arrive at the scaling relationship γ a2/kBT  (uf 2φ)2ν/(2ν + 1) with the exponent equal to 1/2 and approximately 0.54 in  and good solvent, respectively. Riggleman et al. verified this result in fully fluctuating field-theoretic simulations (FTS) of PEs with pairwise excluded volume repulsions in which a slope close to 1/2 was observed for all but very low uf 2 values (60), thereby confirming the reliability of the scaling estimates of the surface tension. The effect of added salt on the interfacial tension between coacervate and supernatant phases was first experimentally investigated systematically by the Wageningen group (55). Colloidal probe atomic force microscopy can be used to measure a capillary adhesion force between two surfaces (55, 56), which are connected by the bridge formed from the coacervate coexisting with the supernatant. For the sphere-plate geometry depicted in Figure 3a, surface tension can be calculated from the sphere radius, R, and the contact angle, θ (55). Figure 3b shows the experimental dependence (55) of the surface tension of the coacervate, γ , on the salt concentration, cs, which vanishes at the critical salt concentration cscr. Experimental data indicate (see Figure 3b, inset) that
+ab c
+Y (μN/m)
+cs (mM)
+cscr
+cs
+cr – cs (mM)
+log[(cs
+cr – cs )/cs
+cr]
+log(Y/Y0)
+500 0.0
+–0.5
+–1.0
+–1.5
+–2.0
+400
+1,000
+100
+300
+200
+100
+0200
+200
+3∕2
+3∕2
+600 1,000
+600 –1.2 –0.8
+MC-SCFT TM-SCFT
+–0.4 0.0
+1 × 103 1.4 × 103
+Figure 3
+(a) Schematic representation of the coacervate bridge between planar and spherical surfaces. (b) Coacervatesupernatant interfacial tension γ as a function of the salt concentration cs; inset shows γ versus cs − cscr plot in log–log scale. Panels a and b adapted with permission from Reference 55; permission conveyed through Copyright Clearance Center, Inc. (c) Log–log plot for the salt dependence of the coacervate surface tension combining data of experiments (blue and magenta; 55, 56), FTS (60), and MC simulations (green and black; 61), and the TM method (red; 61). Panel c adapted with permission from Reference 61. Abbreviations: FTS, field-theoretic simulations; MC, Monte Carlo; SCFT, self-consistent field theory; TM, transfer matrix.
+160 Rumyantsev • Jackson • de Pablo
+
+
+Voorn–Overbeek (VO) free energy: consists of a Flory–Huggins term accounting for non-Coulomb interactions and a Debye–Hückel term treating Coulomb interactions but disregarding charge connectivity
+Intrinsically disordered protein (IDP): a protein that does not fold to a single stable structure but adopts various marginally stable conformations due to fluctuations
+Lower critical solution temperature (LCST): the critical temperature below which polymer and solvent are fully miscible at any compositions
+Upper critical solution temperature (UCST): the critical temperature above which polymer and solvent are fully miscible at any compositions
+the surface tension obeys a power law with critical exponent μ = 3/2:
+γ ∼ (ccr
+s − cs
+)3/2 . 4.
+This result is also confirmed by another experimental technique, the deformed droplet retraction method, which enables calculation of the surface tension from the temporal evolution (relaxation to the spherical shape) of the initially deformed supernatant droplet within the coacervate phase (57). Qin et al. developed a Cahn–Hilliard (Ginzburg–Landau)-type theory to explicitly derive Equation 4 (62). They considered a free-energy functional with a local contribution written in the Voorn–Overbeek (VO) form (63) and a square gradient term that takes into account polymer density inhomogeneities at the coacervate–supernatant interface. A Landau-type series expansion of the free energy in the vicinity of the critical point, cs = cscr, allows one to derive mean-field results for the composition of coexisting phases, correlation length, and surface tension (64–66): The corresponding critical exponents were found to be β = 1/2, ν = 1/2 (not Flory exponent), and μ = 3/2, respectively (62). Note that this result is independent of the form of the local freeenergy term [this is important because of the well-known shortcomings of the Voorn–Overbeek (VO) free energy, which is unable to properly account for charge correlations within the coacervate; 42, 44] and is universal for any square gradient theory of surface tension (65). As seen in Figure 3c, not only experimental data (55, 56) but also numerical FTS (60), Monte Carlo (MC) simulations (61), and transfer matrix (TM) techniques informed by molecular dynamics (MD) simulations (61) show that the power law given by Equation 4 is fulfilled over a wide range of salt concentrations, including the nearly salt-free region. This is remarkable (55), because the meanfield critical law is based on a series expansion of the free energy (62) and is therefore rigorous only near the critical point. Note, however, that in the close vicinity of the critical point, mean-field analysis fails due to strong fluctuations, and Ising critical exponents are expected (62).
+3. INCORPORATING MICROSCOPIC SPECIFICITY OF POLYELECTROLYTES
+3.1. Sequence-Controlled Coacervation
+The importance of complex coacervation in intracellular organization and cell machinery (1, 2) has stimulated studies exploring the role of the primary structure of PEs and polyampholytes on LLPS. In the context of biological macromolecules, it is well known that the folding of single proteins (67), as well as the macroscopic phase behavior of intrinsically disordered protein (IDP) solutions (68), is encoded in the linear sequence of their amino acids. For example, for IDPs exhibiting temperature-induced phase separation in aqueous solutions, lower critical solution temperature (LCST) versus upper critical solution temperature (UCST) behavior types were reported to be controlled by the content of certain residues; LCST proteins are rich in apolar hydrophobic monomers, whereas UCST behavior is observed for polyampholyte (zwitterionic) sequences containing numerous ionic monomers of opposite charge (68). Of critical importance is the distinction between sequence-induced effects that depend on average compositions and those depending on higher-order sequence correlations. A variety of composition-dependent effects have been observed that related the average sequence composition to flexibility and stiffness of polymer chains in PECCs with the general observation that chains with higher stiffness form lower-density coacervates with lower salt resistance (69–71), provided that the PECC phase is isotropic (72). Although average composition effects play a critical role, it is of theoretical interest to understand the roles that sequence correlations between monomers play when the total number of all monomer types is fixed. Recently, experimental and theoretical
+www.annualreviews.org • Coacervates 161
+
+
+studies have begun to characterize how higher-order sequence correlations affect PECC thermodynamics.
+3.1.1. Complex coacervation of polyelectrolytes. In vivo studies of complex coacervation between negatively charged Nephrin intracellular domain (NICD) proteins and oppositely charged constituents of the cell have revealed the crucial role of charge patterning (73). Two mutants of wild-type NICD, with lower and higher clustering of negative charges, were designed in order to compare their propensity to form de novo nuclear bodies. The formation of membrane-less structures was found to be positively correlated with the presence of negatively charged clusters in NICD; the higher the density of blocks that possess substantial local negative charge, the higher the fraction of cells with nuclear puncta. These in vivo results are confirmed by in vitro experiments considering LLPS in solutions of wild-type/mutant NICDs and positively charged green fluorescent proteins (73). Combined experimental and computer simulation studies have been pursued to further understand sequence-controlled complex coacervation (74). A series of polypeptide polycations with tailored 1D patterns of charged monomers were synthesized. The sequences of polycations composed of alternating blocks of charged lysine and uncharged glycine monomers are shown in Figure 4a. Their total length, N = 48, is fixed, and the length of each block, τ /2, is used as a measure of charge clustering. Complex coacervates formed from these heteropolycations and poly(glutamate) homopolyanions demonstrated increasing salt stability with increasing τ . Figure 4b shows the dependencies of the salt concentration needed to suppress LLPS, which markedly increases for polycations containing longer blocks of charged monomers. MC simulations of this system also indicated an increased propensity for complex coacervation at high τ values (74), as seen in Figure 4c. On the basis of simulations, it was concluded that counterions of highly blocky polycations are more strongly condensed and exhibit higher entropy gain accompanying their release, which makes complex coacervation more favorable as τ increases (74). A TM framework of complex coacervation (75) also reproduced the main trends observed experimentally for these types of polycation sequences (76). A different approach, based on the RPA, was utilized in recent work (77) to theoretically describe the effect of sequence correlations in PECC. The particular case of random PEs (statistical copolymers of charged and neutral monomers) was considered to study the formation of sequence-polydisperse PECC. The 1D statistics of random polycations is controlled by a firstorder Markov process, and the degree of charge clustering is defined by the parameter λ = p++ + p00 − 1. Here, p++ is the element of the Markov transition matrix equal to the conditional probability to find consecutive positively charged monomers, and p00 is that for a pair of consecutive neutral units. Representative random polyanions and polycations are shown in Figure 4d. The closed-form result for the free energy of Coulomb attractions of oppositely charged PEs was derived for sequence-symmetric coacervates with λ+ = λ− (77), indicating that the attraction is stronger at higher λ, i.e., at higher blockiness of charges. This was attributed to the enhanced cooperativity of Coulomb interactions between oppositely charged monomers when they are assembled in 1D charge patches. Calculated coacervation binodals (Figure 4e) demonstrate that the density of salt-free coacervate and its salt resistance are increasing functions of charge blockiness. Interestingly, despite different sequence types, and hence different measures of charge blockiness used in References 74 and 77, τ versus λ, the principal findings are consistent.
+3.1.2. Self-coacervation of polyampholytes. Whereas complex coacervation of PEs is driven by Coulomb attractions between polyanions and polycations, LLPS in polyampholyte solutions, which we refer to as self-coacervation, is due to the attraction between oppositely charged
+162 Rumyantsev • Jackson • de Pablo
+
+
+τ=2
+λ = 0.3
+λ=0
+λ = –1
+λ = 0.3 λ=0 λ = –1
+Block size
+Critical salt
+concentration (mM)
+600
+500
+400
+300
+200
+0
+Salt concentration
+(mM)
+Polymer concentration (mM)
+100
+0 200 400 600
+Polymer volume fraction, φ
+Salt concentration, cs
+0.0 0.1 0.2
+800 1,000 1,200 1,400
+1 phase
+1 phase
+2 phases
+2 phases
+500
+0.10
+0.05
+0.00
+400
+300
+200
+0
+τ = 4 τ = 8 τ = 16
+τ = 16
+τ=8
+τ=4
+τ
+τ=2
+a
+bc
+de
+τ=2 τ=4 τ=8 τ = 16 τ = 24
+( )( )
+HN n HN n
+NH3Cl
+O
+O
+ONa
+O
+()
+HN n
+O
+Figure 4
+Effect of sequence on coacervation of block-alternating polycations and homopolyanions: (a) Primary structure of PEs. (b) Effect of the block length on the threshold salt concentration required to dissolve complex coacervates. Solid, striped, and crosshatched columns correspond to the various polymer concentrations in the solution. (c) Coacervation binodals from Monte Carlo computer simulations. Panels a–c adapted with permission from Reference 74. Sequence-controlled coacervation of random PEs: (d) Representative polyions with a fraction of ionic monomers f = 0.5 and different λ values: Primary sequence is alternating (p++ = p00 = 0) for λ = −1, ideally random (p++ = p00 = 1/2) for λ = 0, and has positive correlations in charge spacing (p++ = p00 = 0.65) for λ = 0.3. At f = 0.5, the average length of the cluster of consecutive ionic monomers equals 2/(1 − λ). (e) Theory shows that the complex coacervation binodals shift up with increasing λ; i.e., the region of phase separation broadens as charge blockiness increases. Panels d–e adapted with permission from Reference 77; copyright 2019 American Chemical Society. Abbreviation: PE, polyelectrolyte.
+monomers belonging to the same chain. In the latter systems, similar sequence-dependent effects have also been observed and rationalized in the context of single-chain self-coacervation of polyampholytes (78–82). Nott et al. demonstrated that the expression of intrinsically disordered termini of Ddx4 proteins causes the formation of membraneless organelles in living cells (78). This result was expected because the Ddx4 protein is the main constituent of germ granules (nuage). In this system, LLPS is primarily driven by electrostatic interactions and is of a self-coacervation
+www.annualreviews.org • Coacervates 163
+
+
+Reduced Bjerrum length, lB/a
+Polymer concentration, ρa3
+0.6
+0.5
+0.4
+0.3
+0.2
+0.1
+0.0001 0.001
+1 phase
+2 phases
+0.01 0.1 1
+sssssvvvvv1122305050
+sv10 sv15 sv20 sv25 sv30
+ab
+EKKKKKKEEKKKEEEEEKKKEEEKKKEKKEEKEKEEKEKKEKKEEKEEEE
+EEKEEEEEEKEEEKEEKKEEEKEKKEKKEKEEKKEKKKKKKKKKKKKEEE
+KKEKKEKKKEKKEKKEEEKEKEKKEKKKKEKEKKEEEEEEEEKEEKKEEE
+EEEEEEEEEEEKEEEEKEEKEEKEKKKKKKKKKKKKKKKKKKEEKKEEKE EEEEEEEEEEEEEEEEEEEEEEEEEKKKKKKKKKKKKKKKKKKKKKKKKK
+Figure 5
+(a) Model IDPs considered in the theoretical study (80) carry zero net charge but have different charge patterning. (b) Binodal of self-coacervation calculated from the RPA (solid line) and FTS (dots). Solution is two-phase above the binodals, at high Bjerrum lengths, i.e., at low temperatures. Panel b adapted with permission from Reference 80; copyright 2019 American Chemical Society. Abbreviations: FTS, field-theoretic simulations; IDP, intrinsically disordered protein; RPA, random phase approximation.
+type due to the polyampholytic nature of the Ddx4 protein’s tails. It was proven that the charge pattern of Ddx4 intrinsically disordered regions, which contain clusters of net positive and negative charge, is critical for the formation of organelle-like structures. The charge scrambled mutant of this protein was produced, with the same overall average residue composition but without large 1D regions of opposite charge. For the mutant protein, no organelles were detected within the cell, even at high concentrations (78). In subsequent theoretical work (79), these experimental results were interpreted at the level of the RPA. Increasing density and thermal stability of the coacervate phase with increasing number and size of oppositely charged patches within the chain were anticipated in early theoretical works comparing conformations of random and alternating polyampholytes (83, 84). Fredrickson and coworkers applied the framework of FTS to assess the reliability of the RPA predictions on sequence effects in the self-coacervation of polyampholytes (80, 81). Contrary to the RPA, which considers only Gaussian fluctuations around the free-energy minimum, FTS rigorously (numerically) solves the fully fluctuating field-theoretic problem for a given effective Hamiltonian (85). FTS also contains no prior assumptions on the chain statistics within the coacervate, which are necessary in the RPA considerations in which ideal-coil statistics is usually presumed (79). Five model IDPs shown in Figure 5a were considered (80), with associated binodals shown in Figure 5b that were calculated within the RPA and using FTS. Note that all IDPs exhibit USCT behavior because the Bjerrum length is inversely proportional to the temperature (if the dielectric constant dependence on T is neglected), lB ∼ 1/T, and thermal motion overcomes electrostatic attractions at high T. One can see from Figure 5b that the RPA is able to describe sequence effects; it is highly reliable on the coacervate branch of the binodal but fails on the supernatant branch (80, 81, 85) for both complex coacervation and self-coacervation. This result, consistent with the RPA applicability range, is caused by the deviation of single-chain statistics from ideal coil statistics at high dilution. Theoretical approaches to complex coacervation, different from FTS and aimed at addressing this issue, have been proposed in the literature (41, 86). We note that the general conclusion asserting that increasing charge clustering favors PECC/self-coacervation is limited, in the sense that it may be challenging to compare the degree of blockiness of two arbitrary sequences derived from different sequence distributions [e.g., block-alternating (74) versus random (77) PEs]. Although the influence of charge blockiness on
+164 Rumyantsev • Jackson • de Pablo
+
+
+electrostatic correlations has been seemingly well understood in the context of PECCs, including the case of complexation between synthetic PEs and oppositely charged globular proteins (87), there are a variety of other sequence-dependent effects in need of further experimental and theoretical study. Of particular interest are considering higher-complexity sequences in charged polymer chains and developing universal metrics for charge blockiness (88, 89), as well as incorporating the critical role of sequence-dependent chain stiffness, solvent quality, and specific interactions (e.g., hydrogen bonding). The improved physical understanding of the role of primary sequence in PECC and polyampholyte self-coacervation should be helpful for the tailoring of precisely sequence-controlled synthetic polymers with targeted physical properties (90, 91).
+3.2. Effect of Polyelectrolyte Chirality
+The chirality of PEs can also strongly influence their complexation. Perry et al. reported that homochiral poly(lysine) and poly(glutamic acid) form solid complexes for any combination of D and L polyanion and polycation, whereas liquid coacervates are observed when at least one of the polypeptides is racemic (e.g., random copolymer of D and L monomers) (25). Fourier transform infrared spectroscopy showed that solid complexes of stereoregular polyions contain hydrogenbonded β-strand secondary structures, which are absent in liquid coacervates (25). In this case, it is nonelectrostatic rather than bare Coulomb interactions between oppositely charged monomers that are controlled through the primary sequence to tune the resulting state of the polymer-rich phase. Atomistic MD simulations confirmed the structural changes between complexes formed from homochiral polypeptides and coacervates formed from racemic counterparts (25, 92). Subsequent experimental work (93) considered the complexation between poly(lysine) and poly(glutamic acid) with precisely defined sequences of L and D monomers. The degree of polymerization of both polypeptides was fixed at 30, and sequences of polyanions and polycations were identical, containing blocks of n consecutive L monomers separated by a single D unit. At short block lengths, n ≤ 7, polypeptides formed liquid coacervates. When n ≥ 8, the homochiral block was sufficiently long to trigger the formation of a solid precipitate phase containing β-sheet structures (93).
+3.3. Polyelectrolyte Stiffness and Liquid Crystalline Coacervates
+With complex coacervation being a plausible mechanism for seeding the formation of protocells at early stages of prebiotic evolution (1, 2, 5–8), there is increasing interest in the complex coacervation of biopolymers capable of carrying genetic information [RNA (3) and DNA (69, 94–96)]. In the complexation of double-stranded DNA (dsDNA), the addition of salt triggers the transition from solid complexes to liquid coacervates and subsequent coacervate disintegration (69, 94, 96). This universal behavior takes place for various lengths of polyanions and different types of polycations, e.g., PLL and poly(vinyl benzyl trimethylammonium) (96). These chemical and molecular weight effects shift the threshold salt concentrations but not the principal effect of salt, which is to screen electrostatic attractions between oppositely charged polyions. Shakya & King reported that, at intermediate salt concentrations of ∼1 M, when the solution undergoes LLPS, the high stiffness of dsDNA manifests itself in intracoacervate liquid crystalline (LC) ordering (69). The striation patterns within the coacervate droplets seen under a bright-field microscope (Figure 6a) are indicative of a cholesteric LC phase. Furthermore, LC subcompartments are formed within the coacervate droplets at low salt concentrations of 150 mM if more than half of dsDNA is substituted by nucleoside triphosphate (NTP); in the absence of NTP, dsDNA would form a solid precipitant with PLL at 150 mM salt. When NTP is added, a secondary (intracoacervate) LLPS into isotropic
+www.annualreviews.org • Coacervates 165
+
+
+a 500 mM 990 mM b 150 mM, with added UTP
+100 μμmm 10 μm 10 μm 10 μm
+i ii i ii iii
+Figure 6
+(a) Bright-field microscopy image of solid precipitant and liquid coacervate droplets formed from poly(AATT) 22 bp dsDNA and PLL at (i) 500 mM and (ii) 990 mM salt concentrations. Striations within the coacervate droplet are typical for cholesteric liquid crystals. In subpanel ii, the inset scale bar is equal to 5 μM. (b) Bright-field (i), confocal (ii), and cross-polarized (iii) microscopy images of coacervate droplets formed from poly(CCGG) 22 bp dsDNA and PLL in the presence of NTP at 150 mM of NaCl. The fluorescent DNA intercalating dye YOYO-1 provides the green color of coacervate droplets in the confocal microscopy image (ii). Within coacervate droplets, LC domains are elongated and dark (ii). The latter is possibly because the fluorescent label breaks orientational ordering and therefore preferentially partitions to the isotropic phase (69). Under cross-polarizers, LC domains are birefringent (iii). Figure adapted with permission from Reference 69; CC-BY-NC-ND. Abbreviations: dsDNA, double-stranded DNA; LC, liquid crystalline; NTP, nucleoside triphosphate; PLL, poly-L-lysine PLL.
+and LC regions is confirmed by confocal and polarized light microscopy (69). Figure 6b shows these images; LC domains (different from cholesteric phases) are elongated droplets visible under cross-polarizers (Figure 6b, iii). LC packing of dsDNA was also observed within the cores of cylindrical complex coacervate core micelles formed from dsDNA and oppositely charged diblock copolymers composed of PLL and polyethylene glycol (PEG) blocks (95). In this case, however, orientational ordering of nucleic acids is strongly facilitated by confinement because the core radius (15 nm) is smaller than the duplex persistence length (95). Theoretical treatments of LC ordering within the salt-free coacervate formed from stiff (semiflexible) polyanions and flexible polycations have also appeared recently. Following the work conducted in References 97 and 98, the RPA was used to consider the instability of the isotropic coacervate state with respect to the nematic ordering of polyanions, and the corresponding spinodals were found in analytical form (72). A sufficiently high stiffness of the polyanions, defined by the ratio between their statistical segment length and thickness, l/d, is necessary to trigger an orientational instability within PECCs (72). For this reason, the LC state is possible in coacervates of dsDNA but not flexible single-stranded DNA (ssDNA) (69). Theory also shows that not only anisotropic-excluded volume interactions but also anisotropic Coulomb interactions are driving forces for nematic ordering (72); i.e., a simple Onsager model that disregards electrostatic effects is unable to properly describe LC ordering of PEs (72, 97, 98). Note that the experimentally observed cholesteric liquid crystal (also referred to as chiral nematic) is due to the chirality of dsDNA, which was neglected in theoretical considerations (72).
+4. DYNAMICS AND RHEOLOGICAL PROPERTIES
+The blob picture of PECCs shown in Figure 2b illustrates their strong similarity to semidilute solutions of neutral polymers. Because the dynamics and rheology of neutral polymer solutions is well understood theoretically (99), it is natural to adapt these results to PECCs (100, 101). For weakly charged chains, f  1, the energy of Coulomb interactions per charge is lower than kBT,
+166 Rumyantsev • Jackson • de Pablo
+
+
+Rouse model: a dynamical model assuming that polymer beads are Brownian particles connected via harmonic springs capable of passing through each other
+Reptation model: a model considering that the chain motion is confined to a tube formed by topological entanglements with the surrounding chains
+and charges do not form ion pairs (46) so that the classical Rouse and reptation models can be applied (100). For simplicity, consider salt-free coacervates in athermal solvent, ν = 0.588. The electrostatic blob contains g  (uf 2)−1/(2 − ν) monomers, and each polyion is a chain of N/g blobs. When N/g  Ne0, with the phenomenological parameter Ne0 ≈ 30–50 (99), PEs are too short to form entanglements, and dynamics can be described by the Rouse model. For long chains, N/g  Ne0, coacervate dynamics is entangled and can be considered within the reptation model. Substituting the coacervate density, φ  (uf 2)(3ν − 1)/(2 − ν), into the Rouse/reptation relaxation times for neutral semidilute solutions (99), one arrives at the scaling estimates for the relaxation time of PE chains within the coacervate (100, 102):
+τrel  τ0
+⎧⎨
+⎩
+N 2 (u f 2) 2−3ν
+2−ν , for N  Ne0
+(u f 2)− 1
+2−ν
+N 3N −1
+e0
+(u f 2) 3(1−ν)
+2−ν , for N  Ne0
+(u f 2)− 1
+2−ν .
+5.
+Here, τ 0 = ηsa3/kBT is the time for a monomer to diffuse a distance on the order of a, and ηs is the solution viscosity. When PEs are highly charged, f  1, ionic groups start to form intrinsic ion pairs that strongly diminish the local mobility of monomers (101, 103), leading to the use of sticky Rouse/reptation models (104–106). Because any microscopic displacement of monomers is a thermally activated process (this allows for time–temperature superposition; 107), τ 0 should be substituted by the effective time of ion pair dissociation (101, 103), whereas N-dependencies in Equation 5 remain valid and can be corroborated in experiments and simulations. The crossover from unentangled to entangled dynamics of PECCs at increasing lengths of PEs has been recently observed in experiment. Figure 7a shows that the coacervate of short chains exhibits storage modulus G′ ∼ ω2 and loss modulus G′′ ∼ ω in the low-ω range, and G′ ∼ G′′ ∼ ω1/2 at high ω, which is indicative of Rouse dynamics (101). As the degree of polymerization increases, a rubbery plateau where G′ > G′′ appears and develops at intermediate ω, which is characteristic of reptation dynamics (103). Increases in the coacervate viscosity according to ηcoac ∼ N at low N and ηcoac ∼ N 3.4 at high N are other experimentally observed manifestations of unentangled and entangled dynamic behavior, respectively (101). Computer simulation studies
+G'bT, G''bT (Pa)
+ωaT (rad s–1) ωaT (rad s–1)
+a bc
+N = 213
+1/2
+2
+1
+106
+105
+104
+103
+102
+101
+10–2 10–1 100 101 102 103 104
+N = 662
+2
+1
+106
+105
+104
+103
+102
+101
+10–2 10–1 100 101 102 103 104
+ωaT (rad s–1)
+N = 2,097
+106
+105
+104
+103
+102
+101
+10–2 10–1 100 101 102 103 104
+N = 662
+2
+1
+–5 ̊C 15 ̊C 35 ̊C 55 ̊C
+5 ̊C 25 ̊C 45 ̊C 65 ̊C
+0.03 M NaCl 0.1 M NaCl
+Figure 7
+Storage modulus G′ (filled symbols) and loss modulus G′′ (open symbols) of coacervate plotted using time–temperature superposition for different PE lengths: (a) N = 213; (b) N = 662; (c) N = 2,097. Circle and square symbols correspond to salt concentrations of 0.03 M and 0.1 M NaCl, respectively. Numbers 1, 2, and 21 indicate the slopes of corresponding straight lines, which represent power laws for G′ and G′′ versus ω
+dependencies. Figure adapted with permission from Reference 101; copyright 2019 American Chemical Society. Abbreviation: PE, polyelectrolyte.
+www.annualreviews.org • Coacervates 167
+
+
+have also confirmed the crossover from Rouse-type to reptation dynamics at increasing N (102) and demonstrate the ability of coarse-grained simulations to provide direct access to G′ and G′′ in unentangled PECC (108). Figure 7 shows that salt accelerates coacervate dynamics, which is due to the simultaneous decrease of (a) the number of intrinsic ion pairs, (b) the energy of their dissociation (Arrhenius activation energy), and (c) the polymer volume fraction in the coacervate (101, 107, 109). A time–salt superposition principle (109) can be used to provide experimental access to the loss and storage moduli in the range of very low frequencies, which are inaccessible in direct measurements. However, different dependencies of the time and moduli shift factors have been reported (51, 101, 109–112). Theoretical and simulation approaches that capture the time–salt superposition principle observed in several experimental systems (101) require continued development.
+5. OPTOELECTRONIC PROPERTIES
+Outside of their thermodynamic, structural, and rheological properties, inclusion of conjugated moieties along polyion backbones offers the potential to enable a variety of intriguing applications in optoelectronic functional materials. Early work used cationic conjugated polymers (113115) for the ultrasensitive detection of oligonucleotides via the control of conformationally induced changes in fluorescence. Specifically, the high fluorescence of cationic polythiophene in the random-coil state is quenched upon complexation with ssDNA; complexation induces a conformational change in the polythiophene backbone that modifies the delocalization of π electrons, and thus the fluorescence (116). This approach can also be used for the high-sensitivity detection of hybridized dsDNA, and similar schemes have been applied for the detection of proteins (117). The key difference between these applications of oppositely charged complexes and the discussed polymer science literature is the very low concentrations of polycations/polyanions used in these early biological applications, and the fact that these complexes are finite-sized aggregates (86, 118) rather than macroscopic PECCs. However, the critical ability of complexes of oppositely charged polymers to report on differences in the microphase morphology via complexation-induced fluorescence changes and/or charge transport (ionic or electronic) should certainly apply at higher polymer concentrations. To this end, recent work has begun exploring the potential for optoelectronic applications of complex coacervates formed by a combination of conjugated polycations and nonconjugated polyanions. Danielsen et al. (14) combined cationic polythiophenes with PSS dissolved in watertetrahydrofuran (THF) mixtures to investigate the thermodynamic phase diagram and simple optoelectronic properties of this system. Of particular note for PECC systems is the fact that for these hydrophobic PEs the coacervate region does not develop upon the emergence of added ionic strength (36) but instead with the addition of organic solvent and, consequently, the relevant phase diagram is constructed as a function of polymer concentration and solvent quality/dielectric constant, as shown in Figure 8a. Specifically, the conjugated PE in the PECC phase exhibits enhanced emissivity (Figure 8b), resulting from increased π conjugation and reduced self-aggregation relative to the one-phase and precipitate phases (14). However, the high complexity of this phase diagram could offer a variety of potentially useful morphology-induced changes in optoelectronic properties. A significant amount of work has also explored the photophysical behavior of fully conjugated PECCs for use as artificial light-harvesting antennas (LHA). The complexation of cationic poly(fluorene-alt-phenylene) and anionic polythiophene yielded substantial changes in the excitonic wavefunction of the energy acceptor (polythiophene), which dramatically improved the fluorescence yield. This was attributed to the coacervate phase templating a more planar acceptor
+168 Rumyantsev • Jackson • de Pablo
+
+
+107
+50 54.6
+54.9
+64.9
+73.1
+76.4
+40
+30
+20
+10
+106
+105
+104
+103
+102 550
+0.1 1 10
+1Φ :: ssoolluuttiioonn
+2Φ : solution +
+coacervate
+: solution +
+coacervate
+2Φ : solution + precipitate
+: solution +
+precipitate
+Solution + coacervate
+precipitate
+ut n + coacervateprecipitate
+0.01 2 3 4 5 6 2 3 4 5 6 2 3 4 5 6 600 650
+Wavelength (nm)
+Photoluminescence (cps)
+Solvent quality (% THF)
+Polymer concentration, ρ (M)
+700 750
+ab
+Solvent dielectric constant, r
+P3BlmHT, 1 M, 40% THF Solution, 10 mM, 40% THF Solution, 100 mM, 40% THF Precipitate, 100 mM, 20% THF Coacervate-precipitate, 400 mM, 20% THF Coacervate, 400 mM, 40% THF
+Figure 8
+(a) State diagram of 1:1 Na+PSS−:P3BImHT+Br− PE complexes. Solvent quality is quantified as the % THF in H2O, the dielectric constant is of the relative dielectric constant of the solvent mixture, and ρ is the
+total polymer concentration. (b) Absolute photoluminescence spectra (λex = 475 nm for 1:1 Na+PSS−:
+P3BImHT+Br− PE complexes with 1:1 P3BImHT+Br− (1 M, 40% THF) shown for reference. Figure adapted with permission from Reference 14; copyright 2019 American Chemical Society. Abbreviations: PE, polyelectrolyte; PSS, poly(styrenesulfonate); THF, tetrahydrofuran.
+polymer, leading to increased π -electron delocalization (15). Ultrafast transient absorption measurements suggest that the exciton transfer time between polymer species in the coacervate is ≈240 fs, which is competitive with natural LHA. Most interestingly, it was found that the optical properties of the coacervates may be manipulated via the relative polyion charge ratio, thereby allowing tuning of fluorescence quantum yields (119). Additional work has outlined the role of both pH (120) and ionic surfactants (121) in mediating the thermodynamic and optical properties of conjugated PECCs, as well as inducing their disassembly. Although the current focus for these materials concerns their optical properties, it will be interesting to observe how the phase behavior of complex coacervates can influence both ionic and electronic charge mobilities, for which a breadth of interesting potential applications could emerge.
+6. COACERVATE-BASED MATERIALS AND STRUCTURES
+6.1. Complex Coacervate Core Micelles
+Complex coacervate core micelles, also referred to as PE complex micelles, arise via electrostatically driven self-assembly in solutions of oppositely charged homo- and diblock copolymers, or mixtures of the latter (53, 54, 122). In recent work (123), a scaling theory was developed to predict the formation and properties of both spherical and nonspherical aggregates, extending a previous attempt to describe spherical micelles with PECC cores (124). The approach developed in Reference 123 suggests that the addition of salt decreases the micellar core density, i.e., causes the swelling of the core accompanied by the extra extension of the ionic blocks. Because the energy of the core block stretching is minimal for nonspherical micelle morphologies (125, 126), salt-induced transitions from spheres to worm-like aggregates and then to lamellae/vesicles are expected (123). This theoretical prediction is consistent with the salt-induced sphere-to-cylinder transitions observed by the Wageningen group (127).
+www.annualreviews.org • Coacervates 169
+
+
+ab c
+0.35
+0.1
+0.4
+0
+0
+DIL+C
+C
+C
+DIS S
+GL
+L
+S
+D+ISL
+10 20 30 40 50
+0.3
+0.25
+0.2
+0.15
+0.1
+Concentration (wt %)
+Endblock fraction (f )
+f
+C 4..5
+Figure 9
+(a) Schematic illustration of oppositely charged triblock coPEs and the resulting polymer-rich gel phase coexisting with the highly diluted supernatant phase, which may contain single flower-like micelles. Panel a adapted with permission from Reference 135. (b) Phase diagram of the solution of opposite triblock coPEs from experiment and FTS (inset). Phases with long-range order are bcc packed spheres (S, green triangles), hexagonally packed cylinders (C, blue circles), bicontinuous gyroid structures (G, gray upside-down triangle), and lamellae (L, red diamond); disordered phase is denoted DIS (purple squares), and diluted supernatant is denoted DIL. Panel b adapted with permission from Reference 134; permission conveyed through Copyright Clearance Center, Inc. (c) DPD simulation snapshot of intracoacervate microphase separation (lamellae phase) induced by short-range incompatibility between polyanion and polycation. Panel c adapted with permission from Reference 138; copyright 2019 American Chemical Society. Abbreviations: bcc, body-centered cubic; DPD, dissipative particle dynamics; FTS, field-theoretic simulations; PE, polyelectrolyte.
+Lueckheide et al. demonstrated that the morphology of PE complex micelles formed from DNA and oppositely charged PLL-b-PEG diblock copolymer are controlled by the hybridization of the former (95). Micelles containing ssDNA are spherical, whereas complexation of dsDNA leads to a cylindrical aggregate morphology. Interestingly, 22-bp DNA duplexes within the core exhibit coaxial end-to-end stacking and hexagonal packing of the resulting rod-like aggregates (95), which are typical of the columnar LC phase observed in solutions of dsDNA (128). Orientational ordering of dsDNA in macroscopic PECCs is theoretically understood (72), but the competing roles of the high stiffness of rod-like dsDNA aggregates and the resulting LC nature of the core in determining the wormlike shape of micelles are not. Ellipsoid-like shapes of micelles have also been observed when the core contains the stiff polyfluorene derivative as the polyanion (129). Recent experimental (130) and simulation (131) works have attempted to gain insights into the kinetics of micelle formation and chain exchange between equilibrium aggregates. These studies show that the diblock copolymer architecture can be used to tune the time needed to obtain equilibrium aggregates (130), as well as the dominant formation mechanism (micelle fusion/fission versus single-chain insertion/expulsion), which provides a dynamic equilibrium between them (131).
+6.2. Coacervate-Based Hydrogels and Intracoacervate Microphase Separation
+More complex architectures of oppositely charged PEs provide an opportunity to induce novel functionality in coacervate-based materials. Shown in Figure 9a, triblock copolyelectrolytes (coPEs) can self-assemble into nanostructured responsive hydrogels, where complex coacervate domains formed by the end-blocks serve as multifunctional physical cross-links joining neutral
+170 Rumyantsev • Jackson • de Pablo
+
+
+Self-consistent field theory: a method
+implying calculation of the free energy in the saddle point approximation, i.e., without account for any fluctuations
+Dissipative particle dynamics (DPD): a strongly coarse-grained, particle-based stochastic simulation technique providing access to mesoscopic spatiotemporal scales unavailable in conventional MD simulations
+hydrophilic gel subchains (132–136). At low polymer concentrations, the gel phase may coexist with the very highly diluted supernatant phase, presumably containing single disconnected flower-like micelles (135, 136), as seen in Figure 9a. Increasing polymer concentration makes the solution gel-like and uniphase, triggering long-range ordering of PECC domains (133–135). Experimental studies (133–135) and FTS (134) agree that these domains can have spherical, cylindrical, or planar morphology with body-centered cubic, hexagonal, or lamellar packing, respectively; Figure 9b presents the corresponding phase diagrams of the systems. Long-range ordering of coacervate domains within the gel phase coexisting with the supernatant phase can be treated as intracoacervate microphase separation (134, 137). Self-consistent field theory calculations demonstrate that the primary sequences of oppositely charged PEs govern whether the coacervate is homogeneous or microphase separated. For instance, in the case of oppositely charged tetrablock copolymers with alternating charged and neutral blocks, a block length equal to 25 monomers is required for the formation of lamellar microstructured coacervates, whereas for shorter blocks coacervates are homogeneous (137). Theoretical considerations (138–140) and dissipative particle dynamics (DPD) simulations (138) predict that an alternative type of intracoacervate microphase separation can be induced by the short-range incompatibility of neutral monomers of polyanions and polycations (141) when the PEs contain a low fraction of evenly distributed ionic monomers. Figure 9c shows the internal structure of coacervates composed of oppositely charged polyanion- and polycationrich domains. Their growth is hindered by the excess energy of the local electric field within the domains (138, 139), in contrast to the microphase separation induced by the high blockiness of charged and uncharged monomers when the local electroneutrality is not violated and the length of the blocks limits the domain sizes (137).
+7. CONCLUSION AND OUTLOOK
+PECCs present rich ground for both the development of a better theoretical understanding of charged polymers and the creation of novel soft materials with new and useful functionalities. In this review, we have taken a broad view of recent work in this field, covering structure, thermodynamics, dynamics, and functional and material applications of PECCs. In recent years, advances have yielded valuable insights into the role of elementary sequence-dependent effects and liquid crystallinity, as well as how salt concentration manifests in critical mesoscopic properties such as surface tension and rheology. Emerging frontiers in biological systems are continuing to motivate a variety of applications, ranging from stimuli-responsive drug delivery with complex core micelles to novel optoelectronic materials. Through a fundamental physical understanding of the complex effects of macromolecular architecture, higher-level sequence correlations, and atomistically detailed insights into aqueous solvation, it will become possible to expand considerably the range of technologies and fields of science where PECCs are considered.
+SUMMARY POINTS
+1. Polyion chemistry and salt concentrations modulate the thermodynamics of complexation, leading to control over the interplay between solid nonequilibrium complexes and liquid equilibrium coacervates.
+2. Sequence-controlled polyion studies indicate that a higher charge blockiness of the polyions provides a synthetically accessible avenue to design denser and more salt resistant coacervates.
+www.annualreviews.org • Coacervates 171
+
+
+3. Semiflexiblity of polyions provides a mechanism to induce liquid crystalline phases in coacervates, as exemplified by those containing dsDNA.
+4. The analogy between coacervates and semidilute polymer solutions is crucial for the understanding of both coacervate structure and dynamics. Coacervate rheology can be interpreted in the framework of sticky Rouse and sticky reptation models, with the local relaxation processes controlled by the effective dissociation time of the intrinsic (crosschain) ion pairs.
+5. The ability to develop optoelectronic functionality in complex coacervates that are effective under aqueous environments opens the door for a suite of new functional applications.
+6. The formation of complex coacervate core micelles and hydrogels provides new opportunities for gene and ionic drug delivery, as well as design of programmable soft materials.
+FUTURE ISSUES
+1. Connecting atomistically detailed chemical descriptions of PEs to multiscale coarsegrained representations, particularly in regards to the role of the aqueous environment and salt ions, will be critical to future advances concerning the roles of specific interactions, solvophobicity, and sequence-dependent chemical effects.
+2. Theoretical and simulation advances are required to describe intracoacervate inhomogeneities not only for simple, charged–uncharged block alternating sequences (134, 137) but also for sequences of arbitrary complexity and polydispersity.
+3. The long timescale dynamics of coacervates are challenging for theory and modeling techniques, and new developments are required to make detailed predictions of how macromolecular architecture correlates with rheological behavior.
+4. As membrane-less organelles are active biomacromolecular condensates, the properties of multicomponent (142, 143) and active [e.g., with enzymatic (de)polymerization reactions (144–146)] coacervates should be considered in order to develop more thorough connections to biological systems.
+5. Theoretical and simulation studies that extended PECC understanding to hybrid coacervates including organic and inorganic components (e.g., mixtures of flexible PEs with colloids or globular proteins), as well as coacervates of more complex macromolecular and soft materials systems, will be key toward guiding future practical applications.
+6. Controlling coacervate structure and function via external stimuli will be key, as it relates to drug and gene delivery and the kinetics of micelle formation/disintegration. This topic represents an emerging frontier for synthetic and experimental design.
+DISCLOSURE STATEMENT
+The authors are not aware of any affiliations, memberships, funding, or financial holdings that might be perceived as affecting the objectivity of this review.
+172 Rumyantsev • Jackson • de Pablo
+
+
+ACKNOWLEDGMENTS
+The authors gratefully acknowledge Phillip Rauscher for a critical reading of the manuscript. We also benefited from a collaboration with Lu Li, Angelika Neitzel, Phillip Rauscher, Jeffrey Ting, Kimberly Weirich, Boyuan Yu, and Matthew Tirrell (Chicago), as well as from insightful discussions with Jörg Baschnagel and Albert Johner (Strasbourg). This work is supported by the US Department of Energy, Office of Science, Basic Energy Sciences, Materials Science and Engineering Division. Additional support from the National Institute of Standards and Technology through the Center for Hierarchical Materials Design for design and engineering applications of complex coacervate-based materials is gratefully acknowledged. Support from the National Science Foundation (DMR-1710357) for development of materials for selective capture of ionic species from solution is also gratefully acknowledged.
+LITERATURE CITED
+1. Brangwynne CP, Tompa P, Pappu RV. 2015. Nat. Phys. 11:899–904 2. Shin Y, Brangwynne CP. 2017. Science 357:1253 3. Aumiller WM, Keating CD. 2016. Nat. Chem. 8:129–37 4. Uversky VN. 2017. Adv. Colloid Interface Sci. 239:97–114 5. Oparin AI. 1924. The Origin of Life. Transl. S Morgulis, 1936. New York: Macmillan (From Russian) 6. Koga S, Williams DS, Perriman AW, Mann S. 2011. Nat. Chem. 3:720–24 7. Keating CD. 2012. Acc. Chem. Res. 45(12):2114–24 8. Tang TYD, Che Hak CR, Thompson AJ, Kuimova MK, Williams DS, et al. 2014. Nat. Chem. 6:527–33 9. Schmitt C, Turgeon SL. 2011. Adv. Colloid Interface Sci. 167:63–70 10. Veis A. 1960. J. Phys. Chem. 64:1203–10 11. Stewart RJ, Wang CS, Shao H. 2011. Adv. Colloid Interface Sci. 167:85–93 12. Kaur S, Weerasekare GM, Stewart RJ. 2011. ACS Appl. Mater. Interfaces 3:941–44 13. Zhao Q, Lee DW, Ahn BK, Seo S, Kaufman Y, et al. 2016. Nat. Mater. 15:407–12 14. Danielsen SPO, Nguyen TQ, Fredrickson GH, Segalman RA. 2019. ACS Macro Lett. 8:88–94 15. Hollingsworth WR, Segura C, Balderrama J, Lopez N, Schleissner P, Ayzner AL. 2016. J. Phys. Chem. B 120:7767–74 16. Black KA, Priftis D, Perry SL, Yip J, Byun WY, Tirrell M. 2014. ACS Macro Lett. 3:1088–91 17. Obermeyer AC, Mills CE, Dong X-H, Flores RJ, Olsen BD. 2016. Soft Matter 12:3570–81 18. van der Gucht J, Spruijt E, Lemmers M, Cohen Stuart MA. 2011. J. Colloid Interface Sci. 361:407–22 19. Sing CE. 2017. Adv. Colloid Interface Sci. 239:2–16
+20. Wang Q, Schlenoff JB. 2014. Macromolecules 47:3108–16. https://pubs.acs.org/doi/abs/10.1021/ ma500500q
+21. Fares HM, Ghoussoub YE, Delgado JD, Fu J, Urban VS, Schlenoff JB. 2018. Macromolecules 51:4945–55 22. Fares HM, Wang Q, Yang M, Schlenoff JB. 2019. Macromolecules 52:610–19 23. Zhang Y, Li F, Valenzuela LD, Sammalkorpi M, Lutkenhaus JL. 2016. Macromolecules 49:7563–70 24. Zhang Y, Batys P, O’Neal JT, Li F, Sammalkorpi M, Lutkenhaus JL. 2018. ACS Cent. Sci. 4:638–44 25. Perry SL, Leon L, Hoffmann KQ, Kade MJ, Priftis D, et al. 2015. Nat. Commun. 6:6052 26. Schlenoff JB. 2018. J. Chem. Phys. 149:163314 27. Fu J, Schlenoff JB. 2016. J. Am. Chem. Soc. 138:980–90 28. Tirrell M. 2018. ACS Cent. Sci. 4:532–33 29. Salehi A, Larson RG. 2016. Macromolecules 49:9706–19 30. Fu J, Fares HM, Schlenoff JB. 2017. Macromolecules 50:1066–74 31. Spruijt E, Westphal AH, Borst JW, Cohen Stuart MA, van der Gucht J. 2019. Macromolecules 43:6476–84 32. Lou J, Friedowitz S, Qin J, Xia Y. 2019. ACS Cent. Sci. 5:549–57 33. Li L, Srivastava S, Andreev M, Marciel AB, de Pablo JJ, Tirrell MV. 2018. Macromolecules 51:2988–95 34. Ali S, Bleuel M, Prabhu VM. 2019. ACS Macro Lett. 8:289–93 35. Adhikari S, Prabhu VM, Muthukumar M. 2019. Macromolecules 52:6998–7004
+www.annualreviews.org • Coacervates 173
+
+
+36. Li L, Rumyantsev AM, Srivastava S, Meng S, de Pablo JJ, Tirrell MV. 2020. Macromolecules. In press. https://doi.org/10.1021/acs.macromol.0c01000
+37. Rumyantsev AM, Zhulina EB, Borisov OV. 2018. Macromolecules 51:3788–801 38. Kudlay A, Olvera de la Cruz M. 2004. J. Chem. Phys. 120:404–12 39. Kudlay A, Ermoshkin AV, Olvera de la Cruz M. 2004. Macromolecules 37:9231–41 40. Zhang P, Shen K, Alsaifi NM, Wang ZG. 2018. Macromolecules 51:5586–93 41. Shen K, Wang ZG. 2018. Macromolecules 51:1706–17 42. Perry SL, Sing CE. 2015. Macromolecules 48:5040–53 43. Radhakrishna M, Basu K, Liu Y, Shamsi R, Perry SL, Sing CE. 2017. Macromolecules 50:3030–37 44. Borue VY, Erukhimovich IY. 1990. Macromolecules 23:3625–32 45. Shusharina NP, Zhulina EB, Dobrynin AV, Rubinstein M. 2005. Macromolecules 38:8870–81 46. Wang Z, Rubinstein M. 2006. Macromolecules 39:5897–912 47. de Gennes PG, Pincus P, Velasco RM, Brochard F. 1976. J. Phys. (Paris) 37:1461–73 48. Rubinstein M, Liao Q, Panyukov S. 2018. Macromolecules 51:9572–88 49. Oskolkov NN, Potemkin II. 2006. Macromolecules 39:3648–54 50. Castelnovo M, Joanny JF. 2000. Langmuir 16:7524–32 51. Marciel AB, Srivastava S, Tirrell MV. 2018. Soft Matter 14:2454–64 52. Spruijt E, Leermakers FAM, Fokkink R, Schweins R, van Well AA, et al. 2013. Macromolecules 46:4596605 53. Pergushov DV, Müller AHE, Schacher FH. 2012. Chem. Soc. Rev. 41:6888–901 54. Voets IK, de Keizer A, Cohen Stuart MA. 2009. Adv. Colloid Interface Sci. 147–48:300–18 55. Spruijt E, Sprakel J, Cohen Stuart MA, van der Gucht J. 2010. Soft Matter 6:172–78 56. Priftis D, Farina R, Tirrell M. 2012. Langmuir 28:8721–29 57. Ali S, Prabhu VM. 2019. Macromolecules 52:7495–502 58. Demond AH, Lindner AS. 1993. Environ. Sci. Technol. 27:2318–31 59. Oskolkov NN, Potemkin II. 2007. Macromolecules 40:8423–29 60. Riggleman RA, Kumar R, Fredrickson GH. 2012. J. Chem. Phys. 136:024903 61. Lytle TK, Salazar AJ, Sing CE. 2018. J. Chem. Phys. 149:163315 62. Qin J, Priftis D, Farina R, Perry SL, Leon L, et al. 2014. ACS Macro Lett. 3:565–68 63. Overbeek JTG, Voorn MJ. 1957. J. Cell. Physiol. Suppl. 49:7–26 64. Cahn JW, Hilliard JE. 1958. J. Chem. Phys. 28:258–67 65. Widom B. 1965. J. Chem. Phys. 43:3892–97 66. Landau LD, Lifshitz EM. 1970. Statistical Physics, Part 1. NY: Pergamon 67. Pande VS, Grosberg AY, Tanaka T. 2000. Rev. Mod. Phys. 72:259–314 68. Quiroz FG, Chilkoti A. 2015. Nat. Mater. 14:1164–71
+69. Shakya A, King JT. 2018. Biophys. J. 115:1840–47. https://www.sciencedirect.com/science/article/ pii/S0006349518311032
+70. Shakya A, Girard M, King JT, Olvera de la Cruz M. 2020. Macromolecules 53:1258–69 71. Qin J, de Pablo JJ. 2016. Macromolecules 49:8789–800 72. Rumyantsev AM, de Pablo JJ. 2019. Macromolecules 52:5140–56 73. Pak CW, Kosno M, Holehouse AS, Padrick SB, Mittal A, et al. 2016. Mol. Cell. 63:72–85 74. Chang LW, Lytle TK, Radhakrishna M, Madinya JJ, Vélez J, et al. 2018. Nat. Commun. 8:1273 75. Lytle TK, Sing CE. 2017. Soft Matter 13:7001–12 76. Lytle TK, Chang LW, Markiewicz N, Perry SL, Sing CE. 2019. ACS Cent. Sci. 5:709–18 77. Rumyantsev AM, Jackson NE, Yu B, Ting JM, Chen W, et al. 2019. ACS Macro Lett. 8:1296–302 78. Nott TJ, Petsalaki E, Farber P, Jervis D, Fussner E, et al. 2015. Mol. Cell. 57:936–47 79. Lin YH, Forman-Kay JD, Chan HS. 2016. Phys. Rev. Lett. 117:178101 80. McCarty J, Delaney KT, Danielsen SPO, Fredrickson GH, Shea JE. 2019. J. Phys. Chem. Lett. 10:164452 81. Danielsen SPO, McCarty J, Shea JE, Delaney KT, Fredrickson GH. 2019. PNAS 116:8224–32 82. Madinya JJ, Chang LW, Perry SL, Sing CE. 2020. Mol. Syst. Des. Eng. 5:632–44 83. Wittmer J, Johner A, Joanny JF. 1993. Eur. Phys. Lett. 24:263–68
+174 Rumyantsev • Jackson • de Pablo
+
+
+84. Moldakarimov S, Johner A, Joanny J-F. 2003. Eur. Phys. J. E 10:303–18 85. Lee J, Popov YO, Fredrickson GH. 2008. J. Chem. Phys. 128:224908 86. Rumyantsev AM, Potemkin II. 2017. Phys. Chem. Chem. Phys. 19:27580–92 87. Kapelner RA, Obermeyer AC. 2019. Chem. Sci. 10:2700–7 88. Das RK, Pappu RV. 2013. PNAS 110:13392–97 89. Sawle L, Ghosh K. 2015. J. Chem. Phys. 143:085101 90. Lutz JF, Ouchi M, Liu DR, Sawamoto M. 2013. Science 341:1238149 91. Perry SL, Sing CE. 2020. ACS Macro Lett. 9:216–25 92. Hoffmann KQ, Perry SL, Leon L, Priftis D, Tirrell M, de Pablo JJ. 2015. Soft Matter 11:1525–38 93. Pacalin NM, Leon L, Tirrell M. 2016. Eur. Phys. J. Spec. Top. 225:1805–15 94. Vieregg JR, Lueckheide M, Marciel AB, Leon L, Bologna AJ, et al. 2018. J. Am. Chem. Soc. 140:1632–38 95. Lueckheide M, Vieregg JR, Bologna AJ, Leon L, Tirrell MV. 2018. Nano Lett. 18:7111–17 96. Marras AE, Vieregg JR, Ting JM, Rubien JD, Tirrell JM. 2019. Polymers 11:83 97. Potemkin II, Limberger RE, Kudlay AN, Khokhlov AR. 2002. Phys. Rev. E 66:011802 98. Kumar R, Audus D, Fredrickson GH. 2010. J. Phys. Chem. B 114:9956–76 99. Rubinstein M, Colby RH. 2003. Polymer Physics. Oxford, UK: Oxford Univ. Press 100. Aponte-Rivera C, Rubinstein M. 2019. Presented at 2019 AIChE Annual Meeting, Orlando, FL. https:// aiche.confex.com/aiche/2019/meetingapp.cgi/Paper/574902 101. Yang M, Shi J, Schlenoff JB. 2019. Macromolecules 52:1930–41 102. Yu B, Rauscher PM, Jackson NE, Rumyantsev AM, de Pablo JJ. 2020. ACS Macro Lett. 9:1318–24 103. Diddens D, Baschnagel J, Johner A. 2019. ACS Macro Lett. 8:123–27 104. Leibler L, Rubinstein M, Colby RH. 1991. Macromolecules 24:4701–7 105. Rubinstein M, Semenov AN. 1998. Macromolecules 31:1386–97 106. Rubinstein M, Semenov AN. 2001. Macromolecules 34:1058–68 107. Liu Y, Winter HH, Perry SL. 2017. Adv. Colloid Interface Sci. 239:46–60 108. Andreev M, Prabhu VM, Douglas JF, Tirrell M, de Pablo JJ. 2018. Macromolecules 51:6717–23 109. Spruijt E, Sprakel J, Lemmers M, Stuart MAC, van der Gucht J. 2010. Phys. Rev. Lett. 105:208301 110. Spruijt E, Cohen Stuart MA, van der Gucht J. 2013. Macromolecules 46:1633–41 111. Ali S, Prabhu VM. 2018. Gels 4:11 112. Hamad FG, Chen Q, Colby RH. 2018. Macromolecules 51:5547–55 113. Leclerc M. 1999. Adv. Mater. 11:1491–98 114. Ho HA, Boissinot M, Bergeron MG, Corbeil G, Doré K, et al. 2002. Angew. Chem. Int. Ed. 41:1548–51 115. Gaylord BS, Heeger AJ, Bazan GC. 2003. J. Am. Chem. Soc. 125:896–900 116. Ho HA, Najari A, Leclerc M. 2008. Acc. Chem. Res. 41:168–78 117. Bock LC, Griffin LG, Latham JA, Vermaas EH, Toole JJ. 1992. Nature 355:564–66 118. Delaney KT, Fredrickson GH. 2017. J. Chem. Phys. 146:224902 119. Hollingsworth WR, Magnanelli TJ, Segura C, Young JD, Bragg AE, Ayzner AL. 2018. J. Phys. Chem. C 122:22280–93 120. Schleissner P, Ayzner AL. 2018. Polymer 136:114–20 121. Segura C, Lucero M, Ayzner AL. 2019. ACS Appl. Polym. Mater. 1:1034–44 122. Horn J, Kapelner R, Obermeyer A. 2019. Polymers 11:578 123. Rumyantsev AM, Zhulina EB, Borisov OV. 2018. ACS Macro Lett. 7:811–16 124. Kramarenko EYU, Khokhlov AR, Reineker P. 2006. J. Chem. Phys. 125:194902 125. Semenov AN. 1985. Sov. Phys. JETP 61:733–42 126. Borisov OV, Zhulina EB, Leermakers FAM, Müller AHE. 2011. Adv. Polym. Sci. 241:57–129 127. van der Kooij HM, Spruijt E, Voets IK, Fokkink R, Cohen Stuart MA, van der Gucht J. 2012. Langmuir 28:14180–91 128. Nakata M, Zanchetta G, Chapman BD, Jones CD, Cross JO, et al. 2007. Science 318:1276–79 129. Aloi A, Guibert C, Olijve LLC, Voets IK. 2016. Polymer 107:450–55 130. Wu H, Ting JM, Werba O, Meng S, Tirrell MV. 2018. J. Chem. Phys. 149:163330 131. Bos I, Sprakel J. 2019. Macromolecules 52:8923–31 132. Lemmers M, Sprakel J, Voets K, van der Gucht J, Cohen Stuart MA. 2010. Angew. Chem. Int. Ed. 49:70811
+www.annualreviews.org • Coacervates 175
+
+
+133. Hunt JN, Feldman KE, Lynd NA, Deek J, Campos LM, et al. 2011. Adv. Mater. 23:2327–31 134. Audus DJ, Gopez JD, Krogstad DV, Lynd NA, Kramer EJ, et al. 2015. Soft Matter 11:1214–25 135. Srivastava S, Andreev M, Levi AE, Goldfeld DJ, Mao J, et al. 2017. Nat. Commun. 8:14131 136. Rahalkar A, Wei G, Nieuwendaal R, Prabhu VM, Srivastava S, et al. 2018. J. Chem. Phys. 149(16):163310 137. Sing CE. 2020. J. Chem. Phys. 152:024902 138. Rumyantsev AM, Gavrilov AA, Kramarenko EYU. 2019. Macromolecules 52:7167–74 139. Rumyantsev AM, Kramarenko EYU, Borisov OV. 2018. Macromolecules 51:6587–601 140. Rumyantsev AM, de Pablo JJ. 2020. Macromolecules 53:1281–92 141. Castelnovo M, Joanny J-F. 2001. Eur. Phys. J. E 6:377–86 142. Mountain GA, Keating CD. 2020. Biomacromolecules 21:630–40 143. Lu T, Spruijt E. 2020. J. Am. Chem. Soc. 142:2905–14 144. Spoelstra WK, van der Sluis EO, Dogterom M, Reese L. 2020. Langmuir 36:1956–64 145. Nakashima KK, Baaij JF, Spruijt E. 2018. Soft Matter 14:361–67 146. Martin N. 2019. ChemBioChem 20:2553–68
+176 Rumyantsev • Jackson • de Pablo

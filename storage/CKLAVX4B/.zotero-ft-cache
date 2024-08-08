@@ -1,0 +1,193 @@
+Boundaries of the Topologically Frustrated Dynamical State in Polymer Dynamics
+Kuo Chen, Siao-Fong Li, and M. Muthukumar*
+Cite This: ACS Macro Lett. 2022, 11, 699−705 Read Online
+ACCESS Metrics & More Article Recommendations s*ı Supporting Information
+ABSTRACT: Using fluorescence microscopy and single-particle tracking, we have directly observed the dynamics of λ-DNA trapped inside poly(acrylamide-co-acrylate) hydrogels under an externally applied electric field. Congruent with the recent discovery of the nondiffusive topologically frustrated dynamical state (TFDS) that emerges at intermediate confinements between the traditional entropic barrier and reptation regimes, we observe the immobility of λ-DNA in the absence of an electric field. The electrophoretic mobility of the molecule is triggered upon application of an electric field with strength above a threshold value Ec. The existence of the threshold value to elicit mobility is attributed to a large entropic barrier, arising from many entropic traps acting simultaneously on a single molecule. Using the measured Ec
+which depends on the extent of confinement, we have determined the net entropic barrier of up to 130 kBT, which is responsible for the long-lived metastable TFDS. The net entropic barrier from multiple entropic traps is nonmonotonic with the extent of confinement and tends to vanish at the boundaries of the TFDS with the single-entropic barrier regime at lower confinements and the reptation regime at higher confinements. We present an estimate of the mesh size of the hydrogel that switches off the nondiffusive TFDS and releases chin diffusion in the heavily entangled state.
+M
+ovement of macromolecules in restricted environments is of great significance in every aspect of separation science and technologies and numerous biological processes
+that involve macromolecules.1−8 Tremendous experimental and theoretical efforts have been made over the past several
+decades to understand this phenomenon.9−44 Despite the richness of the microscopic details of interactions among the macromolecules and their environment, several key models have been established to interpret a large body of experimental data on the dynamics of flexible linear polymers in congested systems. These models have been broadly classified into three regimes depending on the extent of confinement arising from
+the restrictive environment: (a) Ogston regime10 for weak
+confinements, (b) entropic barrier regime13,16 for modest
+confinements, and (c) reptation regime9 for strong confinements. By characterizing the restrictive environment (such as gels, porous media, or nanocomposites) with an average mesh size ξ and taking the radius of gyration Rg of the macromolecule to represent its size in the absence of any confinement, these regimes correspond to the conditions: (a) Rg < ξ (Ogston), (b) Rg ≃ ξ (entropic barrier), and (c)
+Rg ≫ ξ ≃ Se (reptation), where Se is the entanglement length
+for the macromolecule. In all of the above regimes, macromolecules undergo diffusion where their diffusion coefficient D depends on their chain length N and decreases with an increase in the extent of confinement. Amidst this classical literature, a nondiffusive state, called the “topologically frustrated dynamical state”
+(TFDS), was recently discovered40,43 at intermediate confinements between the above-mentioned entropic barrier regime and reptation regime. In the TFDS observed in the system of large molecules of sodium poly(styrenesulfonate) or λ-DNA embedded in a negatively charged poly(acrylamide-co-acrylate) hydrogel with more than 95% water content at room temperature, the diffusion coefficient is apparently zero. This effect has been additionally validated by direct visualization of λ-DNA in the same hydrogel.44 Furthermore, since the macromolecule and the gel are similarly charged, the system corresponds to athermal conditions, and the nondiffusive effect arises solely from the conformational entropy of the trapped macromolecule. Since Einstein’s law of diffusion cannot be violated at nonzero temperatures, the occurrence of TFDS with D ≃ 0 implies that the chain is localized as an extremely metastable state with huge entropic barrier U for its escape into diffusion and mobility. Our earlier single-molecule fluorescence electrophoresis studies44 showed that the barriers associated with TFDS are on the order of tens of the thermal energy kBT
+Received: January 11, 2022 Accepted: April 29, 2022 Published: May 3, 2022
+pubs.acs.org/macroletters Letter
+© 2022 American Chemical Society 699
+https://doi.org/10.1021/acsmacrolett.2c00019 ACS Macro Lett. 2022, 11, 699−705
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 21, 2024 at 15:29:15 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+(where kB is the Boltzmann constant and T is the absolute temperature). In the single-entropic barrier regime (Rg ≃ ξ) mentioned
+above, the chain diffuses from one mesh into a neighboring mesh by crossing essentially a single entropic barrier. This situation and the accompanying free energy landscape (represented as a sketch of free energy F versus a linear distance x) are shown in Figure 1a. As the confinement increases (i.e., ξ/Rg decreases), a single chain occupies multiple meshes (Figure 1b). If the mesh size is much larger than the segment length, each mesh acts as an entropic trap. The diffusion of the chain held by multiple entropic traps requires simultaneous crossing through all barriers that occur between any two adjacent traps. This collective motion requires surmounting a net entropic barrier U that increases with an increase in the number of traps (i.e., as ξ decreases from Rg), as
+sketched in Figure 1a and b. Upon further decreases in ξ/Rg, the number of segments in each trap becomes progressively
+smaller, and hence the depth of the entropic traps (equivalently the barrier height U) becomes smaller. Eventually, when the mesh size attains a small value SEB, the entropic traps cease to exist. Once the entropic trap mechanism is not operative, the chain undergoes diffusion as in a heavily entangled system where Rg is larger than the
+entanglement length Se (Figure 1d). Since the nondiffusive TFDS occurs at intermediate confinements, namely, diffusion occurs in the single-entropic barrier regime (weak confinement) and the reptation regime (strong confinement), the barrier U must become insignificant at the weak and strong confinement boundaries of the TFDS. In other words, the entropic barrier U that is responsible for localizing the macromolecule into a metastable state (TFDS) is expected to be nonmonotonic as ξ/Rg is reduced from the singleentropic barrier regime toward the reptation regime. Experimental quantification of the nonmonotonic entropic barrier with ξ/Rg and observation of the boundary between the
+Figure 1. (a)−(c) Cartoon of nonmonotonic dependence of the collective entropic barrier responsible for the nondiffusive TFDS on the extent of confinement. The TFDS regime is flanked by the boundaries with a diffusive single-entropic barrier regime at lower confinements (a) and the diffusive entangled regime at higher confinements (d).
+Figure 2. (a) Schematic of the single-molecule electrophoresis device, which was mounted on the stage of a confocal microscope. (b) Snapshot of the dye-labeled DNA embedded in a PAM-Acr gel with 5% cross-link density, E = 0. (c) Snapshot of the same sample in (b), with E = 7.5 V/cm. Inset is an enlargement of one chosen stretched DNA chain. (d) Two representative snapshots of hooked DNA chains. The scale bar is 2 μm.
+ACS Macro Letters pubs.acs.org/macroletters Letter
+https://doi.org/10.1021/acsmacrolett.2c00019 ACS Macro Lett. 2022, 11, 699−705
+700
+
+
+TFDS and the reptation regime are the primary objectives of this Letter. As schematically shown in Figure 2a, we have monitored the motion of dye-labeled DNA molecules embedded in poly(acrylamide-co-acrylate) (PAM-Acr) hydrogels with 0.1 M NaCl using fluorescence microscopy in the presence of an applied electric field. The length of DNA (λ-DNA) is 48 502 bp, and the radius of gyration Rg is 500 nm in the absence of the gel. The labeling ratio with YOYO-1 is one per every 10 base pairs. The charge density of the gel is 10%, and the crosslink density is in the range of 0.2−12 mol % (with the estimated mesh size in the range of 52−22 nm, as described below). Details of gel synthesis and sample preparation are given in the SI. The high signal-to-noise ratio in the fluorescence measurement allowed us to explore the dynamics of the embedded DNA even when the gels at higher cross-link densities are slightly nontransparent to the eye. A typical example is given in Figure 2b,c, and d, where the cross-link density is 5%. When there is no external electric field, the fluorescence spots inside the gel are round and still, as shown in Figure 2b (see Video 1 in the SI). This is in contrast to the situation where the gel matrix is replaced by an entangled poly(ethylene glycol) (PEG) solution (see Video 2 in the SI). In the latter case, the DNA chains look worm-like and crawl in the PEG temporal network. The immobility of DNA seen in Figure 2b is lifted when a sufficiently strong electric field is applied. For example, the round fluorescence dots in Figure 2b are transformed into stretched ribbon-like structures when the electric field strength is 7.5 V/cm, as shown in Figure 2c (see Video 3 in SI). The contour length of such stretched conformations (ribbons) can exceed 3 μm, which is much larger than 2Rg (Rg ∼ 500 nm) of λ-DNA in aqueous solutions. In addition to these stretched ribbon-like conformations, there are many curved chains. Such curved chains are absent if the cross-link density of the gel matrix is low. Closer examination of the curved conformations reveals that they are hook-shaped conformations of DNA around obstacles, as seen in several
+previous studies on gel electrophoresis.11,12,14 As typical examples, two snapshots are shown in Figure 2d. The common feature is that the hook is made of two stretched arms from the hooking location. In the top and bottom of Figure 2d, the lengths of the two arms are different and the same, respectively. The chain is temporarily hung up in the gel. Subsequently, it slides off the hooking location and moves
+along the direction of electrophoresis before it encounters another hooking location. Furthermore, there are few events where one chain is hooked by multiple obstacles. The occurrence of the hooking state results in a pause in the electrophoretic drift of the molecule. The occurrence of the hooking state is closely related to the cross-link density of the gel matrix. As expected, it occurs more often at higher crosslink densities. Analogous to the frames shown in the above observations, we have secured continuous frames for the various experimental conditions. Using the single-particle tracking analysis of the continuous frames, we have tracked the trajectories of all DNA chains in the system. We have then subsequently deduced the displacement at time t, r(t), of the molecules in the direction of electrophoresis as given in Figure 3a (for 5% cross-link density and 7.5 V/cm electric field). The displacements of the chains in Figure 3a are of three types: (i) pure drift, which usually occurs in the first 30 s, (ii) pause in mobility where the chain remains stationary, and (iii) alternating drift and pause periods. Only the first type is relevant to the present objective of determining the barrier to releasing the chain out of the TFDS. The other two types are related to the hooking events described above and are well documented in the literature. Since the main goal of the present Letter is to determine the critical electric field to trigger the mobility of the embedded DNA molecules, we focus only on the type (i) pure drift. Figure 3b summarizes all displacements belonging to this type for 5% cross-linked gel at the electric field strength of 7.5 V/cm. In this figure, 700 trajectories are displayed. Averaging over all of these trajectories, the time dependence of the average displacement is given by the blue line, which is essentially linear. The red dashed line is the linear fit of the blue line with the slope of 0.63 ± 0.014 μm/s. This slope is the electrophoretic velocity of DNA in 5% cross-linked gel at the electric field strength of 7.5 V/cm. The above procedure is repeated at different cross-link densities and electric field strengths. We have performed direct observation of the displacement of DNA molecules in gels with seven different cross-link densities (4, 5, 6, 7, 8, 10, and 12 mol %) and different electric field strengths in the range of 0−8.3 V/cm. The general features of the data are the same for all these cross-link densities. Therefore, we present the data for 5% cross-link density as an illustrative example in Figure 4, and the data for
+Figure 3. (a) Time dependence of the displacement in the direction of electrophoresis for all observed trajectories of λ-DNA in Figure 2c. The inset is an enlargement of one specific displacement which exhibits a drift−pause−drift sequence. (b) Displacements of all DNA chains that undergo pure drifting motion. The dark blue solid line represents the averaged displacement, and the red dashed line is the linear fit to the blue line with a slope of 0.63. The cross-link density of the gel matrix is 5%, and the strength of the electric field is 7.5 V/m.
+ACS Macro Letters pubs.acs.org/macroletters Letter
+https://doi.org/10.1021/acsmacrolett.2c00019 ACS Macro Lett. 2022, 11, 699−705
+701
+
+
+the other gels are presented in the SI (Figures S1 and S2). As shown in Figure 4a, for electric field strengths less than 5 V/ cm, the chains are essentially immobile. At each electric field strength larger than 5 V/cm, the chains undergo electrophoretic drift with linear dependence of the average displacement with time, analogous to Figure 3b. This behavior of the transition from immobility at lower electric field strengths to drift at higher electric field strengths is consistent with our
+earlier theory44 of nucleation of the drift process when the supplied electric energy is sufficient to overcome the entropic barrier responsible for localization of the macromolecule into the TFDS. According to this theory, the electrophoretic velocity v of the macromolecule (characterized by its net charge Q, radius of gyration Rg, and diffusion coefficient D0 in
+dilute solutions) in the gel under the electric field strength E is given as
+=
+≪
+−>
+−
+vR
+D
+U
+k T e QR E U
+QR E
+kT
+U
+k T QR E U
+2,
+,
+U kT
+g
+0
+B
+/ g
+g
+BB
+g
+B
+l
+m
+oooooooo
+n
+oooooooo (1)
+where the entropic barrier U is assumed to be larger than kBT. Therefore, the inference from the theory is that the electrophoretic velocity is vanishingly small for weak electric fields and increases linearly with electric field strength beyond
+a threshold value given by U/QRg. From a plot of v against E, the barrier height U can be determined from U = QRgEc. The dependence of the electrophoretic velocity (obtained as the slope of the lines in Figure 4a) on the electric field strength is given in Figure 4b for the 5% cross-linked gel. Consistent with the nucleation picture conveyed in eq 1, there exists a flat region for E < 3.3 V/cm where the velocity is around zero and a linear region for higher electric field strengths. The intermediate range of E from 3.3 to 6.3 V/cm corresponds to the transition from immobilization to drift of the DNA molecules. As given by eq 1 in the drift region, the threshold value Ec is obtained by extrapolating the velocity in the strong
+electric field region to zero velocity which corresponds to Ec =
+U/QRg. From Figure 4b, Ec = 5.32 ± 0.29 V/cm. The values of Ec for the other cross-link densities were obtained by following the same procedure, and details of data for 4, 6, 7, 8, 10, and 12 mol % cross-linked gels are provided in the SI (Figures S1 and S2). The dependence of Ec on the cross-link density of the gel is given in Figure 5a. The data in the region shaded in purple color (up to 2.7% cross-link density) are from our previous study, and the rest of the data are for the presently studied seven gels. The nonmonotonic dependence of Ec on the crosslink density with a maximum at intermediate cross-link densities is evident in Figure 5a. This feature is in agreement with the description of the TFDS with two boundaries (Figure 1). The entropic barrier U responsible for the occurrence of
+Figure 4. (a) Dependence of average displacement of DNA on time under different electric field strengths. The solid lines denote the average values, and the dashed lines denote fits with a linear dependence on time. (b) Electric field dependence of the average velocity along the direction of electrophoresis obtained from (a). The solid line is the linear fitting result, and the dashed line is the guide to the eye (v = 0). The threshold electric field Ec = U/QRg is obtained from the intersection of the solid and dashed lines.
+Figure 5. (a) Cross-link density dependence of the critical electric field, Ec, required for the movement of the trapped DNA chain in the gel matrix. (b) Dependence of the entropic barrier, U/kBT, on the cross-link density of the gel. (c) Dependence of U/kBT on the mesh size of the gel matrix. The solid blue line is a guide connecting all experimental data points. The dashed line is an interpolating extension to the data point of the entangled PEG solution. The data in the region shaded in purple color are from ref 44. The other data are from the presently studied seven gels.
+ACS Macro Letters pubs.acs.org/macroletters Letter
+https://doi.org/10.1021/acsmacrolett.2c00019 ACS Macro Lett. 2022, 11, 699−705
+702
+
+
+the TFDS is evaluated from the experimentally determined Ec
+using the relation U = QRgEc. Taking the charge Q of λ-DNA
+as 2Neα (where N = 48,502 is the number of base pairs; e is the electronic charge; and α = 0.12 is the degree of
+ionization45) and Rg as 500 nm, the plot of U versus crosslink density is given in Figure 5b, corresponding to the values of Ec given in Figure 5a. At intermediate cross-link densities, the barrier is as high as 137 kBT. Near the lower and higher boundaries of the cross-link density, U becomes considerably smaller. In order to relate the entropic barrier with the mesh size of the gel, we need to relate the cross-link density of the gel to its mesh size. For weakly cross-linked gels which are transparent to the eye, static light scattering can be used to directly measure the mesh size ξ. For example, ξ is 51.5 ± 2.2 nm for
+0.2% cross-linked PAM-Acr gels with 10% charge density.44 However, light-scattering experiments are not feasible for PAM-Acr gels at higher cross-link densities, as they are cloudy or even nontransparent. In view of this, we have estimated the mesh sizes of the equilibrated gels in the present study using
+the classical Flory−Rehner theory46 generalized to polyelec
+trolyte gels.47 According to the generalized Flory−Rehner theory, the swelling ratio 1/φ of a polyelectrolyte gel containing sufficiently high monovalent salt concentration cs
+to screen electrostatic interactions is given as47
+φ
+χ
+φ
+≃
+−
+()
+S
+1
+1
+2 eff
+0
+8/3
+3/5
+Ä
+Ç
+ÅÅÅÅÅÅÅÅÅÅÅÅÅÅ
+É
+Ö
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑ (2)
+where S is the cross-link density;48 φ0 is the volume fraction of the gel if the chains in the gel were to adopt Gaussian chain statistics; and χeff = χ − α2zp2/(4csv1) (χ is the Flory−Huggins
+parameter; α is the degree of ionization; zp is the charge per Kuhn segment of the strands constituting the gel; and v1 is the volume of a solvent molecule). Apart from these details, the important result is that the volume of the gel (∼1/φ) is proportional to (−3/5)-th the power of the cross-link density S. Since the gel volume is proportional to ξ3, we get an expression for the mesh size of a gel with cross-link density S (expressed as mol %) as
+ξ=ξ S
+0.2
+0.2%
+1/5
+i k
+jjj y
+{
+zzz (3)
+where ξ0.2% is 51.5 ± 2.2 nm based on light-scattering
+experiments noted above. Using the estimated values of ξ, the data in Figure 5b are replotted in Figure 5c, depicting the dependence of the entropic barrier U (in units of kBT) on the
+mesh size. The barrier height first increases from about 24kBT
+at weak confinements (ξ ≃ 52 nm) to about 137kBT at
+intermediate confinements (ξ ≃ 28 nm) and then decreases to about 83kBT at strong confinements (ξ ≃ 22 nm). This nonmonotonic behavior provides quantitative details of the description in Figure 1. The 40% decrement in the entropic barrier from 137kBT to 83kBT even with a modest reduction in the mesh size (from 28 to 22 nm) indicates that the localization effect responsible for the TFDS is rapidly getting weaker and that it would eventually vanish, enabling the onset of the reptation regime. This expectation is sketched in Figure 5c as a dashed curve. It would be desirable to collect data in the region covered by the dashed line by investigating gels with cross-link density beyond 12%. However, such gels are too
+cloudy, posing challenges to fluorescence measurements. Furthermore, due to the extensive structural inhomogeneity in highly cross-linked gels, the hooking events of DNA migration are so rampant that it is difficult to accurately measure the entropic barrier. In view of this difficulty to investigate gels with smaller mesh size compared to those described above, we have considered a highly entangled polyethylene glycol (PEG) solution (of molar mass 400 kDa at 50 g/L concentration) as the matrix where the estimated correlation length for PEG monomer concen
+tration is 10.7 nm.38 In this case, even without the external electric field, the dye-labeled DNA chains are found to crawl slowly in the solution (see Video 2 in the SI). As expected in the entangled (reptation) regime, the mean square displacement of the diffusive chain is proportional to time as shown in Figure S3 at longer time intervals. This provides evidence that the entropic barrier is zero in the reptation regime. Therefore, the diamond symbol in Figure 5c corresponding to our data in the PEG-entangled solution (reptation regime) is the end point of the dashed curve where the entropic barrier is interpolated to decrease continuously as the mesh size is decreased toward 10 nm. In view of this, we estimate the threshold mesh size SEB to be about 10 nm to switch off the TFDS in the present λ-DNA/PAM-Acr system. In conclusion, we have measured the entropic barrier responsible for the TFDS occurring at intermediate confinements. Its peak value is in the range of more than 100kBT, thus making the TFDS an extremely long-lived metastable state. The entropic barrier is nonmonotonic with respect to the extent of confinement, and we find that it vanishes for mesh sizes in the range of 10−20 nm and again in the range beyond 60 nm, which set the boundaries of confinement to elicit the TFDS. The theoretical formulation of the nonmonotonic entropic barrier profile, exploration of additional enthalpic contributions, and determination of precise locations of the boundaries of the TFDS for other polymer−medium systems
+are of further interest.
+■
+ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acsmacrolett.2c00019.
+Materials, synthesis, and compositions of gels; method of single-molecule electrophoresis; averaged displacement and electrophoretic velocity of DNA embedded in gels with different cross-link densities; and mean square displacement of DNA inside PEG solution (PDF)
+Representative fluorescence video of DNA embedded in a gel matrix and PEG solution (AVI)
+Fluorescence video of a gel matrix replaced by an entangled poly(ethylene glycol) (PEG) solution (AVI)
+Video of round fluorescence dots being transformed into stretched ribbon-like structures when the electric field strength is 7.5 V/cm (AVI)
+■
+AUTHOR INFORMATION
+Corresponding Author
+M. Muthukumar − Department of Polymer Science and Engineering, University of Massachusetts, Amherst, Massachusetts 01003, United States; orcid.org/00000001-7872-4883; Email: muthu@polysci.umass.edu
+ACS Macro Letters pubs.acs.org/macroletters Letter
+https://doi.org/10.1021/acsmacrolett.2c00019 ACS Macro Lett. 2022, 11, 699−705
+703
+
+
+Authors
+Kuo Chen − Department of Polymer Science and Engineering, University of Massachusetts, Amherst, Massachusetts 01003, United States; orcid.org/0000-0002-0459-4139 Siao-Fong Li − Department of Polymer Science and Engineering, University of Massachusetts, Amherst, Massachusetts 01003, United States
+Complete contact information is available at: https://pubs.acs.org/10.1021/acsmacrolett.2c00019
+Notes
+The authors declare no competing financial interest.
+■
+ACKNOWLEDGMENTS
+We thank Dr. Jyoti P. Mahalik for stimulating discussions. Acknowledgement is made to the NSF (Grant DMR2004493), the NIH (Grant 5R01HG002776-16), and the Air Force Office of Scientific Research Grant FA9550-20-1-0142 for financial support.
+■
+REFERENCES
+(1) Fulton, A. B. How crowded is the cytoplasm? Cell 1982, 30, 345−347. (2) Zimmerman, S. B.; Minton, A. P. Macromolecular crowding: biochemical, biophysical, and physiological consequences. Annu. Rev. Biaphys. Biamal. Struct. 1993, 22, 27−65.
+(3) Kim, J. J.; Park, K. Smart hydrogels for bioseparation. Bioseparation 1998, 7, 177−184.
+(4) Seliktar, D. Designing cell-compatible hydrogels for biomedical applications. Science 2012, 336, 1124−1128. (5) Alberts, B.; Bray, D.; Hopkin, K.; Johnson, A. D.; Lewis, J.; Raff, M.; Roberts, K.; Walter, P. Essential Cell Biology; Garland Science, 2015. (6) Sentjabrskaja, T.; Zaccarelli, E.; De Michele, C.; Sciortino, F.; Tartaglia, P.; Voigtmann, T.; Egelhaaf, S. U.; Laurati, M. Anomalous dynamics of intruders in a crowded environment of mobile obstacles. Nat. Commun. 2016, 7, 1−8.
+(7) Li, J.; Mooney, D. J. Designing hydrogels for controlled drug delivery. Nat. Rev. Mater. 2016, 1, 1−17.
+(8) Zhang, Y. S.; Khademhosseini, A. Advances in engineering hydrogels. Science 2017, DOI: 10.1126/science.aaf3627. (9) De Gennes, P.-G. Reptation of a polymer chain in the presence of fixed obstacles. J. Chem. Phys. 1971, 55, 572−579. (10) Ogston, A. G.; Preston, B.; Wells, J. On the transport of compact particles through solutions of chain-polymers. Proc. R. Soc. London A 1973, 333, 297−316.
+(11) Deutsch, J. Theoretical studies of DNA during gel electrophoresis. Science 1988, 240, 922−924. (12) Schwartz, D. C.; Koval, M. Conformational dynamics of individual DNA molecules during gel electrophoresis. Nature 1989, 338, 520−522. (13) Muthukumar, M.; Baumgärtner, A. Effects of entropic barriers on polymer dynamics. Macromolecules 1989, 22, 1937−1941. (14) Smith, S. B.; Aldridge, P. K.; Callis, J. B. Observation of individual DNA molecules undergoing gel electrophoresis. Science 1989, 243, 203−206. (15) Smisek, D. L.; Hoagland, D. A. Electrophoresis of flexible macromolecules: evidence for a new mode of transport in gels. Science 1990, 248, 1221−1223. (16) Muthukumar, M. Entropic barrier model for polymer diffusion in concentrated polymer solutions and random media. J. Non-Cryst. Solids 1991, 131, 654−666.
+(17) Lodge, T.; Rotstein, N. Tracer diffusion of linear and star polymers in entangled solutions and gels. J. Non-Cryst. Solids 1991, 131, 671−675.
+(18) Zimm, B. H. “Lakes−straits” model of field-inversion gel electrophoresis of DNA. J. Chem. Phys. 1991, 94, 2187−2206. (19) Arvanitidou, E.; Hoagland, D. Chain-length dependence of the electrophoretic mobility in random gels. Phys. Rev. Lett. 1991, 67, 1464. (20) Calladine, C.; Collis, C. M.; Drew, H. R.; Mott, M. R. A study of electrophoretic mobility of DNA in agarose and polyacrylamide gels. J. Mol. Biol. 1991, 221, 981−1005. (21) Rotstein, N.; Lodge, T. Tracer diffusion of linear polystyrenes in poly (vinyl methyl ether) gels. Macromolecules 1992, 25, 1316− 1325. (22) Hoagland, D.; Muthukumar, M. Evidence for entropic barrier transport of linear, star, and ring macromolecules in electrophoresis gels. Macromolecules 1992, 25, 6696−6698.
+(23) Pajevic, S.; Bansil, R.; Konak, C. Diffusion of linear polymer chains in methyl methacrylate gels. Macromolecules 1993, 26, 305− 312. (24) Slater, G. W.; Wu, S. Y. Reptation, entropic trapping, percolation, and rouse dynamics of polymers in “random” environments. Phys. Rev. Lett. 1995, 75, 164.
+(25) Rousseau, J.; Drouin, G.; Slater, G. W. Entropic trapping of DNA during gel electrophoresis: effect of field intensity and gel concentration. Phys. Rev. Lett. 1997, 79, 1945. (26) Liu, L.; Li, P.; Asher, S. A. Entropic trapping of macromolecules by mesoscopic periodic voids in a polymer hydrogel. Nature 1999, 397, 141−144. (27) Viovy, J.-L. Electrophoresis of DNA and other polyelectrolytes: Physical mechanisms. Rev. Mod. Phys. 2000, 72, 813. (28) Fatin-Rouge, N.; Wilkinson, K. J.; Buffle, J. Combining small angle neutron scattering (SANS) and fluorescence correlation spectroscopy (FCS) measurements to relate diffusion in agarose gels to structure. J. Phys. Chem. B 2006, 110, 20133−20142. (29) Basak, S.; Chattopadhyay, K. Fluorescence correlation spectroscopy study on the effects of the shape and size of a protein on its diffusion inside a crowded environment. Langmuir 2013, 29, 14709− 14717. (30) Guan, J.; Wang, B.; Bae, S. C.; Granick, S. Modular stitching to image single-molecule DNA transport. J. Am. Chem. Soc. 2013, 135, 6006−6009. (31) Vagias, A.; Raccis, R.; Koynov, K.; Jonas, U.; Butt, H.-J.; Fytas, G.; Košovan, P.; Lenz, O.; Holm, C. Complex tracer diffusion dynamics in polymer solutions. Phys. Rev. Lett. 2013, 111, 088301. (32) Li, X.; Khairulina, K.; Chung, U.-i.; Sakai, T. Electrophoretic mobility of doublestranded DNA in polymer solutions and gels with tuned structures. Macromolecules 2014, 47, 3582−3586. (33) Muthukumar, M. Polymer Translocation; CRC press, 2015. (34) Lange, F.; Judeinstein, P.; Franz, C.; Hartmann-Azanza, B.; Ok, S.; Steinhart, M.; Saalwachter, K. Large-scale diffusion of entangled polymers along nanochannels. ACS Macro Lett. 2015, 4, 561−565. (35) Klotz, A. R.; Duong, L.; Mamaev, M.; de Haan, H. W.; Chen, J. Z.; Reisner, W. W. Measuring the confinement free energy and effective width of single polymer chains via single-molecule tetris. Macromolecules 2015, 48, 5028−5033.
+(36) Rahalkar, A.; Muthukumar, M. Diffusion of polyelectrolytes in polyelectrolyte gels. Macromolecules 2017, 50, 8158−8168. (37) Muthukumar, M. 50th anniversary perspective: A perspective on polyelectrolyte solutions. Macromolecules 2017, 50, 9528−9560. (38) Nath, P.; Mangal, R.; Kohle, F.; Choudhury, S.; Narayanan, S.; Wiesner, U.; Archer, L. A. Dynamics of nanoparticles in entangled polymer solutions. Langmuir 2018, 34, 241−249. (39) Guan, J.; Chen, K.; Jee, A.-Y.; Granick, S. DNA molecules deviate from shortest trajectory when driven through hydrogel. J. Chem. Phys. 2018, 149, 163331.
+(40) Jia, D.; Muthukumar, M. Topologically frustrated dynamics of crowded charged macromolecules in charged hydrogels. Nat. Commun. 2018, 9, 1−12.
+(41) Karatrantos, A.; Composto, R. J.; Winey, K. I.; Kröger, M.; Clarke, N. Modeling of entangled polymer diffusion in melts and nanocomposites: A Review. Polymers 2019, 11, 876.
+ACS Macro Letters pubs.acs.org/macroletters Letter
+https://doi.org/10.1021/acsmacrolett.2c00019 ACS Macro Lett. 2022, 11, 699−705
+704
+
+
+(42) Jin, S.; McKenna, G. B. Effect of nanoconfinement on polymer chain dynamics. Macromolecules 2020, 53, 10212−10216. (43) Jia, D.; Muthukumar, M. Electrostatically driven topological freezing of polymer diffusion at intermediate confinements. Phys. Rev. Lett. 2021, 126, 057802.
+(44) Chen, K.; Muthukumar, M. Entropic barrier of topologically immobilized DNA in hydrogels. Proc. Natl. Acad. Sci. U.S.A. 2021, 118, 118. (45) Anderson, C. F.; Record, M. T., Jr Polyelectrolyte theories and their applications to DNA. Annu. Rev. Phys. Chern. 1982, 33, 191− 222. (46) Flory, P. J.; Rehner, J., Jr Statistical mechanics of cross-linked polymer networks I. Rubberlike elasticity. J. Chem. Phys. 1943, 11, 512−520. (47) Jia, D.; Muthukumar, M. Theory of Charged Gels: Swelling, Elasticity, and Dynamics. Gels 2021, 7, 49. (48) Tanaka, T. Collapse of gels and the critical endpoint. Phys. Rev. Lett. 1978, 40, 820.
+ACS Macro Letters pubs.acs.org/macroletters Letter
+https://doi.org/10.1021/acsmacrolett.2c00019 ACS Macro Lett. 2022, 11, 699−705
+705
+Recommended by ACS
+Helical Wrapping of Cylindrical Tubes by Wormlike-Chain Polymers
+Nigel T. Andersen and Jeff Z. Y. Chen APRIL 11, 2023 MACROMOLECULES READ
+Microphase Separation in Neutral Homopolymer Blends Induced by Salt-Doping
+Xian Kong and Jian Qin DECEMBER 29, 2022 MACROMOLECULES READ
+Capillary Filling of Polymer Chains in Nanopores
+Jianwei Zhang, Jiajia Zhou, etal. MARCH 17, 2023 MACROMOLECULES READ
+Regulating the Flow-Driven Translocation of Macromolecules through Nanochannels by Interfacial Physical Adsorption
+Jianing Zhou, Lianwei Li, etal. MARCH 03, 2023 MACROMOLECULES READ
+Get More Suggestions >

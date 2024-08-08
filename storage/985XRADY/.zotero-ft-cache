@@ -1,0 +1,373 @@
+____________________________________________________________________________
+Gopeesingh, et. al Page 1
+Resonance-Promoted Formic Acid Oxidation via Dynamic Electrocatalytic Modulation
+Joshua Gopeesingh1, M. Alexander Ardagh2,3, Manish Shetty2, Sean Burke1, Paul J. Dauenhauer2,3, Omar A. Abdelrahman1,3*
+1 Department of Chemical Engineering, University of Massachusetts Amherst, 686 N. Pleasant Street, Amherst, MA 01003, USA 2 Department of Chemical Engineering and Materials Science, University of Minnesota, 421 Washington Ave. SE, Minneapolis, MN 55455, USA 3 Catalysis Center for Energy Innovation, University of Delaware, 150 Academy Street, Newark, DE, USA, 19716 *Corresponding author: abdel@umass.edu
+Introduction. Satisfying the demand for fuels and chemicals via efficient and sustainable utilization of natural resources is one of the defining challenges of the 21st century. The ability to feed the world’s population, reduce carbon footprint, and provide a sustainable energy source are all grand challenges that need to be rapidly addressed. Heterogeneous catalysts have and will continue to be a critical part of any future solutions to such grand challenges, where there is a pressing need to design catalysts for even more effective and cheaper chemical transformation than what is currently available. Design of the catalytic active site is intuitively at the center of catalysis research, where a materialdriven approach is taken to creating the next generation of catalysts. More specifically, the design of an active site has revolved around the descriptor of adsorbate (reactant, intermediate
+and/or product) binding strength to the catalyst surface (i.e. adsorption energy). While this materials-based approach has guided catalyst development in heterogeneous catalysis for over a century, it faces an upper limit which may have already been reached for crucial chemical transformations. The Sabatier principle best captures the limited nature of catalyst performance; there exists an intermediate adsorbate binding energy which balances the energetic needs of the various surface steps to maximize the catalytic turnover frequency.1 This balance is usually dictated by linear free energy relations which predict that overly strong surface binding limits the rate of desorption, while a weakly bound adsorbate results in a slower rate of surface reaction. Striking a balance based on the adsorbate binding energy therefore becomes critical
+Abstract. It is a truth universally acknowledged that faster catalysts enable the more efficient transformation of molecules to useful products and enhance the sustainable utilization of natural resources. However, the limit of static catalyst performance defined by the Sabatier principle has motivated a new approach to dynamic catalyst design, whereby catalysts oscillate with time between varying energetic states at sufficiently high resonant frequencies to overcome the Sabatier ‘volcano peak’. In this work, the concept of dynamic catalytic resonance was experimentally demonstrated via the electro-catalytic oxidation of formic acid in water on a Pt working electrode within a semi-continuous multi-phase flow reactor. Steady-state electro-oxidation of formic acid at 0.6 V (NHE) exhibited a maximum turnover frequency (TOF) of CO2 formation of ~1.0 s-1 at room temperature. However, oscillation of the electrodynamic potential between 0.8 V and open circuit via a square waveform at varying frequency (10-3 < f < 103 Hz) increased the optimal TOF to ~5 s-1 at 0.5 Hz. An even higher TOF of ~20 s-1 was observed at a resonant frequency of 100 Hz for a square waveform oscillating between zero and 0.8 V. The rate increase in formic acid electro-oxidation via catalytic resonance of more than an order of magnitude (20x) above potentiostatic conditions was interpreted to occur by nonfaradaic formic acid dehydration to surface-bound carbon monoxide at low potentials, followed by surface oxidation and desorption to carbon dioxide at high potentials.
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 2
+to designing an effective catalyst. Nørskov and coworkers demonstrated this concept for ammonia production over metal catalysts,2 and Sabatier-type behavior has also been reported for multiple industrially relevant chemistries.3-11 However, the classical example based on which Sabatier’s principle was first demonstrated is the decomposition of formic acid over metal surfaces. Combining experimentally measured turnover frequencies of Wachs and co-workers12 with the reported d-band energies of Nørskov and coworkers as an adsorption energy descriptor,13 the volcano shaped relationship with turnover frequency is observed, with Pt as the most active catalyst as shown in Figure 1. Based on this relationship, it is proposed that a formic acid decomposition catalyst more active than Pt is not likely to exist. While the predictions and limitations of the Sabatier principle are valid under steady state conditions, where the fractional coverage of adsorbates no longer vary with time (dθi/dt = 0), the same does not hold true under transient conditions. We recently computationally demonstrated that the limit of a volcano curve can be overcome for a hypothetical unimolecular reaction (A ↔ B) by oscillating between two energetic states on either
+side of the volcano curve.14-17 Achieved by shifting adsorbate binding energy, the catalytic system oscillates between two energetic states where either surface reaction or product desorption are rate determining. At sufficiently high oscillation frequency, the resulting time-averaged turnover frequency (TOF) is higher than the Sabatier maximum. The mechanism of dynamic rate enhancement derives from the performance of individual reaction steps. The intrinsic kinetics of the independent surface reaction is significantly higher than the overall catalytic turnover under static operation, limited by the rate of desorption at high binding energies. Spending a short period of time at a high binding energy, before coverages achieve steady state, accesses the higher intrinsic rate of surface reaction before desorption limits the overall rate. The same dynamic rate enhancement exists for desorption; the intrinsic rate of desorption is highest at high surface coverage of the surface product
+(rdesorption = kdesorption*θproduct). The shift to lower
+binding energy also results in a lowering of the energetic barrier to desorption. As a result, the oscillation between two such energetic states affords an average TOF exceeding the steady state limit of the Sabatier volcano. Controlling the oscillation frequency is key to maximizing dynamic catalytic rate enhancement, where the average TOF is maximized at a range of resonant frequencies that are comparable to the kinetics of the involved individual elementary steps. At these unique resonant frequencies, the average TOF can potentially exceed the peak of the volcano by orders of magnitude. Having computationally evaluated the ability for dynamic catalysts to exceed the limitations of material design and the Sabatier volcano curve, we sought to experimentally demonstrate dynamic catalysis. It was first necessary to identify an external stimulus that can readily shift the energetic state of a catalyst in a reversible manner. The stimulus needs to induce energetic shifts at timescales of one hertz or faster to achieve catalytic resonance with surface reaction steps that turn over on the time scale of seconds.12, 18-20 We also identified the catalyzed chemical conversion of formic acid decomposition limited by the Sabatier principle, to which external stimulus could be applied. Recognizing that electric potentials lead to large shifts in the energetics of a catalytic cycle, we
+Ag Au
+Cu
+Pt
+Pd
+Co
+Ni
+Fe
+Rh
+0.001
+0.01
+0.1
+1
+10
+100
+1000
+-5 -4 -3 -2 -1 0
+Turnover Frequency [s-1]
+d-band center [eV]
+103
+102
+101
+100
+10-1
+10-2
+10-3
+Figure 1. Experimentally measured turnover frequency of vapor phase formic acid decomposition to CO and CO212 as a function of the metal d-band center.13 Turnover frequencies were measured at steady state in a packed bed reactor at 523 K and 2000 ppm formic acid in He with < 2% conversion.
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 3
+specifically investigated the dynamic catalysis of formic acid electro-oxidation over Pt,
+HCOOH(aq) ↔ CO2(g) + 2H+(aq) + 2e- (1)
+2H+(aq) + 2e- ↔ H2(g) (2)
+The electrochemical oxidation of formic acid over Pt has been extensively studied, serving as a welldefined model electrochemical reaction.17, 21-27 Many experimental and computational techniques have added to our collective understanding of the mechanism and accompanying kinetics of formic acid electro-oxidation.28 Like the vapor phase thermocatalytic decomposition of formic acid (Figure 1), a Sabatier volcano for formic acid electro-oxidation over monometallic catalysts has been found to exist with Pt near the peak.29 The electro-oxidation of formic acid is also central to many electricity-driven sustainable technologies. Formic acid serves as a convenient and dense form in which to store energy, providing a source of ondemand hydrogen through room temperature electro-oxidation.30-31 Formic acid electro-oxidation over Pt can proceed through three distinct chemical pathways (Figure 2A). The first is commonly referred to as the ‘direct’ pathway, which was originally thought to provide a direct route between formic acid and the oxidation products.25, 32-33 More recent
+investigations have suggested the chemistry passes through a hydroxyl carbonyl intermediate (blue in Figure 2A) that readily decomposes,21 wherein each step involves a proton and electron transfer. Alternatively, formic acid can be oxidized via a surface formate mediated route. Like the direct pathway, each elementary step is faradaic in nature and involves a single proton and electron transfer. Alternatively, an ‘indirect’ pathway (red in Figure 2A) has also been reported involving adsorbed carbon monoxide as a reaction intermediate. This indirect mechanism is a combination of the nonfaradaic dehydration of formic acid to surface adsorbed carbon monoxide, followed by the electro-oxidative desorption of carbon monoxide as carbon dioxide. The relative contribution of the three pathways of Figure 2 to the overall rate of formic electrooxidation on Pt has been debated. While CO* can readily form at lower potentials,17, 23-24, 34 it has also been proposed that the indirect pathway does not contribute significantly to the overall rate.25, 27 This is likely due to the strong binding energy of carbon monoxide on Pt (~ 1.9 eV on Pt(111))35, causing the strongly bound reaction intermediate to act as a poison at less oxidizing potentials. However, isotopic labelling combined with infrared spectroscopy has demonstrated that under certain reaction conditions, it is plausible that the COmediated pathway contributes significantly to the
+Figure 2. Pathways in Formic Acid Electro-oxidation on Pt. (A) Formic acid adsorbs on Pt through the carbonyl oxygen before decomposing through three mechanisms. Faradaic proton formation produces either a surface hydroxyl carbonyl (blue) or surface formate (black), before another faradaic proton formation yields CO2 gas. Alternatively, non-faradaic decomposition of adsorbed formic acid (red) produces water and adsorbed carbon monoxide, after which faradaic reaction with water yields two protons and gaseous CO2. (B) Energetics of formic acid electro-oxidation through the various pathways over Pt(111) in an aqueous environment at 0 V NHE.21
+-3.0
+-2.5
+-2.0
+-1.5
+-1.0
+-0.5
+0.0
+0.5
+1.0
+-0.5 1.5 3.5 5.5 7.5 9.5 11.5
+E [eV]
+Reaction Coordinate
+H+ + e- H+ + e
+CO2
+2H+ + 2e
+H2O
+H2O
+H+ + e
+H+ + e
+Hydroxyl Carbonyl
+Formate
+Carbon Monoxide
+AB
+CO2
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 4
+overall rate of formic acid electro-oxidation.36 We therefore propose that rather than developing a catalyst that avoids CO* as an intermediate, a counter-intuitive approach would be to accelerate the indirect pathway. An effective indirect formic acid oxidation catalyst needs to facilitate both the formation and oxidative desorption (electro-oxidation) of adsorbed carbon monoxide (CO*). Under steady state conditions, the acceleration of formic acid electro-oxidation via the indirect pathway proves challenging due to the kinetic disconnect in applied potentials. At lower potentials, the rate of CO* formation over Pt can proceed at turnovers of ~10 s-1,17, 24, 34 but the rate of CO* oxidative desorption is negligible below ~ 0.6 V.37 At sufficiently oxidizing potentials where oxidative desorption can proceed, the rate of CO* formation is thought to be limited by a combination of coverage effects and an increased energetic barrier of formic acid dehydration.26 If only the indirect pathway were to occur, then this results in the classical volcano curve of two rate limitations; formic acid electrooxidation via the indirect pathway is limited by the rate of CO* formation and oxidative desorption at higher and lower oxidizing potentials, respectively. To accelerate formic acid electro-oxidation, we applied the approach of dynamic catalysis, where the catalyst was oscillated between two potentials. This approach independently facilitated the kinetically relevant steps of non-faradaic formic
+acid dehydration to CO* and CO* electrooxidation. The Pt-formic acid system was dynamically modulated between two distinct potentials, potentiodynamic conditions, where the rate of CO* formation and oxidation dictated the overall rate of formic acid electro-oxidation. It was further demonstrated that the rate of formic acid oxidation achievable through potentiodynamic catalysis significantly (~20x) exceeded the maximum rate under conventional potentionstatic conditions.
+Results and Discussion. Conventional kinetic investigations of formic acid electro-oxidation solely employ exchange current measurements as a measure of the rate of reaction under potentiostatic conditions. While the exchange current provides information on the rate of formic acid electrooxidation over Pt, currents measured under potentiodynamic conditions may include contributions from other faradaic processes unrelated to the actual reaction (double layer charging, ohmic drop etc.). It was therefore necessary to be able to measure the rate of formic acid electro-oxidation independently through a quantitative chemical analysis method using gas chromatography. To this end, a commercially available electrochemical cell was modified to be gas tight, employing a three-electrode setup (Figure 3) of Pt working and counter electrodes with a silver/silver-chloride reference electrode (Pt|WE, Pt|CE and Ag/AgCl RE). This allowed constant purging of the electrochemical cell with an inert gas (N2), the effluent of which was fed directly to an online gas chromatograph for semicontinuous quantitative analysis. The formic acid electro-oxidation occurred at the working electrode (Eq. 1), while the generated protons and electrons re-combined at the isolated counter electrode to form hydrogen (Eq. 2). The reference electrode allowed for the accurate control of the potential applied to the working electrode, the normal hydrogen electrode (NHE) scale was used throughout this work. Details of the reactor modifications are provided in the supporting information. The rate of formic acid electro-oxidation was first investigated under potentiostatic conditions, generating a rate-based polarization curve (rate vs applied potential, Figure 4A). The concentration of formic acid and sulfuric acid as the electrolyte were
+N2
+Gas out (to GC)
+CE
+WE
+Thermostat
+MFC
+Figure 3. Electrochemical cell with continuous gas flow and online gas chromatography analysis. MFC – Mass flow controller, CE – Counter Electrode, WE Working electrode, RE – Reference electrode, and GCGas Chromatograph.
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 5
+both held constant at 0.25 M, along with temperature of 295 K; all subsequent experiments in this work were performed at identical conditions. At lower oxidizing potentials, the turnover frequency (TOF) of formic acid electro-oxidation increased with applied potential. The increase in TOF with applied potential reached a maximum at ~ 0.6 V NHE, beyond which a decrease in rate was observed with more oxidizing potentials. Overall, a volcanic relationship exists between the formic acid electro-oxidation TOF and applied potential over Pt. This is consistent with previous reports based on electrical current, where a volcanic shape was observed with a peak current at ~ 0.6 V NHE.17 To verify whether measured currents are entirely due to formic acid electro-oxidation in the measured potential regime, we compared the rate of CO2 formation to the exchange current to calculate the mol of electrons per mole of CO2 produced (n),
+n= I
+F*r [=] mol e
+mol CO2
+(3)
+where I and F are the current (A) and Faraday’s constant (96,485 C/mol e-), respectively. r is the extensive rate of CO2 formation as measured by gas chromatography (mol CO2 s-1). In line with the theoretically expected value (Eq. 1), we measured
+an average of 2.1 ± 0.1 mol e- mol CO2-1 across the various potentials (Figure 4B). We therefore take the rate of CO2 formation here to be a quantitative measure of the rate of formic acid electro-oxidation. While formic acid electro-oxidation has been extensively studied over Pt surfaces, there remains uncertainty as to the exact reason(s) for the volcano type behavior.38 Weickowski and co-workers observed the same volcano, with a peak at 0.57 V, attributing the drop in rate at lower potentials to a decreasing electrochemical driving force and/or hydrogen adsorption. Beyond the peak, they speculated that Pt oxide formation could limit the rate, but noted that the decrease occurs well before surface oxidation takes place.17 Mavrikakis et. al calculated an energetic phase diagram for formic acid electro-oxidation at 0 and 0.6 V; Pt was found to lie at the intersection of water activation and CO* back-conversion to COOH* as rate determining steps.28 Similar applied potential volcano shaped curves have been reported for methanol electrooxidation over Pt where formic acid is an intermediate, interpreted as a change in the rate determining step with increasing applied potential.39 Ultimately, the volcano type behavior
+0.2 0.3
+0.4
+0.5 0.6
+0.7
+0.8
+0.9
+1.0
+0
+20
+40
+60
+80
+100
+120
+140
+0 20 40 60
+Current x 106 [A]
+Rate * F x 106 [mol CO2/s * C/mol e-]
+0.0
+0.1
+1.0
+0.2 0.4 0.6 0.8 1.0
+TOF [mol CO2 mol Pt-1 s-1]
+Applied Potential [V vs NHE]
+AB
+Slope = 2.1 0.1 mol e- mol CO2-1
+Figure 4. Polarization Curve: Steady-State Formic Acid Electro-oxidation on Pt. (A) The turnover frequency of formic acid electro-oxidation was determined at steady state on Pt by measuring the continuous rate of carbon dioxide formation with online gas chromatography as a function of applied potential. (B) Measured current as a function of the rate of reaction multiplied by Faraday’s constant at various applied potentials, error in slope estimated at 95% confidence interval.
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 6
+likely indicates a change in the nature of the rate determining step. We therefore expect, based on the concept of catalytic resonance, that potentiodynamic operation oscillating between two applied potentials on either side of the volcano could lead to a TOF exceeding the maximum under potentiostatic conditions. To test whether potentiodynamic conditions can accelerate the rate of formic acid electrooxidation beyond the potentiostatic maximum, a kinetic bracketing technique was implemented to experimentally measure formic acid reaction rates. This involved establishing the rate and current at a fixed applied potential, followed by an instantaneous change to potentiodynamic operation, and finally returning to the same potentiostatic condition. We have previously demonstrated the utility of such bracketing strategies,19, 40 allowing us to account for deactivation and other parasitic phenomena that readily corrupt kinetic measurements. Furthermore, to decouple non-faradaic formic acid dehydration and faradaic contributions to the overall catalytic cycle, we applied a potential square wave oscillating between open circuit (open circuit
+potential, 0 V, see SI) and 0.8 V at a frequency of 0.1 Hz and 50% duty cycle (Figure 5A). Frequency and duty cycle are defined here under potentiodynamic conditions as,
+f= 1
+τOC+ τV
+[=] Hz (4)
+Duty Cycle (%) = τV
+τOC+ τV
+*100 (5)
+where τOC and τV are the times spent at open circuit and the applied potential V, respectively. At open circuit (no applied potential), only the dehydration of formic acid will occur. During this time (τOC, 5 seconds), the surface coverage of carbon monoxide (θCO) accumulated unhindered and proceeded at a rate equivalent to the intrinsic rate of formic acid dehydration (~ 1-10 s-1).17, 34, 36 Upon switching to an applied potential of 0.8 V, the adsorbed CO* covering the surface was rapidly oxidized at a high instantaneous rate. This was evidenced by the spike in current observed upon switching from open circuit to 0.8 V applied potential (Figure 5B). However, the rate of CO*
+Figure 5. Dynamic Modulation of Applied Potential for Formic Acid Decomposition on Pt. (A) The applied potential square waveform between open circuit (OC) and 0.8 V at 0.1 Hz and 50% duty cycle. (B) The transition between open circuit and 0.8 V produces a transient spike in the current, indicating a rapid reaction that quickly approaches a new steady state. (C) Initial steady applied potential of 0.8 V transitions to dynamic square wave oscillation of the applied potential between open circuit (OC) and 0.8 V at 0.1 Hz and 50% duty cycle. The resulting time-averaged catalytic turnover frequency exhibits a 10-fold increase as measured independently by both exchange current and CO2 product formation rate measured by gas chromatography.
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+0
+2
+4
+6
+8
+10
+12
+14
+0 20 40 60 80 100 120 140 160
+Iavg/Iavg,0.8V
+TOFi/TOF0.8V
+Time [min]
+0.8V 0.8V
+OC/0.8V
+Oscillation ON
+~ 10X
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0 5 10 15 20 25
+Voltage [V vs NHE]
+Open Circuit
+0.8 V
+Iavg =
+f=
+OC
+V
+Oscillation OFF
+AC
+B
+QV
+0
+2
+4
+6
+8
+0 5 10 15 20 25
+Current [mA]
+Time [s]
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 7
+formation was negligible at such an oxidizing potential; surface hydroxyls responsible for the oxidation of CO* may also block active sites.41 Alternatively, given that the rate of CO* electrooxidation significantly increases compared to formic acid dehydration to CO* with applied potential, CO* could be consumed via electrooxidation faster than it forms.26 Therefore, given that the rate of CO* electro-oxidation is directly proportional to its coverage, the large instantaneous rate could not be sustained and rapidly decays towards the steady-state rate of formic acid electrooxidation (Figure 5B). Given the rapidly changing current profile, we calculated the average current evolved during one cycle (τOC + τV) as,
+Iavg= QV
+τOC+ τV
+[=] A (6)
+where Qv is the total charge in coulombs evolved during the applied potential time period (τV), measured by integrating the area beneath the current profile (Figure 5B). This completed one cycle of potentiodynamic operation. The next cycle began by returning to open circuit and replenishing the coverage of adsorbed CO, followed by another
+potential step to 0.8 V where the same large instantaneous rate was achieved. The proposed cycle is distinct from previous attempts at potentiodynamic electro-oxidation, where the current at less oxidizing potentials was increased by periodically oscillating to a largely oxidizing potential to clean the surface of accumulating strongly-bound intermediates.42-44 Here, we intentionally facilitated the formation of CO* as a strongly-bound intermediate by holding at open circuit, and the goal of dynamic catalysis was to match the time scale of CO* formation and electro-oxidation (resonance). Sustaining this potential square wave led to an oscillating instantaneous TOF of formic acid electro-oxidation, the average of which exceeded the potentiostatic TOF at 0.8 V by an order of magnitude (Figure 5C). This behavior was observed upon switching from potentiostatic (0.8 V) to potentiodynamic (OC/0.8V, oscillation ON) conditions, where an instantaneous spike in the average current was observed. The TOF of CO2 formation (as measured by gas chromatography) also increased by the same order of magnitude at a similarly rapid rate; a minor transient was observed on account of the measured residence time of the
+A
+OH
+H2O
+H+ + e
+H2O
+CO2 + H+ + e
+Open Circuit
+0.8 V
+V OC
+B
+-3.0
+-2.5
+-2.0
+-1.5
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+0 1 2 3 4 5 6 7 8 9 10
+E [eV]
+Reaction Coordinate
+0V
+0.5 V
+1V
+non-Faradaic Faradaic
+Ea
+∆E
+CO2
+2H+ + 2e
+Ea,NF
+Figure 6. Reaction Energies and Pathways of Dynamic Formic Acid Electrocatalytic Decomposition on Pt. (A) The decomposition of formic acid on Pt proceeds thermodynamically downhill through an initial non-faradic decomposition to water and adsorbed CO (ΔE = -2 eV). The subsequent faradaic oxidation of CO* to CO2(g) proceeds via exergonic or endergonic pathways with tunable activation energy dependent on the applied surface potential. (B) The catalytic cycle proceeds at enhanced rates via dynamic oscillation of the applied potential between open circuit, which is favorable to non-faradaic formic acid decomposition, and 0.8 V, which is favorable for electrocatalytic oxidation of adsorbed CO*.
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 8
+electrochemical reactor system (τreactor ~ 4 min, see supporting information). After approximately one hour on stream, the elevated rate of potentiodynamic formic acid electro-oxidation persisted relatively unchanged. Returning to potentiostatic conditions (0.8 V, Oscillation OFF), the current and TOF both rapidly dropped back to the same levels prior to applying potentiodynamic conditions. This confirmed the absence of any significant irreversible changes to the Pt working electrode (activation/deactivation) as a result of the applied potential square wave. To better understand the driving mechanism behind the sizeable promotion in catalytic turnover as a result of potentiodynamic control, it was necessary to examine the energetics of the various steps involved. The kinetics of the non-faradaic formic acid dehydration on Pt is not expected to be a strong function of applied potential; electric fields generated at the surface of the working electrode can lead to only minor changes in the binding energy of adsorbed CO*.45-47 Behm et. al however have reported an increase in the apparent activation energy of formic acid dehydration to CO* on Pt with increasing applied potential.26 Computational efforts have attempted to estimate the non-faradaic barrier for CO* formation (Ea,NF); large values in excess of 1.0 eV are typically reported21, 48 that suggest the reaction would not proceed at ambient temperatures. This discrepancy is likely due to the fact that CO* formation on Pt occurs rapidly on
+defect sites,49 while computational barriers are calculated over a defect-free Pt(111) facet. We therefore take the non-faradaic dehydration of formic acid as an activated process, consistent with experimental kinetic measurements of formic acid dehydration over Pt.26 Conversely, the rate of carbon monoxide electro-oxidation is relatively sensitive to applied potential. Illustrated in Figure 6A is the energetic profile for the two segments of the indirect pathway (dehydration and electrooxidation) at different potentials (0, 0.5, and 1.0 V),21 where both the activation and reaction energy decrease with increasingly oxidizing potentials. For the faradaic electro-oxidation of adsorbed carbon monoxide, the potential dependent reaction energy is defined as,
+∆E (V) = ∆E0 - n*eV (7)
+where ∆E0 is the standard free energy change of reaction, and n the number of electrons involved in the process. The potential-dependent activation energy is then determined as per a Brønsted-EvansPolanyi relationship50,
+Ea (V) = α*∆E + β (8)
+where α is the slope of the linear relationship and is indicative of the transition state position, and β is the activation energy under athermal conditions (∆E = 0). Based on the reported potential dependent
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.2 0.4 0.6 0.8 1 1.2
+Current [mA]
+Applied Potential [V vs NHE]
+CO2
+2H+ + 2e
+H2O
+Peak 1
+Peak 2
+Peak 2
+Peak 1
+OC
+Figure 7. Linear sweep potential curves (100 mV s-1 scan rate) with varying initial hold times at open circuit (τOC). Two peaks are associated with direct electro-oxidation (peak 1) and CO* oxidation (peak 2).
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 9
+energetics by Janik et. al,21 the BEP parameters α and β were estimated as 0.44 and 0.90 eV, respectively. We therefore propose the dynamic cycle within the catalytic cycle (Figure 6B). Operating at open circuit allows the non-faradaic dehydration of formic acid to CO* to proceed unimpeded. However, holding at open circuit beyond a certain point in time becomes counterproductive, where the rate of CO* formation becomes negligible given that oxidatively desorbing the reaction intermediate is not possible on account of the large barrier at these conditions (~ 1.5 eV). Flipping the working electrode catalyst to 0.8 V reduces the energetic barrier by almost 1.0 eV, facilitating the oxidative desorption of CO* to the desired product CO2. This is corroborated by reported experimental measurements on Pt, where the apparent activation energy of CO electro-oxidation decreased by ~ 0.4 eV upon increasing the applied potential from 0.5 to 0.75 V.26 Given that the rate of the two distinct reaction steps rapidly decays, the time spent at each energetic state (open circuit and applied potential) is key to maximizing the rate of potentiodynamic electro-oxidation. Selecting for the indirect pathway via potential oscillations is also understood through a series of potential linear potential sweeps. A linear sweep over Pt in the direction of oxidizing potentials (positive going) revealed two peaks in the region of 0 - 1.2 V NHE. The first peak centered at ~ 0.5 V is associated with the decomposition of formic acid through purely faradaic pathways (Peak 1, direct and formate).22 A second peak was observed at a more oxidizing potential of ~ 0.9 V, generated by the stripping of the adsorbed CO* from the Pt surface (Peak 2, electro-oxidation of CO*).22 Increasing the time spent at open circuit between successive potential linear sweeps led to a decrease in the charge evolved due to the purely faradaic pathways, while the indirect pathway peak began to dominate the total charge (extent of reaction) at larger open circuit times (Figure 7). It is therefore plausible that by oscillating between open circuit and an oxidizing potential, the rate of formic acid electro-oxidation via the indirect pathway can be selectively accelerated. Ultimately however, it is necessary to carefully control the time spent at either state of the potential square wave (i.e, frequency) for precise dynamic rate control. The maximum TOF as a function of
+oscillation frequency under dynamic conditions is achieved at catalytic resonance; the frequency of oscillations matches the kinetics of the controlling surface reactions. The precise location of catalytic resonance can be identified by measuring the average TOF across a wide range of oscillation frequencies.14 Expanding upon the result observed at 0.1 Hz (Figure 5), the average TOF of formic acid electro-oxidation was measured over six orders of magnitude (10-3 ≤ f ≤ 103 Hz) (Figure 8). This experiment was conducted for two different amplitude conditions: (i) the square wave oscillated between open circuit conditions and 0.8 V applied potential (blue in Figure 8), and (ii) the square wave oscillated between zero volts and 0.8 V applied potential (red in Figure 8). Both experiments exhibited the same resonanceresponse behavior; at lower frequencies the average turnover frequency experimentally measured by CO2 production increased before achieving a maximum and then decreasing at higher frequencies. For the conditions oscillating between
+Figure 8. Time-Averaged Turnover Frequency Response of Dynamic Formic Acid Electro-oxidation on Pt. Square wave applied potentials (50% duty cycle) yield variable average catalytic turnover frequencies determined by the rate of production of carbon dioxide measured using online gas chromatography. Two square wave potentiodynamic conditions were evaluated: open circuit (OC) to 0.8 V (blue), and zero volts to 0.8 V (red). The peak resonance-enhanced electrocatalytic reaction rate occurs at 0.5 and 100 Hz for the two conditions, with a maximum average TOF of 5 and 20 s-1, respectively. TOFSS (0.44 s-1) is the steady-state reaction rate at fixed applied potential of 0.8 V.
+0
+10
+20
+30
+40
+50
+0
+5
+10
+15
+20
+25
+0.001 0.01 0.1 1 10 100 1000 10000
+TOFi/TOFss
+TOF [mol CO2 mol Pt-1 s-1]
+Frequency [Hz]
+TOFss
+OC
+0.8 V
+0V
+0.8 V
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 10
+open circuit and 0.8 V, the resonance frequency was ~0.5 Hz with a maximum average turnover frequency of 4.6 s-1. Alternatively, the conditions oscillating between zero and 0.8 V shifted the resonant frequency to ~100 Hz with a turnover frequency of 19.7 s-1. This fast dynamic condition of Figure 8 exhibits a 45-fold improvement over the steady state conditions at 0.8 V and a 20-fold increase over optimal static formic acid electro-oxidation. As depicted in Figure 9, the static conditions of the polarization curve (Figure 4A) are provided for a reference catalytic rate (blue points). In the logarithmic dependent axis is the experimentallymeasured turnover frequency to CO2. To compare dynamic and static electro-oxidation, the dynamic experiments for an amplitude between zero and 0.8 V applied potential at varying frequencies are depicted (red points/lines) by connecting their oscillation endpoints. Again, the resonant frequency of 100 Hz exhibits more than an order of magnitude rate increase over static conditions. Also to note is that the two oscillation endpoints are on either side of the polarization curve maximum; the resulting dynamic rate enhancement is distinctly
+faster than either static endpoint as well as any static condition in general.
+Conclusions. The electro-oxidation of formic acid was experimentally evaluated on a Pt working electrode to determine the impact of dynamic oscillation of the applied potential. Experiments conducted in a multi-phase N2-water flow reactor permitted the continuous measurement of current supplied to the working electrode and discrete measurements of effluent carbon dioxide product by gas chromatography; comparison of the reaction current and rate of CO2 indicated that 2.1+0.1 electrons were provided per molecule of CO2 product, in agreement with reaction stoichiometry. The reactor residence time distribution determined using flowing N2 gas indicated a reactor time constant of ~ 4 minutes. Steady state experiments at fixed electrostatic potential (potentiostatic) measured by the rate of formation of effluent CO2 at room temperature yielded a maximum turnover frequency of ~1.0 s-1 at 0.6 V. In contrast, dynamic experiments were conducted by applying a dynamic potential at varying frequency (10-3 < f < 103 Hz) in the form of a square wave with fixed amplitude and 50% duty cycle. An applied potential oscillating between open circuit and 0.8 V produced a resonant frequency of 0.5 Hz at a turnover frequency to CO2 of ~5 s-1. An even faster reaction rate of ~20 s-1 was observed with a square waveform oscillating between zero and 0.8 V at a resonant frequency of 100 Hz. Examination of the current response to dynamic oscillation of the electrode potential indicated a dramatic increase (i.e., spike) in the surface reaction rate upon switching from low to high potential. This behavior along with linear sweep potential curves of the Pt surface indicated a two-step mechanism: (1) non-faradaic decomposition of formic acid to adsorbed carbon monoxide and H+ at low potential, followed by (2) faradaic oxidation of CO* to gaseous CO2 product at high potential. Future research will evaluate a broader range of conditions and materials to understand the ultimate limitations on dynamically enhancing catalytic electro-oxidation of formic acid and catalytic reactions in general.
+Materials and Methods. Sulfuric acid (99.999%) and Formic acid (>95%) used in preparing aqueous solutions were obtained from Sigma-Aldrich.
+Figure 9. Comparison of Dynamic and Static Electrocatalytic Oxidation of Formic Acid on Pt. Static formation rate of CO2 from formic acid (blue) at fixed applied potentials (0.2 < V < 1.0) is significantly lower than the dynamic turnover frequencies (red) varying at 0.1, 1, and 100 Hz with square waveforms at 50% duty cycle with an amplitude of zero to 0.8 V applied potential.
+100 Hz
+1.0 Hz
+0.1 Hz
+0.01
+0.10
+1.00
+10.00
+100.00
+-0.1 0.1 0.3 0.5 0.7 0.9 1.1
+TOF [mol CO2 mol Pt-1 s-1]
+Applied Potential [V vs NHE]
+Dynamic
+Static
+100
+10
+1
+0.1
+0.01
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 11
+Water (resistivity >18.2 MΩ) was used from an inhouse purifier. The working electrode was a Pt wire (99.99%, 0.8mm diameter, 100mm length) obtained from Goodfellow Corporation, while the counter electrode was a Pt coil (99.95%, MW-1033, 0.5mm diameter, 230mm length) purchased from BASi. Buffer solutions (pH’s 4,7,10) used for calibrating the pH electrode were purchased from Fisher Chemical. The gases used in this study were Hydrogen (99.999%, Airgas), Helium (99.999%, Airgas), Nitrogen (99.999%, Ivey), Carbon Dioxide (99.5%, Airgas) and Air (Ultra Zero Grade, Parker). A single chamber (65 ml effective volume) three electrode electrochemical glass cell (Gamry, Dr. Bob’s Cell) was used. The cell consisted of a Pt wire working electrode, Pt coil counter electrode, and a double junction silver/silver chloride electrode (Pine Research, RREF0024, 0.199 V vs NHE). 30% of the Pt wire working electrode was immersed in solution. The counter electrode was kept within a fritted isolation tube with 20 μm diameter pores (Pine Research, RRPG097). The Ag/AgCl reference electrode was stored in a saturated KNO3 solution when not in use in order to maintain the condition of the electrode. A single channel potentiostat (Gamry,1010E) was used to apply potentials across the electrochemical cell via the three electrodes. The cell contained 45 ml of the desired aqueous concentration of electrolyte and reactant. The solution was mixed at 800 RPM using a triangular stir bar (SP Scienceware, F37134-0000) while the cell itself was located on top a stir plate (Corning, PC-220). The electrochemical cell was continuously purged by a 35 sccm Nitrogen stream, fed via a 1/16” PEEK tube (Valco, 0.127mm ID) immersed into solution. All gas flows were adjusted via a mass flow controller (Brooks 5850S), gas flow rates were confirmed using a bubble flowmeter (HP). The pH of the solution was confirmed to remain constant (0.8 pH) using a pH electrode (VWR, 89231-574) equipped with a pH meter (Thermo Scientific, Orion Star A211). The effluent stream was analyzed using an online gas chromatograph (Agilent, 7890B) equipped with a PLOT Q column (Agilent, 19091P-QO4) and combined flame ionization detector (FID)/methanizer (Jetanizer, Activated Research Company). Experiments were typically carried out incorporating a series of reference conditions used
+to keep track of and correct for any catalytic deactivation taking place. Turnover frequencies are reported for the products formed during electrooxidation experiments, calculated as,
+TOF = FCO2
+NPt
+[=] mol CO2
+mol Pt s (9)
+NPt= N0*SAPt
+NA (10)
+where FCO2 is the molar flow rate of carbon dioxide evolved as quantified via gas chromatography and NPt the mol of exposed Pt sites in the reactor, which is calculated based on the surface area of the wire immersed in solution (SAPt). The surface area of Pt is normalized by the site density of Pt (N0, 1019 sites m-2) and Avogadro’s number (NA). Prior to placing the working electrode in solution, it was subjected to an ex-situ reduction. Typically, the electrode was loaded into a downflow U-shape quartz tube and heated in a tube furnace (GSL-1100X, MTI corporation) under a 100 sccm flow of hydrogen regulated by a mass flow controller (5850S, Brooks Instrument). A plug of deactivated glass wool (24324, Restek) was placed at the bottom of the quartz U-tube, acting as a physical support for the Pt wire. To ensure accurate reduction temperatures, a 1/16” type-K thermocouple (Omega) encased within a quartz sheath was placed in direct contact with the catalyst bed. The Pt wire was reduced at 673 K for 4 hr with a ramp rate of 3 K min-1 and cooled down to room temperature under the same flow of hydrogen, followed by a purge in He.
+Acknowledgements. OAA and JG acknowledge financial support for this work from the National Science Foundation (Award Number CBET 1932788). PJD, MAA and MS acknowledge financial support of the Catalysis Center for Energy Innovation, a U.S. Department of Energy – Energy Frontier Research Center under Grant DESC0001004.
+Keywords: Formic Acid, Oxidation, Dynamic Catalysis, Catalytic Resonance
+Supporting Information. Additional information including residence time distribution measurements, reactor design details, and initial
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 12
+rate estimates are included in the supporting information.
+References
+1.Sabatier, F., La Catalyse en Chimie Organique. Beranger: Paris, 1920. 2.Bligaard, T.; Nørskov, J. K.; Dahl, S.; Matthiesen, J.; Christensen, C. H.; Sehested, J., The Brønsted–Evans–Polanyi relation and the volcano curve in heterogeneous catalysis. Journal of Catalysis 2004, 224 (1), 206-217.
+3. Parsons, R., The rate of electrolytic hydrogen evolution and the heat of adsorption of hydrogen. Transactions of the Faraday Society 1958, 54 (0), 1053-1063. 4. Nørskov, J. K.; Bligaard, T.; Logadottir, A.; Kitchin, J. R.; Chen, J. G.; Pandelov, S.; Stimming, U., Trends in the Exchange Current for Hydrogen Evolution. Journal of The Electrochemical Society 2005, 152 (3), J23-J26. 5. Nørskov, J. K.; Rossmeisl, J.; Logadottir, A.; Lindqvist, L.; Kitchin, J. R.; Bligaard, T.; Jónsson, H., Origin of the Overpotential for Oxygen Reduction at a Fuel-Cell Cathode. The Journal of Physical Chemistry B 2004, 108 (46), 17886-17892. 6. Man, I. C.; Su, H.-Y.; Calle-Vallejo, F.; Hansen, H. A.; Martínez, J. I.; Inoglu, N. G.; Kitchin, J.; Jaramillo, T. F.; Nørskov, J. K.; Rossmeisl, J., Universality in Oxygen Evolution Electrocatalysis on Oxide Surfaces. ChemCatChem 2011, 3 (7), 1159-1165. 7.Montoya, J. H.; Tsai, C.; Vojvodic, A.; Nørskov, J. K., The Challenge of Electrochemical Ammonia Synthesis: A New Perspective on the Role of Nitrogen Scaling Relations. ChemSusChem 2015, 8 (13), 2180-2186. 8.Toulhoat, H.; Raybaud, P.; Kasztelan, S.; Kresse, G.; Hafner, J., Transition metals to sulfur binding energies relationship to catalytic activities in HDS: back to Sabatier with first principle calculations1This work has been undertaken within the “GdR Dynamique Moléculaire Quantique Appliquée à la Catalyse”, a joint project of Centre National de la Recherche Scientifique, Technische Universität Wien, and Institut Français du Pétrole.1. Catalysis Today 1999, 50 (3), 629-636. 9. Laursen, A. B.; Man, I. C.; Trinhammer, O. L.; Rossmeisl, J.; Dahl, S., The Sabatier Principle Illustrated by Catalytic H2O2 Decomposition on
+Metal Surfaces. Journal of Chemical Education 2011, 88 (12), 1711-1715. 10. Kari, J.; Olsen, J. P.; Jensen, K.; Badino, S. F.; Krogh, K. B. R. M.; Borch, K.; Westh, P., Sabatier Principle for Interfacial (Heterogeneous) Enzyme Catalysis. ACS Catalysis 2018, 8 (12), 1196611972. 11. Yoo, J. S.; Abild-Pedersen, F.; Nørskov, J. K.; Studt, F., Theoretical Analysis of TransitionMetal Catalysts for Formic Acid Decomposition. ACS Catalysis 2014, 4 (4), 1226-1233.
+12. Tang, Y.; Roberts, C. A.; Perkins, R. T.; Wachs, I. E., Revisiting formic acid decomposition on metallic powder catalysts: Exploding the HCOOH decomposition volcano curve. Surface Science 2016, 650, 103-110.
+13. Ruban, A.; Hammer, B.; Stoltze, P.; Skriver, H. L.; Nørskov, J. K., Surface electronic structure and reactivity of transition and noble metals1Communication presented at the First Francqui Colloquium, Brussels, 19–20 February 1996.1. Journal of Molecular Catalysis A: Chemical 1997, 115 (3), 421-429.
+14. M. Alexander, A.; Omar A., A.; Paul, D., Principles of Dynamic Heterogeneous Catalysis: Surface Resonance and Turnover Frequency Response. 2019.
+15. Ardagh, M. A.; Birol, T.; Zhang, Q.; Abdelrahman, O. A.; Dauenhauer, P. J., Catalytic resonance theory: superVolcanoes, catalytic molecular pumps, and oscillatory steady state. Catalysis Science & Technology 2019, 9 (18), 5058-5076. 16. Ardagh, M. A.; Shetty, M.; Kuznetsov, A.; Zhang, Q.; Christopher, P.; Vlachos, D.; Abdelrahman, O.; Dauenhauer, P. J., Catalytic Resonance Theory: Parallel Reaction Pathway Control. Chemical Science 2020.
+17. Lu, G.-Q.; Crown, A.; Wieckowski, A., Formic Acid Decomposition on Polycrystalline Platinum and Palladized Platinum Electrodes. The Journal of Physical Chemistry B 1999, 103 (44), 97009711. 18. Rekoske, J. E.; Cortright, R. D.; Goddard, S. A.; Sharma, S. B.; Dumesic, J. A., Microkinetic analysis of diverse experimental data for ethylene hydrogenation on platinum. The Journal of Physical Chemistry 1992, 96 (4), 1880-1888.
+19. Abdelrahman, O. A.; Heyden, A.; Bond, J. Q., Microkinetic analysis of C3–C5 ketone hydrogenation over supported Ru catalysts.
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 13
+Journal of Catalysis 2017, 348, 59-74.
+20. Gao, X.; Heyden, A.; Abdelrahman, O. A.; Bond, J. Q., Microkinetic analysis of acetone hydrogenation over Pt/SiO2. Journal of Catalysis 2019, 374, 183-198. 21. Neurock, M.; Janik, M.; Wieckowski, A., A first principles comparison of the mechanism and site requirements for the electrocatalytic oxidation of methanol and formic acid over Pt. Faraday Discussions 2009, 140 (0), 363-378.
+22. Kang, Y.; Murray, C. B., Formic Acid Oxidation. In Encyclopedia of Applied Electrochemistry, Kreysa, G.; Ota, K.-i.; Savinell, R. F., Eds. Springer New York: New York, NY, 2014; pp 895-901. 23. Cuesta, A.; Cabello, G.; Osawa, M.; Gutiérrez, C., Mechanism of the Electrocatalytic Oxidation of Formic Acid on Metals. ACS Catalysis 2012, 2 (5), 728-738. 24. Grozovski, V.; Solla-Gullón, J.; Climent, V.; Herrero, E.; Feliu, J. M., Formic Acid Oxidation on Shape-Controlled Pt Nanoparticles Studied by Pulsed Voltammetry. The Journal of Physical Chemistry C 2010, 114 (32), 13802-13812. 25. Chen, Y. X.; Heinen, M.; Jusys, Z.; Behm, R. J., Kinetics and Mechanism of the Electrooxidation of Formic Acid—Spectroelectrochemical Studies in a Flow Cell. Angewandte Chemie International Edition 2006, 45 (6), 981-985. 26. Chen, Y. X.; Ye, S.; Heinen, M.; Jusys, Z.; Osawa, M.; Behm, R. J., Application of In-situ Attenuated Total Reflection-Fourier Transform Infrared Spectroscopy for the Understanding of Complex Reaction Mechanism and Kinetics: Formic Acid Oxidation on a Pt Film Electrode at Elevated Temperatures. The Journal of Physical Chemistry B 2006, 110 (19), 9534-9544. 27. Chen, Y. X.; Heinen, M.; Jusys, Z.; Behm, R. J., Bridge-Bonded Formate: Active Intermediate or Spectator Species in Formic Acid Oxidation on a Pt Film Electrode? Langmuir 2006, 22 (25), 10399-10408. 28. Elnabawy, A. O.; Herron, J. A.; Scaranto, J.; Mavrikakis, M., Structure Sensitivity of Formic Acid Electrooxidation on Transition Metal Surfaces: A First-Principles Study. Journal of The Electrochemical Society 2018, 165 (15), J3109J3121. 29. Adžić, R. R.; Simić, D. N.; Despić, A. R.; Dražić, D. M., Electrochemical oxidation of formic acid at noble metals: Catalytic effects of
+foreign metal monolayers. Journal of Electroanalytical Chemistry and Interfacial Electrochemistry 1977, 80 (1), 81-99.
+30. Grasemann, M.; Laurenczy, G., Formic acid as a hydrogen source – recent developments and future trends. Energy & Environmental Science 2012, 5 (8), 8171-8181. 31. Boddien, A.; Gärtner, F.; Federsel, C.; Sponholz, P.; Mellmann, D.; Jackstell, R.; Junge, H.; Beller, M., CO2-“Neutral” Hydrogen Storage Based on Bicarbonates and Formates. Angewandte Chemie International Edition 2011, 50 (28), 6411-6414. 32. Capon, A.; Parsons, R., The oxidation of formic acid at noble metal electrodes Part III. Intermediates and mechanism on platinum electrodes. Journal of Electroanalytical Chemistry and Interfacial Electrochemistry 1973, 45 (2), 205-231. 33. O. Wolter, J. W. a. J. H., Reaction Pathways of the Anodic Oxidation of Formic Acid on Pt Evidenced by 18O Labeling—A DEMS Study. Journal of The Electrochemical Society 1985, 132 (7), 1635. 34. Grozovski, V.; Climent, V.; Herrero, E.; Feliu, J. M., Intrinsic activity and poisoning rate for HCOOH oxidation on platinum stepped surfaces. Physical Chemistry Chemical Physics 2010, 12 (31), 8822-8831. 35. Yeo, Y. Y.; Vattuone, L.; King, D. A., Calorimetric heats for CO and oxygen adsorption and for the catalytic CO oxidation reaction on Pt{111}. The Journal of Chemical Physics 1997, 106 (1), 392-401. 36. Mrozek, M. F.; Luo, H.; Weaver, M. J., Formic Acid Electrooxidation on Platinum-Group Metals: Is Adsorbed Carbon Monoxide Solely a Catalytic Poison? Langmuir 2000, 16 (22), 84638469. 37. Lebedeva, N. P.; Koper, M. T. M.; Herrero, E.; Feliu, J. M.; van Santen, R. A., Cooxidation on stepped Pt[n(111)×(111)] electrodes. Journal of Electroanalytical Chemistry 2000, 487 (1), 3744. 38. Zhu, X.; Huang, J., Modeling Electrocatalytic Oxidation of Formic Acid at Platinum. Journal of The Electrochemical Society 2019, 167 (1), 013515. 39. Chung, D. Y.; Lee, K.-J.; Sung, Y.-E., Methanol Electro-Oxidation on the Pt Surface: Revisiting the Cyclic Voltammetry Interpretation. The
+
+
+____________________________________________________________________________
+Gopeesingh, et. al Page 14
+Journal of Physical Chemistry C 2016, 120 (17), 9028-9035. 40. Li, S.; Abdelrahman, O. A.; Kumar, G.; Tsapatsis, M.; Vlachos, D. G.; Caratzoulas, S.; Dauenhauer, P. J., Dehydra-Decyclization of Tetrahydrofuran on H-ZSM5: Mechanisms, Pathways, and Transition State Entropy. ACS Catalysis 2019, 9 (11), 10279-10293. 41. Joo, J.; Uchida, T.; Cuesta, A.; Koper, M. T. M.; Osawa, M., Importance of Acid–Base Equilibrium in Electrocatalytic Oxidation of Formic Acid on Platinum. Journal of the American Chemical Society 2013, 135 (27), 9991-9994. 42. Fedkiw, P. S., Traynelis, C. L. , Wang, S., Pulsed-Potential Oxidation of Methanol. Journal of The Electrochemical Society 1988, 135 (10), 2459. 43. Wang, S., Fedkiw P. S., Pulsed‐Potential Oxidation of Methanol: I . Smooth Platinum Electrode with and without Tin Surface Modification. Journal of The Electrochemical Society 1992, 139 (9), 2519.
+44. Wang, S., Fedkiw P. S., Pulsed‐Potential Oxidation of Methanol: II . Graphite‐Supported Platinum Electrode With and Without Tin Surface Modification. Journal of The Electrochemical Society 1992, 139 (11), 3151.
+45. Deshlahra, P.; Schneider, W. F.; Bernstein, G. H.; Wolf, E. E., Direct Control of Electron Transfer to the Surface-CO Bond on a Pt/TiO2 Catalytic Diode. Journal of the American Chemical Society 2011, 133 (41), 16459-16467. 46. Deshlahra, P.; Conway, J.; Wolf, E. E.; Schneider, W. F., Influence of Dipole–Dipole Interactions on Coverage-Dependent Adsorption: CO and NO on Pt(111). Langmuir 2012, 28 (22), 8408-8417. 47. Deshlahra, P.; Wolf, E. E.; Schneider, W. F., A Periodic Density Functional Theory Analysis of CO Chemisorption on Pt(111) in the Presence of Uniform Electric Fields. The Journal of Physical Chemistry A 2009, 113 (16), 4125-4133. 48. Gao, W.; Keith, J. A.; Anton, J.; Jacob, T., Theoretical Elucidation of the Competitive Electro-oxidation Mechanisms of Formic Acid on Pt(111). Journal of the American Chemical Society 2010, 132 (51), 18377-18385. 49. Maciá, M. D.; Herrero, E.; Feliu, J. M., Formic acid self-poisoning on adatom-modified stepped electrodes. Electrochimica Acta 2002, 47 (22),
+3653-3661. 50. Akhade, S. A.; Nidzyn, R. M.; Rostamikia, G.; Janik, M. J., Using Brønsted-Evans-Polanyi relations to predict electrode potential-dependent activation energies. Catalysis Today 2018, 312, 82-91.

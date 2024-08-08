@@ -1,0 +1,1881 @@
+20 March 2024
+Protein misfolding, amyloid formation, and human disease: A summary of progress over the last decade / Chiti, Fabrizio*; Dobson, Christopher M.. - In: ANNUAL REVIEW OF BIOCHEMISTRY. - ISSN 0066-4154. STAMPA. - 86:(2017), pp. 27-68. [10.1146/annurev-biochem-061516-045115]
+Original Citation:
+Protein misfolding, amyloid formation, and human disease: A summary of progress over the last decade
+Published version:
+10.1146/annurev-biochem-061516-045115
+Terms of use:
+Publisher copyright claim:
+(Article begins on next page)
+La pubblicazione è resa disponibile sotto le norme e i termini della licenza di deposito, secondo quanto stabilito dalla Policy per l'accesso aperto dell'Università degli Studi di Firenze (https://www.sba.unifi.it/upload/policy-oa-2016-1.pdf)
+Availability:
+This version is available at: 2158/1117236 since: 2018-03-05T19:11:06Z
+Questa è la versione Preprint (Submitted version) della seguente pubblicazione:
+FLORE
+Repository istituzionale dell'Università degli Studi
+di Firenze
+Open Access
+DOI:
+
+
+1
+Amyloid Formation, Protein Homeostasis and Human Disease
+A Summary of Progress over the Last Decade
+Fabrizio Chiti1 and Christopher M. Dobson2
+1 Department of Biomedical, Experimental and Clinical Sciences, Section of Biochemistry,
+Università di Firenze, Viale Morgagni 50, 50134 Firenze, Italy; e-mail: fabrizio.chiti@unifi.it
+2 Department of Chemistry, University of Cambridge, Lensfield Road, Cambridge CB2 1EW, UK:
+e-mail: cmd44@cam.ac.uk
+Key words
+autophagy, chaperones, conformational diseases, polyQ, prion, protein misfolding
+Abstract
+Proteins have a natural tendency to convert from their native forms into insoluble aggregates and
+this phenomenon give rise to a number of human diseases including Alzheimer and Parkinson
+diseases, type II diabetes and amyloidosis. We will describe complete lists of proteins forming
+amyloid and other type of protein deposits in human pathology and the disorders associated with
+their deposition, as well as the proteins that exploit the amyloid motif to play specific functional
+roles in humans. We will then describe the genetics associated with such diseases with the aim of
+learning the critical steps of the pathogenesis with amyloid aggregation. We describe recent
+advances in our understanding of the structure of amyloid fibrils and their precursor oligomers, as
+well as mechanisms of their formation and ability to cause cell dysfunction. Finally we will present
+evidence that a complex proteostasis network actively combats proteins aggregation and the reasons
+why such an efficient system fails in some circumstances.
+
+
+2
+Contents
+INTRODUCTION
+STRUCTURAL PLASTICITY OF PROTEINS
+THE MOLECULAR NATURE OF AMYLOID-RELATED DISEASES
+General overview
+Genetics of amyloid-related diseases (1225)
+THE STRUCTURES AND PROPERTIES OF AMYLOID FIBRILS
+General Characteristics
+Molecular Structures of Amyloid Fibrils
+Common Features of Amyloid Structures
+MECHANISMS OF AMYLOID FIBRIL FORMATION
+Descriptions of Protein Aggregation
+Quantitative Analysis of Protein Aggregation Mechanisms
+Intermediate Species in Fibril Formation
+THE MOLECULAR ORIGINS OF AMYLOID-RELATED PATHOGENICITY
+The Structural Determinants of Oligomer Toxicity
+Protein Metastability and the Proteostasis Network
+LOOKING TO THE FUTURE – FROM THEORY TO THERAPY
+
+
+3
+INTRODUCTION
+Just over ten years ago we wrote an article for Annual Reviews of Biochemistry entitled ‘Protein
+Misfolding, Functional Amyloid and Human Disease’ (1). In the Introduction to this article we
+noted that “writing a review on protein aggregation and its associated diseases is a challenging
+activity, due to the astonishingly high number of papers published on this broad topic and the
+heterogeneity of the clinical profiles of the diseases and of the proteins associated with them”. This
+task might now be seen to be even more challenging as the number of papers per year with
+‘amyloid’ in the title or abstract has increased by a factor of two over that time. On the other hand,
+huge progress has been made in understanding the process of amyloid formation and its
+significance in the normal and aberrant behaviour of biological systems. In particular, the
+development and application of new experimental and theoretical methodologies and the
+availability of a wealth of experimental data from various disciplines has transformed our
+knowledge of this increasingly important field of science.
+As in our previous review we have looked in particular across the various manifestations of
+the ‘amyloid phenomenon’ to identify and describe its common or ‘generic’ features, from a
+physicochemical, biochemical, genetic and biological angle, with particular emphasis on those
+observations and principles emerging from the study of multiple protein and disease systems. The
+human disorders associated with amyloid formation range from Alzheimer’s disease, in which such
+aggregates are located in the brain, to Type II diabetes, where deposits form in the pancreas, to
+systemic conditions in which deposits can be found in multiple organs, including the liver and the
+heart. In addition, some twenty years ago it became evident that it is possible to find conditions
+under which peptides and proteins with no connection with disease can convert in vitro into fibrils
+with all the characteristics of those associated with amyloid disorders (2, 3). Since polypeptides
+containing only a single type of amino acid residue, such as polylysine and polythreonine, and even
+single amino acid residues, such as L-phenylalanine, can form such fibrils (4, 5), this finding added
+strong support to the suggestion that the ability to form this type of structure is an inherent property
+of polypeptide chains rather than being encoded in their sequences, as is the case for the structures
+of the functional states of proteins (1). Indeed, subsequent studies revealed that amyloid fibrils have
+properties that have potential significance for the development of novel biopolymers and
+biomolecular devices (6, 7), and that a number of amyloid fibrils forming naturally under non
+pathological conditions have functional roles in living systems (8-10).
+Our aim in this article is to summarise briefly the information that has been covered in the
+previous review, and that still represents the key fundamental aspects of the amyloid phenomenon,
+and then to place particular emphasis on those areas in which major new advances have been made
+
+
+4
+since it was written. In looking to the future we outline the increasing progress that is being made
+towards the rational development of new therapeutic strategies to combat amyloid-related disorders.
+The importance of the latter topic is that no cures currently exist for any of this family of diseases
+that are increasingly prevalent, in particular because of their links to ageing, most dramatically
+illustrated through Alzheimer’s disease, and to other characteristics of the modern world, such as
+Type II diabetes. Given the enormous burden that these diseases inflict on society and on health
+care budgets the failure to find effective therapies will have a huge impact on human society within
+the next generation. The ultimate aim of this review, therefore, is to summarise the fundamental
+aspects of amyloid fibril formation and its links to human disease, and hence to outline general
+principles through which, we believe, the rational development of therapeutic strategies to combat
+this family of diseases will increasingly achieve success.
+STRUCTURAL PLASTICITY OF PROTEINS
+In our last review we stressed the fact that a protein molecule can adopt a multitude of different
+conformational states between its synthesis on the ribosome and its eventual degradation through
+proteolysis, with such states interconverting on a wide range of timescales (1). Figure 1 summarises
+a selection of the most important of these different states from a mechanistic and biological
+perspective. A range of proteins, including -synuclein, tau and the islet amyloid polypeptide that
+are of particular interest in the context of protein deposition disorders, remain persistently as
+‘natively unfolded’ or ‘intrinsically disordered’ (Figure 1, box 1), although many such proteins are
+thought to fold into more well-defined structures after interaction with specific binding partners
+(11). Intrinsically disordered systems can also be generated following proteolysis from proteins that
+are otherwise folded, such as the amyloid  peptide and the islet amyloid polypeptide and the
+amyloidogenic fragment of gelsolin (Figure 1, box 1). Most newly synthesized polypeptide chains,
+however, fold through the formation of one or more partially folded states, including lysozyme,
+transthyretin and 2-microglobulin (Figure 1, box 2). Although the classical picture of a natively
+folded protein is that of a highly constrained conformational ensemble, it is clear that many such
+proteins can include significantly disordered regions, of which the mammalian prion protein is a
+clear example.
+The different conformational states adopted by proteins involve a highly complex series of
+equilibria whose thermodynamics and kinetics are determined in a normally functioning living
+system by their own amino acid sequences as well as molecular chaperones, degradation processes
+and other sophisticated quality control mechanisms. Although their amino acid sequences and the
+biological environment in which they function have co-evolved to maintain proteins in their soluble
+
+
+5
+states, in some circumstances they can convert into non-functional and potentially damaging protein
+aggregates (Figure 1, box 3). Protein aggregation has been found to involve both intrinsically
+disordered proteins, such as -synuclein and the amyloid  peptide (12, 13) and globular proteins,
+such as 2-microglobulin and transthyretin (14, 15) (Figure 1, box 3).
+The aggregates that form initially involve a relatively small number of molecules and
+generally retain a structural memory of the monomeric states that have generated them, thus giving
+rise to highly disordered, partially structured and native-like oligomers if they originate from
+unfolded, partially folded and folded monomeric states, respectively (Figure 1, box 3) (12, 13, 16
+22). These early aggregates are typically rather unstable, as only relatively weak intermolecular
+interactions are involved, and may simply dissociate to regenerate soluble species. When
+aggregation proceeds, however, they undergo internal reorganisation to form more stable species
+having -sheet structure, a process that is often accompanied by an increase in compactness and
+size (Figure 1, box 3) (12, 13, 16-22). These -structured oligomers are able to grow further by self
+association or through the addition of monomers, often with further and sometimes dramatic
+structural reorganisations, to form well defined fibrils with cross- structure and a high level of
+structural order (Figure 1, box 4). Alternatively, the disordered aggregates or native-like aggregates
+can grow without conversion into -structured species and give rise to large amorphous deposits or
+native-like assemblies, retaining the structure characterising the initial oligomers (Figure 1, box 4).
+The formation of all of such large aggregates, including amyloid, amorphous or native-like
+assemblies, has a link with human disease as they accumulate in well defined pathological states.
+Table 1 and Table 2 list the proteins and disorders that have now been identified as linked to the
+formation of amyloid fibrils or other types of aggregates, respectively. We have structured both
+tables in terms of proteins rather than disorders to stress the fact that many of these proteins are
+found to be involved in a variety of pathological conditions. Interestingly, immunoglobulins or their
+subunits are found in all the different types of of protein aggregates, including amyloid (as in light
+chain amyloidosis), amorphous (as in light chain deposition disease) and native-like (as in Berger
+disease), thus representing a remarkable manifestation of the multiplicity of pathways existing in
+protein aggregation and of structures/morphologies that can be generated (23, 24, 25).
+We also list in Table 3 examples where amyloid structures have been found to have
+functional significance in humans. These forms of ‘functional amyloid’ appear to be largely found
+in bacterial and fungal systems but several interesting examples have been detected in higher
+organisms including humans (8-10, 26). Since most of the protein deposits associated with protein
+misfolding diseases consist of amyloid fibrils, in the remainder of this article we shall focus on
+amyloid structures and their significance in disease, with the major emphasis on the substantial
+progress in this area that has been made over the past decade.
+
+
+6
+THE MOLECULAR NATURE OF AMYLOID-RELATED DISEASES
+General overview
+35 peptides/proteins have so far been found to form amyloid deposits in human pathologies (Table
+1, column 1). Most of these systems are secreted, and the resulting deposits are found to be in
+extracellular space. Indeed, only four of the proteins listed in Table 1 (labelled with the superscript
+e) are cytosolic and form intracellular inclusions with amyloid-like characteristics. In addition, most
+of the polyeptides involved are small in size: half of them have less than 100 amino acid residues,
+only four have more than 400 residues and none has more than 700 residues (Table 1, column 2).
+By comparison, the average length of the ca. 34,180 proteins encoded in the human genome is
+almost 500 residues (27). Thirteen of the known amyloid-associated proteins adopt a well-defined
+fold in their native states with a variety of secondary, tertiary, and sometimes quaternary structural
+characteristics; twelve are intrinsically disordered, often consisting of fragments generated from
+larger proteins by proteolytic cleavage; nine are of unknown structure and one contains both a
+globular and an intrinsically disordered domain (Table 1, column 3). There are no significant or
+even detectable similarities between the proteins in sequence, structure or function.
+Seven of the proteins associated with disease form amyloid deposits in the central nervous
+system, giving rise to neurodegenerative conditions, such as Alzheimer’s and Parkinson’s disease,
+whilst the remainder form deposits in other tissues and the resulting diseases are thus non
+neuropathic (Table 1, columns 4-5). In this latter group of 27 proteins, 13 aggregate in a range of
+tissues, including the heart, spleen, liver and kidney, and give rise to systemic amyloidosis, whereas
+15 aggregate in one of a variety of specific tissue, giving rise to a diverse range of conditions
+including, for example, type II diabetes and atrial amyloidosis (Table 1, columns 4-5). The ABri
+peptide, associated with Familial British dementia, has a significant overlap with both groups of
+neuropathic and non-neuropathic diseases, as it forms deposits in both the brain and in other tissues
+(28). TTR is also an unusual case as the associated diseases are generally systemic or involve the
+peripheral nervous system or the heart; however, a small number of mutations of this protein also
+give rise to a leptomeningeal (or central nervous system) amyloidosis affecting the brain (15).
+One third of the diseases are always familial, and in such situations generally have an early
+age of onset (Table 1, column 5). The mutations are generally located in the sequence of the
+polypeptide chain that undergoes aggregation and are autosomal dominant, i.e. a mutation in just
+one copy of the gene is sufficient to cause disease. In some of these hereditary diseases the cause
+effect relationship of the mutation(s) has been studied in detail, clarifying the mechanism of action
+through which the mutations are aggregation-prone and pathogenic (see section below). Half of the
+
+
+7
+amyloid-related diseases are largely sporadic, although hereditary forms are documented in at least
+some patients; when sporadic, they have a relatively late age of onset (Table 1, column 5),
+suggesting that the phenomenon of protein aggregation, and its associated symptomatic conditions,
+originates primarily from a progressive loss of regulatory control with aging (29, 30).
+A small number of the disorders occur as a result of medical treatment (Table 1, column 5).
+Notable examples include dialysis-related amyloidosis associated with haemodialysis, injection
+localized amyloidosis linked to treatment for Type I diabetes, and iatrogenic Creutzfeldt-Jacob
+disease, which results from transplants or treatment with biological derivatives extracted from
+cadavers contaminated with aggregated forms of the prion protein. Several other diseases associated
+with the prion protein are also transmissible: ritualistic cannibalism has been identified as the cause
+of the transmission of a prion disease, known as Kuru, in Papua New Guinea (31, 32), and a small
+number of people are thought to have contracted a new variant of Creutzfeldt-Jacob disease
+(nvCJD) by consuming carcasses from animals infected with the bovine form of the disease (32,
+33). The causes of the transmission of these prion diseases are now under strict control with no new
+cases diagnosed over the past few years. There are reports that other amyloid-related diseases may
+be transmissible under laboratory conditions, but no evidence has been found for such events under
+normal conditions.
+Genetics of amyloid-related diseases (1225)
+Familial forms of amyloid-related diseases are often related to specific mutations within the gene
+encoding the peptide/protein that converts into amyloid fibrils (Table 2, column 5). Studies of the
+mechanisms by which these mutations are pathogenic have revealed that they often increase the
+propensity of the protein to aggregate, either directly or indirectly. There are, for example, over 100
+mutations linked to hereditary forms of transthyretin amyloidosis that are known to lead to
+destabilisation of the native tetrameric form of the protein, resulting in an enhanced population of
+the amyloidogenic monomer. Indeed, the in vitro amyloidogenicity of the natural TTR variants was
+found to correlate with a combination of their effects on the thermodynamic and kinetic stability of
+the tetrameric form, with all the variants having a stability score lower than wild-type TTR (15).
+Similarly, within a group of eight pathogenic mutations so far identified for lysozyme, the two most
+widely studied substitutions (I56T and D67H) are known to destabilise the native fold and increase
+the fractional population of a locally unfolded native-like state (34, 35). Formation of partially
+unfolded states facilitates aggregation as hydrophobic groups and segments of the polypeptide
+backbone that are buried and engaged in structure formation in the native state become available for
+intermolecular interactions.
+
+
+8
+A similar situation is evident from studies of the 19 pathogenic mutations known to be
+associated with systemic ApoAI amyloidosis. The mutations have been found to induce
+destabilisation of the dimeric lipid-free folded state, facilitating the exposure of amyloidogenic
+regions of the sequence; in this case, however, the loss of stability enables proteolysis to occur and
+generate a series of N-terminal unstructured fragments that are highly amyloidogenic (36, 37). In
+addition, some mutations have been reported to increase the rate of aggregation of the fragments
+themselves (36), and others have been suggested to promote dissociation of the full-length native
+dimer from the high-density lipoprotein (HDL) surface (37). Similarly, four mutations have been
+found in gelsolin as causative agents of Finnish type familial amyloidosis. Two of the variants
+(D187N and D187Y) have been widely studied and have been found to destabilise the native state
+of the protein by abolishing the ability of the second domain of the protein to bind Ca2+ (38),
+causing it to become susceptible to proteolytic cleavage and to generate highly amyloidogenic
+fragments (38-40). Overall, in the case of all four of these very different globular proteins, the
+pathogenic mutations destabilise the native states, making them susceptible to aggregation either
+directly or following proteolytic cleavage.
+A variety of origins of pathogenicity have been identified for the ca. 50 known mutations of
+ responsible for frontotemporal dementia with Parkinsonism linked to chromosome 17 (FTDP-17).
+Most of the mutations have long been known to cause a loss of binding of  to microtubules,
+resulting in unfolding of the protein to its intrinsically disordered unbound state; several of the
+mutations also increase the aggregation rate of the resulting unfolded protein (41). Approximately
+10 of the known mutations of  are pathogenic through a very different and particularly interesting
+mechanism, as they cause alternative splicing of the pre-mRNA of  generating a highly
+amyloidogenic isoform, in addition to the normal sequence (42).
+The A40 and A42 peptides associated with familial Alzheimer’s disease and with
+hereditary cerebral haemorrhage with amyloidosis have been studied intensively and represent a
+particularly important source of information on the mechanism by which mutations are pathogenic.
+26 mutations map onto the gene coding for the precursor APP protein, all of which are located
+within or near the region coding for the A42 peptide that is generated by proteolysis (residues 672
+713). One double mutation (K670N-M671L) is located immediately before the cleavage site for the
+-secretases that generate the N-terminus of A. Fourteen mutations are downstream of the
+cleavage sites for the -secretases that generate the C-terminus, whereas the other eleven mutations
+are within the A42 region itself. The mutations following the C-terminus increase the specificity of
+-secretase for cleavage sites of APP so that the proportion of the 42-residue isoform of A is
+increased relative to the less amyloidogenic 40-residue form (43, 44). The K670N-M671L double
+
+
+9
+mutation at the N-terminus, the A673V recessive mutation and the A692G mutation, render the
+APP a better substrate for the -secretases BACE1 and BACE2, with the consequent
+overproduction of both forms of A (45, 46). Among the remaining nine mutations within the A42
+sequence itself, the E693Q, E693G, E693K, ∆Glu693, D694N and A713T mutations have been
+found to have no effect on the specificity of any of the secretases (47-50), while the effects of the
+other three mutations have not yet been reported. Nevertheless, all nine mutations are expected on
+theoretical grounds to increase the aggregation rate of the intrinsically disordered A peptides, and
+for a number of them the predictions have been verified experimentally (47, 51, 52).
+Six pathogenic mutations of -synuclein, a protein that similarly to A is intrinsically
+disordered, have been associated with familial forms of Parkinson’s disease, namely A53T, A30P,
+E46K, H50Q, G51D and A53E. Although there is evidence that the mutations can influence very
+significantly the rates of the various steps involved in amyloid formation, no clear links between
+these rates and the onset of disease have yet been established (53, 54).
+Another interesting mechanism by which mutations can become pathogenic is a change in
+the stop codon for translation. The three known mutations of corneodesmosin associated with
+hypotrichosis simplex of the scalp (Q168X, Q183X Y207X) insert a nonsense stop codon in the
+middle of the coding sequence, resulting in the formation of a truncated protein that is unable to
+fold and is therefore highly aggregation prone (55). By contrast, the two known mutations of the
+BRI gene associated with familial British dementia and familial Danish dementia, respectively, and
+the four known mutations of ApoAII associated with ApoAII amyloidosis, change the natural stop
+codon into a coding trinucleotide (56-59). This change results in the generation of polypeptide
+chains with undesired C-terminal extensions, which increase the amyloidogenicity of the whole
+polypeptide as a result of their unfolded nature and high intrinsic aggregation propensity (60). In
+addition, there are several disorders associated with the elongation of the amyloidogenic CAG
+repeat expansion within a gene, as occurs for the exon 1 of the huntingtin gene as well as for other
+genes coding for other polyQ containing proteins (61). Another very important type of mutation
+causes a duplication or triplication of the gene, resulting in a higher concentration of the
+amyloidogenic protein as occurs for the APP gene / A peptide in familial forms of Alzheimer’s
+disease (62), as well as the SNCA gene / -synuclein in familial Parkinson’s disease (63, 64).
+It is clear from examination of the data available at this point in time that all the familial
+mutations involving the sequences of the proteins undergoing amyloid fibril formation favour the
+aggregation process through one or more of the mechanisms described above and summarized
+schematically in Figure 2. This universal link between pathogenic mutation and aggregation
+provides clear genetic evidence that protein aggregation is a primary event in the pathogenesis of
+the corresponding diseases, rather than a secondary effect. Moreover, investigation of the
+
+
+10
+mechanisms of action and effects of such mutations provides vital evidence about the mechanisms
+and critical steps in protein aggregation that give rise to disease (Figure 2).
+THE STRUCTURES AND PROPERTIES OF AMYLOID FIBRILS
+General Characteristics
+Amyloid fibrils, whether extracted from patients or generated in the laboratory, are thread-like
+structures that are typically 7-13 nm in diameter, as observed by EM and AFM techniques, and
+often microns in length. They are generally composed of 2-6 protofilaments, each about 2-7 nm in
+diameter, that often twist around each other or associate laterally as flat ribbons that are 2-7 nm
+high and up to 30 nm wide, although mono-protofilament fibrils have also been observed (65, 66).
+The fibrils possess a cross- structure, in which -strands are oriented perpendicularly to the fibril
+axis and assembled into -sheets that run the length of the fibrils, as detected initially using X-ray
+fibre diffraction (67), with recent support from FTIR spectroscopy, ssNMR and X-ray
+crystallography (65, 68-69). The existence of such structure is characteristically monitored by the
+binding of dyes, such as thioflavin-T (ThT) or Congo red (CR), or their derivatives, which are
+thought to form ordered arrays along the lengths of the fibrils that give rise to specific spectral
+responses (70, 71). These three features, a fibrillar morphology, cross- structure and characteristic
+tinctorial properties, are universally accepted as the hallmarks of amyloid structure, and any given
+protein aggregate needs to display all of them to be classified as such.
+The physicochemical properties of amyloid fibrils have been examined in detail by a variety
+of techniques, notably AFM, and found to be remarkably highly organised with persistence lengths
+on the order of microns and with a tensile strength that approaches that of steel (6). The mechanical
+strength and stability of amyloid fibrils can be attributed primarily to the formation of the extended
+-sheets that are characteristic of the amyloid architecture, a feature that is enhanced by the
+presence of multiple closely interacting sheets as well as further association of protofilaments to
+form higher order structures. An intriguing aspect of the amyloid structure is the close similarity of
+the fibrils formed by different polypeptide chains. This generic nature (where ‘generic’ indicates
+common but not identical) can be attributed to the dominance of the main chain interactions that are
+common to all polypeptide molecules, with variations on this common theme resulting from
+differences in amino-acid sequences and chain lengths, and other factors including the solution
+conditions. Recent experimental, theoretical and computational studies have provided detailed
+explanations for the underlying architecture, including such characteristics as the similarities in the
+lengths of the -strands, the low degree of twist in the -sheets, and the fact that short peptides can
+
+
+11
+assemble into three-dimensional crystals whilst the most regular structures attainable by longer
+sequences are one-dimensional filamentous assemblies (6).
+It is increasingly clear that the amyloid form of a protein molecule can be even more stable
+than the native state, whether intrinsically disordered or globular, even under physiological
+conditions (72-74). Such a situation is particularly true in the case of short sequences, as longer
+sequences not only incorporate only a fraction of their polypeptide chains into the cross- core but
+also have an increasing probability of being unable to generate highly ordered structures from
+unfolded segments of their sequences (73). In accord with this conclusion it is evident that all the
+polypeptides associated with amyloid formation in vivo, both in disease and for functional
+purposes, have relatively short chain lengths (Table 1), whereas proteins forming amorphous or
+native-like deposits in pathology are, on average, much longer (Table 2). Given the high stability
+and generic nature of amyloid fibrils it is not surprising that, following initial reports (2, 3), a large
+number of very different proteins that have no link with human disease have been converted in vitro
+into amyloid-like fibrils that are morphologically, structurally and tinctorially indistinguishable
+from those associated with amyloid deposits in pathology.
+Molecular Structures of Amyloid Fibrils
+The utilisation of ssNMR, cryo-EM and X-ray microcrystallography has generated a dramatic
+increase in our knowledge of the detailed structures of amyloid fibrils from a wide variety of
+peptides and proteins. Of particular importance were two early structural models of A40
+protofilaments, which revealed the overall similarities but differences in detail between different
+polymorphic forms of this important system (65, 75). The models were developed from structural
+constraints obtained using ssNMR data, TEM imaging and mass-per-length measurements obtained
+with STEM (Figure 3a). In one model the protofilaments are 6 nm in width and associate laterally
+to form “striated ribbons” (75), whilst in the other the protofilaments are 7 nm in width but do not
+associate laterally (65). In both cases, each polypeptide chain has a flexible N-terminal segment and
+residues 10-22 and 30-40 form a pair of -strands that are linked by a long loop. Both -strands are
+incorporated into distinct, stacked -sheets, lying along the axis of the protofilaments with all
+strands arranged in a parallel, in-register fashion and having a number of intermolecular side-chain
+contacts.
+Despite these common structural features, in the polymorph with striated ribbons, each
+protofilament consists of four -sheets and has overall two-fold symmetry (Figure 3a, top), whereas
+in the second polymorph six -sheets are present, arranged in three-fold symmetry (Figure 3a,
+bottom). Differences between the two polymorphs also involve sidechain-sidecain interactions.
+
+
+12
+Other structures of A40 and A42 protofilaments have been proposed more recently using ssNMR,
+indicating yet further that different polymorphs can be obtained with the same peptide (76-78).
+Structural models of protofilaments deduced from ssNMR and electron microscopy
+restraints have also been described for human IAPP (79, 80), medin (81), HET-s from P. anserina
+(66, 82) and polyglutamine containing peptides (83). ssNMR structural data were also obtained for
+other disease-associated systems, although analysis of these systems has not yet led to detailed
+models of the protofilaments, but has been limited so far to the identification of those regions of the
+sequences that form -strands in the fibrils. Examples include fibrils from human PrP23-144 (84),
+ovine PrP25-233 (85), human insulin (86), transthyretin (87), the K19 fragment of tau (88), calcitonin
+(89), 2-microglobulin (90), and a number of polymorphs of -synuclein (91-95).
+Important contributions to our knowledge of the types of interactions likely to be present in
+amyloid fibrils have also been provided by X-ray diffraction studies of microcrystalline arrays of
+short peptides, typically containing less than 10 residues (Figure 3b). Such studies can give rise to
+high-resolution structures, and some 30 systems have now been studied in this way, revealing a
+series of common characteristics, such as the participation of each peptide molecule in a single 
+strand, the in-register alignment of the -strands in the -sheet to optimize the intermolecular
+interactions, the presence of pairs of -sheets parallel to each other and propagating along the fibril
+axis, and the tight inter-digitation of the side chains within such pairs (69). The various structures
+have been divided in different classes, depending on whether the -strands in the same sheet are
+parallel or antiparallel, whether the adjacent sheets interact face-to face or face-to-back and whether
+the corresponding strand termini from different sheets point to the same or opposite directions (69).
+In addition, important information has emerged from X-ray diffraction studies of fibres or powders
+formed by short peptides or polyglutamine-containing peptides, exploiting the relative simplicity of
+the patterns from short or repetitive sequences of the peptides studies in this way (96-98). Recently,
+a novel micro-electron diffraction method has been applied to determine the structure of an 11
+residue peptide assembled in nanocrystals at 1.4 Å resolution, further enlarging our technical
+abilities to solve the structure of amyloid assemblies at atomic resolution (99).
+A particularly interesting and important structural study of a fibril is that determined at
+atomic resolution for the prion domain of HET-s from P. anserina (residues 218-289) using ssNMR
+(66, 82). The fibril is a single protofilament consisting of a left-handed -solenoid or -helix
+structure in which each molecule contributes to two windings of the -solenoid and eight -strands
+(Figure 3c). The first four and last four strands contribute to the first and second windings,
+respectively, so that 4 parallel -sheets are generated that propagate along the fibril axis. In this
+structure each strand interacts with a different strand of the same or different molecule, so that the
+
+
+13
+arrangement is parallel but not in-register. A similar -solenoid structure has recently been
+proposed also for the human prion fibril on the basis of X-ray fibre diffraction data, although in this
+case each molecule contributes to four, rather than two, windings of the -helix (100). Although
+such a structure can be one of many possible polymorphs, it is tempting to speculate that the 
+solenoid structure is a specific ‘evolved’ structure responsible for infectivity of prion proteins, and
+so is distinct from the ‘default’ amyloid structure. As it does not have a double sheet it may be more
+easily fragmented than classic amyloid structures, potentially a key element in explaining
+transmission in prions, although such assertions await experimental confirmation.
+Other interesting structural models that have been characterised are of native-like amyloid
+fibrils, where the folded conformation is largely maintained in the fibrils, such as in fibrils of wild
+type transthyretin (101-103), the S134N mutant of superoxide dismutase type 1 (104) and full
+length wild-type cystatin c (105). It is clear that only proteins predominantly formed by -sheet
+structure, such as the three examples mentioned above, can maintain a native-like structure in the
+amyloid fibrils and give rise to the cross- structure concomitantly. None of the amyloid fibrils so
+far characterised by normally folded proteins were found to consist of run-away domain swapped
+structures. These structures have mainly been identified within crystals, in the absence of a cross-
+structure. They have also been identified in non-crystalline amyloid-like fibrils possessing a cross-
+structure, but in this case domain swapping is promoted by the presence of unnatural engineered
+disulphide bridges or polyQ tracts (106, 107).
+Common Features of Amyloid Structures
+The large number of structural models, and more recently high-resolution atomic structures, of
+amyloid fibrils that are now becoming available makes it possible to begin to identify and to
+rationalise their important common and distinctive features. First, it is evident that polymorphism is
+frequent, i.e. that the same protein sequence can give rise to fibrils that differ both in the molecular
+structures of their protofilaments and the overall morphology of the mature fibrils. A remarkable
+example of polymorphism is represented by TTR fibrils, where an essentially native-like stacking
+of transthyretin molecules has been described by three groups (101-103), whilst the structures
+described in another report involve a global reorganization of the structure in the fibrillar state
+relative to the native fold (87). In a manner similar to that observed in many crystalline systems, a
+given polymorph can seed the same type of structure, as shown for A40 twisted fibrils and striated
+ribbons formed under quiescent and agitated conditions, respectively, which propagate the same
+structure even if they are used to seed fibril growth under the different conditions (108). A similar
+pattern of behaviour has been observed for many other systems, such as two types of insulin fibrils
+
+
+14
+(109) and -synuclein fibrillar assemblies (110). This concept is likely to be the underlying origin
+for distinct prion ‘strains’ (111).
+Polymorphism is an inherent consequence of the generic ability of polypeptide chains to
+form amyloid fibrils. Unlike native folds that have been selected through evolution and are encoded
+in their amino acid sequences, the amyloid architecture is simply a consequence of the
+physicochemical properties of a polypeptide chain, and there are multiple ways that a given
+sequence can be incorporated in such structures. In the majority of cases, in the absence of
+evolutionary selection and optimisation, there is likely to be a multiplicity of structural
+arrangements of closely similar energy. Once a given type of assembly has been initiated, however,
+it will generally propagate because of the inherently stability of repetitive structures in highly
+organised systems and the high kinetic barriers that exist in the interconversion between
+polymorphs, a situation analogous to that observed in crystallography.
+A second recurrent theme that emerges from an analysis of the various amyloid structures is
+the structural organization of -strands in the core of the fibrils. The strands are found generally to
+interact to form -sheets with a parallel in-register arrangement, i.e. the individual strands all have
+the same N-terminal to C-terminal orientation, and residue i of one strand interacts with the
+equivalent residue i of the next strand. This arrangement is evident in all polymorphic forms of
+A40 and A42 fibrils so far characterized (65, 75-78, 112, 113), for all polymorphs of -synuclein
+(94, 95, 114, 115), for full-length and the K19 fragment of tau (88, 116), for IAPP (79, 117), 2
+microglobulin (118), medin (81) and various PrP fragments (84, 85, 119). The frequency of this
+parallel in-register arrangement relative to other alternatives can be attributed to both
+thermodynamic and kinetic factors, as it maximises the number of hydrogen bonds and hydrophobic
+interactions along the fibril axis. The out-of-register arrangement necessarily generates alternative
+interactions of hydrophobic-hydrophilic residues in the fibril direction, and so is likely to give rise
+to less stable structures.
+Alternative organisations of the -strands within fibrils are, however, found for small
+peptides, where an antiparallel arrangement is sometimes preferred to a parallel one; the small
+number of residues involved means the energetic penalty to be paid in breaking the parallel in
+register arrangement is relatively low and can largely be compensated by alternative interactions,
+for example by salt bridges contributed by amino acid residues with opposite charges at the N- and
+C-termini that are spatially close in the fibrils (69, 96). In the case of polyQ containing peptides,
+however, an antiparallel arrangement has been found for both long and short sequences where the
+alignment of glutamine residues along the fibril axis is present in both the parallel and antiparallel
+arrangements and is not compromised following any shift of the register in adjacent strands (83,
+97). Nevertheless, antiparallel arrangements have also been found for long sequences without
+
+
+15
+repetitive amino acid residues, such as in fibrils from calcitonin (89), some polymorphs of
+transthyretin (87, 102) and the D23N mutant of A40 (120). In the latter case, at least, it was shown
+that antiparallel structure coexists with the conventional parallel structure and represents a
+metastable polymorph that slowly converts into the parallel one (120).
+Except in the case of peptides of less than about 12 residues, only a fraction of the
+polypeptide chain is incorporated in the cross- core of the fibrils. It has been shown that the
+regions of the sequence of a given protein embedded within such core regions can be predicted
+from physicochemical properties such as the high density of hydrophobic groups, the small number
+of charges, the high propensity for -sheet structure and the presence of patterns of alternating
+hydrophilic and hydrophobic residues, leading to the explosive birth of a number of algorithms with
+predictive power (121). Figure 4 shows the comparison between the aggregation propensity profiles
+generated by one representative algorithm (122, 123) for four representative peptides/proteins,
+namely A, -synuclein, IAPP and the K19 fragment from tau, with respect to the experimental
+data available for the fibrils of these four systems. The excellent agreement between theoretically
+and experimentally determined sequence regions is evident, despite some variations resulting from
+fibril polymorphism, and provides strong support for the view that the inherent architecture of the
+amyloid structure is determined by the intrinsic properties of the main chain, and that a given
+sequence portion is incorporated with such a framework in ways that optimise the interactions
+between the various side-chains.
+The structures and structural models described above have been determined for fibrils
+formed entirely in vitro under carefully controlled conditions. Recently, however, fibrils amenable
+to TEM and ssNMR investigation have been generated in vitro from synthetic A40 but after
+seeding with material extracted post mortem from the brains of Alzheimer’s disease patients (77).
+After seeding with aggregates from two patients with different clinical histories, the fibrils were
+found in each case to have a single morphology, but one that differed in the two cases, and indeed
+from all the polymorphs previously characterized in vitro. This observation suggests that the
+specific environment within the brain influences strongly the initiation of fibril growth, and that the
+morphology formed in this process is then propagated as a result of the aggregates spreading
+throughout the brain (77). Similarly, tau fibrils produced from recombinant protein seeded with
+brain-derived paired helical filaments were found to be similar to those formed directly in the brain
+and different from those of heparin-induced fibrils formed in vitro (124).
+MECHANISMS OF AMYLOID FIBRIL FORMATION
+Descriptions of Protein Aggregation
+
+
+16
+One of the most significant recent advances in the study of protein misfolding and aggregation has
+been the development and application of robust experimental and mathematical techniques to
+analyse the kinetics of amyloid fibril formation to yield insight into mechanism. It has long been
+recognised that the process underlying the conversion of a normally soluble peptide or protein into
+an aggregated state, as in the more familiar process of molecular crystallisation, involves nucleation
+and growth steps. Indeed, when the quantity of fibrils formed during an aggregation reaction is
+measured as a function of time, for example by monitoring turbidity or ThT fluorescence, sigmoidal
+kinetics are frequently observed reflecting three distinct phases, generally described as a lag phase,
+an exponential phase (also called an elongation, growth, polymerisation or fibrillation phase) and
+an equilibrium phase (also called a plateau or saturation phase) (125-128).
+In the simplest type of ‘nucleated polymerization’ mechanism, monomers that are
+completely or partially disordered convert into nuclei through a thermodynamically unfavourable
+process that takes place early in the lag phase (Figure 5A, red arrow pathway); fibrils then grow
+from these nuclei through the addition of monomers at the fibril end (127); Such nuclei are
+thermodynamically unstable and can be thought of as the smallest structures that are able to initiate
+fibril elongation, or the smallest species where the rate of further monomer addition exceeds that of
+monomer release (127). Nuclei can even be monomers with a well defined conformation (Figure
+5A) (129, 130). This model has been used to describe the aggregation of a range of systems
+including the prion protein (131), A40 and A42 (125), -synuclein (132), polyGln sequences
+(133), insulin (134) and others.
+In some cases, however, monomers convert rapidly into misfolded aggregates through a
+template-independent mechanism, with formation of ‘molten’ assemblies that lack the structural
+characteristics needed to grow into organised fibrils (Figure 5A, blue arrow pathway) (17). These
+initial aggregates can, however, undergo a structural reorganization to generate nuclei, on which
+other molten oligomers acquire the amyloid conformation through a templating or induced-fit
+mechanism at the aggregate ends (17). This leads eventually to the formation of fibrils (Figure 5A).
+Unlike nucleated polymerisation, in this ‘nucleated conformational conversion’ mechanism, the
+rate-limiting step is the conversion of the initially formed oligomers into the growth-competent
+nuclei. A nucleated conformational conversion model has been used to describe amyloid formation
+by a range of systems including the NM region of the yeast prion Sup35p (17), ADA2h (135), the
+prion protein (136), A40 (12), huntingtin exon 1, (137), IAPP (138) and hen lysozyme (139).
+In the case of globular proteins, the usually compact and highly cooperative structures bury
+the most aggregation-prone regions of the molecules within the core of the protein. Thus, normally
+folded proteins need to convert into a partially unstructured ensemble that is competent for
+aggregation, before aggregation can proceed through one of the mechanisms described above
+
+
+17
+(Figure 5A) (140). In addition, extensive studies have shown that natively folded globular proteins
+possess a small but significant tendency to convert into the amyloid state without crossing a major
+energy barrier for unfolding, by populating native-like conformations as a consequence of local
+unfolding or thermal fluctuations (Figure 5A) (140). In these native-like states, aggregation-prone
+segments that are normally buried or structured in the fully folded state become exposed to the
+solvent or gain flexibility, triggering the formation of native-like aggregates, which then convert
+into amyloid-like oligomers and fibrils (Figure 5A, green arrow pathway), in a process similar to
+the nucleated conformational conversion described above. Processes of ‘native-like aggregation’ of
+this type have been described experimentally for Cu,Zn-superoxide dismutase (141), 2
+microglobulin (14), transthyretin (102, 103) lysozyme (43), acylphosphatase from S. solfataricus
+(142), a mutant of the fyn SH3 domain (143), the TTR-like domain of carboxypeptidase D (144)
+and others.
+In the aggregation reaction of any system, alternative pathways are likely to exist for the
+stage at which conformational conversion from a non-amyloid to an amyloid conformation occurs
+(145). Thus, the three models described above are likely to be extreme cases of a continuum of
+mechanisms where multiple pathways are accessible and selected depending on experimental
+conditions, protein sequence and conformational state adopted by the amyloidogenic monomer.
+Indeed, the multiplicity of aggregation processes has similarities to those observed for the folding of
+globular proteins where parallel pathways and reorganisation steps have been described in many
+cases. In the next section we describe the progress made recently to address the inherent complexity
+of the aggregation process.
+Quantitative Analysis of Protein Aggregation Mechanisms
+It has long been known that ‘secondary’ processes can be important in the kinetics of molecular
+self-assembly. Of particular interest are ‘fragmentation’ events, in which a growing aggregate
+breaks into smaller species, and ‘secondary nucleation’ reactions, in which the surfaces of growing
+aggregates catalyse the formation of new clusters of monomers that act as nuclei (146-150). Both of
+these processes are able to increase the number of growth-competent species and hence cause the
+aggregation rate to accelerate as the reaction progresses.
+The inclusion of secondary processes increases yet further the challenges involved in
+interpreting the kinetics of protein aggregation. However, a ‘master equation’ can readily be
+generated to include all the different steps of the overall process, such as primary nucleation, fibril
+elongation, secondary nucleation and fibril fragmentation. Although the generalised master
+equation contains a set of non-linear differential equations, it has proved possible to generate exact,
+or very good approximate, solutions, by exploiting a range of innovative mathematical approaches
+
+
+18
+(146, 148-150). It was possible to determine the rate constants for the various microscopic steps
+from global fits to a series of kinetic traces measured for the overall fibril formation reaction,
+provided the latter are measured over a range of protein concentrations and with high accuracy
+(128, 146, 148-150). This allows the time courses of the concentrations of the various species to be
+determined for a given aggregation process, with a quantitative reconstruction of its mechanism.
+Application of this analytical approach has shown that the lag and exponential phases do not
+generally correspond in a simple manner to the molecular events of nucleus formation and fibril
+elongation, respectively, but each results from a combination of molecular events involving primary
+nucleation, fibril elongation, secondary nucleation and fibril fragmentation (128). Consequently, a
+significant quantity of fibrils resulting from the elongation of primary nuclei may be formed during
+the lag phase, and the formation of nuclei can be of major significance during the exponential
+phase, when the fibril population is sufficiently large to generate new nuclei through secondary
+nucleation. Indeed, secondary nucleation and fragmentation, rather than elongation, can be the
+dominant processes contributing to fibril growth during the exponential phase of the aggregation
+kinetics (128, 146).
+Very high quality kinetic data have now been obtained and analysed for a range of protein
+systems in vitro, notably A42 (148), A40 (149), -synuclein (150), polyQ-peptides (151) and
+Ure2p (152). The results reveal remarkable variations in the dominant contributions to the initiation
+and proliferation of amyloid fibrils. Thus, for example, secondary nucleation plays a key role in the
+aggregation kinetics of the A peptides, being the major contributor to the rapid growth phase of
+both A40 and A42 (148, 149). By contrast, under quiescent conditions the aggregation of 
+synuclein in aqueous solution at physiological pH occurs at a negligible rate because the rate of
+primary nucleation is extremely slow (150). The primary nucleation reaction can, however, be
+accelerated dramatically in the presence of lipid vesicles (153) and the secondary nucleation rate
+increases by several orders of magnitude by lowering the pH to between 5 and 6 (150).
+Intermediate Species in Fibril Formation
+Of particular significance in the context of amyloid fibril formation are pre-fibrillar species, often
+called oligomers, not just because of their importance in the mechanism of the self-assembly
+process itself, but also because they are thought to represent the most pathogenic species in the
+diseases associated with amyloid fibril formation (see next section below). It is this association with
+pathogenesis that has led to extensive searches for well-defined oligomers in protein aggregation
+reactions, with the aim of isolating them, determining their structures and the structural
+determinants of their pathogenicity. This task is, however, complicated by the structural
+heterogeneity and transient nature of any given oligomer population, and by the fact that there are
+
+
+19
+frequently multiple parallel pathways to oligomeric species leading to the existence of many
+accessible polymorphs, depending on the exact experimental conditions.
+A variety of oligomers has been isolated and characterised for the widely studied A40/A42
+peptides and given a wide range of names, such as globulomers, amylospheroids, paranuclei,
+pentamers, A*56, SDS-stable dimers/trimers, protofibrils, ADDLs, prefibrillar and fibrillar
+oligomers, spherical amyloid intermediates (18, 154-164). Comparison between structural
+characteristics of the various species reported in these studies indicates that the average content of
+-sheet structure generally increases with the molecular weight, suggesting that an increase in size
+(i.e. with the number of molecules within an oligomer) stabilises their -sheet structure. Such
+structure has generally been shown to involve both antiparallel (158, 165) and parallel and out-of
+register strands (166), compared to the structure of the fibrils where the -strands are arranged in a
+parallel and in-register manner (65, 75, 76, 78, 113). Interestingly, an exception to this rule appears
+to be the 15-35 nm spherical amyloid intermediates, which are the largest oligomers so far
+characterised (> 650 kDa) and shown to possess an in-register parallel cross- structure very similar
+to that found in the fibrils (161).
+When various oligomeric forms of A have been found to appear sequentially during an
+aggregation reaction, the first species have been reported to be unstructured with the -sheet
+containing species only appearing later (18, 161, 167-166). The largest oligomers with the highest
+-sheet content, such as those described as fibrillar oligomers, annular protofibrils, curvilinear
+protofibrils and amyloidspheroids, have been found to represent off-pathway species that need to
+dissociate prior to forming amyloid fibrils (165, 168, 169). This conclusion is consistent with the
+large size, presence of antiparallel (or parallel out-of-register) -sheet structure, that needs to be
+substantially reorganised to form the parallel in-register structure of the fibrils, and by kinetic tests
+showing that seeded and unseeded fibril formation is slower in the presence of such species than in
+the presence of monomers (165, 168, 170).
+A variety of oligomeric species has also been described for -synuclein. Of particular
+interest are the results of single molecule studies where two distinct types of oligomers, named type
+A and B, were found to form sequentially with a slow transition between the two forms (13). Type
+A oligomers form only transiently, have a disordered secondary structure, are less compact and less
+highly organised, as revealed by FRET and proteinase K resistance, and are smaller (n < 10 mols)
+than type B oligomers. Later on, two distinct subgroups of type B oligomers have been identified
+and shown to contain 11-25 and 19-39 monomers and to have an antiparallel -sheet content of ca.
+30% and ca. 40%, respectively (171), showing again a direct correlation between -sheet content
+and size, in agreement with the A oligomer data. Other oligomers of -synuclein have been
+
+
+20
+isolated and characterised, all having sizes equal to or larger than that of the type B oligomers, but
+with similar antiparallel -sheet structure and also being off-pathway (172, 173).
+When aggregation is initiated by intrinsically disordered systems, such as A and 
+synuclein described above, the initial oligomers appear initially to adopt a disordered structure with
+more highly organised oligomers appearing later (12, 13, 17, 18, 22). Similar observations have
+been made for globular proteins that aggregate under denaturing conditions, such as the acid
+unfolded SH3 domain of bovine phosphatidylinositol 3-kinase at low pH (21) and yeast
+phosphoglycerate kinase (19). On the other hand, if aggregation of globular proteins is initiated
+under native conditions, the early aggregates formed at the beginning of the process may well
+display monomers populating native-like states, which later convert into -sheet containing
+protofibrils/fibrils, as found for insulin and acylphosphatase from S. solfataricus (16, 20).
+It therefore appears that the initial aggregates are affected by the structures of the
+aggregation competent monomers from which they are generated (Figure 1). Such early aggregates
+are typically small in size, do not bind amyloid specific dyes and do not exhibit a significant content
+of -sheet structure and compactness (Figure 5B). As aggregation proceeds, such oligomers
+undergo structural rearrangements into species stabilised by -sheet structure, generally antiparallel,
+with weak binding to ThT and Congo-red (Figure 5B). It is only later that species appear with a
+highly regular in-register parallel cross- structure and fibrillar morphology.
+THE MOLECULAR ORIGINS OF AMYLOID-RELATED PATHOGENICITY
+The Structural Determinants of Oligomer Toxicity
+It is increasingly accepted that the pathogenic species in non-neuropathic systemic or localised
+amyloidoses are both the extracellular amyloid deposits affecting organ architecture and the protein
+oligomers that form as on- or off-pathway species in the process of their formation or released by
+mature deposits, causing direct cellular damage (174, 175, 176). However, in neuropathic diseases
+involving the central nervous system, it is increasingly clear that the pathogenic species are the
+oligomeric forms generated in the process of aggregation (111, 177-179). The fibrils are, however,
+far from innocuous material as they can deplete key components of the protein homeostasis network
+(74, 180), as we discuss further below, serve as a reservoir of protein oligomers that can be released
+(13, 155; 181, 182), and act as potent catalysts for the generation of toxic oligomers through
+secondary nucleation (128, 148-152). Occasionally, some polymorphs have also been found to be
+highly toxic (94).
+It was evident prior to 2006 that the most toxic aggregates were likely to be pre-fibrillar
+oligomeric species, but since then the progressive elucidation of oligomer structure has started to
+
+
+21
+reveal the structural determinants of the manner in which these species cause cellular dysfunction.
+The exposure of hydrophobic groups on the oligomer surface appears to be a major determinant of
+oligomer-mediated toxicity. Indeed, for a range of proteins, oligomeric species of similar sizes and
+morphologies, but having very different toxicities, have been isolated and shown to differ in their
+solvent-exposed hydrophobicity, for example for HypF-N (183), A42 (184), -synuclein (13) and
+the NM region of Sup35p (185). Moreover, remarkable correlations have been observed between
+the toxicity of different forms of oligomeric species, produced in vitro and then added
+extracellularly to cell cultures, and their solvent exposure determined with ANS binding (186). It
+has also been shown in a similar manner that highly amyloidogenic proteins expressed
+intracellularly in human cells have levels of toxicity that increase with the exposure of hydrophobic
+clusters on the surfaces of the aggregates (187).
+Another important determinant of the toxicity of misfolded oligomers appears to be their
+size. In this regard, the results reported on the A40 and A42 oligomers represent again an
+important source of information as the toxic effects on cultured cells have been reported by
+different authors for a variety of different preparations using the MTT reduction assay and
+including data for peptide concentrations in the range 2.0-2.7 μM (monomer equivalent). This
+analysis indicates that monomers, dimers and trimers (MW 4-14 kDa) show minimal toxicity (158,
+161, 167), that the maximum toxicity in terms of monomer equivalents is exhibited by small
+oligomers, such as prefibrillar oligomers with MW 18-90 kDa (157, 158) and ADDLs with MW 36
+72 kDa (188, 189) and that it then decreases with oligomers having increasing size, in the order
+fibrillar oligomers with ca. 68-104 kDa (165), annular protofibrils with ca 250-400 kDa (158) and
+amylospheroids with ca. 670 kDa (160), up to the fibrillar structures that retain residual, yet
+significant, toxicity (161, 162). Although such a wealth of information has not yet been reported for
+-synuclein, a report on two types of oligomers of this protein with the same degree of -sheet
+structure and solvent-exposed hydrophobicity indicates that the smaller species are the more toxic
+(173). In agreement with these observations it has been found that the induction by chaperones of
+the further assembly of pre-formed oligomers of A42, IAPP and HypF-N into large aggregates in
+the absence of any structural reorganisation results in a substantial reduction in toxicity (190-192).
+A plausible explanation of the importance of small size in oligomer toxicity is the large
+surface/volume ratio featured by small species, which increases the extent of active surface per
+protein molecule, and also the high diffusion coefficient exhibited by such species, which allows
+them to diffuse more rapidly, and hence form aberrant interactions more readily (191). However,
+monomers and low molecular weight oligomers are likely to have their hydrophobic groups too
+distributed over their surfaces, providing an explanation as to why they are not deleterious. As a
+further corroboration of the importance of such characteristics, a series of oligomeric species of
+
+
+22
+HypF-N have been generated using mutational different variants of the proteins and different
+solution conditions; the toxicity of the oligomers was found to correlate strongly and inversely with
+their size and directly with their surface hydrophobicity in a three dimensional plot (193).
+As far as the degree of -sheet structure is concerned, a detailed review of the literature
+shows that structured oligomers appear to be either more or less deleterious than unstructured ones
+depending on their size and solvent-exposed hydrophobicity, which again seem to be the most
+important factors in this regard. Nor does the shape of the oligomers appear to be very important:
+the interesting hypothesis that oligomers exert their toxicity species by forming annular structures
+with a pore-like morphology does not appear to be supported by recent experimental data (158; 194,
+195), and indeed the appearance of such structures may simply be a characteristic of the inherent
+architecture of the water-mediated face-to-face packing of pairs of β-sheets rather than a unique
+structural feature of the oligomers (171).
+With the identification of at least some of the structural determinants driving oligomer
+toxicity, the question arises as to ‘which’ and ‘how’ small and hydrophobic aberrant species can
+cause dramatic cell dysfunction. The aggregation of a protein from its soluble state will invariably
+generate a large ensemble of aggregated species, the populations of which will vary with sequence,
+time, and conditions. Most of these ‘misfolded’ oligomeric species are likely to be toxic to some
+degree because of their small size and because they will inevitably expose on their surfaces clusters
+of hydrophobic groups that are normally buried in globular proteins or that are rare and highly
+dispersed in intrinsically disordered proteins. A wide variety of biochemical, cytological, and
+physiological perturbations has been identified following the exposure of neuronal and non
+neuronal cell cultures, primary neurons, hippocampal slices and whole animals to such species,
+regardless of their precise identity. The oligomers have also been reported to interact with a large
+number of molecular species, leading to a multiplicity of factors influencing toxicity and also a long
+list of possible molecular targets for drug discovery and therapeutic intervention. In the case of
+Alzheimer’s disease, for example, extracellular protein oligomers have been reported to interact
+with the phospholipid bilayers of the cell membrane, NMDA and AMPA receptors, the
+metabotropic glutamate receptor 5, the insulin receptor, the nicotinic acethilcholine receptor 7
+nAcChR, PrPc, and other cellular components and membrane receptors. (178).
+Hence, it is important to recognise that there is no unique ‘toxic agent’ associated with each
+of the various diseases. The large network of aberrant interactions that such species can generate
+indicates that it is extremely unlikely that there is a unique molecular interaction, a unique
+mechanism of action, or a unique cascade of cellular events associated with a given disease.
+Instead, the toxicity of the protein aggregates that result in disease is likely to result from their
+intrinsic misfolded nature and their structural heterogeneity. Such properties will cause them to
+
+
+23
+engage in a multitude of aberrant interactions with a range of cellular components, including
+phospholipid bilayers, protein receptors, soluble proteins, RNAs, small metabolites, any or all of
+which has the potential to cause cellular damages and ultimately cell death.
+Protein Metastability and the Proteostasis Network
+Given the intrinsic propensity of proteins to form thermodynamically stable amyloid fibrils and the
+detrimental effects of protein misfolded oligomers, it is not surprising that all living organisms have
+developed a dedicated network of cellular machineries to assist protein folding and counteract
+protein aggregation. Such a network is generally referred to as proteostasis network (PN) and is
+constituted by the translational machinery, molecular chaperones and co-chaperones and protein
+degradation apparati such as the ubiquitin proteasome systems (UPS) and autophagy (74, 180).
+Molecular chaperones and co-chaperones have been grouped in distinct families, including
+ribosome-binding chaperones, Hsp40s, Hsp70s, chaperonins, Hsp90s, Hsp100, prefoldins, small
+Hsp and TRP-domain containing co-chaperones. This large body of proteins, amounting to 332 in
+the human proteome (196), have long been recognised to assist protein folding, aid assembly of
+complexes, inhibit protein aggregation and mediate protein degradation via the UPS or autophagy
+(74, 180). Two novel and previously unappreciated functions of chaperones in higher eukaryotes
+have been shown to be the binding to preformed aggregates to either promote their disassembly
+(197) or convert them them into large assemblies (190, 191), therefore preventing their toxicity in
+both cases.
+Importantly, cells also use integrated processes where sensors of misfolded species
+ultimately activate the transcription of genes coding for PN components, such as the heat shock
+response in the cytosol and nucleus (HSR), the unfolded protein response in the endoplasmic
+reticulum (UPRER) and in the mitochondria (UPRmito) (180). In addition to these cell-autonomous
+controls, it is increasingly recognised that cells also communicate local environmental stresses to
+distal cells by cell-nonautonomous mechanisms that utilise specific sensory neurons and
+transcellular chaperone signalling (180).
+The aggregation of a polypeptide chain is also intrinsically inhibited by its amino acid
+sequence that is carefully selected by evolution to promote folding into a compact stable structure,
+which generally possess a very low propensity to self-assemble, and to minimise its aggregation
+propensity when adopting a fully or partially unfolded state (198). Even transcriptional expression
+and half life of proteins are finely regulated depending on their intrinsic aggregation propensities
+(199, 200).
+In spite of all all these expedients that have co-evolved in any living organisms, protein
+aggregation inevitably occurs as a consequence of aging (30, 74, 180), environmental stress and
+
+
+24
+certain aspects of ‘lifestyles’, such as obesity (74, 174, 180, 201), sustained increases in protein
+concentration (14, 24, 89, 201, 202, 203), ingestion or iatrogenic transmission of pre-formed
+aggregates (Collinge and Clarke, 2007), mutant proteins with high propensity to aggregate (15, 34,
+36, 40, 41, 44, 54-59, 61, 84, 105), or aberrant proteolytic cleavage (36, 40, 44). All these factors
+readily promote aggregation due to their ability to generate misfolded protein species leading the
+PN to collapse.
+Aging is undoubtedly the major risk factor for all protein deposition diseases, even in the
+absence other obvious protein misfolding agents. Evidence is accumulating that a progressive
+failure of the PN occurs with aging in humans: chaperones decrease their abundance in human
+brains because sequestered by accumulating protein aggregates and because the expression of ca.
+30% of them is down-regulated with aging (196); an age-related decline of the UPS activity has
+also been repeatedly observed in humans and attributed to a variety of factors, such as a decrease of
+proteasome number, transcriptional down-regulation or structural modification of some of its
+subunits, defective chaperone-mediated recruitment of proteins targeted for degradation,
+accumulation of cross-linked proteins difficult to digest, etc. (204); Both macroautophagy and
+chaperone-mediated autophagy also decrease their efficiency as a result, among other factors that
+remain to be identified, of the transcriptional down-regulation of Atg proteins and decreased levels
+of lysosomal membrane receptors, respectively (205). The age-related increase of oxidative stress
+and decrease of mitochondrial function and ATP production further worsen the PN efficiency. In
+this scenario of defective PN, protein aggregation becomes more difficult to be controlled. Notably,
+evidence exists that the age-related accumulation of protein aggregates is both an effect and a cause
+of PN decline, driving a vicious cycle that ultimately leads to PN collapse (74, 180). There is a
+narrow boundary between health and disease, and subtle changes caused, for example, by genetic
+mutations, environmental stress or increasing age, can result in the initiation of the aggregation
+process leading to the disruption of PN. As a consequence, all the aforementioned changes of the
+PN are further exacerbated in neurodegeneration as opposed to normal aging (196, 204, 205).
+It is also starting to emerge why only a few proteins aggregate in pathological states despite
+the widely demonstrated generic potential of proteins to form amyloid-like fibrils. Following the
+demonstration that the mRNA transcriptional levels and intrinsic aggregation propensities are
+inversely correlated (199, 206), it was postulated that proteins need to have well defined levels of
+abundance on the basis of their intrinsic solubility. Proteins forming amyloid deposits in pathology,
+co-aggregating with extracellular amyloid plaques and intracellular neurofibrillary tangles in
+Alzheimer’s disease, with Lewy bodies in Parkinson’s disease, and with aggregated model proteins
+in human cell cultures, all have values of aggregation propensity and mRNA expression higher than
+those required to remain soluble, i.e. they are supersaturated contributing to form a metastable
+
+
+25
+subproteome highly susceptible to aggregate (207, 208). Moreover, the  amyloid precursor protein
+and ca. 35 and 40% of proteins co-aggregating with amyloid plaques and intracellular
+neurofibrillary tangles, respectively, are also transcriptionally down-regulated in the central nervous
+system of Alzheimer’s disease patients, in an attempt to limit their further aggregation; such
+percentages are only 4 and 10% in aged-matched healthy controls, respectively, and only 10% and
+1-3% of the human proteome is down-regulated in diseased and healthy controls, respectively
+(209).
+LOOKING TO THE FUTURE – FROM THEORY TO THERAPY
+The various sections of this review witness the major advances made over the past decade in the
+field of protein aggregation and its links with human disease. It is particularly significant that such
+major progress has been made in defining the fundamental principles that underlie the mechanism
+of self-assembly, as well as the nature and structure of both the oligomeric and fibrillar species in
+many systems, particularly those that are studied in greater detail. The major determinants of
+protein aggregate toxicity also appear to emerge as well as the mechanisms by which protein
+aggregates are detrimental to the cells.
+Considerable progress has also been made in understanding the manner in which our natural
+defences are able to protect us against the effects of protein misfolding and aggregation under
+normal circumstances. It is evident that the inherent properties of natural protein sequences, in
+addition to features of biological environments such as the low protein concentration, high turnover
+and compartmentalisation, can act to increase the kinetic stability of native states of proteins
+cooperating with the proteostasis network. It is also clear that when such protection mechanisms
+become overwhelmed, a range of metastable proteins becomes increasingly vulnerable to
+aggregation, a situation that can lead to a widespread and irretrievable loss of protein homeostasis
+with fatal consequences.
+In this scenario of increasing knowledge, the rational design of an increasing number of
+therapeutic strategies is a natural outcome. The ability of antibodies to bind not just to unique
+sequences, but also to well defined aggregation states, has lead to considerable efforts to develop
+immunotherapies for amyloid-associated diseases. Knowledge of the principles of protein
+aggregation and its links with disease, including the manner in which our natural protective
+mechanisms are able to be so effective, is generating a robust platform for the rational design of
+small molecules for the prevention or treatment of protein deposition diseases. In the case of
+globular proteins, one strategy is to stabilise the folded state to prevent both unfolding and the
+structural fluctuations that generate native-like states. One outstanding example of a therapeutic
+strategy based on this approach involves an analogue of the substrate thyroxine, called tafamidis,
+
+
+26
+which acts to stabilise the native tetramer of transthyretin and reduce its aggregation propensity and
+is now increasingly widely utilised in the clinic to cure familial amyloid polyneuropathy.
+In cases where the aggregation-prone protein or protein fragment is intrinsically disordered,
+stabilisation of the stable state is more challenging, and many rational design efforts have focused
+on inhibition of the process of aggregation itself. All early attempts to develop ‘aggregation
+inhibitors’, however, failed at one or other stage of clinical trials. Examination of such failures,
+however, indicates that the lack of methods to monitor the aggregation reaction in a reliable
+manner, the lack of knowledge of the specific step(s) affected by the compound in question and to
+intervene early in the disease are contributing factors. More recent efforts are being focussed on
+specific steps in the aggregation reaction by screening compounds in vitro to identify potential
+inhibitors towards therapies for both Alzheimer’s and Parkinson’s disease.
+Another strategy that is still widely explored in spite of previous failures in clinical trials is
+the search of inhibitors of the specific proteases that produce amyloidogenic fragments, such as the
+- and -secretases that produce the N- and C-termini of A fragements. Such a search may involve
+in the future inhibitors of the furin and metalloendopeptidase that produce the N- and C-termini of
+the amyloidogenic fragment of gelsolin and of the enigmatic protease that generates the
+amyloidogenic N-terminal fragments of apoliporotein A-I, among other examples.
+In nonneuropathic amyloidosis the elimination of the source of amyloidogenic proteins, such
+as plasma cell elimination with chemotheraphy in light chain amyloidosis, liver transplant in
+transthyretin amyloidoses, or the maintenance of a low inflammatory response in AA amyloidosis
+to reduce production of the serum amyloid A protein, are effective therapeutic avenues.
+The list of promising strategies to cure the various protein deposition diseases is difficult to
+summarise exhaustively in one review but in summary there are many different strategies for
+intervention, many of which involve a subtle rebalancing of the multiplicity of states represented in
+Figure 1. In the review we have emphasised our increasing understanding of the molecular origins
+of amyloid-related diseases that is now leading to real progress in the rational development of a
+variety of means of therapeutic intervention, some of which we have outlined briefly in this review.
+In addition, we are optimistic that other approaches will prove viable, such as the stimulation of our
+natural defence mechanisms and the ability to perturb our genetic nature through the continuing
+development of gene therapy or stem cell techniques. As in the treatment of other chronic non
+infectious disorders such as heart disease and cancer, it is likely that success in the prevention and
+treatment of complex neurodegenerative disorders will best be achieved by the availability of a
+range of approaches that can be applied to reduce the risk of the development of the disease and
+also at different stages of its progression and with the ability to be personalised in response to the
+differing genetic make-up of those afflicted by such conditions. We hope that a review in another
+
+
+27
+ten years will be able to report dramatic progress in this regard, and we are optimistic that this hope
+will be realised.
+
+
+28
+References
+1. Chiti F, Dobson CM. 2006. Protein misfolding, functional amyloid, and human disease. Annu.
+Rev. Biochem. 75:333-366.
+2. Guijarro JI, Sunde M, Jones JA, Campbell ID, Dobson CM. 1998. Amyloid fibril formation by
+an SH3 domain. Proc. Natl. Acad. Sci. USA. 95:4224-8.
+3. Chiti F, Webster P, Taddei N, Clark A, Stefani M et al. 1999. Designing conditions for in vitro
+formation of amyloid protofilaments and fibrils. Proc. Natl. Acad. Sci. USA. 96:3590-4.
+4. Fändrich M, Dobson CM. 2002. The behaviour of polyamino acids reveals an inverse side
+chain effect in amyloid structure formation. EMBO J. 21:5682-90.
+5. Adler-Abramovich L, Vaks L, Carny O, Trudler D, Magno A, et al. 2012. Phenylalanine
+assembly into toxic fibrils suggests amyloid etiology in phenylketonuria. Nature Chem. Biol.
+8:701-706.
+6. Knowles TP, Fitzpatrick AW, Meehan S, Mott HR, Vendruscolo M, et al. 2007. Role of
+intermolecular forces in defining material properties of protein nanofibrils. Science 318:1900
+1903.
+7. Cherny I, Gazit E. 2008. Amyloids: not only pathological agents but also ordered
+nanomaterials. Angew. Chem. Int. Ed. Engl. 47:4062-4609.
+8. Fowler DM, Koulov AV, Alory-Jost C, Marks MS, Balch WE, Kelly JW. 2006. Functional
+amyloid formation within mammalian tissue. PLoS Biol. 4:e6.
+9. Maji SK, Perrin MH, Sawaya MR, Jessberger S, Vadodaria K, et al. 2009. Functional amyloids
+as natural storage of peptide hormones in pituitary secretory granules. Science. 325:328-32.
+10. Li J1, McQuade T, Siemer AB, Napetschnig J, Moriwaki K, et al. 2012. The RIP1/RIP3
+necrosome forms a functional amyloid signaling complex required for programmed necrosis.
+Cell 150:339-50.
+11. Uversky VN. 2013. Unusual biophysics of intrinsically disordered proteins. Biochim. Biophys.
+Acta 1834:932-51.
+12. Lee J, Culyba EK, Powers ET, Kelly JW. 2011. Amyloid-β forms fibrils by nucleated
+conformational conversion of oligomers. Nat. Chem. Biol. 7:602-609.
+13. Cremades N, Cohen SI, Deas E, Abramov AY, Chen AY et al. 2012. Direct observation of the
+interconversion of normal and toxic forms of α-synuclein. Cell 149:1048-59.
+14. Eakin CM, Berman AJ, Miranker AD. 2006. A native to amyloidogenic transition regulated by
+a backbone trigger. Nat. Struct. Mol. Biol. 13:202-208.
+15. Sekijima Y, Wiseman RL, Matteson J, Hammarström P, Miller SR, et al. 2005. The biological
+and chemical basis for tissue-selective amyloid disease. Cell 121:73-85.
+
+
+29
+16. Bouchard M, Zurdo J, Nettleton EJ, Dobson CM, Robinson CV. 2000. Formation of insulin
+amyloid fibrils followed by FTIR simultaneously with CD and electron microscopy. Protein
+Sci. 9:1960-1967.
+17. Serio TR, Cashikar AG, Kowal AS, Sawicki GJ, Moslehi JJ, et al. 2000. Nucleated
+conformational conversion and the replication of conformational information by a prion
+determinant. Science 289:1317-1321.
+18. Bitan G, Kirkitadze MD, Lomakin A, Vollers SS, Benedek GB, Teplow DB. 2003. Amyloid
+beta -protein (Abeta) assembly: Abeta 40 and Abeta 42 oligomerize through distinct pathways.
+Proc. Natl. Acad. Sci. USA. 100:330-5.
+19. Modler AJ, Gast K, Lutsch G, Damaschun G. 2003. Assembly of amyloid protofibrils via
+critical oligomers--a novel pathway of amyloid formation. J. Mol. Biol. 325:135-148.
+20. Plakoutsi G, Bemporad F, Calamai M, Taddei N, Dobson CM, Chiti F. 2005. Evidence for a
+mechanism of amyloid formation involving molecular reorganisation within native-like
+precursor aggregates. J. Mol. Biol. 351:910-922.
+21. Carulla N, Zhou M, Arimon M, Gairí M, Giralt E, Robinson CV, Dobson CM. 2009.
+Experimental characterization of disordered and ordered aggregates populated during the
+process of amyloid fibril formation. Proc. Natl. Acad. Sci. USA. 106:7828-33.
+22. Bleiholder C, Dupuis NF, Wyttenbach T, Bowers MT. 2011. Ion mobility-mass spectrometry
+reveals a conformational conversion from random assembly to β-sheet in amyloid fibril
+formation. Nat Chem. 3:172-177.
+23. Berger J, Hinglais N. 1968. Intercapillary deposits of IgA-IgG. J. Urol. Nephrol. 74:694-695.
+24. Glenner GG, Terry W., Harada M, Isersky C, Page D. 1971. Amyloid fibril proteins: proof of
+homology with immunoglobulin light chains by sequence analyses. Science 172:1150-1.
+25. Jimenez-Zepeda VH. 2012. Light chain deposition disease: novel biological insights and
+treatment advances. Int. J. Lab. Hematol. 34:347-55.
+26. Usmani SM, Zirafi O, Müller JA, Sandi-Monroy NL, Yadav JK, et al. 2014. Direct
+visualization of HIV-enhancing endogenous amyloid fibrils in human semen. Nat. Commun.
+5:3508.
+27. Monsellier E, Ramazzotti M, Taddei N, Chiti F. 2008. Aggregation propensity of the human
+proteome. PLoS Comput Biol. 4:e1000199.
+28. Ghiso JA, Holton J, Miravalle L, Calero M, Lashley T, et al. 2001. Systemic amyloid deposits
+in familial British dementia. J. Biol. Chem. 276:43909-14.
+29. Powers ET, Morimoto RI, Dillin A, Kelly JW, Balch WE. 2009. Biological and chemical
+approaches to diseases of proteostasis deficiency. Annu. Rev. Biochem. 78:959-91.
+30. Koga H, Kaushik S, Cuervo AM. 2011. Protein homeostasis and aging: The importance of
+
+
+30
+exquisite quality control. Ageing Res. Rev. 10:205-15.
+31. Gajdusek DC, Gibbs CJ, Alpers M. 1966. Experimental transmission of a Kuru-like syndrome
+to chimpanzees. Nature 209:794-6.
+32. Imran M, Mahmood S. 2011. An overview of human prion diseases. Virol. J. 8:559
+33. Will RG, Ironside JW, Zeidler M, Cousens SN, Estibeiro K, et al. 1996. A new variant of
+Creutzfeldt-Jakob disease in the UK. Lancet 347:921-5.
+34. Canet D, Last AM, Tito P, Sunde M, Spencer A, et al. 2002. Local cooperativity in the
+unfolding of an amyloidogenic variant of human lysozyme. Nat. Struct. Biol. 9:308–15.
+35. Dhulesia A, Cremades N, Kumita JR, Hsu ST, Mossuto MF et al. 2010. Local cooperativity in
+an amyloidogenic state of human lysozyme observed at atomic resolution. J. Am. Chem. Soc.
+132:15580-8.
+36. Raimondi S, Guglielmi F, Giorgetti S, Di Gaetano S, Arciello A, et al. 2011. Effects of the
+known pathogenic mutations on the aggregation pathway of the amyloidogenic peptide of
+apolipoprotein A-I. J. Mol. Biol. 407:465-76.
+37. Gursky O, Mei X, Atkinson D. 2012. The crystal structure of the C-terminal truncated
+apolipoprotein A-I sheds new light on amyloid formation by the N-terminal fragment.
+Biochemistry 51:10-8.
+38. Chen CD, Huff ME, Matteson J, Page L, Phillips R, et al. 2001. Furin initiates gelsolin familial
+amyloidosis in the Golgi through a defect in Ca(2+) stabilization. EMBO J. 20:6277-87.
+39. Page LJ, Suk JY, Huff ME, Lim HJ, Venable J, et al. 2005. Metalloendoprotease cleavage
+triggers gelsolin amyloidogenesis. EMBO J. 24:4124-32.
+40. Solomon JP, Page LJ, Balch WE, Kelly JW. 2012. Gelsolin amyloidosis: genetics,
+biochemistry, pathology and possible strategies for therapeutic intervention. Crit. Rev.
+Biochem. Mol. Biol. 47:282-296.
+41. Spillantini MG, Goedert M. 2013. Tau pathology and neurodegeneration. Lancet Neurol.
+12:609-22.
+42. Niblock M, Gallo JM. 2012. Tau alternative splicing in familial and sporadic tauopathies.
+Biochem. Soc. Trans. 40:677-80.
+43. Ancolio K, Dumanchin C, Barelli H, Warter JM, Brice A, et al. 1999. Unusual phenotypic
+alteration of beta amyloid precursor protein (betaAPP) maturation by a new Val-715 --> Met
+betaAPP-770 mutation responsible for probable early-onset Alzheimer's disease. Proc. Natl.
+Acad. Sci. USA 96:4119-24.
+44. De Jonghe C, Esselens C, Kumar-Singh S, Craessaerts K, Serneels S, et al. 2001. Pathogenic
+APP mutations near the gamma-secretase cleavage site differentially affect Abeta secretion and
+APP C-terminal fragment stability. Hum. Mol. Genet. 10:1665-71.
+
+
+31
+45. Farzan M, Schnitzler CE, Vasilieva N, Leung D, Choe H. 2000. BACE2, a beta -secretase
+homolog, cleaves at the beta site and within the amyloid-beta region of the amyloid-beta
+precursor protein. Proc. Natl. Acad. Sci. USA 97:9712-7.
+46. Di Fede G, Catania M, Morbin M, Rossi G, Suardi S, et al. 2009. A recessive mutation in the
+APP gene with dominant-negative effect on amyloidogenesis. Science 323:1473-7.
+47. Nilsberth C, Westlind-Danielsson A, Eckman CB, Condron MM, Axelman K, et al. 2001. The
+'Arctic' APP mutation (E693G) causes Alzheimer's disease by enhanced Abeta protofibril
+formation. Nat. Neurosci. 4:887-93.
+48. Tomiyama T, Nagata T, Shimada H, Teraoka R, Fukushima A, et al. 2008. A new amyloid beta
+variant favoring oligomerization in Alzheimer's-type dementia. Ann. Neurol. 63:377-87.
+49. De Jonghe C, Zehr C, Yager D, Prada CM, Younkin S, Hendriks L, Van Broeckhoven C,
+Eckman CB. 1998. Flemish and Dutch mutations in amyloid beta precursor protein have
+different effects on amyloid beta secretion. Neurobiol. Dis. 5:281-6.
+50. Armstrong J, Boada M, Rey MJ, Vidal N, Ferrer I. 2004. Familial Alzheimer disease associated
+with A713T mutation in APP. Neurosci. Lett. 370:241-3.
+51. Miravalle L, Tokuda T, Chiarle R, Giaccone G, Bugiani O, et al. 2000. Substitutions at codon
+22 of Alzheimer's abeta peptide induce diverse conformational changes and apoptotic effects in
+human cerebral endothelial cells. J. Biol. Chem. 275:27110-6.
+52. Zhou L, Brouwers N, Benilova I, Vandersteen A, Mercken M, et al. 2011. Amyloid precursor
+protein mutation E682K at the alternative β-secretase cleavage β'-site increases Aβ generation.
+EMBO Mol. Med. 3:291-302.
+53. Ghosh D, Sahay S, Ranjan P, Salot S, Mohite GM, et al. 2014. The newly discovered
+Parkinson's disease associated Finnish mutation (A53E) attenuates α-synuclein aggregation and
+membrane binding. Biochemistry 53:6419-6421.
+54. Flagmeier P, Meisl G, Vendruscolo M, Knowles TP, Dobson CM, et al. 2016. Mutations
+associated with familial Parkinson's disease alter the initiation and amplification steps of α
+synuclein aggregation. Proc. Natl. Acad. Sci. USA 113:10328-10333.
+55. Caubet C, Bousset L, Clemmensen O, Sourigues Y, Bygum A, et al. 2010. A new amyloidosis
+caused by fibrillar aggregates of mutated corneodesmosin. FASEB J. 24:3416-26.
+56. Vidal R, Frangione B, Rostagno A, Mead S, Revesz T, Plant G, Ghiso J. 1999. Systemic
+amyloid deposits in familial British dementia. Nature 399:776-81.
+57. Vidal R, Revesz T, Rostagno A, Kim E, Holton JL, Bek T, et al. 2000. A decamer duplication
+in the 3' region of the BRI gene originates an amyloid peptide that is associated with dementia
+in a Danish kindred. Proc. Natl. Acad. Sci. USA 97:4920-5.
+
+
+32
+58. Benson MD, Liepnieks JJ, Yazaki M, Yamashita T, Hamidi Asl K, Guenther B, Kluve
+Beckerman B. 2001. A new human hereditary amyloidosis: the result of a stop-codon mutation
+in the apolipoprotein AII gene. Genomics 72:272-7.
+59. De Gracia R, Fernández EJ, Riñón C, Selgas R, Garcia-Bustos J. 2006. Hereditary renal
+amyloidosis associated with a novel mutation in the apolipoprotein AII gene. QJM 99:274.
+60. Srinivasan R, Jones EM, Liu K, Ghiso J, Marchant RE, Zagorski MG. 2003 pH-dependent
+amyloid and protofibril formation by the ABri peptide of familial British dementia. J. Mol.
+Biol. 333:1003-23.
+61. von Mikecz A. 2014. Pathology and function of nuclear amyloid. Protein homeostasis matters.
+Nucleus 5:311-317.
+62. Rovelet-Lecrux A, Hannequin D, Raux G, Le Meur N, Laquerrière A, et al. 2006. APP locus
+duplication causes autosomal dominant early-onset Alzheimer disease with cerebral amyloid
+angiopathy. Nat Genet 38:24-6.
+63. Singleton AB, Farrer M, Johnson J, Singleton A, Hague S, et al. 2003. alpha-Synuclein locus
+triplication causes Parkinson's disease. Science 302:841.
+64. Chartier-Harlin MC, Kachergus J, Roumier C, Mouroux V, Douay X et al. Alpha-synuclein
+locus duplication as a cause of familial Parkinson's disease. 364:1167-1169.
+65. Paravastu AK, Leapman RD, Yau WM, Tycko R. 2008. Molecular structural basis for
+polymorphism in Alzheimer's beta-amyloid fibrils. Proc. Natl. Acad. Sci. USA 105:18349-54.
+66. Wasmer C, Lange A, Van Melckebeke H, Siemer AB, Riek R, Meier BH. 2008. Amyloid
+fibrils of the HET-s(218-289) prion form a beta solenoid with a triangular hydrophobic core.
+Science 319:1523-6.
+67. Sunde M, Blake C. 1997. The structure of amyloid fibrils by electron microscopy and X-ray
+diffraction. Adv. Protein Chem. 50:123-59.
+68. Zandomenghi et al. 2004
+69. Eisenberg D, Jucker M. 2012. The amyloid state of proteins in human diseases. Cell 148:1188
+203.
+70. Nilsson MR. 2004. Techniques to study amyloid fibril formation in vitro. Methods 34:151-60.
+71. Mathis CA, Mason NS, Lopresti BJ, Klunk WE. 2012. Development of positron emission
+tomography β-amyloid plaque imaging agents. Semin. Nucl. Med. 42:423-32.
+72. O'Nuallain B, Shivaprasad S, Kheterpal I, Wetzel R. 2005. Thermodynamics of A beta(1-40)
+amyloid fibril elongation. Biochemistry 44:12709-18.
+73. Baldwin AJ, Knowles TP, Tartaglia GG, Fitzpatrick AW, Devlin GL, et al. 2011. Metastability
+of native proteins and the phenomenon of amyloid formation. J. Am. Chem. Soc. 133:14160-3.
+
+
+33
+74. Balchin D, Hayer-Hartl M, Hartl FU. 2016. In vivo aspects of protein folding and quality
+control. Science 353:aac4354.
+75. Petkova AT, Yau WM, Tycko R. 2006. Experimental constraints on quaternary structure in
+Alzheimer's beta-amyloid fibrils. Biochemistry. 45:498-512.
+76. Bertini I, Gonnelli L, Luchinat C, Mao J, Nesi A. 2011. A new structural model of Aβ40 fibrils.
+J. Am. Chem. Soc. 133:16013-22.
+77. Lu JX, Qiang W, Yau WM, Schwieters CD, Meredith SC, Tycko R. 2013. Molecular structure
+of β-amyloid fibrils in Alzheimer's disease brain tissue. Cell 154:1257-68.
+78. Colvin MT, Silvers R, Ni QZ, Can TV, Sergeyev I et al. 2016. Atomic Resolution Structure of
+Monomorphic Aβ42 Amyloid Fibrils. J. Am. Chem. Soc. Published online
+79. Luca S, Yau WM, Leapman R, Tycko R. 2007. Peptide conformation and supramolecular
+organization in amylin fibrils: constraints from solid-state NMR. Biochemistry 46:13505-22.
+80. Weirich F, Gremer L, Mirecka EA, Schiefer S, Hoyer W, Heise H. 2016. Structural
+Characterization of Fibrils from Recombinant Human Islet Amyloid Polypeptide by Solid-State
+NMR: The Central FGAILS Segment Is Part of the β-Sheet Core. PLoS One 11:e0161243.
+81. Davies HA, Madine J, Middleton DA. 2015. Comparisons with amyloid-β reveal an aspartate
+residue that stabilizes fibrils of the aortic amyloid peptide medin. J. Biol. Chem. 290:7791
+7803.
+82. Van Melckebeke H, Wasmer C, Lange A, Ab E, Loquet A, Böckmann A, Meier BH. 2010.
+Atomic-resolution three-dimensional structure of HET-s(218-289) amyloid fibrils by solid-state
+NMR spectroscopy. J. Am. Chem. Soc. 132:13765-75.
+83. Hoop CL, Lin HK, Kar K, Magyarfalvi G, Lamley JM et al. 2016. Huntingtin exon 1 fibrils
+feature an interdigitated β-hairpin-based polyglutamine core. Proc. Natl. Acad. Sci. USA
+113:1546-1551.
+84. Helmus JJ, Surewicz K, Apostol MI, Surewicz WK, Jaroniec CP. 2011. Intermolecular
+alignment in Y145Stop human prion protein amyloid fibrils probed by solid-state NMR
+spectroscopy. J. Am. Chem. Soc. 133:13934-7.
+85. Müller H, Brener O, Andreoletti O, Piechatzek T, Willbold D, Legname G, Heise H. 2014.
+Progress towards structural understanding of infectious sheep PrP-amyloid. Prion 8:344-58.
+86. Yang Y1, Petkova A, Huang K, Xu B, Hua QX, et al. 2010. An Achilles' heel in an
+amyloidogenic protein and its repair: insulin fibrillation and therapeutic design. J. Biol. Chem.
+285:10806-21.
+87. Bateman DA, Tycko R, Wickner RB. 2011. Experimentally derived structural constraints for
+amyloid fibrils of wild-type transthyretin. Biophys. J. 101:2485-92.
+88. Daebel V, Chinnathambi S, Biernat J, Schwalbe M, Habenstein B, et al. 2012. β-Sheet core of
+
+
+34
+tau paired helical filaments revealed by solid-state NMR. J. Am. Chem. Soc. 134:13982-9.
+89. Itoh-Watanabe H, Kamihira-Ishijima M, Javkhlantugs N, Inoue R, Itoh Y, et al. 2013. Role of
+aromatic residues in amyloid fibril formation of human calcitonin by solid-state 13C NMR and
+molecular dynamics simulation. Phys. Chem. Chem. Phys. 15:8890-901.
+90. Su Y, Sarell CJ, Eddy MT, Debelouchina GT, Andreas LB, et al. 2014. Secondary structure in
+the core of amyloid fibrils formed from human β2 m and its truncated variant ΔN6. J. Am.
+Chem. Soc. 136:6313-25.
+91. Heise H, Hoyer W, Becker S, Andronesi OC, Riedel D, Baldus M. 2005. Molecular-level
+secondary structure, polymorphism, and dynamics of full-length alpha-synuclein fibrils studied
+by solid-state NMR. Proc. Natl. Acad. Sci. USA 102:15871-6.
+92. Vilar M, Chou HT, Lührs T, Maji SK, Riek-Loher D, et al. 2008. The fold of -synuclein
+fibrils. Proc. Natl. Acad. Sci. USA 105:8637-42.
+93. Comellas G1, Lemkau LR, Nieuwkoop AJ, Kloepper KD, Ladror DT, et al. 2011. Structured
+regions of α-synuclein fibrils include the early-onset Parkinson's disease mutation sites. J. Mol.
+Biol. 411:881-95.
+94. Gath J, Bousset L, Habenstein B, Melki R, Böckmann A, Meier BH. 2014. Unlike twins: an
+NMR comparison of two α-synuclein polymorphs featuring different toxicity. PLoS One
+9:e90659.
+95. Tuttle MD, Comellas G, Nieuwkoop AJ, Covell DJ, Berthold DA et al. 2016. Solid-state NMR
+structure of a pathogenic fibril of full-length human α-synuclein. Nat. Struct. Mol. Biol. 23:409
+15.
+96. Makin OS, Atkins E, Sikorski P, Johansson J, Serpell LC. 2005. Molecular basis for amyloid
+fibril formation and stability. Proc. Natl. Acad. Sci. USA 102:315-20.
+97. Sikorski P, Atkins E. 2005. New model for crystalline polyglutamine assemblies and their
+connection with amyloid fibrils. Biomacromolecules 6:425-32.
+98. Morris KL, Serpell LC. 2012. X-ray fibre diffraction studies of amyloid fibrils. Methods Mol
+Biol. 849:121-35.
+99. Rodriguez JA, Ivanova MI, Sawaya MR, Cascio D, Reyes FE et al. 2015. Structure of the toxic
+core of α-synuclein from invisible crystals. Nature 525:486-490.
+100.Vázquez-Fernández E, Vos MR, Afanasyev P, Cebey L, Sevillano AM, et al. 2016. The
+Structural Architecture of an Infectious Mammalian Prion Using Electron Cryomicroscopy.
+PLoS Pathog. 12:e1005835.
+101.Serag AA, Altenbach C, Gingery M, Hubbell WL, Yeates TO. 2002. Arrangement of subunits
+and ordering of beta-strands in an amyloid sheet. Nat. Struct. Biol. 9:734-9.
+102.Olofsson A, Ippel JH, Wijmenga SS, Lundgren E, Ohman A. Probing solvent accessibility of
+
+
+35
+transthyretin amyloid by solution NMR spectroscopy. 2004. J. Biol. Chem. 279:5699-707.
+103.Lim KH, Dasari AK, Hung I, Gan Z, Kelly JW, Wright PE, Wemmer DE. 2016. Solid-State
+NMR Studies Reveal Native-like β-Sheet Structures in Transthyretin Amyloid. Biochemistry
+55:5272-5278.
+104. Elam JS1, Taylor AB, Strange R, Antonyuk S, Doucette PA, et al. 2003. Amyloid-like
+filaments and water-filled nanotubes formed by SOD1 mutant proteins linked to familial ALS.
+Nat. Struct. Biol. 10:461-7.
+105.Janowski R, Kozak M, Abrahamson M, Grubb A, Jaskolski M. 2005. 3D domain-swapped
+human cystatin C with amyloidlike intermolecular beta-sheets. Proteins 61:570-8.
+106.Sambashivan S, Liu Y, Sawaya MR, Gingery M, Eisenberg D. 2005. Amyloid-like fibrils of
+ribonuclease A with three-dimensional domain-swapped and native-like structure. Nature
+437:266-9.
+107. Guo Z, Eisenberg D. 2006. Runaway domain swapping in amyloid-like fibrils of T7
+endonuclease I. Proc. Natl. Acad. Sci. USA. 103:8042-7.
+108.Petkova AT, Leapman RD, Guo Z, Yau WM, Mattson MP, Tycko R. 2005. Self-propagating,
+molecular-level polymorphism in Alzheimer's beta-amyloid fibrils. Science 307:262-5.
+109.Surmacz-Chwedoruk W, Nieznańska H, Wójcik S, Dzwolak W. 2012. Cross-seeding of fibrils
+from two types of insulin induces new amyloid strains. Biochemistry 51:9460-9.
+110. Peelaerts W, Bousset L, Van der Perren A, Moskalyuk A, Pulizzi R, Giugliano M, Van den
+Haute C, Melki R, Baekelandt V. 2015. α-Synuclein strains cause distinct synucleinopathies
+after local and systemic administration. Nature 522:340-344.
+111.Collinge J, Clarke AR. 2007. A general model of prion strains and their pathogenicity. Science
+318:930-6.
+112.Török M, Milton S, Kayed R, Wu P, McIntire T, et al. 2002. Structural and dynamic features of
+Alzheimer's Abeta peptide in amyloid fibrils studied by site-directed spin labeling. J. Biol.
+Chem. 277:40810-5.
+113. Lührs T, Ritter C, Adrian M, Riek-Loher D, Bohrmann B, et al. 2005. 3D structure of
+Alzheimer's amyloid-beta(1-42) fibrils. Proc. Natl. Acad. Sci. USA 102:17342-7.
+114.Der-Sarkissian A, Jao CC, Chen J, Langen R. 2003. Structural organization of alpha-synuclein
+fibrils studied by site-directed spin labeling. J. Biol. Chem. 278:37530-5.
+115.Chen M, Margittai M, Chen J, Langen R. 2007. Investigation of alpha-synuclein fibril structure
+by site-directed spin labeling. J. Biol. Chem. 282:24970-9.
+116.Margittai M, Langen R. 2004. Template-assisted filament growth by parallel stacking of tau.
+Proc. Natl. Acad. Sci. USA 101:10278-83.
+117.Bedrood S, Li Y, Isas JM, Hegde BG, Baxa U, Haworth IS, Langen R. 2011. Fibril structure of
+
+
+36
+human islet amyloid polypeptide. J Biol Chem. 287:5235-41.
+118.Ladner CL, Chen M, Smith DP, Platt GW, Radford SE, Langen R. 2010. Stacked sets of
+parallel, in-register beta-strands of beta2-microglobulin in amyloid fibrils revealed by site
+directed spin labeling and chemical labeling. J. Biol. Chem. 285:17137-47.
+119.Tycko R., Savtchenko R., Ostapchenko V., Makarava N., Baskakov I. 2010. The alpha-helical
+C-terminal domain of full-length recombinant PrP converts to an in-register parallel beta-sheet
+structure in PrP fibrils: evidence from solid state nuclear magnetic resonance. Biochemistry
+49:9488-97.
+120.Qiang W, Yau WM, Tycko R. 2011. Structural evolution of Iowa mutant β-amyloid fibrils
+from polymorphic to homogeneous states under repeated seeded growth. J. Am. Chem. Soc.
+133:4018-29. doi: 10.1021/ja109679q. Epub 2011 Feb 28.
+121.Belli M, Ramazzotti M, Chiti F. 2011 Prediction of amyloid aggregation in vivo. EMBO Rep.
+12:657-63.
+122.Pawar AP, Dubay KF, Zurdo J, Chiti F, Vendruscolo M, Dobson CM. 2005. Prediction of
+"aggregation-prone" and "aggregation-susceptible" regions in proteins associated with
+neurodegenerative diseases. J. Mol. Biol. 350:379-92.
+123.Tartaglia GG, Pawar AP, Campioni S, Dobson CM, Chiti F, Vendruscolo M. 2008. Prediction
+of aggregation-prone regions in structured proteins. J. Mol. Biol. 380:425-36.
+124.Morozova OA, March ZM, Robinson AS, Colby DW. 2013. Conformational features of tau
+fibrils from Alzheimer's disease brain are faithfully propagated by unmodified recombinant
+protein. Biochemistry 52:6960-7.
+125.Jarrett JT, Berger EP, Lansbury PT Jr. 1993. The carboxy terminus of the beta amyloid protein
+is critical for the seeding of amyloid formation: implications for the pathogenesis of
+Alzheimer's disease. Biochemistry 32:4693-4697.
+126.Ferrone F. 1999. Analysis of protein aggregation kinetics. Methods Enzymol 309:256-74.
+127.Morris AM, Watzky MA, Finke RG. 2009. Protein aggregation kinetics, mechanism, and
+curve-fitting: a review of the literature. Biochim. Biophys Acta 1794:375-397.
+128.Arosio P, Knowles TP, Linse S. 2015. On the lag phase in amyloid fibril formation. Phys.
+Chem. Chem. Phys. 17:7606-18.
+129.Chen S, Ferrone FA, Wetzel R. 2002. Huntington's disease age-of-onset linked to
+polyglutamine aggregation nucleation. Proc. Natl. Acad. Sci. USA 99:11884-9.
+130.Ferrone FA. 2015. Assembly of Aβ proceeds via monomeric nuclei. J. Mol. Biol. 427:287-90.
+131.Masel J, Jansen VAA, Nowak MA. 1999. Quantifying the kinetic parameters of prion
+replication. Biophys. Chem. 77:139–152.
+
+
+37
+132.Uversky VN, Li J, Fink AL. 2001. Evidence for a partially folded intermediate in alpha
+synuclein fibril formation. J. Biol. Chem. 276:10737-10744.
+133.Bhattacharyya AM, Thakur AK, Wetzel R. 2005. Polyglutamine aggregation nucleation:
+thermodynamics of a highly unfavorable protein folding reaction. Proc. Natl. Acad. Sci. USA
+102:15400-15405.
+134.Pease LF 3rd, Sorci M, Guha S, Tsai DH, Zachariah MR et al. 2010. Probing the nucleus model
+for oligomer formation during insulin amyloid fibrillogenesis. Biophys. J. 99:3979-3985.
+135.Cerdà-Costa N, De la Arada I, Avilés FX, Arrondo JL, Villegas S. 2009. Influence of
+aggregation propensity and stability on amyloid fibril formation as studied by Fourier
+transform infrared spectroscopy and two-dimensional COS analysis. Biochemistry 48:10582
+10590.
+136.Almstedt K, Nyström S, Nilsson KP, Hammarström P. 2009. Amyloid fibrils of human prion
+protein are spun and woven from morphologically disordered aggregates. Prion 3:224-35.
+137.Thakur AK, Jayaraman M, Mishra R, Thakur M, Chellgren VM et al. 2009. Polyglutamine
+disruption of the huntingtin exon 1 N terminus triggers a complex aggregation mechanism. Nat.
+Struct. Mol. Biol. 16:380-389.
+138.Wei L, Jiang P, Xu W, Li H, Zhang H, et al. 2011. The molecular basis of distinct aggregation
+pathways of islet amyloid polypeptide. J. Biol. Chem. 286:6291-6300.
+139.Zou Y, Hao W, Li H, Gao Y, Sun Y, Ma G. 2014. New insight into amyloid fibril formation of
+hen egg white lysozyme using a two-step temperature-dependent FTIR approach. J. Phys.
+Chem. B. 118:9834-43.
+140.Chiti F, Dobson CM. 2009. Amyloid formation by globular proteins under native conditions.
+Nat. Chem. Biol. 5:15-22.
+141.Banci L, Bertini I, D'Amelio N, Gaggelli E, Libralesso E, et al. 2005. Fully metallated S134N
+Cu,Zn-superoxide dismutase displays abnormal mobility and intermolecular contacts in
+solution. J. Biol. Chem. 280:35815-35821.
+142.Bemporad F, Chiti F. 2009. "Native-like aggregation" of the acylphosphatase from Sulfolobus
+solfataricus and its biological implications. FEBS Lett. 583:2630-8.
+143.Neudecker P, Robustelli P, Cavalli A, Walsh P, Lundström P et al. 2012. Structure of an
+intermediate state in protein folding and aggregation. Science 336:362-366.
+144.Garcia-Pardo J, Graña-Montes R, Fernandez-Mendez M, Ruyra A, Roher N, Aviles FX,
+Lorenzo J, Ventura S. 2014. Amyloid formation by human carboxypeptidase D transthyretin
+like domain under physiological conditions. J. Biol. Chem. 289:33783-96.
+145.Kumar S, Udgaonkar JB. 2009. Structurally distinct amyloid protofibrils form on separate
+pathways of aggregation of a small protein. Biochemistry 48:6441-6449.
+
+
+38
+146.Knowles TP, Waudby CA, Devlin GL, Cohen SI, Aguzzi A et al. 2009. An analytical solution
+to the kinetics of breakable filament assembly. Science 326:1533-1537.
+147.Ramachandran G, Udgaonkar JB. 2012. Evidence for the existence of a secondary pathway for
+fibril growth during the aggregation of tau. J. Mol. Biol. 421:296-314.
+148.Cohen SI, Linse S, Luheshi LM, Hellstrand E, White DA, Rajah L, Otzen DE, Vendruscolo M,
+Dobson CM, Knowles TP. 2013. Proliferation of amyloid-β42 aggregates occurs through a
+secondary nucleation mechanism. Proc. Natl. Acad. Sci. USA 110:9758-63.
+149.Meisl G, Yang X, Hellstrand E, Frohm B, Kirkegaard JB, Cohen SI, Dobson CM, Linse S,
+Knowles TP. 2014. Differences in nucleation behavior underlie the contrasting aggregation
+kinetics of the Aβ40 and Aβ42 peptides. Proc. Natl. Acad. Sci. USA 111:9384-9.
+150.Buell AK, Galvagnion C, Gaspar R, Sparr E, Vendruscolo M, Knowles TP, Linse S, Dobson
+CM. 2014. Solution conditions determine the relative importance of nucleation and growth
+processes in α-synuclein aggregation. Proc. Natl. Acad. Sci. USA 111:7671-6.
+151. Kakkar V, Månsson C, de Mattos EP, Bergink S, van der Zwaag M et al. 2016. The S/T-Rich
+Motif in the DNAJB6 Chaperone Delays Polyglutamine Aggregation and the Onset of Disease
+in a Mouse Model. Mol. Cell. Published online.
+152.Xu LQ, Wu S, Buell AK, Cohen SI, Chen LJ et al. 2013. Influence of specific HSP70 domains
+on fibril formation of the yeast prion protein Ure2. Philos. Trans. R. Soc. Lond. B. Biol. Sci.
+368:20110410.
+153.Galvagnion C, Buell AK, Meisl G, Michaels TC, Vendruscolo M et al. 2015. Lipid vesicles
+trigger α-synuclein aggregation by stimulating primary nucleation. Nat. Chem. Biol. 11:229
+234.
+154.Kayed R, Head E, Thompson JL, McIntire TM, Milton SC, Cotman CW, Glabe CG. 2003.
+Common structure of soluble amyloid oligomers implies common mechanism of pathogenesis.
+Science 300:486-9.
+155.Lesné S, Koh MT, Kotilinek L, Kayed R, Glabe CG, Yang A, Gallagher M, Ashe KH. 2006. A
+specific amyloid-beta protein assembly in the brain impairs memory. Nature 440:352-7.
+156.Lambert MP, Barlow AK, Chromy BA, Edwards C, Freed R, Liosatos M, Morgan TE,
+Rozovsky I, Trommer B, Viola KL, Wals P, Zhang C, Finch CE, Krafft GA, Klein WL. 1998.
+Diffusible, nonfibrillar ligands derived from Abeta1-42 are potent central nervous system
+neurotoxins. Proc. Natl. Acad. Sci. USA 95:6448-53.
+157.Kayed R, Head E, Sarsoza F, Saing T, Cotman CW, Necula M, Margol L, Wu J, Breydo L,
+Thompson JL, Rasool S, Gurlo T, Butler P, Glabe CG. 2007. Fibril specific, conformation
+dependent antibodies recognize a generic epitope common to amyloid fibrils and fibrillar
+oligomers that is absent in prefibrillar oligomers. Mol. Neurodegener. 26:18.
+
+
+39
+158.Kayed R, Pensalfini A, Margol L, Sokolov Y, Sarsoza F, Head E, Hall J, Glabe C. 2009.
+Annular protofibrils are a structurally and functionally distinct type of amyloid oligomer. J.
+Biol. Chem. 284:4230-7.
+159.Barghorn S, Nimmrich V, Striebinger A, Krantz C, Keller P, Janson B, Bahr M, Schmidt M,
+Bitner RS, Harlan J, Barlow E, Ebert U, Hillen H. 2005. Globular amyloid beta-peptide
+oligomer - a homogenous and stable neuropathological protein in Alzheimer's disease. J.
+Neurochem. 95:834-47.
+160.Hoshi M, Sato M, Matsumoto S, Noguchi A, Yasutake K, Yoshida N, Sato K. 2003. Spherical
+aggregates of beta-amyloid (amylospheroid) show high neurotoxicity and activate tau protein
+kinase I/glycogen synthase kinase-3beta. Proc. Natl. Acad. Sci. USA. 100:6370-5.
+161.Chimon S, Shaibat MA, Jones CR, Calero DC, Aizezi B, Ishii Y. 2007. Evidence of fibril-like
+β-sheet structures in a neurotoxic amyloid intermediate of Alzheimer's β-amyloid. Nat. Struct.
+Mol. Biol. 14:1157-64.
+162.Ahmed M, Davis J, Aucoin D, Sato T, Ahuja S, Aimoto S, Elliott JI, Van Nostrand WE, Smith
+SO. 2010. Structural conversion of neurotoxic amyloid-beta(1-42) oligomers to fibrils. Nat.
+Struct. Mol. Biol. 17:561-7.
+163.Podlisny MB, Ostaszewski BL, Squazzo SL, Koo EH, Rydell RE, Teplow DB, Selkoe DJ.
+1995. Aggregation of secreted amyloid beta-protein into sodium dodecyl sulfate-stable
+oligomers in cell culture. J. Biol. Chem. 270:9564-70.
+164.Harper JD, Wong SS, Lieber CM, Lansbury PT. 1997. Observation of metastable Abeta
+amyloid protofibrils by atomic force microscopy. 1997. Chem Biol. 4:119-125.
+165.Stroud JC, Liu C, Teng PK, Eisenberg D. 2012. Toxic fibrillar oligomers of amyloid-β have
+cross-β structure. Proc. Natl. Acad. Sci. USA 109:7717-22.
+166.Parthasarathy S, Inoue M, Xiao Y, Matsumura Y, Nabeshima Y, Hoshi M, Ishii Y. 137. J. Am.
+Chem. Soc. 137:6480-3.
+167.O'Nuallain B, Freir DB, Nicoll AJ, Risse E, Ferguson N, Herron CE, Collinge J, Walsh DM.
+2010. Amyloid beta-protein dimers rapidly form stable synaptotoxic protofibrils. J. Neurosci.
+30:14411-9.
+168.Matsumura S, Shinoda K, Yamada M, Yokojima S, Inoue M, Ohnishi T, Shimada T, Kikuchi
+K, Masui D, Hashimoto S, Sato M, Ito A, Akioka M, Takagi S, Nakamura Y, Nemoto K,
+Hasegawa Y, Takamoto H, Inoue H, Nakamura S, Nabeshima Y, Teplow DB, Kinjo M, Hoshi
+M. 2011. Two distinct amyloid beta-protein (Abeta) assembly pathways leading to oligomers
+and fibrils identified by combined fluorescence correlation spectroscopy, morphology, and
+toxicity analyses. J. Biol. Chem. 286:11555-62.
+
+
+40
+169.Fu Z, Aucoin D, Davis J, Van Nostrand WE, Smith SO. 2015. Mechanism of Nucleated
+Conformational Conversion of Aβ42. Biochemistry 54:4197-207.
+170.Lasagna-Reeves CA, Glabe CG, Kayed R. 2011. Amyloid-β annular protofibrils evade fibrillar
+fate in Alzheimer disease brain. J. Biol. Chem. 286:22122-22130.
+171.Chen SW, Drakulic S, Deas E, Ouberai M, Aprile FA et al. 2015. Structural characterization of
+toxic oligomers that are kinetically trapped during α-synuclein fibril formation. Proc. Natl.
+Acad. Sci. USA. 112:E1994-2003.
+172.Gallea JI, Celej MS. 2014. Structural insights into amyloid oligomers of the Parkinson disease
+related protein α-synuclein. J Biol Chem. 289:26733-26742.
+173.Lorenzen N, Nielsen SB, Buell AK, Kaspersen JD, Arosio P et al. 2014. The role of stable α
+synuclein oligomers in the molecular events underlying amyloid formation. J. Am. Chem. Soc.
+136:3859-68.
+174.Zraika S, Hull RL, Verchere CB, Clark A, Potter KJ, Fraser PE, Raleigh DP, Kahn SE. 2010.
+Toxic oligomers and islet beta cell death: guilty by association or convicted by circumstantial
+evidence? Diabetologia 53:1046-56.
+175. Almeida MR, Saraiva MJ. 2012. Clearance of extracellular misfolded proteins in systemic
+amyloidosis: experience with transthyretin. FEBS Lett. 586:2891-6.
+176.Kastritis E, Dimopoulos MA. 2016. Recent advances in the management of AL Amyloidosis.
+Br. J. Haematol. 172:170-86.
+177.Roberts HL, Brown DR. 2015. Seeking a mechanism for the toxicity of oligomeric α-synuclein.
+Biomolecules 5:282-305.
+178.Benilova I, Karran E, De Strooper B. 2012. The toxic Aβ oligomer and Alzheimer's disease: an
+emperor in need of clothes. Nat, Neurosci. 15:349-357.
+179.Guerrero-Muñoz MJ, Gerson J, Castillo-Carranza DL. 2015. Tau Oligomers: The Toxic Player
+at Synapses in Alzheimer's Disease. Front. Cell. Neurosci. 9:464.
+180.Labbadia J, Morimoto RI. 2015. The biology of proteostasis in aging and disease. Annu. Rev.
+Biochem. 84:435-464.
+181.Martins IC, Kuperstein I, Wilkinson H, Maes E, Vanbrabant M et al. 2008. Lipids revert inert
+Abeta amyloid fibrils to neurotoxic protofibrils that affect learning in mice. EMBO J 27:224
+33.
+182.Koffie RM, Meyer-Luehmann M, Hashimoto T, Adams KW, Mielke ML et al. 2009.
+Oligomeric amyloid beta associates with postsynaptic densities and correlates with excitatory
+synapse loss near senile plaques. Proc. Natl. Acad. Sci. USA 106:4012-17.
+
+
+41
+183.Campioni, S., Mannini, B., Zampagni, M., Pensalfini, A., Parrini, C., Evangelisti, E., Relini,
+A., Stefani, M., Dobson, C.M., Cecchi, C. et al. (2010). A causative link between the structure
+of aberrant protein oligomers and their toxicity. Nat Chem Biol 6, 140-147.
+184.Ladiwala AR, Litt J, Kane RS, Aucoin DS, Smith, SO, et al. 2012. Conformational differences
+between two amyloid β oligomers of similar size and dissimilar toxicity. J. Biol. Chem. 287,
+24765-73.
+185.Krishnan R, Goodman JL, Mukhopadhyay S, Pacheco CD, Lemke EA et al. 2012. Conserved
+features of intermediates in amyloid assembly determine their benign or toxic states. Proc.
+Natl. Acad. Sci. USA 109:11172-7.
+186.Bolognesi B, Kumita JR, Barros TP, Esbjorner EK, Luheshi LM, Crowther DC, Wilson MR,
+Dobson CM, Favrin G, Yerbury JJ 2010. ANS Binding Reveals Common Features of
+Cytotoxic Amyloid Species. ACS Chem. Biol. 5:735-40.
+187.Olzscha, H., Schermann, S.M., Woerner, A.C., Pinkert, S., Hecht, M.H., Tartaglia, G.G.,
+Vendruscolo, M., Hayer-Hartl, M., Hartl, F.U., and Vabulas, R.M. (2011). Amyloid-like
+aggregates sequester numerous metastable proteins with essential cellular functions. Cell. 144,
+67-78.
+188.Lambert MP, Viola KL, Chromy BA, Chang L, Morgan TE et al. 2001. Vaccination with
+soluble Abeta oligomers generates toxicity-neutralizing antibodies. J. Neurochem. 79:595-605.
+189.Gong Z, Lee H, Xiong L, Jagendorf A, Stevenson B, Zhu JK. 2002. RNA helicase-like protein
+as an early regulator of transcription factors for plant chilling and freezing tolerance. Proc.
+Natl. Acad. Sci. USA 99:11507-11512.
+190.Ojha, J., Masilamoni, G., Dunlap, D., Udoff, R.A., and Cashikar, A.G. (2011). Sequestration of
+toxic oligomers by HspB1 as a cytoprotective mechanism. Mol. Cell. Biol. 31, 3146-3157.
+191.Mannini B, Cascella R, Zampagni M, van Waarde-Verhagen M, Meehan S et al. 2012.
+Molecular mechanisms used by chaperones to reduce the toxicity of aberrant protein oligomers.
+Proc. Natl. Acad. Sci. USA 109, 12479-84.
+192.Cascella, R., Conti, S., Mannini, B., Li, X., Buxbaum, J.N., Tiribilli, B., Chiti, F., and Cecchi,
+C. (2013). Transthyretin suppresses the toxicity of oligomers formed by misfolded proteins in
+vitro. Biochim. Biophys. Acta. 1832, 2302-2314.
+193.Mannini B, Mulvihill E, Sgromo C, Cascella R, Khodarahmi R et al. 2014. Toxicity of protein
+oligomers is rationalized by a function combining size and surface hydrophobicity. ACS Chem.
+Biol. 9, 2309-17.
+194.van Rooijen BD, Claessens MM, Subramaniam V. 2010. Membrane Permeabilization by
+Oligomeric α-Synuclein: In Search of the Mechanism. PLoS One 5:e14292.
+
+
+42
+195.Oropesa-Nuñez R, Seghezza S, Dante S, Diaspro A, Cascella R et al. 2016. Interaction of toxic
+and non-toxic HypF-N oligomers with lipid bilayers investigated at high resolution with atomic
+force microscopy. Oncotarget, published online.
+196.Brehme M, Voisine C, Rolland T, Wachi S, Soper JH, Zhu Y, Orton K, Villella A, Garza D,
+Vidal M, Ge H, Morimoto RI. 2014. A chaperome subnetwork safeguards proteostasis in aging
+and neurodegenerative disease. Cell Rep. 9:1135-1150.
+197.Nillegoda NB, Kirstein J, Szlachcic A, Berynskyy M, Stank A, et al. 2015. Crucial HSP70 co
+chaperone complex unlocks metazoan protein disaggregation. Nature 524:247-51.
+198.Monsellier E, Chiti F. 2007. Prevention of amyloid-like aggregation as a driving force of
+protein evolution. EMBO Rep. 8:737-42.
+199.Tartaglia GG, Vendruscolo M. 2009. Correlation between mRNA expression levels and protein
+aggregation propensities in subcellular localisations. Mol. Biosyst. 5:1873-1876.
+200.De Baets G, Reumers J, Delgado Blanco J, Dopazo J, Schymkowitz J, Rousseau F. 2011. An
+evolutionary trade-off between protein turnover rate and protein aggregation favors a higher
+aggregation propensity in fast degrading proteins. PLoS Comput. Biol. 7:e1002090.
+201.Singh S, Trikha S, Bhowmick DC, Sarkar AA, Jeremic AM. 2015. Role of Cholesterol and
+Phospholipids in Amylin Misfolding, Aggregation and Etiology of Islet Amyloidosis. Adv.
+Exp. Med. Biol. 855:95-116.
+202.Hinton DR, Polk RK, Linse KD, Weiss MH, Kovacs K, Garner JA. 1997. Characterization of
+spherical amyloid protein from a prolactin producing pituitary adenoma. Acta Neuropathol.
+93:43–9.
+203.Benditt EP, Eriksen N. 1971. Chemical classes of amyloid substance. Am. J. Pathol. 65:231-52.
+204.McKinnon C, Tabrizi SJ. 2014. The ubiquitin-proteasome system in neurodegeneration.
+Antioxid. Redox. Signal. 21:2302-2321.
+205.Martinez-Lopez N, Athonvarangkul D, Singh R. 2015. Autophagy and aging. Adv. Exp. Med.
+Biol. 847:73-87.
+206.Tartaglia GG, Pechmann S, Dobson CM, Vendruscolo M. 2007. Life on the edge: a link
+between gene expression levels and aggregation rates of human proteins. Trends Biochem Sci.
+32:204-206.
+207.Ciryam P, Tartaglia GG, Morimoto RI, Dobson CM, Vendruscolo M. 2013. Widespread
+aggregation and neurodegenerative diseases are associated with supersaturated proteins Cell
+Rep. 5:781-790.
+208.Ciryam P, Kundra R, Morimoto RI, Dobson CM, Vendruscolo M. 2015. Supersaturation is a
+major driving force for protein aggregation in neurodegenerative diseases. Trends Pharmacol.
+Sci. 36:72-7.
+
+
+43
+209.Ciryam P, Kundra R, Freer R, Morimoto RI, Dobson CM, Vendruscolo M. 2016. A
+transcriptional signature of Alzheimer's disease is associated with a metastable subproteome at
+risk for aggregation. Proc. Natl. Acad. Sci. USA 113:4753-4758.
+210.Ivanova MI, Sievers SA, Sawaya MR, Wall JS, Eisenberg D. 2009. Molecular basis for insulin
+fibril assembly. Proc. Natl. Acad. Sci. USA. 106:18990-18995.
+
+
+44
+Table 1 – Peptides or proteins forming extracellular amyloid deposits or intracelullar inclusions with amyloid-like features in human diseases
+Peptide/protein name No. of residuesa
+Structureb Associated Diseases Type of diseasec
+amyloid  peptide (A) 40 or 42d Intrinsically disordered
+- Alzheimer’s disease - Hereditary cerebral haemorrhage with amyloidosis
+Neuropathic
+Sporadicf
+-synuclein (S) e 140 Intrinsically disordered
+- Parkinson’s disease - Parkinson’s disease with dementia - Dementia with Lewy bodies - Multiple system atrophy
+Neuropathic
+Sporadicf
+prion protein (PrP) 208 Intrinsically disordered (1-102) All-, prionlike (103-208)
+- Creutzfeldt-Jacob disease - Fatal insomnia - Gerstmann-Sträussler-Scheinker disease - Huntington disease-like 1 - spongiform encephalopathy with neuropsychiatric features - New variant Creutzfeldt-Jacob disease - Kuru
+Neuropathic
+Sporadic, hereditary, infectious, iatrogenic
+Microtubule-associated protein tau () e
+352-441d Intrinsically disordered
+- Pick’s disease - Progressive supranuclear palsy - Corticobasal degeneration - Frontotemporal dementia with parkinsonism linked to chr17 - Argyrophilic grain disease - Tangle predominant dementia - Guam Parkinson dementia complex - frontotemporal lobar degeneration - chronic traumatic encephalopathy - ganglioglioma - meningioangiomatosis - subacute sclerosing - panencephalitis - lead encephalopathy - tuberous sclerosis - Hallervorden-Spatz disease - lipofuscinosis
+Neuropathic
+Sporadicf
+Huntingtin exon 1 (HttEx1) e ~103187d
+Intrinsically disordered
+- Huntington disease Neuropathic
+hereditary
+ABri peptide 34 Intrinsically disordered
+- Familial British dementia Systemic and neuropathic
+g
+hereditary
+ADan peptide 34 Intrinsically disordered
+- Familial Danish dementia Neuropathic
+hereditary
+Fragments of immunoglobulin light chains h
+~100d All-, Ig-like - light chain amyloidosis Systemic
+Sporadicf
+Fragments of immunoglobulin heavy chains h
+~190d All-, Ig-like - heavy chain amyloidosis (mainly renal)
+Systemic
+
+
+45
+sporadic
+Full or N-term fragments of serum amyloid A protein (SAA)
+45-104d All-, unknown fold
+- AA amyloidosis Systemic
+sporadic
+Transthyretin (TTR) 127 All-, prealbumin like
+- Senile systemic amyloidosis - Familial amyloidotic polyneuropathy - Familial amyloid cardiomyopathy - Leptomeningeal amyloidosis
+Systemicg
+Sporadic and hereditary
+2-microglobulin (2-m) 99 All-, IG like - Dialysis-related amyloidosis - hereditary visceral amyloidosis
+Systemic
+Iatrogenicf
+N-term fragments of apolipoprotein A-I (apoAI)
+69-100d Intrinsically disordered
+- ApoAI amyloidosis (many organs) Systemic
+hereditary
+C-term extended apolipoprotein AII (apoAII)
+98 Unknown - ApoAII amyloidosis (mainly renal)
+Systemic
+hereditary
+N-term fragments of apolipoprotein A-IV (apoAIV)
+~70 Unknown - ApoAIV amyloidosis (many organs)
+Systemic
+sporadic
+Fragments of gelsolin 53 or 71d Intrinsically disordered
+- Familial amyloidosis of Finnish type
+Systemic
+hereditary
+Lysozyme (LYS) 130 +, lysozyme fold
+- Lysozyme amyloidosis (mainly visceral)
+Systemic
+hereditary
+fragments of fibrinogen -chain 45-81d Unknown - Fibrinogen amyloidosis (mainly renal)
+Systemic
+Hereditary
+N-term truncated cystatin C 110 +, cystatin like
+- Hereditary cerebral hemorrhage with amyloidosis, Icelandic type
+Systemic
+Hereditary
+islet amyloid polypeptide (IAPP) 37 Intrinsically disordered
+- Type II diabetes - Insulinoma
+Localised
+Sporadic
+Calcitonin 32 Intrinsically disordered
+- Medullary carcinoma of the thyroid
+Localised
+Sporadic
+Atrial natriuretic factor (ANF) 28 Intrinsically disordered
+- Atrial amyloidosis Localised
+Sporadic
+N-term fragments of prolactin (PRL)
+34 unknown - Pituitary prolactinoma Localised
+Sporadic
+Insulin (30+21)i All-, insulin like
+- Injection-localized amyloidosis Localised
+iatrogenic
+Medinj 50 Intrinsically disordered
+- Aortic medial amyloidosis Localised
+Sporadic
+Lactotransferrin (lactoferrin) 691 +, periplasmic binding protein-like II
+- Gelatinous drop-like corneal distrophy
+Localised
+Sporadicf
+Odontogenic ameloblastassociated protein (ODAM)
+110-118d Unknown - Calcifying epithelial odontogenic tumors
+Localised
+sporadic
+
+
+46
+Pulmonary surfactant-associated protein C (SP-C)
+35 All-, transmembra ne helical fragment
+- Pulmonary alveolar proteinosis Localised
+sporadic
+Leukocyte cell-derived chemotaxin-2 (LECT-2)
+133 unknown - Renal amyloidosis Systemic
+sporadic
+Galectin 7 (Gal-7) e
+136 All-, concanavalin A -like lectins
+- lichen amyloidosus - macular amyloidosis
+Localised
+sporadic
+Corneodesmosin (CDSN) 167, 182, 206d
+Intrinsically disordered
+- hypotrichosis simplex of the scalp Localised
+hereditary
+C-term fragments of keratoepithelin (ig-h3)
+50-200d Unknown - Lattice corneal dystrophy, type 1
+- Lattice corneal dystrophy, type 3A - Lattice corneal dystrophy, Avellino type
+Localised
+hereditary
+Semenogelin-1 (SGI) 439 Unknown - Seminal vesicle amyloidosis Localised
+sporadic
+Proteins S100A8/A9 92/113 All-, EF hand-like
+- prostate cancer Localised
+sporadic
+enfuvirtide 36 Unknown - Injection-localized amyloidosis Localised
+iatrogenic
+a Lengths of the processed forms depositing into the aggregates, not the precursor proteins. b Structural class and fold of the native, processed protein/peptide prior to aggregation, according to Structural Classification Of Proteins (SCOP). c Diseases are classified as (i) neuropathic, systemic or localized (non-neuropathic) and (ii) sporadic, hereditary, iatrogenic (following medical treatment) or infectious d Fragments of various lengths were reported in ex vivo fibrils e Intracellular proteins, unlike the others that are extracellular. f Predominantly sporadic, although hereditary forms are documented. g Involving both the central nervous system and other organs, thus systemic but also neuropathic h Also forming non-amyloid deposits in light-chain or heavy-chain deposition disease (LCCD and HCDD). i Lengths of the A and B chains linked by a disulphide bridge j Medin is the 245-294 fragment of human lactadherin.
+
+
+47
+Table 2 – Peptides or proteins forming intracellular or extracellular non-amyloid deposits in human diseasesa
+Peptide/protein name No. of residuesb
+Structurec Associated Diseases Type of diseased
+Neurogenic locus notch homolog protein 3 (Notch 3) ectodomain
+1589 Unknown - Cerebral autosomal dominant arteriopathy with subcortical infarcts and leukoencephalopathy (CADASIL)
+neuropathic
+hereditary
+Immunoglobulin heavy chainse
+~ 345 All-,
+Ig-like
+- Heavy chain deposition disease (renal disease)
+Localised
+Sporadic
+Immunoglobulin light chainsf
+~ 215 All-,
+Ig-like
+- Light chain deposition disease - myeloma cast nephropathy - Fanconi syndrome (all are renal)
+Systemic
+Sporadic
+Fibronectin (FN) 2355 All-,
+FnI-like domain
+Fibronectin glomerulopathy Localised
+Sporadic and hereditary
+TAR DNA-binding protein 43 (TDP-43)
+414 Unknown - Frontotemporal lobar degeneration with ubiquitin-positive inclusions - Amyotrophic lateral sclerosis
+neuropathic sporadich
+Complement C1q subcomponent (C1q)
+3996g All-, TNF-like (globular head)
+Unknown (the rest)
+- C1q nephropathy Localised sporadic
+Immunoglobulin A (IgA)
+~ 2700g All-, Ig-like - IgA nephropathy (Berger disease) - Henoch-Schönlein purpura
+Localised sporadic
+Alanine:glyoxylate aminotransferase (AGT)
+392 +,
+PLP-dependent transferase-like
+- Primary hyperoxaluria type 1 systemic hereditary
+Immunoglobulin M (IgM)
+~ 6750g All-, Ig-like - Multiple myeloma / plasmacytoma (Russell bodies)
+Systemic sporadic
+Immunoglobulin G (IgG)
+~ 1350g All-, Ig-like - Multiple myeloma / plasmacytoma (Russell bodies)
+Systemic sporadic
+Uromodulin or TammHorsfall urinary glycoprotein (THP)
+590 unknown - Medullary cystic kidney disease 2 - Familial juvenile hyperuricemic nephropathy - Glomerulocystic kidney disease
+Localised hereditary
+Ataxin-1 815 Unknown (1-561, 694-815) All-, AXH domain (562693)
+- Spinocerebellar ataxia 1 neuropathic hereditary
+Hemoglobin 574g All-,
+globin-like
+- Sickle cell anemia - Heinz body anemia - Inclusion body -thalassemia
+Localised hereditary
+1-antitrypsinh 394  + , serpin - 1-antitrypsin deficiency Localised
+hereditary a The peptides and proteins listed in the table include cases reported to form either extracellular or intracellular deposits with evidence for non-amyloid structure. b Data refer to the processed polypeptide chains that deposit into aggregates, not to the precursor proteins.
+
+
+48
+c Structural class and fold of the native, processed protein/peptide prior to aggregation, according to Structural Classification Of Proteins (SCOP). d Diseases are classified as (i) neuropathic, systemic or localized (non-neuropathic) and (ii) sporadic, hereditary e This protein has also been reported to form amyloid deposits in AH and AHL amyloidosis f This protein has also been reported to form amyloid deposits in AL and AHL amyloidosis g Calculated considering all subunits forming the protein h Representative example of a group of serpins
+
+
+49
+Table 3 – Peptides or proteins forming amyloid-like fibrils with physiological roles in humansa
+Peptide/protein name No. of residuesb
+Structurec Physiological role
+Intralumenal domain of melanocyte protein PMEL
+442 Unknown (NTR, 25-214), all-, Ig-like (PKD, 215-297), unknown (RTD, 315-444)
+To form, inside melanosomes, fibrious striations upon which melanin granules form
+Various peptide hormones in pituitary secretory granules
+variable variable To act as a natural storage in pituitary secretory granules
+Receptor-interacting serine/threonineprotein kinase 1/3 (RIP1/RIP3)
+671/518 +, kinase-like (1-324), intrinsic. disordered (325-end)
+To mediate the TNF-induced programmed cell necrosis
+Fragments of prostatic acid phosphatase and semenogelins
+36-63 Intrinsically disordered Unknown for humans, exploited by the HIV virus for infection
+a The peptides and proteins listed in the table include cases reported to form functional amyloid in humans. The table does not report fragments of prostatic acid phosphatase and semenogelins recently detected in amyloid forms in the human semen as its functional role in humans remains to be established. b Data refer to the processed polypeptide chains that deposit into aggregates, not to the precursor proteins. c Structural class and fold of the native, processed protein/peptide prior to aggregation, according to Structural Classification Of Proteins (SCOP).
+
+
+50
+Figure legends
+Figure 1. Schematic illustration of the multiplicity of conformational states that can be adopted by
+a polypeptide chain following its biosynthesis, and the possible transitions between the different
+states. All of these conformational states and their interconversions are carefully regulated in the
+biological environment by means of the proteostasis network. Protein aggregation can result in the
+formation of amyloid fibrils (centre), native-like deposits (right) or amorphous deposits (left), all of
+which are associated with pathological states when they form in a non-controlled manner.
+Figure 2. Schematic representation of the different mechanisms of action by which mutations
+associated with hereditary amyloid diseases can cause protein aggregation and its associated
+pathological states. Each of the 10 numbered boxes in the figure shows a mechanism of action,
+along with the names of the mutated peptides/proteins for which the mechanism is described in the
+literature.
+Figure 3. Three-dimensional structures and structural models of amyloid fibrils from different sources. (a)
+Two polymorphic structural models of A40 protofilaments viewed down the long axis of the fibril, shown as
+a ribbon (left) and stick (right) models. Each layer consists of two (top) or three (bottom) A40 molecules. 
+strands encompassing residues 10-22 and 30-40 are depicted in red and blue, respectively (left). Reproduced
+with permission from ref. 75 (top) and ref. 65 (bottom). (b) Atomic structure of the microcrystals assembled
+from the LVEALYL peptide. Each -strand is a peptide molecule viewed along (top) and down (bottom) the
+long axis of the fibril. Reproduced with permission from ref. 210. (c) Left-handed -solenoid structure of the
+fibril of the HET-s prion domain (residues 218-289) from P. anserina viewed along (top) and down (bottom)
+the long axis of the fibril. Different colours indicate different molecules. Each molecule contributes to two
+windings of the -solenoid and 8 -strands termed 1a, 1b, 2a, etc. Reproduced with permission from ref.
+66. (d) Structural model of native-like protofilaments from transthyretin, having unfolded C and D strands,
+and native-like AGH and BEF sheets that assemble to form two antiparallel -sheets and the cross- core of
+the protofilament. A section of the protofilament is shown enlarged. Readapted with permission from ref.
+101. In all panels the arrow represents the axis of the fibril.
+Figure 4. Aggregation propensity profiles for A (a), -synuclein (b), IAPP (c) and the K19 fragment of tau
+(d), all determined according to ref. 122. In each panel, the aggregation propensity profile (solid blue line) is
+compared with the regions of the sequence found experimentally to form the -sheet core of the fibrils
+(horizontal bars) according to the references and methods indicated in the panel.
+
+
+51
+Figure 5. (a) Possible mechanisms of nucleus formation starting from a globular or intrinsically disordered
+protein. The vertical boxes refer to different stages of the amyloid fibril formation process, whereas the
+horizontal lines refer to different models of aggregation, i.e. the nucleated polymerisation (red arrows), the
+nucleated conformational conversion (blue arrows), and the native-like aggregation (green arrows). The
+vertical box on the right refer to secondary processes, such as secondary nucleation (top) and fibril
+fragmentation (bottom). (b) Schematic representation of the structural rearrangements occurring during
+oligomer formation. Amyloidogenic segments are coloured in green. As aggregation proceeds (left to right) a
+set of structural rearrangements take place: the top arrow shows the parameters that increase.
+
+
+functional fibres
+functional oligomers
+folded or globular
+disordered aggregates
+disordered aggregates
+proteolysed fragment
+ribosome with nascent chain
+partially folded
+unfolded
+β-structured aggregates
+amyloid fibrils
+ligand binding
+covalent modification
+partially folded (off-pathway)
+native -like
+amorphous deposits native-like deposits
+IDPs
+partially or fully folded
+initial aggregates
+mature aggregates
+native-like aggregates
+
+
+aggregates
+DNA gene
+pre-mRNA
+mRNA
+unfolded protein
+partially folded protein
+folded protein
+proteolysed fragment
+folded protein bound to its target molecule (i.e. protein, lipids, etc.)
+folded protein bound to its ligand (i.e. Ca2+)
+Mutations causing alternative splicing of pre-mRNA to form an mRNA
+coding for a more amyloidogenic protein: i.e. mutations of τ
+2
+Mutations causing premature stop of translation, resulting into unfolded
+fragments: i.e. mutations of CDSN, PrP
+3
+Mutations causing late stop of translation, resulting into additional amyloidogenic
+unfolded fragments: i.e. mutations of Abri, ADan, apoAII
+4
+Mutations destabilising the folded state, causing higher concentrations of amyloidogenic
+partly folded states: i.e. TTR, LYS, cystatin C, PrP, β2 m
+7
+Mutations destabilising the folded state, resulting into proteolytic cleavage and
+formation of unfolded amyloidogenic fragments: i.e. mutations of apoAI
+8
+Mutations decreasing the folded state affinity for its ligand, causing proteolytic
+cleavage and formation of unfolded amyloidogenic fragments: i.e. gelsolin
+9
+Mutations causing detachment from partner
+protein/molecule: i.e. τ, apoAI
+10
+Mutations changing prot. cleavage, forming
+more amyloidog. fragments: i.e. Aβ
+5
+Mutations increasing intrinsic
+aggregation rate: i.e. Aβ, τ, PrP, ApoAI,
+αs
+6
+Gene duplication/triplication or expansion, causing a
+higher concentration of protein or expanded
+amyloidogenic sequence: i.e. Aβ, HttEx1, αs
+1
+
+
+a
+c
+a
+60 Å
+70 Å
+d
+Fibril
+unf old ed C and D
+Structure of three subunits in the fibril
+b
+
+
+
+
+Nucleated polymerisation
+Nucleated conformational conversion
+Native-­‐like aggregation
+native amyloidogenic Early aggregates nuclei fibrils
+IDP
+globular
+Secondary proccesses
+a
+b

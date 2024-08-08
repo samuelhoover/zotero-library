@@ -1,0 +1,494 @@
+Linear Scaling Self-Consistent Field Theory with Spectral Contour Accuracy
+Daniel L. Vigil,† Carlos J. García-Cervera,‡,§ Kris T. Delaney,∥ and Glenn H. Fredrickson*,†,∥
+†Department of Chemical Engineering, University of California, Santa Barbara, California 93106, United States ‡Department of Mathematics, University of California, Santa Barbara, California 93106, United States
+§Visiting Professor at BCAM - Basque Center for Applied Mathematics, Mazarredo 14, E48009 Bilbao, Basque Country, Spain
+∥Materials Research Laboratory, University of California, Santa Barbara, California 93106, United States
+*
+S Supporting Information
+ABSTRACT: We present a new methodology for polymer self-consistent field theory (SCFT) that has spectral accuracy in the contour dimension while retaining linear scaling of computational effort with system size. In contrast, traditional linear-scaling algorithms only have polynomial order accuracy. The improved accuracy allows for faster simulations and lower memory costs compared to traditional algorithms. The new spectral methods are enabled by converting from an auxiliary field representation to a recently developed “polymer coherent states” framework.
+N
+umerical auxiliary field (AF)-based self-consistent field theory (SCFT) has become a standard tool in modern polymer physics. It has been used to predict, interrogate, and understand many phenomena in inhomogeneous polymer
+systems, such as self-assembly and phase behavior.1 The core of numerical AF SCFT is computing polymer density fields, ψ̃ (r), from propagators, q(r,s), which describe the randomwalk statistics of polymers in an auxiliary potential field, w(r), where s indexes the chain contour position and r denotes position in a d-dimensional domain. The potential field is updated based on the densities until a self-consistent solution is reached. The most computationally expensive task is computing the chain propagator, which, for Gaussian chains, satisfies the modified diffusion equation (MDE):
+q(r, s) ( w(r, s))q(r, s)
+s
+2
+∂ = ∇ − (1)
+Originally this equation was solved using a spectral method with a Galerkin approximation and symmetry-adapted plane
+wave basis functions.2 This method has spectral accuracy in space (r) and is analytical in contour (s) but suffers from high computational cost due to the need to diagonalize a matrix to find the Fourier coefficients. The dimension of the matrix is the number of basis functions used, M, and the diagonalization is an (M3)
+6 operation. For three-dimensional calculations with large cells or low symmetry, the matrix diagonalization becomes unfeasible because of the large number of basis functions needed and poor algorithm scaling. There exist alternative, pseudospectral methods that have spectral accuracy in space (r) and polynomial accuracy in contour (s) and that can be solved with near-linear cost (N M ln M)
+s
+6 , where Ns is the number of contour points.3
+Two of the most common methods are those developed by
+Rasmussen and co-workers3,4 and by Ranjan et al.,5 which are (Ns )
+−2
+6 and (Ns )
+−4
+6 accurate and which we abbreviate as RK2 and RQM4, respectively. Prior work has shown that although the RQM4 method is more accurate, RK2 is more efficient for
+some problems because of lower computational costs.6 While these algorithms are representative of state-of-the-art methods, at strong segregation they need (103)
+6 contour points for sufficient accuracy.7 This can become intractable in very large cells or for systems with sharp interfaces where many spatial grid points are also necessary to resolve interfaces accurately. Recently, there has been work to obtain even higher accuracy in contour sampling by using a spectral deferred correction, but these methods are still limited to polynomial
+order accuracy in contour.8 An ideal algorithm would achieve spectral accuracy in the spatial and contour dimensions, while preserving the near-linear cost scaling of the pseudospectral methods. One way to achieve spectral accuracy in the contour domain is by using a Chebyshev polynomial expansion in s in eq 1, but this yields a nonsparse system of equations that cannot be solved efficiently. The Supporting Information discusses this point further. An alternative, “coherent states” (CS) representation of
+polymer field theory has recently emerged,9 which is formally
+equivalent to the AF theory10 but allows for different numerical methods that achieve spectral contour accuracy with linear scaling. Here we consider a canonical ensemble of incompres
+Received: August 13, 2019 Accepted: October 1, 2019 Published: October 7, 2019
+Letter
+pubs.acs.org/macroletters
+Cite This: ACS Macro Lett. 2019, 8, 1402−1406
+© 2019 American Chemical Society 1402 DOI: 10.1021/acsmacrolett.9b00632 ACS Macro Lett. 2019, 8, 1402−1406
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 20, 2024 at 21:30:03 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+sible molten diblock copolymers to illustrate the differences between the form of the two theories and then discuss numerical methods to solve each model. The ensemble contains n diblock chains, with species “A” volume fraction f in a volume V at temperature T. The AF theory for a linear diblock copolymer is well documented in the literature, so we do not reproduce it
+here.1,11 We simply note that the theory consists of a pressure and exchange field, w+ and w−, that modulate incompressibility
+and a Flory χ interaction between dissimilar segments, respectively. The details of how to convert an AF theory to a CS theory
+are given explicitly by Man et al.,12 and following their procedure yields the partition function
+Z ww
+exp( H w , w , , , , )
+A
+AA B
+B CS A B B
+∫∫ ∫∫ ∫
+∫
+φφ φ
+φ β φφ φ φ
+=*
+* − [ * *]
++−
++−
+++ ++ +
++ (2) Ä
+Ç
+ÅÅÅÅÅÅÅÅÅÅÅ
+i
+k
+jjjjj
+y
+{
+zzzzz
+i k
+jjj y
+{
+zzz É
+Ö
+ÑÑÑÑÑÑÑÑÑÑÑ
+r
+Hn
+V
+w
+N w fw
+s s ww s
+s s ww
+s VV f
+f
+rr r r
+rr r r r
+r rr
+r r r r rr
+rr
+d ( ) ( )(1 2 ) ( )
+d d ( , )( ( ) ( )) ( , )
+d d ( , )( ( ) ( ))
+( , ) ln 1 d ( , 0) ( , 0) d ( , )
+d (,1 )
+f s
+f s
+CS
+2
+0A
+2 A
+0
+1
+B
+2 B
+AB A
+B
+∫
+∫∫
+∫∫
+∫∫
+∫
+βχ
+φφ
+φφ
+φφ φ
+φ
+= + −−
++ * ∂ −∇ + +
++ * ∂ −∇ + −
+− **−
+−−
+−
+−+
++−
+−
++−
+(3)
+where β = 1/kBT is the inverse thermal energy. In eq 3, the contour dimension, s, has been scaled by the polymer length, N, and all positions, lengths, and volumes have been scaled by the unperturbed radius of gyration. All spatial integrals are over the system volume, V, and we choose periodic boundary conditions in the spatial dimension, r. The coherent-states Hamiltonian, HCS, is similar to the AF model Hamiltonian, but the single-chain partition function from the AF model has been replaced by explicit, semilocal terms containing the (d + 1)dimensional propagator-like fields φA, φA*, φB, and φB* that generate the single-chain statistics and architecture. Notably, the term involving φA*(r,0)φB*(r,0) is a source to create A−B
+diblock junctions, while the final two terms terminate A blocks after f monomers and B blocks after 1 − f monomers. The w−
+field appears quadratically in the Hamiltonian and could be integrated out of the theory, but we have found it advantageous to retain both w− and φ, φ* fields in developing our linear scaling methods. It should be noted that the functional integration paths of the w+, φA*, and φB* fields have been Wick rotated to the imaginary axis, rendering the exact theory deceivingly real. To perform an SCFT calculation, we seek a saddle point with respect to the six fields that are arguments of HCS. As is frequently done in the AF case, we perform a relaxation in
+fictitious time to reach the steady state saddle point.1,12 This time relaxation can in principle be augmented with appropriately distributed noise to perform a complex Langevin
+field theoretic simulation of the exact field theory,12,13 but here we restrict consideration to the mean-field approximation of SCFT. The relaxation equations are
+w (r, t) 1 (r, t) (r, t)
+t
+1
+1
+AB
+μ ∂ = − + ψ∼ + ψ∼
+−
++ (4)
+wt w
+(r, ) 2 N (r, t) (r, t) 2f 1
+t
+2
+1
+AB
+μ ∂ = − χ − ψ∼ + ψ∼ + −
+− −
+−
+(5)
+st w t w t st
+Vs t
+tt
+r r rr
+r
+rr r
+( , , ) ( ( , ) ( , )) ( , , )
+( ) ( , 0, )
+d ( , 0, ) ( , 0, )
+ts
+3
+1 A
+2 A
+B
+AB
+∫
+μφ φ
+δφ
+φφ
+∂ =− ∂ −∇ + +
++
+*
+**
+−
++−
+(6)
+st w t w t
+st f s
+r rr
+r
+( , , ) ( ( , ) ( , ))
+(, , ) ( )
+ts
+3
+1 A
+2
+A
+μφ
+φδ
+∂ * = − −∂ − ∇ + +
+×* + −
+−
++−
+(7)
+with analogous equations for φB and φB*. The mobility
+parameters μ1, μ2, and μ3 can be chosen to give the fastest numerical convergence. The volume fraction operators in the CS framework are
+(r, t) ds (r, s, t) (r, s, t)
+f
+A 0A A
+∫
+ψ φφ
+∼= *
+(8)
+(r, t) ds (r, s, t) (r, s, t)
+f
+B0
+1
+BB
+∫
+ψ φφ
+∼= *
+−
+(9)
+At steady state, the AF and CS models reduce to precisely the same equations; however, in AF theories we solve the MDE (eq 1) for the propagator at each time point, while in CS theories we update the propagator-like fields, φA, φA*, φB, and
+φB*, in fictitious time according to eqs 6 and 7.
+A successful alternative to the relaxation method is a fixed point iteration method with Anderson mixing (AM) applied to
+the w fields.14,15 Although we do not employ AM in this work, it could be applied to both the CS and AF w-field saddle point searches instead of the relaxation algorithm. We do not expect the choice of w-field update algorithm to affect the relative performance of AF and CS methods, as long as the same method is used for each. Further evidence for this claim is presented in the Supporting Information. To solve the mean-field relaxation equations, we must specify a time discretization scheme. The simplest method uses an Euler discretization to update the potential fields, w
+ww
+t
+rr rr
+() () 1 () ()
+jj jj
+1
+1
+AB
+μ ψψ
+−
+Δ =− +∼ +∼
++
++ +
+(10)
+ww t
+w
+Nf
+r r r rr
+() () 2 () () () 2 1
+jj j jj
+1
+2
+1
+AB
+μ χ ψψ
+−
+Δ =− −∼ +∼ + −
+−
++
+−−
++
+(11)
+where the superscript j denotes the discrete time index. We refer to eqs 10 and 11 as Euler time stepping. Previous work has shown that a far improved time stepping uses a semi
+implicit Seidel (SIS) method,11 which can accelerate calculations by orders of magnitude. Unfortunately, existing SIS methods only apply to AF methods and not to CS theories because the volume fraction operators have a nonlocal time dependence on the potential fields in the latter case. To complete the CS-SCFT method, we require an algorithm to solve eqs 6 and 7. Previous authors reported a method with spectral accuracy in space and first-order accuracy in contour by using a combination of Fourier transforms and finite
+differences (FDs).12 We propose an alternative method that replaces the FD approximation with a Chebyshev−Tau approximation in the contour dimension to obtain a scheme
+that has spectral accuracy in both space and contour.16 Volume
+ACS Macro Letters Letter
+DOI: 10.1021/acsmacrolett.9b00632 ACS Macro Lett. 2019, 8, 1402−1406
+1403
+
+
+fraction operators can also be computed with spectral accuracy
+using Clenshaw−Curtis quadrature.17 Importantly, this scheme has near-linear scaling in both the spatial and contour resolution via fast Fourier transform (FFT) algorithms. We explain the method using the φA equation, but it easily
+generalizes to the equations for all the propagator-like fields. We first convert the source term to an effective boundary condition
+t Vt
+tt
+rr
+rr r
+( , 0, ) ( , 0, )
+d ( , 0, ) ( , 0, )
+A
+B
+AB
+∫
+φφ φφ
+=
+*
+* * (12)
+We next define a Chebyshev expansion for φA
+i
+k
+jjjjj
+y
+{
+zzzzz
+st
+N
+a tT s
+f
+(r, , ) (r, ) 2 1
+n
+s
+nn
+A 0
+∑
+φ= −
+= (13)
+T (cos( )) cos(n )
+n ν = ν (14)
+If we discretize the contour along the Chebyshev nodes, sj =
+f(1−cos(jπ/Ns))/2, j = 0, 1,···, Ns, then φA can be computed
+from the Chebyshev coefficients, an, using the discrete cosine transform (DCT):
+(r, s , t) a (r, t)cos(jn /N )
+Nj
+n
+N
+ns
+A 0
+s
+s
+∑
+φ= π
+−
+= (15)
+Substituting the expansion into eq 6 and using the properties of Chebyshev polynomials and Fourier transforms, we obtain for 0 ≤ n ≤ Ns − 3
+r
+k ca t f n a t
+ka t
+w t w t ca t a t
+kk
+k
+r rr
+( ) ( , ) 4 ( 1) ( , )
+( ) (, )
+( ( , ) ( , ))( ( , ) ( , ))
+t nn n
+tn
+r nn n
+3
+12
+1
+3
+12
+2
+2
+μ
+μ
+∂+ ̂ + + ̂
+− ∂+ ̂
+=− { + − }
+− +
+− +
++− +
+- (16)
+and for Ns − 2 ≤ n ≤ Ns − 1
+ka t fn a t
+w t w ta t
+kk
+r rr
+( ) ( , ) 4 ( 1) ( , )
+( ( , ) ( , )) ( , )
+tn n
+rn
+3
+12
+1
+μ ∂+ ̂ + + ̂
+=− { + }
+− +
++−
+- (17)
+where a (r, t) a (k, t)
+r{ n } = ̂n
+- is the Fourier transform in space. The coefficient cn = 1 for n ≠ 0 and c0 = 2. Discretizing
+time with semi-implicit forward Euler and defining μ3Δt = Δt′
+yield for 0 ≤ n ≤ Ns − 3
+k t ca t
+fn a
+k t a cf f
+kk
+kk k
+(1 ) ( ) 4 ( 1) ( )
+(1 ) ( ) ( ) ( )
+nn
+j n
+j
+n
+j
+nn
+j n
+j
+2 1
+2
+22
++ Δ′ ̂ + Δ′ + ̂
+− + Δ′ ̂ = −
++
++ + (18)
+and for Ns − 2 ≤ n ≤ Ns − 1
+k ta t
+(1 ) (k) 4 f (n 1)a (k) f (k)
+n
+j n
+j n
+2j 1
++ Δ′ ̂ + Δ′ + ̂ =
++ (19)
+with
+f (k) 1 t (w (r) w (r)) a (r)
+n
+j jj
+n
+j r
+1
+= {[ − Δ ′ + ] }
++−
+−
+- (20)
+Combining eqs 18−20 with the boundary condition
+aV
+kr
+rr r
+( )( 1) ( , 0)
+d ( , 0) ( , 0)
+n
+N
+n
+jn
+j
+jj
+r
+0
+B
+1
+A
+1 B
+1
+s
+∑∫
+φ
+φφ
+̂ − = {* }
+**
+=
+−
+−−
+
+(21)
+yields a bordered tridiagonal system for each Fourier mode, k. Each system can be solved in (Ns)
+6 operations, resulting in (N M)
+s
+6 operations to solve the global system. The original propagator can be obtained via a fast DCT in contour ( (N M ln N )
+ss
+6 operations) followed by a FFT in space ( (N M ln M)
+s
+6 operations). After updating propagators and converting from Fourier−Chebyshev space to real-contour space, volume fraction operators are computed using
+Clenshaw−Curtis quadrature.17 Finally, we update the interaction fields according to the Euler potential update scheme (eqs 10 and 11). To compare this new CS−Chebyshev method to AF methods (RK2 and RQM4) and the previously reported FD method for CS theories, we computed the SCFT-intensive Hamiltonian, βH/n, of a symmetric ( f = 0.5) diblock copolymer in a one-dimensional cell with length 4Rg at χN =
+15 and χN = 80. In all cases, the relaxation was run until the l2
+norms of δH/δw+ and δH/δw− were both less than the
+tolerance, λf, but we omit the k = 0 mode of δH/δw+ to which the theory is invariant. Numerical parameters such as time step and mobilities were tuned to just below their stability thresholds. We use a Chebyshev method calculation with Ns = 500 as the reference value for the intensive Hamiltonian and run time. We first examine the error scaling with Ns for each method. Figure 1 shows that the FD, RK2, and RQM4 methods have
+the expected asymptotic error scaling slopes of −1, −2, and −4, respectively. Although the Chebyshev method was fit with a line to illustrate the rapid convergence with Ns, the points are
+not linear on the log−log plot because of the spectral accuracy. The Chebyshev method has greatly improved the accuracy and scaling compared to the other methods, shown by the lower error and much steeper slope. The method is so accurate that the error saturates to the force tolerance, λf, with only 51 contour points. The high accuracy with few contour samples represents a potential huge memory savings in large-scale numerical computations. We now discuss the computational speed of each method. We present results in terms of efficiency: the computation time taken to reach a given level of accuracy in the intensive Hamiltonian. The appropriate accuracy level will vary between applications, but resolving phase boundaries can require (10−6)
+6 accuracy in the SCFT intensive Hamiltonian.7,18
+Figure 1. Comparison of intensive Hamiltonian error with number of contour samples for each contour method. Computed at χN = 15 and f = 0.5 with M = 32 spatial grid points. Horizontal dashed line
+indicates force cutoff, λf = 10−13.
+ACS Macro Letters Letter
+DOI: 10.1021/acsmacrolett.9b00632 ACS Macro Lett. 2019, 8, 1402−1406
+1404
+
+
+While the previous results did not differentiate between time stepping methods, here we present results for both the Euler and SIS time stepping methods for the AF theories. It is important to compare different contour methods using the same w-field time stepping algorithm, which isolates the effect of contour accuracy, but it is also useful to compare the new CS methods that use Euler time stepping versus the AF-SIS methods, which represent the current standard in polymer SCFT. Figure 2 shows efficiency curves for each method when applied to a symmetric diblock at χN = 15. Full numerical parameter sets can be found in the Supporting Information.
+For calculations that use Euler time stepping (open symbols), the Chebyshev method shows the best efficiency. For fixed small values of intensive Hamiltonian error, the Chebyshev method is an order of magnitude faster than any other method. SIS time stepping (solid symbols) speeds up the AF calculations by approximately an order of magnitude, but this does not make them more efficient than the Chebyshev method over the relevant ranges of intensive Hamiltonian error. For large values of the intensive Hamiltonian error
+(>10−5) where the Chebyshev method is not applicable because no Ns returned such a large error, the AF-SIS methods
+are faster than the Chebyshev−Euler method. There thus remains a niche for AF-SIS calculations where significant accuracy can be sacrificed for speed. We show in the Supporting Information that these conclusions extend to the double gyroid morphology. We note, however, that there has been much more work to date on AF theories than CS theories. Although the SIS time stepping method is not applicable to CS theories, there are other techniques such as Anderson mixing that could be used
+to improve w-field iteration.14 Combining fictitious time relaxation of φ fields with AM on w fields could potentially yield the most efficient algorithm for all ranges of accuracy. We next consider a strongly segregated symmetric diblock with χN = 80. Previous work has shown that high accuracy is essential to successfully converge SCFT calculations under
+these conditions,7 so we expect the Chebyshev method to outperform the other methods. Results are presented in Figure 3. The Chebyshev method again is the most efficient method at a fixed level of intensive Hamiltonian error, regardless of time stepping method. Contrary to the χN = 15 case, the AF
+SIS methods do not provide a fast, low accuracy alternative to the Chebyshev method: low accuracy AF-SIS calculations take just as long as high accuracy Chebyshev calculations. For applications where high accuracy is necessary, the Chebyshev method thus offers a large improvement over existing methods. In this letter, we have shown that CS field theories can offer numerical advantages over traditional approaches to SCFT. Although they are formally equivalent, coherent states theories allow for fully spectral, linear scaling numerical methods, which enable much more accurate simulations at lower memory cost and faster speeds than AF methods. Although not discussed in this work, CS theories can also be applied to a wide range of polymer systems, such as systems with three or more components, arbitrary architecture, and supramolecular chem
+istries that cannot be effectively treated with AF models.19 We expect that the numerical and theoretical advantages of CS theories over AF theories will allow for previously intractable problems to now be tackled.
+■
+ASSOCIATED CONTENT
+*
+S Supporting Information
+The Supporting Information is available free of charge on the ACS Publications website at DOI: 10.1021/acsmacrolett.9b00632.
+Chebyshev expansion for AF theories, fixed point iteration of w fields, mean volume fraction error analysis, comparison of contour methods for the double gyroid structure, simulation parameters, and Chebyshev method derivation (PDF)
+■
+AUTHOR INFORMATION Corresponding Author
+*E-mail: ghf@mrl.ucsb.edu. ORCID
+Daniel L. Vigil: 0000-0001-9860-0888 Kris T. Delaney: 0000-0003-0356-1391 Glenn H. Fredrickson: 0000-0002-6716-9017 Notes
+The authors declare no competing financial interest.
+■
+ACKNOWLEDGMENTS
+This work was supported by the NSF Condensed Matter and Materials Theory Program under DMR-182215. Extensive use
+Figure 2. Comparison of relative run time with intensive Hamiltonian error for each contour method. Computed at χN = 15 and f = 0.5 with M = 32 spatial grid points. Open symbols use Euler time stepping. Solid symbols use SIS time stepping. Error bars are within the symbol size.
+Figure 3. Comparison of relative run time with intensive Hamiltonian error for each contour method. Computed at χN = 80 and f = 0.5 with M = 256 spatial grid points. Open symbols use Euler time stepping. Solid symbols use SIS time stepping. Error bars are within the symbol size.
+ACS Macro Letters Letter
+DOI: 10.1021/acsmacrolett.9b00632 ACS Macro Lett. 2019, 8, 1402−1406
+1405
+
+
+was made of the Center for Scientific Computing from the CNSI, MRL: an NSF MRSEC (DMR-1720256) and NSF CNS-1725797. D.L.V. acknowledges support from the NSF Graduate Research Fellowship Program under Grant No. 1650114.
+■
+REFERENCES
+(1) Fredrickson, G. H. The Equilibrium Theory of Inhomogeneous Polymers; International series of monographs on physics; Clarendon Press: Oxford; New York, 2006. (2) Matsen, M. W.; Schick, M. Stable and Unstable Phases of a Diblock Copolymer Melt. Phys. Rev. Lett. 1994, 72, 2660−2663. (3) Rasmussen, K. O.; Kalosakas, G. Improved Numerical Algorithm for Exploring Block Copolymer Mesophases. J. Polym. Sci., Part B: Polym. Phys. 2002, 40, 1777−1783.
+(4) Tzeremes, G.; Rasmussen, K. O.; Lookman, T.; Saxena, A. Efficient Computation of the Structural Phase Behavior of Block Copolymers. Phys. Rev. E: Stat. Phys., Plasmas, Fluids, Relat. Interdiscip. Top. 2002, 65, 041806. (5) Ranjan, A.; Qin, J.; Morse, D. C. Linear Response and Stability of Ordered Phases of Block Copolymer Melts. Macromolecules 2008, 41, 942−954. (6) Audus, D. J.; Delaney, K. T.; Ceniceros, H. D.; Fredrickson, G. H. Comparison of Pseudospectral Algorithms for Field-Theoretic Simulations of Polymers. Macromolecules 2013, 46, 8383−8391. (7) Cochran, E. W.; Garcia-Cervera, C. J.; Fredrickson, G. H. Stability of the Gyroid Phase in Diblock Copolymers at Strong Segregation. Macromolecules 2006, 39, 2449−2451. (8) Ceniceros, H. D. Efficient Order-Adaptive Methods for Polymer Self-Consistent Field Theory. J. Comput. Phys. 2019, 386, 9−21. (9) Fredrickson, G. H.; Delaney, K. T. Field-Theoretic Simulations: An Emerging Tool for Probing Soft Material Assembly. MRS Bull. 2018, 43, 371−378. (10) Edwards, S. F.; Freed, K. F. Cross Linkage Problems of Polymers I. The Method of Second Quantization Applied to the Cross Linkage Problem of Polymers. J. Phys. C: Solid State Phys. 1970, 3, 739. (11) Ceniceros, H.; Fredrickson, G. Numerical Solution of Polymer Self-Consistent Field Theory. Multiscale Model. Simul. 2004, 2, 452− 474. (12) Man, X.; Delaney, K. T.; Villet, M. C.; Orland, H.; Fredrickson, G. H. Coherent States Formulation of Polymer Field Theory. J. Chem. Phys. 2014, 140, 024905.
+(13) Ganesan, V.; Fredrickson, G. H. Field-Theoretic Polymer Simulations. Europhys. Lett. 2001, 55, 814−820. (14) Stasiak, P.; Matsen, M. W. Efficiency of Pseudo-Spectral Algorithms with Anderson Mixing for the SCFT of Periodic BlockCopolymer Phases. Eur. Phys. J. E: Soft Matter Biol. Phys. 2011, 34, 110. (15) Arora, A.; Morse, D. C.; Bates, F. S.; Dorfman, K. D. Accelerating Self-Consistent Field Theory of Block Polymers in a Variable Unit Cell. J. Chem. Phys. 2017, 146, 244902. (16) Gottlieb, D.; Orszag, S. A. Numerical Analysis of Spectral Methods: Theory and Applications; Regional conference series in applied mathematics; Society for Industrial and Applied Mathematics: Philadelphia, 1977. (17) Clenshaw, C. W.; Curtis, A. R. A Method for Numerical Integration on an Automatic Computer. Numerische Mathematik 1960, 2, 197−205. (18) Bates, M. W.; Lequieu, J.; Barbon, S. M.; Lewis, R. M.; Delaney, K. T.; Anastasaki, A.; Hawker, C. J.; Fredrickson, G. H.; Bates, C. M. Stability of the A15 Phase in Diblock Copolymer Melts. Proc. Natl. Acad. Sci. U. S. A. 2019, 116, 13194−13199.
+(19) Fredrickson, G. H.; Delaney, K. T. Coherent States Field Theory in Supramolecular Polymer Physics. J. Chem. Phys. 2018, 148, 204904.
+ACS Macro Letters Letter
+DOI: 10.1021/acsmacrolett.9b00632 ACS Macro Lett. 2019, 8, 1402−1406
+1406

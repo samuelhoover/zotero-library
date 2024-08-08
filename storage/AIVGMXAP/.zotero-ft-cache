@@ -1,0 +1,325 @@
+Theory of ionic conductivity with morphological control in polymers
+Murugappan Muthukumar*
+Department of Polymer Science and Engineering, University of Massachusetts, Amherst, Massachusetts 01003, USA
+Abstract
+We present a general theory of ionic conductivity in polymeric materials consisting of percolated ionic pathways. Identifying two key length scales corresponding to inter-path permeation distance ξand one-dimensional hopping conduction path length mλ, we have derived closed-form formulas in terms of the energy Urequired to unbind a conductive ion from its bound state and the partition ratio ξ/mλbetween the three-dimensional permeation and one-dimensional hopping pathways. The results provide design strategies to significantly enhance ionic conductivity in single-ion conductors. For large barriers to dissociate an ion, corrections to the Arrhenius law are presented. The predicted dependence of ionic conductivity on the unbinding time is in agreement with results in the literature based on simulations and experiments. This theory is generally applicable to conductive systems where the two mechanisms of permeation and hopping occur concurrently.
+The subject of ionic conductivity in polymeric materials with heterogeneous structures is of intense current interest, primarily due to the societal need for better battery alternatives [132]. Significant progress has recently been made towards formulating polymeric materials with enhanced ionic conductivities and at the same time not compromising on their mechanical stability. The procedures that have been implemented in this endeavor are primarily experiments and simulations [1–32]. Generally speaking, the investigated systems include solid polymer electrolytes such as salt-doped poly(ethylene oxide), polymeric single-ion conductors, polymerized ionic liquids, and polyelectrolyte solutions in nanocapillaries [1–32]. The combined approach of precise synthesis of ion-containing polymers, characterization of their assembled structures using a variety of experimental techniques, and molecular modeling has revealed exquisite details on several specific systems and their consequence on the temperature dependence of ionic conductivity. Nevertheless, it is desirable to develop fundamental relations between the heterogeneous structures and the consequent ionic conductivity that are universal instead of treating each system as unique. Such relations would enable design principles to achieve desirable ionic conductivities by tuning the morphology of heterogeneous polymeric materials. With this goal in mind, we present in this Letter a theory for ionic conductivity in polymeric materials with heterogeneous structures.
+* muthu@polysci.umass.edu .
+HHS Public Access
+Author manuscript
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Published in final edited form as: ACSMacroLett. 2021 July 20; 10(7): 958–964. doi:10.1021/acsmacrolett.1c00245.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+For illustrative purposes, let us consider three scenarios of general context (Fig.1). The first is pertinent to ion transport in nanoporous media (Fig.1a), where the surface of interconnected pores carry immobile charges and the interior of the pores permit conduction of oppositely charged counterions. In general, the counterions are bound to the charged groups on the interface and the extent of binding depends on the specificity of the ionic species and local dielectric environment. The movement of bound counterions under an external electric field can occur either by hopping (sliding) to its neighboring charged group on the interface or by permeation (conduction) through the interior medium of the pores. These two pathways are indicated by the solid and broken arrows in Fig.1a. In addition to the rigid inorganic porous materials, hydrated Nafion-like organic materials (where interconnected network of hydrophilic domains allow movement of water and cations, but the nonpolar matrix not conducting anions) belong to this general context.
+The second scenario is ion conduction in polyelectrolyte solutions. As cartooned in Fig.1b, let us consider semidilute solutions of uniformly charged polyelectrolyte chains where the charge separation along the chain backbone is λ0 and the correlation length for monomer concentration (mesh size) is ξ. As in the first scenario, ion conduction occurs via the two mechanisms of counterion-hopping along the chain backbone and permeation through the solvent. A typical trajectory of a counterion under an external electric field is a combination of hopping to neighboring sites with spacing λ0 and permeation through an average mesh size ξ(Fig.1b). Such a situation is also relevant to solutions of polymerized ionic liquids.
+The third scenario is in the context of single-ion conductive ionomers, where many clusters of ion-pairs (dipoles) exist as percolated aggregates in a conductive polymer matrix. Examples of the matrix are poly(ethylene oxide) and polycarboxylates and their chemical modifications, and gel polymer electrolytes, which are intrinsically permeable to the conducting ion with ion conductivity σ0. The percolated aggregates are composed of clusters of ion-pairs formed by multiple chains. Unlike the situation of polyelectrolyte chains, where the ion binding is typically a single ion-pair formation, there are many ion-pairs (arising from both intra-chain and inter-chain interactions) in each of the ion clusters. Let the average distance between adjacent ionic clusters along a skeleton of the percolating aggregate be λ and the average mesh size in the background conductive polymer matrix be ξ(Fig.1c). The distance λbetween ion clusters constituting a skeleton is related in a complex manner to the spacing of charged groups on the parent polymer chain (analogous to λ0, but now the spacer moiety is also conductive).
+In the context of the above examples, we address ion conduction due to a combination of ion-hopping along a chain or surface (Figs.1a,b) or skeleton of ion clusters (Fig.1c), and permeation through a conductive matrix. There are two length scales that characterize the morphology of the above conducting systems: the average hopping distance λand the average permeation length ξ. In addition to the these variables characterizing the morphology of the system, the energy Uto unbind X+ (Fig.1b) or its analog in an ion cluster from its corresponding anion is an important variable that controls ionic conductivity due to X+. In the simplest situation, Ufor monovalent charges is U= e2/(4πε0εeffr), where eis the electronic charge, ε0 is the permittivity of vacuum, εeff is the effective dielectric constant in
+the local environment around the bound X+, and ris the inter-ion distance in an ion-pair. In
+Muthukumar Page 2
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+the case of ionic clusters, Uarises from collective interactions among all ion-pairs inside a cluster and we absorb this important effect through the local effective dielectric constant, which is different from that in the matrix.
+Following the law for rates of activated processes, the time τrequired to unbind the conducting ion from the ion-pair is τ= τ0 exp(U/kBT), where τ0 is the characteristic time for a free conducting ion to diffuse a distance comparable to its linear size, and kBTis the Boltzmann constant times the absolute temperature. For the purpose of quoting later, the above expressions for Uand τare repeated as
+U = e2
+4πε0εeffr , τ = τ0exp U
+kBT . (1)
+In general, the value of τcan be additionally influenced by local segmental dynamics of the polymer as well as collective phonon dynamics of the system.
+Consider an 1-dimensional ionic conductor where the binding sites for the drifting ion are uniformly present with a period λ. When the applied electric field is not too strong, the moving ion undergoes a series of binding and unbinding at every binding site. This process continues periodically until the ion reaches its favored electrode. Let us denote the free energy profile associated with unbinding of an ion at one location and binding back at the next neighboring binding site at a distance λas a symmetric triangular free energy barrier of height U(Fig.1d). Therefore, the free energy landscape Fion(x) due to binding and unbinding along the direction xof the constant electric field Eis as depicted in Fig.1d with a period λ. The electric contribution to the free energy profile of the ion is Felectric(x) = −QEx, where Q = z+e(z+ is the valency of the conducting ion). The net free energy profile is
+F(x) = Fion(x) + Felectric(x) . (2)
+In addition to the 1-dimensional hopping pathway for ion conduction (Fig.1d), we allow a second pathway of ion permeation from one linear assembly of binding sites to another linear assembly of binding sites as cartooned in Fig.2a. In the case of polyelectrolyte solutions, these two pathways can also be labelled as ‘intra-chain’ and ‘inter-chain’ conduction pathways, respectively; for ionic aggregates, these are, respectively, intraskeleton and inter-skeleton pathways. Assessment of the relative contributions from the intra- and inter-conduction pathways is of considerable interest in the general contexts mentioned in Fig.1.
+In view of the above considerations, we present an analytically tractable theory for the model sketched in Fig.2a, where the curved lines represent hopping pathways and empty space represent permeation pathways. Let there be an infinite number of periods of length L, where each period is labelled by the index N≥ 1. In each period, there are msub-periods for 1-dimensional conduction, followed by a 3-dimensional hopping over a distance ξthrough the matrix. Let the regular sub-period for 1-dimensional unbinding-binding process be λ. Since ion hopping occurs along the curvilinear contour, we take λas the average distance between adjacent binding sites projected on the direction of the external electric field. Let n
+Muthukumar Page 3
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+denote the label of the sub-period, 1 ≤ n≤ m. In each sub-period, we take the free energy profile as triangular with barrier height U, as shown in Fig.2a. The periodic free energy profile in the absence of the external electric field is given as
+Fion(NL + x) = Fion(x), N ≥ 1 (3)
+and for each N≥ 1,
+Fion(nλ + x) = Fion(x) . 1 ≤ n < m, 0 < x < λ (4)
+In addition to the periodic profile, the applied electric field gives the down hill free energy contribution −QEx. Adding Fion(x) and Felectric(x), the free energy profile for the first period follows as
+F(x) =
+− 2U
+λ [x − (n − 1)λ] − QEx, (n − 1)λ ≤ x ≤ n − 12 λ
+−2U + 2U
+λ [x − (n − 1)λ] − QEx, n − 12 λ ≤ x ≤ nλ
+−QEx mλ ≤ x ≤ L = mλ + ξ
+(5)
+The same result is applicable to other periods as well, with xin the electric field contribution taken as the distance from the origin.
+The Langevin equation for the dynamics of the ion at position xand time tis given as
+ζ dx
+dt = − ∂F(x)
+∂x + ζkBTΓ(t), (6)
+where ζis the friction coefficient of the ion in the matrix and Γ(t) is the random noise taken to be white noise satisfying the fluctuation-dissipation theorem,
+Γ(t) = 0, Γ(t)Γ t′ = 2δ t − t′ , (7)
+where the angular brackets denote the averaging over the probability distribution function P(x,t) of finding the ion at position xand time t. Identifying the diffusion coefficient Dof the ion in the matrix as D= kBT/ζ, Eq.(6) becomes
+dx
+dt = − D ∂F(x)/kBT
+∂x + DΓ(t) . (8)
+Performing the average over P(x,t), the above equation gives the average velocity vas
+v = dx
+dt = − D ∂∂x F(x)/kBT , (9)
+where 〈Γ(t)〉 = 0 from Eq.(7) is used. Note that, if there are no barriers and there is only
+electrophoretic drift, F(x) = −QEx, then v = QD
+kBT E so that the ionic conductivity σ0 = Qv/Eis
+given by Q2D/kBT. In the presence of barriers, the ionic conductivity σis modified from this
+Muthukumar Page 4
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+result and can generally be represented in terms of an effective diffusion coefficient Deff(U, E) which depends on the barrier height Uand E,
+σ0 = Q2D
+kBT , σ = σD00
+Deff(U, E) . (10)
+Note that Dcorresponds to ion diffusion in the matrix and it depends on the various ion hopping processes involving the barriers in the matrix, that are responsible for ion conduction in the matrix.
+The derivation of σis as follows. We calculate the average velocity vof the ion from Eq.(9) using P(x,t) and get σfrom the relation σ= Qv/E. The probability distribution function P(x, t) follows from the Fokker-Planck formalism of the Langevin equation (Eq.(8)) as [33,34]
+∂P(x, t)
+∂t = − ∂∂x J(x, t), (11)
+J(x, t) = − D ∂F(x)/kBT
+∂x P(x, t) + ∂P(x, t)
+∂x . (12)
+In the steady state where the flux Jis constant, integration of Eq.(12) from x= 0 gives
+P(x) = e−F(x)/kBT P(x = 0) − J
+D ∫0
+x
+dx′eF x′ /kBT . (13)
+P(x= 0) is determined from P(NL+ x) given by the above equation. Using Eq.(5), the integral on the right-hand side of Eq.(13) becomes
+∫
+0
+NL + x
+dx′eF x′ /kBT = I+
+1 − e−NQEL/kBT
+1 − e−QEL/kBT + e−NQEL/kBT∫0
+x
+dx′eF x′ /kBT, (14)
+where
+I+ = ∫0
+L
+dxeF(x)/kBT . (15)
+Combining Eqs.(13) and (14), we get
+P(NL + x) = eNQEL/kBT − F(x)/kBT P(x = 0) − J
+D
+I+
+1 − e−QEL/kBT
++ e−F(x)/kBT J
+D
+I+
+1 − e−QEL/kBT − J
+D ∫0
+x
+dx′eF x′ /kBT
+(16)
+Muthukumar Page 5
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+Since P(NL+ x) must be finite for N→ ∞,
+P(x = 0) = J
+D
+I+
+1 − e−QEL/kBT , (17)
+and hence we get from Eqs.(13) and (16)
+P(NL + x) = P(x) . (18)
+Because of periodicity, P(x) is normalized in every period so that
+∫
+0
+L
+dxP(x) = L . (19)
+Substituting Eq.(17) into Eq.(13) and performing the integration from x= 0 to x= L, we get
+J = DL 1 − e−QEL/kBT
+I+I− − 1 − e−QEL/kBT Y
+(20)
+where
+I− = ∫0
+L
+dxe−F(x)/kBT, (21)
+and
+Y = ∫0
+L
+dxe−F(x)/kBT∫0
+x
+dx′eF x′ /kBT . (22)
+The velocity of the ion follows from Eqs.(9) and (12) as
+v = 1L ∫0
+L
+dx J + D ∂P(x)
+∂x = J, (23)
+where the periodicity property P(L) = P(0) is used. The general expression for the ionic conductivity, σ= Qv/E, is given by Eqs.(20) and (23) as
+σ = QDL
+E
+1 − e−QEL/kBT
+I+I− − 1 − e−QEL/kBT Y
+. (24)
+where I+,I−, and Yare given in Eqs.(15), (21), and (22), respectively.
+Focusing on the linear response regime (Ohm’s regime), namely QEλ<kBT, the ionic conductivity is given by
+Muthukumar Page 6
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+σ = Q2DL2
+kBT 1
+I+(E 0)I−(E 0) , (25)
+where I+(E→ 0) and I−(E→ 0) follow from Eqs.(15) and (21) as
+I+(E 0) = − mλ kBT
+U e−U /kBT − 1 + ξ, (26)
+I−(E 0) = − mλ kBT
+U 1 − eU /kBT + ξ . (27)
+Substitution of Eqs.(26) and (27) into Eq.(25) yields a general expression for ionic conductivity in the linear regime as
+σ
+σ0 = 1 + ξ
+mλ
+2 U /kBT 2
+eU /kBT − 1 + U
+kBT
+ξ
+mλ 1 − e−U /kBT + U
+kBT
+ξ mλ
+. (28)
+Note that the right-hand side can be interpreted as Deff in units of Das defined in Eq.(10). As evident from Eq.(28), the ratio σ/σ0 of ionic conductivity at Tto that at T→ ∞ depends on two key parameters, namely U/kBTand ξ/mλ. As already noted, U/kBTis dictated by the specificity of the ion-pairs. The second factor ξ/mλis the partition ratio of the permeation length ξthrough the matrix to the hopping distance along 1-dimensional trajectory. This partition ratio is a measure of structural heterogeneity in the material. For large barriers U/kBT≫ 1, Eq.(28) reduces to the limiting laws
+σ
+σ0 =
+U kBT
+2e−U /kBT ξ
+mλ = 0, U
+kBT ≫ 1
+ξ mλ
+U
+kBT e−U /kBT ξ
+mλ ≫ 1, U
+kBT ≫ 1
+(29)
+Evidently, the temperature dependence of ionic conductivity is not simply the Arrhenius behavior due to the presence of the prefactors that depend on the barrier height.
+The dependence of σ/σ0 on Uand the partition ratio ξ/mλgiven by Eq.(28) is presented in Fig.3a. The extent of decrease in σ/σ0 with an increase in U/kBTdepends on the partition ratio. As seen in Fig.3a, σ/σ0 first decreases with ξ/mλand then increases for higher values of ξ/mλ. This nonmonotonic behavior is illustrated in Fig.3b for U= 20kBT. The initial decrease is due to the inefficiency of the permeation pathway for such short ξ, namely the loosened ion from its binding site immediately returns back to the same binding site. For larger permeation distances, the ion escapes from the binding traps along its original path. The minimum value of σ/σ0 occurs at (ξ/mλ)⋆ given by
+Muthukumar Page 7
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+ξ mλ
+⋆ = (a + b) U /kBT − 2ab
+(a + b) U /kBT − 2 U /kBT 2 , (30)
+where aand bare defined as
+a = 1 − e−U /kBT , b = eU /kBT − 1 . (31)
+For large barriers as illustrated in Fig.3b, ξ
+mλ
+⋆ 1.
+As the partition ratio is increased from ξ
+mλ
+⋆, there exists a threshold value ξ
+mλ c beyond
+which the conductivity is above the value when the permeation mechanism is absent. This is
+shown in Fig.3b for U= 20kBT. In general, the dependence of ξ
+mλ c on U/kBTis given by
+ξ
+mλ c = 2ab − (a + b)U /kBT
+U /kBT 2 − ab , (32)
+where aand bare given in Eq.(31). This result is plotted in Fig.4a, which delineates the regime of enhanced conductivity (ξ/mλ>(ξ/mλ)c) and lowered conductivity (ξ/mλ<(ξ/ mλ)c) due to access to the permeation mechanism. For large barriers, (ξ/mλ)c≃ U/kBT, consistent with the crossover behavior between the two limits given in Eq.(29).
+The prediction from Eq.(28) and Fig.4a provides a design strategy to significantly enhance ionic conductivity in heterogeneous structures. For example, if the 1-dimensional conductive pathway is blocked at mλby doping the polymer chain with a non-conductive segment which functions as a poison (Fig.4b), then the permeation mechanism is forced on the conducting ion resulting in enhanced conduction for ξ/mλ>(ξ/mλ)c.
+In summary, a general theory for ionic conductivity in heterogeneous polymer structures is derived in terms of the energy Uto unbind a conductive ion from the polymer backbone and the partition ratio ξ/mλbetween 3-dimensional permeation and 1-dimensional conduction. For large barriers, the conductivity is pseudo-Arrhenius, with the prefactor of the exponential Arrhenius term depending on Uand ξ/mλ, as given in Eq.(29). The prefactor can significantly affect the deduction of the activation barrier based on the standard practice of using the Arrhenius form. For example, according to the Arrhenius form, the temperature dependence of log10(σ/σ0) versus 1/Tis given by the bottom line in Fig.5 for U= 100 kJ/mol and ξ/mλ= 0. On the other hand, the use of Eq.(28) gives the intermediate curve for the same values of Uand ξ/mλas for the bottom line. The conductivity is higher by more than an order of magnitude. If ξ/mλ>(ξ/mλ)c, then the conductivity is even higher, as illustrated by the top curve for ξ/mλ= 100. If the middle curve were to be fitted with the Arrhenius form, the inferred Uis approximately 75 kJ/mol. Therefore, the true free energy barrier is actually higher than the value obtained from direct implementation of the Arrhenius form.
+Muthukumar Page 8
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+The limits given in Eq.(29) can be equivalently represented in terms of the unbinding time τ (Eq.(1)) as
+σ
+σ0 = τ
+τ0
+−1lny τ
+τ0 , (33)
+where y= 1 and 2 for ξ/mλ≫ 1 and ξ/mλ= 0, respectively. The value of the exponent y can be slightly different if the free energy profile in every sub-period is smoother than the triangular profile used here. Ignoring the weak logarithmic corrections, we get
+σ τ−1 . (34)
+This general prediction valid for large barriers is consistent with prior simulation and experimental results in the literature [12, 26, 30]. If the barrier is weak, the full expression given in Eq.(28) needs to be used in conjunction with Eq.(1) to obtain the τ-dependence of the ionic conductivity.
+Although the theory is presently couched in the context of single-ion conductors in dense heterogeneous polymer systems, it is applicable to polyelectrolyte solutions and polymerized ionic liquids as well where inter-chain hopping mechanism is prevalent in addition to intrachain ion conduction. Additional features to the present model such as local segmental dynamics and collective phonon modes can be of importance. Assessment of contributions from these effects to ionic conductivity is relegated to future work.
+Acknowledgement
+The author is grateful to his colleague Bryan Coughlin for stimulating discussions. Acknowledgement is made to the National Institutes of Health (Grant No. 5R01HG002776-16), National Science Foundation (Grant No. DMR 2004493), and AFOSR (Grant No. FA9550-20-1-0142).
+References
+[1]. Bordi F; Cametti C; Colby RHDielectric spectroscopy and conductivity of polyelectrolyte solutions. J. Phys.: Condens. Matter2004, 16, R1423–R1463.
+[2]. Beers KM; Balsara NPDesign of Cluster-free Polymer Electrolyte Membranes and Implications on Proton Conductivity. ACS Macro Lett. 2012, 1, 1155–1160.
+[3]. Hall LM; Stevens MJ; Frischknecht ALDynamics of Model Ionomer Melts of Various Architectures. Macromolecules2012, 45, 8097–8108.
+[4]. Choi J-H; Ye Y; Elabd YA; Winey KINetwork Structure and Strong Microphase Separation for High Ion Conductivity in Polymerized Ionic Liquid Block Copolymers. Macromolecules2013, 46, 5290–5300.
+[5]. Buitrago CF; Jenkins JE; Opper KL; Aitken BS; Wagener KB; Alam TM; Winey KIRoom Temperature Morphologies of Precise Acid-and Ion-Containing Polyethylenes. Macromolecules2013, 46, 9003–9012.
+[6]. Bolintineanu DS; Stevens MJ; Frischknecht ALInfluence of Cation Type on Ionic Aggregates in Precise Ionomers. Macromolecules2013, 46, 5381–5392.
+[7]. Bolintineanu DS; Stevens MJ; Frischknecht ALAtomistic Simulations Predict a Surprising Variety of Morphologies in Precise Ionomers. ACS Macro Lett. 2013, 2, 206–210.
+[8]. Mohd Noor SA; Gunzelmann D; Sun J; MacFarlane DR; Forsyth MIon Conduction and Phase Morphology in Sulfonate Copolymer Ionomers Based on Ionic Liquid-Sodium Cation Mixtures. J. Mater. Chem. A2014, 2, 365–374.
+Muthukumar Page 9
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+[9]. Noor SAM; Sun J; Macfarlane DR; Armand M; Gunzelmann D; Forsyth MDecoupled Ion Conduction in Poly(2- Acrylamido-2-Methyl-1-Propane-Sulfonic Acid) Homopolymers. J. Mater. Chem. A2014, 2, 17934–17943.
+[10]. Singh SP; Muthukumar MElectrophoretic Mobilities of Counterions and a Polymer in Cylindrical Pores.]J. Chem. Phys2014, 141, 114901. [PubMed: 25240366]
+[11]. Fan F; Wang Y; Hong T; Heres MF; Saito T; Sokolov APIon Conduction in Polymerized Ionic Liquids with Different Pendant Groups. Macromolecules2015, 48, 4461–4470.
+[12]. Mogurampelly S; Keith JR; Ganesan VMechanisms Underlying Ion Transport in Polymerized Ionic Liquids. J. Am. Chem. Soc2017, 139, 9511–9514. [PubMed: 28686437]
+[13]. Iacob C; Matsumoto A; Brennan M; Liu H; Paddison SJ; Urakawa O; Inoue T; Sangoro J; Runt JPolymerized Ionic Liquids: Correlation of Ionic Conductivity with Nanoscale Morphology and Counterion Volume. ACS Macro Lett. 2017, 6, 941–946.
+[14]. Delhorbe V; Bresser D; Mendil-Jakani H; Rannou P; Bernard L; Gutel T; Lyonnard S; Picard LUnveiling the Ion Conduction Mechanism in Imidazolium-Based Poly(Ionic Liquids): A Comprehensive Investigation of the Structure-to-Transport Interplay. Macromolecules2017, 50, 4309–4321.
+[15]. Wang S-W; Colby RHLinear Viscoelasticity and Cation Conduction in Polyurethane Sulfonate Ionomers with Ions in the Soft Segment-Single Phase Systems. Macromolecules2018, 51, 27572766.
+[16]. Stacy EW; Gainaru CP; Gobet M; Wojnarowska Z; Bocharova V; Greenbaum SG; Sokolov APFundamental Limitations of Ionic Conductivity in Polymerized Ionic Liquids. Macromolecules2018, 51, 8637–8645.
+[17]. Cheng Y; Yang J; Hung J-H; Patra TK; Simmons DSDesign Rules for Highly Conductive Polymeric Ionic Liquids from Molecular Dynamics Simulations. Macromolecules2018, 51, 6630–6644.
+[18]. Enokida JS; Tanna VA; Winter HH; Coughlin EBProgression of the Morphology in Random Ionomers Containing Bulky Ammonium Counterions. Macromolecules2018, 51, 7377–7385.
+[19]. Rank C; Yan L; Mecking S; Winey KIPeriodic Polyethylene Sulfonates from Polyesterification: Bulk and Nanoparticle Morphologies and Ionic Conductivities. Macromolecules2019, 52, 84668475.
+[20]. Frischknecht AL; Winey KIThe Evolution of Acidic and Ionic Aggregates in Ionomers during Microsecond Simulations. J. Chem. Phys2019, 150, 064901. [PubMed: 30769997]
+[21]. Frischknecht AL; Paren BA; Middleton LR; Koski JP; Tarver JD; Tyagi M; Soles CL; Winey KIChain and Ion Dynamics in Precise Polyethylene Ionomers. Macromolecules2019, 52, 79397950.
+[22]. Paren BA; Thurston BA; Neary WJ; Kendrick A; Kennemur JG; Stevens MJ; Frischknecht AL; Winey KIPercolated Ionic Aggregate Morphologies and Decoupled Ion Transport in Precise Sulfonated Polymers Synthesized by Ring-Opening Metathesis Polymerization. Macromolecules2020, 53, 8960–8973.
+[23]. Bostwick JE; Zanelotti CJ; Iacob C; Korovich AG; Louis A. Madsen, L. A; Colby RHIon Transport and Mechanical Properties of Non-Crystallizable Molecular Ionic Composite Electrolytes. Macromolecules2020, 53, 1405–1414.
+[24]. Schauser NS; Grzetic DJ; Tabassum T; Kliegle GA; Le ML; Susca EM, Antoine S; Keller TJ; Delaney KT; Han S; Seshadri R; Fredrickson GH; Segalman RAThe Role of Backbone Polarity on Aggregation and Conduction of Ions in Polymer Electrolytes. J. Am. Chem. Soc2020, 142, 7055–7065. [PubMed: 32243146]
+[25]. Bocharova V; Sokolov APPerspectives for Polymer Electrolytes: A View from Fundamentals of Ionic Conductivity. Macromolecules2020, 53, 4141–4157.
+[26]. Jones SD; Schauser NS; Fredrickson GH; Segalman RAThe Role of Polymer-Ion Interaction Strength on the Viscoelasticity and Conductivity of Solvent-Free Polymer Electrolytes. Macromolecules, 2020, 53, 10574–10581.
+[27]. Liu J; Pickett PD; Park B; Upadhyay SP; Orski SV; Schaefer JLNon-Solvating, Side-Chain Polymer Electrolytes as Lithium Single-Ion Conductors: Synthesis and Ion Transport Characterization. Polym. Chem2020, 11, 461–471.
+Muthukumar Page 10
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+[28]. Yan L; Hoang L; Winey KIIonomers from Step-Growth Polymerization: Highly Ordered Ionic Aggregates and Ion Conduction. Macromolecules2020, 53, 1777–1784.
+[29]. Yan L; Rank C; Mecking S; Winey KIGyroid and Other Ordered Morphologies in Single-Ion Conducting Polymers and Their Impact on Ion Conductivity. J. Am. Chem. Soc2020, 142, 857866. [PubMed: 31808681]
+[30]. Bollinger JA; Stevens MJ; Frischknecht ALQuantifying Single-Ion Transport in Percolated Ionic Aggregates of Polymer Melts. ACS Macro Lett. 2020, 9, 583–587.
+[31]. Zhang Z; Wheatle BK; Krajniak J; Keith JR; Ganesan VIon Mobilities, Transference Numbers, and Inverse Haven Ratios of Polymeric Ionic Liquids. ACS Macro Lett. 2020, 9, 84–89.
+[32]. Schauser NS; Nikolaev A; Richardson PM; Xie S; Johnson K; Susca EM; Wang H; Seshadro R; Clemen RJ; de Alaniz JR; Segalman RAGlass Transition Temperature and Ion Binding Determine Conductivity and Lithium-Ion Transport in Polymer Electrolytes. ACS Macro Lett. 2021, 10, 104–109.
+[33]. Muthukumar MCharge, Diffusion, and Mobility of Proteins Through Nanopores. J. Chem. Phys2014, 141, 081104. [PubMed: 25172998] [34]. Risken HThe Fokker-Planck Equation (Springer, Berlin, Germany, 1989).
+Muthukumar Page 11
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+FIG. 1:
+(a) Cartoon of two pathways for ion conduction in nanoporous materials. (b) Sketch of counterion conduction pathways in a semidilute polyelectrolyte solution of mesh size ξ. A chemical example of two adjacent repeat units with charge separation λ0 is illustrated in the expanded scale. (c) Cartoon of percolating aggregates from ionic clusters constituting the skeletons, where the matrix is permeable to the conducting ion with an intrinsic ionic conductivity σ0. The average distance between two adjacent ion clusters is λand the mesh size for the percolating aggregate is ξ. (d) The free energy profile Fion corresponding to sequential unbinding and binding of the conducting ion is periodic, with a free energy barrier Uand period λ. The electric energy gain due to externally imposed electric field Eis Felectric = −QEx, where Q is the charge of the ion and xis the location of the ion in the direction of the electric field.
+Muthukumar Page 12
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+FIG. 2:
+(a) Sketch of the permeation mechanism over a distance ξthrough the matrix that occurs in parallel to 1-dimensional hopping conduction over a distance mλ. (b) The corresponding free energy landscape, where Lis the period, λis the sub-period, Uis the barrier height, and ξis the hopping distance.
+Muthukumar Page 13
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+FIG. 3:
+(a) Plot of σ/σ0 given by Eq.(28) versus U/kBTfor different values of the partition ratio ξ/ mλ. (b) Nonmonotonic dependence of σ/σ0 on the partition ratio for U= 20kBT. Beyond the critical value (ξ/mλ)c, ionic conductivity is enhanced compared to the case of no permeation pathway.
+Muthukumar Page 14
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+FIG. 4:
+(a) Plot of the threshold value (ξ/mλ)cversus U/kBT. For partition ratios larger than the threshold value ionic conductivity is enhanced, and for partition ratios below the threshold value, conductivity is lowered. (b) Enhancement of ionic conductivity by designing chemical routes to interrupt 1-dimensional conduction at mλby creating a poison and to force the ion into permeation mechanism.
+Muthukumar Page 15
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+
+
+FIG. 5:
+Plot of σ/σ0 versus 1/Tfor U=100 kJ/mol. Bottom line: Arrhenius plot; middle and top curves are from Eq.(28) with ξ/mλ= 0, and 100, respectively.
+Muthukumar Page 16
+ACSMacroLett. Author manuscript; available in PMC 2021 August 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript

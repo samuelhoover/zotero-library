@@ -1,0 +1,230 @@
+Mechanism of DNA Transport Through Pores
+Murugappan Muthukumar
+Polymer Science and Engineering Department, University of Massachusetts, Amherst, Massachusetts 01003; email: muthu@polysci.umass.edu
+Annu. Rev. Biophys. Biomol. Struct. 2007. 36:435–50
+First published online as a Review in Advance on February 20, 2007
+The Annual Review of Biophysics and Biomolecular Structure is online at biophys.annualreviews.org
+This article’s doi: 10.1146/annurev.biophys.36.040306.132622
+Copyright ©c 2007 by Annual Reviews. All rights reserved
+1056-8700/07/0609-0435$20.00
+Key Words
+entropic barrier, nucleation, translocation, Brownian dynamics
+Abstract
+The transport of electrically charged macromolecules such as DNA through narrow pores is a fundamental process in life. When polymer molecules are forced to navigate through pores, their transport is controlled by entropic barriers that accompany their conformational changes. During the past decade, exciting results have emerged from single-molecule electrophysiology experiments. Specifically, the passage of single-stranded DNA/RNA through alpha-hemolysin pores and double-stranded DNA through solid-state nanopores has been investigated. By a combination of these results with the entropic barrier theory of polymer transport and macromolecular simulations, an understanding of the mechanism of DNA transport through pores has emerged.
+435
+
+
+Translocation: the process of transport of a polymer through a pore
+αHL: α-hemolysin
+ss-DNA:
+single-stranded DNA
+ds-DNA:
+double-stranded DNA
+Contents
+INTRODUCTION . . . . . . . . . . . . . . . . . 436 CENTRAL CONCEPT OF TRANSLOCATION . . . . . . . . . 438 TRANSLOCATION OF SINGLE-STRANDED DNA/RNA . . . . . . . . . . . . . . . . . . . . . . 440 Experimental Facts . . . . . . . . . . . . . . . 440 Theoretical Considerations . . . . . . . 441 Simulation Studies . . . . . . . . . . . . . . . 442 TRANSLOCATION OF DOUBLE-STRANDED DNA . . . 446 Experimental Facts . . . . . . . . . . . . . . . 446 Theory and Simulations . . . . . . . . . . 447 CONCLUSIONS . . . . . . . . . . . . . . . . . . . 447
+INTRODUCTION
+The transport of electrically charged polymer molecules, such as polynucleotides and proteins, from one region of space to another in crowded electrolytic media is one of the most crucial elementary processes of life. Examples of biological phenomena, for which polymer translocation is crucial, include passage of mRNA through nuclear pore complexes, injection of DNA from a virus head into a host cell, gene swapping through pili, and protein translocations across biological membranes through channels. Although polymer translocation is ubiquitous in biology, in vivo polymer translocations are too complex to directly monitor one long molecule undergoing migration in its totality. Fortunately, the societal need to sequence enormous numbers of genomes immediately and inexpensively has recently stimulated a spurt of exciting single-molecule electrophysiology experiments (3, 5, 8, 12, 14, 16, 17, 20–22, 32, 33). In these experiments, translocation of single molecules of DNA/RNA is monitored, through ionic current traces, as the DNA/RNA molecules pass through protein channels and solid-state nanopores under an external electric field. These experi
+ments, although couched in the premise of sequencing technology, serendipitously offer a wealth of data to enable a fundamental understanding of the physical mechanism of polymer translocation in biology. Through these single-molecule electrophysiology measurements, which are far simpler than the in vivo biological translocations, the mechanism of DNA transport through pores has emerged. In this review, we address the conceptual advances that have recently been achieved and the ongoing challenges in the contexts of the following two areas: (a) translocation of single-stranded (ss)-DNA/RNA molecules through a protein channel, αhemolysin (αHL), and (b) translocation of double-stranded (ds)-DNA through solidstate nanopores. Sketches of these scenarios are given in Figure 1. Figure 1a shows the pore as a heptameric self-assembly of αHL, which is incorporated into a membrane separating a donor (cis) chamber from an acceptor (trans) chamber. Each chamber is filled with a buffered salt solution. The αHL pore consists of a vestibule on the cis side and a transmembrane β-barrel on the trans side. The length of the channel is ∼10 nm. The opening of the vestibule at the cis side is ∼2.9 nm and the diameter of the vestibule’s cavity is ∼4.1 nm. The average internal diameter of the βbarrel is ∼2 nm. The two domains of the pore’s lumen are separated by a constriction of ∼1.4 nm. The length of DNA that is passed through αHL can be as long as 1000 nm. In the case of solid-state nanopores, the diameter is in the tunable range of 3 to 10 nm and the length is of order of 10 nm or more (Figure 1b). The length of DNA can easily be microns. The length and timescales relevant to the full translocation of DNA through pores are several orders of magnitude larger than those pertinent to one nucleotide, one amino acid unit, or one water molecule. A systematic development of atomic forces among the constituent molecules of large structures relevant to DNA transport is impossible with the
+436 Muthukumar
+
+
+present computational and theoretical capabilities. It is therefore essential to seek the big picture of DNA translocation by coarsegraining (i.e., integrating out) local atomistic details and addressing global properties such as the relative dependence of the translocation time on the lengths of the DNA molecules that undergo translocation. Such an approach does not have the capacity to specify the functional properties of a few specified atoms involved in the transport phenomena. The basis of this coarse-grained approach is polymer physics, in which the key concepts associated with the polymeric nature of the molecules were harnessed over five decades and based on synthetic polymers. The basic conceptual attributes of electrically charged polymer molecules (called polyelectrolytes) are the following. (a) The conformational entropy S of a molecule is high owing to the ability of the molecule to adopt an enormous number of conformations N . The actual value of N depends on the various potential interactions among the constituent monomers of the molecules and on the nature of the medium. In addition, the backbone stiffness plays a role in dictating the conformational entropy. Whereas ss-DNA molecules are flexible and as a result can adopt many conformations, the ds-DNA molecules of the same contour length are stiffer and adopt lesser conformations. (b) The counterions of the polymer hover around the backbone of the polymer and significantly reduce the effective local electrostatic potential and the effective charge of the polymer. (c) The mobility of a polyelectrolyte such as DNA under a constant electric field in dilute salty solutions is independent of the length of DNA. This remarkable feature is a result of the balance between the hydrodynamic drag of the polymer and the opposing counterion forces. This feature is distinct to polyelectrolytes and cannot be superficially surmised from laws valid for the transport of uncharged polymers. Failure to recognize these fundamental laws (23) of polyelectrolytes can only lead to confusing conjectures for DNA transport.
+Figure 1
+(a) Sketch of αHL pore and a translocating ss-DNA. (b) Sketch of ds-DNA at a solid-state nanopore.
+The transport of DNA and other polymer molecules can be broadly classified into three groups on the basis of the ratio of the radius of gyration (R) of the polymer to the radius (λ) of the pore (Figure 2). In this review we focus only on the single-file transport corresponding to the case of λ  R and the hairpin-like
+www.annualreviews.org • Mechanism of DNA Transport Through Pores 437
+
+
+Figure 2
+Different regimes of polymer confinement by the pore.
+translocations for λ< R. The third case, λ > R, is pertinent to transport through wider channels and is not reviewed here. For the situations under consideration, the narrowness of the pores reduces the conformational entropy
+Entropic barrier
+F3
+F1
+F
+I
+I
+Distance
+III
+III
+II
+II
+F2
+Figure 3
+Genesis of entropic barrier for DNA transport through pores.
+significantly, which in turn forms the basis of the transport mechanism. The transport mechanism of ds-DNA can be qualitatively different from that of ss-DNA owing to the differences in the backbone stiffness. We discuss these differences in separate sections.
+CENTRAL CONCEPT OF TRANSLOCATION
+When a polymer is forced through a narrow pore the molecule is subjected to an entropic barrier (6, 7, 9, 15, 24–28, 34). The dynamics of the polymer subjected to this entropic barrier constitutes the central concept of translocation of DNA through pores. One of the inherent properties of an isolated flexible polymer chain in solutions is its ability to assume a large number of conformations N . As a result, the chain entropy (kB ln N ; kB is the Boltzmann constant) can be high, and its free energy F is given by F = E-TS = E–kBT ln N , where E is the energy of interaction between monomers and the surrounding solvent molecules and T is the absolute temperature. There can be additional entropic contributions to F due to a reorganization of solvent molecules accompanying the conformational changes of the chain. When such a chain is exposed to a restricted environment such as a pore, the number of conformations that can otherwise be assumed by the chain is reduced, and as a result the chain entropy decreases and the chain free energy increases. This effect is depicted in Figure 3.
+438 Muthukumar
+
+
+F1, F2, and F3 are the free energies of the chain in regions I, II, and III, respectively. Owing to the reduction of conformations in region III, F3 is higher than F1 and F2. We call F3-F1 the entropic barrier to the passage of the chain out of region I. Although this barrier is called the entropic barrier, it is indeed a free-energy barrier because additional enthalpic contributions to F3 can arise from the interactions between the polymer and the pore. In general, the environment of the chain in region II can be different from that in region I (due to different electrochemical potentials in these regions), so that F2 is not necessarily equal to F1. The net driving potential for polymer transport from region I to region II is (F1-F2). The polymer chain must negotiate the entropic barrier in order for it to successfully arrive at the opposite side of the pore. Is such a simple idea applicable to the apparently complex transport of DNA through pores? Without the knowledge of actual experimental data in this context, a computer simulation (25) was originally carried out in the following manner. A flexible polyelectrolyte chain was first equilibrated inside a closed sphere at a prescribed ionic strength by using the screened Coulomb potential and the Monte Carlo simulation method. Then, a single hole, just big enough to allow only one monomer at a time, was made on the surface of the sphere at the start of a clock. The expulsion of the chain from the sphere into the outside world was followed as a function of time. As expected, the chain was trying to exit as soon as one of the two ends approached the hole, by ejecting a few of the end monomers. Remarkably, the chain then went back inside the sphere instead of proceeding with the ejection. Once the chain went back into the sphere, the process started all over again. After rattling inside the sphere for a while, one of the two ends approached the hole again, and some monomers were put outside and then the whole chain went back in again. After about 300 such attempts, the chain put out enough monomers in the
+Entropic barrier: creation of an unfavorable free energy by a reduction in the number of possible conformations of the polymer due to spatial restrictions
+Nucleation:
+initiation of a process requiring a threshold amount of free energy
+Figure 4
+Simulated polymer escape demonstrates the analogy with nucleation and growth. t, time in arbitrary units.
+outside world and completely got out of the sphere. This sequence of the events is given in Figure 4, where t represents time in arbitrary units. Such a sequence of events is typical of the nucleation and growth mechanism encountered in the kinetic evolution of a metastable state into an equilibrium state separated by a free-energy barrier. The results of Figure 4 are the manifestation of this nucleation and growth mechanism for the translocation of one polymer chain negotiating the entropic barrier of Figure 3. In addition to demonstrating the applicability of the central idea, the simulation showed that the theoretical technology that has been in place for eight decades to describe the kinetics of first-order
+www.annualreviews.org • Mechanism of DNA Transport Through Pores 439
+
+
+phase transformations could be readily implemented for the transport of DNA through pores. Therefore, the key issues that arise are (a) how to compute/measure the entropic barriers and (b) how to describe the transport of highly correlated objects such as polymers across free-energy barriers. Before we address these issues, let us review some key experimental facts.
+Lifetime ( s)
+1
+2
+4000
+Number of blockades
+2000
+0 0 1000 2000
+3
+Peak
+1
+2
+3
+Lifetime (μs)
+92
+290
+1288
+Blockades (s–1)
+0.9
+2.3
+1.5
+I II
+N-m
+b
+a
+m
+Figure 5
+(a) Experimental histogram of translocation time. (b) Coarse-grained pore in theoretical considerations.
+TRANSLOCATION OF SINGLE-STRANDED DNA/RNA
+Experimental Facts
+When an external voltage is applied across a membrane containing the αHL pore, the pore allows passage of small ions, and the resulting ionic current is measured (14) in the geometry of Figure 1a. When this experiment is repeated with ss-DNA/RNA originally present in the cis chamber, the measured ionic current decreases significantly by an amount Ib whenever the polynucleotide transits through the protein pore. Detailed experimental protocols (14) have revealed that the translocation time, τ , for one molecule to go from the cis side to the trans side can be inferred from the duration of a current blockade. One of the key features of the experimental results is that there is a broad distribution in the values of τ and Ib, although chemically identical molecules are undergoing translocation events. A typical example of the histogram P(τ ) for the distribution of the occurrence of a particular value of τ is given in Figure 5a. This exhibits three peaks. The first peak with the smallest translocation time can be attributed confidently to events in which the polymer only partially enters or collides with the pore. The second and third peaks represent full translocation events, and the origin of the occurrence of two peaks has been mysterious. However, if the two peaks were deconvoluted, the average translocation time for each of these two peaks would be proportional to N/V, where N is the number of bases in the polymer and V is the applied voltage difference. While the average obeys the expected law of proportionality between the time to pull a chain and the chain length, and the inverse relation between τ and the applied force, the breadth of the distribution has been surprising given the uniformity of the polymer molecules. Nevertheless, different polymer sequences showed different average translocation times and raised the prospect of fast DNA sequencing to a new higher level. Furthermore, a threshold of applied voltage was
+440 Muthukumar
+
+
+needed to thread DNA through αHL, before realizing the asymptotic relation of τ ∼ N/V. The value of the threshold voltage depends on whether the polymer is pulled from the cis side or the trans side.
+Theoretical Considerations
+In order to implement the entropic barrier model to describe the translocation kinetics of DNA through the αHL pore, it is necessary to assess the nature of the entropic barrier. In the spirit of the coarse-grained approach using polymer physics ideas, the barrier is evaluated as follows. Let us make the big assumption (24) that the αHL pore, with all its chemical decorations and physical constrictions, can be represented equivalently by a hole in a wall (which represents the membrane), as sketched in Figure 5b. This implies that a DNA chain during its passage through the pore can be imagined as two strands hanging from an impenetrable wall, with one end of each strand at the wall. The free energy of such strands is well known in the polymer literature, and it is straightforward to calculate the free energy of a chain when a certain number of monomers have been brought from the cis to the trans chamber. Thus the free-energy landscape can be calculated for different extents of translocation, and the calculations show that there exists a free-energy barrier. The kinetics of the translocation through the calculated free-energy barrier is described by following the standard theoretical procedure for the kinetics of first-order phase transformations. An additional assumption is that the polymer relaxes as fast as the translocation time, allowing the calculation of the distribution of the translocation time, and the average translocation time, in terms of only one parameter representing the friction of a monomer at the pore. The resultant equation is in the same universality class as the drift-diffusion equation. The applied electric field is responsible for the drift of the polymer, and the chain connectivity is responsible for the diffusive back-and-forth motion
+of the polymer at the experimentally relevant temperatures. In terms of the only phenomenological parameter for the monomer friction, analytical formulas can be derived for the translocation time and its distribution. Remarkably, τ is proportional to N/V, as was found in experiments. The shape of the histograms of the deconvoluted peaks is also reproduced. Furthermore, the theory predicted that τ must be proportional to N2 for short DNA chains, as was confirmed by experiments (22). Several variations (13, 18) of the theoretical method given above, in which the chain entropy and its consequent barrier play rather minor roles, have been reported in the literature. While these calculations are certainly of use under special circumstances, the conformational entropy of DNA is its inherent property and its role is a necessary component of DNA transport. One of the extensions (15, 27) of the above theory is in the context of gene translocation through pili. The translocation kinetics of DNA from one spherical cavity to another spherical cavity through an oppositely charged pore of prescribed length has been analytically calculated for the geometry sketched in Figure 6. The free-energy landscape for this process consists of five important stages. The first stage, which is entropically most unfavorable, is the placement of one of the ends of the chain at the gate of the donor chamber. The second stage corresponds to filling the pore with the polymer. This step is energetically favorable due to the opposite charges of the polymer and the pore. In the third stage, the rest of the monomers left behind in the donor chamber are transferred to the acceptor chamber by the entropic barrier mechanism. The fourth stage corresponds to peeling off the polymer stuck inside the pore so that the pore is emptied, and this step is an unfavorable process. In the fifth stage, the polymer is kicked into the recipient chamber to fully realize the low free energy of the final state. The free energy of confinement of polyelectrolytes in spherical cavities is identical to that of a polyelectrolyte
+www.annualreviews.org • Mechanism of DNA Transport Through Pores 441
+
+
+1
+R1 R2
+Free energy
+a
+b
+1
+1
+23
+4
+5
+234
+Extent of translocation (ζζ))
+Figure 6
+(a) Key steps of translocation between two reservoirs through an interactive pore and (b) the accompanying free-energy landscape.
+solution, and scaling arguments valid for pores and channels cannot be casually extended. The agreement between the analytically derived formulas and the general experimental results shows that the entropic barrier model enables researchers to understand the macromolecular basis of polymer translocation. The advantage of such a model and phenomenological theories is their ability to offer simple analytical formulas. These formulas allow researchers to design experimental geometries in order to realize various desired translocation times for DNA. In spite of this success, the entropic barrier model is incapable of explaining the occurrence of multiple peaks in the experimentally observed histograms (Figure 5a). Further, the specific effects of particular nonblocky sequences of DNA on the translocation histograms cannot be adequately addressed in these analytical calculations, although nonblocky sequences can readily be addressed through molecular modeling. To address these nonuniversal features of DNA transport, we must resort to molecular modeling.
+Simulation Studies
+Even with the modern computational facilities, it is impossible to perform ab initio calculations of all atomic forces to follow the translocation events of DNA molecules that occur at the timescale of hundreds of microseconds. Therefore, it is necessary to perform coarse-graining of atomistic details but not to throw away the chemical identity of the building units such as the nucleotides, sugar, and phosphate moieties. Building on the expertise cultivated in polymer physics, Muthukumar & Kong (29) have recently used Brownian dynamics simulations to model the translocation of DNA through the αHL pore and nanotubes. Through a description of the ss-DNA polymer and the αHL pore as unitedatom models, as depicted in Figure 7, conformations of the polymer have been monitored as it is pulled by an externally imposed electric field across the pore (which is embedded in a membrane). In these simulations, the base, sugar, and phosphate moieties of the polymer and the
+442 Muthukumar
+
+
+Figure 7
+Coarse-grained description of (a) the αHL pore, (b) a nanopore, and (c) a polynucleotide.
+various amino acid residues of the protein are treated as effective beads with differing sizes and the appropriate charges. The energies associated with bond-stretch, bondangle, torsion, Lennard-Jones, and screened Coulomb interactions, among various united atoms, were taken into account. The base of the DNA/RNA has a preferable tilt angle with respect to the polymer backbone to allow the monitoring of the 3′ and 5′ ends of the polymer. The protein pore was taken as static, on the basis of initial results of negligible contributions arising from protein dynamics for the issues of translocation. The dielectric constant of the membrane and the interior of the united atoms was taken to be 2, whereas the
+aqueous medium was taken as a continuum with a dielectric constant of 80. The conformations of the polymer were monitored in this medium of inhomogeneous dielectric constant under the externally imposed electric field. This calculation was then coupled to a modified Poisson-Nernst-Planck procedure to compute the ionic current as the polymer underwent translocation. Polymer conformations and the accompanying ionic currents were calculated simultaneously. The representative results (29) for two trajectories are given in Figure 8. These simulations were repeated thousands of times and the histograms of P(τ ) were constructed. The simulations could reproduce almost all
+www.annualreviews.org • Mechanism of DNA Transport Through Pores 443
+
+
+Figure 8
+Simultaneous calculation of polymer conformations and ionic currents. (Top) A trajectory of translocation with longer τ , and (bottom) a trajectory of translocation with shorter τ .
+aspects of the experimental data. Remarkably, there are two peaks corresponding to translocation, as seen in Figure 9a. By going back to the chain conformations in all these simula
+tions, it was possible to find out why one particular event took a particular time for translocation. On the basis of these investigations, it was concluded that the vestibule of the αHL
+444 Muthukumar
+
+
+pore acts as an additional entropic trap, as it is sufficiently large to hold many segments of the polymer. The entropic trap generates a resistive force against the translocation of the polymer. As a result, the polymer moves slower while still maintaining the proportionality of τ to N/V. Further, the translocation time for such events is increased by roughly a constant residence time inside the vestibule. Events mediated by the entropic trap of the vestibule contribute to the peak with longer τ . On the other hand, there are events that avoid the entropic trap of the vestibule by the randomness of the process. These events contribute to the other peak with shorter τ . When a nanotube (Figure 7b) is used instead of the αHL pore, only one peak is observed (Figure 9b) because the entropic trap of the vestibule is now absent. However, this conclusion remains controversial, as an alternative explanation (19) has been offered in which the two peaks are claimed to correspond to translocations via 3′ and 5′ ends through the pore. More work is needed to sort this issue. Attempts on explicit-atom molecular dynamics simulations (2, 11) have recently been reported. More work is needed in order for the reported results to be relevant to the experimental situations, because the simulations can be carried out for times only several orders of magnitude shorter than the translocation times. However, these results are of immense utility when calibrating the frictional forces that are used in the coarse-grained Brownian dynamics simulations. Another direction where the modeling should be extended is the role of secondary structures of the polymer on the translocation features. Polymer sequences and their ability to spontaneously form secondary structures influence their migration through nanopores. An excellent example (1) is the different types of ionic current traces for poly C, poly dC, and poly A. Although reasonable conjectures have been proposed to explain these different traces, full explanations are yet to be found. Finally, the structure of water in the αHL pore or any nanopore must be fully deter
+0.05
+0
+0.10
+0.15
+0.20
+0.25
+0.30
+0 50 100 150
+0 100 150
+0
+0.01
+0.02
+0.03
+0.04
+50
+b
+a
+P (τ) P (τ)
+τ (μs)
+τ (μs)
+Figure 9
+(a) Calculated histogram of translocation times. (b) The histogram for a nanopore is much narrower than for the αHL pore.
+mined. Although there are simulation reports on the structure of water in nanopores, these results were based on the potential between water molecules in the bulk. When an interface is created, for example, at the wall of the pore, dielectric discontinuity is created, and forces from the image charges in turn modify the force fields for water molecules under confinement. Such calculations must be undertaken before claims of description of the
+www.annualreviews.org • Mechanism of DNA Transport Through Pores 445
+
+
+role of explicit water molecules in DNA transport through pores.
+TRANSLOCATION OF DOUBLE-STRANDED DNA
+Experimental Facts
+One of the well-studied experimental systems involving ds-DNA is the packaging of the viral genome within the capsid of a bacteriophage. Linear dimensions of capsids are typically tens of nanometers, whereas the length of the genome to be packaged is generally three to four orders of magnitude longer. The persistence length, over which the chain contour remains directionally correlated, is ∼50 nm in physiological conditions and is comparable to the linear dimensions of the capsid. The bending required of the genome as it is wound tightly within the capsid leads to a buildup of energy that is large compared with kBT. In addition, the presence of phosphate links leads to high linear charge density along the DNA backbone and gives rise to large repulsive energy inside the densely packed capsid. Thus, the process of viral genome packing is a conflict of scales, wherein a long molecule must be compressed within a length scale on which it resists bending and to a density at which it must also overcome strong repulsive forces. Such a conflict leads to the generation of tremendously large pressures inside the capsid. Several X-ray diffraction and cryo-transmission electron microscopy studies (4) have determined the three-dimensional structure of the packaged genome. The timedependent buildup of force as the genome is packaged inside the φ29 bacteriophage by a motor protein has been investigated (31) by the single-molecule optical tweezers technique. From these two kinds of measurements, details of the kinetics of genome packaging and of the final structure of the genome inside the capsid are beginning to emerge. The other experimental system investigating the transport of ds-DNA is the
+translocation of ds-DNA through solid-state nanopores (Figure 1b). There has recently been a tremendous advancement (16, 17, 32, 33) in sculpting solid-state nanopores with apertures ranging from 3 to 10 nm with controllable thicknesses. Excellent progress has been made in passing ds-DNA through these nanopores under a voltage bias and recording signatures of ionic current trace unique to the polymer undergoing translocation. The most striking feature of the passage of dsDNA through solid-state nanopores is the tremendous heterogeneity in the distributions of the blocked ionic current and translocation time, even though identical molecules are passing by. The results reported so far on the dependencies of these distributions on DNA length, applied voltage, pore diameter, and pore length are bewildering. However, some major conclusions can be drawn from these data. The DNA molecule translocates through the pore in quantized configurations, such as a single-file chain with one hairpin, even if the pore diameter is one order of magnitude smaller than the persistence length of ds-DNA. The relative propensity of single-file (unfolded) events increased nonlinearly with the voltage bias and decreased with the DNA length. To explain these observations, an electric field extending beyond 2 μm from the pore and the accompanying conformational changes of DNA was invoked. This conjecture requires scrutiny, because for the ionic strengths used in the experiments, the range of the electric field from the pore can be over only a few nanometers and not microns. The experimental results on ds-DNA transport through pores from different laboratories are sometimes contradictory. For example, in one laboratory (15), the observed mobility of the polymer was independent of polymer length and applied voltage. In another laboratory (33), the average translocation time was found to depend on the polymer length with a 1.26-power law, in contradiction with the other result, although the pore diameters in these two experiments
+446 Muthukumar
+
+
+Figure 10
+Modeling of packing of ds-DNA into a T7 bacteriophage.
+are comparable. In addition, the theoretical explanation offered for the 1.26-power law violates the known laws of polyelectrolyte hydrodynamics. In general, the experimental situation appears murky and the data from different laboratories are inconsistent.
+Theory and Simulations
+Although there have been several theoretical attempts to describe the experimental observations on the packaging of genomes in bacteriophages, none is satisfactory so far. To gain insight into the relative importance of the various competing forces involved in packaging of genomes, Forrey & Muthukumar (10) performed a coarse-grained Brownian Dynamics simulation. As the genome is pushed into an icosahedral capsid under the influence of a motor protein, the internal buildup of energy and the resultant forces and the evolution of structure were monitored. A typical trajectory of genome packing for a T7 bacteriophage is given in Figure 10. The simulations can qualitatively reproduce experimental results on force profiles, X-ray diffraction, and cryotransmission electron microscopy. Analysis of the detailed forces present during the packaging process reveals that the genome packing process is fundamentally different from the previously popular inverse spool model and that it is dominated by entropy associated with polymer dynamics. Theory and modeling of the translocation of ds-DNA through nanopores have yet to be undertaken in a rigorous way. Unlike flexible chains such as ss-DNA, it is not enough for semiflexible polyelectrolytes such as ds
+DNA to have one of their ends at the pore entrance in order for translocation to proceed. The end must approach the pore with the correct orientation as well. The calculation of entropic barriers with additional constraints on the orientational degrees of freedom is a difficult task (30). Nevertheless, this exercise should be pursued. However, coarsegrained simulations such as those performed for the genome packaging in bacteriophages can readily be performed for the translocation of ds-DNA through pores. These simulations enable researchers to investigate the effects of pore geometries, applied voltage bias, and polymer length on the way in which ds-DNA molecules pass through the pores. Furthermore, the role of patterned chemical decoration of the pore’s inner walls on the translocation characteristics can easily be explored. Although the hydrodynamic interactions among the polymer segments inside narrow pores are expected to be screened, the effect of the electro-osmotic flow arising from the coupling between the interface charges and hydrodynamics has yet to be systematically investigated.
+CONCLUSIONS
+We have summarized the current status of the translocation of DNA through the αHL pore and solid-state pores in terms of major experimental results, theoretical concepts, and macromolecular modeling. For the case of flexible polyelectrolytes such as ss-DNA undergoing translocation through the αHL pore, most of the experimental results are
+www.annualreviews.org • Mechanism of DNA Transport Through Pores 447
+
+
+well understood and the theoretical framework is satisfactory. The same cannot be said about the current status of the transport of ds-DNA through pores. Inconsistent results are reported from different laboratories. More careful measurements on wellcalibrated, solid-state nanopores are needed.
+On the theoretical side, the challenge lies in the proper treatment of local chain stiffness and the conformational changes of semiflexible polyelectrolytes accompanying the translocation through pores under an external field. Nevertheless, progress is likely to be made soon by using computer simulations.
+SUMMARY POINTS
+1. Changes in the conformational entropy of polymer molecules, which accompany their transport through pores, control the global properties of the transport such as the dependencies of the translocation time on polymer length, driving forces, and pore geometries.
+2. Translocation of a single polymer molecule through pores is analogous to the nucleation and growth mechanism for the kinetics of phase transformations.
+3. Simple analytical formulas can be obtained for the global properties of polymer translocation. In general, for long polymers and large driving forces, the translocation time τ is proportional to N/V, where N is the polymer length and V is the applied voltage difference.
+4. Macromolecular modeling is a useful tool that enables researchers to understand the generic features of the experimental data on DNA transport through pores.
+ACKNOWLEDGMENTS
+It is a pleasure to thank C.Y. Kong and C. Forrey for their collaborations and the NIH (Grant No. 1R01HG002776-01) for financial support.
+LITERATURE CITED
+1. Akeson M, Branton D, Kasianowicz JJ, Brandin E, Deamer DW. 1999. Microsecond timescale discrimination among polycytidylic acid, polyadenylic acid, and polyuridylic acid as homopolymers or as segments within single RNA molecules. Biophys. J. 77:3227–33 2. Aksimentiev A, Heng JB, Timp G, Schulten K. 2004. Microscopic kinetics of DNA translocation through synthetic nanopores. Biophys. J. 87:2086–97 3. Bates M, Burns M, Meller A. 2003. Dynamics of DNA molecules in a membrane channel probed by active control techniques. Biophys. J. 84:2366–72 4. Cerritelli ME, Cheng N, Rosenberg AH, McPherson CE, Booy FP, Steven AC. 1997. Encapsidated conformation of bacteriophage T7 DNA. Cell 91:271–80 5. Chen P, Gu JJ, Brandin E, Kim YR, Wang Q, Branton D. 2004. Probing single DNA molecule transport using fabricated nanopores. Nano Lett. 4:2293–98 6. Daoud M, Degennes PG. 1977. Statistics of macromolecular solutions trapped in small pores. J. Phys. 38:85–93 7. de Gennes PG. 1999. Passive entry of a DNA molecule into a small pore. Proc. Natl. Acad. Sci. USA 96:7262–64 8. Deamer DW, Branton D. 2002. Characterization of nucleic acids by nanopore analysis. Acc. Chem. Res. 35:817–25
+448 Muthukumar
+
+
+9. DiMarzio EA, Mandell AJ. 1997. Phase transition behavior of a linear macromolecule
+threading a membrane. J. Chem. Phys. 107:5510–14 10. Demonstration
+of the utility of coarse-grained macromolecular modeling to probe the structure and kinetics of genome packing.
+10. Forrey C, Muthukumar M. 2006. Langevin dynamics simulations of genome packing in bacteriophage. Biophys. J. 91:25–41
+11. Heng JB, Aksimentiev A, Ho C, Marks P, Grinkova YV, et al. 2006. The electromechanics of DNA in a synthetic nanopore. Biophys. J. 90:1098–106 12. Henrickson SE, Misakian M, Robertson B, Kasianowicz JJ. 2000. Driven DNA transport into an asymmetric nanometer-scale pore. Phys. Rev. Lett. 85:3057–60 13. Kantor Y, Kardar M. 2004. Anomalous dynamics of forced translocation. Phys. Rev. E
+69:021806-1-12 14. First
+experimental report of translocation of ss-DNA molecules through a protein pore.
+14. Kasianowicz JJ, Brandin E, Branton D, Deamer DW. 1996. Characterization of individual polynucleotide molecules using a membrane channel. Proc. Natl. Acad. Sci. USA 93:13770–73
+15. Kong CY, Muthukumar M. 2004. Polymer translocation through a nanopore. II. Excluded volume effect. J. Chem. Phys. 120:3460–66
+16. First experimental report of quantized chain folding during the transport of ds-DNA through solid-state nanopores.
+16. Li J, Gershow M, Stein D, Brandin E, Golovchenko JA. 2003. DNA molecules and configurations in a solid-state nanopore microscope. Nat. Mater. 2:611–15
+17. Li J, Stein D, McMullan C, Branton D, Aziz MJ, Golovchenko JA. 2001. Ion-beam sculpting at nanometre length scales. Nature 412:166–69 18. Lubensky DK, Nelson DR. 1999. Driven polymer translocation through a narrow pore. Biophys. J. 77:1824–38 19. Mathe J, Aksimentiev A, Nelson DR, Schulten K, Meller A. 2005. Orientation discrimination of single-stranded DNA inside the alpha-hemolysin membrane channel. Proc. Natl. Acad. Sci. USA 102:12377–82
+20. Meller A. 2003. Dynamics of polynucleotide transport through nanometre-scale pores. J. Phys. Condens. Matter 15:R581–R607
+21. Meller A, Nivon L, Brandin E, Golovchenko J, Branton D. 2000. Rapid nanopore discrimination between single polynucleotide molecules. Proc. Natl. Acad. Sci. USA 97:1079–84 22. Meller A, Nivon L, Branton D. 2001. Voltage-driven DNA translocations through a nanopore. Phys. Rev. Lett. 86:3435–38 23. Muthukumar M. 1997. Dynamics of polyelectrolyte solutions. J. Chem. Phys. 107:2619–35 24. Muthukumar M. 1999. Polymer translocation through a hole. J. Chem. Phys. 111:1037174 25. Muthukumar M. 2001. Translocation of a confined polymer through a hole. Phys. Rev. Lett. 86:3188–91 26. Muthukumar M. 2002. Theory of sequence effects on DNA translocation through proteins and nanopores. Electrophoresis 23:1417–20 27. Muthukumar M. 2003. Polymer escape through a nanopore. J. Chem. Phys. 118:517484
+28. Demonstrated the significance and prevalence of the entropic barrier concept for polymer transport in restricted geometries.
+28. Muthukumar M, Baumgartner A. 1989. Effects of entropic barriers on polymer dynamics. Macromolecules 22:1937–41
+29. First simultaneous calculation of ss-DNA conformations and ionic current during the translocation of DNA through αHL. 29. Muthukumar M, Kong CY. 2006. Simulation of polymer translocation through protein channels. Proc. Natl. Acad. Sci. USA 103:5273–78
+30. Odijk T. 1993. Physics of tightly curved semiflexible polymer chains. Macromolecules 26:6897–902
+31. An elegant demonstration of how optical tweezers can probe forces in packaging of genomes.
+31. Smith DE, Tans SJ, Smith SB, Grimes S, Anderson DL, Bustamante C. 2001. The bacteriophage phi 29 portal motor can package DNA against a large internal force. Nature 413:748–52
+www.annualreviews.org • Mechanism of DNA Transport Through Pores 449
+
+
+32. Storm AJ, Chen JH, Zandbergen HW, Dekker C. 2005. Translocation of double-strand DNA through a silicon oxide nanopore. Phys. Rev. E 71:051903-1-10 33. Storm AJ, Storm C, Chen JH, Zandbergen H, Joanny JF, Dekker C. 2005. Fast DNA translocation through a solid-state nanopore. Nano Lett. 5:1193–97 34. Sung W, Park PJ. 1996. Polymer translocation through a pore in a membrane. Phys. Rev. Lett. 77:783–86
+450 Muthukumar

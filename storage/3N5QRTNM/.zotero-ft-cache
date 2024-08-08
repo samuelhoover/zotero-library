@@ -1,0 +1,230 @@
+Multiscale Shear-Lag Analysis of Stiffness Enhancement in Polymer− Graphene Nanocomposites
+Asanka Weerasinghe,† Chang-Tsan Lu,‡,∥ Dimitrios Maroudas,*,‡ and Ashwin Ramasubramaniam*,§
+†Department of Physics, ‡Department of Chemical Engineering, and §Department of Mechanical and Industrial Engineering, University of Massachusetts, Amherst, Massachusetts 01003, United States
+*
+S Supporting Information
+ABSTRACT: Graphene and other two-dimensional (2D) materials are of emerging interest as functional fillers in polymer−matrix composites. In this study, we present a multiscale atomistic-tocontinuum approach for modeling interfacial stress transfer in graphene−high-density polyethylene (HDPE) nanocomposites. Via detailed characterization of atomic-level stress profiles in submicron graphene fillers, we develop a modified shear-lag model for short fillers. A key feature of our approach lies in the correct accounting of stress concentration at the ends of fillers that exhibits a power-law dependence on filler (“flaw”) size, determined explicitly from atomistic simulations, without any ad hoc modeling assumptions. In addition to two parameters that quantify the end stress concentration, only one additional shear-lag parameter is required to quantify the atomic-level stress profiles in graphene fillers. This three-parameter model is found to be reliable for fillers with dimensions as small as ∼10 nm. Our model predicts accurately the elastic response of aligned graphene−HDPE composites and provides appropriate upper bounds for the elastic moduli of nanocomposites with more realistic randomly distributed and oriented fillers. This study provides a systematic approach for developing hierarchical multiscale models of 2D material-based nanocomposites and is of particular relevance for short fillers, which are, currently, typical of solution-processed 2D materials.
+KEYWORDS: polymer nanocomposites, graphene, molecular dynamics, shear-lag models, mechanical properties
+1. INTRODUCTION
+Graphenean atomically thin sheet of sp2-bonded carbon has been widely investigated for its exceptional mechanical and
+electronic properties.1−3 Polymer−matrix composites are poised to be among the early technological applications for graphene as suggested by several reports of improved stiffness and strength, enhanced electrical and thermal conductivity, elevated glass transition temperatures, and reduced gas
+permeability at relatively low graphene loading.4−8 Although graphene is not unique as a filler in these aspectssilicate or carbon-nanotube fillers also being competitivethe potential for achieving a multiplicity of enhanced material properties with a single filler makes graphene an attractive candidate for
+enabling new multifunctional polymer nanocomposites.4,9 For mechanical reinforcement, in particular, graphene is an attractive filler owing to its high elastic modulus (∼1 TPa)
+and intrinsic strength (>100 GPa).10 Several studies of model polymer−graphene systems have sought to understand how
+filler size,11−13 orientation,14 and surface functionalization15 control the mechanical response. In general, these studies indicate that large, well-aligned, and few-layer graphene nanoflakes with strong interfacial adhesion to the matrix
+provide the best composite properties,16 which is consistent with decades of experience in fiber-reinforced composites.
+Indeed, continuum mechanics-based shear-lag models17 have been used successfully to model strain profiles along graphene fillers from Raman measurements over micron scales in poly(methyl methacrylate)−graphene composites11 with suitable modifications to account for interfacial sliding and delamination.18 However, a recent experimental study suggests that shear-lag models could break down for polymer−graphene nanocomposites with filler dimensions at the submicron level owing to residual stresses, chemical doping, or edge effects.19
+Furthermore, both theory20−22 and experiment23 indicate that the detailed structural characteristics of the polymer−matrix interface (the “interphase”) become important when considering reinforcement mechanisms in nanocomposites; such details are typically missing in models using the sharp interface approximation. Thus, there is a need for understanding the atomic-scale mechanisms of stress transfer at graphene− polymer interfacesincluding the role of the interphase in this processand identifying the regimes of applicability or breakdown of continuum models.
+Received: March 4, 2017 Accepted: June 16, 2017 Published: June 16, 2017
+Research Article
+www.acsami.org
+© 2017 American Chemical Society 23092 DOI: 10.1021/acsami.7b03159 ACS Appl. Mater. Interfaces 2017, 9, 23092−23098
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 21, 2024 at 16:34:36 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+In this article, we conduct a detailed analysis of the interfacial stress transfer in polymer−graphene composites within the small strain regime (elastic response with no interfacial sliding). Using molecular statics and molecular dynamics (MD) simulations, we study the mechanical response of a model polymer nanocomposite, namely, graphene-reinforced highdensity polyethylene (HDPE). By systematically controlling the filler size and performing extensive statistical sampling, we obtain atomic-level stress profiles along graphene fillers with submicron dimensions and develop a connection with shear-lag
+models for short fillers.24 In obtaining this atomistic− continuum connection, we find that it is important to account for both filler end stresses and the presence of a denser polymer interphase that mediates stress transfer to the filler. A key finding of our study is that, within the elastic regime, the behavior of monolayer graphene fillers is similar to that of flaws in bulk materials, and we present an approach for explicitly calculating the flaw-size dependence of the end stress concentration fully from atomistic simulations. We find that, in addition to two parameters that quantify the end stress
+Figure 1. (a) 3D view of the atomic configuration of a model graphene−HDPE nanocomposite with regular nanoribbon arrays here, a 20 nm wide GNR extending infinitely along the x-direction, equilibrated at 150 K. (b) Side view of the model graphene−HDPE nanocomposite and a magnified view of the interface, which highlights the polymer densification in the vicinity of the graphene filler. (c) Schematic representation of the graphene filler with the dimensions used in the continuum shear-lag model. (d) Normalized atomic density profile of the polymer, ρ(z/Lz)/ρ0, where ρ0 is the
+nominal density of the polymer matrix at 150 K, in the direction normal to the plane of the graphene filler. The dashed red line represents an optimal Gaussian envelope to the density profile.
+Figure 2. (a) Axial stress profiles, σyy(y/l), along a 30 nm wide GNR (2l = 30 nm) computed from quasi-static straining simulations at various
+indicated composite strain levels for a model graphene−HDPE nanocomposite with regular nanoribbon arrays. (b) Dimensionless axial stress profiles, σyy(y/l)/(Egεm), across GNRs with widths (2l) of 8, 12, 20, and 30 nm computed as in (a) in model graphene−HDPE nanocomposites. The
+stress profiles at various composite strain levels, εm (up to 0.6% in each case), nearly collapse onto a single curve for each nanoribbon. The solid lines
+represent optimal fits to the simulation results according to the modified shear-lag model (eq 2), excluding the results in the immediate vicinity of the sheet edge (y ≈ l). The stress profiles are symmetric over the domain −l ≤ y ≤ l and plotted only over 0 ≤ y ≤ l. (c) Shear-lag parameter, β, and dimensionless end stress, σ0/(Egεm), as a function of the filler aspect ratio, s = l/t, from the nonlinear fitting of the stress profiles in (b) according to
+eq 2. The red dashed line represents the power-law fit, σ0(s)/(Egεm) = αsδ ∼ sδ, from which we obtain α = (2.89 ± 0.09) × 10−3 and δ = 0.80 ± 0.01
+(first three points excluded). (d) Composite elastic moduli computed from quasi-static straining simulations and comparison with their estimates as a function of s from short-filler theory (SFT; eq 3) and long-filler theory (LFT; eq 4).
+ACS Applied Materials & Interfaces Research Article
+DOI: 10.1021/acsami.7b03159 ACS Appl. Mater. Interfaces 2017, 9, 23092−23098
+23093
+
+
+concentration, only one additional shear-lag parameter is required to quantify the atomic-level stress profiles in graphene fillers, and this three-parameter model is found to be reliable down to graphene filler dimensions of ∼10 nm. We demonstrate the accuracy of our atomistically informed, modified shear-lag model in predicting the elastic response of aligned graphene−HDPE nanocomposites and in providing appropriate upper bounds for the elastic moduli of random graphene−HDPE nanocomposites. Our study provides a systematic approach for developing hierarchical multiscale models of two-dimensional (2D) materials-based nanocomposites and is of particular relevance for short fillers, which are the
+typical outcome of solution processing of 2D materials.8,25
+2. RESULTS AND DISCUSSION
+We consider a model graphene−HDPE nanocomposite (Figure 1) that consists of a regular array of graphene nanoribbons (GNRs) represented by a narrow graphene strip of width 2l (ranging from 1 to 50 nm) embedded in a larger polymer matrix supercell whose dimensions in the y- and z-directions are chosen to be sufficiently large to avoid filler−filler interactions. As the GNR is periodic along its length, the ribbon width 2l is the only geometric parameter that controls the filler size. This atomic-scale model ensures that, upon straining along the ydirection, the stress profile in the filler is one-dimensional (to within statistical variations along the ribbon length), which is readily amenable to a shear-lag analysis. We considered several GNRs with their widths ranging from 1 to 50 nm (Table S1), embedded in an HDPE matrix and subjected the composites to quasi-static (0 K) strain increments in the y-direction of 0.2% up to a peak value of 0.8% considering 10 different equilibrated initial configurations in each case to account for statistical variations. The ribbons were chosen to have zigzag edges without any loss of generality. Figure 2a shows the results for normal stress profiles along the ribbon width, σyy(y), for a 30
+nm wide GNR filler at a few different strain levels; each data point in these 1D profiles corresponds to the virial stress averaged over a zigzag row. It is immediately apparent that the normal stress distribution is qualitatively similar to that
+expected from a shear-lag analysis,26 with the superposition of a nonzero end stress whose magnitude grows with applied
+strain.24 Thus, both interfacial shear stresses and normal end stresses must be considered when analyzing the stress-transfer process. There is also clear evidence of a spike in the normal stress confined to the very edges of the fillers in our model nanocomposites that arises from the intrinsic edge stress of the
+GNRs,27 which we also observe in our calculations of isolated GNRs, and is unimportant for our present purposes. It should be mentioned that the edge stresses are sensitive to passivating species used for edge termination and that these stress spikes
+may be quenched28,29 or enhanced30 depending on the passivating species. Our calculations show that for sufficiently wide ribbons there is no clear correlation between the edge stress and the ribbon width, as expected for a localized edge effect. Figure 2b shows analogous stress profiles (normalized as per eq 2 below) for a few different ribbon widths, demonstrating the similarity to short-fiber stress profiles with nonzero end stresses. It is also evident that the stress profiles for the narrower nanoribbons are shallower than those for the wider ones, which is fully consistent with the expectations from a classical shear-lag analysis.
+On the basis of our observations above, it is plausible that a shear-lag model could indeed describe stress transfer in graphene−HDPE nanocomposites provided that the end stresses are correctly accounted for. To this end, we note, first, that the normal stress distribution for fillers that are fully
+embedded in the matrix is given by11,26 (Supporting Information)
+σε β β
+=+ +
+≤≤
+⎛
+⎝⎜ ⎞
+⎠⎟ ⎛
+⎝⎜ ⎞
+⎠⎟
+yE C y
+tD y
+t
+yl
+( ) sinh cosh ,
+0
+yy g m
+(1)
+where Eg (970 GPa) is our calculated value for the elastic modulus of graphene, which is consistent with previous
+reports;10,31 t (0.335 nm) is the thickness of the nanoribbons,
+chosen to be the typical interlayer spacing in graphite;32,33 εm is
+the matrix strain; and β = −
+4G
+E
+t
+(L t)
+z
+eff
+g
+is a dimensionless
+parameter, the so-called shear-lag parameter, with Geff being the
+effective shear modulus of the matrix including the interphase (eq S3) and Lz being the height of the simulation supercell in
+the direction perpendicular to the plane of the filler. The integration constants C and D in eq 1 are to be determined by satisfying dσyy/dy = 0 (σyy is symmetric over the width of the ribbon and attains a maximum at y = 0) at the center of the ribbon and by a suitable boundary condition for σyy at the edge
+of the filler (y = l). While various approximations have been
+suggested to model the end stress,24,34,35 an appropriate representation of the stress concentration at the filler ends and a proper accounting of the interphase introduce a significant degree of uncertainty. However, the end stress is accessible unambiguously in our atomistic simulations, and so, we simply set the boundary condition at y = l as σyy|y=l ≡ σ0(l)
+and extract σ0(l) from our simulation data; the dependence of
+σ0 on the filler width (l) introduced here anticipates a scaling law that will be discussed later and can be understood intuitively as the influence of “flaw” size on the stress concentration. The resulting (normalized) normal stress distribution in the filler may, hence, be written as (Supporting Information)
+ση
+ε
+σ
+ε
+βη
+= + − β ≤η≤
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+E
+s
+E
+s
+s
+( ) 1 ( ) 1 cosh( )
+cosh( ) , 0 1
+yy
+gm
+0
+gm
+(2)
+where we have introduced the dimensionless coordinate η = y/l and the filler aspect ratio s = l/t. When plotted in this dimensionless form, the normal stress profiles for a particular GNR (fixed l) practically collapse onto a single master curve (Figure 2b); a ∼5% deviation owing to systematic error with respect to the strain level is attributed to small variations in the GNR morphology, such as the warping or rippling of the GNR observed for larger ribbons. Shear-lag model generalizations to capture filler deviations from a planar morphology are beyond the scope of this study but constitute an interesting topic to be addressed within perturbation theory in future theoretical investigations. The dimensionless parameters σ0(s)/(Egεm) and
+βs can now be determined via nonlinear regression. The results from fitting of the atomic stress profiles including those of Figure 2b according to eq 2 are listed in Table S3 and plotted in Figure 2c for the various filler sizes studied here with sampling over ∼30 stress profiles per filler. Examples of data fits in Figure 2b show that the modified shear-lag model captures
+ACS Applied Materials & Interfaces Research Article
+DOI: 10.1021/acsami.7b03159 ACS Appl. Mater. Interfaces 2017, 9, 23092−23098
+23094
+
+
+accurately the axial stress distribution in the fillers with the exception of the intrinsic edge stress that is beyond the purview of the model. A closer inspection of Table S3 and Figure 2c reveals that the shear-lag parameter β decreases rapidly with the filler width and attains a near-constant value beyond 2l ≈ 10 nm. As β is, by definition, independent of l, we interpret 10 nm to be the lower bound for the applicability of the shear-lag model in our model nanocomposite. Furthermore, Table S3 and Figure 2c also indicate that σ0(s) increases monotonically with the aspect ratio s (equivalently, l, as t remains constant) closely following a power-law relation for larger fillers. Hence,
+we make the scaling ansatz σ0(s)/(Egεm) = αsδ ∼ sδ and
+determine α and δ from the calculated values of σ0(s). Here, α
+depends upon the material properties of the filler and the interphase, whereas δ controls the flaw size effect and remains constant (δ ≈ 4/5) for this particular “flaw,” that is, monolayer graphene filler. Finally, the elastic modulus for our model composite system with aligned short fillers of the volume fraction φ is given by (Supporting Information)
+φφ α β
+β
+= − + + δ−
+⎡
+⎣⎢ ⎤
+⎦⎥
+E EE s s
+s
+(1 ) 1 ( 1) tanh( )
+c
+SFT
+m g (3)
+As seen from Figure 2d, the predictions of eq 3 (SFT) are in excellent agreement with the simulation results. We also note that a simplistic estimate according to the rule of mixtures, Ec =
+(1 − φ)Em + φEg, severely overestimates the elastic modulus of the nanocomposite [Figure S3a], which underscores the importance of accounting properly for the flaw-like behavior
+of the fillers.36 Although our atomistic simulations are restricted to narrow GNR fillersthe largest filler of 50 nm already requiring a heavy computational costwe outline briefly how our results can be extrapolated to larger fillers. First, we recall that the shear-lag parameter, β, does not depend upon the filler width beyond a lower bound of ∼10 nm (Figure 2c; Table S3). Thus, if the filler separation Lz is held constant, then the shear-lag
+parameter β remains constant, provided that a homogeneous
+state of the matrix strain, εm, is achieved between the fillers
+(well-separated fillers). To allow for greater flexibility in the model, β could further be calculated as a function of Lz. In Figure S4, we show the results of numerical tests for three different values of Lz for a fixed ribbon width of 2l = 12 nm. It is
+evident from these results that the weak scaling of β with filler separation Lz (β ≈ 1/ L − t )
+z is barely distinguishable, giving essentially a constant value of β to within the statistical error; the same is true of the end stress, σ0. These observations suggest that the mechanical response of the composite discussed above can be taken to be dependent primarily on the filler size. Second, we note that the end stress σ0(l) cannot
+grow unbounded with increasing filler size, l, and failure must eventually occur either by debonding between the filler and the interphase or by failure (yielding, void growth, etc.) within the interphase/matrix. Thus, for long fillers, it is reasonable to invoke the usual approximation of zero end stress, σ0 = 0; with these assumptions, we recover the classical result for the
+composite modulus17
+φφ β
+β
+=− + −
+⎡
+⎣⎢ ⎤
+⎦⎥
+E EE s
+s
+(1 ) 1 tanh( )
+c
+LFT
+m g (4)
+As long as end stresses are transmitted from the polymer to the filler, it is evident from eqs 3 and 4 that EcSFT > EcLFT (as α, δ,
+and s > 0), and the reinforcement effect is substantially higher than would be expected from a classical shear-lag analysis (Figure 2d). We emphasize that this result indicates the correct scaling of SFT, when compared with that of LFT, for very short fillers and does not imply that short graphene fillers offer better reinforcement than large fillers. The details of the crossover from the short-filler to the long-filler regime are specific to the material system and, given a reliable microscopic model, could be estimated from more detailed MD simulations that pinpoint the onset of failure at the filler ends. Finally, we have also performed finite-temperature MD simulations of graphene−HDPE nanocomposites consisting of
+Figure 3. (a−d) Representative atomic configurations of graphene−polymer nanocomposites with randomly distributed circular graphene flakes (black disks) in an HDPE matrix equilibrated at 150 K. The filler radii are (a) 0.86, (b) 4.39, (c) 8.69, and (d) 20.16 nm. (e) Composite elastic moduli computed from MD simulations of tensile straining tests as a function of filler radius, r, along with the upper bounds calculated according to SFT (eq 3) and estimates from LFT (eq 4). The dashed lines are a guide to the eye; for clarity, only one error bar is shown in each case for the SFT and LFT data, the other error bars being of comparable size.
+ACS Applied Materials & Interfaces Research Article
+DOI: 10.1021/acsami.7b03159 ACS Appl. Mater. Interfaces 2017, 9, 23092−23098
+23095
+
+
+randomly distributed circular graphene nanoflakes in HDPEa more realistic nanocomposite structure than the model system considered so farand calculated the elastic moduli of the nanocomposites as a function of filler size. Figure 3a−d show the representative simulation supercells (details in Table S2) for these cases and Figure 3e shows the scaling of the composite modulus with the graphene filler radius. The monotonic increase in the elastic modulus of the composite with the graphene nanoflake radius, r, in Figure 3e is analogous to the composite modulus scaling with the nanoribbon width, l, of Figure 2d and consistent with the modified shear-lag picture for stress transfer. This observation was also reported in our
+previous work20 and is now confirmed for more dilute fillers (2 wt %) and significantly larger filler sizes. Similar to the model composite, we find the presence of a denser interphase in the vicinity of the nanoflake and the presence of end stresses at the nanoflake edges (Figure S2) with no evidence of debonding over the range of strains (<0.8%) applied in the mechanical testing simulations. The analytical models discussed above (eqs 3 and 4) are directly applicable only to fillers aligned with the load axis; nevertheless, these models furnish upper bounds for a composite with randomly oriented fillers. As seen from Figure 3e, the SFT (nonzero end stresses) indeed provides an upper bound for our simulation results, whereas the LFT (zero end stresses) severely underestimates the composite modulus. Once again, the simple rule-of-mixtures estimate is seen to perform poorly when compared to the shear-lag-based model [Figure S3b], underscoring the flaw-like nature of these fillers. More
+rigorous models37,38 for the mechanical response of these nanocomposites that take into account both the random orientation and geometrical details of flakes are beyond the scope of this study and will be considered elsewhere.
+3. CONCLUSIONS
+We have simulated and analyzed the elastic response of graphene−HDPE nanocomposites using molecular statics and MD simulations. Using model GNRs as fillers, we have developed a hierarchical multiscale shear-lag model that captures accurately stress profiles in these short fillers and the macroscopic elastic response of the aligned nanoribbon−HDPE composite. A key feature of our model is the correct description of the end stress concentration from fully atomistic modeling without any ad hoc approximations. The end stress concentration σ0 scales with the filler size l as σ0 ≈ l4/5,
+indicating the flaw-like character of monolayer graphene fillers. The inclusion of this end stress in the modified shear-lag model leads to excellent agreement with composite elastic moduli computed from atomistic simulations, in distinct variance with predictions from conventional shear-lag models or simple averaging through rule of mixtures. Moreover, the predicted composite moduli from the modified shear-lag theory also furnish reasonable upper bounds for elastic moduli computed from MD simulations of straining of nanocomposites with randomly-oriented graphene flakes in HDPE unlike standard shear-lag models or rule of mixtures. The hierarchical multiscale modeling approach developed here for graphene−HDPE nanocomposites, including proper atomistically-based parameterization of coarse-grained models and multiscale linking through an atomistically-supplied boundary condition for well-posedness of a continuum mechanics boundary-value problem, is readily applicable to other graphene-based nanocomposites and to 2D fillers beyond graphene. It is also of particular relevance in the short-filler
+limit, which is the typical situation with solution-processed 2D
+materials.8,25 Furthermore, accurate, atomistically-informed continuum models of stress transfer at the elementary filler level can now enable more sophisticated continuum anal
+yses37,38 with randomly oriented fillers and/or various filler shapes, which will be considered in the future.
+4. COMPUTATIONAL METHODS
+Graphene−HDPE nanocomposites were modeled using the LAMMPS
+simulation software.39 The polymer matrix was described using the
+united-atom model as parameterized by Buell et al.,40 whereas the graphene fillers were described using the DREIDING potential of
+Cornell et al.41 Filler−matrix interactions were described as non
+bonded interactions using Lorentz−Berthelot mixing rules.42 We estimate the filler−matrix gap in all of our equilibrated structures to be in the range of 0.3−0.4 nm, which is consistent with estimates (0.2−
+0.4 nm) from prior work.43,44 The mixing rules adopted in this study are merely a matter of convenience for a generic representation of filler−matrix interactions and are not intended to model a specific polymer−matrix composite. Different choices of filler−matrix interactions will ultimately affect the precise values of the shear-lag parameter β and the end stress σ0 within the continuum model but do
+not affect qualitatively the SFT developed here. All relevant functional forms and parameters for the potentials can be found in our previous
+work.20 The HDPE matrix was modeled using unbranched CH3−(CH2)n−
+CH3 (n = 98; “100-mer”) chains. The graphene fillers were modeled as pure carbon structures without any edge passivation. We note that while edge passivation changes the local geometry of the atomic configuration, the corresponding dominant mechanical effect alters the
+edge stress;28−30 in the absence of explicit covalent bonding between the filler and the matrix, the atomic details of the edge structure only perturb the end stress without affecting the overall stress transfer in short fillers. The computational protocols for preparing and equilibrating the composite supercells followed closely those in ref 20 and are provided in further detail in the Supporting Information. The simulation supercells were equilibrated at 150 K to ensure that all
+of our samples are in the glassy regime20 and subjected subsequently to uniaxial tensile straining tests, detailed protocols for which are provided in the Supporting Information. Stress distributions in the
+graphene fillers were calculated from atomic-level virial stresses42,45 assuming an atomic volume of Ω = 0.0084 nm3, which is equal to the atomic volume in graphite according to the interatomic potential chosen for this study in conjunction with an assumed sheet thickness of 0.335 nm. Density profiles normal to the fillers were calculated as described in the Supporting Information.
+■
+ASSOCIATED CONTENT
+*
+S Supporting Information
+The Supporting Information is available free of charge on the ACS Publications website at DOI: 10.1021/acsami.7b03159.
+Detailed description of methods for preparation and equilibration of nanocomposite samples; derivations of analytical models; data tables for fitted shear-lag parameters; atomic models of graphene−HDPE nanocomposites used in MD simulations, density profiles, and stress profiles; and comparison of rule of mixtures with modified shear-lag models for prediction of elastic moduli of nanocomposites (PDF)
+■
+AUTHOR INFORMATION
+Corresponding Authors
+*E-mail: maroudas@ecs.umass.edu (D.M.). *E-mail: ashwin@umass.edu (A.R.).
+ACS Applied Materials & Interfaces Research Article
+DOI: 10.1021/acsami.7b03159 ACS Appl. Mater. Interfaces 2017, 9, 23092−23098
+23096
+
+
+ORCID
+Ashwin Ramasubramaniam: 0000-0001-6595-7442 Present Address
+∥Third Wave Systems, Eden Prairie, MN 55344, U. S. A. Notes
+The authors declare no competing financial interest.
+■
+ACKNOWLEDGMENTS
+This work was supported by the Army Research Laboratory (grant nos. W911NF-11-2-0014 and 911NF-15-2-0026). Access to computational resources through the Department of Defense High-Performance Computing Modernization Program (HPCMP) Open Research Systems and the Massachusetts Green High-Performance Computing Center (MGHPCC) is
+gratefully acknowledged.
+■
+REFERENCES
+(1) Geim, A. K.; Novoselov, K. S. The Rise of Graphene. Nat. Mater. 2007, 6, 183−191. (2) Neto, A. H. C.; Guinea, F.; Peres, N. M. R.; Novoselov, K. S.; Geim, A. K. The Electronic Properties of Graphene. Rev. Mod. Phys. 2009, 81, 109−162. (3) Dreyer, D. R.; Ruoff, R. S.; Bielawski, C. W. From Conception to Realization: An Historial Account of Graphene and Some Perspectives for Its Future. Angew. Chem., Int. Ed. 2010, 49, 9336−9344. (4) Stankovich, S.; Dikin, D. A.; Dommett, G. H. B.; Kohlhaas, K. M.; Zimney, E. J.; Stach, E. A.; Piner, R. D.; Nguyen, S. T.; Ruoff, R. S. Graphene-Based Composite Materials. Nature 2006, 442, 282−286. (5) Kim, H.; Abdala, A. A.; Macosko, C. W. Graphene/Polymer Nanocomposites. Macromolecules 2010, 43, 6515−6530. (6) Potts, J. R.; Dreyer, D. R.; Bielawski, C. W.; Ruoff, R. S. Graphene-Based Polymer Nanocomposites. Polymer 2011, 52, 5−25. (7) Cai, D.; Song, M. Recent Advance in Functionalized Graphene/ Polymer Nanocomposites. J. Mater. Chem. 2010, 20, 7906−7915. (8) Palermo, V.; Kinloch, I. A.; Ligi, S.; Pugno, N. M. Nanoscale Mechanics of Graphene and Graphene Oxide in Composites: A Scientific and Technological Perspective. Adv. Mater. 2016, 28, 6232− 6238. (9) Ramanathan, T.; Abdala, A. A.; Stankovich, S.; Dikin, D. A.; Herrera-Alonso, M.; Piner, R. D.; Adamson, D. H.; Schniepp, H. C.; Chen, X.; Ruoff, R. S.; Nguyen, S. T.; Aksay, I. A.; Prud’Homme, R. K.; Brinson, L. C. Functionalized Graphene Sheets for Polymer Nanocomposites. Nat. Nanotechnol. 2008, 3, 327−331. (10) Lee, C.; Wei, X.; Kysar, J. W.; Hone, J. Measurement of the Elastic Properties and Intrinsic Strength of Monolayer Graphene. Science 2008, 321, 385−388.
+(11) Gong, L.; Kinloch, I. A.; Young, R. J.; Riaz, I.; Jalil, R.; Novoselov, K. S. Interfacial Stress Transfer in a Graphene Monolayer Nanocomposite. Adv. Mater. 2010, 22, 2694−2697. (12) Vallés, C.; Abdelkader, A. M.; Young, R. J.; Kinloch, I. A. The Effect of Flake Diameter on the Reinforcement of Few-Layer Graphene−PMMA Composites. Compos. Sci. Technol. 2015, 111, 17−22. (13) Gong, L.; Young, R. J.; Kinloch, I. A.; Haigh, S. J.; Warner, J. H.; Hinks, J. A.; Xu, Z.; Li, L.; Ding, F.; Riaz, I.; Jalil, R.; Novoselov, K. S. Reversible Loss of Bernal Stacking during the Deformation of FewLayer Graphene in Nanocomposites. ACS Nano 2013, 7, 7287−7294. (14) Li, Z.; Young, R. J.; Kinloch, I. A.; Wilson, N. R.; Marsden, A. J.; Raju, A. P. A. Quantitative Determination of the Spatial Orientation of Graphene by Polarized Raman Spectroscopy. Carbon 2015, 88, 215− 224. (15) Li, Z.; Young, R. J.; Wang, R.; Yang, F.; Hao, L.; Jiao, W.; Liu, W. The Role of Functional Groups on Graphene Oxide in Epoxy Nanocomposites. Polymer 2013, 54, 5821−5829. (16) Ahmad, S. R.; Xue, C.; Young, R. J. The Mechanisms of Reinforcement of Polypropylene by Graphene Nanoplatelets. Mater. Sci. Eng., B 2017, 216, 2−9.
+(17) Cox, H. L. The Elasticity and Strength of Paper and Other Fibrous Materials. Br. J. Appl. Phys. 1952, 3, 72−79. (18) Jiang, T.; Huang, R.; Zhu, Y. Interfacial Sliding and Buckling of Monolayer Graphene on a Stretchable Substrate. Adv. Funct. Mater. 2013, 24, 396−402. (19) Anagnostopoulos, G.; Androulidakis, C.; Koukaras, E. N.; Tsoukleri, G.; Polyzos, I.; Parthenios, J.; Papagelis, K.; Galiotis, C. Stress Transfer Mechanisms at the Submicron Level for Graphene/ Polymer Systems. ACS Appl. Mater. Interfaces 2015, 7, 4216−4223. (20) Lu, C.-T.; Weerasinghe, A.; Maroudas, D.; Ramasubramaniam, A. A Comparison of the Elastic Properties of Graphene- and FullereneReinforced Polymer Composites: The Role of Filler Morphology and Size. Sci. Rep. 2016, 6, 31735. (21) Spanos, K. N.; Anifantis, N. K. Finite Element Prediction of Stress Transfer in Graphene Nanocomposites: The Interface Effect. Compos. Struct. 2016, 154, 269−276.
+(22) Zhang, Y.; Zhuang, X.; Muthu, J.; Mabrouki, T.; Fontaine, M.; Gong, Y.; Rabczuk, T. Load Transfer of Graphene/Carbon Nanotube/ Polyethylene Hybrid Nanocomposite by Molecular Dynamics Simulation. Composites, Part B 2014, 63, 27−33.
+(23) Cheng, S.; Bocharova, V.; Belianinov, A.; Xiong, S.; Kisliuk, A.; Somnath, S.; Holt, A. P.; Ovchinnikova, O. S.; Jesse, S.; Martin, H.; Etampawala, T.; Dadmun, M.; Sokolov, A. P. Unraveling the Mechanism of Nanoscale Mechanical Reinforcement in Glassy Polymer Nanocomposites. Nano Lett. 2016, 16, 3630−3637. (24) Jiang, Z.; Lian, J.; Yang, D.; Dong, S. A New Modification to Shear Lag Model as Applied to Stiffness and Yield Strength of Short Fiber Reinforced Metal Matrix Composites. J. Mater. Sci. Technol. 1998, 14, 516−522. (25) Paton, K. R.; Varrla, E.; Backes, C.; Smith, R. J.; Khan, U.; O’Neill, A.; Boland, C.; Lotya, M.; Istrate, O. M.; King, P.; Higgins, T.; Barwich, S.; May, P.; Puczkarski, P.; Ahmed, I.; Moebius, M.; Pettersson, H.; Long, E.; Coelho, J.; O’Brien, S. E.; McGuire, E. K.; Sanchez, B. M.; Duesberg, G. S.; McEvoy, N.; Pennycook, T. J.; Downing, C.; Crossley, A.; Nicolosi, V.; Coleman, J. N. Scalable Production of Large Quantities of Defect-Free Few-Layer Graphene by Shear Exfoliation in Liquids. Nat. Mater. 2014, 13, 624−630. (26) Nairn, J. A. On the Use of Shear-Lag Methods for Analysis of Stress Transfer in Unidirectional Composites. Mech. Mater. 1997, 26, 63−80. (27) Shenoy, V. B.; Reddy, C. D.; Ramasubramaniam, A.; Zhang, Y. W. Edge-Stress-Induced Warping of Graphene Sheets and Nanoribbons. Phys. Rev. Lett. 2008, 101, 245501.
+(28) Reddy, C. D.; Ramasubramaniam, A.; Shenoy, V. B.; Zhang, Y.W. Edge elastic properties of defect-free single-layer graphene sheets. Appl. Phys. Lett. 2009, 94, 101904.
+(29) Huang, B.; Liu, M.; Su, N.; Wu, J.; Duan, W.; Gu, B.-L.; Liu, F. Quantum Manifestations of Graphene Edge Stress and Edge Instability: A First-Principles Study. Phys. Rev. Lett. 2009, 102, 166404. (30) Jun, S. Density-functional study of edge stress in graphene. Phys. Rev. B: Condens. Matter Mater. Phys. 2008, 78, 073405.
+(31) Jiang, J.-W.; Wang, J.-S.; Li, B. Young’s modulus of graphene: A molecular dynamics study. Phys. Rev. B: Condens. Matter Mater. Phys. 2009, 80, 113405. (32) Baskin, Y.; Meyer, L. Lattice Constants of Graphite at Low Temperatures. Phys. Rev. 1955, 100, 544. (33) Chung, D. D. L. Review Graphite. J. Mater. Sci. 2002, 37, 1475− 1489. (34) Clyne, T. W. A Simple Development of the Shear Lag Theory Appropriate for Composites with a Relatively Small Modulus Mismatch. Mater. Sci. Eng., A 1989, 122, 183−192.
+(35) Hsueh, C.-H. A Modified Analysis for Stress Transfer in FibreReinforced Composites with Bonded Fibre Ends. J. Mater. Sci. 1995, 30, 219−224. (36) Norris, A. N. The Mechanical Properties of Platelet Reinforced Composites. Int. J. Solids Struct. 1990, 26, 663−674. (37) Torquato, S. Random Heterogeneous Materials: Microstructure and Macroscopic Properties; Springer-Verlag: New York, 2005.
+ACS Applied Materials & Interfaces Research Article
+DOI: 10.1021/acsami.7b03159 ACS Appl. Mater. Interfaces 2017, 9, 23092−23098
+23097
+
+
+(38) Milton, G. The Theory of Composites; Cambridge: Cambridge, 2002. (39) Plimpton, S. Fast Parallel Algorithms for Short-Range Molecular Dynamics. J. Comput. Phys. 1995, 117, 1−19.
+(40) Buell, S.; van Vliet, K. J.; Rutledge, G. C. Mechanical Properties of Glassy Polyethylene Nanofibers via Molecular Dynamics Simulations. Macromolecules 2009, 42, 4887−4895. (41) Cornell, W. D.; Cieplak, P.; Bayly, C. I.; Gould, I. R.; Merz, K. M.; Ferguson, D. M.; Spellmeyer, D. C.; Fox, T.; Caldwell, J. W.; Kollman, P. A. A Second Generation Force Field for the Simulation of Proteins, Nucleic Acids, and Organic Molecules. J. Am. Chem. Soc. 1995, 117, 5179−5197. (42) Allen, M. P.; Tildesley, D. J. Computer Simulation of Liquids; Clarendon: Oxford, 1987. (43) Zeng, Q. H.; Yu, A. B.; Lu, G. Q. Multiscale modeling and simulation of polymer nanocomposites. Prog. Polym. Sci. 2008, 33, 191−269. (44) Hadden, C. M.; Jensen, B. D.; Bandyopadhyay, A.; Odegard, G. M.; Koo, A.; Liang, R. Molecular modeling of EPON-862/graphite composites: Interfacial characteristics for multiple crosslink densities. Compos. Sci. Technol. 2013, 76, 92−99.
+(45) Thompson, A. P.; Plimpton, S. J.; Mattson, W. General Formulation of Pressure and Stress Tensor for Arbitrary Many-Body Interaction Potentials Under Periodic Boundary Conditions. J. Chem. Phys. 2009, 131, 154107.
+ACS Applied Materials & Interfaces Research Article
+DOI: 10.1021/acsami.7b03159 ACS Appl. Mater. Interfaces 2017, 9, 23092−23098
+23098

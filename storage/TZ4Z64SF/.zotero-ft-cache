@@ -1,0 +1,238 @@
+Interfacial Tension of Polyelectrolyte Complex Coacervate Phases
+Jian Qin,† Dimitrios Priftis,† Robert Farina,†,‡ Sarah L. Perry,† Lorraine Leon,† Jonathan Whitmer,†
+Kyle Hoffmann,† Matthew Tirrell,† and Juan J. de Pablo*,†
+†Institute for Molecular Engineering, University of Chicago, Chicago, Illinois 60637, United States
+‡Department of Chemical Engineering, University of California, Santa Barbara, California 93106, United States
+*
+S Supporting Information
+ABSTRACT: We consider polyelectrolyte solutions which, under suitable conditions, phase separate into a liquid-like coacervate phase and a coexisting supernatant phase that exhibit an extremely low interfacial tension. Such interfacial tension provides the basis for most coacervate-based applications, but little is known about it, including its dependence on molecular weight, charge density, and salt concentration. By combining a Debye−Hückel treatment for electrostatic interactions with the Cahn−Hilliard theory, we derive explicit expressions for this interfacial tension. In the absence of added
+salts, we find that the interfacial tension scales as N−3/2(η/ηc−1)3/2 near the
+critical point of the demixing transition, and that it scales as η1/2 far away from it, where N is the chain length and η measures the electrostatic interaction strength as a function of temperature, dielectric constant, and charge density of the polyelectrolytes. For the case with added salts, we find that the interfacial tension scales with the salt concentration ψ as
+N−1/4(1−ψ/ψc)3/2 near the critical salt concentration ψc. Our predictions are shown to be in quantitative agreement with experiments and provide a means to design new materials based on polyelectrolyte complexation.
+E
+lectrostatic interactions often give rise to the formation of solid, lyophilic aggregates in polyelectrolyte solutions.1 However, much less is known about the formation of liquid-like complexes, generally referred to as complex coacervates (Figure
+1).1−3 In contrast to lyophobic aggregates,1 coacervates retain large amounts of water, giving rise to an extremely low interfacial tension between the coacervate phase and the coexisting supernatant phase. The interfacial tension of a coacervate can be nearly 1000 times lower than that of water.4,5 This property underlies many of the potential applications of
+coacervates, such as encapsulation for drug delivery or the formulation of underwater adhesives,1 and makes complex coacervates an ideal model system for studies of biomolecular aggregation.3 Ultralow interfacial tensions have been measured4,5 and, recently, have also been examined using fieldtheoretic calculations.6 These works indicate that in “water + polyelectrolyte + salt” ternary systems, the interfacial tension varies with the 3/2 power of the undersaturation of the salt concentration ψ, according to (1 − ψ/ψc)3/2, where ψc is the critical salt concentration. The observed 3/2 exponent was originally rationalized by “wrapping” the electrostatic interactions into a concentration dependent χ parameter.4,7 The rationale for this mapping and the corresponding underlying assumptions, however, remains unclear. The aim of this work is to derive analytical expressions for the interfacial tension as a function of polyelectrolyte molecular weight and concentration, thereby facilitating the design of coacervate phases with known properties. To that end, we combine the Voorn−Overbeek model8 with the Cahn−Hilliard theory9 and, through a series of asymptotic expansions, arrive at the sought-after expressions for the interfacial tension in both the near-critical and strong segregation regimes. For solutions with added salts, we derive scaling laws for the interfacial tension in the critical regime, and
+Received: April 4, 2014 Accepted: May 27, 2014 Published: May 30, 2014
+Figure 1. (Left) Schematic representation of the coexistence of a coacervate phase and a supernatant phase. Blue and red molecules represent polycations and polyanions, respectively. Dissolved salt ions are also shown explicitly. (Right) Schematic representation of free energy curves in the one-phase (η < ηc) and two-phase regimes (η >
+ηc), where the parameter η measures the strength of electrostatic interactions.
+Letter
+pubs.acs.org/macroletters
+© 2014 American Chemical Society 565 dx.doi.org/10.1021/mz500190w | ACS Macro Lett. 2014, 3, 565−568
+Downloaded via UNIV OF MASSACHUSETTS AMHERST on March 21, 2024 at 21:14:55 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+explain the 3/2 exponent reported in earlier laboratory and numerical experiments. While the Voorn−Overbeek model represents a minimal
+description of polyelectrolyte coacervation,8 it has been shown to capture nearly all qualitative features of the experimentally
+observed phase behavior of coacervates,1 including the effect of chain length and charge density. In essence, it expresses the mixing free energy of polyelectrolyte solutions as the sum of an ideal gas mixing entropy and a Debye−Hückel correlation for
+the electrostatic free energy.10,11 In view of its simplicity and wide-range of applicability, we rely on this model for polyelectrolyte solution with salts. For convenience, we focus on symmetric solutions; that is, the volume fractions of polycations and polyanions are equal and denoted by φ/2. The volume fractions of cations and anions are also equal and denoted by ψ/2. Polycations and polyanions have the same molecular weight and valence (Z), and the cations and anions have unit valence. To apply the Voorn−Overbeek (VO) model, we map the system onto a lattice, with the lattice site volume chosen to represent the volume of a water molecule v. The free energy per lattice site in units of kBT can be written as
+φ φ ψ ψ ψφ ψ
+φ α σφ ψ
+= + + −− −
+−− +
+f N ln( /2) ln( /2) (1 ) ln(1
+) ( )3/2 (1)
+Here N is the effective chain length, defined as the ratio of polymer volume to the reference volume, Vp/v. For simplicity, we assume that the ionic volume is also equal to v. The last term in eq 1 is the Debye−Hückel correlation free energy. The
+interaction strength α is defined as (16π2/3)(l3B/ν)1/2 ∝ (lB)3/2,
+where lB ≡ e2/(4πε0εrkBT) is the Bjerrum length. The
+parameter σ ≡ Z/N is the charge density of the polymers. For typical coacervate-forming polyelectrolytes, the charge density is less than 0.3 (e.g., ref 5). For aqueous solutions at room temperature, α = 3.655. The parameters φ, ψ, α, σ, and N fully specify the model. Within the VO model, the Debye−Hückel electrostatic term scales with the 3/2 power of the charge density. This may be understood as kBT per Debye volume, since the Debye length is
+proportional to the −1/2 power of the charge density times lB. The sign is negative, since bringing charged species together to
+form a neutral system always lowers the energy.12 The predicted binodal curves for different N values as a function of φ, ψ, and σ at room temperature are shown in Figure 2a and b (salt-free and with added salts, respectively). The coacervate phase appears in the region above the binodal curve in Figure 2a and below the binodal curve in Figure 2b. Past literature studies have generally assumed that salt is
+evenly distributed between the two coexisting phases13 (despite the asymmetry in salt concentration noted in the original
+Voorn−Overbeek treatment8). A comparison of the binodal curves obtained using this equal-salt approximation (red) and without it (blue) is shown in Figure 2c for N = 100 and σ = 0.24. The straight lines are tie lines connecting the coexistence phases. These calculations serve to demonstrate that salt is not evenly distributed, and that the approximation of even-salt distribution results in a much narrower binodal window. On the other hand, the dependence of the binodal curves on chain length predicted by the approximate theory is similar to that of the full theory, as shown in Figure 2b. In both cases, in the limit of N = ∞, a maximum salt concentration ψm exists, which
+increases with charge density σ, as shown in Figure 2d. In the
+inset of the figure, the limiting slope of the tie line at the critical point is also plotted for the full theory (the slope is always zero for the approximate theory). These results show that the approximate theory is only good for small σ values, and becomes inappropriate for σ greater than 0.15. Furthermore, the approximate theory predicts that the maximum salt concentration ψm increases indefinitely with the charge density
+σ, whereas the full theory predicts that ψm is bounded. This originates from the competition between coacervation and ion precipitation in the ion-rich portion of the phase triangle for σ > 0.27 (α = 3.655), which cannot be accounted for in the approximate theory. Our primary aim is to determine the interfacial tension between the coacervate (bottom) and supernatant (top) phases, shown schematically in Figure 1. We first focus on the binary system in the absence of added salts (ψ = 0). For this system, it is useful to introduce an auxiliary interaction strength η ≡ ασ3/2, since the Debye−Hückel free energy term reduces to
+the form −ασ3/2φ3/2. As shown in Figure 2a, binodal curves for different N values exhibit a critical point, which decreases with increasing N. The branches to the left and right of the critical point represent the supernatant phase and the coacervate phase, respectively. The dashed line is the limiting result for N = ∞, in which case the supernatant phase is completely depleted of polymers. The VO model predicts that the coacervate phase forms when the polymer charge density exceeds a critical value σc at a
+critical concentration φc, which can be calculated by requiring that the second and third derivatives of the free energy vanish, that is, f(2)(φ) ≡ ((∂2f)/(∂φ2))η = 0 and f(3)(φ) ≡ ((∂3f)/
+(∂φ3))η = 0. Both φc and ηc can be explicitly expressed in terms
+of N. For large N, we find
+φ≃ η ≃
+N− , 8/(3N )
+c
+1 c
+1/2 (2)
+Figure 2. (a) Binodal curves for different values of N in the σ − φ domain. Solid curves: from top to bottom, N = 100, 200, and 400 (α = 3.655). Dashed curve: binodal curve for N = ∞. (b) Binodal curves at different N values in the ψ − φ domain. Solid curves: from bottom to top, N = 200, 600, 1000, 1400, 1800. Dashed curve: binodal curve for N = ∞. (c) Binodal curves obtained by using the equal-salt approximation (red) and by balancing the chemical potential of both salts and polymers (blue) at σ = 0.24 for N = 100. Straight dashed lines correspond to tie lines. (d) Charge density dependence of the maximum salt fraction (N = ∞) (i) assuming even salt distribution (dashed) and (ii) calculating salt content by enforcing equal chemical potentials in each phase (solid). Inset: slope of tie lines at the critical point for N = ∞ from the full theory.
+ACS Macro Letters Letter
+566 dx.doi.org/10.1021/mz500190w | ACS Macro Lett. 2014, 3, 565−568
+
+
+In the limit of large molecules, the scaling result φc ≃ N−1 implies that the polymer concentration in the coacervate phase near the critical point is extremely low. The result for ηc implies
+that σc ≃ N−3/2; the critical charge density decreases with increasing chain length. In the regime near the critical point, for η > ηc, the free energy exhibits two minima (Figure 1). We therefore expand it as a power series of the form
+φ φφ φ φφ φ
+φφ φ
+= − +! −
++! −
+ff f
+f
+() ( )
+2 ( ) ()
+3( )
+()
+4( )
+(2)
+0 0
+2
+(3)
+0 0
+3
+(4)
+0 0
+4
+(3)
+where the irrelevant constant and linear terms have been omitted. The expansion point φ0 is chosen such that the third
+derivative f(3) vanishes, so that the free energy contains only even powers of φ − φ0. Near the critical point, the behavior of
+f(3) = 0 is dominated by −1/(Nφ2) + 3ηφ−3/2/8 = 0. The solution is
+φ = 64/(3Nη)
+0
+2 (4)
+which is of order N−1, the same as φc, since η is of order N−1/2. The second and fourth derivatives exhibit the following asymptotic behavior:
+f (φ ) ≃ −2(η/η − 1)
+(2)
+0 c (5)
+f (φ ) ≃ N /2
+(4)
+0
+2 (6)
+To derive these, we replace the multiplicative η with ηc since η
+≃ ηc near the critical point, and we use eq 2. The above free energy expansion is appropriate for a homogeneous system. To describe an interface, we need to introduce an additional term capable of describing density inhomogeneities. Following de Gennes, we use the random
+phase approximation14,15 to obtain the coefficient for the squared density gradient term, and write the free energy per unit area across the interface as
+∫
+φ φφ
+φ
+=+
+−∞
+∞
+⎜⎟
+⎛
+⎝⎜ ⎛
+⎝
+⎞ ⎠
+⎞
+⎠⎟
+F z kT
+v zf a
+z
+[ ( )] d ( ) 36
+d
+d
+B
+22
+(7)
+Here the local free energy density f(φ) is given by eq 3. The coordinate z is normal to the interface. The density field φ = φ(z) varies slowly across the interface. The width of the interface is controlled by the parameter a2 ≡ 6b2/((2ν + 1)(2ν
++ 2)N1−2ν) (see Supporting Information), where b is the statistical segment length of the polycation (and polyanion) in solution, and ν is the swelling exponent that characterizes solvent quality (ν = 1/2 and 0.588 for ideal and good solutions, respectively). In this work, we focus on ideal solutions with ν = 1/2 (see ref 16 for evidence of ν = 1/2 from scattering results), and use a2 = b2. Near the critical point, the density variation is small, so the φ terms in the square gradient term can be replaced with φc. The actual density profile is chosen to minimize the interfacial free energy and is a hyperbolic tangent function. Following Cahn and Hilliard (eq 2.22 in ref 9), we find the following expression for the interfacial tension
+γ
+φφ φ
+ηη
+=−
+≃−
+⎛
+⎝
+⎜⎜
+⎞
+⎠
+⎟⎟
+⎛
+⎝⎜ ⎞
+⎠⎟
+f
+af
+k Ta
+vN
+16 2
+( ) 36 ( ( ))
+32 2 3
+( / 1)
+(4)
+0
+2
+c
+1/2
+(2)
+0
+3/2
+Bc c
+3/2
+3/2 (8)
+Here Tc is the critical temperature corresponding to ηc. This result shows how the interfacial tension vanishes as the critical point is approached, by varying either the charge density or temperature, and shows the dependence on N. The corresponding results for the strong segregation limit (η ≫ ηc), γ ∝ η1/2, are given in the Supporting Information. We now turn to the ternary system with added salts. Binodal curves are shown in Figure 2b for various values of N for σ = 0.24, obtained by equating the chemical potentials of both polymers and salts. For each curve, the critical point lies to the left side of the maximum, indicating that the salt content in the coacervate phase (right branch) is higher than that in the supernatant phase (left branch), consistent with earlier
+arguments by Voorn and Overbeek.8 As chain length increases, the width of the binodal curve expands and reaches a finite limit given by the dashed line at N = ∞. The location of the critical point is also shifted to the upper left corner, approaching the limit φ = 0 and ψm = 0.058 at room temperature, which indicates the existence of a maximum in the amount of salt that can be added to the system (see Figure 2b−d). To examine the interfacial tension in the weak segregation regime, we first find the most unstable composition fluctuation mode characterized by a vector e, then identify the associated critical point (see Supporting Information for details). For finite, yet large N, the critical point deviates from the value at N
+= ∞ by corrections of order N−1/2, and the symmetric
+composition φ0 is of order N−1/2. Therefore, we have
+φ≃ ψ ≃ψ − φ ≃
+N NN
+(1) , (1) , and (1)
+c 1/2 c m 1/2 0 1/2
+6 66
+(9)
+For ψ < ψc, the free energy along the direction parallel to the
+unstable mode e can be expanded around φ0 as f(φ,ψ) =
+λmin(φ0,ψ0)φ2/2 + u4(φ0,ψ0)φ4/4!, where φ ≡ (φ − φ0,ψ −
+ψ0)·e is the deviation from the symmetric point along the tie line, which is parallel to e (see Supporting Information for expression to λmin and u4). By expanding λmin(φ0(ψ0),ψ0) at ψ =
+ψc to linear order in ψ0 − ψc, and noticing that u4 is dominated
+by the term 1/(Nφ3), we get the free energy coefficients
+λ ≃ −(1 − ψ /ψ ) and u ≃ N
+min 0 c 4
+1/2 (10)
+Here we have used ψ ≃ (1)
+m 6 and have ignored all multiplicative factors of order 1. The asymptotic result for λmin implies that the correlation length for composition
+fluctuations diverges with the salt concentration as
+(−λmin)−1/2 ≃ (1 − ψ0/ψc)−1/2. By using the Cahn−Hilliard result, we get the interfacial tension
+γλ φ
+ψψ
+∝− ≃ −
+⎛
+⎝⎜ ⎞
+⎠⎟
+u
+k Ta
+vN
+( ) (1 / )
+cc
+min
+3/2
+40
+1/2
+B0
+3/2
+1/4 (11)
+It vanishes with the 3/2 power of the salt concentration difference. As shown in Figure 3, this expression is in
+quantitative agreement with recent experimental4,5 measure
+ments and results from field-theoretic numerical simulations.6 The ultrasmall γ value may be partially accounted for by the
+ACS Macro Letters Letter
+567 dx.doi.org/10.1021/mz500190w | ACS Macro Lett. 2014, 3, 565−568
+
+
+prefactor N−1/4. We further note that by applying the Cahn− Hilliard analysis to the approximate theory, which assumes equal salt concentration between the coacervate and dilute phases, it can be shown that near the critical point the interfacial tension exhibits the same scaling behavior as the full theory. The interfacial tension of the coacervate phase derived here, for both binary and ternary solutions, relies on the Voorn− Overbeek model and the Cahn−Hilliard theory. Given that a simple Debye−Hückel treatment of the correlation free energy is assumed, the results are applicable for dilute electrolyte solutions. The random phase approximation used for the interfacial free energy may be justified by the ultra-low interfacial tension, which leads to a diffuse interface. Chain connectivity and more subtle effects, such as charge
+regulation17 and counterion condensation,18 are not included in this first attempt to derive closed−form equations for the interfacial tension. While the agreement with experiment reported here is quantitative, one could adopt more elaborate
+approaches19−22 to examine the effect of various assumptions on the predicted interfacial tension; such directions will be pursued in future work. Note, however, that the key result of this Letter, one that is unlikely to be altered by additional theoretical refinements, is that the scaling exponent for the interfacial tension near the critical point is the classical Cahn− Hilliard value 3/2, which implies that coacervation belongs to the Ising universality class (extremely close to the critical point this value is expected to be replaced by 1.26, the exponent dominated by fluctuation effects; Ch. 9, ref 23). It can be shown that the dependence of the interfacial tension on salt concentration is generally correct as long as the free energy can be written as the summation of an ideal gas mixing entropy and a cohesive free energy that accounts for the electrostatic attractions. Finally, we point out that polyelectrolyte coacervation in the presence of salts is analogous to the behavior of neutral polymers in their poor solutions, with the difference that salt concentration plays the role of temperature.
+■
+ASSOCIATED CONTENT
+*
+S Supporting Information
+(1) Discussion of squared density gradient term; (2) Derivation of interfacial tension near the strong segregation limit; (3)
+Critical point in the ternary system. This material is available free of charge via the Internet at http://pubs.acs.org.
+■
+AUTHOR INFORMATION Corresponding Author
+*E-mail: depablo@uchicago.edu. Notes
+The authors declare no competing financial interest.
+■
+ACKNOWLEDGMENTS
+This work has benefited from discussions with Tom Witten from the James Franck Institute at the University of Chicago and was supported by the U.S. Department of Energy, Office of Science, Basic Energy Sciences, Materials Sciences and Engineering Division.
+■
+REFERENCES
+(1) Van der Gucht, J.; Spruijt, E.; Lemmers, M.; Cohen Stuart, M. A. J. Colloid Interface Sci. 2011, 361, 407−422.
+(2) De Jong, H. G. B.; Kruyt, H. R. Proc. Koninkl. Med. Akad. Wetershap. 1929, 32, 849−856.
+(3) Popov, Y. O.; Lee, J.; Fredrickson, G. H. J. Polym. Sci., Part B: Polym. Phys. 2007, 45, 3223.
+(4) Spruijt, E.; Sprakel, J.; Cohen Stuart, M. A.; van der Gucht, J. Soft Matter 2010, 6, 172.
+(5) Priftis, D.; Farina, R.; Tirrell, M. Langmuir 2012, 28, 8721−8729. (6) Riggleman, R. A.; Kumar, R.; Fredrickson, G. H. J. Chem. Phys. 2012, 136, 024903. (7) Cohen Stuart, M. A.; de Vries, R.; Lyklema, H. In Fundamentals of Interface and Colloid Science; Lyklema, J., Ed.; Elsevier Academic Press: New York, 2005; Vol. V. (8) Overbeek, J.; Voorn, M. J. Cell. Physiol. Suppl. 1957, 49, 7. (9) Cahn, J. W.; Hilliard, J. E. J. Chem. Phys. 1958, 28, 258−267. (10) Debye, P.; Hückel, E. Phys. Z. 1923, 24, 185. (11) Fowler, R.; Guggenheim, E. A. Statistical Thermodynamics, 2nd ed.; Cambridge University Press: U.K., 1949. (12) Israelachvilli, J. N. Intermolecular and Surface Forces, 3rd ed.; Academic Press: New York, 2011. (13) Spruijt, E.; Westphal, A. H.; Borst, J. W.; Cohen Stuart, M. A.; van der Gucht, J. Macromolecules 2010, 43, 6476−6484.
+(14) De Gennes, P. G. Scaling Concepts in Polymer Physics; Cornell University Press: Ithaca, NY, 1979.
+(15) Graessley, W. W. Polymeric Liquids and Networks: Structure and Properties; Garland Science: New York, 2003. (16) Spruijt, E.; Leemakers, F. A. M.; Schweins, R. F. R.; van Well, A. A.; Cohen Stuart, M. A.; van der Gucht, J. Macromolecules 2013, 46, 4596−4605. (17) Muthukumar, M.; Hua, J.; Kundagrami, A. J. Chem. Phys. 2010, 132, 084901. (18) Manning, G. S. J. Chem. Phys. 1969, 51, 924. (19) Potemkin, I. I.; Palyulin, V. V. Phys. Rev. E 2010, 81, 041802. (20) Borue, V. Y.; Erukhimovich, I. Y. Macromolecules 1988, 21, 3240. (21) Castelnovo, M.; Joanny, J. F. Eur. Phys. J. E 2001, 6, 377. (22) Kudlay, A.; Ermoshkin, A. V.; Olvera de la Cruz, M. Macromolecules 2004, 37, 9231. (23) Rowlinson, J. S.; Widom, B. Molecular Theory of Capillarity; Clarendon Press: Oxford, 1982.
+Figure 3. Test of the 3/2 scaling for the interfacial tension near the critical salt concentration. The solid line shows the theoretical prediction: γ/γ0 = (1 − ψ/ψc)3/2. Symbols correspond to experimental
+data and results from numerical simulations; γ0 and ψc are fitting
+parameters. Circles: ref 5; γ0 = 1.2 mJ/m2 and ψc = 1000 mM.
+Diamonds: ref 4; γ0 = 0.6 mJ/m2 and ψc = 1250 mM. Squares: ref 6; γ0
+= 1.2 and ψc = 110 (both quantities are nondimensionalized in the
+original figure; γ in kBT/Rg2 and ψc in 1/Rg3).
+ACS Macro Letters Letter
+568 dx.doi.org/10.1021/mz500190w | ACS Macro Lett. 2014, 3, 565−568
